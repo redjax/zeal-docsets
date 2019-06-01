@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    
+<!-- Mirrored from mdn.mozillademos.org/en-US/docs/Web/API/GlobalEventHandlers/onmousedown$samples/Example?revision=1528722 by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 02 May 2019 00:09:46 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+        <meta charset="utf-8">
+        <link href="../../../../../../../developer.mozilla.org/static/build/styles/samples.37902ba3b7fe.css" rel="stylesheet" type="text/css" />
+        
+        <style type="text/css">
+            .container {
+  width: 320px;
+  height: 213px;
+  background: black;
+}
+
+.view {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background: white;
+  border-radius: 50%;
+}
+
+img {
+  mix-blend-mode: darken;
+}
+        </style>
+        
+        <title>GlobalEventHandlers.onmousedown</title>
+    </head>
+    <body>
+        
+            <div class="container">
+  <div class="view" hidden></div>
+  <img src="../../../../../../../interactive-examples.mdn.mozilla.net/media/examples/gecko-320-213.jpg">
+</div>
+        
+        
+            <script>
+                function showView(event) {
+  view.removeAttribute('hidden');
+  view.style.left = event.clientX - 50 + 'px';
+  view.style.top = event.clientY - 50 + 'px';
+  event.preventDefault();
+}
+
+function moveView(event) {
+  view.style.left = event.clientX - 50 + 'px';
+  view.style.top = event.clientY - 50 + 'px';
+}
+
+function hideView(event) {
+  view.setAttribute('hidden', '');
+}
+
+const container = document.querySelector('.container');
+const view = document.querySelector('.view');
+
+container.onmousedown = showView;
+container.onmousemove = moveView;
+document.onmouseup = hideView;
+            </script>
+        
+    </body>
+
+<!-- Mirrored from mdn.mozillademos.org/en-US/docs/Web/API/GlobalEventHandlers/onmousedown$samples/Example?revision=1528722 by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 02 May 2019 00:09:46 GMT -->
+</html>

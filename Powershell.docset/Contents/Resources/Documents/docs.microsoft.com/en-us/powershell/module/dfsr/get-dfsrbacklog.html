@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html class="no-js hasSidebar hasPageActions hasBreadcrumb conceptual" data-authenticated="false" data-render="docs" dir="ltr" lang="en-us">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Get-DfsrBacklog (dfsr)" property="og:title"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" property="og:image"/>
+  <meta content="summary" name="twitter:card"/>
+  <meta content="@docsmsft" name="twitter:site"/>
+  <meta content="Get-DfsrBacklog (dfsr)" name="twitter:title"/>
+  <meta content="Use this topic to help manage Windows and Windows Server technologies with Windows PowerShell." name="twitter:description"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" name="twitter:image"/>
+  <meta content="Microsoft Logo" name="twitter:image:alt"/>
+  <meta content="Use this topic to help manage Windows and Windows Server technologies with Windows PowerShell." name="description"/>
+  <meta content="Docs" name="search.ms_sitename"/>
+  <meta content="powershell-windows" name="search.ms_docsetname"/>
+  <meta content="0" name="version"/>
+  <meta content="en-us" name="locale"/>
+  <meta content="Docs" name="site_name"/>
+  <meta content="MSDN" name="search.ms_product"/>
+  <meta content="MSDN.powershell-windows" name="depot_name"/>
+  <meta content="https://cpubwin.visualstudio.com/DefaultCollection/powershell/_git/powershell/commit/ced7757924addcaea0b7a244ae4d240e4d28d93a?path=%2fdocset%2fwindows%2fdfsr%2fget-dfsrbacklog.md&amp;_a=contents" name="ref_skeleton_gitcommit"/>
+  <meta content="https://cpubwin.visualstudio.com/DefaultCollection/powershell/_git/powershell?path=%2fdocset%2fwindows%2fdfsr%2fget-dfsrbacklog.md&amp;version=GBlive&amp;_a=contents" name="original_ref_skeleton_git_url"/>
+  <meta content="2017-09-15 03:44 AM" name="updated_at"/>
+  <meta content="131f9def-8732-3daf-a48c-e37c9888fbff" name="document_id"/>
+  <meta content="731117d6-b101-dd87-1868-ed0bbe93c6be" name="document_version_independent_id"/>
+  <meta content="powershell" name="page_type"/>
+  <meta content="command" name="page_kind"/>
+  <meta content="manage" name="ms.mktglfcycl"/>
+  <meta content="library" name="ms.sitesec"/>
+  <meta content="brianlic" name="ms.author"/>
+  <meta content="brianlic-msft" name="author"/>
+  <meta content="DfsrPowerShell.dll-Help.xml" name="external_help_file"/>
+  <meta content="powershell, cmdlet" name="keywords"/>
+  <meta content="alanth" name="manager"/>
+  <meta content="12/20/2016" name="ms.date"/>
+  <meta content="w10" name="ms.prod"/>
+  <meta content="powershell-windows" name="ms.technology"/>
+  <meta content="reference" name="ms.topic"/>
+  <meta content="" name="online_version"/>
+  <meta content="2.0.0" name="schema"/>
+  <meta content="933DF783-4CB6-4E94-87E4-D7E4EB1D3E59" name="ms.assetid"/>
+  <meta content="powershell" name="ms.devlang"/>
+  <meta content="INDEX, FOLLOW" name="ROBOTS"/>
+  <meta content="/powershell/windows/bread/toc.json?view=win10-ps" name="breadcrumb_path"/>
+  <meta content="powershell" name="apiPlatform"/>
+  <meta content="MSDocsHeader-WindowsIT" name="uhfHeaderId"/>
+  <meta content="../win10-ps/toc.json?view=win10-ps" name="toc_rel"/>
+  <link href="https://docs.microsoft.com/en-us/powershell/module/dfsr/get-dfsrbacklog" rel="canonical"/>
+  <title>
+   Get-DfsrBacklog
+  </title>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/e4a1f3a3.site.css" rel="stylesheet"/>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/31353636.conceptual.css" rel="stylesheet"/>
+ </head>
+ <body dir="ltr" lang="en-us">
+  <div class="header-holder">
+   <div data-bi-name="header" id="headerAreaHolder">
+    <div id="uhf-placeholder">
+    </div>
+   </div>
+   <div class="disclaimer-holder" id="disclaimer-holder">
+   </div>
+  </div>
+  <div class="container mainContainer" data-bi-name="body">
+   <div class="content-header" data-bi-name="content-header">
+    <div class="content-header-controls">
+     <button class="contents-button button-border" data-bi-name="contents-expand" type="button">
+      <span class="docon docon-menu">
+      </span>
+      Contents
+     </button>
+    </div>
+    <div class="content-header-controls">
+     <button class="ap-collapse-behavior ap-expanded button-border" data-bi-name="ap-collapse" type="button">
+      <span class="docon docon-exit-mode">
+      </span>
+      Exit focus mode
+     </button>
+    </div>
+   </div>
+   <div class="primary-holder">
+    <main class="content" data-bi-name="content" dir="ltr" id="main" lang="en-us" role="main">
+     <!-- <content> -->
+     <h1>
+      Get-Dfsr
+      <wbr/>
+      Backlog
+     </h1>
+     <div class="metadata">
+      <dl class="attributeList">
+       <dt>
+        Module:
+       </dt>
+       <dd>
+        <a data-linktype="relative-path" href="./.html">
+         dfsr
+        </a>
+       </dd>
+      </dl>
+     </div>
+     <div class="summaryHolder">
+      <div class="summary">
+       Retrieves the list of pending file updates between two DFS Replication partners.
+      </div>
+     </div>
+     <h2 class="hiddenAnchor" id="syntax">
+      Syntax
+     </h2>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Get-DfsrBacklog
+   [[-GroupName] &lt;String[]&gt;]
+   [[-FolderName] &lt;String[]&gt;]
+   [-SourceComputerName] &lt;String&gt;
+   [-DestinationComputerName] &lt;String&gt;
+   [&lt;CommonParameters&gt;]</code></pre>
+     <h2 id="description">
+      Description
+     </h2>
+     <p>
+      The
+      <strong>
+       Get-DfrsBacklog
+      </strong>
+      cmdlet retrieves pending updates between two computers that participate in Distributed File System (DFS) Replication.
+     </p>
+     <p>
+      Updates can be new, modified, or deleted files and folders.
+The maximum number of files that this command displays is 100.
+The
+      <em>
+       Verbose
+      </em>
+      parameter displays a count of all backlogged updates.
+Any files or folders listed in the DFS Replication backlog have not yet replicated from the source computer to the destination computer.
+This is not necessarily an indication of problems.
+A backlog indicates latency, and a backlog may be expected in your environment, depending on configuration, rate of change, network, and other factors.
+     </p>
+     <h2 id="examples">
+      Examples
+     </h2>
+     <p>
+      <strong>
+       Example 1: Retrieve unreplicated changes
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-DfsrBacklog -SourceComputerName "SRV02" -GroupName "RG01" -FolderName "RF1A"
+
+Identifier                  : {DCE7FC28-5584-4D5D-BC84-2BD9D53CC2FC}-v538
+Flags                       : 5
+Attributes                  : 32
+GlobalVersionSequenceNumber : {DCE7FC28-5584-4D5D-BC84-2BD9D53CC2FC}-v538
+UpdateSequenceNumber        : 71576496
+ParentId                    : {997D8F76-1207-49D7-85C9-DED015105A2F}-v1
+FileId                      : 562949953495210
+Volume                      : \\.\C:
+Fence                       : 3
+Clock                       : 130078672846368199
+CreateTime                  : 3/15/2013 5:28:04 PM
+UpdateTime                  : 3/15/2013 5:28:04 PM
+FileHash                    : 173b51c11257a2eb 8c05884560fcfd1d
+FileName                    : diskraid.exe
+FullPathName                : c:\rf1a\diskraid.exe
+Index                       : 1
+ReplicatedFolderId          : 997d8f76-1207-49d7-85c9-ded015105a2f
+
+Identifier                  : {DCE7FC28-5584-4D5D-BC84-2BD9D53CC2FC}-v539
+Flags                       : 5
+Attributes                  : 32
+GlobalVersionSequenceNumber : {DCE7FC28-5584-4D5D-BC84-2BD9D53CC2FC}-v539
+UpdateSequenceNumber        : 71577024
+ParentId                    : {997D8F76-1207-49D7-85C9-DED015105A2F}-v1
+FileId                      : 562949953495211
+Volume                      : \\.\C:
+Fence                       : 3
+Clock                       : 130078672846524997
+CreateTime                  : 3/15/2013 5:28:04 PM
+UpdateTime                  : 3/15/2013 5:28:04 PM
+FileHash                    : 6bcd377edf35e621 a7927703c08545d8
+FileName                    : diskshadow.exe
+FullPathName                : c:\rf1a\diskshadow.exe
+Index                       : 2
+ReplicatedFolderId          : 997d8f76-1207-49d7-85c9-ded015105a2f</code></pre>
+     <p>
+      This command retrieves the first 100 unreplicated changes between the local computer and the upstream computer SRV02 for the replication group RG01 and the replicated folder RF1A.
+The command displays all file metadata.
+     </p>
+     <p>
+      <strong>
+       Example 2: Retrieve unreplicated changes between upstream and downstream computers
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-DfsrBacklog -DestinationComputerName "SRV1" -SourceComputerName "SRV02" -GroupName "RG01" -FolderName "RF1" | format-table fullpathname,updatetime
+
+FullPathName                      UpdateTime
+------------                      ----------
+c:\rf1a\imageres.dll       3/15/2013 5:28:45 PM
+c:\rf1a\mshtml.dll         3/15/2013 5:28:50 PM</code></pre>
+     <p>
+      This command retrieves the first 100 unreplicated changes between the downstream computer SRV1 and the upstream computer SRV02 for the replication group RG01 and the replicated folder RF1.
+The command also formats the output into a table that contains only the file paths and modification dates on the upstream server
+     </p>
+     <p>
+      <strong>
+       Example 3: Retrieve unreplicated changes count to display
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-DfsrBacklog -GroupName "RG01" -FolderName "RF01" -SourceComputerName "SRV01" -DestinationComputerName "SRV02" -Verbose
+
+The replicated folder has a backlog of files. Replicated folder: "RF01". Count: 2400</code></pre>
+     <p>
+      This command retrieves the total count of unreplicated changes between the downstream computer SRV02 and the upstream computer SRV01 for the replication group RG01 and the replicated folder RF01.
+The command displays this output in the verbose stream.
+     </p>
+     <p>
+      <strong>
+       Example 4: Retrieve unreplicated changes count to a string object
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; (Get-DfsrBacklog -GroupName "RG01" -FolderName "RF01" -SourceComputerName "SRV01" -DestinationComputerName "SRV02" -Verbose 4&gt;&amp;1).Message.Split(':')[2] 
+
+2400</code></pre>
+     <p>
+      This command retrieves the total count of unreplicated changes between the downstream computer SRV02 and the upstream computer SRV01 for the replication group RG01 and the replicated folder RF01.
+The command converts the verbose stream data into a text string containing only the count, for later manipulation.
+     </p>
+     <p>
+      <strong>
+       Example 5: Retrieve unreplicated changes count to a file
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-DfsrBacklog -GroupName "RG01" -FolderName "RF01" -SourceComputerName "SRV01" -DestinationComputerName "SRV02" -Verbose 4&gt; verbose.txt &gt; null
+PS C:\&gt; Get-Content .\verbose.txt
+
+The replicated folder has a backlog of files. Replicated folder: "RF01". Count: 2400</code></pre>
+     <p>
+      This command retrieves the total count of unreplicated changes between the downstream computer SRV02 and the upstream computer SRV01 for the replication group RG01 and the replicated folder RF01.
+The command converts the verbose stream data into a text string containing only the count, for later manipulation.
+     </p>
+     <h2 id="required-parameters">
+      Required Parameters
+     </h2>
+     <div class="parameterName stack">
+      -DestinationComputerName
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the name of the receiving computer.
+A destination computer is also called an inbound or downstream computer.
+If you do not specify this parameter, the cmdlet uses the local computer.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         ReceivingMember, RMem
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         3
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -SourceComputerName
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the name of the sending computer.
+A source computer is also called an outbound or upstream computer.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         SendingMember, SMem
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         2
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="optional-parameters">
+      Optional Parameters
+     </h2>
+     <div class="parameterName stack">
+      -FolderName
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies an array of names of replicated folders.
+If you do not specify this parameter, the cmdlet queries for all participating replicated folders.
+You can specify multiple folders, separated by commas, as well as wildcard characters (*).
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         RF, RfName
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         1
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -GroupName
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies an array of names of replication groups.
+If you do not specify this parameter, the cmdlet queries for all participating replications groups.
+You can use a comma separated list and the wildcard character (*).
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         RG, RgName
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         0
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName, ByValue)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="inputs">
+      Inputs
+     </h2>
+     <p>
+      <strong>
+       Microsoft.DistributedFileSystemReplication.DfsReplicationGroup, Microsoft.DistributedFileSystemReplication.DfsReplicatedFolder, String computerName
+      </strong>
+     </p>
+     <h2 id="outputs">
+      Outputs
+     </h2>
+     <p>
+      <strong>
+       Microsoft.DistributedFileSystemReplication.DfsrIdRecord
+      </strong>
+     </p>
+     <!-- </content> -->
+    </main>
+    <section class="feedback-section" data-bi-name="feedback-section">
+     <h2 id="feedback">
+      Feedback
+     </h2>
+     <div class="alert choose-feedback-type">
+      <p>
+       We'd love to hear your thoughts. Choose the type you'd like to provide:
+      </p>
+      <div class="choose-feedback-buttons">
+       <a class="button-border feedback-type-product" data-bi-name="product-feedback" href="https://windowsserver.uservoice.com/forums/301869-powershell">
+        Product feedback
+        <span aria-hidden="true" class="docon docon-navigate-external">
+        </span>
+       </a>
+       <div class="button-group">
+        <button class="button-border feedback-sign-in-button" data-bi-name="feedback-sign-in">
+         <span aria-hidden="true" class="docon docon-brand-github">
+         </span>
+         Sign in to give documentation feedback
+        </button>
+        <button aria-controls="feedback-form" aria-expanded="false" class="button-border feedback-form-toggle" data-bi-name="documentation-feedback" hidden="">
+         Content feedback
+        </button>
+        <div auto-align="" class="dropdown has-caret">
+         <button aria-controls="fbm0" aria-expanded="false" aria-haspopup="true" aria-label="Expand documentation feedback menu" class="button-border dropdown-trigger" data-bi-name="documentation-feedback-menu">
+          <span aria-hidden="true" class="docon docon-chevron-down-light">
+          </span>
+         </button>
+         <div class="dropdown-menu documentation-feedback-menu" id="fbm0" role="menu">
+          You may also leave feedback
+          <a data-bi-name="create-issue-on-github" href="{0}">
+           directly on GitHub
+           <span aria-hidden="true" class="docon docon-navigate-external">
+           </span>
+          </a>
+          .
+         </div>
+        </div>
+       </div>
+      </div>
+      <p>
+       <small>
+        Our new feedback system is built on GitHub Issues. Read about this change in
+        <a href="https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs">
+         our blog post
+        </a>
+        .
+       </small>
+      </p>
+     </div>
+     <form accept-charset="UTF-8" action="javascript:" autocomplete="off" class="feedback-form" hidden="" id="feedback-form">
+      <h3 class="feedback-form-heading current-user">
+       <img alt="Avatar" aria-hidden="true" class="avatar" height="36" width="36"/>
+       <span aria-hidden="true" class="username">
+       </span>
+       <span class="visually-hidden">
+        Liquid error: Can't find the localized string giveDocumentationFeedback for template Conceptual.
+       </span>
+      </h3>
+      <label>
+       <span class="visually-hidden">
+        Title
+       </span>
+       <input name="title" pattern=".*\w.*" placeholder="Title" required="" type="text"/>
+      </label>
+      <label>
+       <span class="visually-hidden">
+        Leave a comment
+       </span>
+       <textarea name="body" placeholder="Leave a comment" required=""></textarea>
+      </label>
+      <div class="action-container">
+       <button class="primary-action" name="submit" type="submit">
+        Submit feedback
+       </button>
+      </div>
+     </form>
+     <div class="feedback-status alert busy" role="alert">
+      <p>
+       Loading feedback...
+      </p>
+     </div>
+     <div class="feedback-tab-group tabGroup" data-tab-group-independent="" hidden="">
+      <ul role="tablist">
+       <li role="presentation">
+        <a aria-controls="tabpanel-issues-open" aria-label="Open Issues" data-tab="issues-open" href="#tabpanel-issues-open" role="tab">
+        </a>
+       </li>
+       <li role="presentation">
+        <a aria-controls="tabpanel-issues-closed" aria-label="Closed Issues" data-tab="issues-closed" href="#tabpanel-issues-closed" role="tab">
+        </a>
+       </li>
+      </ul>
+      <section data-tab="issues-open" id="tabpanel-issues-open" role="tabpanel">
+       <div class="no-issues-placeholder">
+        There are no open issues
+       </div>
+       <ul aria-label="Open Issues" class="github-issues-list">
+       </ul>
+      </section>
+      <section data-tab="issues-closed" id="tabpanel-issues-closed" role="tabpanel">
+       <div class="no-issues-placeholder">
+        There are no closed issues
+       </div>
+       <ul aria-label="Closed Issues" class="github-issues-list">
+       </ul>
+      </section>
+     </div>
+     <div class="action-container">
+      <a class="view-on-github" data-bi-name="view-on-github" hidden="" href="https://github.com/MicrosoftDocs/windows-powershell-docs/issues">
+       <span aria-hidden="true" class="docon docon-brand-github">
+       </span>
+       <span>
+        View on GitHub
+       </span>
+       <span aria-hidden="true" class="docon docon-navigate-external">
+       </span>
+      </a>
+     </div>
+    </section>
+   </div>
+  </div>
+  <div class="openfeedback-container" id="openFeedbackContainer">
+  </div>
+  <div class="action-panel">
+  </div>
+ </body>
+</html>

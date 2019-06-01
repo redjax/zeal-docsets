@@ -1,0 +1,3683 @@
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML><HEAD><TITLE>Man page of AWK</TITLE>
+</HEAD><BODY>
+<H1>AWK</H1>
+Section: POSIX Programmer's Manual (1P)<BR>Updated: 2013<BR><A HREF="#index">Index</A>
+<A HREF="../index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>PROLOG</H2>
+
+This manual page is part of the POSIX Programmer's Manual.
+The Linux implementation of this interface may differ (consult
+the corresponding Linux manual page for details of Linux behavior),
+or the interface may not be implemented on Linux.
+<P>
+<A NAME="lbAC">&nbsp;</A>
+<H2>NAME</H2>
+
+awk
+--- pattern scanning and processing language
+<A NAME="lbAD">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<P>
+
+<PRE>
+awk <B>[</B>-F <I>sepstring</I><B>] [</B>-v <I>assignment</I><B>]</B>... <I>program</I><B> [</B><I>argument</I>...<B>]</B>
+
+awk <B>[</B>-F <I>sepstring</I><B>] </B>-f <I>progfile </I><B>[</B>-f <I>progfile</I><B>]</B>... <B>[</B>-v <I>assignment</I><B>]</B>...
+     <B>[</B><I>argument</I>...<B>]</B>
+</PRE>
+
+<A NAME="lbAE">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+The
+<I>awk</I>
+
+utility shall execute programs written in the
+<I>awk</I>
+
+programming language, which is specialized for textual data
+manipulation. An
+<I>awk</I>
+
+program is a sequence of patterns and corresponding actions. When
+input is read that matches a pattern, the action associated with that
+pattern is carried out.
+<P>
+
+Input shall be interpreted as a sequence of records. By default, a
+record is a line, less its terminating
+&lt;newline&gt;,
+but this can be changed by using the
+<B>RS</B>
+
+built-in variable. Each record of input shall be matched in turn
+against each pattern in the program. For each pattern matched, the
+associated action shall be executed.
+<P>
+
+The
+<I>awk</I>
+
+utility shall interpret each input record as a sequence of fields
+where, by default, a field is a string of non-&lt;blank&gt;
+non-&lt;newline&gt;
+characters. This default
+&lt;blank&gt;
+and
+&lt;newline&gt;
+field delimiter can be changed by using the
+<B>FS</B>
+
+built-in variable or the
+<B>-F</B>
+
+<I>sepstring</I>
+
+option. The
+<I>awk</I>
+
+utility shall denote the first field in a record $1, the second $2, and
+so on. The symbol $0 shall refer to the entire record; setting any
+other field causes the re-evaluation of $0. Assigning to $0 shall reset
+the values of all other fields and the
+<B>NF</B>
+
+built-in variable.
+<A NAME="lbAF">&nbsp;</A>
+<H2>OPTIONS</H2>
+
+The
+<I>awk</I>
+
+utility shall conform to the Base Definitions volume of POSIX.1-2008,
+<I>Section 12.2</I>, <I>Utility Syntax Guidelines.</I>
+
+<P>
+
+The following options shall be supported:
+<DL COMPACT>
+<DT><B>-F&nbsp;</B><I>sepstring</I><DD>
+Define the input field separator. This option shall be equivalent to:
+<DL COMPACT><DT><DD>
+<P>
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+-v FS=</B><I>sepstring
+</I></PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+except that if
+<B>-F</B>
+
+<I>sepstring</I>
+
+and
+<B>-v</B>
+
+<I></I>FS=sepstring
+
+are both used, it is unspecified whether the
+<B>FS</B>
+
+assignment resulting from
+<B>-F</B>
+
+<I>sepstring</I>
+
+is processed in command line order or is processed after the last
+<B>-v</B>
+
+<I></I>FS=sepstring.
+
+See the description of the
+<B>FS</B>
+
+built-in variable, and how it is used, in the EXTENDED DESCRIPTION
+section.
+</DL>
+
+<DT><B>-f&nbsp;</B><I>progfile</I><DD>
+Specify the pathname of the file
+<I>progfile</I>
+
+containing an
+<I>awk</I>
+
+program. A pathname of
+<B>'-'</B>
+
+shall denote the standard input. If multiple instances of this option
+are specified, the concatenation of the files specified as
+<I>progfile</I>
+
+in the order specified shall be the
+<I>awk</I>
+
+program. The
+<I>awk</I>
+
+program can alternatively be specified in the command line as a single
+argument.
+<DT><B>-v&nbsp;</B><I>assignment</I><DD>
+<BR>
+
+The application shall ensure that the
+<I>assignment</I>
+
+argument is in the same form as an
+<I>assignment</I>
+
+operand. The specified variable assignment shall occur prior to
+executing the
+<I>awk</I>
+
+program, including the actions associated with
+<B>BEGIN</B>
+
+patterns (if any). Multiple occurrences of this option can be
+specified.
+</DL>
+<A NAME="lbAG">&nbsp;</A>
+<H2>OPERANDS</H2>
+
+The following operands shall be supported:
+<DL COMPACT>
+<DT><I>program</I><DD>
+If no
+<B>-f</B>
+
+option is specified, the first operand to
+<I>awk</I>
+
+shall be the text of the
+<I>awk</I>
+
+program. The application shall supply the
+<I>program</I>
+
+operand as a single argument to
+<I>awk</I>.
+
+If the text does not end in a
+&lt;newline&gt;,
+<I>awk</I>
+
+shall interpret the text as if it did.
+<DT><I>argument</I><DD>
+Either of the following two types of
+<I>argument</I>
+
+can be intermixed:
+<DL COMPACT><DT><DD>
+<P>
+<DL COMPACT>
+<DT><I>file</I><DD>
+A pathname of a file that contains the input to be read, which is
+matched against the set of patterns in the program. If no
+<I>file</I>
+
+operands are specified, or if a
+<I>file</I>
+
+operand is
+<B>'-'</B>,
+
+the standard input shall be used.
+<DT><I>assignment</I><DD>
+An operand that begins with an
+&lt;underscore&gt;
+or alphabetic character from the portable character set (see the table
+in the Base Definitions volume of POSIX.1-2008,
+<I>Section 6.1</I>, <I>Portable Character Set),</I>
+
+followed by a sequence of underscores, digits, and alphabetics from the
+portable character set, followed by the
+<B>'='</B>
+
+character, shall specify a variable assignment rather than a pathname.
+The characters before the
+<B>'='</B>
+
+represent the name of an
+<I>awk</I>
+
+variable; if that name is an
+<I>awk</I>
+
+reserved word (see
+<I>Grammar)</I>
+
+the behavior is undefined. The characters following the
+&lt;equals-sign&gt;
+shall be interpreted as if they appeared in the
+<I>awk</I>
+
+program preceded and followed by a double-quote (<B>'' )</B>
+
+character, as a
+<B>STRING</B>
+
+token (see
+<I>Grammar),</I>
+
+except that if the last character is an unescaped
+&lt;backslash&gt;,
+it shall be interpreted as a literal
+&lt;backslash&gt;
+rather than as the first character of the sequence
+<B>&quot;\&quot; .</B>
+
+The variable shall be assigned the value of that
+<B>STRING</B>
+
+token and, if appropriate, shall be considered a
+<I>numeric string</I>
+
+(see
+<I>Expressions in awk),</I>
+
+the variable shall also be assigned its numeric value. Each such
+variable assignment shall occur just prior to the processing of the
+following
+<I>file</I>,
+
+if any. Thus, an assignment before the first
+<I>file</I>
+
+argument shall be executed after the
+<B>BEGIN</B>
+
+actions (if any), while an assignment after the last
+<I>file</I>
+
+argument shall occur before the
+<B>END</B>
+
+actions (if any). If there are no
+<I>file</I>
+
+arguments, assignments shall be executed before processing the standard
+input.
+</DL>
+</DL>
+
+</DL>
+<A NAME="lbAH">&nbsp;</A>
+<H2>STDIN</H2>
+
+The standard input shall be used only if no
+<I>file</I>
+
+operands are specified, or if a
+<I>file</I>
+
+operand is
+<B>'-'</B>,
+
+or if a
+<I>progfile</I>
+
+option-argument is
+<B>'-'</B>;
+
+see the INPUT FILES section. If the
+<I>awk</I>
+
+program contains no actions and no patterns, but is otherwise a valid
+<I>awk</I>
+
+program, standard input and any
+<I>file</I>
+
+operands shall not be read and
+<I>awk</I>
+
+shall exit with a return status of zero.
+<A NAME="lbAI">&nbsp;</A>
+<H2>INPUT FILES</H2>
+
+Input files to the
+<I>awk</I>
+
+program from any of the following sources shall be text files:
+<DL COMPACT>
+<DT> *<DD>
+Any
+<I>file</I>
+
+operands or their equivalents, achieved by modifying the
+<I>awk</I>
+
+variables
+<B>ARGV</B>
+
+and
+<B>ARGC</B>
+
+<DT> *<DD>
+Standard input in the absence of any
+<I>file</I>
+
+operands
+<DT> *<DD>
+Arguments to the
+<B>getline</B>
+
+function
+</DL>
+<P>
+
+Whether the variable
+<B>RS</B>
+
+is set to a value other than a
+&lt;newline&gt;
+or not, for these files, implementations shall support records
+terminated with the specified separator up to
+{LINE_MAX}
+bytes and may support longer records.
+<P>
+
+If
+<B>-f</B>
+
+<I>progfile</I>
+
+is specified, the application shall ensure that the files named by each
+of the
+<I>progfile</I>
+
+option-arguments are text files and their concatenation, in the same
+order as they appear in the arguments, is an
+<I>awk</I>
+
+program.
+<A NAME="lbAJ">&nbsp;</A>
+<H2>ENVIRONMENT VARIABLES</H2>
+
+The following environment variables shall affect the execution of
+<I>awk</I>:
+
+<DL COMPACT>
+<DT><I>LANG</I><DD>
+Provide a default value for the internationalization variables that are
+unset or null. (See the Base Definitions volume of POSIX.1-2008,
+<I>Section 8.2</I>, <I>Internationalization Variables</I>
+
+for the precedence of internationalization variables used to determine
+the values of locale categories.)
+<DT><I>LC_ALL</I><DD>
+If set to a non-empty string value, override the values of all the
+other internationalization variables.
+<DT><I>LC_COLLATE</I><DD>
+<BR>
+
+Determine the locale for the behavior of ranges, equivalence classes,
+and multi-character collating elements within regular expressions and
+in comparisons of string values.
+<DT><I>LC_CTYPE</I><DD>
+Determine the locale for the interpretation of sequences of bytes of
+text data as characters (for example, single-byte as opposed to
+multi-byte characters in arguments and input files), the behavior of
+character classes within regular expressions, the identification of
+characters as letters, and the mapping of uppercase and lowercase
+characters for the
+<B>toupper</B>
+
+and
+<B>tolower</B>
+
+functions.
+<DT><I>LC_MESSAGES</I><DD>
+<BR>
+
+Determine the locale that should be used to affect the format and
+contents of diagnostic messages written to standard error.
+<DT><I>LC_NUMERIC</I><DD>
+<BR>
+
+Determine the radix character used when interpreting numeric input,
+performing conversions between numeric and string values, and
+formatting numeric output. Regardless of locale, the
+&lt;period&gt;
+character (the decimal-point character of the POSIX locale) is the
+decimal-point character recognized in processing
+<I>awk</I>
+
+programs (including assignments in command line arguments).
+<DT><I>NLSPATH</I><DD>
+Determine the location of message catalogs for the processing of
+<I>LC_MESSAGES</I>.
+
+<DT><I>PATH</I><DD>
+Determine the search path when looking for commands executed by
+<I>system</I>(<I>expr</I>), or input and output pipes; see the Base Definitions volume of POSIX.1-2008,
+<I>Chapter 8</I>, <I>Environment Variables.</I>
+
+</DL>
+<P>
+
+In addition, all environment variables shall be visible via the
+<I>awk</I>
+
+variable
+<B>ENVIRON</B>.
+
+<A NAME="lbAK">&nbsp;</A>
+<H2>ASYNCHRONOUS EVENTS</H2>
+
+Default.
+<A NAME="lbAL">&nbsp;</A>
+<H2>STDOUT</H2>
+
+The nature of the output files depends on the
+<I>awk</I>
+
+program.
+<A NAME="lbAM">&nbsp;</A>
+<H2>STDERR</H2>
+
+The standard error shall be used only for diagnostic messages.
+<A NAME="lbAN">&nbsp;</A>
+<H2>OUTPUT FILES</H2>
+
+The nature of the output files depends on the
+<I>awk</I>
+
+program.
+<BR>
+
+<A NAME="lbAO">&nbsp;</A>
+<H2>EXTENDED DESCRIPTION</H2>
+
+<A NAME="lbAP">&nbsp;</A>
+<H3>Overall Program Structure</H3>
+
+<P>
+
+An
+<I>awk</I>
+
+program is composed of pairs of the form:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+</B><I>pattern</I> { <I>action</I> }
+</PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+Either the pattern or the action (including the enclosing brace
+characters) can be omitted.
+<P>
+
+A missing pattern shall match any record of input, and a missing action
+shall be equivalent to:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+{ print }
+</B></PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+Execution of the
+<I>awk</I>
+
+program shall start by first executing the actions associated with all
+<B>BEGIN</B>
+
+patterns in the order they occur in the program. Then each
+<I>file</I>
+
+operand (or standard input if no files were specified) shall be
+processed in turn by reading data from the file until a record
+separator is seen (&lt;newline&gt;
+by default). Before the first reference to a field in the record is
+evaluated, the record shall be split into fields, according to the
+rules in
+<I>Regular Expressions,</I>
+
+using the value of
+<B>FS</B>
+
+that was current at the time the record was read. Each pattern in the
+program then shall be evaluated in the order of occurrence, and the
+action associated with each pattern that matches the current record
+executed. The action for a matching pattern shall be executed before
+evaluating subsequent patterns. Finally, the actions associated with
+all
+<B>END</B>
+
+patterns shall be executed in the order they occur in the program.
+<A NAME="lbAQ">&nbsp;</A>
+<H3>Expressions in awk</H3>
+
+<P>
+
+Expressions describe computations used in
+<I>patterns</I>
+
+and
+<I>actions</I>.
+
+In the following table, valid expression operations are given in groups
+from highest precedence first to lowest precedence last, with
+equal-precedence operators grouped between horizontal lines. In
+expression evaluation, where the grammar is formally ambiguous, higher
+precedence operators shall be evaluated before lower precedence
+operators. In this table
+<I>expr</I>,
+
+<I>expr1</I>,
+
+<I>expr2</I>,
+
+and
+<I>expr3</I>
+
+represent any expression, while lvalue represents any entity that can
+be assigned to (that is, on the left side of an assignment operator).
+The precise syntax of expressions is given in
+<I>Grammar.</I>
+
+<P>
+<CENTER>
+<B>Table 4-1: Expressions in Decreasing Precedence in </B><I>awk</I><BR>
+</CENTER>
+
+<CENTER><TABLE BORDER><TR><TD><TABLE>
+<TR VALIGN=top><TD ALIGN=center><B>Syntax</B></TD><TD ALIGN=center><B>Name</B></TD><TD ALIGN=center><B>Type of Result</B></TD><TD ALIGN=center><B>Associativity</B><BR></TD></TR>
+<TR VALIGN=top><TD COLSPAN=4><HR></TD></TR>
+<TR VALIGN=top><TD>( <I>expr</I> )&nbsp;</TD><TD>Grouping&nbsp;</TD><TD>Type of <I>expr</I>&nbsp;</TD><TD>N/A<BR></TD></TR>
+<TR VALIGN=top><TD COLSPAN=4><HR></TD></TR>
+<TR VALIGN=top><TD>$<I>expr</I>&nbsp;</TD><TD>Field reference&nbsp;</TD><TD>String&nbsp;</TD><TD>N/A<BR></TD></TR>
+<TR VALIGN=top><TD COLSPAN=4><HR></TD></TR>
+<TR VALIGN=top><TD>lvalue ++&nbsp;</TD><TD>Post-increment&nbsp;</TD><TD>Numeric&nbsp;</TD><TD>N/A<BR></TD></TR>
+<TR VALIGN=top><TD>lvalue --&nbsp;</TD><TD>Post-decrement&nbsp;</TD><TD>Numeric&nbsp;</TD><TD>N/A<BR></TD></TR>
+<TR VALIGN=top><TD COLSPAN=4><HR></TD></TR>
+<TR VALIGN=top><TD>++ lvalue&nbsp;</TD><TD>Pre-increment&nbsp;</TD><TD>Numeric&nbsp;</TD><TD>N/A<BR></TD></TR>
+<TR VALIGN=top><TD>-- lvalue&nbsp;</TD><TD>Pre-decrement&nbsp;</TD><TD>Numeric&nbsp;</TD><TD>N/A<BR></TD></TR>
+<TR VALIGN=top><TD COLSPAN=4><HR></TD></TR>
+<TR VALIGN=top><TD><I>expr</I> ^ <I>expr</I>&nbsp;</TD><TD>Exponentiation&nbsp;</TD><TD>Numeric&nbsp;</TD><TD>Right<BR></TD></TR>
+<TR VALIGN=top><TD COLSPAN=4><HR></TD></TR>
+<TR VALIGN=top><TD>! <I>expr</I>&nbsp;</TD><TD>Logical not&nbsp;</TD><TD>Numeric&nbsp;</TD><TD>N/A<BR></TD></TR>
+<TR VALIGN=top><TD>+ <I>expr</I>&nbsp;</TD><TD>Unary plus&nbsp;</TD><TD>Numeric&nbsp;</TD><TD>N/A<BR></TD></TR>
+<TR VALIGN=top><TD>- <I>expr</I>&nbsp;</TD><TD>Unary minus&nbsp;</TD><TD>Numeric&nbsp;</TD><TD>N/A<BR></TD></TR>
+<TR VALIGN=top><TD COLSPAN=4><HR></TD></TR>
+<TR VALIGN=top><TD><I>expr</I> * <I>expr</I>&nbsp;</TD><TD>Multiplication&nbsp;</TD><TD>Numeric&nbsp;</TD><TD>Left<BR></TD></TR>
+<TR VALIGN=top><TD><I>expr</I> / <I>expr</I>&nbsp;</TD><TD>Division&nbsp;</TD><TD>Numeric&nbsp;</TD><TD>Left<BR></TD></TR>
+<TR VALIGN=top><TD><I>expr</I> % <I>expr</I>&nbsp;</TD><TD>Modulus&nbsp;</TD><TD>Numeric&nbsp;</TD><TD>Left<BR></TD></TR>
+<TR VALIGN=top><TD COLSPAN=4><HR></TD></TR>
+<TR VALIGN=top><TD><I>expr</I> + <I>expr</I>&nbsp;</TD><TD>Addition&nbsp;</TD><TD>Numeric&nbsp;</TD><TD>Left<BR></TD></TR>
+<TR VALIGN=top><TD><I>expr</I> - <I>expr</I>&nbsp;</TD><TD>Subtraction&nbsp;</TD><TD>Numeric&nbsp;</TD><TD>Left<BR></TD></TR>
+<TR VALIGN=top><TD COLSPAN=4><HR></TD></TR>
+<TR VALIGN=top><TD><I>expr</I> <I>expr</I>&nbsp;</TD><TD>String concatenation&nbsp;</TD><TD>String&nbsp;</TD><TD>Left<BR></TD></TR>
+<TR VALIGN=top><TD COLSPAN=4><HR></TD></TR>
+<TR VALIGN=top><TD><I>expr</I> &lt; <I>expr</I>&nbsp;</TD><TD>Less than&nbsp;</TD><TD>Numeric&nbsp;</TD><TD>None<BR></TD></TR>
+<TR VALIGN=top><TD><I>expr</I> &lt;= <I>expr</I>&nbsp;</TD><TD>Less than or equal to&nbsp;</TD><TD>Numeric&nbsp;</TD><TD>None<BR></TD></TR>
+<TR VALIGN=top><TD><I>expr</I> != <I>expr</I>&nbsp;</TD><TD>Not equal to&nbsp;</TD><TD>Numeric&nbsp;</TD><TD>None<BR></TD></TR>
+<TR VALIGN=top><TD><I>expr</I> == <I>expr</I>&nbsp;</TD><TD>Equal to&nbsp;</TD><TD>Numeric&nbsp;</TD><TD>None<BR></TD></TR>
+<TR VALIGN=top><TD><I>expr</I> &gt; <I>expr</I>&nbsp;</TD><TD>Greater than&nbsp;</TD><TD>Numeric&nbsp;</TD><TD>None<BR></TD></TR>
+<TR VALIGN=top><TD><I>expr</I> &gt;= <I>expr</I>&nbsp;</TD><TD>Greater than or equal to&nbsp;</TD><TD>Numeric&nbsp;</TD><TD>None<BR></TD></TR>
+<TR VALIGN=top><TD COLSPAN=4><HR></TD></TR>
+<TR VALIGN=top><TD><I>expr</I> ~ <I>expr</I>&nbsp;</TD><TD>ERE match&nbsp;</TD><TD>Numeric&nbsp;</TD><TD>None<BR></TD></TR>
+<TR VALIGN=top><TD><I>expr</I> !~ <I>expr</I>&nbsp;</TD><TD>ERE non-match&nbsp;</TD><TD>Numeric&nbsp;</TD><TD>None<BR></TD></TR>
+<TR VALIGN=top><TD COLSPAN=4><HR></TD></TR>
+<TR VALIGN=top><TD><I>expr</I> in array&nbsp;</TD><TD>Array membership&nbsp;</TD><TD>Numeric&nbsp;</TD><TD>Left<BR></TD></TR>
+<TR VALIGN=top><TD>( <I>index</I> ) in <I>array</I>&nbsp;</TD><TD>Multi-dimension array&nbsp;</TD><TD>Numeric&nbsp;</TD><TD>Left<BR></TD></TR>
+<TR VALIGN=top><TD>&nbsp;</TD><TD>membership&nbsp;</TD><TD>&nbsp;</TD><TD><BR></TD></TR>
+<TR VALIGN=top><TD COLSPAN=4><HR></TD></TR>
+<TR VALIGN=top><TD><I>expr</I> &amp;&amp; <I>expr</I>&nbsp;</TD><TD>Logical AND&nbsp;</TD><TD>Numeric&nbsp;</TD><TD>Left<BR></TD></TR>
+<TR VALIGN=top><TD COLSPAN=4><HR></TD></TR>
+<TR VALIGN=top><TD><I>expr</I> || <I>expr</I>&nbsp;</TD><TD>Logical OR&nbsp;</TD><TD>Numeric&nbsp;</TD><TD>Left<BR></TD></TR>
+<TR VALIGN=top><TD COLSPAN=4><HR></TD></TR>
+<TR VALIGN=top><TD><I>expr1</I> ? <I>expr2</I> : <I>expr3</I>&nbsp;</TD><TD>Conditional expression&nbsp;</TD><TD>Type of selected&nbsp;</TD><TD>Right<BR></TD></TR>
+<TR VALIGN=top><TD>&nbsp;</TD><TD>&nbsp;</TD><TD><I>expr2</I> or <I>expr3</I>&nbsp;</TD><TD><BR></TD></TR>
+<TR VALIGN=top><TD COLSPAN=4><HR></TD></TR>
+<TR VALIGN=top><TD>lvalue ^= <I>expr</I>&nbsp;</TD><TD>Exponentiation assignment&nbsp;</TD><TD>Numeric&nbsp;</TD><TD>Right<BR></TD></TR>
+<TR VALIGN=top><TD>lvalue %= <I>expr</I>&nbsp;</TD><TD>Modulus assignment&nbsp;</TD><TD>Numeric&nbsp;</TD><TD>Right<BR></TD></TR>
+<TR VALIGN=top><TD>lvalue *= <I>expr</I>&nbsp;</TD><TD>Multiplication assignment&nbsp;</TD><TD>Numeric&nbsp;</TD><TD>Right<BR></TD></TR>
+<TR VALIGN=top><TD>lvalue /= <I>expr</I>&nbsp;</TD><TD>Division assignment&nbsp;</TD><TD>Numeric&nbsp;</TD><TD>Right<BR></TD></TR>
+<TR VALIGN=top><TD>lvalue += <I>expr</I>&nbsp;</TD><TD>Addition assignment&nbsp;</TD><TD>Numeric&nbsp;</TD><TD>Right<BR></TD></TR>
+<TR VALIGN=top><TD>lvalue -= <I>expr</I>&nbsp;</TD><TD>Subtraction assignment&nbsp;</TD><TD>Numeric&nbsp;</TD><TD>Right<BR></TD></TR>
+<TR VALIGN=top><TD>lvalue = <I>expr</I>&nbsp;</TD><TD>Assignment&nbsp;</TD><TD>Type of <I>expr</I>&nbsp;</TD><TD>Right<BR></TD></TR>
+</TABLE></TABLE></CENTER>
+
+<P>
+
+Each expression shall have either a string value, a numeric value, or
+both. Except as stated for specific contexts, the value of an expression
+shall be implicitly converted to the type needed for the context in which
+it is used. A string value shall be converted to a numeric value either by
+the equivalent of the following calls to functions defined by the ISO&nbsp;C standard:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+setlocale(LC_NUMERIC, &quot;&quot;);
+</B><I>numeric_value</I> = atof(<I>string_value</I>);
+</PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+or by converting the initial portion of the string to type
+<B>double</B>
+
+representation as follows:
+<P>
+<DL COMPACT><DT><DD>
+The input string is decomposed into two parts: an initial, possibly empty,
+sequence of white-space characters (as specified by
+<I>isspace</I>())
+and a subject sequence interpreted as a floating-point constant.
+<P>
+
+The expected form of the subject sequence is an optional
+<B>'+'</B>
+
+or
+<B>'-'</B>
+
+sign, then a non-empty sequence of digits optionally containing a
+&lt;period&gt;,
+then an optional exponent part. An exponent part consists of
+<B>'e'</B>
+
+or
+<B>'E'</B>,
+
+followed by an optional sign, followed by one or more decimal digits.
+<P>
+
+The sequence starting with the first digit or the
+&lt;period&gt;
+(whichever occurs first) is interpreted as a floating constant of the
+C language, and if neither an exponent part nor a
+&lt;period&gt;
+appears, a
+&lt;period&gt;
+is assumed to follow the last digit in the string. If the subject
+sequence begins with a minus-sign, the value resulting from the conversion
+is negated.
+</DL>
+
+<P>
+
+A numeric value that is exactly equal to the value of an integer (see
+<I>Section 1.1.2</I>, <I>Concepts Derived from the ISO C Standard)</I>
+
+shall be converted to a string by the equivalent of a call to the
+<B>sprintf</B>
+
+function (see
+<I>String Functions)</I>
+
+with the string
+<B>&quot;%d&quot;</B>
+
+as the
+<I>fmt</I>
+
+argument and the numeric value being converted as the first and only
+<I>expr</I>
+
+argument. Any other numeric value shall be converted to a string by the
+equivalent of a call to the
+<B>sprintf</B>
+
+function with the value of the variable
+<B>CONVFMT</B>
+
+as the
+<I>fmt</I>
+
+argument and the numeric value being converted as the first and only
+<I>expr</I>
+
+argument. The result of the conversion is unspecified if the value of
+<B>CONVFMT</B>
+
+is not a floating-point format specification. This volume of POSIX.1-2008 specifies no
+explicit conversions between numbers and strings. An application can
+force an expression to be treated as a number by adding zero to it, or
+can force it to be treated as a string by concatenating the null string
+(<B>&quot;&quot;</B>)
+
+to it.
+<P>
+
+A string value shall be considered a
+<I>numeric string</I>
+
+if it comes from one of the following:
+<DL COMPACT>
+<DT> 1.<DD>
+Field variables
+<DT> 2.<DD>
+Input from the
+<I>getline</I>()
+function
+<DT> 3.<DD>
+<B>FILENAME</B>
+
+<DT> 4.<DD>
+<B>ARGV</B>
+
+array elements
+<DT> 5.<DD>
+<B>ENVIRON</B>
+
+array elements
+<DT> 6.<DD>
+Array elements created by the
+<I>split</I>()
+function
+<DT> 7.<DD>
+A command line variable assignment
+<DT> 8.<DD>
+Variable assignment from another numeric string variable
+</DL>
+<P>
+
+and an implementation-dependent condition corresponding to either
+case (a) or (b) below is met.
+<DL COMPACT>
+<DT> a.<DD>
+After the equivalent of the following calls to functions defined by
+the ISO&nbsp;C standard,
+<I>string_value_end</I>
+
+would differ from
+<I>string_value</I>,
+
+and any characters before the terminating null character in
+<I>string_value_end</I>
+
+would be
+&lt;blank&gt;
+characters:
+<DL COMPACT><DT><DD>
+<P>
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+char *string_value_end;
+setlocale(LC_NUMERIC, &quot;&quot;);
+numeric_value = strtod (string_value, &amp;string_value_end);
+</B></PRE>
+
+<P>
+
+</DL>
+
+</DL>
+
+<DT> b.<DD>
+After all the following conversions have been applied, the resulting
+string would lexically be recognized as a
+<B>NUMBER</B>
+
+token as described by the lexical conventions in
+<I>Grammar:</I>
+
+<DL COMPACT><DT><DD>
+<P>
+<DL COMPACT>
+<DT>--<DD>
+All leading and trailing
+&lt;blank&gt;
+characters are discarded.
+<DT>--<DD>
+If the first non-&lt;blank&gt;
+is
+<B>'+'</B>
+
+or
+<B>'-'</B>,
+
+it is discarded.
+<DT>--<DD>
+Each occurrence of the decimal point character from the current locale
+is changed to a
+&lt;period&gt;.
+</DL>
+</DL>
+
+In case (a) the numeric value of the
+<I>numeric string</I>
+
+shall be the value that would be returned by the
+<I>strtod</I>()
+call. In case (b) if the first non-&lt;blank&gt;
+is
+<B>'-'</B>,
+
+the numeric value of the
+<I>numeric string</I>
+
+shall be the negation of the numeric value of the recognized
+<B>NUMBER</B>
+
+token; otherwise, the numeric value of the
+<I>numeric string</I>
+
+shall be the numeric value of the recognized
+<B>NUMBER</B>
+
+token. Whether or not a string is a
+<I>numeric string</I>
+
+shall be relevant only in contexts where that term is used in this
+section.
+</DL>
+<P>
+
+When an expression is used in a Boolean context, if it has a numeric
+value, a value of zero shall be treated as false and any other value
+shall be treated as true. Otherwise, a string value of the null string
+shall be treated as false and any other value shall be treated as true.
+A Boolean context shall be one of the following:
+<DL COMPACT>
+<DT> *<DD>
+The first subexpression of a conditional expression
+<DT> *<DD>
+An expression operated on by logical NOT, logical AND, or logical OR
+<DT> *<DD>
+The second expression of a
+<B>for</B>
+
+statement
+<DT> *<DD>
+The expression of an
+<B>if</B>
+
+statement
+<DT> *<DD>
+The expression of the
+<B>while</B>
+
+clause in either a
+<B>while</B>
+
+or
+<B>do</B>...<B>while</B>
+
+statement
+<DT> *<DD>
+An expression used as a pattern (as in Overall Program Structure)
+</DL>
+<P>
+
+All arithmetic shall follow the semantics of floating-point arithmetic as
+specified by the ISO&nbsp;C standard (see
+<I>Section 1.1.2</I>, <I>Concepts Derived from the ISO C Standard).</I>
+
+<P>
+
+The value of the expression:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+</B><I>expr1</I> ^ <I>expr2</I>
+</PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+shall be equivalent to the value returned by the ISO&nbsp;C standard function call:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+</B>pow(<I>expr1</I>, <I>expr2</I>)
+</PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+The expression:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+lvalue ^= </B><I>expr</I>
+</PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+shall be equivalent to the ISO&nbsp;C standard expression:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+lvalue = pow(lvalue, </B><I>expr</I>)
+</PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+except that lvalue shall be evaluated only once. The value of the
+expression:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+</B><I>expr1</I> % <I>expr2</I>
+</PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+shall be equivalent to the value returned by the ISO&nbsp;C standard function call:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+fmod(</B><I>expr1</I>, <I>expr2</I>)
+</PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+The expression:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+lvalue %= </B><I>expr</I>
+</PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+shall be equivalent to the ISO&nbsp;C standard expression:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+lvalue = fmod(lvalue, </B><I>expr</I>)
+</PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+except that lvalue shall be evaluated only once.
+<P>
+
+Variables and fields shall be set by the assignment statement:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+lvalue = </B><I>expression</I>
+</PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+and the type of
+<I>expression</I>
+
+shall determine the resulting variable type. The assignment includes
+the arithmetic assignments (<B>&quot;+=&quot;</B>,
+
+<B>&quot;-=&quot;</B>,
+
+<B>&quot;*=&quot;</B>,
+
+<B>&quot;/=&quot;</B>,
+
+<B>&quot;%=&quot;</B>,
+
+<B>&quot;^=&quot;</B>,
+
+<B>&quot;++&quot;</B>,
+
+<B>&quot;--&quot;</B>)
+
+all of which shall produce a numeric result. The left-hand side of an
+assignment and the target of increment and decrement operators can be
+one of a variable, an array with index, or a field selector.
+<P>
+
+The
+<I>awk</I>
+
+language supplies arrays that are used for storing numbers or strings.
+Arrays need not be declared. They shall initially be empty, and their
+sizes shall change dynamically. The subscripts, or element identifiers,
+are strings, providing a type of associative array capability. An array
+name followed by a subscript within square brackets can be used as an
+lvalue and thus as an expression, as described in the grammar; see
+<I>Grammar.</I>
+
+Unsubscripted array names can be used in only the following contexts:
+<DL COMPACT>
+<DT> *<DD>
+A parameter in a function definition or function call
+<DT> *<DD>
+The
+<B>NAME</B>
+
+token following any use of the keyword
+<B>in</B>
+
+as specified in the grammar (see
+<I>Grammar);</I>
+
+if the name used in this context is not an array name, the behavior is
+undefined
+</DL>
+<P>
+
+A valid array
+<I>index</I>
+
+shall consist of one or more
+&lt;comma&gt;-separated
+expressions, similar to the way in which multi-dimensional arrays are
+indexed in some programming languages. Because
+<I>awk</I>
+
+arrays are really one-dimensional, such a
+&lt;comma&gt;-separated
+list shall be converted to a single string by concatenating the string
+values of the separate expressions, each separated from the other by
+the value of the
+<B>SUBSEP</B>
+
+variable. Thus, the following two index operations shall be
+equivalent:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+</B><I>var</I><B>[</B><I>expr1</I>, <I>expr2</I>, ... <I>exprn</I><B>]
+
+</B><I>var</I><B>[</B><I>expr1</I> SUBSEP <I>expr2</I> SUBSEP ... SUBSEP <I>exprn</I><B>]</B>
+</PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+The application shall ensure that a multi-dimensioned
+<I>index</I>
+
+used with the
+<B>in</B>
+
+operator is parenthesized. The
+<B>in</B>
+
+operator, which tests for the existence of a particular array element,
+shall not cause that element to exist. Any other reference to a
+nonexistent array element shall automatically create it.
+<P>
+
+Comparisons (with the
+<B>'&lt;'</B>,
+
+<B>&quot;&lt;=&quot;</B>,
+
+<B>&quot;!=&quot;</B>,
+
+<B>&quot;==&quot;</B>,
+
+<B>'&gt;'</B>,
+
+and
+<B>&quot;&gt;=&quot;</B>
+
+operators) shall be made numerically if both operands are numeric, if
+one is numeric and the other has a string value that is a numeric
+string, or if one is numeric and the other has the uninitialized value.
+Otherwise, operands shall be converted to strings as required and a
+string comparison shall be made using the locale-specific collation
+sequence. The value of the comparison expression shall be 1 if the
+relation is true, or 0 if the relation is false.
+<A NAME="lbAR">&nbsp;</A>
+<H3>Variables and Special Variables</H3>
+
+<P>
+
+Variables can be used in an
+<I>awk</I>
+
+program by referencing them. With the exception of function parameters
+(see
+<I>User-Defined Functions),</I>
+
+they are not explicitly declared. Function parameter names shall be
+local to the function; all other variable names shall be global. The
+same name shall not be used as both a function parameter name and as
+the name of a function or a special
+<I>awk</I>
+
+variable. The same name shall not be used both as a variable name with
+global scope and as the name of a function. The same name shall not be
+used within the same scope both as a scalar variable and as an array.
+Uninitialized variables, including scalar variables, array elements,
+and field variables, shall have an uninitialized value. An
+uninitialized value shall have both a numeric value of zero and a
+string value of the empty string. Evaluation of variables with an
+uninitialized value, to either string or numeric, shall be determined
+by the context in which they are used.
+<P>
+
+Field variables shall be designated by a
+<B>'$'</B>
+
+followed by a number or numerical expression. The effect of the field
+number
+<I>expression</I>
+
+evaluating to anything other than a non-negative integer is
+unspecified; uninitialized variables or string values need not be
+converted to numeric values in this context. New field variables can be
+created by assigning a value to them. References to nonexistent fields
+(that is, fields after $<B>NF</B>), shall evaluate to the uninitialized
+value. Such references shall not create new fields. However, assigning
+to a nonexistent field (for example, $(<B>NF</B>+2)=5) shall increase
+the value of
+<B>NF</B>;
+
+create any intervening fields with the uninitialized value; and cause
+the value of $0 to be recomputed, with the fields being separated by
+the value of
+<B>OFS</B>.
+
+Each field variable shall have a string value or an uninitialized value
+when created. Field variables shall have the uninitialized value when
+created from $0 using
+<B>FS</B>
+
+and the variable does not contain any characters. If appropriate, the
+field variable shall be considered a numeric string (see
+<I>Expressions in awk).</I>
+
+<P>
+
+Implementations shall support the following other special variables
+that are set by
+<I>awk</I>:
+
+<DL COMPACT>
+<DT><B>ARGC</B><DD>
+The number of elements in the
+<B>ARGV</B>
+
+array.
+<DT><B>ARGV</B><DD>
+An array of command line arguments, excluding options and the
+<I>program</I>
+
+argument, numbered from zero to
+<B>ARGC</B>-1.
+
+<DL COMPACT><DT><DD>
+<P>
+<P>
+
+The arguments in
+<B>ARGV</B>
+
+can be modified or added to;
+<B>ARGC</B>
+
+can be altered. As each input file ends,
+<I>awk</I>
+
+shall treat the next non-null element of
+<B>ARGV</B>,
+
+up to the current value of
+<B>ARGC</B>-1,
+
+inclusive, as the name of the next input file. Thus, setting an element
+of
+<B>ARGV</B>
+
+to null means that it shall not be treated as an input file. The name
+<B>'-'</B>
+
+indicates the standard input. If an argument matches the format of an
+<I>assignment</I>
+
+operand, this argument shall be treated as an
+<I>assignment</I>
+
+rather than a
+<I>file</I>
+
+argument.
+</DL>
+
+<DT><B>CONVFMT</B><DD>
+The
+<B>printf</B>
+
+format for converting numbers to strings (except for output statements,
+where
+<B>OFMT</B>
+
+is used);
+<B>&quot;%.6g&quot;</B>
+
+by default.
+<DT><B>ENVIRON</B><DD>
+An array representing the value of the environment, as described in the
+<I>exec</I>
+
+functions defined in the System Interfaces volume of POSIX.1-2008. The indices of the array shall be
+strings consisting of the names of the environment variables, and the
+value of each array element shall be a string consisting of the value
+of that variable. If appropriate, the environment variable shall be
+considered a
+<I>numeric string</I>
+
+(see
+<I>Expressions in awk);</I>
+
+the array element shall also have its numeric value.
+<DL COMPACT><DT><DD>
+<P>
+<P>
+
+In all cases where the behavior of
+<I>awk</I>
+
+is affected by environment variables (including the environment of any
+commands that
+<I>awk</I>
+
+executes via the
+<B>system</B>
+
+function or via pipeline redirections with the
+<B>print</B>
+
+statement, the
+<B>printf</B>
+
+statement, or the
+<B>getline</B>
+
+function), the environment used shall be the environment at the time
+<I>awk</I>
+
+began executing; it is implementation-defined whether any
+modification of
+<B>ENVIRON</B>
+
+affects this environment.
+</DL>
+
+<DT><B>FILENAME</B><DD>
+A pathname of the current input file. Inside a
+<B>BEGIN</B>
+
+action the value is undefined. Inside an
+<B>END</B>
+
+action the value shall be the name of the last input file processed.
+<DT><B>FNR</B><DD>
+The ordinal number of the current record in the current file. Inside a
+<B>BEGIN</B>
+
+action the value shall be zero. Inside an
+<B>END</B>
+
+action the value shall be the number of the last record processed in
+the last file processed.
+<DT><B>FS</B><DD>
+Input field separator regular expression; a
+&lt;space&gt;
+by default.
+<DT><B>NF</B><DD>
+The number of fields in the current record. Inside a
+<B>BEGIN</B>
+
+action, the use of
+<B>NF</B>
+
+is undefined unless a
+<B>getline</B>
+
+function without a
+<I>var</I>
+
+argument is executed previously. Inside an
+<B>END</B>
+
+action,
+<B>NF</B>
+
+shall retain the value it had for the last record read, unless a
+subsequent, redirected,
+<B>getline</B>
+
+function without a
+<I>var</I>
+
+argument is performed prior to entering the
+<B>END</B>
+
+action.
+<DT><B>NR</B><DD>
+The ordinal number of the current record from the start of input.
+Inside a
+<B>BEGIN</B>
+
+action the value shall be zero. Inside an
+<B>END</B>
+
+action the value shall be the number of the last record processed.
+<DT><B>OFMT</B><DD>
+The
+<B>printf</B>
+
+format for converting numbers to strings in output statements (see
+<I>Output Statements);</I>
+
+<B>&quot;%.6g&quot;</B>
+
+by default. The result of the conversion is unspecified if the value of
+<B>OFMT</B>
+
+is not a floating-point format specification.
+<DT><B>OFS</B><DD>
+The
+<B>print</B>
+
+statement output field separator;
+&lt;space&gt;
+by default.
+<DT><B>ORS</B><DD>
+The
+<B>print</B>
+
+statement output record separator; a
+&lt;newline&gt;
+by default.
+<DT><B>RLENGTH</B><DD>
+The length of the string matched by the
+<B>match</B>
+
+function.
+<DT><B>RS</B><DD>
+The first character of the string value of
+<B>RS</B>
+
+shall be the input record separator; a
+&lt;newline&gt;
+by default. If
+<B>RS</B>
+
+contains more than one character, the results are unspecified. If
+<B>RS</B>
+
+is null, then records are separated by sequences consisting of a
+&lt;newline&gt;
+plus one or more blank lines, leading or trailing blank lines shall not
+result in empty records at the beginning or end of the input, and a
+&lt;newline&gt;
+shall always be a field separator, no matter what the value of
+<B>FS</B>
+
+is.
+<DT><B>RSTART</B><DD>
+The starting position of the string matched by the
+<B>match</B>
+
+function, numbering from 1. This shall always be equivalent to the
+return value of the
+<B>match</B>
+
+function.
+<DT><B>SUBSEP</B><DD>
+The subscript separator string for multi-dimensional arrays; the
+default value is implementation-defined.
+</DL>
+<A NAME="lbAS">&nbsp;</A>
+<H3>Regular Expressions</H3>
+
+<P>
+
+The
+<I>awk</I>
+
+utility shall make use of the extended regular expression notation
+(see the Base Definitions volume of POSIX.1-2008,
+<I>Section 9.4</I>, <I>Extended Regular Expressions)</I>
+
+except that it shall allow the use of C-language conventions
+for escaping special characters within the EREs, as specified in the
+table in the Base Definitions volume of POSIX.1-2008,
+<I>Chapter 5</I>, <I>File Format Notation</I>
+
+(<B>'\\'</B>,
+
+<B>'\a'</B>,
+
+<B>'\b'</B>,
+
+<B>'\f'</B>,
+
+<B>'\n'</B>,
+
+<B>'\r'</B>,
+
+<B>'\t'</B>,
+
+<B>'\v'</B>)
+
+and the following table; these escape sequences shall be recognized
+both inside and outside bracket expressions. Note that records need not
+be separated by
+&lt;newline&gt;
+characters and string constants can contain
+&lt;newline&gt;
+characters, so even the
+<B>&quot;\n&quot;</B>
+
+sequence is valid in
+<I>awk</I>
+
+EREs. Using a
+&lt;slash&gt;
+character within an ERE requires the escaping shown in the following
+table.
+<BR>
+
+<P>
+<CENTER>
+<B>Table 4-2: Escape Sequences in </B><I>awk</I><BR>
+</CENTER>
+
+
+<CENTER><TABLE BORDER><TR><TD><TABLE>
+<TR VALIGN=top><TD ALIGN=center><B>Escape</B></TD><TD ALIGN=center><B></B></TD><TD ALIGN=center><B></B><BR></TD></TR>
+<TR VALIGN=top><TD ALIGN=center><B>Sequence</B></TD><TD ALIGN=center><B>Description</B></TD><TD ALIGN=center><B>Meaning</B><BR></TD></TR>
+<TR VALIGN=top><TD COLSPAN=3><HR></TD></TR>
+<TR VALIGN=top><TD>\&quot;</TD><TD>
+&lt;backslash&gt; &lt;quotation-mark&gt;
+</TD><TD>
+&lt;quotation-mark&gt; character
+<BR></TD></TR>
+<TR VALIGN=top><TD COLSPAN=3><HR></TD></TR>
+<TR VALIGN=top><TD>\/</TD><TD>
+&lt;backslash&gt; &lt;slash&gt;
+</TD><TD>
+&lt;slash&gt; character
+<BR></TD></TR>
+<TR VALIGN=top><TD COLSPAN=3><HR></TD></TR>
+<TR VALIGN=top><TD>\ddd</TD><TD>
+A
+&lt;backslash&gt;
+character followed by the longest sequence of one, two, or
+three octal-digit characters (01234567). If all of the digits are 0
+(that is, representation of the NUL character), the behavior is
+undefined.
+</TD><TD>
+The character whose encoding is represented by the one, two, or
+three-digit octal integer. Multi-byte characters require
+multiple, concatenated escape sequences of this type, including the
+leading
+&lt;backslash&gt;
+for each byte.
+<BR></TD></TR>
+<TR VALIGN=top><TD COLSPAN=3><HR></TD></TR>
+<TR VALIGN=top><TD>\c</TD><TD>
+A
+&lt;backslash&gt;
+character followed by any character not described in this
+table or in the table in the Base Definitions volume of POSIX.1-2008,
+<I>Chapter 5</I>, <I>File Format Notation</I>
+
+(<B>'\\'</B>,
+
+<B>'\a'</B>,
+
+<B>'\b'</B>,
+
+<B>'\f'</B>,
+
+<B>'\n'</B>,
+
+<B>'\r'</B>,
+
+<B>'\t'</B>,
+
+<B>'\v'</B>).
+
+</TD><TD>Undefined<BR></TD></TR>
+</TABLE></TABLE></CENTER>
+
+
+<P>
+
+A regular expression can be matched against a specific field or string
+by using one of the two regular expression matching operators,
+<B>'~'</B>
+
+and
+<B>&quot;!~&quot;</B>.
+
+These operators shall interpret their right-hand operand as a regular
+expression and their left-hand operand as a string. If the regular
+expression matches the string, the
+<B>'~'</B>
+
+expression shall evaluate to a value of 1, and the
+<B>&quot;!~&quot;</B>
+
+expression shall evaluate to a value of 0. (The regular expression
+matching operation is as defined by the term matched in the Base Definitions volume of POSIX.1-2008,
+<I>Section 9.1</I>, <I>Regular Expression Definitions,</I>
+
+where a match occurs on any part of the string unless the regular
+expression is limited with the
+&lt;circumflex&gt;
+or
+&lt;dollar-sign&gt;
+special characters.) If the regular expression does not match the
+string, the
+<B>'~'</B>
+
+expression shall evaluate to a value of 0, and the
+<B>&quot;!~&quot;</B>
+
+expression shall evaluate to a value of 1. If the right-hand operand is
+any expression other than the lexical token
+<B>ERE</B>,
+
+the string value of the expression shall be interpreted as an extended
+regular expression, including the escape conventions described above.
+Note that these same escape conventions shall also be applied in
+determining the value of a string literal (the lexical token
+<B>STRING</B>),
+
+and thus shall be applied a second time when a string literal is used
+in this context.
+<P>
+
+When an
+<B>ERE</B>
+
+token appears as an expression in any context other than as the
+right-hand of the
+<B>'~'</B>
+
+or
+<B>&quot;!~&quot;</B>
+
+operator or as one of the built-in function arguments described below,
+the value of the resulting expression shall be the equivalent of:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+$0  &quot; &quot;  /</B><I>ere</I>/
+</PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+The
+<I>ere</I>
+
+argument to the
+<B>gsub</B>,
+
+<B>match</B>,
+
+<B>sub</B>
+
+functions, and the
+<I>fs</I>
+
+argument to the
+<B>split</B>
+
+function (see
+<I>String Functions)</I>
+
+shall be interpreted as extended regular expressions. These can be
+either
+<B>ERE</B>
+
+tokens or arbitrary expressions, and shall be interpreted in the same
+manner as the right-hand side of the
+<B>'~'</B>
+
+or
+<B>&quot;!~&quot;</B>
+
+operator.
+<P>
+
+An extended regular expression can be used to separate fields by assigning
+a string containing the expression to the built-in variable
+<B>FS</B>,
+
+either directly or as a consequence of using the
+<B>-F</B>
+
+<I>sepstring</I>
+
+option.
+The default value of the
+<B>FS</B>
+
+variable shall be a single
+&lt;space&gt;.
+The following describes
+<B>FS</B>
+
+behavior:
+<DL COMPACT>
+<DT> 1.<DD>
+If
+<B>FS</B>
+
+is a null string, the behavior is unspecified.
+<DT> 2.<DD>
+If
+<B>FS</B>
+
+is a single character:
+<DL COMPACT><DT><DD>
+<P>
+<DL COMPACT>
+<DT> a.<DD>
+If
+<B>FS</B>
+
+is
+&lt;space&gt;,
+skip leading and trailing
+&lt;blank&gt;
+and
+&lt;newline&gt;
+characters; fields shall be delimited by sets of one or more
+&lt;blank&gt;
+or
+&lt;newline&gt;
+characters.
+<DT> b.<DD>
+Otherwise, if
+<B>FS</B>
+
+is any other character
+<I>c</I>,
+
+fields shall be delimited by each single occurrence of
+<I>c</I>.
+
+</DL>
+</DL>
+
+<DT> 3.<DD>
+Otherwise, the string value of
+<B>FS</B>
+
+shall be considered to be an extended regular expression. Each
+occurrence of a sequence matching the extended regular expression shall
+delimit fields.
+</DL>
+<P>
+
+Except for the
+<B>'~'</B>
+
+and
+<B>&quot;!~&quot;</B>
+
+operators, and in the
+<B>gsub</B>,
+
+<B>match</B>,
+
+<B>split</B>,
+
+and
+<B>sub</B>
+
+built-in functions, ERE matching shall be based on input records; that
+is, record separator characters (the first character of the value of
+the variable
+<B>RS</B>,
+
+&lt;newline&gt;
+by default) cannot be embedded in the expression, and no expression
+shall match the record separator character. If the record separator is
+not
+&lt;newline&gt;,
+&lt;newline&gt;
+characters embedded in the expression can be matched. For the
+<B>'~'</B>
+
+and
+<B>&quot;!~&quot;</B>
+
+operators, and in those four built-in functions, ERE matching shall be
+based on text strings; that is, any character (including
+&lt;newline&gt;
+and the record separator) can be embedded in the pattern, and an
+appropriate pattern shall match any character. However, in all
+<I>awk</I>
+
+ERE matching, the use of one or more NUL characters in the pattern,
+input record, or text string produces undefined results.
+<A NAME="lbAT">&nbsp;</A>
+<H3>Patterns</H3>
+
+<P>
+
+A
+<I>pattern</I>
+
+is any valid
+<I>expression</I>,
+
+a range specified by two expressions separated by a comma, or one of the
+two special patterns
+<B>BEGIN</B>
+
+or
+<B>END</B>.
+
+<A NAME="lbAU">&nbsp;</A>
+<H3>Special Patterns</H3>
+
+<P>
+
+The
+<I>awk</I>
+
+utility shall recognize two special patterns,
+<B>BEGIN</B>
+
+and
+<B>END</B>.
+
+Each
+<B>BEGIN</B>
+
+pattern shall be matched once and its associated action executed before
+the first record of input is read---except possibly by use of the
+<B>getline</B>
+
+function (see
+<I>Input/Output and General Functions)</I>
+
+in a prior
+<B>BEGIN</B>
+
+action---and before command line assignment is done. Each
+<B>END</B>
+
+pattern shall be matched once and its associated action executed after
+the last record of input has been read. These two patterns shall have
+associated actions.
+<P>
+
+<B>BEGIN</B>
+
+and
+<B>END</B>
+
+shall not combine with other patterns. Multiple
+<B>BEGIN</B>
+
+and
+<B>END</B>
+
+patterns shall be allowed. The actions associated with the
+<B>BEGIN</B>
+
+patterns shall be executed in the order specified in the program, as
+are the
+<B>END</B>
+
+actions. An
+<B>END</B>
+
+pattern can precede a
+<B>BEGIN</B>
+
+pattern in a program.
+<P>
+
+If an
+<I>awk</I>
+
+program consists of only actions with the pattern
+<B>BEGIN</B>,
+
+and the
+<B>BEGIN</B>
+
+action contains no
+<B>getline</B>
+
+function,
+<I>awk</I>
+
+shall exit without reading its input when the last statement in the
+last
+<B>BEGIN</B>
+
+action is executed. If an
+<I>awk</I>
+
+program consists of only actions with the pattern
+<B>END</B>
+
+or only actions with the patterns
+<B>BEGIN</B>
+
+and
+<B>END</B>,
+
+the input shall be read before the statements in the
+<B>END</B>
+
+actions are executed.
+<A NAME="lbAV">&nbsp;</A>
+<H3>Expression Patterns</H3>
+
+<P>
+
+An expression pattern shall be evaluated as if it were an expression in
+a Boolean context. If the result is true, the pattern shall be
+considered to match, and the associated action (if any) shall be
+executed. If the result is false, the action shall not be executed.
+<A NAME="lbAW">&nbsp;</A>
+<H3>Pattern Ranges</H3>
+
+<P>
+
+A pattern range consists of two expressions separated by a comma; in
+this case, the action shall be performed for all records between a
+match of the first expression and the following match of the second
+expression, inclusive. At this point, the pattern range can be repeated
+starting at input records subsequent to the end of the matched range.
+<A NAME="lbAX">&nbsp;</A>
+<H3>Actions</H3>
+
+<P>
+
+An action is a sequence of statements as shown in the grammar in
+<I>Grammar.</I>
+
+Any single statement can be replaced by a statement list enclosed in
+curly braces. The application shall ensure that statements in a
+statement list are separated by
+&lt;newline&gt;
+or
+&lt;semicolon&gt;
+characters. Statements in a statement list shall be executed sequentially
+in the order that they appear.
+<P>
+
+The
+<I>expression</I>
+
+acting as the conditional in an
+<B>if</B>
+
+statement shall be evaluated and if it is non-zero or non-null, the
+following statement shall be executed; otherwise, if
+<B>else</B>
+
+is present, the statement following the
+<B>else</B>
+
+shall be executed.
+<P>
+
+The
+<B>if</B>,
+
+<B>while</B>,
+
+<B>do</B>...<B>while</B>,
+
+<B>for</B>,
+
+<B>break</B>,
+
+and
+<B>continue</B>
+
+statements are based on the ISO&nbsp;C standard (see
+<I>Section 1.1.2</I>, <I>Concepts Derived from the ISO C Standard),</I>
+
+except that the Boolean expressions shall be treated as described in
+<I>Expressions in awk,</I>
+
+and except in the case of:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+for (</B><I>variable</I> in <I>array</I>)
+</PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+which shall iterate, assigning each
+<I>index</I>
+
+of
+<I>array</I>
+
+to
+<I>variable</I>
+
+in an unspecified order. The results of adding new elements to
+<I>array</I>
+
+within such a
+<B>for</B>
+
+loop are undefined. If a
+<B>break</B>
+
+or
+<B>continue</B>
+
+statement occurs outside of a loop, the behavior is undefined.
+<P>
+
+The
+<B>delete</B>
+
+statement shall remove an individual array element. Thus, the following
+code deletes an entire array:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+for (index in array)
+    delete array[index]
+</B></PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+The
+<B>next</B>
+
+statement shall cause all further processing of the current input
+record to be abandoned. The behavior is undefined if a
+<B>next</B>
+
+statement appears or is invoked in a
+<B>BEGIN</B>
+
+or
+<B>END</B>
+
+action.
+<P>
+
+The
+<B>exit</B>
+
+statement shall invoke all
+<B>END</B>
+
+actions in the order in which they occur in the program source and then
+terminate the program without reading further input. An
+<B>exit</B>
+
+statement inside an
+<B>END</B>
+
+action shall terminate the program without further execution of
+<B>END</B>
+
+actions. If an expression is specified in an
+<B>exit</B>
+
+statement, its numeric value shall be the exit status of
+<I>awk</I>,
+
+unless subsequent errors are encountered or a subsequent
+<B>exit</B>
+
+statement with an expression is executed.
+<A NAME="lbAY">&nbsp;</A>
+<H3>Output Statements</H3>
+
+<P>
+
+Both
+<B>print</B>
+
+and
+<B>printf</B>
+
+statements shall write to standard output by default. The output shall
+be written to the location specified by
+<I>output_redirection</I>
+
+if one is supplied, as follows:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+&gt; </B><I>expression</I>
+&gt;&gt; <I>expression</I>
+| <I>expression</I>
+</PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+In all cases, the
+<I>expression</I>
+
+shall be evaluated to produce a string that is used as a pathname
+into which to write (for
+<B>'&gt;'</B>
+
+or
+<B>&quot;&gt;&gt;&quot;</B>)
+
+or as a command to be executed (for
+<B>'|'</B>).
+
+Using the first two forms, if the file of that name is not currently
+open, it shall be opened, creating it if necessary and using the first
+form, truncating the file. The output then shall be appended to the
+file. As long as the file remains open, subsequent calls in which
+<I>expression</I>
+
+evaluates to the same string value shall simply append output to the
+file. The file remains open until the
+<B>close</B>
+
+function (see
+<I>Input/Output and General Functions)</I>
+
+is called with an expression that evaluates to the same string value.
+<P>
+
+The third form shall write output onto a stream piped to the input of a
+command. The stream shall be created if no stream is currently open
+with the value of
+<I>expression</I>
+
+as its command name. The stream created shall be equivalent to one
+created by a call to the
+<I>popen</I>()
+function defined in the System Interfaces volume of POSIX.1-2008 with the value of
+<I>expression</I>
+
+as the
+<I>command</I>
+
+argument and a value of
+<I>w</I>
+
+as the
+<I>mode</I>
+
+argument. As long as the stream remains open, subsequent calls in which
+<I>expression</I>
+
+evaluates to the same string value shall write output to the existing
+stream. The stream shall remain open until the
+<B>close</B>
+
+function (see
+<I>Input/Output and General Functions)</I>
+
+is called with an expression that evaluates to the same string value.
+At that time, the stream shall be closed as if by a call to the
+<I>pclose</I>()
+function defined in the System Interfaces volume of POSIX.1-2008.
+<P>
+
+As described in detail by the grammar in
+<I>Grammar,</I>
+
+these output statements shall take a
+&lt;comma&gt;-separated
+list of
+<I>expression</I>s
+
+referred to in the grammar by the non-terminal symbols
+<B>expr_list</B>,
+
+<B>print_expr_list</B>,
+
+or
+<B>print_expr_list_opt</B>.
+
+This list is referred to here as the
+<I>expression list</I>,
+
+and each member is referred to as an
+<I>expression argument</I>.
+
+<P>
+
+The
+<B>print</B>
+
+statement shall write the value of each expression argument onto the
+indicated output stream separated by the current output field separator
+(see variable
+<B>OFS</B>
+
+above), and terminated by the output record separator (see variable
+<B>ORS</B>
+
+above). All expression arguments shall be taken as strings, being
+converted if necessary; this conversion shall be as described in
+<I>Expressions in awk,</I>
+
+with the exception that the
+<B>printf</B>
+
+format in
+<B>OFMT</B>
+
+shall be used instead of the value in
+<B>CONVFMT</B>.
+
+An empty expression list shall stand for the whole input record ($0).
+<P>
+
+The
+<B>printf</B>
+
+statement shall produce output based on a notation similar to the
+File Format Notation used to describe file formats in this volume of POSIX.1-2008 (see the Base Definitions volume of POSIX.1-2008,
+<I>Chapter 5</I>, <I>File Format Notation).</I>
+
+Output shall be produced as specified with the first
+<I>expression</I>
+
+argument as the string
+<I>format</I>
+
+and subsequent
+<I>expression</I>
+
+arguments as the strings
+<I>arg1</I>
+
+to
+<I>argn</I>,
+
+inclusive, with the following exceptions:
+<DL COMPACT>
+<DT> 1.<DD>
+The
+<I>format</I>
+
+shall be an actual character string rather than a graphical
+representation. Therefore, it cannot contain empty character
+positions. The
+&lt;space&gt;
+in the
+<I>format</I>
+
+string, in any context other than a
+<I>flag</I>
+
+of a conversion specification, shall be treated as an ordinary
+character that is copied to the output.
+<DT> 2.<DD>
+If the character set contains a
+<B>'</B>'
+
+character and that character appears in the
+<I>format</I>
+
+string, it shall be treated as an ordinary character that is copied to
+the output.
+<DT> 3.<DD>
+The
+<I>escape sequences</I>
+
+beginning with a
+&lt;backslash&gt;
+character shall be treated as sequences of ordinary characters that are
+copied to the output. Note that these same sequences shall be interpreted
+lexically by
+<I>awk</I>
+
+when they appear in literal strings, but they shall not be treated
+specially by the
+<B>printf</B>
+
+statement.
+<DT> 4.<DD>
+A
+<I>field width</I>
+
+or
+<I>precision</I>
+
+can be specified as the
+<B>'*'</B>
+
+character instead of a digit string. In this case the next argument
+from the expression list shall be fetched and its numeric value taken
+as the field width or precision.
+<DT> 5.<DD>
+The implementation shall not precede or follow output from the
+<B>d</B>
+
+or
+<B>u</B>
+
+conversion specifier characters with
+&lt;blank&gt;
+characters not specified by the
+<I>format</I>
+
+string.
+<DT> 6.<DD>
+The implementation shall not precede output from the
+<B>o</B>
+
+conversion specifier character with leading zeros not specified by the
+<I>format</I>
+
+string.
+<DT> 7.<DD>
+For the
+<B>c</B>
+
+conversion specifier character: if the argument has a numeric value, the
+character whose encoding is that value shall be output. If the value is
+zero or is not the encoding of any character in the character set, the
+behavior is undefined. If the argument does not have a numeric value,
+the first character of the string value shall be output; if the string
+does not contain any characters, the behavior is undefined.
+<DT> 8.<DD>
+For each conversion specification that consumes an argument, the next
+expression argument shall be evaluated. With the exception of the
+<B>c</B>
+
+conversion specifier character, the value shall be converted (according
+to the rules specified in
+<I>Expressions in awk)</I>
+
+to the appropriate type for the conversion specification.
+<DT> 9.<DD>
+If there are insufficient expression arguments to satisfy all the
+conversion specifications in the
+<I>format</I>
+
+string, the behavior is undefined.
+<DT>10.<DD>
+If any character sequence in the
+<I>format</I>
+
+string begins with a
+<B>'%'</B>
+
+character, but does not form a valid conversion specification, the
+behavior is unspecified.
+</DL>
+<P>
+
+Both
+<B>print</B>
+
+and
+<B>printf</B>
+
+can output at least
+{LINE_MAX}
+bytes.
+<A NAME="lbAZ">&nbsp;</A>
+<H3>Functions</H3>
+
+<P>
+
+The
+<I>awk</I>
+
+language has a variety of built-in functions: arithmetic, string,
+input/output, and general.
+<A NAME="lbBA">&nbsp;</A>
+<H3>Arithmetic Functions</H3>
+
+<P>
+
+The arithmetic functions, except for
+<B>int</B>,
+
+shall be based on the ISO&nbsp;C standard (see
+<I>Section 1.1.2</I>, <I>Concepts Derived from the ISO C Standard).</I>
+
+The behavior is undefined in cases where the ISO&nbsp;C standard specifies that an
+error be returned or that the behavior is undefined. Although the
+grammar (see
+<I>Grammar)</I>
+
+permits built-in functions to appear with no arguments or parentheses,
+unless the argument or parentheses are indicated as optional in the
+following list (by displaying them within the
+<B>&quot;[]&quot;</B>
+
+brackets), such use is undefined.
+<DL COMPACT>
+<DT><B>atan2</B>(<I>y</I>,<I>x</I>)<DD>
+Return arctangent of <I>y</I>/<I>x</I> in radians in the range
+[-&pi;,&pi;].
+<DT><B>cos</B>(<I>x</I>)<DD>
+Return cosine of <I>x</I>, where <I>x</I> is in radians.
+<DT><B>sin</B>(<I>x</I>)<DD>
+Return sine of <I>x</I>, where <I>x</I> is in radians.
+<DT><B>exp</B>(<I>x</I>)<DD>
+Return the exponential function of <I>x</I>.
+<DT><B>log</B>(<I>x</I>)<DD>
+Return the natural logarithm of <I>x</I>.
+<DT><B>sqrt</B>(<I>x</I>)<DD>
+Return the square root of <I>x</I>.
+<DT><B>int</B>(<I>x</I>)<DD>
+Return the argument truncated to an integer. Truncation shall
+be toward 0 when <I>x</I>&gt;0.
+<DT><B>rand</B>()<DD>
+Return a random number <I>n</I>, such that 0&le;<I>n</I>&lt;1.
+<DT><B>srand</B>(<B>[</B><I>expr</I><B>]</B>)<DD>
+Set the seed value for
+<I>rand</I>
+
+to
+<I>expr</I>
+
+or use the time of day if
+<I>expr</I>
+
+is omitted. The previous seed value shall be returned.
+</DL>
+<A NAME="lbBB">&nbsp;</A>
+<H3>String Functions</H3>
+
+<P>
+
+The string functions in the following list shall be supported.
+Although the grammar (see
+<I>Grammar)</I>
+
+permits built-in functions to appear with no arguments or parentheses,
+unless the argument or parentheses are indicated as optional in the
+following list (by displaying them within the
+<B>&quot;[]&quot;</B>
+
+brackets), such use is undefined.
+<DL COMPACT>
+<DT><B>gsub</B>(<I>ere</I>,&nbsp;<I>repl</I><B>[</B>,&nbsp;<I>in</I><B>]</B>)<DD>
+<BR>
+
+Behave like
+<B>sub</B>
+
+(see below), except that it shall replace all occurrences of the
+regular expression (like the
+<I>ed</I>
+
+utility global substitute) in $0 or in the
+<I>in</I>
+
+argument, when specified.
+<DT><B>index</B>(<I>s</I>,&nbsp;<I>t</I>)<DD>
+Return the position, in characters, numbering from 1, in string
+<I>s</I>
+
+where string
+<I>t</I>
+
+first occurs, or zero if it does not occur at all.
+<DT><B>length[</B>(<B>[</B><I>s</I><B>]</B>)<B>]</B><DD>
+Return the length, in characters, of its argument taken as a string, or
+of the whole record, $0, if there is no argument.
+<DT><B>match</B>(<I>s</I>,&nbsp;<I>ere</I>)<DD>
+Return the position, in characters, numbering from 1, in string
+<I>s</I>
+
+where the extended regular expression
+<I>ere</I>
+
+occurs, or zero if it does not occur at all. RSTART shall be set to the
+starting position (which is the same as the returned value), zero if no
+match is found; RLENGTH shall be set to the length of the matched
+string, -1 if no match is found.
+<DT><B>split</B>(<I>s</I>,&nbsp;<I>a</I><B>[</B>,&nbsp;<I>fs&nbsp;</I><B>]</B>)<DD>
+<BR>
+
+Split the string
+<I>s</I>
+
+into array elements
+<I>a</I>[1],
+
+<I>a</I>[2],
+
+...,
+<I>a</I>[<I>n</I>],
+
+and return
+<I>n</I>.
+
+All elements of the array shall be deleted before the split is
+performed. The separation shall be done with the ERE
+<I>fs</I>
+
+or with the field separator
+<B>FS</B>
+
+if
+<I>fs</I>
+
+is not given. Each array element shall have a string value when created
+and, if appropriate, the array element shall be considered a numeric
+string (see
+<I>Expressions in awk).</I>
+
+The effect of a null string as the value of
+<I>fs</I>
+
+is unspecified.
+<DT><B>sprintf</B>(<I>fmt</I>,&nbsp;<I>expr</I>,&nbsp;<I>expr</I>,&nbsp;...)<DD>
+<BR>
+
+Format the expressions according to the
+<B>printf</B>
+
+format given by
+<I>fmt</I>
+
+and return the resulting string.
+<DT><B>sub(</B><I>ere</I>,&nbsp;<I>repl</I><B>[</B>,&nbsp;<I>in&nbsp;</I><B>]</B>)<DD>
+<BR>
+
+Substitute the string
+<I>repl</I>
+
+in place of the first instance of the extended regular expression
+<I>ERE</I>
+
+in string
+<I>in</I>
+
+and return the number of substitutions. An
+&lt;ampersand&gt;
+(<B>'&amp;'</B>)
+
+appearing in the string
+<I>repl</I>
+
+shall be replaced by the string from
+<I>in</I>
+
+that matches the ERE. An
+&lt;ampersand&gt;
+preceded with a
+&lt;backslash&gt;
+shall be interpreted as the literal
+&lt;ampersand&gt;
+character. An occurrence of two consecutive
+&lt;backslash&gt;
+characters shall be interpreted as just a single literal
+&lt;backslash&gt;
+character. Any other occurrence of a
+&lt;backslash&gt;
+(for example, preceding any other character) shall be treated as a
+literal
+&lt;backslash&gt;
+character. Note that if
+<I>repl</I>
+
+is a string literal (the lexical token
+<B>STRING</B>;
+
+see
+<I>Grammar),</I>
+
+the handling of the
+&lt;ampersand&gt;
+character occurs after any lexical processing, including any lexical
+&lt;backslash&gt;-escape
+sequence processing. If
+<I>in</I>
+
+is specified and it is not an lvalue (see
+<I>Expressions in awk),</I>
+
+the behavior is undefined. If
+<I>in</I>
+
+is omitted,
+<I>awk</I>
+
+shall use the current record ($0) in its place.
+<DT><B>substr</B>(<I>s</I>,&nbsp;<I>m</I><B>[</B>,&nbsp;<I>n&nbsp;</I><B>]</B>)<DD>
+<BR>
+
+Return the at most
+<I>n</I>-character
+
+substring of
+<I>s</I>
+
+that begins at position
+<I>m</I>,
+
+numbering from 1. If
+<I>n</I>
+
+is omitted, or if
+<I>n</I>
+
+specifies more characters than are left in the string, the length of
+the substring shall be limited by the length of the string
+<I>s</I>.
+
+<DT><B>tolower</B>(<I>s</I>)<DD>
+Return a string based on the string
+<I>s</I>.
+
+Each character in
+<I>s</I>
+
+that is an uppercase letter specified to have a
+<B>tolower</B>
+
+mapping by the
+<I>LC_CTYPE</I>
+
+category of the current locale shall be replaced in the returned string
+by the lowercase letter specified by the mapping. Other characters in
+<I>s</I>
+
+shall be unchanged in the returned string.
+<DT><B>toupper</B>(<I>s</I>)<DD>
+Return a string based on the string
+<I>s</I>.
+
+Each character in
+<I>s</I>
+
+that is a lowercase letter specified to have a
+<B>toupper</B>
+
+mapping by the
+<I>LC_CTYPE</I>
+
+category of the current locale is replaced in the returned string by
+the uppercase letter specified by the mapping. Other characters in
+<I>s</I>
+
+are unchanged in the returned string.
+</DL>
+<P>
+
+All of the preceding functions that take
+<I>ERE</I>
+
+as a parameter expect a pattern or a string valued expression that is a
+regular expression as defined in
+<I>Regular Expressions.</I>
+
+<A NAME="lbBC">&nbsp;</A>
+<H3>Input/Output and General Functions</H3>
+
+<P>
+
+The input/output and general functions are:
+<DL COMPACT>
+<DT><B>close</B>(<I>expression</I>)<DD>
+<BR>
+
+Close the file or pipe opened by a
+<B>print</B>
+
+or
+<B>printf</B>
+
+statement or a call to
+<B>getline</B>
+
+with the same string-valued
+<I>expression</I>.
+
+The limit on the number of open
+<I>expression</I>
+
+arguments is implementation-defined. If the close was successful, the
+function shall return zero; otherwise, it shall return non-zero.
+<DT><I>expression&nbsp;|&nbsp;</I><B>getline&nbsp;[</B><I>var</I><B>]</B><DD>
+<BR>
+
+Read a record of input from a stream piped from the output of a
+command. The stream shall be created if no stream is currently open
+with the value of
+<I>expression</I>
+
+as its command name. The stream created shall be equivalent to one
+created by a call to the
+<I>popen</I>()
+function with the value of
+<I>expression</I>
+
+as the
+<I>command</I>
+
+argument and a value of
+<I>r</I>
+
+as the
+<I>mode</I>
+
+argument. As long as the stream remains open, subsequent calls in which
+<I>expression</I>
+
+evaluates to the same string value shall read subsequent records from
+the stream. The stream shall remain open until the
+<B>close</B>
+
+function is called with an expression that evaluates to the same string
+value. At that time, the stream shall be closed as if by a call to the
+<I>pclose</I>()
+function. If
+<I>var</I>
+
+is omitted, $0 and
+<B>NF</B>
+
+shall be set; otherwise,
+<I>var</I>
+
+shall be set and, if appropriate, it shall be considered a numeric
+string (see
+<I>Expressions in awk).</I>
+
+<DL COMPACT><DT><DD>
+<P>
+<P>
+
+The
+<B>getline</B>
+
+operator can form ambiguous constructs when there are unparenthesized
+operators (including concatenate) to the left of the
+<B>'|'</B>
+
+(to the beginning of the expression containing
+<B>getline</B>).
+
+In the context of the
+<B>'$'</B>
+
+operator,
+<B>'|'</B>
+
+shall behave as if it had a lower precedence than
+<B>'$'</B>.
+
+The result of evaluating other operators is unspecified, and conforming
+applications shall parenthesize properly all such usages.
+</DL>
+
+<DT><B>getline</B><DD>
+Set $0 to the next input record from the current input file. This form
+of
+<B>getline</B>
+
+shall set the
+<B>NF</B>,
+
+<B>NR</B>,
+
+and
+<B>FNR</B>
+
+variables.
+<DT><B>getline&nbsp;</B><I>var</I><DD>
+Set variable
+<I>var</I>
+
+to the next input record from the current input file and, if
+appropriate,
+<I>var</I>
+
+shall be considered a numeric string (see
+<I>Expressions in awk).</I>
+
+This form of
+<B>getline</B>
+
+shall set the
+<B>FNR</B>
+
+and
+<B>NR</B>
+
+variables.
+<DT><B>getline&nbsp;[</B><I>var</I><B>]&nbsp;</B>&lt;&nbsp;<I>expression</I><DD>
+<BR>
+
+Read the next record of input from a named file. The
+<I>expression</I>
+
+shall be evaluated to produce a string that is used as a pathname.
+If the file of that name is not currently open, it shall be opened. As
+long as the stream remains open, subsequent calls in which
+<I>expression</I>
+
+evaluates to the same string value shall read subsequent records from
+the file. The file shall remain open until the
+<B>close</B>
+
+function is called with an expression that evaluates to the same string
+value. If
+<I>var</I>
+
+is omitted, $0 and
+<B>NF</B>
+
+shall be set; otherwise,
+<I>var</I>
+
+shall be set and, if appropriate, it shall be considered a numeric
+string (see
+<I>Expressions in awk).</I>
+
+<DL COMPACT><DT><DD>
+<P>
+<P>
+
+The
+<B>getline</B>
+
+operator can form ambiguous constructs when there are unparenthesized
+binary operators (including concatenate) to the right of the
+<B>'&lt;'</B>
+
+(up to the end of the expression containing the
+<B>getline</B>).
+
+The result of evaluating such a construct is unspecified, and conforming
+applications shall parenthesize properly all such usages.
+</DL>
+
+<DT><B>system</B>(<I>expression</I>)<DD>
+<BR>
+
+Execute the command given by
+<I>expression</I>
+
+in a manner equivalent to the
+<I>system</I>()
+function defined in the System Interfaces volume of POSIX.1-2008 and return the exit status of the
+command.
+</DL>
+<P>
+
+All forms of
+<B>getline</B>
+
+shall return 1 for successful input, zero for end-of-file, and -1
+for an error.
+<P>
+
+Where strings are used as the name of a file or pipeline, the
+application shall ensure that the strings are textually identical. The
+terminology ``same string value'' implies that ``equivalent strings'',
+even those that differ only by
+&lt;space&gt;
+characters, represent different files.
+<A NAME="lbBD">&nbsp;</A>
+<H3>User-Defined Functions</H3>
+
+<P>
+
+The
+<I>awk</I>
+
+language also provides user-defined functions. Such functions can be
+defined as:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+function </B><I>name</I>(<B>[</B><I>parameter</I>, ...<B>]</B>) { <I>statements</I> }
+</PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+A function can be referred to anywhere in an
+<I>awk</I>
+
+program; in particular, its use can precede its definition. The scope
+of a function is global.
+<P>
+
+Function parameters, if present, can be either scalars or arrays; the
+behavior is undefined if an array name is passed as a parameter that
+the function uses as a scalar, or if a scalar expression is passed as a
+parameter that the function uses as an array. Function parameters shall
+be passed by value if scalar and by reference if array name.
+<P>
+
+The number of parameters in the function definition need not match the
+number of parameters in the function call. Excess formal parameters can
+be used as local variables. If fewer arguments are supplied in a
+function call than are in the function definition, the extra parameters
+that are used in the function body as scalars shall evaluate to the
+uninitialized value until they are otherwise initialized, and the extra
+parameters that are used in the function body as arrays shall be
+treated as uninitialized arrays where each element evaluates to the
+uninitialized value until otherwise initialized.
+<P>
+
+When invoking a function, no white space can be placed between the
+function name and the opening parenthesis. Function calls can be nested
+and recursive calls can be made upon functions. Upon return from any
+nested or recursive function call, the values of all of the calling
+function's parameters shall be unchanged, except for array parameters
+passed by reference. The
+<B>return</B>
+
+statement can be used to return a value. If a
+<B>return</B>
+
+statement appears outside of a function definition, the behavior is
+undefined.
+<P>
+
+In the function definition,
+&lt;newline&gt;
+characters shall be optional before the opening brace and after the
+closing brace. Function definitions can appear anywhere in the program
+where a
+<I>pattern-action</I>
+
+pair is allowed.
+<A NAME="lbBE">&nbsp;</A>
+<H3>Grammar</H3>
+
+<P>
+
+The grammar in this section and the lexical conventions in the
+following section shall together describe the syntax for
+<I>awk</I>
+
+programs. The general conventions for this style of grammar are
+described in
+<I>Section 1.3</I>, <I>Grammar Conventions.</I>
+
+A valid program can be represented as the non-terminal symbol
+<I>program</I>
+
+in the grammar. This formal syntax shall take precedence over the
+preceding text syntax description.
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+%token NAME NUMBER STRING ERE
+%token FUNC_NAME   /* Name followed by '(' without white space. */
+
+/* Keywords */
+%token       Begin   End
+/*          'BEGIN' 'END'                            */
+
+%token       Break   Continue   Delete   Do   Else
+/*          'break' 'continue' 'delete' 'do' 'else'  */
+
+%token       Exit   For   Function   If   In
+/*          'exit' 'for' 'function' 'if' 'in'        */
+
+%token       Next   Print   Printf   Return   While
+/*          'next' 'print' 'printf' 'return' 'while' */
+
+/* Reserved function names */
+%token BUILTIN_FUNC_NAME
+            /* One token for the following:
+             * atan2 cos sin exp log sqrt int rand srand
+             * gsub index length match split sprintf sub
+             * substr tolower toupper close system
+             */
+%token GETLINE
+            /* Syntactically different from other built-ins. */
+
+/* Two-character tokens. */
+%token ADD_ASSIGN SUB_ASSIGN MUL_ASSIGN DIV_ASSIGN MOD_ASSIGN POW_ASSIGN
+/*     '+='       '-='       '*='       '/='       '%='       '^=' */
+
+%token OR   AND  NO_MATCH   EQ   LE   GE   NE   INCR  DECR  APPEND
+/*     '||' '&amp;&amp;' '!~' '==' '&lt;=' '&gt;=' '!=' '++'  '--'  '&gt;&gt;'   */
+
+/* One-character tokens. */
+%token '{' '}' '(' ')' '[' ']' ',' ';' NEWLINE
+%token '+' '-' '*' '%' '^' '!' '&gt;' '&lt;' '|' '?' ':' ' &quot; &quot; ' '$' '='
+
+%start program
+%%
+
+program          : item_list
+                 | actionless_item_list
+                 ;
+
+item_list        : newline_opt
+                 | actionless_item_list item terminator
+                 | item_list            item terminator
+                 | item_list          action terminator
+                 ;
+
+actionless_item_list : item_list            pattern terminator
+                 | actionless_item_list pattern terminator
+                 ;
+
+item             : pattern action
+                 | Function NAME      '(' param_list_opt ')'
+                       newline_opt action
+                 | Function FUNC_NAME '(' param_list_opt ')'
+                       newline_opt action
+                 ;
+
+param_list_opt   : /* empty */
+                 | param_list
+                 ;
+
+param_list       : NAME
+                 | param_list ',' NAME
+                 ;
+
+pattern          : Begin
+                 | End
+                 | expr
+                 | expr ',' newline_opt expr
+                 ;
+
+action           : '{' newline_opt                             '}'
+                 | '{' newline_opt terminated_statement_list   '}'
+                 | '{' newline_opt unterminated_statement_list '}'
+                 ;
+
+terminator       : terminator ';'
+                 | terminator NEWLINE
+                 |            ';'
+                 |            NEWLINE
+                 ;
+
+terminated_statement_list : terminated_statement
+                 | terminated_statement_list terminated_statement
+                 ;
+
+unterminated_statement_list : unterminated_statement
+                 | terminated_statement_list unterminated_statement
+                 ;
+
+terminated_statement : action newline_opt
+                 | If '(' expr ')' newline_opt terminated_statement
+                 | If '(' expr ')' newline_opt terminated_statement
+                       Else newline_opt terminated_statement
+                 | While '(' expr ')' newline_opt terminated_statement
+                 | For '(' simple_statement_opt ';'
+                      expr_opt ';' simple_statement_opt ')' newline_opt
+                      terminated_statement
+                 | For '(' NAME In NAME ')' newline_opt
+                      terminated_statement
+                 | ';' newline_opt
+                 | terminatable_statement NEWLINE newline_opt
+                 | terminatable_statement ';'     newline_opt
+                 ;
+
+unterminated_statement : terminatable_statement
+                 | If '(' expr ')' newline_opt unterminated_statement
+                 | If '(' expr ')' newline_opt terminated_statement
+                      Else newline_opt unterminated_statement
+                 | While '(' expr ')' newline_opt unterminated_statement
+                 | For '(' simple_statement_opt ';'
+                  expr_opt ';' simple_statement_opt ')' newline_opt
+                      unterminated_statement
+                 | For '(' NAME In NAME ')' newline_opt
+                      unterminated_statement
+                 ;
+
+terminatable_statement : simple_statement
+                 | Break
+                 | Continue
+                 | Next
+                 | Exit expr_opt
+                 | Return expr_opt
+                 | Do newline_opt terminated_statement While '(' expr ')'
+                 ;
+
+simple_statement_opt : /* empty */
+                 | simple_statement
+                 ;
+
+simple_statement : Delete NAME '[' expr_list ']'
+                 | expr
+                 | print_statement
+                 ;
+
+print_statement  : simple_print_statement
+                 | simple_print_statement output_redirection
+                 ;
+
+simple_print_statement : Print  print_expr_list_opt
+                 | Print  '(' multiple_expr_list ')'
+                 | Printf print_expr_list
+                 | Printf '(' multiple_expr_list ')'
+                 ;
+
+output_redirection : '&gt;'    expr
+                 | APPEND expr
+                 | '|'    expr
+                 ;
+
+expr_list_opt    : /* empty */
+                 | expr_list
+                 ;
+
+expr_list        : expr
+                 | multiple_expr_list
+                 ;
+
+multiple_expr_list : expr ',' newline_opt expr
+                 | multiple_expr_list ',' newline_opt expr
+                 ;
+
+expr_opt         : /* empty */
+                 | expr
+                 ;
+
+expr             : unary_expr
+                 | non_unary_expr
+                 ;
+
+unary_expr       : '+' expr
+                 | '-' expr
+                 | unary_expr '^'      expr
+                 | unary_expr '*'      expr
+                 | unary_expr '/'      expr
+                 | unary_expr '%'      expr
+                 | unary_expr '+'      expr
+                 | unary_expr '-'      expr
+                 | unary_expr          non_unary_expr
+                 | unary_expr '&lt;'      expr
+                 | unary_expr LE       expr
+                 | unary_expr NE       expr
+                 | unary_expr EQ       expr
+                 | unary_expr '&gt;'      expr
+                 | unary_expr GE       expr
+                 | unary_expr '~'      expr
+                 | unary_expr NO_MATCH expr
+                 | unary_expr In NAME
+                 | unary_expr AND newline_opt expr
+                 | unary_expr OR  newline_opt expr
+                 | unary_expr '?' expr ':' expr
+                 | unary_input_function
+                 ;
+
+non_unary_expr   : '(' expr ')'
+                 | '!' expr
+                 | non_unary_expr '^'      expr
+                 | non_unary_expr '*'      expr
+                 | non_unary_expr '/'      expr
+                 | non_unary_expr '%'      expr
+                 | non_unary_expr '+'      expr
+                 | non_unary_expr '-'      expr
+                 | non_unary_expr          non_unary_expr
+                 | non_unary_expr '&lt;'      expr
+                 | non_unary_expr LE       expr
+                 | non_unary_expr NE       expr
+                 | non_unary_expr EQ       expr
+                 | non_unary_expr '&gt;'      expr
+                 | non_unary_expr GE       expr
+                 | non_unary_expr '~'      expr
+                 | non_unary_expr NO_MATCH expr
+                 | non_unary_expr In NAME
+                 | '(' multiple_expr_list ')' In NAME
+                 | non_unary_expr AND newline_opt expr
+                 | non_unary_expr OR  newline_opt expr
+                 | non_unary_expr '?' expr ':' expr
+                 | NUMBER
+                 | STRING
+                 | lvalue
+                 | ERE
+                 | lvalue INCR
+                 | lvalue DECR
+                 | INCR lvalue
+                 | DECR lvalue
+                 | lvalue POW_ASSIGN expr
+                 | lvalue MOD_ASSIGN expr
+                 | lvalue MUL_ASSIGN expr
+                 | lvalue DIV_ASSIGN expr
+                 | lvalue ADD_ASSIGN expr
+                 | lvalue SUB_ASSIGN expr
+                 | lvalue '=' expr
+                 | FUNC_NAME '(' expr_list_opt ')'
+                      /* no white space allowed before '(' */
+                 | BUILTIN_FUNC_NAME '(' expr_list_opt ')'
+                 | BUILTIN_FUNC_NAME
+                 | non_unary_input_function
+                 ;
+
+print_expr_list_opt : /* empty */
+                 | print_expr_list
+                 ;
+
+print_expr_list  : print_expr
+                 | print_expr_list ',' newline_opt print_expr
+                 ;
+
+print_expr       : unary_print_expr
+                 | non_unary_print_expr
+                 ;
+
+unary_print_expr : '+' print_expr
+                 | '-' print_expr
+                 | unary_print_expr '^'      print_expr
+                 | unary_print_expr '*'      print_expr
+                 | unary_print_expr '/'      print_expr
+                 | unary_print_expr '%'      print_expr
+                 | unary_print_expr '+'      print_expr
+                 | unary_print_expr '-'      print_expr
+                 | unary_print_expr          non_unary_print_expr
+                 | unary_print_expr '~'      print_expr
+                 | unary_print_expr NO_MATCH print_expr
+                 | unary_print_expr In NAME
+                 | unary_print_expr AND newline_opt print_expr
+                 | unary_print_expr OR  newline_opt print_expr
+                 | unary_print_expr '?' print_expr ':' print_expr
+                 ;
+
+non_unary_print_expr : '(' expr ')'
+                 | '!' print_expr
+                 | non_unary_print_expr '^'      print_expr
+                 | non_unary_print_expr '*'      print_expr
+                 | non_unary_print_expr '/'      print_expr
+                 | non_unary_print_expr '%'      print_expr
+                 | non_unary_print_expr '+'      print_expr
+                 | non_unary_print_expr '-'      print_expr
+                 | non_unary_print_expr          non_unary_print_expr
+                 | non_unary_print_expr '~'      print_expr
+                 | non_unary_print_expr NO_MATCH print_expr
+                 | non_unary_print_expr In NAME
+                 | '(' multiple_expr_list ')' In NAME
+                 | non_unary_print_expr AND newline_opt print_expr
+                 | non_unary_print_expr OR  newline_opt print_expr
+                 | non_unary_print_expr '?' print_expr ':' print_expr
+                 | NUMBER
+                 | STRING
+                 | lvalue
+                 | ERE
+                 | lvalue INCR
+                 | lvalue DECR
+                 | INCR lvalue
+                 | DECR lvalue
+                 | lvalue POW_ASSIGN print_expr
+                 | lvalue MOD_ASSIGN print_expr
+                 | lvalue MUL_ASSIGN print_expr
+                 | lvalue DIV_ASSIGN print_expr
+                 | lvalue ADD_ASSIGN print_expr
+                 | lvalue SUB_ASSIGN print_expr
+                 | lvalue '=' print_expr
+                 | FUNC_NAME '(' expr_list_opt ')'
+                     /* no white space allowed before '(' */
+                 | BUILTIN_FUNC_NAME '(' expr_list_opt ')'
+                 | BUILTIN_FUNC_NAME
+                 ;
+
+lvalue           : NAME
+                 | NAME '[' expr_list ']'
+                 | '$' expr
+                 ;
+
+non_unary_input_function : simple_get
+                 | simple_get '&lt;' expr
+                 | non_unary_expr '|' simple_get
+                 ;
+
+unary_input_function : unary_expr '|' simple_get
+                 ;
+
+simple_get       : GETLINE
+                 | GETLINE lvalue
+                 ;
+
+newline_opt      : /* empty */
+                 | newline_opt NEWLINE
+                 ;
+</B></PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+This grammar has several ambiguities that shall be resolved as
+follows:
+<DL COMPACT>
+<DT> *<DD>
+Operator precedence and associativity shall be as described in
+<I>Table 4-1, Expressions in Decreasing Precedence in awk</I>.
+
+<DT> *<DD>
+In case of ambiguity, an
+<B>else</B>
+
+shall be associated with the most immediately preceding
+<B>if</B>
+
+that would satisfy the grammar.
+<DT> *<DD>
+In some contexts, a
+&lt;slash&gt;
+(<B>'/'</B>)
+
+that is used to surround an ERE could also be the division operator.
+This shall be resolved in such a way that wherever the division
+operator could appear, a
+&lt;slash&gt;
+is assumed to be the division operator. (There is no unary division
+operator.)
+</DL>
+<P>
+
+Each expression in an
+<I>awk</I>
+
+program shall conform to the precedence and associativity rules, even
+when this is not needed to resolve an ambiguity. For example, because
+<B>'$'</B>
+
+has higher precedence than
+<B>'++'</B>,
+
+the string
+<B>&quot;$x++--&quot;</B>
+
+is not a valid
+<I>awk</I>
+
+expression, even though it is unambiguously parsed by the grammar as
+<B>&quot;$(x++)--&quot;</B>.
+
+<P>
+
+One convention that might not be obvious from the formal grammar is
+where
+&lt;newline&gt;
+characters are acceptable. There are several obvious placements such as
+terminating a statement, and a
+&lt;backslash&gt;
+can be used to escape
+&lt;newline&gt;
+characters between any lexical tokens. In addition,
+&lt;newline&gt;
+characters without
+&lt;backslash&gt;
+characters can follow a comma, an open brace, logical AND operator (<B>&quot;&amp;&amp;&quot;</B>),
+
+logical OR operator (<B>&quot;||&quot;</B>),
+
+the
+<B>do</B>
+
+keyword, the
+<B>else</B>
+
+keyword, and the closing parenthesis of an
+<B>if</B>,
+
+<B>for</B>,
+
+or
+<B>while</B>
+
+statement. For example:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+{ print  $1,
+         $2 }
+</B></PRE>
+
+<P>
+
+</DL>
+
+<A NAME="lbBF">&nbsp;</A>
+<H3>Lexical Conventions</H3>
+
+<P>
+
+The lexical conventions for
+<I>awk</I>
+
+programs, with respect to the preceding grammar, shall be as follows:
+<DL COMPACT>
+<DT> 1.<DD>
+Except as noted,
+<I>awk</I>
+
+shall recognize the longest possible token or delimiter beginning at a
+given point.
+<DT> 2.<DD>
+A comment shall consist of any characters beginning with the
+&lt;number-sign&gt;
+character and terminated by, but excluding the next occurrence of, a
+&lt;newline&gt;.
+Comments shall have no effect, except to delimit lexical tokens.
+<DT> 3.<DD>
+The
+&lt;newline&gt;
+shall be recognized as the token
+<B>NEWLINE</B>.
+
+<DT> 4.<DD>
+A
+&lt;backslash&gt;
+character immediately followed by a
+&lt;newline&gt;
+shall have no effect.
+<DT> 5.<DD>
+The token
+<B>STRING</B>
+
+shall represent a string constant. A string constant shall begin with
+the character
+<B>'' .</B>
+
+Within a string constant, a
+&lt;backslash&gt;
+character shall be considered to begin an escape sequence as specified
+in the table in the Base Definitions volume of POSIX.1-2008,
+<I>Chapter 5</I>, <I>File Format Notation</I>
+
+(<B>'\\'</B>,
+
+<B>'\a'</B>,
+
+<B>'\b'</B>,
+
+<B>'\f'</B>,
+
+<B>'\n'</B>,
+
+<B>'\r'</B>,
+
+<B>'\t'</B>,
+
+<B>'\v'</B>).
+
+In addition, the escape sequences in
+<I>Table 4-2, Escape Sequences in awk</I>
+
+shall be recognized. A
+&lt;newline&gt;
+shall not occur within a string constant. A string constant shall be
+terminated by the first unescaped occurrence of the character
+<B>'' </B>
+
+after the one that begins the string constant. The value of the string
+shall be the sequence of all unescaped characters and values of escape
+sequences between, but not including, the two delimiting
+<B>'' </B>
+
+characters.
+<DT> 6.<DD>
+The token
+<B>ERE</B>
+
+represents an extended regular expression constant. An ERE constant
+shall begin with the
+&lt;slash&gt;
+character. Within an ERE constant, a
+&lt;backslash&gt;
+character shall be considered to begin an escape sequence as
+specified in the table in the Base Definitions volume of POSIX.1-2008,
+<I>Chapter 5</I>, <I>File Format Notation.</I>
+
+In addition, the escape sequences in
+<I>Table 4-2, Escape Sequences in awk</I>
+
+shall be recognized. The application shall ensure that a
+&lt;newline&gt;
+does not occur within an ERE constant. An ERE constant shall be
+terminated by the first unescaped occurrence of the
+&lt;slash&gt;
+character after the one that begins the ERE constant. The extended regular
+expression represented by the ERE constant shall be the sequence of all
+unescaped characters and values of escape sequences between, but not
+including, the two delimiting
+&lt;slash&gt;
+characters.
+<DT> 7.<DD>
+A
+&lt;blank&gt;
+shall have no effect, except to delimit lexical tokens or within
+<B>STRING</B>
+
+or
+<B>ERE</B>
+
+tokens.
+<DT> 8.<DD>
+The token
+<B>NUMBER</B>
+
+shall represent a numeric constant. Its form and numeric value shall
+either be equivalent to the
+<B>decimal-floating-constant</B>
+
+token as specified by the ISO&nbsp;C standard, or it shall be a sequence of decimal
+digits and shall be evaluated as an integer constant in decimal. In
+addition, implementations may accept numeric constants with the form
+and numeric value equivalent to the
+<B>hexadecimal-constant</B>
+
+and
+<B>hexadecimal-floating-constant</B>
+
+tokens as specified by the ISO&nbsp;C standard.
+<DL COMPACT><DT><DD>
+<P>
+<P>
+
+If the value is too large or too small to be representable (see
+<I>Section 1.1.2</I>, <I>Concepts Derived from the ISO C Standard),</I>
+
+the behavior is undefined.
+</DL>
+
+<DT> 9.<DD>
+A sequence of underscores, digits, and alphabetics from the portable
+character set (see the Base Definitions volume of POSIX.1-2008,
+<I>Section 6.1</I>, <I>Portable Character Set),</I>
+
+beginning with an
+&lt;underscore&gt;
+or alphabetic character, shall be considered a word.
+<DT>10.<DD>
+The following words are keywords that shall be recognized as individual
+tokens; the name of the token is the same as the keyword:
+<TABLE>
+<TR VALIGN=top><TD><B>
+<PRE>
+BEGIN
+break
+continue
+</B></TD><TD><B>
+delete
+do
+else
+</B></TD><TD><B>
+END
+exit
+for
+</B></TD><TD><B>
+function
+getline
+if
+</B></TD><TD><B>
+in
+next
+print
+</B></TD><TD><B>
+printf
+return
+while
+</B><BR></TD></TR>
+</TABLE>
+
+<DT>11.<DD>
+The following words are names of built-in functions and shall be
+recognized as the token
+<B>BUILTIN_FUNC_NAME</B>:
+
+<TABLE>
+<TR VALIGN=top><TD><B>
+<PRE>
+atan2
+close
+cos
+exp
+</B></TD><TD><B>
+gsub
+index
+int
+length
+</B></TD><TD><B>
+log
+match
+rand
+sin
+</B></TD><TD><B>
+split
+sprintf
+sqrt
+srand
+</B></TD><TD><B>
+sub
+substr
+system
+tolower
+</B></TD><TD><B>
+toupper
+</PRE>
+
+</B><BR></TD></TR>
+</TABLE>
+
+<DL COMPACT><DT><DD>
+<P>
+<P>
+
+The above-listed keywords and names of built-in functions are
+considered reserved words.
+</DL>
+
+<DT>12.<DD>
+The token
+<B>NAME</B>
+
+shall consist of a word that is not a keyword or a name of a built-in
+function and is not followed immediately (without any delimiters) by
+the
+<B>'('</B>
+
+character.
+<DT>13.<DD>
+The token
+<B>FUNC_NAME</B>
+
+shall consist of a word that is not a keyword or a n

@@ -1,0 +1,164 @@
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML><HEAD><TITLE>Man page of __PPC_GET_TIMEBASE</TITLE>
+</HEAD><BODY>
+<H1>__PPC_GET_TIMEBASE</H1>
+Section: Linux Programmer'sManual (3)<BR>Updated: 2015-07-23<BR><A HREF="#index">Index</A>
+<A HREF="../index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+__ppc_get_timebase, __ppc_get_timebase_freq - get the current value
+<BR>&nbsp;of&nbsp;the&nbsp;Time&nbsp;Base&nbsp;Register&nbsp;on&nbsp;Power&nbsp;architecture&nbsp;and&nbsp;its&nbsp;frequency.
+<A NAME="lbAC">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<B>#include &lt;<A HREF="file:///usr/include/sys/platform/ppc.h">sys/platform/ppc.h</A>&gt;</B>
+
+<P>
+<B>uint64_t __ppc_get_timebase(void)</B>
+
+<P>
+<B>uint64_t __ppc_get_timebase_freq(void);</B>
+
+<A NAME="lbAD">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+<B>__ppc_get_timebase</B>()
+
+reads the current value of the Time Base Register and returns its
+value, while
+<B>__ppc_get_timebase_freq</B>()
+
+returns the frequency in which the Time Base Register is updated.
+<P>
+The Time Base Register is a 64-bit register provided by Power Architecture
+processors.
+It stores a monotonically incremented value that is updated at a
+system-dependent frequency that may be different from the processor
+frequency.
+<A NAME="lbAE">&nbsp;</A>
+<H2>RETURN VALUE</H2>
+
+<B>__ppc_get_timebase</B>()
+
+returns a 64-bit unsigned integer that represents the current value of the
+Time Base Register.
+<P>
+<B>__ppc_get_timebase_freq</B>()
+
+returns a 64-bit unsigned integer that represents the frequency at
+which the Time Base Register is updated.
+<A NAME="lbAF">&nbsp;</A>
+<H2>VERSIONS</H2>
+
+GNU C Library support for
+
+<B>__ppc_get_timebase</B>()
+
+has been provided since version 2.16 and
+
+<B>__ppc_get_timebase_freq</B>()
+
+has been available since version 2.17.
+<A NAME="lbAG">&nbsp;</A>
+<H2>CONFORMING TO</H2>
+
+Both functions are nonstandard GNU extensions.
+<A NAME="lbAH">&nbsp;</A>
+<H2>EXAMPLE</H2>
+
+The following program will calculate the time, in microseconds, spent
+between two calls to
+<B>__ppc_get_timebase</B>().
+
+<A NAME="lbAI">&nbsp;</A>
+<H3>Program source</H3>
+
+
+<PRE>
+#include &lt;<A HREF="file:///usr/include/inttypes.h">inttypes.h</A>&gt;
+#include &lt;<A HREF="file:///usr/include/stdint.h">stdint.h</A>&gt;
+#include &lt;<A HREF="file:///usr/include/stdio.h">stdio.h</A>&gt;
+#include &lt;<A HREF="file:///usr/include/stdlib.h">stdlib.h</A>&gt;
+#include &lt;<A HREF="file:///usr/include/sys/platform/ppc.h">sys/platform/ppc.h</A>&gt;
+
+/* Maximum value of the Time Base Register: 2^60 - 1.
+   Source: POWER ISA.  */
+#define MAX_TB 0xFFFFFFFFFFFFFFF
+
+int
+main(void)
+{
+    uint64_t tb1, tb2, diff;
+
+    uint64_t freq = __ppc_get_timebase_freq();
+    printf(&quot;Time Base frequency = %&quot;PRIu64&quot; Hz\n&quot;, freq);
+
+    tb1 = __ppc_get_timebase();
+
+    // Do some stuff...
+
+    tb2 = __ppc_get_timebase();
+
+    if (tb2 &gt; tb1) {
+        diff = tb2 - tb1;
+    } else {
+        /* Treat Time Base Register overflow.  */
+        diff = (MAX_TB - tb2) + tb1;
+    }
+
+    printf(&quot;Elapsed time  = %1.2f usecs\n&quot;,
+            (double) diff * 1000000 / freq );
+
+    exit(EXIT_SUCCESS);
+}
+</PRE>
+
+<A NAME="lbAJ">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+<B><A HREF="../man2/time.2.html">time</A></B>(2),
+
+<B><A HREF="../man3/usleep.3.html">usleep</A></B>(3)
+
+<A NAME="lbAK">&nbsp;</A>
+<H2>COLOPHON</H2>
+
+This page is part of release 4.09 of the Linux
+<I>man-pages</I>
+
+project.
+A description of the project,
+information about reporting bugs,
+and the latest version of this page,
+can be found at
+<A HREF="https://www.kernel.org/doc/man-pages/.">https://www.kernel.org/doc/man-pages/.</A>
+
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAD">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAE">RETURN VALUE</A><DD>
+<DT><A HREF="#lbAF">VERSIONS</A><DD>
+<DT><A HREF="#lbAG">CONFORMING TO</A><DD>
+<DT><A HREF="#lbAH">EXAMPLE</A><DD>
+<DL>
+<DT><A HREF="#lbAI">Program source</A><DD>
+</DL>
+<DT><A HREF="#lbAJ">SEE ALSO</A><DD>
+<DT><A HREF="#lbAK">COLOPHON</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 14:28:39 GMT, February 25, 2017
+</BODY>
+</HTML>

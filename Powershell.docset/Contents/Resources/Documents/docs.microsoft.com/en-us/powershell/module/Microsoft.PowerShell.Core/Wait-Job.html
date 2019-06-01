@@ -1,0 +1,1393 @@
+<!DOCTYPE html>
+<html class="no-js hasSidebar hasPageActions hasBreadcrumb conceptual" data-authenticated="false" data-render="docs" dir="ltr" lang="en-us">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Wait-Job (Microsoft.PowerShell.Core)" property="og:title"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" property="og:image"/>
+  <meta content="summary" name="twitter:card"/>
+  <meta content="@docsmsft" name="twitter:site"/>
+  <meta content="Wait-Job (Microsoft.PowerShell.Core)" name="twitter:title"/>
+  <meta content="The Wait-Job cmdlet waits for Windows PowerShell background jobs to finish before it displays the command prompt. You can wait until any background job is complete, or until all background jobs are câ¦" name="twitter:description"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" name="twitter:image"/>
+  <meta content="Microsoft Logo" name="twitter:image:alt"/>
+  <meta content="The Wait-Job cmdlet waits for Windows PowerShell background jobs to finish before it displays the command prompt. You can wait until any background job is complete, or until all background jobs are câ¦" name="description"/>
+  <meta content="Docs" name="search.ms_sitename"/>
+  <meta content="PowerShell_PowerShell-docs_reference" name="search.ms_docsetname"/>
+  <meta content="0" name="version"/>
+  <meta content="en-us" name="locale"/>
+  <meta content="Docs" name="site_name"/>
+  <meta content="PowerShell" name="search.ms_product"/>
+  <meta content="PowerShell.PowerShell_PowerShell-docs_reference" name="depot_name"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/666c3f64d0eef63804d647e4696478faecb03e9e/reference/6/Microsoft.PowerShell.Core/Wait-Job.md" name="ref_skeleton_gitcommit"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/live/reference/6/Microsoft.PowerShell.Core/Wait-Job.md" name="original_ref_skeleton_git_url"/>
+  <meta content="2018-03-30 03:35 PM" name="updated_at"/>
+  <meta content="9bf06152-04bc-1f1f-ebd9-79676614823e" name="document_id"/>
+  <meta content="9034a6e7-2846-023e-227a-2b10c124ad15" name="document_version_independent_id"/>
+  <meta content="powershell" name="page_type"/>
+  <meta content="command" name="page_kind"/>
+  <meta content="06/09/2017" name="ms.date"/>
+  <meta content="2.0.0" name="schema"/>
+  <meta content="powershell,cmdlet" name="keywords"/>
+  <meta content="http://go.microsoft.com/fwlink/?LinkID=821525" name="online_version"/>
+  <meta content="System.Management.Automation.dll-Help.xml" name="external_help_file"/>
+  <meta content="powershell" name="ms.devlang"/>
+  <meta content="INDEX, FOLLOW" name="ROBOTS"/>
+  <meta content="sdwheeler" name="author"/>
+  <meta content="sewhee" name="ms.author"/>
+  <meta content="carmonm" name="manager"/>
+  <meta content="/powershell/bread-pscore/toc.yml?view=powershell-6" name="breadcrumb_path"/>
+  <meta content="powershell" name="apiPlatform"/>
+  <meta content="reference" name="ms.topic"/>
+  <meta content="windows, macos, linux" name="ms.tgt_pltfr"/>
+  <meta content="powershell-scripting" name="ms.technology"/>
+  <meta content="powershell" name="ms.prod"/>
+  <meta content="MSDocsHeader-Powershell" name="uhfHeaderId"/>
+  <meta content="../psdocs/toc.json?view=powershell-6" name="toc_rel"/>
+  <link href="https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/wait-job" rel="canonical"/>
+  <title>
+   Wait-Job
+  </title>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/60aac04b.site.css" rel="stylesheet"/>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/fdb8a38a.conceptual.css" rel="stylesheet"/>
+ </head>
+ <body dir="ltr" lang="en-us">
+  <div class="header-holder">
+   <div data-bi-name="header" id="headerAreaHolder">
+    <div id="uhf-placeholder">
+    </div>
+   </div>
+   <div class="disclaimer-holder" id="disclaimer-holder">
+   </div>
+  </div>
+  <div class="container mainContainer" data-bi-name="body">
+   <div class="content-header" data-bi-name="content-header">
+    <div class="content-header-controls">
+     <button class="contents-button button-border" data-bi-name="contents-expand" type="button">
+      <span class="docon docon-menu">
+      </span>
+      Contents
+     </button>
+    </div>
+    <div class="content-header-controls">
+     <button class="ap-collapse-behavior ap-expanded button-border" data-bi-name="ap-collapse" type="button">
+      <span class="docon docon-exit-mode">
+      </span>
+      Exit focus mode
+     </button>
+    </div>
+   </div>
+   <div class="primary-holder">
+    <main class="content" data-bi-name="content" dir="ltr" id="main" lang="en-us" role="main">
+     <!-- <content> -->
+     <h1>
+      Wait-Job
+     </h1>
+     <div class="metadata">
+      <dl class="attributeList">
+       <dt>
+        Module:
+       </dt>
+       <dd>
+        <a data-linktype="relative-path" href="./Microsoft.PowerShell.Core.html">
+         Microsoft.PowerShell.Core
+        </a>
+       </dd>
+      </dl>
+     </div>
+     <div class="summaryHolder">
+      <div class="summary">
+       Suppresses the command prompt until one or all of the Windows PowerShell background jobs running in the session are completed.
+      </div>
+     </div>
+     <h2 class="hiddenAnchor" id="syntax">
+      Syntax
+     </h2>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Wait-Job
+    [-Any]
+    [-Timeout &lt;Int32&gt;]
+    [-Force]
+    [-Id] &lt;Int32[]&gt;
+    [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Wait-Job
+    [-Job] &lt;Job[]&gt;
+    [-Any]
+    [-Timeout &lt;Int32&gt;]
+    [-Force]
+    [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Wait-Job
+    [-Any]
+    [-Timeout &lt;Int32&gt;]
+    [-Force]
+    [-Name] &lt;String[]&gt;
+    [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Wait-Job
+    [-Any]
+    [-Timeout &lt;Int32&gt;]
+    [-Force]
+    [-InstanceId] &lt;Guid[]&gt;
+    [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Wait-Job
+    [-Any]
+    [-Timeout &lt;Int32&gt;]
+    [-Force]
+    [-State] &lt;JobState&gt;
+    [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Wait-Job
+    [-Any]
+    [-Timeout &lt;Int32&gt;]
+    [-Force]
+    [-Filter] &lt;Hashtable&gt;
+    [&lt;CommonParameters&gt;]</code></pre>
+     <h2 id="description">
+      Description
+     </h2>
+     <p>
+      The
+      <strong>
+       Wait-Job
+      </strong>
+      cmdlet waits for Windows PowerShell background jobs to finish before it displays the command prompt.
+You can wait until any background job is complete, or until all background jobs are complete, and you can set a maximum wait time for the job.
+     </p>
+     <p>
+      When the commands in the job are complete,
+      <strong>
+       Wait-Job
+      </strong>
+      displays the command prompt and returns a job object so that you can pipe it to another command.
+     </p>
+     <p>
+      You can use
+      <strong>
+       Wait-Job
+      </strong>
+      cmdlet to wait for background jobs, such as those that were started by using the Start-Job cmdlet or the
+      <em>
+       AsJob
+      </em>
+      parameter of the Invoke-Command cmdlet.
+For more information about Windows PowerShell background jobs, see about_Jobs.
+     </p>
+     <p>
+      Starting in Windows PowerShell 3.0, the
+      <strong>
+       Wait-Job
+      </strong>
+      cmdlet also waits for custom job types, such as workflow jobs and instances of scheduled jobs.
+To enable
+      <strong>
+       Wait-Job
+      </strong>
+      to wait for jobs of a particular type, import the module that supports the custom job type into the session before you run the Get-Job cmdlet, either by using the Import-Module cmdlet or by using or getting a cmdlet in the module.
+For information about a particular custom job type, see the documentation of the custom job type feature.
+     </p>
+     <h2 id="examples">
+      Examples
+     </h2>
+     <p>
+      <strong>
+       Example 1: Wait for all jobs
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-Job | Wait-Job</code></pre>
+     <p>
+      This command waits for all of the background jobs running in the session to finish.
+     </p>
+     <p>
+      <strong>
+       Example 2: Wait for jobs started on remote computers by using Start-Job
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; $s = New-PSSession Server01, Server02, Server03
+
+PS C:\&gt; Invoke-Command -Session $s -ScriptBlock {Start-Job -Name Date1 -ScriptBlock {Get-Date}}
+
+PS C:\&gt; $done = Invoke-Command -Session $s -Command {Wait-Job -Name Date1}
+
+PS C:\&gt; $done.Count
+
+3</code></pre>
+     <p>
+      This example shows how to use the
+      <strong>
+       Wait-Job
+      </strong>
+      cmdlet with jobs started on remote computers by using the
+      <strong>
+       Start-Job
+      </strong>
+      cmdlet.
+Both
+      <strong>
+       Start-Job
+      </strong>
+      and
+      <strong>
+       Wait-Job
+      </strong>
+      commands are submitted to the remote computer by using the
+      <strong>
+       Invoke-Command
+      </strong>
+      cmdlet.
+     </p>
+     <p>
+      This example uses
+      <strong>
+       Wait-Job
+      </strong>
+      to determine whether a Get-Date command running as a background job on three different computers is finished.
+     </p>
+     <p>
+      The first command creates a Windows PowerShell session (
+      <strong>
+       PSSession
+      </strong>
+      ) on each of the three remote computers and stores them in the $s variable.
+     </p>
+     <p>
+      The second command uses
+      <strong>
+       Invoke-Command
+      </strong>
+      to run
+      <strong>
+       Start-Job
+      </strong>
+      in each of the three sessions in $s.
+All of the jobs are named Date1.
+     </p>
+     <p>
+      The third command uses
+      <strong>
+       Invoke-Command
+      </strong>
+      to run
+      <strong>
+       Wait-Job
+      </strong>
+      .
+This command waits for the Date1 jobs on each computer to finish.
+It stores the resulting collection (array) of job objects in the $done variable.
+     </p>
+     <p>
+      The fourth command uses the
+      <strong>
+       Count
+      </strong>
+      property of the array of job objects in the $done variable to determine how many of the jobs are finished.
+     </p>
+     <p>
+      <strong>
+       Example 3: Determine when the first background job finishes
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; $s = New-PSSession (Get-Content Machines.txt)
+
+PS C:\&gt; $c = 'Get-EventLog -LogName System | where {$_.EntryType -eq "error" --and $_.Source -eq "LSASRV"} | Out-File Errors.txt'
+
+PS C:\&gt; Invoke-Command -Session $s -ScriptBlock {Start-Job -ScriptBlock {$Using:c}
+
+PS C:\&gt; Invoke-Command -Session $s -ScriptBlock {Wait-Job -Any}</code></pre>
+     <p>
+      This example uses the
+      <em>
+       Any
+      </em>
+      parameter of
+      <strong>
+       Wait-Job
+      </strong>
+      to determine when the first of many background jobs running in the current session are completed.
+It also shows how to use the
+      <strong>
+       Wait-Job
+      </strong>
+      cmdlet to wait for remote jobs to finish.
+     </p>
+     <p>
+      The first command creates a
+      <strong>
+       PSSession
+      </strong>
+      on each of the computers listed in the Machines.txt file and stores the
+      <strong>
+       PSSession
+      </strong>
+      objects in the $s variable.
+The command uses the Get-Content cmdlet to get the contents of the file.
+The
+      <strong>
+       Get-Content
+      </strong>
+      command is enclosed in parentheses to make sure that that it runs before the New-PSSession command.
+     </p>
+     <p>
+      The second command stores a
+      <strong>
+       Get-EventLog
+      </strong>
+      command string, in quotation marks, in the $c variable.
+     </p>
+     <p>
+      The third command uses Invoke-Command cmdlet to run
+      <strong>
+       Start-Job
+      </strong>
+      in each of the sessions in $s.
+The
+      <strong>
+       Start-Job
+      </strong>
+      command starts a background job that runs the
+      <strong>
+       Get-EventLog
+      </strong>
+      command in the $c variable.
+     </p>
+     <p>
+      The command uses the
+      <strong>
+       Using
+      </strong>
+      scope modifier to indicate that the $c variable was defined on the local computer.
+The
+      <strong>
+       Using
+      </strong>
+      scope modifier is introduced in Windows PowerShell 3.0.
+For more information about the
+      <strong>
+       Using
+      </strong>
+      scope modifier, see about_Remote_Variables (
+      <a data-linktype="external" href="http://go.microsoft.com/fwlink/?LinkID=252653">
+       http://go.microsoft.com/fwlink/?LinkID=252653
+      </a>
+      ).
+     </p>
+     <p>
+      The fourth command uses
+      <strong>
+       Invoke-Command
+      </strong>
+      to run a
+      <strong>
+       Wait-Job
+      </strong>
+      command in the sessions.
+It uses the
+      <em>
+       Any
+      </em>
+      parameter to wait until the first job on the remote computers is completed.
+     </p>
+     <p>
+      <strong>
+       Example 4: Set a wait time for jobs on remote computers
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; $s = New-PSSession Server01, Server02, Server03
+
+PS C:\&gt; $jobs = Invoke-Command -Session $s -ScriptBlock {Start-Job -ScriptBlock {Get-Date}}
+
+PS C:\&gt; $done = Invoke-Command -Session $s -ScriptBlock {Wait-Job -Timeout 30}</code></pre>
+     <p>
+      This example shows how to use the
+      <em>
+       Timeout
+      </em>
+      parameter of
+      <strong>
+       Wait-Job
+      </strong>
+      to set a maximum wait time for the jobs running on remote computers.
+     </p>
+     <p>
+      The first command creates a
+      <strong>
+       PSSession
+      </strong>
+      on each of three remote computers (Server01, Server02, and Server03), and then stores the
+      <strong>
+       PSSession
+      </strong>
+      objects in the $s variable.
+     </p>
+     <p>
+      The second command uses
+      <strong>
+       Invoke-Command
+      </strong>
+      to run
+      <strong>
+       Start-Job
+      </strong>
+      in each of the
+      <strong>
+       PSSession
+      </strong>
+      objects in $s.
+It stores the resulting job objects in the $jobs variable.
+     </p>
+     <p>
+      The third command uses
+      <strong>
+       Invoke-Command
+      </strong>
+      to run
+      <strong>
+       Wait-Job
+      </strong>
+      in each of the sessions in $s.
+The
+      <strong>
+       Wait-Job
+      </strong>
+      command determines whether all of the commands have completed within 30 seconds.
+It uses the
+      <em>
+       Timeout
+      </em>
+      parameter with a value of 30 to establish the maximum wait time, and then stores the results of the command in the $done variable.
+     </p>
+     <p>
+      In this case, after 30 seconds, only the command on the Server02 computer has completed.
+      <strong>
+       Wait-Job
+      </strong>
+      ends the wait, displays the command prompt, and returns the object that represents the job that was completed.
+     </p>
+     <p>
+      The $done variable contains a job object that represents the job that ran on Server02.
+     </p>
+     <p>
+      <strong>
+       Example 5: Wait until one of several jobs finishes
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Wait-Job -id 1,2,5 -Any</code></pre>
+     <p>
+      This command identifies three jobs by their IDs and waits until any one of them are completed.
+The command prompt returns when the first job finishes.
+     </p>
+     <p>
+      <strong>
+       Example 6: Wait for a period, then allow job to continue in background
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Wait-Job -Name "DailyLog" -Timeout 120</code></pre>
+     <p>
+      This command waits 120 seconds (two minutes) for the DailyLog job to finish.
+If the job does not finish in the next two minutes, the command prompt returns anyway, and the job continues to run in the background.
+     </p>
+     <p>
+      <strong>
+       Example 7: Wait for a job by name
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Wait-Job -Name "Job3"</code></pre>
+     <p>
+      This command uses the job name to identify the job for which to wait.
+     </p>
+     <p>
+      <strong>
+       Example 8: Wait for jobs on local computer started with Start-Job
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; $j = Start-Job -ScriptBlock {Get-ChildItem *.ps1| where {$_lastwritetime -gt ((Get-Date) - (New-TimeSpan -Days 7))}}
+
+PS C:\&gt; $j | Wait-Job</code></pre>
+     <p>
+      This example shows how to use the
+      <strong>
+       Wait-Job
+      </strong>
+      cmdlet with jobs started on the local computer by using
+      <strong>
+       Start-Job
+      </strong>
+      .
+     </p>
+     <p>
+      These commands start a job that gets the Windows PowerShell script files that were added or updated in the last week.
+     </p>
+     <p>
+      The first command uses
+      <strong>
+       Start-Job
+      </strong>
+      to start a background job on the local computer.
+The job runs a Get-ChildItem command that gets all of the files that have a .ps1 file name extension that were added or updated in the last week.
+     </p>
+     <p>
+      The third command uses
+      <strong>
+       Wait-Job
+      </strong>
+      to wait until the job is completed.
+When the job finishes, the command displays the job object, which contains information about the job.
+     </p>
+     <p>
+      <strong>
+       Example 9: Wait for jobs started on remote computers by using Invoke-Command
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; $s = New-PSSession Server01, Server02, Server03
+
+PS C:\&gt; $j = Invoke-Command -Session $s -ScriptBlock {Get-Process} -AsJob
+
+PS C:\&gt; $j | Wait-Job</code></pre>
+     <p>
+      This example shows how to use
+      <strong>
+       Wait-Job
+      </strong>
+      with jobs started on remote computers by using the
+      <em>
+       AsJob
+      </em>
+      parameter of
+      <strong>
+       Invoke-Command
+      </strong>
+      .
+When using
+      <em>
+       AsJob
+      </em>
+      , the job is created on the local computer and the results are automatically returned to the local computer, even though the job runs on the remote computers.
+     </p>
+     <p>
+      This example uses
+      <strong>
+       Wait-Job
+      </strong>
+      to determine whether a
+      <strong>
+       Get-Process
+      </strong>
+      command running in the sessions on three remote computers is completed.
+     </p>
+     <p>
+      The first command creates
+      <strong>
+       PSSession
+      </strong>
+      objects on three computers and stores them in the $s variable.
+     </p>
+     <p>
+      The second command uses
+      <strong>
+       Invoke-Command
+      </strong>
+      to run
+      <strong>
+       Get-Process
+      </strong>
+      in each of the three sessions in $s.
+The command uses the
+      <em>
+       AsJob
+      </em>
+      parameter to run the command asynchronously as a background job.
+The command returns a job object, just like the jobs started by using
+      <strong>
+       Start-Job
+      </strong>
+      , and the job object is stored in the $j variable.
+     </p>
+     <p>
+      The third command uses a pipeline operator (|) to send the job object in $j to the
+      <strong>
+       Wait-Job
+      </strong>
+      cmdlet.
+An
+      <strong>
+       Invoke-Command
+      </strong>
+      command is not required in this case, because the job resides on the local computer.
+     </p>
+     <p>
+      <strong>
+       Example 10: Wait for a job that has an ID
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-Job
+
+
+
+Id   Name     State      HasMoreData     Location             Command
+
+--   ----     -----      -----------     --------             -------
+
+1    Job1     Completed  True            localhost,Server01.. get-service
+
+4    Job4     Completed  True            localhost            dir | where
+
+
+
+PS C:\&gt; Wait-Job -Id 1</code></pre>
+     <p>
+      This command waits for the job with an ID value of 1.
+     </p>
+     <h2 id="required-parameters">
+      Required Parameters
+     </h2>
+     <div class="parameterName stack">
+      -Filter
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a hash table of conditions.
+This cmdlet waits for jobs that satisfy all of the conditions in the hash table.
+Enter a hash table where the keys are job properties and the values are job property values.
+      </p>
+      <p>
+       This parameter works only on custom job types, such as workflow jobs and scheduled jobs.
+It does not work on standard background jobs, such as those created by using the
+       <strong>
+        Start-Job
+       </strong>
+       cmdlet.
+For information about support for this parameter, see the help topic for the job type.
+      </p>
+      <p>
+       This parameter was introduced in Windows PowerShell 3.0.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Hashtable
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         0
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Id
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies an array of IDs of jobs for which this cmdlet waits.
+      </p>
+      <p>
+       The ID is an integer that uniquely identifies the job in the current session.
+It is easier to remember and type than the instance ID, but it is unique only in the current session.
+You can type one or more IDs, separated by commas.
+To find the ID of a job, type
+       <code>
+        Get-Job
+       </code>
+       .
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Int32[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         0
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -InstanceId
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies an array of instance IDs of jobs for which this cmdlet waits.
+The default is all jobs.
+      </p>
+      <p>
+       An instance ID is a GUID that uniquely identifies the job on the computer.
+To find the instance ID of a job, use
+       <strong>
+        Get-Job
+       </strong>
+       .
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Guid[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         0
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Job
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the jobs for which this cmdlet waits.
+Enter a variable that contains the job objects or a command that gets the job objects.
+You can also use a pipeline operator to send job objects to the
+       <strong>
+        Wait-Job
+       </strong>
+       cmdlet.
+By default,
+       <strong>
+        Wait-Job
+       </strong>
+       waits for all jobs created in the current session.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Job[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         0
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName, ByValue)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Name
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies friendly names of jobs for which this cmdlet waits.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         0
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -State
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a job state.
+This cmdlet waits only for jobs in the specified state.
+The acceptable values for this parameter are:
+      </p>
+      <ul>
+       <li>
+        NotStarted
+       </li>
+       <li>
+        Running
+       </li>
+       <li>
+        Completed
+       </li>
+       <li>
+        Failed
+       </li>
+       <li>
+        Stopped
+       </li>
+       <li>
+        Blocked
+       </li>
+       <li>
+        Suspended
+       </li>
+       <li>
+        Disconnected
+       </li>
+       <li>
+        Suspending
+       </li>
+       <li>
+        Stopping
+       </li>
+      </ul>
+      <p>
+       For more information about job states, see
+       <a data-linktype="external" href="https://msdn.microsoft.com/library/system.management.automation.jobstate">
+        JobState Enumeration
+       </a>
+       in the MSDN library.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          JobState
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Parameter Sets:
+        </td>
+        <td>
+         NotStarted, Running, Completed, Failed, Stopped, Blocked, Suspended, Disconnected, Suspending, Stopping, AtBreakpoint
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         0
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="optional-parameters">
+      Optional Parameters
+     </h2>
+     <div class="parameterName stack">
+      -Any
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that this cmdlet displays the command prompt, and returns the job object, when any job finishes.
+By default,
+       <strong>
+        Wait-Job
+       </strong>
+       waits until all of the specified jobs are complete before it displays the prompt.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Force
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that this cmdlet continues to wait for jobs in the Suspended or Disconnected state.
+By default,
+       <strong>
+        Wait-Job
+       </strong>
+       returns, or ends  the wait, when jobs are in one of the following states:
+      </p>
+      <ul>
+       <li>
+        Completed
+       </li>
+       <li>
+        Failed
+       </li>
+       <li>
+        Stopped
+       </li>
+       <li>
+        Suspended
+       </li>
+       <li>
+        Disconnected
+       </li>
+      </ul>
+      <p>
+       This parameter was introduced in Windows PowerShell 3.0.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Timeout
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the maximum wait time for each background job, in seconds.
+The default value, -1, indicates that the cmdlet waits until the job finishes.
+The timing starts when you submit the
+       <strong>
+        Wait-Job
+       </strong>
+       command, not the
+       <strong>
+        Start-Job
+       </strong>
+       command.
+      </p>
+      <p>
+       If this time is exceeded, the wait ends and the command prompt returns, even if the job is still running.
+The command does not display any error message.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Int32
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         TimeoutSec
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="inputs">
+      Inputs
+     </h2>
+     <p>
+      <strong>
+       System.Management.Automation.RemotingJob
+      </strong>
+     </p>
+     <p>
+      You can pipe a job object to this cmdlet.
+     </p>
+     <h2 id="outputs">
+      Outputs
+     </h2>
+     <p>
+      <strong>
+       System.Management.Automation.PSRemotingJob
+      </strong>
+     </p>
+     <p>
+      This cmdlet returns job objects that represent the completed jobs.
+If the wait ends because the value of the
+      <em>
+       Timeout
+      </em>
+      parameter is exceeded,
+      <strong>
+       Wait-Job
+      </strong>
+      does not return any objects.
+     </p>
+     <h2 id="notes">
+      Notes
+     </h2>
+     <ul>
+      <li>
+       <p>
+        By default,
+        <strong>
+         Wait-Job
+        </strong>
+        returns, or ends the wait, when jobs are in one of the following states:
+       </p>
+      </li>
+      <li>
+       <p>
+        Completed
+       </p>
+      </li>
+      <li>
+       Failed
+      </li>
+      <li>
+       Stopped
+      </li>
+      <li>
+       Suspended
+      </li>
+      <li>
+       Disconnected To direct
+       <strong>
+        Wait-Job
+       </strong>
+       to continue to wait for Suspended and Disconnected jobs, use the
+       <em>
+        Force
+       </em>
+       parameter.
+      </li>
+     </ul>
+     <h2 id="related-links">
+      Related Links
+     </h2>
+     <ul>
+      <li>
+       <a data-linktype="relative-path" href="get-job.html">
+        Get-Job
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="invoke-command.html">
+        Invoke-Command
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="receive-job.html">
+        Receive-Job
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="remove-job.html">
+        Remove-Job
+       </a>
+      </li>
+      <li>
+       <a data-linktype="external" href="https://msdn.microsoft.com/en-us/powershell/reference/5.1/Microsoft.PowerShell.Core/Resume-Job">
+        Resume-Job
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="start-job.html">
+        Start-Job
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="stop-job.html">
+        Stop-Job
+       </a>
+      </li>
+      <li>
+       <a data-linktype="external" href="https://msdn.microsoft.com/en-us/powershell/reference/5.1/Microsoft.PowerShell.Core/Suspend-Job">
+        Suspend-Job
+       </a>
+      </li>
+     </ul>
+     <!-- </content> -->
+    </main>
+    <div class="note alert feedback-system-change-alert">
+     <p>
+      Note
+     </p>
+     <p>
+      The feedback system for this content will be changing soon. Old comments will not be carried over. If content within a comment thread is important to you, please save a copy. For more information on the upcoming change,
+      <a href="https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs">
+       we invite you to read our blog post
+      </a>
+      .
+     </p>
+    </div>
+    <div data-bi-name="comments" id="comments-container" role="form">
+    </div>
+   </div>
+  </div>
+  <div class="openfeedback-container" id="openFeedbackContainer">
+  </div>
+  <div class="action-panel">
+  </div>
+ </body>
+</html>

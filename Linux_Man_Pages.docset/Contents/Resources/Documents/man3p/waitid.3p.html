@@ -1,0 +1,322 @@
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML><HEAD><TITLE>Man page of WAITID</TITLE>
+</HEAD><BODY>
+<H1>WAITID</H1>
+Section: POSIX Programmer's Manual (3P)<BR>Updated: 2013<BR><A HREF="#index">Index</A>
+<A HREF="../index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>PROLOG</H2>
+
+This manual page is part of the POSIX Programmer's Manual.
+The Linux implementation of this interface may differ (consult
+the corresponding Linux manual page for details of Linux behavior),
+or the interface may not be implemented on Linux.
+<P>
+<A NAME="lbAC">&nbsp;</A>
+<H2>NAME</H2>
+
+waitid
+--- wait for a child process to change state
+<A NAME="lbAD">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<P>
+
+<PRE>
+#include &lt;<A HREF="file:///usr/include/sys/wait.h">sys/wait.h</A>&gt;
+
+int waitid(idtype_t <I>idtype</I>, id_t <I>id</I>, siginfo_t *<I>infop</I>, int <I>options</I>);
+</PRE>
+
+<A NAME="lbAE">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+The
+<I>waitid</I>()
+function shall suspend the calling thread until one child of the
+process containing the calling thread changes state. It records the
+current state of a child in the structure pointed to by
+<I>infop</I>.
+
+The fields of the structure pointed to by
+<I>infop</I>
+
+are filled in as described for the SIGCHLD signal in
+<I>&lt;<A HREF="file:///usr/include/signal.h">signal.h</A>&gt;</I>.
+
+If a child process changed state prior to the call to
+<I>waitid</I>(),
+<I>waitid</I>()
+shall return immediately. If more than one thread is suspended in
+<I>wait</I>(),
+<I>waitid</I>(),
+or
+<I>waitpid</I>()
+waiting for termination of the same process, exactly one thread shall
+return the process status at the time of the target process termination.
+<P>
+
+The
+<I>idtype</I>
+
+and
+<I>id</I>
+
+arguments are used to specify which children
+<I>waitid</I>()
+waits for.
+<P>
+
+If
+<I>idtype</I>
+
+is P_PID,
+<I>waitid</I>()
+shall wait for the child with a process ID equal to
+(<B>pid_t</B>)<I>id</I>.
+<P>
+
+If
+<I>idtype</I>
+
+is P_PGID,
+<I>waitid</I>()
+shall wait for any child with a process group ID equal to
+(<B>pid_t</B>)<I>id</I>.
+<P>
+
+If
+<I>idtype</I>
+
+is P_ALL,
+<I>waitid</I>()
+shall wait for any children and
+<I>id</I>
+
+is ignored.
+<P>
+
+The
+<I>options</I>
+
+argument is used to specify which state changes
+<I>waitid</I>()
+shall wait for. It is formed by OR'ing together the following flags:
+<DL COMPACT>
+<DT>WCONTINUED<DD>
+Status shall be returned for any continued child process whose status
+either has not been reported since it continued from a job control stop
+or has been reported only by calls to
+<I>waitid</I>()
+with the WNOWAIT flag set.
+<DT>WEXITED<DD>
+Wait for processes that have exited.
+<DT>WNOHANG<DD>
+Do not hang if no status is available; return immediately.
+<DT>WNOWAIT<DD>
+Keep the process whose status is returned in
+<I>infop</I>
+
+in a waitable state. This shall not affect the state of the process; the
+process may be waited for again after this call completes.
+<DT>WSTOPPED<DD>
+Status shall be returned for any child that has stopped upon receipt of
+a signal, and whose status either has not been reported since it stopped
+or has been reported only by calls to
+<I>waitid</I>()
+with the WNOWAIT flag set.
+</DL>
+<P>
+
+Applications shall specify at least one of the flags WEXITED, WSTOPPED,
+or WCONTINUED to be OR'ed in with the
+<I>options</I>
+
+argument.
+<P>
+
+The application shall ensure that the
+<I>infop</I>
+
+argument points to a
+<B>siginfo_t</B>
+
+structure. If
+<I>waitid</I>()
+returns because a child process was found that satisfied the conditions
+indicated by the arguments
+<I>idtype</I>
+
+and
+<I>options</I>,
+
+then the structure pointed to by
+<I>infop</I>
+
+shall be filled in by the system with the status of the process; the
+<I>si_signo</I>
+
+member shall be set equal to SIGCHLD.
+If
+<I>waitid</I>()
+returns because WNOHANG was specified and status is not available for
+any process specified by
+<I>idtype</I>
+
+and
+<I>id</I>,
+
+then the
+<I>si_signo</I>
+
+and
+<I>si_pid</I>
+
+members of the structure pointed to by
+<I>infop</I>
+
+shall be set to zero and the values of other members of the structure
+are unspecified.
+<A NAME="lbAF">&nbsp;</A>
+<H2>RETURN VALUE</H2>
+
+If WNOHANG was specified and status is not available for any process
+specified by
+<I>idtype</I>
+
+and
+<I>id</I>,
+
+0 shall be returned. If
+<I>waitid</I>()
+returns due to the change of state of one of its children, 0 shall be
+returned. Otherwise, -1 shall be returned and
+<I>errno</I>
+
+set to indicate the error.
+<A NAME="lbAG">&nbsp;</A>
+<H2>ERRORS</H2>
+
+The
+<I>waitid</I>()
+function shall fail if:
+<DL COMPACT>
+<DT><B>ECHILD</B>
+
+<DD>
+The calling process has no existing unwaited-for child processes.
+<DT><B>EINTR</B>
+
+<DD>
+The
+<I>waitid</I>()
+function was interrupted by a signal.
+<DT><B>EINVAL</B>
+
+<DD>
+An invalid value was specified for
+<I>options</I>,
+
+or
+<I>idtype</I>
+
+and
+<I>id</I>
+
+specify an invalid set of processes.
+</DL>
+<P>
+
+<I>The following sections are informative.</I>
+
+<A NAME="lbAH">&nbsp;</A>
+<H2>EXAMPLES</H2>
+
+None.
+<A NAME="lbAI">&nbsp;</A>
+<H2>APPLICATION USAGE</H2>
+
+Calls to
+<I>waitid</I>()
+with
+<I>idtype</I>
+
+equal to P_ALL will collect information about any child process. This
+may result in interactions with other interfaces that may be waiting
+for their own children (such as by use of
+<I>system</I>()).
+For this reason it is recommended that portable applications not use
+<I>waitid</I>()
+with idtype of P_ALL. See also APPLICATION USAGE for
+<I>wait</I>().
+<A NAME="lbAJ">&nbsp;</A>
+<H2>RATIONALE</H2>
+
+None.
+<A NAME="lbAK">&nbsp;</A>
+<H2>FUTURE DIRECTIONS</H2>
+
+None.
+<A NAME="lbAL">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+<I>exec</I>,
+
+<I>exit</I>(),
+
+<I>wait</I>()
+
+<P>
+
+The Base Definitions volume of POSIX.1-2008,
+<I></I><B>&lt;<A HREF="file:///usr/include/signal.h">signal.h</A>&gt;</B>,
+
+<I></I><B>&lt;<A HREF="file:///usr/include/sys_wait.h">sys_wait.h</A>&gt;</B>
+
+<A NAME="lbAM">&nbsp;</A>
+<H2>COPYRIGHT</H2>
+
+Portions of this text are reprinted and reproduced in electronic form
+from IEEE Std 1003.1, 2013 Edition, Standard for Information Technology
+-- Portable Operating System Interface (POSIX), The Open Group Base
+Specifications Issue 7, Copyright (C) 2013 by the Institute of
+Electrical and Electronics Engineers, Inc and The Open Group.
+(This is POSIX.1-2008 with the 2013 Technical Corrigendum 1 applied.) In the
+event of any discrepancy between this version and the original IEEE and
+The Open Group Standard, the original IEEE and The Open Group Standard
+is the referee document. The original Standard can be obtained online at
+<A HREF="http://www.unix.org/online.html">http://www.unix.org/online.html</A> .
+<P>
+Any typographical or formatting errors that appear
+in this page are most likely
+to have been introduced during the conversion of the source files to
+man page format. To report such errors, see
+<A HREF="https://www.kernel.org/doc/man-pages/reporting_bugs.html">https://www.kernel.org/doc/man-pages/reporting_bugs.html</A> .
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">PROLOG</A><DD>
+<DT><A HREF="#lbAC">NAME</A><DD>
+<DT><A HREF="#lbAD">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAE">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAF">RETURN VALUE</A><DD>
+<DT><A HREF="#lbAG">ERRORS</A><DD>
+<DT><A HREF="#lbAH">EXAMPLES</A><DD>
+<DT><A HREF="#lbAI">APPLICATION USAGE</A><DD>
+<DT><A HREF="#lbAJ">RATIONALE</A><DD>
+<DT><A HREF="#lbAK">FUTURE DIRECTIONS</A><DD>
+<DT><A HREF="#lbAL">SEE ALSO</A><DD>
+<DT><A HREF="#lbAM">COPYRIGHT</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 14:28:56 GMT, February 25, 2017
+</BODY>
+</HTML>

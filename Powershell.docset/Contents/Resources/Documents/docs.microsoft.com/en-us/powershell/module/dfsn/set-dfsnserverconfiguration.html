@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html class="no-js hasSidebar hasPageActions hasBreadcrumb conceptual" data-authenticated="false" data-render="docs" dir="ltr" lang="en-us">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Set-DfsnServerConfiguration (dfsn)" property="og:title"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" property="og:image"/>
+  <meta content="summary" name="twitter:card"/>
+  <meta content="@docsmsft" name="twitter:site"/>
+  <meta content="Set-DfsnServerConfiguration (dfsn)" name="twitter:title"/>
+  <meta content="Use this topic to help manage Windows and Windows Server technologies with Windows PowerShell." name="twitter:description"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" name="twitter:image"/>
+  <meta content="Microsoft Logo" name="twitter:image:alt"/>
+  <meta content="Use this topic to help manage Windows and Windows Server technologies with Windows PowerShell." name="description"/>
+  <meta content="Docs" name="search.ms_sitename"/>
+  <meta content="powershell-windows" name="search.ms_docsetname"/>
+  <meta content="0" name="version"/>
+  <meta content="en-us" name="locale"/>
+  <meta content="Docs" name="site_name"/>
+  <meta content="MSDN" name="search.ms_product"/>
+  <meta content="MSDN.powershell-windows" name="depot_name"/>
+  <meta content="https://cpubwin.visualstudio.com/DefaultCollection/powershell/_git/powershell/commit/ced7757924addcaea0b7a244ae4d240e4d28d93a?path=%2fdocset%2fwindows%2fdfsn%2fset-dfsnserverconfiguration.md&amp;_a=contents" name="ref_skeleton_gitcommit"/>
+  <meta content="https://cpubwin.visualstudio.com/DefaultCollection/powershell/_git/powershell?path=%2fdocset%2fwindows%2fdfsn%2fset-dfsnserverconfiguration.md&amp;version=GBlive&amp;_a=contents" name="original_ref_skeleton_git_url"/>
+  <meta content="2017-09-15 03:44 AM" name="updated_at"/>
+  <meta content="5ed28527-59b5-7f5b-a609-1316974a6a3e" name="document_id"/>
+  <meta content="9f0af3ad-31b1-4449-cac7-14a1ccdedd33" name="document_version_independent_id"/>
+  <meta content="powershell" name="page_type"/>
+  <meta content="command" name="page_kind"/>
+  <meta content="manage" name="ms.mktglfcycl"/>
+  <meta content="library" name="ms.sitesec"/>
+  <meta content="brianlic" name="ms.author"/>
+  <meta content="brianlic-msft" name="author"/>
+  <meta content="DfsNamespaceServerConfig.cdxml-help.xml" name="external_help_file"/>
+  <meta content="powershell, cmdlet" name="keywords"/>
+  <meta content="alanth" name="manager"/>
+  <meta content="12/20/2016" name="ms.date"/>
+  <meta content="w10" name="ms.prod"/>
+  <meta content="powershell-windows" name="ms.technology"/>
+  <meta content="reference" name="ms.topic"/>
+  <meta content="" name="online_version"/>
+  <meta content="2.0.0" name="schema"/>
+  <meta content="C42139C2-0C9D-442B-9530-C828360A627B" name="ms.assetid"/>
+  <meta content="powershell" name="ms.devlang"/>
+  <meta content="INDEX, FOLLOW" name="ROBOTS"/>
+  <meta content="/powershell/windows/bread/toc.json?view=win10-ps" name="breadcrumb_path"/>
+  <meta content="powershell" name="apiPlatform"/>
+  <meta content="MSDocsHeader-WindowsIT" name="uhfHeaderId"/>
+  <meta content="../win10-ps/toc.json?view=win10-ps" name="toc_rel"/>
+  <link href="https://docs.microsoft.com/en-us/powershell/module/dfsn/set-dfsnserverconfiguration" rel="canonical"/>
+  <title>
+   Set-DfsnServerConfiguration
+  </title>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/e4a1f3a3.site.css" rel="stylesheet"/>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/31353636.conceptual.css" rel="stylesheet"/>
+ </head>
+ <body dir="ltr" lang="en-us">
+  <div class="header-holder">
+   <div data-bi-name="header" id="headerAreaHolder">
+    <div id="uhf-placeholder">
+    </div>
+   </div>
+   <div class="disclaimer-holder" id="disclaimer-holder">
+   </div>
+  </div>
+  <div class="container mainContainer" data-bi-name="body">
+   <div class="content-header" data-bi-name="content-header">
+    <div class="content-header-controls">
+     <button class="contents-button button-border" data-bi-name="contents-expand" type="button">
+      <span class="docon docon-menu">
+      </span>
+      Contents
+     </button>
+    </div>
+    <div class="content-header-controls">
+     <button class="ap-collapse-behavior ap-expanded button-border" data-bi-name="ap-collapse" type="button">
+      <span class="docon docon-exit-mode">
+      </span>
+      Exit focus mode
+     </button>
+    </div>
+   </div>
+   <div class="primary-holder">
+    <main class="content" data-bi-name="content" dir="ltr" id="main" lang="en-us" role="main">
+     <!-- <content> -->
+     <h1>
+      Set-Dfsn
+      <wbr/>
+      Server
+      <wbr/>
+      Configuration
+     </h1>
+     <div class="metadata">
+      <dl class="attributeList">
+       <dt>
+        Module:
+       </dt>
+       <dd>
+        <a data-linktype="relative-path" href="./.html">
+         dfsn
+        </a>
+       </dd>
+      </dl>
+     </div>
+     <div class="summaryHolder">
+      <div class="summary">
+       Changes settings for a DFS namespace root server.
+      </div>
+     </div>
+     <h2 class="hiddenAnchor" id="syntax">
+      Syntax
+     </h2>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Set-DfsnServerConfiguration
+   [-ComputerName] &lt;String&gt;
+   [[-SyncIntervalSec] &lt;UInt32&gt;]
+   [[-EnableSiteCostedReferrals] &lt;Boolean&gt;]
+   [[-EnableInsiteReferrals] &lt;Boolean&gt;]
+   [[-LdapTimeoutSec] &lt;UInt32&gt;]
+   [[-PreferLogonDC] &lt;Boolean&gt;]
+   [[-UseFqdn] &lt;Boolean&gt;]
+   [-CimSession &lt;CimSession[]&gt;]
+   [-ThrottleLimit &lt;Int32&gt;]
+   [-AsJob]
+   [-WhatIf]
+   [-Confirm]
+   [&lt;CommonParameters&gt;]</code></pre>
+     <h2 id="description">
+      Description
+     </h2>
+     <p>
+      The
+      <strong>
+       Set-DfsnServerConfiguration
+      </strong>
+      cmdlet changes settings for a Distributed File System (DFS) namespace root server.
+A DFS namespace root server hosts one or more namespace root targets.
+     </p>
+     <p>
+      You can use this cmdlet to enable in-site referrals or to use cost in organizing referrals for targets in a site.
+You can also change the synchronization interval for servers that connect to a primary domain controller (PDC) emulator and change the Lightweight Directory Access Protocol (LDAP) time-out.
+You can specify whether referrals prefer the logon domain controller.
+You can also specify whether the server provides referrals as fully qualified domain names (FQDN) or NETBios names.
+     </p>
+     <p>
+      To see current values for these settings, use the
+      <strong>
+       Get-DfsnServerConfiguration
+      </strong>
+      cmdlet.
+     </p>
+     <h2 id="examples">
+      Examples
+     </h2>
+     <p>
+      <strong>
+       Example 1: Set LDAP time-out for a DFS namespace server
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Set-DfsnServerConfiguration -ComputerName "localhost" -LdapTimeoutSec 60</code></pre>
+     <p>
+      This command sets an LDAP time-out value of 60 seconds for the local computer, which is a DFS namespace server.
+     </p>
+     <h2 id="required-parameters">
+      Required Parameters
+     </h2>
+     <div class="parameterName stack">
+      -ComputerName
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the host name or FQDN for the DFS namespace server for which the cmdlet modifies settings.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         Server, name, NamespaceServer
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         0
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="optional-parameters">
+      Optional Parameters
+     </h2>
+     <div class="parameterName stack">
+      -AsJob
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Runs the cmdlet as a background job. Use this parameter to run commands that take a long time to complete.
+      </p>
+      <p>
+       The cmdlet immediately returns an object that represents the job and then displays the command prompt. 
+You can continue to work in the session while the job completes. 
+To manage the job, use the
+       <code>
+        *-Job
+       </code>
+       cmdlets. 
+To get the job results, use the
+       <a data-linktype="external" href="http://go.microsoft.com/fwlink/?LinkID=113372">
+        Receive-Job
+       </a>
+       cmdlet.
+      </p>
+      <p>
+       For more information about Windows PowerShell background jobs, see
+       <a data-linktype="external" href="http://go.microsoft.com/fwlink/?LinkID=113251">
+        about_Jobs
+       </a>
+       .
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -CimSession
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Runs the cmdlet in a remote session or on a remote computer.
+Enter a computer name or a session object, such as the output of a
+       <a data-linktype="external" href="http://go.microsoft.com/fwlink/p/?LinkId=227967">
+        New-CimSession
+       </a>
+       or
+       <a data-linktype="external" href="http://go.microsoft.com/fwlink/p/?LinkId=227966">
+        Get-CimSession
+       </a>
+       cmdlet.
+The default is the current session on the local computer.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          CimSession[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         Session
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Confirm
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Prompts you for confirmation before running the cmdlet.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         cf
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -EnableInsiteReferrals
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates whether this server provides only in-site referrals.
+If you assign a value of $True, the server returns only referrals for targets in the same site as the client.
+If you assign a value of $False, the server returns in-site referrals and other referrals.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Boolean
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         insite
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         3
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -EnableSiteCostedReferrals
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates whether the server can use cost-based selection.
+If you specify a value of $True, the DFS namespace server provides referrals for folder targets to clients in the following order:
+      </p>
+      <ul>
+       <li>
+        Folder targets in the same site as a client, in random order.
+       </li>
+       <li>
+        Folder targets for which the DFS namespace server has information.
+The referrals for the nearest site are first, in random order, followed by the next nearest site, in random order.
+       </li>
+       <li>
+        Targets for which DFS namespace server has no site information, in random order.
+       </li>
+      </ul>
+      <p>
+       If you specify a value of $False, the DFS namespace server provides referrals for folder targets to clients in the following order:
+      </p>
+      <ul>
+       <li>
+        Folder targets in the same site as the client, in random order.
+       </li>
+       <li>
+        Other folder targets, in random order.
+       </li>
+      </ul>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Boolean
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         Sitecosted, SiteCostedReferrals
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         2
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -LdapTimeoutSec
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a time-out value, in seconds, for Lightweight Directory Access Protocol (LDAP) requests for the DFS namespace server.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          UInt32
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         LdapTimeout
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         4
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -PreferLogonDC
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates whether to prefer the logon domain controller in referrals.
+If you specify a value of $True for this parameter, the DFS namespace server places referrals to the computer that hosts the logon domain controller at the top of the list of referrals.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Boolean
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         5
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -SyncIntervalSec
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies an interval, in seconds.
+This interval controls how often domain-based DFS namespace root servers and domain controllers connect to the PDC emulator to get updates of DFS namespace metadata.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          UInt32
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         SyncInterval
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         1
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -ThrottleLimit
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the maximum number of concurrent operations that can be established to run the cmdlet.
+If this parameter is omitted or a value of
+       <code>
+        0
+       </code>
+       is entered, then Windows PowerShellÂ® calculates an optimum throttle limit for the cmdlet based on the number of CIM cmdlets that are running on the computer.
+The throttle limit applies only to the current cmdlet, not to the session or to the computer.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Int32
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -UseFqdn
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates whether a DFS namespace server uses FQDNs in referrals.
+If this parameter has a value of $True, the server uses FQDNs in referrals.
+If this parameter has a value of $False, the server uses NetBIOS names.
+The default for DFS namespace servers is to use NetBIOS names in referrals.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Boolean
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         Fqdn, dfsdnsconfig, UseFullyQualifiedDomainNames
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         6
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -WhatIf
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         wi
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="outputs">
+      Outputs
+     </h2>
+     <p>
+      <strong>
+       Microsoft.Management.Infrastructure.CimInstance#MSFT_DfsNamespaceServerConfig
+      </strong>
+     </p>
+     <h2 id="related-links">
+      Related Links
+     </h2>
+     <ul>
+      <li>
+       <a data-linktype="relative-path" href="./get-dfsnserverconfiguration.html">
+        Get-DfsnServerConfiguration
+       </a>
+      </li>
+     </ul>
+     <!-- </content> -->
+    </main>
+    <section class="feedback-section" data-bi-name="feedback-section">
+     <h2 id="feedback">
+      Feedback
+     </h2>
+     <div class="alert choose-feedback-type">
+      <p>
+       We'd love to hear your thoughts. Choose the type you'd like to provide:
+      </p>
+      <div class="choose-feedback-buttons">
+       <a class="button-border feedback-type-product" data-bi-name="product-feedback" href="https://windowsserver.uservoice.com/forums/301869-powershell">
+        Product feedback
+        <span aria-hidden="true" class="docon docon-navigate-external">
+        </span>
+       </a>
+       <div class="button-group">
+        <button class="button-border feedback-sign-in-button" data-bi-name="feedback-sign-in">
+         <span aria-hidden="true" class="docon docon-brand-github">
+         </span>
+         Sign in to give documentation feedback
+        </button>
+        <button aria-controls="feedback-form" aria-expanded="false" class="button-border feedback-form-toggle" data-bi-name="documentation-feedback" hidden="">
+         Content feedback
+        </button>
+        <div auto-align="" class="dropdown has-caret">
+         <button aria-controls="fbm0" aria-expanded="false" aria-haspopup="true" aria-label="Expand documentation feedback menu" class="button-border dropdown-trigger" data-bi-name="documentation-feedback-menu">
+          <span aria-hidden="true" class="docon docon-chevron-down-light">
+          </span>
+         </button>
+         <div class="dropdown-menu documentation-feedback-menu" id="fbm0" role="menu">
+          You may also leave feedback
+          <a data-bi-name="create-issue-on-github" href="{0}">
+           directly on GitHub
+           <span aria-hidden="true" class="docon docon-navigate-external">
+           </span>
+          </a>
+          .
+         </div>
+        </div>
+       </div>
+      </div>
+      <p>
+       <small>
+        Our new feedback system is built on GitHub Issues. Read about this change in
+        <a href="https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs">
+         our blog post
+        </a>
+        .
+       </small>
+      </p>
+     </div>
+     <form accept-charset="UTF-8" action="javascript:" autocomplete="off" class="feedback-form" hidden="" id="feedback-form">
+      <h3 class="feedback-form-heading current-user">
+       <img alt="Avatar" aria-hidden="true" class="avatar" height="36" width="36"/>
+       <span aria-hidden="true" class="username">
+       </span>
+       <span class="visually-hidden">
+        Liquid error: Can't find the localized string giveDocumentationFeedback for template Conceptual.
+       </span>
+      </h3>
+      <label>
+       <span class="visually-hidden">
+        Title
+       </span>
+       <input name="title" pattern=".*\w.*" placeholder="Title" required="" type="text"/>
+      </label>
+      <label>
+       <span class="visually-hidden">
+        Leave a comment
+       </span>
+       <textarea name="body" placeholder="Leave a comment" required=""></textarea>
+      </label>
+      <div class="action-container">
+       <button class="primary-action" name="submit" type="submit">
+        Submit feedback
+       </button>
+      </div>
+     </form>
+     <div class="feedback-status alert busy" role="alert">
+      <p>
+       Loading feedback...
+      </p>
+     </div>
+     <div class="feedback-tab-group tabGroup" data-tab-group-independent="" hidden="">
+      <ul role="tablist">
+       <li role="presentation">
+        <a aria-controls="tabpanel-issues-open" aria-label="Open Issues" data-tab="issues-open" href="#tabpanel-issues-open" role="tab">
+        </a>
+       </li>
+       <li role="presentation">
+        <a aria-controls="tabpanel-issues-closed" aria-label="Closed Issues" data-tab="issues-closed" href="#tabpanel-issues-closed" role="tab">
+        </a>
+       </li>
+      </ul>
+      <section data-tab="issues-open" id="tabpanel-issues-open" role="tabpanel">
+       <div class="no-issues-placeholder">
+        There are no open issues
+       </div>
+       <ul aria-label="Open Issues" class="github-issues-list">
+       </ul>
+      </section>
+      <section data-tab="issues-closed" id="tabpanel-issues-closed" role="tabpanel">
+       <div class="no-issues-placeholder">
+        There are no closed issues
+       </div>
+       <ul aria-label="Closed Issues" class="github-issues-list">
+       </ul>
+      </section>
+     </div>
+     <div class="action-container">
+      <a class="view-on-github" data-bi-name="view-on-github" hidden="" href="https://github.com/MicrosoftDocs/windows-powershell-docs/issues">
+       <span aria-hidden="true" class="docon docon-brand-github">
+       </span>
+       <span>
+        View on GitHub
+       </span>
+       <span aria-hidden="true" class="docon docon-navigate-external">
+       </span>
+      </a>
+     </div>
+    </section>
+   </div>
+  </div>
+  <div class="openfeedback-container" id="openFeedbackContainer">
+  </div>
+  <div class="action-panel">
+  </div>
+ </body>
+</html>

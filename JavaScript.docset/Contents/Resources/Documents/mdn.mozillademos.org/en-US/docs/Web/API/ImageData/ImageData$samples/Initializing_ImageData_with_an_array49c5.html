@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    
+<!-- Mirrored from mdn.mozillademos.org/en-US/docs/Web/API/ImageData/ImageData$samples/Initializing_ImageData_with_an_array?revision=1506976 by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 02 May 2019 02:04:11 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+        <meta charset="utf-8">
+        <link href="../../../../../../../developer.mozilla.org/static/build/styles/samples.37902ba3b7fe.css" rel="stylesheet" type="text/css" />
+        
+        <title>ImageData()</title>
+    </head>
+    <body>
+        
+            <canvas id="canvas"></canvas>
+        
+        
+            <script>
+                const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
+const arr = new Uint8ClampedArray(40000);
+
+// Iterate through every pixel
+for (let i = 0; i < arr.length; i += 4) {
+  arr[i + 0] = 0;    // R value
+  arr[i + 1] = 190;  // G value
+  arr[i + 2] = 0;    // B value
+  arr[i + 3] = 255;  // A value
+}
+
+// Initialize a new ImageData object
+let imageData = new ImageData(arr, 200);
+
+// Draw image data to the canvas
+ctx.putImageData(imageData, 20, 20);
+            </script>
+        
+    </body>
+
+<!-- Mirrored from mdn.mozillademos.org/en-US/docs/Web/API/ImageData/ImageData$samples/Initializing_ImageData_with_an_array?revision=1506976 by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 02 May 2019 02:04:11 GMT -->
+</html>

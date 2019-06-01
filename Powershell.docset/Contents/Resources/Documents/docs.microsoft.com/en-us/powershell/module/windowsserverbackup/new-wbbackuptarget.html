@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html class="no-js hasSidebar hasPageActions hasBreadcrumb conceptual" data-authenticated="false" data-render="docs" dir="ltr" lang="en-us">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="New-WBBackupTarget (windowsserverbackup)" property="og:title"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" property="og:image"/>
+  <meta content="summary" name="twitter:card"/>
+  <meta content="@docsmsft" name="twitter:site"/>
+  <meta content="New-WBBackupTarget (windowsserverbackup)" name="twitter:title"/>
+  <meta content="Use this topic to help manage Windows and Windows Server technologies with Windows PowerShell." name="twitter:description"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" name="twitter:image"/>
+  <meta content="Microsoft Logo" name="twitter:image:alt"/>
+  <meta content="Use this topic to help manage Windows and Windows Server technologies with Windows PowerShell." name="description"/>
+  <meta content="Docs" name="search.ms_sitename"/>
+  <meta content="powershell-windows" name="search.ms_docsetname"/>
+  <meta content="0" name="version"/>
+  <meta content="en-us" name="locale"/>
+  <meta content="Docs" name="site_name"/>
+  <meta content="MSDN" name="search.ms_product"/>
+  <meta content="MSDN.powershell-windows" name="depot_name"/>
+  <meta content="https://cpubwin.visualstudio.com/DefaultCollection/powershell/_git/powershell/commit/ced7757924addcaea0b7a244ae4d240e4d28d93a?path=%2fdocset%2fwindows%2fwindowsserverbackup%2fnew-wbbackuptarget.md&amp;_a=contents" name="ref_skeleton_gitcommit"/>
+  <meta content="https://cpubwin.visualstudio.com/DefaultCollection/powershell/_git/powershell?path=%2fdocset%2fwindows%2fwindowsserverbackup%2fnew-wbbackuptarget.md&amp;version=GBlive&amp;_a=contents" name="original_ref_skeleton_git_url"/>
+  <meta content="2017-09-15 03:44 AM" name="updated_at"/>
+  <meta content="6607af5e-8b17-b8fb-d812-ecec70a212a7" name="document_id"/>
+  <meta content="8c8f1ea1-5341-8fb1-7856-2271ae6acd10" name="document_version_independent_id"/>
+  <meta content="powershell" name="page_type"/>
+  <meta content="command" name="page_kind"/>
+  <meta content="manage" name="ms.mktglfcycl"/>
+  <meta content="library" name="ms.sitesec"/>
+  <meta content="brianlic" name="ms.author"/>
+  <meta content="brianlic-msft" name="author"/>
+  <meta content="wsbcmdlet.dll-Help.xml" name="external_help_file"/>
+  <meta content="powershell, cmdlet" name="keywords"/>
+  <meta content="alanth" name="manager"/>
+  <meta content="12/27/2016" name="ms.date"/>
+  <meta content="w10" name="ms.prod"/>
+  <meta content="powershell-windows" name="ms.technology"/>
+  <meta content="reference" name="ms.topic"/>
+  <meta content="" name="online_version"/>
+  <meta content="2.0.0" name="schema"/>
+  <meta content="D4D0C006-575E-4F0D-87AB-FD4E9E727D27" name="ms.assetid"/>
+  <meta content="powershell" name="ms.devlang"/>
+  <meta content="INDEX, FOLLOW" name="ROBOTS"/>
+  <meta content="/powershell/windows/bread/toc.json?view=win10-ps" name="breadcrumb_path"/>
+  <meta content="powershell" name="apiPlatform"/>
+  <meta content="MSDocsHeader-WindowsIT" name="uhfHeaderId"/>
+  <meta content="../win10-ps/toc.json?view=win10-ps" name="toc_rel"/>
+  <link href="https://docs.microsoft.com/en-us/powershell/module/windowsserverbackup/new-wbbackuptarget" rel="canonical"/>
+  <title>
+   New-WBBackupTarget
+  </title>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/e4a1f3a3.site.css" rel="stylesheet"/>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/31353636.conceptual.css" rel="stylesheet"/>
+ </head>
+ <body dir="ltr" lang="en-us">
+  <div class="header-holder">
+   <div data-bi-name="header" id="headerAreaHolder">
+    <div id="uhf-placeholder">
+    </div>
+   </div>
+   <div class="disclaimer-holder" id="disclaimer-holder">
+   </div>
+  </div>
+  <div class="container mainContainer" data-bi-name="body">
+   <div class="content-header" data-bi-name="content-header">
+    <div class="content-header-controls">
+     <button class="contents-button button-border" data-bi-name="contents-expand" type="button">
+      <span class="docon docon-menu">
+      </span>
+      Contents
+     </button>
+    </div>
+    <div class="content-header-controls">
+     <button class="ap-collapse-behavior ap-expanded button-border" data-bi-name="ap-collapse" type="button">
+      <span class="docon docon-exit-mode">
+      </span>
+      Exit focus mode
+     </button>
+    </div>
+   </div>
+   <div class="primary-holder">
+    <main class="content" data-bi-name="content" dir="ltr" id="main" lang="en-us" role="main">
+     <!-- <content> -->
+     <h1>
+      New-WBBackup
+      <wbr/>
+      Target
+     </h1>
+     <div class="metadata">
+      <dl class="attributeList">
+       <dt>
+        Module:
+       </dt>
+       <dd>
+        <a data-linktype="relative-path" href="./.html">
+         windowsserverbackup
+        </a>
+       </dd>
+      </dl>
+     </div>
+     <div class="summaryHolder">
+      <div class="summary">
+       Creates a backup target object.
+      </div>
+     </div>
+     <h2 class="hiddenAnchor" id="syntax">
+      Syntax
+     </h2>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">New-WBBackupTarget
+   [-Disk] &lt;WBDisk&gt;
+   [[-Label] &lt;String&gt;]
+   [[-PreserveExistingBackups] &lt;Boolean&gt;]
+   [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">New-WBBackupTarget
+   [-Volume] &lt;WBVolume&gt;
+   [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">New-WBBackupTarget
+   [-VolumePath] &lt;String&gt;
+   [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">New-WBBackupTarget
+   [-NetworkPath] &lt;String&gt;
+   [[-Credential] &lt;PSCredential&gt;]
+   [-NonInheritAcl]
+   [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">New-WBBackupTarget
+   [-RemovableDrive] &lt;String&gt;
+   [&lt;CommonParameters&gt;]</code></pre>
+     <h2 id="description">
+      Description
+     </h2>
+     <p>
+      The
+      <strong>
+       New-WBBackupTarget
+      </strong>
+      cmdlet creates a backup target object for Windows Server Backup.
+The backup target object defines the locations where the server stores backups.
+     </p>
+     <p>
+      To use this cmdlet, you must be a member of the Administrators or Backup Operators group.
+     </p>
+     <h2 id="examples">
+      Examples
+     </h2>
+     <p>
+      <strong>
+       Example 1: Use a disk as a backup target
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; $Disks = Get-WBDisk
+PS C:\&gt; $DiskBackupLocation = New-WBBackupTarget -Disk $Disks[1] -Label "Backup Disk 1"</code></pre>
+     <p>
+      This example creates a
+      <strong>
+       WBBackupTarget
+      </strong>
+      object that uses the disk labeled Backup Disk 1 as the backup target.
+     </p>
+     <p>
+      The first command gets the disks that are available for backup storage and stores them in a variable named $Disks.
+     </p>
+     <p>
+      The second command sets the first disk stored in the $Disks array as the backup target and assigns the label Backup Disk 1 to that disk.
+The disk is available to store backups only after the server calls the
+      <a data-linktype="relative-path" href="set-wbpolicy.html">
+       Set-WBPolicy
+      </a>
+      cmdlet and specifies the
+      <strong>
+       WBPolicy
+      </strong>
+      object to which it added the backup target.
+You can add multiple storage disks to this backup policy.
+     </p>
+     <p>
+      <strong>
+       Example 2: Use a remote shared folder as a backup target
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; $Cred = Get-Credential
+PS C:\&gt; $NetworkBackupLocation = New-WBBackupTarget -NetworkPath "\\Server01\BackupStorageLocation" -Credential $Cred</code></pre>
+     <p>
+      This example creates a
+      <strong>
+       WBBackupTarget
+      </strong>
+      object that uses a remote shared folder named \\Server01\BackupStorageLocation as the backup storage location and stores permissions to the credentials in a variable named $Cred.
+The server needs these credentials to access the shared folder.
+If you use a remote shared folder, you can add only one backup location to the
+      <strong>
+       WBPolicy
+      </strong>
+      object that contains the backup policy.
+     </p>
+     <p>
+      The first command gets credentials and stores them in a variable named $Cred.
+     </p>
+     <p>
+      The second command specifies the remote shared folder named \\Server01\BackupStorageLocation as the backup target and the credentials in $Cred as the credentials for the operation.
+     </p>
+     <p>
+      <strong>
+       Example 3: Specify a volume as a backup target by using a drive letter
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; $volumeBackupLocation = New-WBBackupTarget -VolumePath "D:"</code></pre>
+     <p>
+      This command creates a
+      <strong>
+       WBBackupTarget
+      </strong>
+      object that uses a volume with drive letter D: as the backup storage location.
+You can add multiple volumes for storage to the
+      <strong>
+       WBPolicy
+      </strong>
+      object that contains the backup policy.
+     </p>
+     <p>
+      <strong>
+       Example 4: Specify a volume as a backup target by using an array element
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; $VolumeList = Get-WBVolume -AllVolumes
+PS C:\&gt; $VolumeBackupLocation = New-WBBackupTarget -Volume $VolumeList[3]</code></pre>
+     <p>
+      This example creates a
+      <strong>
+       WBBackupTarget
+      </strong>
+      object that uses a volume whose name appears in an array element as the backup storage location.
+You can add multiple volumes for storage to the
+      <strong>
+       WBPolicy
+      </strong>
+      object that contains the backup policy.
+     </p>
+     <p>
+      The first command stores the names of all volumes in an array variable named $VolumeList.
+     </p>
+     <p>
+      The second command creates the backup target by using the volume name stored in the third element of the $VolumeList array and stores the
+      <strong>
+       WBBackupTarget
+      </strong>
+      object in the variable named $VolumeBackupLocation.
+     </p>
+     <p>
+      <strong>
+       Example 5: Specify a volume as a backup target by using the letter of a removable drive
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; $DvdBackupTarget = New-WBBackupTarget -RemovableDrive "G:"</code></pre>
+     <p>
+      This command creates a
+      <strong>
+       WBBackupTarget
+      </strong>
+      object that uses a DVD drive, G:, as the backup storage location and stores the
+      <strong>
+       WBBackupTarget
+      </strong>
+      object in a variable named $DvdBackupTarget.
+     </p>
+     <p>
+      You can add only one DVD target as a backup policy to a
+      <strong>
+       WBPolicy
+      </strong>
+      object that contains a backup policy, and you can specify only volume backup and recovery when you use a DVD as a target type.
+     </p>
+     <h2 id="required-parameters">
+      Required Parameters
+     </h2>
+     <div class="parameterName stack">
+      -Disk
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a
+       <strong>
+        WBDisk
+       </strong>
+       object that contains the disk where the server stores backups.
+      </p>
+      <p>
+       Use this parameter if the storage location for the backup is a disk.
+Use the Get-WBDisk cmdlet to see which disks are available, and then use this parameter to specify the disk that you want to use.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          WBDisk
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         0
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -NetworkPath
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the path to the remote shared folder in which the server stores backups.
+      </p>
+      <p>
+       Use this parameter if the storage location is a remote shared folder (on a network).
+You can specify the
+       <em>
+        NonInheritAcl
+       </em>
+       parameter for this type of storage location, but only for one-time backups.
+You can also use the
+       <em>
+        Credential
+       </em>
+       parameter to specify who can access the backups.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         0
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -RemovableDrive
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the drive letter of the DVD or removable drive that you use as a backup target.
+You can back up only whole volumes to this media type, and volume recovery is the only available recovery type.
+You cannot use this backup location to back up or recover system states, files, Hyper-V virtual servers, or applications.
+      </p>
+      <p>
+       The server detects a DVD drive as a valid target only if the drive contains a disc.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         0
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Volume
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a
+       <strong>
+        WBVolume
+       </strong>
+       object that contains the volume that stores the backups.
+To get a
+       <strong>
+        WBVolume
+       </strong>
+       object, use the Get-WBVolume cmdlet.
+      </p>
+      <p>
+       Use this parameter if the storage location is a volume.
+You can get a list of all volumes available by using the
+       <code>
+        Get-WBVolume -AllVolumes
+       </code>
+       cmdlet.
+Then, choose the
+       <strong>
+        WBVolume
+       </strong>
+       object for the storage location that you want to use.
+      </p>
+      <p>
+       This parameter provides the only way that you can specify Universal Naming Convention (UNC) path volumes, which are not mounted, as backup storage locations.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          WBVolume
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         0
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByValue)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -VolumePath
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the drive letter of the volume that stores backups.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         0
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="optional-parameters">
+      Optional Parameters
+     </h2>
+     <div class="parameterName stack">
+      -Credential
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a
+       <strong>
+        PSCredential
+       </strong>
+       object that contains the user name and password for a user account that has access permissions for a location where the server stores backups.
+      </p>
+      <p>
+       To obtain a credential object, use the
+       <strong>
+        Get-Credential
+       </strong>
+       cmdlet.
+For more information, type
+       <code>
+        Get-Help Get-Credential
+       </code>
+       .
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          PSCredential
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         1
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByValue)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Label
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a label for the backup storage.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         1
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -NonInheritAcl
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that the server applies access control list (ACL) permissions for the credentials that the parameter
+       <em>
+        Credential
+       </em>
+       specifies to \\ServerName\ShareName\WindowsImageBackup\ComputerBackedUp\BackupFolder.
+To access the backup later, you must use these credentials or be a member of the Administrators group or the Backup Operators group on the computer that has the shared folder.
+      </p>
+      <p>
+       This parameter applies only to one-time backups and not to scheduled backups.
+      </p>
+      <p>
+       We recommend that you use this parameter to manage permissions for backups.
+If you do not use this parameter, Windows Server Backup applies the ACL permissions from the remote shared folder to the ComputerBackedUp folder so that anyone who can access the remote shared folder can also access the backup.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         2
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -PreserveExistingBackups
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates whether the server saves copies of previous backups each time it performs a new backup.
+      </p>
+      <p>
+       If you save a backup to a remote shared folder, the server overwrites that backup if you use the same folder to back up the same computer again.
+In addition, if the backup operation fails and the server overwrites the older backup, the newer backup will not be usable.
+To avoid this situation, specify this parameter, and create subfolders in the remote shared folder to organize your backups.
+If you do this, the subfolders need twice the space of the parent folder.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Boolean
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         2
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="inputs">
+      Inputs
+     </h2>
+     <p>
+      <strong>
+       NetworkPath string, Disk WBDisk, Volume WBVolume, VolumePath string
+      </strong>
+     </p>
+     <p>
+      This cmdlet uses
+      <strong>
+       NetworkPath
+      </strong>
+      ,
+      <strong>
+       Disk
+      </strong>
+      ,
+      <strong>
+       Volume
+      </strong>
+      , and
+      <strong>
+       VolumePath
+      </strong>
+      objects to define where the server stores backups.
+You can specify the
+      <em>
+       Credential
+      </em>
+      parameter to determine who can access the storage location.
+     </p>
+     <h2 id="outputs">
+      Outputs
+     </h2>
+     <p>
+      <strong>
+       WBBackupTarget
+      </strong>
+     </p>
+     <p>
+      The New-WBBackupTarget cmdlet creates a
+      <strong>
+       WBBackupTarget
+      </strong>
+      object, which you can use to configure a backup storage location in a
+      <strong>
+       WBPolicy
+      </strong>
+      object that contains a backup policy.
+     </p>
+     <h2 id="related-links">
+      Related Links
+     </h2>
+     <ul>
+      <li>
+       <a data-linktype="relative-path" href="./add-wbbackuptarget.html">
+        Add-WBBackupTarget
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="./get-wbdisk.html">
+        Get-WBDisk
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="./get-wbvolume.html">
+        Get-WBVolume
+       </a>
+      </li>
+      <li>
+       <a data-linktype="external" href="http://go.microsoft.com/fwlink/?LinkID=293936">
+        Get-Credential
+       </a>
+      </li>
+     </ul>
+     <!-- </content> -->
+    </main>
+    <section class="feedback-section" data-bi-name="feedback-section">
+     <h2 id="feedback">
+      Feedback
+     </h2>
+     <div class="alert choose-feedback-type">
+      <p>
+       We'd love to hear your thoughts. Choose the type you'd like to provide:
+      </p>
+      <div class="choose-feedback-buttons">
+       <a class="button-border feedback-type-product" data-bi-name="product-feedback" href="https://windowsserver.uservoice.com/forums/301869-powershell">
+        Product feedback
+        <span aria-hidden="true" class="docon docon-navigate-external">
+        </span>
+       </a>
+       <div class="button-group">
+        <button class="button-border feedback-sign-in-button" data-bi-name="feedback-sign-in">
+         <span aria-hidden="true" class="docon docon-brand-github">
+         </span>
+         Sign in to give documentation feedback
+        </button>
+        <button aria-controls="feedback-form" aria-expanded="false" class="button-border feedback-form-toggle" data-bi-name="documentation-feedback" hidden="">
+         Content feedback
+        </button>
+        <div auto-align="" class="dropdown has-caret">
+         <button aria-controls="fbm0" aria-expanded="false" aria-haspopup="true" aria-label="Expand documentation feedback menu" class="button-border dropdown-trigger" data-bi-name="documentation-feedback-menu">
+          <span aria-hidden="true" class="docon docon-chevron-down-light">
+          </span>
+         </button>
+         <div class="dropdown-menu documentation-feedback-menu" id="fbm0" role="menu">
+          You may also leave feedback
+          <a data-bi-name="create-issue-on-github" href="{0}">
+           directly on GitHub
+           <span aria-hidden="true" class="docon docon-navigate-external">
+           </span>
+          </a>
+          .
+         </div>
+        </div>
+       </div>
+      </div>
+      <p>
+       <small>
+        Our new feedback system is built on GitHub Issues. Read about this change in
+        <a href="https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs">
+         our blog post
+        </a>
+        .
+       </small>
+      </p>
+     </div>
+     <form accept-charset="UTF-8" action="javascript:" autocomplete="off" class="feedback-form" hidden="" id="feedback-form">
+      <h3 class="feedback-form-heading current-user">
+       <img alt="Avatar" aria-hidden="true" class="avatar" height="36" width="36"/>
+       <span aria-hidden="true" class="username">
+       </span>
+       <span class="visually-hidden">
+        Liquid error: Can't find the localized string giveDocumentationFeedback for template Conceptual.
+       </span>
+      </h3>
+      <label>
+       <span class="visually-hidden">
+        Title
+       </span>
+       <input name="title" pattern=".*\w.*" placeholder="Title" required="" type="text"/>
+      </label>
+      <label>
+       <span class="visually-hidden">
+        Leave a comment
+       </span>
+       <textarea name="body" placeholder="Leave a comment" required=""></textarea>
+      </label>
+      <div class="action-container">
+       <button class="primary-action" name="submit" type="submit">
+        Submit feedback
+       </button>
+      </div>
+     </form>
+     <div class="feedback-status alert busy" role="alert">
+      <p>
+       Loading feedback...
+      </p>
+     </div>
+     <div class="feedback-tab-group tabGroup" data-tab-group-independent="" hidden="">
+      <ul role="tablist">
+       <li role="presentation">
+        <a aria-controls="tabpanel-issues-open" aria-label="Open Issues" data-tab="issues-open" href="#tabpanel-issues-open" role="tab">
+        </a>
+       </li>
+       <li role="presentation">
+        <a aria-controls="tabpanel-issues-closed" aria-label="Closed Issues" data-tab="issues-closed" href="#tabpanel-issues-closed" role="tab">
+        </a>
+       </li>
+      </ul>
+      <section data-tab="issues-open" id="tabpanel-issues-open" role="tabpanel">
+       <div class="no-issues-placeholder">
+        There are no open issues
+       </div>
+       <ul aria-label="Open Issues" class="github-issues-list">
+       </ul>
+      </section>
+      <section data-tab="issues-closed" id="tabpanel-issues-closed" role="tabpanel">
+       <div class="no-issues-placeholder">
+        There are no closed issues
+       </div>
+       <ul aria-label="Closed Issues" class="github-issues-list">
+       </ul>
+      </section>
+     </div>
+     <div class="action-container">
+      <a class="view-on-github" data-bi-name="view-on-github" hidden="" href="https://github.com/MicrosoftDocs/windows-powershell-docs/issues">
+       <span aria-hidden="true" class="docon docon-brand-github">
+       </span>
+       <span>
+        View on GitHub
+       </span>
+       <span aria-hidden="true" class="docon docon-navigate-external">
+       </span>
+      </a>
+     </div>
+    </section>
+   </div>
+  </div>
+  <div class="openfeedback-container" id="openFeedbackContainer">
+  </div>
+  <div class="action-panel">
+  </div>
+ </body>
+</html>

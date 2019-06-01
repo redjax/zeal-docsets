@@ -1,0 +1,348 @@
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML><HEAD><TITLE>Man page of MQ_GETATTR</TITLE>
+</HEAD><BODY>
+<H1>MQ_GETATTR</H1>
+Section: Linux Programmer's Manual (3)<BR>Updated: 2016-03-15<BR><A HREF="#index">Index</A>
+<A HREF="../index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+mq_getattr, mq_setattr - get/set message queue attributes
+<A NAME="lbAC">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<PRE>
+<B>#include &lt;<A HREF="file:///usr/include/mqueue.h">mqueue.h</A>&gt;</B>
+
+<B>int mq_getattr(mqd_t </B><I>mqdes</I><B>, struct mq_attr *</B><I>attr</I><B>);</B>
+
+<B>int mq_setattr(mqd_t </B><I>mqdes</I><B>, const struct mq_attr *</B><I>newattr</I><B>,</B>
+<B>                 struct mq_attr *</B><I>oldattr</I><B>);</B>
+</PRE>
+
+<P>
+Link with <I>-lrt</I>.
+<A NAME="lbAD">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+<B>mq_getattr</B>()
+
+and
+<B>mq_setattr</B>()
+
+respectively retrieve and modify attributes of the message queue
+referred to by the message queue descriptor
+<I>mqdes</I>.
+
+<P>
+<B>mq_getattr</B>()
+
+returns an
+<I>mq_attr</I>
+
+structure in the buffer pointed by
+<I>attr</I>.
+
+This structure is defined as:
+
+<PRE>
+
+struct mq_attr {
+    long mq_flags;       /* Flags: 0 or O_NONBLOCK */
+    long mq_maxmsg;      /* Max. # of messages on queue */
+    long mq_msgsize;     /* Max. message size (bytes) */
+    long mq_curmsgs;     /* # of messages currently in queue */
+};
+</PRE>
+
+
+<P>
+
+The
+<I>mq_flags</I>
+
+field contains flags associated with the open message queue description.
+This field is initialized when the queue is created by
+<B><A HREF="../man3/mq_open.3.html">mq_open</A></B>(3).
+
+The only flag that can appear in this field is
+<B>O_NONBLOCK</B>.
+
+<P>
+The
+<I>mq_maxmsg</I>
+
+and
+<I>mq_msgsize</I>
+
+fields are set when the message queue is created by
+<B><A HREF="../man3/mq_open.3.html">mq_open</A></B>(3).
+
+The
+<I>mq_maxmsg</I>
+
+field is an upper limit on the number of messages
+that may be placed on the queue using
+<B><A HREF="../man3/mq_send.3.html">mq_send</A></B>(3).
+
+The
+<I>mq_msgsize</I>
+
+field is an upper limit on the size of messages
+that may be placed on the queue.
+Both of these fields must have a value greater than zero.
+Two
+<I>/proc</I>
+
+files that place ceilings on the values for these fields are described in
+<B><A HREF="../man7/mq_overview.7.html">mq_overview</A></B>(7).
+
+<P>
+The
+<I>mq_curmsgs</I>
+
+field returns the number of messages currently held in the queue.
+<P>
+<B>mq_setattr</B>()
+
+sets message queue attributes using information supplied in the
+<I>mq_attr</I>
+
+structure pointed to by
+<I>newattr</I>.
+
+The only attribute that can be modified is the setting of the
+<B>O_NONBLOCK</B>
+
+flag in
+<I>mq_flags</I>.
+
+The other fields in
+<I>newattr</I>
+
+are ignored.
+If the
+<I>oldattr</I>
+
+field is not NULL,
+then the buffer that it points to is used to return an
+<I>mq_attr</I>
+
+structure that contains the same information that is returned by
+<B>mq_getattr</B>().
+
+<A NAME="lbAE">&nbsp;</A>
+<H2>RETURN VALUE</H2>
+
+On success
+<B>mq_getattr</B>()
+
+and
+<B>mq_setattr</B>()
+
+return 0; on error, -1 is returned, with
+<I>errno</I>
+
+set to indicate the error.
+<A NAME="lbAF">&nbsp;</A>
+<H2>ERRORS</H2>
+
+<DL COMPACT>
+<DT><B>EBADF</B>
+
+<DD>
+The message queue descriptor specified in
+<I>mqdes</I>
+
+is invalid.
+<DT><B>EINVAL</B>
+
+<DD>
+<I>newattr-&gt;mq_flags</I>
+
+contained set bits other than
+<B>O_NONBLOCK</B>.
+
+</DL>
+<A NAME="lbAG">&nbsp;</A>
+<H2>ATTRIBUTES</H2>
+
+For an explanation of the terms used in this section, see
+<B><A HREF="../man7/attributes.7.html">attributes</A></B>(7).
+
+<TABLE BORDER>
+<TR VALIGN=top><TD><B>Interface</B></TD><TD><B>Attribute</B></TD><TD><B>Value</B><BR></TD></TR>
+<TR VALIGN=top><TD>
+<B>mq_getattr</B>(),
+
+<B>mq_setattr</B>()
+
+</TD><TD>Thread safety</TD><TD>MT-Safe<BR></TD></TR>
+</TABLE>
+
+<A NAME="lbAH">&nbsp;</A>
+<H2>CONFORMING TO</H2>
+
+POSIX.1-2001, POSIX.1-2008.
+<A NAME="lbAI">&nbsp;</A>
+<H2>NOTES</H2>
+
+On Linux,
+<B>mq_getattr</B>()
+
+and
+<B>mq_setattr</B>()
+
+are library functions layered on top of the
+<B><A HREF="../man2/mq_getsetattr.2.html">mq_getsetattr</A></B>(2)
+
+system call.
+<A NAME="lbAJ">&nbsp;</A>
+<H2>EXAMPLE</H2>
+
+The program below can be used to show the default
+<I>mq_maxmsg</I>
+
+and
+<I>mq_msgsize</I>
+
+values that are assigned to a message queue that is created with a call to
+<B><A HREF="../man3/mq_open.3.html">mq_open</A></B>(3)
+
+in which the
+<I>attr</I>
+
+argument is NULL.
+Here is an example run of the program:
+<P>
+
+<PRE>
+$ <B>./a.out /testq</B>
+Maximum # of messages on queue:   10
+Maximum message size:             8192
+</PRE>
+
+
+<P>
+Since Linux 3.5, the following
+<I>/proc</I>
+
+files (described in
+<B><A HREF="../man7/mq_overview.7.html">mq_overview</A></B>(7))
+
+can be used to control the defaults:
+<P>
+
+<PRE>
+$ <B>uname -sr</B>
+Linux 3.8.0
+$ <B>cat /proc/sys/fs/mqueue/msg_default</B>
+10
+$ <B>cat /proc/sys/fs/mqueue/msgsize_default</B>
+8192
+</PRE>
+
+
+<A NAME="lbAK">&nbsp;</A>
+<H3>Program source</H3>
+
+
+<PRE>
+#include &lt;<A HREF="file:///usr/include/mqueue.h">mqueue.h</A>&gt;
+#include &lt;<A HREF="file:///usr/include/sys/stat.h">sys/stat.h</A>&gt;
+#include &lt;<A HREF="file:///usr/include/fcntl.h">fcntl.h</A>&gt;
+#include &lt;<A HREF="file:///usr/include/stdio.h">stdio.h</A>&gt;
+#include &lt;<A HREF="file:///usr/include/stdlib.h">stdlib.h</A>&gt;
+#include &lt;<A HREF="file:///usr/include/unistd.h">unistd.h</A>&gt;
+
+#define errExit(msg)    do { perror(msg); exit(EXIT_FAILURE); \
+                        } while (0)
+
+int
+main(int argc, char *argv[])
+{
+    mqd_t mqd;
+    struct mq_attr attr;
+
+    if (argc != 2) {
+        fprintf(stderr, &quot;Usage: %s mq-name\n&quot;, argv[0]);
+        exit(EXIT_FAILURE);
+    }
+
+    mqd = mq_open(argv[1], O_CREAT | O_EXCL, S_IRUSR | S_IWUSR, NULL);
+    if (mqd == (mqd_t) -1)
+        errExit(&quot;mq_open&quot;);
+
+    if (mq_getattr(mqd, &amp;attr) == -1)
+        errExit(&quot;mq_getattr&quot;);
+
+    printf(&quot;Maximum # of messages on queue:   %ld\n&quot;, attr.mq_maxmsg);
+    printf(&quot;Maximum message size:             %ld\n&quot;, attr.mq_msgsize);
+
+    if (mq_unlink(argv[1]) == -1)
+        errExit(&quot;mq_unlink&quot;);
+
+    exit(EXIT_SUCCESS);
+}
+</PRE>
+
+<A NAME="lbAL">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+<B><A HREF="../man3/mq_close.3.html">mq_close</A></B>(3),
+
+<B><A HREF="../man3/mq_notify.3.html">mq_notify</A></B>(3),
+
+<B><A HREF="../man3/mq_open.3.html">mq_open</A></B>(3),
+
+<B><A HREF="../man3/mq_receive.3.html">mq_receive</A></B>(3),
+
+<B><A HREF="../man3/mq_send.3.html">mq_send</A></B>(3),
+
+<B><A HREF="../man3/mq_unlink.3.html">mq_unlink</A></B>(3),
+
+<B><A HREF="../man7/mq_overview.7.html">mq_overview</A></B>(7)
+
+<A NAME="lbAM">&nbsp;</A>
+<H2>COLOPHON</H2>
+
+This page is part of release 4.09 of the Linux
+<I>man-pages</I>
+
+project.
+A description of the project,
+information about reporting bugs,
+and the latest version of this page,
+can be found at
+<A HREF="https://www.kernel.org/doc/man-pages/.">https://www.kernel.org/doc/man-pages/.</A>
+
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAD">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAE">RETURN VALUE</A><DD>
+<DT><A HREF="#lbAF">ERRORS</A><DD>
+<DT><A HREF="#lbAG">ATTRIBUTES</A><DD>
+<DT><A HREF="#lbAH">CONFORMING TO</A><DD>
+<DT><A HREF="#lbAI">NOTES</A><DD>
+<DT><A HREF="#lbAJ">EXAMPLE</A><DD>
+<DL>
+<DT><A HREF="#lbAK">Program source</A><DD>
+</DL>
+<DT><A HREF="#lbAL">SEE ALSO</A><DD>
+<DT><A HREF="#lbAM">COLOPHON</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 14:28:35 GMT, February 25, 2017
+</BODY>
+</HTML>

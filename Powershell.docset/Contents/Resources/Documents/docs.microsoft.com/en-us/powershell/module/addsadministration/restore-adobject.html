@@ -1,0 +1,1304 @@
+<!DOCTYPE html>
+<html class="no-js hasSidebar hasPageActions hasBreadcrumb conceptual" data-authenticated="false" data-render="docs" dir="ltr" lang="en-us">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Restore-ADObject (addsadministration)" property="og:title"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" property="og:image"/>
+  <meta content="summary" name="twitter:card"/>
+  <meta content="@docsmsft" name="twitter:site"/>
+  <meta content="Restore-ADObject (addsadministration)" name="twitter:title"/>
+  <meta content="Use this topic to help manage Windows and Windows Server technologies with Windows PowerShell." name="twitter:description"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" name="twitter:image"/>
+  <meta content="Microsoft Logo" name="twitter:image:alt"/>
+  <meta content="Use this topic to help manage Windows and Windows Server technologies with Windows PowerShell." name="description"/>
+  <meta content="Docs" name="search.ms_sitename"/>
+  <meta content="powershell-windows" name="search.ms_docsetname"/>
+  <meta content="0" name="version"/>
+  <meta content="en-us" name="locale"/>
+  <meta content="Docs" name="site_name"/>
+  <meta content="MSDN" name="search.ms_product"/>
+  <meta content="MSDN.powershell-windows" name="depot_name"/>
+  <meta content="https://cpubwin.visualstudio.com/DefaultCollection/powershell/_git/powershell/commit/ced7757924addcaea0b7a244ae4d240e4d28d93a?path=%2fdocset%2fwindows%2faddsadministration%2frestore-adobject.md&amp;_a=contents" name="ref_skeleton_gitcommit"/>
+  <meta content="https://cpubwin.visualstudio.com/DefaultCollection/powershell/_git/powershell?path=%2fdocset%2fwindows%2faddsadministration%2frestore-adobject.md&amp;version=GBlive&amp;_a=contents" name="original_ref_skeleton_git_url"/>
+  <meta content="2017-09-15 03:44 AM" name="updated_at"/>
+  <meta content="f1670fd4-0409-fbef-209e-30a705ba4953" name="document_id"/>
+  <meta content="7b5c9df0-15ee-b27e-c5ec-ab522ae57f21" name="document_version_independent_id"/>
+  <meta content="powershell" name="page_type"/>
+  <meta content="command" name="page_kind"/>
+  <meta content="manage" name="ms.mktglfcycl"/>
+  <meta content="library" name="ms.sitesec"/>
+  <meta content="brianlic" name="ms.author"/>
+  <meta content="brianlic-msft" name="author"/>
+  <meta content="Microsoft.ActiveDirectory.Management.dll-Help.xml" name="external_help_file"/>
+  <meta content="powershell, cmdlet" name="keywords"/>
+  <meta content="alanth" name="manager"/>
+  <meta content="12/27/2016" name="ms.date"/>
+  <meta content="w10" name="ms.prod"/>
+  <meta content="powershell-windows" name="ms.technology"/>
+  <meta content="reference" name="ms.topic"/>
+  <meta content="" name="online_version"/>
+  <meta content="2.0.0" name="schema"/>
+  <meta content="E2A4F2E6-DABB-4277-9FB6-A1579687F08E" name="ms.assetid"/>
+  <meta content="powershell" name="ms.devlang"/>
+  <meta content="INDEX, FOLLOW" name="ROBOTS"/>
+  <meta content="/powershell/windows/bread/toc.json?view=win10-ps" name="breadcrumb_path"/>
+  <meta content="powershell" name="apiPlatform"/>
+  <meta content="MSDocsHeader-WindowsIT" name="uhfHeaderId"/>
+  <meta content="../win10-ps/toc.json?view=win10-ps" name="toc_rel"/>
+  <link href="https://docs.microsoft.com/en-us/powershell/module/addsadministration/restore-adobject" rel="canonical"/>
+  <title>
+   Restore-ADObject
+  </title>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/e4a1f3a3.site.css" rel="stylesheet"/>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/31353636.conceptual.css" rel="stylesheet"/>
+ </head>
+ <body dir="ltr" lang="en-us">
+  <div class="header-holder">
+   <div data-bi-name="header" id="headerAreaHolder">
+    <div id="uhf-placeholder">
+    </div>
+   </div>
+   <div class="disclaimer-holder" id="disclaimer-holder">
+   </div>
+  </div>
+  <div class="container mainContainer" data-bi-name="body">
+   <div class="content-header" data-bi-name="content-header">
+    <div class="content-header-controls">
+     <button class="contents-button button-border" data-bi-name="contents-expand" type="button">
+      <span class="docon docon-menu">
+      </span>
+      Contents
+     </button>
+    </div>
+    <div class="content-header-controls">
+     <button class="ap-collapse-behavior ap-expanded button-border" data-bi-name="ap-collapse" type="button">
+      <span class="docon docon-exit-mode">
+      </span>
+      Exit focus mode
+     </button>
+    </div>
+   </div>
+   <div class="primary-holder">
+    <main class="content" data-bi-name="content" dir="ltr" id="main" lang="en-us" role="main">
+     <!-- <content> -->
+     <h1>
+      Restore-ADObject
+     </h1>
+     <div class="metadata">
+      <dl class="attributeList">
+       <dt>
+        Module:
+       </dt>
+       <dd>
+        <a data-linktype="relative-path" href="./.html">
+         addsadministration
+        </a>
+       </dd>
+      </dl>
+     </div>
+     <div class="summaryHolder">
+      <div class="summary">
+       Restores an Active Directory object.
+      </div>
+     </div>
+     <h2 class="hiddenAnchor" id="syntax">
+      Syntax
+     </h2>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Restore-ADObject
+       [-WhatIf]
+       [-Confirm]
+       [-AuthType &lt;ADAuthType&gt;]
+       [-Credential &lt;PSCredential&gt;]
+       [-Identity] &lt;ADObject&gt;
+       [-NewName &lt;String&gt;]
+       [-Partition &lt;String&gt;]
+       [-PassThru]
+       [-Server &lt;String&gt;]
+       [-TargetPath &lt;String&gt;]
+       [&lt;CommonParameters&gt;]</code></pre>
+     <h2 id="description">
+      Description
+     </h2>
+     <p>
+      The
+      <strong>
+       Restore-ADObject
+      </strong>
+      cmdlet restores a deleted Active Directory object.
+     </p>
+     <p>
+      The
+      <em>
+       NewName
+      </em>
+      parameter specifies the new name for the restored object.
+If the
+      <em>
+       NewName
+      </em>
+      parameter is not specified, the value of the Active Directory attribute with an Lightweight Directory Access Protocol (LDAP) display name of msDS-lastKnownRDN is used.
+The
+      <em>
+       TargetPath
+      </em>
+      parameter specifies the new location for the restored object.
+If the
+      <em>
+       TargetPath
+      </em>
+      is not specified, the value of the Active Directory attribute with an LDAP display name of lastKnownParent is used.
+     </p>
+     <p>
+      The
+      <em>
+       Identity
+      </em>
+      parameter specifies the Active Directory object to restore.
+You can identify an object by its distinguished name or GUID.
+You can also set the
+      <em>
+       Identity
+      </em>
+      parameter to an object variable such as
+      <code>
+       $&lt;localObject&gt;
+      </code>
+      , or you can pass an object through the pipeline to the
+      <em>
+       Identity
+      </em>
+      parameter.
+For example, you can use the
+      <strong>
+       Get-ADObject
+      </strong>
+      cmdlet to get a deleted object by specifying the
+      <em>
+       IncludeDeletedObjects
+      </em>
+      parameter.
+You can then pass the object through the pipeline to the Restore-ADObject cmdlet.
+     </p>
+     <p>
+      Note: You can get the distinguished names of deleted objects by using the
+      <strong>
+       Get-ADObject
+      </strong>
+      cmdlet with the
+      <em>
+       IncludeDeletedObjects
+      </em>
+      parameter specified.
+     </p>
+     <h2 id="examples">
+      Examples
+     </h2>
+     <p>
+      <strong>
+       Example 1: Restore an object and set attributes for the deleted object
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Restore-ADObject -Identity "613dc90a-2afd-49fb-8bd8-eac48c6ab59f" -NewName "Kim Abercrombie" -TargetPath "OU=Finance,OU=UserAccounts,DC=FABRIKAM,DC=COM"</code></pre>
+     <p>
+      This command restores the
+      <strong>
+       ADObject
+      </strong>
+      while setting the
+      <strong>
+       msDS-LastKnownRDN
+      </strong>
+      attribute of the deleted object to the
+      <em>
+       NewName
+      </em>
+      parameter and setting the lastKnownRDN to the
+      <em>
+       TargetPath
+      </em>
+      parameter.
+     </p>
+     <p>
+      <strong>
+       Example 2: Restore an object by distinguished name
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Restore-ADObject -Identity "CN=Kim Abercrombie\0ADEL:613dc90a-2afd-49fb-8bd8-eac48c6ab59f,CN=Deleted Objects,DC=FABRIKAM,DC=COM" -NewName "Kim Abercrombie" -TargetPath "OU=Finance,OU=UserAccounts,DC=FABRIKAM,DC=COM"</code></pre>
+     <p>
+      This command restores the
+      <strong>
+       ADObject
+      </strong>
+      while setting the
+      <strong>
+       msDS-LastKnownRDN
+      </strong>
+      attribute of the deleted object to
+      <em>
+       NewName
+      </em>
+      parameter and setting the lastKnownRDN to the
+      <em>
+       TargetPath
+      </em>
+      parameter.
+     </p>
+     <p>
+      <strong>
+       Example 3: Restore an object from a filtered list of users
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-ADObject -Filter 'samaccountname -eq "pattifuller"' -IncludeDeletedObjects | Restore-ADObject</code></pre>
+     <p>
+      This command finds a deleted user whose SAM account name is pattifuller and restores it.
+     </p>
+     <p>
+      <strong>
+       Example 4: Restore an object by its GUID
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Restore-ADObject -Identity '6bb3bfe9-4355-48ee-b3b6-4fda6917d31d' -Server server1:50000</code></pre>
+     <p>
+      This command restores an AD LDS object using ObjectGUID.
+     </p>
+     <p>
+      <strong>
+       Example 5: Restore an object by its msds-LastKnownRDN attribute
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-ADObject -Filter 'msds-lastknownrdn -eq "user1"' -Server server1:50000 -IncludeDeletedObjects -SearchBase "o=app1,c=us" | Restore-ADObject</code></pre>
+     <p>
+      This command restores an AD LDS object using the
+      <strong>
+       msds-LastKnownRDN
+      </strong>
+      attribute.
+     </p>
+     <h2 id="required-parameters">
+      Required Parameters
+     </h2>
+     <div class="parameterName stack">
+      -Identity
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies an Active Directory group object by providing one of the following values.
+The identifier in parentheses is the LDAP display name for the attribute.
+The acceptable values for this parameter are:
+      </p>
+      <ul>
+       <li>
+        A distinguished name
+       </li>
+       <li>
+        A GUID (objectGUID)
+       </li>
+       <li>
+        A security identifier (objectSid)
+       </li>
+       <li>
+        A Security Account Manager account name (sAMAccountName)
+       </li>
+      </ul>
+      <p>
+       The cmdlet searches the default naming context or partition to find the object.
+If two or more objects are found, the cmdlet returns a non-terminating error.
+      </p>
+      <p>
+       This parameter can also get this object through the pipeline or you can set this parameter to an object instance.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          ADObject
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         0
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByValue)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="optional-parameters">
+      Optional Parameters
+     </h2>
+     <div class="parameterName stack">
+      -AuthType
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the authentication method to use.
+The acceptable values for this parameter are:
+      </p>
+      <ul>
+       <li>
+        Negotiate or 0
+       </li>
+       <li>
+        Basic or 1
+       </li>
+      </ul>
+      <p>
+       The default authentication method is Negotiate.
+      </p>
+      <p>
+       A Secure Sockets Layer (SSL) connection is required for the Basic authentication method.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          ADAuthType
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Parameter Sets:
+        </td>
+        <td>
+         Negotiate, Basic
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Confirm
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Prompts you for confirmation before running the cmdlet.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         cf
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Credential
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the user account credentials to use to perform this task.
+The default credentials are the credentials of the currently logged on user unless the cmdlet is run from an Active Directory PowerShell provider drive.
+If the cmdlet is run from such a provider drive, the account associated with the drive is the default.
+      </p>
+      <p>
+       To specify this parameter, you can type a user name, such as User1 or Domain01\User01 or you can specify a
+       <strong>
+        PSCredential
+       </strong>
+       object.
+If you specify a user name for this parameter, the cmdlet prompts for a password.
+      </p>
+      <p>
+       You can also create a
+       <strong>
+        PSCredential
+       </strong>
+       object by using a script or by using the
+       <strong>
+        Get-Credential
+       </strong>
+       cmdlet.
+You can then set the
+       <em>
+        Credential
+       </em>
+       parameter to the
+       <strong>
+        PSCredential
+       </strong>
+       object.
+      </p>
+      <p>
+       If the acting credentials do not have directory-level permission to perform the task, Active Directory module for Windows PowerShell returns a terminating error.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          PSCredential
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -NewName
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the new name of the object.
+This parameter sets the
+       <strong>
+        Name
+       </strong>
+       property of the Active Directory object.
+The LDAP display name (
+       <strong>
+        ldapDisplayName
+       </strong>
+       ) of this property is name.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Partition
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the distinguished name of an Active Directory partition.
+The distinguished name must be one of the naming contexts on the current directory server.
+The cmdlet searches this partition to find the object defined by the
+       <em>
+        Identity
+       </em>
+       parameter.
+      </p>
+      <p>
+       In many cases, a default value is used for the
+       <em>
+        Partition
+       </em>
+       parameter if no value is specified.
+The rules for determining the default value are given below.
+Note that rules listed first are evaluated first and once a default value can be determined, no further rules are evaluated.
+      </p>
+      <p>
+       In Active Directory Domain Services (AD DS) environments, a default value for
+       <em>
+        Partition
+       </em>
+       is set in the following cases:
+      </p>
+      <ul>
+       <li>
+        If the
+        <em>
+         Identity
+        </em>
+        parameter is set to a distinguished name, the default value of
+        <em>
+         Partition
+        </em>
+        is automatically generated from this distinguished name.
+       </li>
+       <li>
+        If running cmdlets from an Active Directory provider drive, the default value of
+        <em>
+         Partition
+        </em>
+        is automatically generated from the current path in the drive.
+       </li>
+       <li>
+        If none of the previous cases apply, the default value of
+        <em>
+         Partition
+        </em>
+        is set to the default partition or naming context of the target domain.
+       </li>
+      </ul>
+      <p>
+       In Active Directory Lightweight Directory Services (AD LDS) environments, a default value for
+       <em>
+        Partition
+       </em>
+       is set in the following cases:
+      </p>
+      <ul>
+       <li>
+        If the
+        <em>
+         Identity
+        </em>
+        parameter is set to a distinguished name, the default value of
+        <em>
+         Partition
+        </em>
+        is automatically generated from this distinguished name.
+       </li>
+       <li>
+        If running cmdlets from an Active Directory provider drive, the default value of
+        <em>
+         Partition
+        </em>
+        is automatically generated from the current path in the drive.
+       </li>
+       <li>
+        If the target AD LDS instance has a default naming context, the default value of
+        <em>
+         Partition
+        </em>
+        is set to the default naming context.
+To specify a default naming context for an AD LDS environment, set the
+        <strong>
+         msDS-defaultNamingContext
+        </strong>
+        property of the Active Directory directory service agent object (
+        <strong>
+         nTDSDSA
+        </strong>
+        ) for the AD LDS instance.
+       </li>
+       <li>
+        If none of the previous cases apply, the
+        <em>
+         Partition
+        </em>
+        parameter does not take a default value.
+       </li>
+      </ul>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -PassThru
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Returns an object representing the item with which you are working.
+By default, this cmdlet does not generate any output.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Server
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the AD DS instance to connect to, by providing one of the following values for a corresponding domain name or directory server.
+The service may be any of the following: AD LDS, AD DS, or Active Directory snapshot instance.
+      </p>
+      <p>
+       Specify the AD DS instance in one of the following ways:
+      </p>
+      <p>
+       Domain name values:
+      </p>
+      <ul>
+       <li>
+        Fully qualified domain name
+       </li>
+       <li>
+        NetBIOS name
+       </li>
+      </ul>
+      <p>
+       Directory server values:
+      </p>
+      <ul>
+       <li>
+        Fully qualified directory server name
+       </li>
+       <li>
+        NetBIOS name
+       </li>
+       <li>
+        Fully qualified directory server name and port
+       </li>
+      </ul>
+      <p>
+       The default value for this parameter is determined by one of the following methods in the order that they are listed:
+      </p>
+      <ul>
+       <li>
+        By using the
+        <strong>
+         Server
+        </strong>
+        value from objects passed through the pipeline
+       </li>
+       <li>
+        By using the server information associated with the AD DS Windows PowerShell provider drive, when the cmdlet runs in that drive
+       </li>
+       <li>
+        By using the domain of the computer running Windows PowerShell
+       </li>
+      </ul>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -TargetPath
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the new location for the object.
+This location must be the path to a container or organizational unit.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -WhatIf
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         wi
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="inputs">
+      Inputs
+     </h2>
+     <p>
+      <strong>
+       None or Microsoft.ActiveDirectory.Management.ADObject
+      </strong>
+     </p>
+     <p>
+      An Active Directory object is received by the
+      <em>
+       Identity
+      </em>
+      parameter.
+     </p>
+     <p>
+      Derived types, such as the following are also accepted:
+     </p>
+     <ul>
+      <li>
+       <strong>
+        Microsoft.ActiveDirectory.Management.ADGroup
+       </strong>
+      </li>
+      <li>
+       <strong>
+        Microsoft.ActiveDirectory.Management.ADUser
+       </strong>
+      </li>
+      <li>
+       <strong>
+        Microsoft.ActiveDirectory.Management.ADComputer
+       </strong>
+      </li>
+      <li>
+       <strong>
+        Microsoft.ActiveDirectory.Management.ADServiceAccount
+       </strong>
+      </li>
+      <li>
+       <strong>
+        Microsoft.ActiveDirectory.Management.ADOrganizationalUnit
+       </strong>
+      </li>
+      <li>
+       <strong>
+        Microsoft.ActiveDirectory.Management.ADFineGrainedPasswordPolicy
+       </strong>
+      </li>
+      <li>
+       <strong>
+        Microsoft.ActiveDirectory.Management.ADDomain
+       </strong>
+      </li>
+     </ul>
+     <h2 id="outputs">
+      Outputs
+     </h2>
+     <p>
+      <strong>
+       None or Microsoft.ActiveDirectory.Management.ADObject
+      </strong>
+     </p>
+     <p>
+      Returns the restored object when the
+      <em>
+       PassThru
+      </em>
+      parameter is specified.
+By default, this cmdlet does not generate any output.
+     </p>
+     <h2 id="notes">
+      Notes
+     </h2>
+     <ul>
+      <li>
+       This cmdlet does not work with an Active Directory snapshot.
+      </li>
+      <li>
+       This cmdlet does not work with a read-only domain controller.
+      </li>
+     </ul>
+     <h2 id="related-links">
+      Related Links
+     </h2>
+     <ul>
+      <li>
+       <a data-linktype="relative-path" href="./get-adobject.html">
+        Get-ADObject
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="./move-adobject.html">
+        Move-ADObject
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="./new-adobject.html">
+        New-ADObject
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="./remove-adobject.html">
+        Remove-ADObject
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="./rename-adobject.html">
+        Rename-ADObject
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="./set-adobject.html">
+        Set-ADObject
+       </a>
+      </li>
+     </ul>
+     <!-- </content> -->
+    </main>
+    <section class="feedback-section" data-bi-name="feedback-section">
+     <h2 id="feedback">
+      Feedback
+     </h2>
+     <div class="alert choose-feedback-type">
+      <p>
+       We'd love to hear your thoughts. Choose the type you'd like to provide:
+      </p>
+      <div class="choose-feedback-buttons">
+       <a class="button-border feedback-type-product" data-bi-name="product-feedback" href="https://windowsserver.uservoice.com/forums/301869-powershell">
+        Product feedback
+        <span aria-hidden="true" class="docon docon-navigate-external">
+        </span>
+       </a>
+       <div class="button-group">
+        <button class="button-border feedback-sign-in-button" data-bi-name="feedback-sign-in">
+         <span aria-hidden="true" class="docon docon-brand-github">
+         </span>
+         Sign in to give documentation feedback
+        </button>
+        <button aria-controls="feedback-form" aria-expanded="false" class="button-border feedback-form-toggle" data-bi-name="documentation-feedback" hidden="">
+         Content feedback
+        </button>
+        <div auto-align="" class="dropdown has-caret">
+         <button aria-controls="fbm0" aria-expanded="false" aria-haspopup="true" aria-label="Expand documentation feedback menu" class="button-border dropdown-trigger" data-bi-name="documentation-feedback-menu">
+          <span aria-hidden="true" class="docon docon-chevron-down-light">
+          </span>
+         </button>
+         <div class="dropdown-menu documentation-feedback-menu" id="fbm0" role="menu">
+          You may also leave feedback
+          <a data-bi-name="create-issue-on-github" href="{0}">
+           directly on GitHub
+           <span aria-hidden="true" class="docon docon-navigate-external">
+           </span>
+          </a>
+          .
+         </div>
+        </div>
+       </div>
+      </div>
+      <p>
+       <small>
+        Our new feedback system is built on GitHub Issues. Read about this change in
+        <a href="https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs">
+         our blog post
+        </a>
+        .
+       </small>
+      </p>
+     </div>
+     <form accept-charset="UTF-8" action="javascript:" autocomplete="off" class="feedback-form" hidden="" id="feedback-form">
+      <h3 class="feedback-form-heading current-user">
+       <img alt="Avatar" aria-hidden="true" class="avatar" height="36" width="36"/>
+       <span aria-hidden="true" class="username">
+       </span>
+       <span class="visually-hidden">
+        Liquid error: Can't find the localized string giveDocumentationFeedback for template Conceptual.
+       </span>
+      </h3>
+      <label>
+       <span class="visually-hidden">
+        Title
+       </span>
+       <input name="title" pattern=".*\w.*" placeholder="Title" required="" type="text"/>
+      </label>
+      <label>
+       <span class="visually-hidden">
+        Leave a comment
+       </span>
+       <textarea name="body" placeholder="Leave a comment" required=""></textarea>
+      </label>
+      <div class="action-container">
+       <button class="primary-action" name="submit" type="submit">
+        Submit feedback
+       </button>
+      </div>
+     </form>
+     <div class="feedback-status alert busy" role="alert">
+      <p>
+       Loading feedback...
+      </p>
+     </div>
+     <div class="feedback-tab-group tabGroup" data-tab-group-independent="" hidden="">
+      <ul role="tablist">
+       <li role="presentation">
+        <a aria-controls="tabpanel-issues-open" aria-label="Open Issues" data-tab="issues-open" href="#tabpanel-issues-open" role="tab">
+        </a>
+       </li>
+       <li role="presentation">
+        <a aria-controls="tabpanel-issues-closed" aria-label="Closed Issues" data-tab="issues-closed" href="#tabpanel-issues-closed" role="tab">
+        </a>
+       </li>
+      </ul>
+      <section data-tab="issues-open" id="tabpanel-issues-open" role="tabpanel">
+       <div class="no-issues-placeholder">
+        There are no open issues
+       </div>
+       <ul aria-label="Open Issues" class="github-issues-list">
+       </ul>
+      </section>
+      <section data-tab="issues-closed" id="tabpanel-issues-closed" role="tabpanel">
+       <div class="no-issues-placeholder">
+        There are no closed issues
+       </div>
+       <ul aria-label="Closed Issues" class="github-issues-list">
+       </ul>
+      </section>
+     </div>
+     <div class="action-container">
+      <a class="view-on-github" data-bi-name="view-on-github" hidden="" href="https://github.com/MicrosoftDocs/windows-powershell-docs/issues">
+       <span aria-hidden="true" class="docon docon-brand-github">
+       </span>
+       <span>
+        View on GitHub
+       </span>
+       <span aria-hidden="true" class="docon docon-navigate-external">
+       </span>
+      </a>
+     </div>
+    </section>
+   </div>
+  </div>
+  <div class="openfeedback-container" id="openFeedbackContainer">
+  </div>
+  <div class="action-panel">
+  </div>
+ </body>
+</html>

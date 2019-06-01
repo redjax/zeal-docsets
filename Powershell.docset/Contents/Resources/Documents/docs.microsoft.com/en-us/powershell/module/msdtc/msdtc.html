@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html class="no-js hasSidebar hasPageActions hasBreadcrumb conceptual" data-authenticated="false" data-render="docs" dir="ltr" lang="en-us">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="MsDtc" property="og:title"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" property="og:image"/>
+  <meta content="summary" name="twitter:card"/>
+  <meta content="@docsmsft" name="twitter:site"/>
+  <meta content="MsDtc" name="twitter:title"/>
+  <meta content="Use this topic to help manage Windows and Windows Server technologies with Windows PowerShell." name="twitter:description"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" name="twitter:image"/>
+  <meta content="Microsoft Logo" name="twitter:image:alt"/>
+  <meta content="Docs" name="search.ms_sitename"/>
+  <meta content="powershell-windows" name="search.ms_docsetname"/>
+  <meta content="0" name="version"/>
+  <meta content="en-us" name="locale"/>
+  <meta content="Docs" name="site_name"/>
+  <meta content="MSDN" name="search.ms_product"/>
+  <meta content="MSDN.powershell-windows" name="depot_name"/>
+  <meta content="https://cpubwin.visualstudio.com/DefaultCollection/powershell/_git/powershell/commit/ced7757924addcaea0b7a244ae4d240e4d28d93a?path=%2fdocset%2fwindows%2fmsdtc%2fmsdtc.md&amp;_a=contents" name="ref_skeleton_gitcommit"/>
+  <meta content="https://cpubwin.visualstudio.com/DefaultCollection/powershell/_git/powershell?path=%2fdocset%2fwindows%2fmsdtc%2fmsdtc.md&amp;version=GBlive&amp;_a=contents" name="original_ref_skeleton_git_url"/>
+  <meta content="2017-09-15 03:44 AM" name="updated_at"/>
+  <meta content="5099e8ca-53c1-56f8-6500-db3fd0514d23" name="document_id"/>
+  <meta content="e21ff031-2769-4a12-a691-037a8ebe105a" name="document_version_independent_id"/>
+  <meta content="powershell" name="page_type"/>
+  <meta content="module" name="page_kind"/>
+  <meta content="../win10-ps/toc.json?view=win10-ps" name="toc_rel"/>
+  <meta content="manage" name="ms.mktglfcycl"/>
+  <meta content="library" name="ms.sitesec"/>
+  <meta content="brianlic" name="ms.author"/>
+  <meta content="MsDtc" name="Module_Name"/>
+  <meta content="52923875-F2E3-4AD2-8E0C-96C7B10E2E3D" name="Module_Guid"/>
+  <meta content="http://go.microsoft.com/fwlink/?linkid=390791" name="Download_Help_Link"/>
+  <meta content="5.0.0.1" name="Help_Version"/>
+  <meta content="en-US" name="Locale"/>
+  <meta content="Use this topic to help manage Windows and Windows Server technologies with Windows PowerShell." name="description"/>
+  <meta content="powershell, cmdlet" name="keywords"/>
+  <meta content="brianlic-msft" name="author"/>
+  <meta content="alanth" name="manager"/>
+  <meta content="12/20/2016" name="ms.date"/>
+  <meta content="reference" name="ms.topic"/>
+  <meta content="w10" name="ms.prod"/>
+  <meta content="powershell-windows" name="ms.technology"/>
+  <meta content="C362E2E9-6D95-4A7F-A526-C553D116023B" name="ms.assetid"/>
+  <meta content="msdtc" name="Add-DtcClusterTMMapping"/>
+  <meta content="msdtc" name="Complete-DtcDiagnosticTransaction"/>
+  <meta content="msdtc" name="Get-Dtc"/>
+  <meta content="msdtc" name="Get-DtcAdvancedHostSetting"/>
+  <meta content="msdtc" name="Get-DtcAdvancedSetting"/>
+  <meta content="msdtc" name="Get-DtcClusterDefault"/>
+  <meta content="msdtc" name="Get-DtcClusterTMMapping"/>
+  <meta content="msdtc" name="Get-DtcDefault"/>
+  <meta content="msdtc" name="Get-DtcLog"/>
+  <meta content="msdtc" name="Get-DtcNetworkSetting"/>
+  <meta content="msdtc" name="Get-DtcTransaction"/>
+  <meta content="msdtc" name="Get-DtcTransactionsStatistics"/>
+  <meta content="msdtc" name="Get-DtcTransactionsTraceSession"/>
+  <meta content="msdtc" name="Get-DtcTransactionsTraceSetting"/>
+  <meta content="msdtc" name="Install-Dtc"/>
+  <meta content="msdtc" name="Join-DtcDiagnosticResourceManager"/>
+  <meta content="msdtc" name="New-DtcDiagnosticTransaction"/>
+  <meta content="msdtc" name="Receive-DtcDiagnosticTransaction"/>
+  <meta content="msdtc" name="Remove-DtcClusterTMMapping"/>
+  <meta content="msdtc" name="Reset-DtcLog"/>
+  <meta content="msdtc" name="Send-DtcDiagnosticTransaction"/>
+  <meta content="msdtc" name="Set-DtcAdvancedHostSetting"/>
+  <meta content="msdtc" name="Set-DtcAdvancedSetting"/>
+  <meta content="msdtc" name="Set-DtcClusterDefault"/>
+  <meta content="msdtc" name="Set-DtcClusterTMMapping"/>
+  <meta content="msdtc" name="Set-DtcDefault"/>
+  <meta content="msdtc" name="Set-DtcLog"/>
+  <meta content="msdtc" name="Set-DtcNetworkSetting"/>
+  <meta content="msdtc" name="Set-DtcTransaction"/>
+  <meta content="msdtc" name="Set-DtcTransactionsTraceSession"/>
+  <meta content="msdtc" name="Set-DtcTransactionsTraceSetting"/>
+  <meta content="msdtc" name="Start-Dtc"/>
+  <meta content="msdtc" name="Start-DtcDiagnosticResourceManager"/>
+  <meta content="msdtc" name="Start-DtcTransactionsTraceSession"/>
+  <meta content="msdtc" name="Stop-Dtc"/>
+  <meta content="msdtc" name="Stop-DtcDiagnosticResourceManager"/>
+  <meta content="msdtc" name="Stop-DtcTransactionsTraceSession"/>
+  <meta content="msdtc" name="Test-Dtc"/>
+  <meta content="msdtc" name="Undo-DtcDiagnosticTransaction"/>
+  <meta content="msdtc" name="Uninstall-Dtc"/>
+  <meta content="msdtc" name="Write-DtcTransactionsTraceSession"/>
+  <meta content="powershell" name="ms.devlang"/>
+  <meta content="INDEX, FOLLOW" name="ROBOTS"/>
+  <meta content="/powershell/windows/bread/toc.json?view=win10-ps" name="breadcrumb_path"/>
+  <meta content="powershell" name="apiPlatform"/>
+  <meta content="MSDocsHeader-WindowsIT" name="uhfHeaderId"/>
+  <link href="https://docs.microsoft.com/en-us/powershell/module/msdtc/" rel="canonical"/>
+  <title>
+   MsDtc
+  </title>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/e4a1f3a3.site.css" rel="stylesheet"/>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/31353636.conceptual.css" rel="stylesheet"/>
+ </head>
+ <body dir="ltr" lang="en-us">
+  <div class="header-holder">
+   <div data-bi-name="header" id="headerAreaHolder">
+    <div id="uhf-placeholder">
+    </div>
+   </div>
+   <div class="disclaimer-holder" id="disclaimer-holder">
+   </div>
+  </div>
+  <div class="container mainContainer" data-bi-name="body">
+   <div class="content-header" data-bi-name="content-header">
+    <div class="content-header-controls">
+     <button class="contents-button button-border" data-bi-name="contents-expand" type="button">
+      <span class="docon docon-menu">
+      </span>
+      Contents
+     </button>
+    </div>
+    <div class="content-header-controls">
+     <button class="ap-collapse-behavior ap-expanded button-border" data-bi-name="ap-collapse" type="button">
+      <span class="docon docon-exit-mode">
+      </span>
+      Exit focus mode
+     </button>
+    </div>
+   </div>
+   <div class="primary-holder">
+    <main class="content" data-bi-name="content" dir="ltr" id="main" lang="en-us" role="main">
+     <!-- <content> -->
+     <h1>
+      Ms
+      <wbr/>
+      Dtc
+     </h1>
+     <div class="summaryHolder">
+      <div class="summary">
+       <p>
+        This reference provides information about the Windows PowerShell cmdlets provided with Microsoft Distributed Transaction Coordinator (MSDTC). The cmdlet help topics in this section are in alphabetical order.
+       </p>
+      </div>
+     </div>
+     <h2 id="msdtc">
+      msdtc
+     </h2>
+     <table class="nameValue">
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Add-DtcClusterTMMapping.html">
+         Add-Dtc
+         <wbr/>
+         Cluster
+         <wbr/>
+         TMMapping
+        </a>
+       </td>
+       <td>
+        <p>
+         Adds a cluster DTC mapping.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Complete-DtcDiagnosticTransaction.html">
+         Complete-Dtc
+         <wbr/>
+         Diagnostic
+         <wbr/>
+         Transaction
+        </a>
+       </td>
+       <td>
+        <p>
+         Invokes the Commit process if the specified transaction is the root transaction; otherwise, invokes the Complete method on a transaction object.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-Dtc.html">
+         Get-Dtc
+        </a>
+       </td>
+       <td>
+        <p>
+         Gets DTC instances.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-DtcAdvancedHostSetting.html">
+         Get-Dtc
+         <wbr/>
+         Advanced
+         <wbr/>
+         Host
+         <wbr/>
+         Setting
+        </a>
+       </td>
+       <td>
+        <p>
+         Queries the DTC host level properties in the registry.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-DtcAdvancedSetting.html">
+         Get-Dtc
+         <wbr/>
+         Advanced
+         <wbr/>
+         Setting
+        </a>
+       </td>
+       <td>
+        <p>
+         Queries the advanced setting for MSDTC in the registry.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-DtcClusterDefault.html">
+         Get-Dtc
+         <wbr/>
+         Cluster
+         <wbr/>
+         Default
+        </a>
+       </td>
+       <td>
+        <p>
+         Retrieves the default cluster server.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-DtcClusterTMMapping.html">
+         Get-Dtc
+         <wbr/>
+         Cluster
+         <wbr/>
+         TMMapping
+        </a>
+       </td>
+       <td>
+        <p>
+         Gets cluster DTC Mapping data.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-DtcDefault.html">
+         Get-Dtc
+         <wbr/>
+         Default
+        </a>
+       </td>
+       <td>
+        <p>
+         Gets the default DTC instance.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-DtcLog.html">
+         Get-Dtc
+         <wbr/>
+         Log
+        </a>
+       </td>
+       <td>
+        <p>
+         Gets DTC log file settings.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-DtcNetworkSetting.html">
+         Get-Dtc
+         <wbr/>
+         Network
+         <wbr/>
+         Setting
+        </a>
+       </td>
+       <td>
+        <p>
+         Gets DTC network and security configuration settings.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-DtcTransaction.html">
+         Get-Dtc
+         <wbr/>
+         Transaction
+        </a>
+       </td>
+       <td>
+        <p>
+         Gets information about transactions being handled by the DTC instance.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-DtcTransactionsStatistics.html">
+         Get-Dtc
+         <wbr/>
+         Transactions
+         <wbr/>
+         Statistics
+        </a>
+       </td>
+       <td>
+        <p>
+         Gets a summary of transactions.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-DtcTransactionsTraceSession.html">
+         Get-Dtc
+         <wbr/>
+         Transactions
+         <wbr/>
+         Trace
+         <wbr/>
+         Session
+        </a>
+       </td>
+       <td>
+        <p>
+         Gets the DTC transactions trace session specific setting of the host.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-DtcTransactionsTraceSetting.html">
+         Get-Dtc
+         <wbr/>
+         Transactions
+         <wbr/>
+         Trace
+         <wbr/>
+         Setting
+        </a>
+       </td>
+       <td>
+        <p>
+         Gets the DTC transactions trace setting of the host.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Install-Dtc.html">
+         Install-Dtc
+        </a>
+       </td>
+       <td>
+        <p>
+         Installs the local transactions coordinator.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Join-DtcDiagnosticResourceManager.html">
+         Join-Dtc
+         <wbr/>
+         Diagnostic
+         <wbr/>
+         Resource
+         <wbr/>
+         Manager
+        </a>
+       </td>
+       <td>
+        <p>
+         Enlists a diagnostic Resource Manager for a transaction object.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="New-DtcDiagnosticTransaction.html">
+         New-Dtc
+         <wbr/>
+         Diagnostic
+         <wbr/>
+         Transaction
+        </a>
+       </td>
+       <td>
+        <p>
+         Creates a new transaction in a Transaction Manager on the local computer.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Receive-DtcDiagnosticTransaction.html">
+         Receive-Dtc
+         <wbr/>
+         Diagnostic
+         <wbr/>
+         Transaction
+        </a>
+       </td>
+       <td>
+        <p>
+         Propagates a transaction from a given diagnostic Resource Manager.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Remove-DtcClusterTMMapping.html">
+         Remove-Dtc
+         <wbr/>
+         Cluster
+         <wbr/>
+         TMMapping
+        </a>
+       </td>
+       <td>
+        <p>
+         Removes a cluster DTC mapping.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Reset-DtcLog.html">
+         Reset-Dtc
+         <wbr/>
+         Log
+        </a>
+       </td>
+       <td>
+        <p>
+         Resets the log file of a DTC instance.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Send-DtcDiagnosticTransaction.html">
+         Send-Dtc
+         <wbr/>
+         Diagnostic
+         <wbr/>
+         Transaction
+        </a>
+       </td>
+       <td>
+        <p>
+         Propagates a transaction to a specified diagnostic Resource Manager.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Set-DtcAdvancedHostSetting.html">
+         Set-Dtc
+         <wbr/>
+         Advanced
+         <wbr/>
+         Host
+         <wbr/>
+         Setting
+        </a>
+       </td>
+       <td>
+        <p>
+         Sets the DTC host level properties in the registry.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Set-DtcAdvancedSetting.html">
+         Set-Dtc
+         <wbr/>
+         Advanced
+         <wbr/>
+         Setting
+        </a>
+       </td>
+       <td>
+        <p>
+         Sets DTC instance specific properties in the registry.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Set-DtcClusterDefault.html">
+         Set-Dtc
+         <wbr/>
+         Cluster
+         <wbr/>
+         Default
+        </a>
+       </td>
+       <td>
+        <p>
+         Sets the cluster default transactions coordinator.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Set-DtcClusterTMMapping.html">
+         Set-Dtc
+         <wbr/>
+         Cluster
+         <wbr/>
+         TMMapping
+        </a>
+       </td>
+       <td>
+        <p>
+         Modifies an existing cluster DTC mapping.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Set-DtcDefault.html">
+         Set-Dtc
+         <wbr/>
+         Default
+        </a>
+       </td>
+       <td>
+        <p>
+         Sets the default transactions coordinator.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Set-DtcLog.html">
+         Set-Dtc
+         <wbr/>
+         Log
+        </a>
+       </td>
+       <td>
+        <p>
+         Modifies the log file settings of a DTC instance.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Set-DtcNetworkSetting.html">
+         Set-Dtc
+         <wbr/>
+         Network
+         <wbr/>
+         Setting
+        </a>
+       </td>
+       <td>
+        <p>
+         Modifies DTC network and security configuration for a DTC instance.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Set-DtcTransaction.html">
+         Set-Dtc
+         <wbr/>
+         Transaction
+        </a>
+       </td>
+       <td>
+        <p>
+         Modifies the state of a transaction.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Set-DtcTransactionsTraceSession.html">
+         Set-Dtc
+         <wbr/>
+         Transactions
+         <wbr/>
+         Trace
+         <wbr/>
+         Session
+        </a>
+       </td>
+       <td>
+        <p>
+         Modifies the DTC transactions trace setting of the host.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Set-DtcTransactionsTraceSetting.html">
+         Set-Dtc
+         <wbr/>
+         Transactions
+         <wbr/>
+         Trace
+         <wbr/>
+         Setting
+        </a>
+       </td>
+       <td>
+        <p>
+         Modifies the DTC transactions trace setting of the host.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Start-Dtc.html">
+         Start-Dtc
+        </a>
+       </td>
+       <td>
+        <p>
+         Starts the DTC instance.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Start-DtcDiagnosticResourceManager.html">
+         Start-Dtc
+         <wbr/>
+         Diagnostic
+         <wbr/>
+         Resource
+         <wbr/>
+         Manager
+        </a>
+       </td>
+       <td>
+        <p>
+         Starts a diagnostic Resource Manager.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Start-DtcTransactionsTraceSession.html">
+         Start-Dtc
+         <wbr/>
+         Transactions
+         <wbr/>
+         Trace
+         <wbr/>
+         Session
+        </a>
+       </td>
+       <td>
+        <p>
+         Starts a new DTC transactions trace session for the host.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Stop-Dtc.html">
+         Stop-Dtc
+        </a>
+       </td>
+       <td>
+        <p>
+         Stops a DTC instance.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Stop-DtcDiagnosticResourceManager.html">
+         Stop-Dtc
+         <wbr/>
+         Diagnostic
+         <wbr/>
+         Resource
+         <wbr/>
+         Manager
+        </a>
+       </td>
+       <td>
+        <p>
+         Stops and removes a diagnostic Resource Manager job.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Stop-DtcTransactionsTraceSession.html">
+         Stop-Dtc
+         <wbr/>
+         Transactions
+         <wbr/>
+         Trace
+         <wbr/>
+         Session
+        </a>
+       </td>
+       <td>
+        <p>
+         Stops the active DTC transactions trace session on the host.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Test-Dtc.html">
+         Test-Dtc
+        </a>
+       </td>
+       <td>
+        <p>
+         Tests whether two computers can participate in networked transactions.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Undo-DtcDiagnosticTransaction.html">
+         Undo-Dtc
+         <wbr/>
+         Diagnostic
+         <wbr/>
+         Transaction
+        </a>
+       </td>
+       <td>
+        <p>
+         Invokes the Abort process on the specified transaction.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Uninstall-Dtc.html">
+         Uninstall-Dtc
+        </a>
+       </td>
+       <td>
+        <p>
+         Uninstalls the local transactions coordinator.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Write-DtcTransactionsTraceSession.html">
+         Write-Dtc
+         <wbr/>
+         Transactions
+         <wbr/>
+         Trace
+         <wbr/>
+         Session
+        </a>
+       </td>
+       <td>
+        <p>
+         Writes the data from an active DTC transactions trace session into the log file.
+        </p>
+       </td>
+      </tr>
+     </table>
+     <!-- </content> -->
+    </main>
+    <section class="feedback-section" data-bi-name="feedback-section">
+     <h2 id="feedback">
+      Feedback
+     </h2>
+     <div class="alert choose-feedback-type">
+      <p>
+       We'd love to hear your thoughts. Choose the type you'd like to provide:
+      </p>
+      <div class="choose-feedback-buttons">
+       <a class="button-border feedback-type-product" data-bi-name="product-feedback" href="https://windowsserver.uservoice.com/forums/301869-powershell">
+        Product feedback
+        <span aria-hidden="true" class="docon docon-navigate-external">
+        </span>
+       </a>
+       <div class="button-group">
+        <button class="button-border feedback-sign-in-button" data-bi-name="feedback-sign-in">
+         <span aria-hidden="true" class="docon docon-brand-github">
+         </span>
+         Sign in to give documentation feedback
+        </button>
+        <button aria-controls="feedback-form" aria-expanded="false" class="button-border feedback-form-toggle" data-bi-name="documentation-feedback" hidden="">
+         Content feedback
+        </button>
+        <div auto-align="" class="dropdown has-caret">
+         <button aria-controls="fbm0" aria-expanded="false" aria-haspopup="true" aria-label="Expand documentation feedback menu" class="button-border dropdown-trigger" data-bi-name="documentation-feedback-menu">
+          <span aria-hidden="true" class="docon docon-chevron-down-light">
+          </span>
+         </button>
+         <div class="dropdown-menu documentation-feedback-menu" id="fbm0" role="menu">
+          You may also leave feedback
+          <a data-bi-name="create-issue-on-github" href="{0}">
+           directly on GitHub
+           <span aria-hidden="true" class="docon docon-navigate-external">
+           </span>
+          </a>
+          .
+         </div>
+        </div>
+       </div>
+      </div>
+      <p>
+       <small>
+        Our new feedback system is built on GitHub Issues. Read about this change in
+        <a href="https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs">
+         our blog post
+        </a>
+        .
+       </small>
+      </p>
+     </div>
+     <form accept-charset="UTF-8" action="javascript:" autocomplete="off" class="feedback-form" hidden="" id="feedback-form">
+      <h3 class="feedback-form-heading current-user">
+       <img alt="Avatar" aria-hidden="true" class="avatar" height="36" width="36"/>
+       <span aria-hidden="true" class="username">
+       </span>
+       <span class="visually-hidden">
+        Liquid error: Can't find the localized string giveDocumentationFeedback for template Conceptual.
+       </span>
+      </h3>
+      <label>
+       <span class="visually-hidden">
+        Title
+       </span>
+       <input name="title" pattern=".*\w.*" placeholder="Title" required="" type="text"/>
+      </label>
+      <label>
+       <span class="visually-hidden">
+        Leave a comment
+       </span>
+       <textarea name="body" placeholder="Leave a comment" required=""></textarea>
+      </label>
+      <div class="action-container">
+       <button class="primary-action" name="submit" type="submit">
+        Submit feedback
+       </button>
+      </div>
+     </form>
+     <div class="feedback-status alert busy" role="alert">
+      <p>
+       Loading feedback...
+      </p>
+     </div>
+     <div class="feedback-tab-group tabGroup" data-tab-group-independent="" hidden="">
+      <ul role="tablist">
+       <li role="presentation">
+        <a aria-controls="tabpanel-issues-open" aria-label="Open Issues" data-tab="issues-open" href="#tabpanel-issues-open" role="tab">
+        </a>
+       </li>
+       <li role="presentation">
+        <a aria-controls="tabpanel-issues-closed" aria-label="Closed Issues" data-tab="issues-closed" href="#tabpanel-issues-closed" role="tab">
+        </a>
+       </li>
+      </ul>
+      <section data-tab="issues-open" id="tabpanel-issues-open" role="tabpanel">
+       <div class="no-issues-placeholder">
+        There are no open issues
+       </div>
+       <ul aria-label="Open Issues" class="github-issues-list">
+       </ul>
+      </section>
+      <section data-tab="issues-closed" id="tabpanel-issues-closed" role="tabpanel">
+       <div class="no-issues-placeholder">
+        There are no closed issues
+       </div>
+       <ul aria-label="Closed Issues" class="github-issues-list">
+       </ul>
+      </section>
+     </div>
+     <div class="action-container">
+      <a class="view-on-github" data-bi-name="view-on-github" hidden="" href="https://github.com/MicrosoftDocs/windows-powershell-docs/issues">
+       <span aria-hidden="true" class="docon docon-brand-github">
+       </span>
+       <span>
+        View on GitHub
+       </span>
+       <span aria-hidden="true" class="docon docon-navigate-external">
+       </span>
+      </a>
+     </div>
+    </section>
+   </div>
+  </div>
+  <div class="openfeedback-container" id="openFeedbackContainer">
+  </div>
+  <div class="action-panel">
+  </div>
+ </body>
+</html>

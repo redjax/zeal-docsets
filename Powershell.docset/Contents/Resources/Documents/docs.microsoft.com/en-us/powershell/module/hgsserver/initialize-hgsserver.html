@@ -1,0 +1,1930 @@
+<!DOCTYPE html>
+<html class="no-js hasSidebar hasPageActions hasBreadcrumb conceptual" data-authenticated="false" data-render="docs" dir="ltr" lang="en-us">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Initialize-HgsServer (hgsserver)" property="og:title"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" property="og:image"/>
+  <meta content="summary" name="twitter:card"/>
+  <meta content="@docsmsft" name="twitter:site"/>
+  <meta content="Initialize-HgsServer (hgsserver)" name="twitter:title"/>
+  <meta content="Use this topic to help manage Windows and Windows Server technologies with Windows PowerShell." name="twitter:description"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" name="twitter:image"/>
+  <meta content="Microsoft Logo" name="twitter:image:alt"/>
+  <meta content="Use this topic to help manage Windows and Windows Server technologies with Windows PowerShell." name="description"/>
+  <meta content="Docs" name="search.ms_sitename"/>
+  <meta content="powershell-windows" name="search.ms_docsetname"/>
+  <meta content="0" name="version"/>
+  <meta content="en-us" name="locale"/>
+  <meta content="Docs" name="site_name"/>
+  <meta content="MSDN" name="search.ms_product"/>
+  <meta content="MSDN.powershell-windows" name="depot_name"/>
+  <meta content="https://cpubwin.visualstudio.com/DefaultCollection/powershell/_git/powershell/commit/92c07735e55b24743a2b757e7d2f0eb839240d64?path=%2fdocset%2fwindows%2fhgsserver%2finitialize-hgsserver.md&amp;_a=contents" name="ref_skeleton_gitcommit"/>
+  <meta content="https://cpubwin.visualstudio.com/DefaultCollection/powershell/_git/powershell?path=%2fdocset%2fwindows%2fhgsserver%2finitialize-hgsserver.md&amp;version=GBlive&amp;_a=contents" name="original_ref_skeleton_git_url"/>
+  <meta content="2017-11-16 06:12 PM" name="updated_at"/>
+  <meta content="41781b01-3795-8d52-6288-8bcd87729630" name="document_id"/>
+  <meta content="2f14ccc8-a10f-2e89-0fa0-e70cedb56654" name="document_version_independent_id"/>
+  <meta content="powershell" name="page_type"/>
+  <meta content="command" name="page_kind"/>
+  <meta content="brianlic-msft" name="author"/>
+  <meta content="HgsServer-help.xml" name="external_help_file"/>
+  <meta content="powershell, cmdlet" name="keywords"/>
+  <meta content="alanth" name="manager"/>
+  <meta content="HgsServer" name="Module_Name"/>
+  <meta content="CE3CDF61-13DB-4BD8-B688-20219AAD6756" name="ms.assetid"/>
+  <meta content="brianlic" name="ms.author"/>
+  <meta content="12/20/2016" name="ms.date"/>
+  <meta content="manage" name="ms.mktglfcycl"/>
+  <meta content="w10" name="ms.prod"/>
+  <meta content="library" name="ms.sitesec"/>
+  <meta content="powershell-windows" name="ms.technology"/>
+  <meta content="reference" name="ms.topic"/>
+  <meta content="" name="online_version"/>
+  <meta content="2.0.0" name="schema"/>
+  <meta content="powershell" name="ms.devlang"/>
+  <meta content="INDEX, FOLLOW" name="ROBOTS"/>
+  <meta content="/powershell/windows/bread/toc.json?view=win10-ps" name="breadcrumb_path"/>
+  <meta content="powershell" name="apiPlatform"/>
+  <meta content="MSDocsHeader-WindowsIT" name="uhfHeaderId"/>
+  <meta content="../win10-ps/toc.json?view=win10-ps" name="toc_rel"/>
+  <link href="https://docs.microsoft.com/en-us/powershell/module/hgsserver/initialize-hgsserver" rel="canonical"/>
+  <title>
+   Initialize-HgsServer
+  </title>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/e4a1f3a3.site.css" rel="stylesheet"/>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/31353636.conceptual.css" rel="stylesheet"/>
+ </head>
+ <body dir="ltr" lang="en-us">
+  <div class="header-holder">
+   <div data-bi-name="header" id="headerAreaHolder">
+    <div id="uhf-placeholder">
+    </div>
+   </div>
+   <div class="disclaimer-holder" id="disclaimer-holder">
+   </div>
+  </div>
+  <div class="container mainContainer" data-bi-name="body">
+   <div class="content-header" data-bi-name="content-header">
+    <div class="content-header-controls">
+     <button class="contents-button button-border" data-bi-name="contents-expand" type="button">
+      <span class="docon docon-menu">
+      </span>
+      Contents
+     </button>
+    </div>
+    <div class="content-header-controls">
+     <button class="ap-collapse-behavior ap-expanded button-border" data-bi-name="ap-collapse" type="button">
+      <span class="docon docon-exit-mode">
+      </span>
+      Exit focus mode
+     </button>
+    </div>
+   </div>
+   <div class="primary-holder">
+    <main class="content" data-bi-name="content" dir="ltr" id="main" lang="en-us" role="main">
+     <!-- <content> -->
+     <h1>
+      Initialize-Hgs
+      <wbr/>
+      Server
+     </h1>
+     <div class="metadata">
+      <dl class="attributeList">
+       <dt>
+        Module:
+       </dt>
+       <dd>
+        <a data-linktype="relative-path" href="./.html">
+         hgsserver
+        </a>
+       </dd>
+      </dl>
+     </div>
+     <div class="summaryHolder">
+      <div class="summary">
+       Initializes the Host Guardian Service server.
+      </div>
+     </div>
+     <h2 class="hiddenAnchor" id="syntax">
+      Syntax
+     </h2>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Initialize-HgsServer
+          [-HgsServiceName] &lt;String&gt;
+          [-UseHgsDomain]
+          [-LogDirectory &lt;String&gt;]
+          [-Http]
+          [-Https]
+          [-HttpPort &lt;UInt16&gt;]
+          [-HttpsPort &lt;UInt16&gt;]
+          [-HttpsCertificatePath &lt;String&gt;]
+          [-HttpsCertificatePassword &lt;SecureString&gt;]
+          [-HttpsCertificateThumbprint &lt;String&gt;]
+          [-TrustActiveDirectory]
+          [-TrustTpm]
+          [-EncryptionCertificateThumbprint &lt;String&gt;]
+          [-EncryptionCertificatePath &lt;String&gt;]
+          [-EncryptionCertificatePassword &lt;SecureString&gt;]
+          [-SigningCertificateThumbprint &lt;String&gt;]
+          [-SigningCertificatePath &lt;String&gt;]
+          [-SigningCertificatePassword &lt;SecureString&gt;]
+          [-HgsVersion &lt;HgsVersion&gt;]
+          [-Force]
+          [-WhatIf]
+          [-Confirm]
+          [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Initialize-HgsServer
+          [-HgsServiceName] &lt;String&gt;
+          [-UseExistingDomain]
+          [-LogDirectory &lt;String&gt;]
+          -JeaAdministratorsGroup &lt;ADGroup&gt;
+          -JeaReviewersGroup &lt;ADGroup&gt;
+          -ServiceAccount &lt;ADServiceAccount&gt;
+          [-ClusterName &lt;String&gt;]
+          [-Http]
+          [-Https]
+          [-HttpPort &lt;UInt16&gt;]
+          [-HttpsPort &lt;UInt16&gt;]
+          [-HttpsCertificatePath &lt;String&gt;]
+          [-HttpsCertificatePassword &lt;SecureString&gt;]
+          [-HttpsCertificateThumbprint &lt;String&gt;]
+          [-TrustActiveDirectory]
+          [-TrustTpm]
+          [-EncryptionCertificateThumbprint &lt;String&gt;]
+          [-EncryptionCertificatePath &lt;String&gt;]
+          [-EncryptionCertificatePassword &lt;SecureString&gt;]
+          [-SigningCertificateThumbprint &lt;String&gt;]
+          [-SigningCertificatePath &lt;String&gt;]
+          [-SigningCertificatePassword &lt;SecureString&gt;]
+          [-HgsVersion &lt;HgsVersion&gt;]
+          [-Force]
+          [-WhatIf]
+          [-Confirm]
+          [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Initialize-HgsServer
+          [-HgsServerIPAddress] &lt;String&gt;
+          [-LogDirectory &lt;String&gt;]
+          [-Http]
+          [-Https]
+          [-HttpPort &lt;UInt16&gt;]
+          [-HttpsPort &lt;UInt16&gt;]
+          [-HttpsCertificatePath &lt;String&gt;]
+          [-HttpsCertificatePassword &lt;SecureString&gt;]
+          [-HttpsCertificateThumbprint &lt;String&gt;]
+          [-Force]
+          [-WhatIf]
+          [-Confirm]
+          [&lt;CommonParameters&gt;]</code></pre>
+     <h2 id="description">
+      Description
+     </h2>
+     <p>
+      The
+      <strong>
+       Initialize-HgsServer
+      </strong>
+      cmdlet configures the necessary infrastructure components for Host Guardian Service (HGS) after it is rebooted.
+     </p>
+     <p>
+      This cmdlet performs the following configuration actions on infrastructure components of the first HGS node:
+     </p>
+     <ul>
+      <li>
+       Creates one-node failover cluster.
+      </li>
+      <li>
+       Configures a failover cluster with a distributed network name resource corresponding to the fully qualified domain name of the HGS name: &lt;HgsServerName&gt;.&lt;LocalDomain&gt;.
+      </li>
+      <li>
+       Registers and configures the Attestation service web application with the IIS service.
+      </li>
+      <li>
+       Registers and configures the Key Protection service web application with the IIS service.
+      </li>
+      <li>
+       Configures the Attestation service signer certificate with the Key Protection service.
+      </li>
+      <li>
+       Enables Just Enough Administration on the local node.
+      </li>
+     </ul>
+     <p>
+      This cmdlet makes the following configuration changes to components on an additional HGS node:
+     </p>
+     <ul>
+      <li>
+       <p>
+        Adds the local node to the existing failover cluster on a node specified by the
+        <strong>
+         HgsServerIPAddress
+        </strong>
+        parameter using the credential specified in the
+        <strong>
+         HgsDomainCredential
+        </strong>
+        parameter.
+       </p>
+      </li>
+      <li>
+       <p>
+        Registers and configures the Attestation service web application with the IIS service.
+       </p>
+      </li>
+      <li>
+       Registers and configures the Key Protection service web application with the IIS service.
+      </li>
+      <li>
+       Configures the Attestation service signer certificate with the Key Protection service.
+      </li>
+      <li>
+       Enables Just Enough Administration on the local node.
+      </li>
+     </ul>
+     <p>
+      For more information about the scenario terms, see
+      <a data-linktype="external" href="http://go.microsoft.com/fwlink/?LinkId=699209">
+       Security and Assurance
+      </a>
+      .
+     </p>
+     <h2 id="examples">
+      Examples
+     </h2>
+     <p>
+      <strong>
+       Example 1: Initialize the HGS on the primary node in TPM mode
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Initialize-HgsServer -HgsServiceName "SecureFabricHgs" -EncryptionCertificateThumbprint $EncryptionCert.Thumbprint -SigningCertificateThumbprint $SigningCert.Thumbprint</code></pre>
+     <p>
+      This command initializes the HGS server on the primary node.
+By default, the server is accessible on HTTP port 80 and the Attestation service is set to TPM mode.
+The specified certificates are used by the Key Protection service.
+     </p>
+     <p>
+      <strong>
+       Example 2: Initialize the HGS on a secondary node in TPM mode
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; $Cred = Get-Credential
+PS C:\&gt; Initialize-HgsServer -HgsServerIPAddress "100.100.100.1" -HgsDomainCredential $Cred</code></pre>
+     <p>
+      This command initializes the HGS server on a secondary node.
+By default, the server is accessible on HTTP port 80 and the Attestation service is set to TPM mode.
+The Key Protection service uses the encryption and signing certificates set by the primary server.
+     </p>
+     <p>
+      <strong>
+       Example 3: Initialize the HGS on the primary node in Active Directory mode
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Initialize-HgsServer -TrustActiveDirectory -HgsServiceName "SecureFabricHgs" -EncryptionCertificateThumbprint $EncryptionCert.Thumbprint -SigningCertificateThumbprint $SigningCert.Thumbprint</code></pre>
+     <p>
+      This command initializes the HGS server on the primary node and sets the Attestation service to Active Directory (AD) mode.
+By default, the server is accessible on HTTP port 80.
+The specified certificates are used by the Key Protection service.
+     </p>
+     <p>
+      <strong>
+       Example 4: Initialize the HGS on the primary node in TPM mode and enable HTTPS
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Initialize-HgsServer -HgsServiceName "SecureFabricHgs" -EncryptionCertificateThumbprint $EncryptionCert.Thumbprint -SigningCertificateThumbprint $SigningCert.Thumbprint -http -https -HttpsCertificatePath $PathToPfx -HttpsCertificatePassword $PfxSecureString</code></pre>
+     <p>
+      This command initializes the HGS server on the primary node.
+The server is set to be accessible by HTTP and HTTPS on the default ports, and with the specified certificate for HTTPS.
+By default, the server is accessible on HTTP port 80 and the Attestation service is set to TPM mode.
+The specified certificates are used by the Key Protection service.
+     </p>
+     <h2 id="required-parameters">
+      Required Parameters
+     </h2>
+     <div class="parameterName stack">
+      -HgsServerIPAddress
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the IP address of the HGS server that is a domain controller for the specified HGS domain.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         1
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -HgsServiceName
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the HGS name.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         1
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -JeaAdministratorsGroup
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Identifies the Active Directory group of users who can administer HGS through Just Enough Administration.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          ADGroup
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -JeaReviewersGroup
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Identifies the Active Directory group of users who can view, but not change, HGS settings through Just Enough Administration.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          ADGroup
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -ServiceAccount
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Identifies the Group Managed Service Account that will be used for the Key Protection Service. The specified account must already be installed and configured for use on this machine.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          ADServiceAccount
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -UseExistingDomain
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that HGS was joined to an existing domain and did not establish its own domain (with Install-HgsServer). HGS must already be joined to the existing domain to continue.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="optional-parameters">
+      Optional Parameters
+     </h2>
+     <div class="parameterName stack">
+      -ClusterName
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a cluster name.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Confirm
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Prompts you for confirmation before running the cmdlet.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         cf
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -EncryptionCertificatePassword
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the password for the certificate file specified in
+       <strong>
+        EncryptionCertificatePath
+       </strong>
+       .
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SecureString
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -EncryptionCertificatePath
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the path to the encryption certificate used by the Key Protection service.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -EncryptionCertificateThumbprint
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the thumbprint of the encryption certificate used by the Key Protection service.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Force
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Forces the command to run without asking for user confirmation.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -HgsVersion
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Reserved for future use.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          HgsVersion
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Parameter Sets:
+        </td>
+        <td>
+         HgsVersion1503, HgsVersion1704
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         $script:HgsSupportedLevels[0]
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Http
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that the HGS server is accessible over HTTP.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -HttpPort
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the HTTP port of the HGS server.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          UInt16
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Https
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that the HGS server is accessible over HTTPS.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -HttpsCertificatePassword
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the password to the certificate file identified by
+       <strong>
+        HttpsCertificatePath
+       </strong>
+       .
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SecureString
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -HttpsCertificatePath
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the path to the HTTPS certificate file (.pfx).
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -HttpsCertificateThumbprint
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates the thumbprint of the HTTPS certificate.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -HttpsPort
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the HTTPS port of the HGS server.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          UInt16
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -LogDirectory
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the directory for the output log.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -SigningCertificatePassword
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the password for the certificate file identified by
+       <strong>
+        SigningCertificatePath
+       </strong>
+       .
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SecureString
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -SigningCertificatePath
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the path to the signing certificate for use by the Key Protection service.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -SigningCertificateThumbprint
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the thumbprint of the signing certificate for use by the Key Protection service.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -TrustActiveDirectory
+     </div>
+     <div class="parameterInfo">
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -TrustTpm
+     </div>
+     <div class="parameterInfo">
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -UseHgsDomain
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that HGS was set up with its own dedicated Active Directory forest using the Install-HgsServer cmdlet.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -WhatIf
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         wi
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="related-links">
+      Related Links
+     </h2>
+     <ul>
+      <li>
+       <a data-linktype="relative-path" href="./hgsserver.html">
+        HGS Server Cmdlets
+       </a>
+      </li>
+     </ul>
+     <!-- </content> -->
+    </main>
+    <section class="feedback-section" data-bi-name="feedback-section">
+     <h2 id="feedback">
+      Feedback
+     </h2>
+     <div class="alert choose-feedback-type">
+      <p>
+       We'd love to hear your thoughts. Choose the type you'd like to provide:
+      </p>
+      <div class="choose-feedback-buttons">
+       <a class="button-border feedback-type-product" data-bi-name="product-feedback" href="https://windowsserver.uservoice.com/forums/301869-powershell">
+        Product feedback
+        <span aria-hidden="true" class="docon docon-navigate-external">
+        </span>
+       </a>
+       <div class="button-group">
+        <button class="button-border feedback-sign-in-button" data-bi-name="feedback-sign-in">
+         <span aria-hidden="true" class="docon docon-brand-github">
+         </span>
+         Sign in to give documentation feedback
+        </button>
+        <button aria-controls="feedback-form" aria-expanded="false" class="button-border feedback-form-toggle" data-bi-name="documentation-feedback" hidden="">
+         Content feedback
+        </button>
+        <div auto-align="" class="dropdown has-caret">
+         <button aria-controls="fbm0" aria-expanded="false" aria-haspopup="true" aria-label="Expand documentation feedback menu" class="button-border dropdown-trigger" data-bi-name="documentation-feedback-menu">
+          <span aria-hidden="true" class="docon docon-chevron-down-light">
+          </span>
+         </button>
+         <div class="dropdown-menu documentation-feedback-menu" id="fbm0" role="menu">
+          You may also leave feedback
+          <a data-bi-name="create-issue-on-github" href="{0}">
+           directly on GitHub
+           <span aria-hidden="true" class="docon docon-navigate-external">
+           </span>
+          </a>
+          .
+         </div>
+        </div>
+       </div>
+      </div>
+      <p>
+       <small>
+        Our new feedback system is built on GitHub Issues. Read about this change in
+        <a href="https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs">
+         our blog post
+        </a>
+        .
+       </small>
+      </p>
+     </div>
+     <form accept-charset="UTF-8" action="javascript:" autocomplete="off" class="feedback-form" hidden="" id="feedback-form">
+      <h3 class="feedback-form-heading current-user">
+       <img alt="Avatar" aria-hidden="true" class="avatar" height="36" width="36"/>
+       <span aria-hidden="true" class="username">
+       </span>
+       <span class="visually-hidden">
+        Liquid error: Can't find the localized string giveDocumentationFeedback for template Conceptual.
+       </span>
+      </h3>
+      <label>
+       <span class="visually-hidden">
+        Title
+       </span>
+       <input name="title" pattern=".*\w.*" placeholder="Title" required="" type="text"/>
+      </label>
+      <label>
+       <span class="visually-hidden">
+        Leave a comment
+       </span>
+       <textarea name="body" placeholder="Leave a comment" required=""></textarea>
+      </label>
+      <div class="action-container">
+       <button class="primary-action" name="submit" type="submit">
+        Submit feedback
+       </button>
+      </div>
+     </form>
+     <div class="feedback-status alert busy" role="alert">
+      <p>
+       Loading feedback...
+      </p>
+     </div>
+     <div class="feedback-tab-group tabGroup" data-tab-group-independent="" hidden="">
+      <ul role="tablist">
+       <li role="presentation">
+        <a aria-controls="tabpanel-issues-open" aria-label="Open Issues" data-tab="issues-open" href="#tabpanel-issues-open" role="tab">
+        </a>
+       </li>
+       <li role="presentation">
+        <a aria-controls="tabpanel-issues-closed" aria-label="Closed Issues" data-tab="issues-closed" href="#tabpanel-issues-closed" role="tab">
+        </a>
+       </li>
+      </ul>
+      <section data-tab="issues-open" id="tabpanel-issues-open" role="tabpanel">
+       <div class="no-issues-placeholder">
+        There are no open issues
+       </div>
+       <ul aria-label="Open Issues" class="github-issues-list">
+       </ul>
+      </section>
+      <section data-tab="issues-closed" id="tabpanel-issues-closed" role="tabpanel">
+       <div class="no-issues-placeholder">
+        There are no closed issues
+       </div>
+       <ul aria-label="Closed Issues" class="github-issues-list">
+       </ul>
+      </section>
+     </div>
+     <div class="action-container">
+      <a class="view-on-github" data-bi-name="view-on-github" hidden="" href="https://github.com/MicrosoftDocs/windows-powershell-docs/issues">
+       <span aria-hidden="true" class="docon docon-brand-github">
+       </span>
+       <span>
+        View on GitHub
+       </span>
+       <span aria-hidden="true" class="docon docon-navigate-external">
+       </span>
+      </a>
+     </div>
+    </section>
+   </div>
+  </div>
+  <div class="openfeedback-container" id="openFeedbackContainer">
+  </div>
+  <div class="action-panel">
+  </div>
+ </body>
+</html>

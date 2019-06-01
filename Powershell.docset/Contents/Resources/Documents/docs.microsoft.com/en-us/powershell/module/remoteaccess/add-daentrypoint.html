@@ -1,0 +1,1413 @@
+<!DOCTYPE html>
+<html class="no-js hasSidebar hasPageActions hasBreadcrumb conceptual" data-authenticated="false" data-render="docs" dir="ltr" lang="en-us">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Add-DAEntryPoint (remoteaccess)" property="og:title"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" property="og:image"/>
+  <meta content="summary" name="twitter:card"/>
+  <meta content="@docsmsft" name="twitter:site"/>
+  <meta content="Add-DAEntryPoint (remoteaccess)" name="twitter:title"/>
+  <meta content="Use this topic to help manage Windows and Windows Server technologies with Windows PowerShell." name="twitter:description"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" name="twitter:image"/>
+  <meta content="Microsoft Logo" name="twitter:image:alt"/>
+  <meta content="Use this topic to help manage Windows and Windows Server technologies with Windows PowerShell." name="description"/>
+  <meta content="Docs" name="search.ms_sitename"/>
+  <meta content="powershell-windows" name="search.ms_docsetname"/>
+  <meta content="0" name="version"/>
+  <meta content="en-us" name="locale"/>
+  <meta content="Docs" name="site_name"/>
+  <meta content="MSDN" name="search.ms_product"/>
+  <meta content="MSDN.powershell-windows" name="depot_name"/>
+  <meta content="https://cpubwin.visualstudio.com/DefaultCollection/powershell/_git/powershell/commit/ced7757924addcaea0b7a244ae4d240e4d28d93a?path=%2fdocset%2fwindows%2fremoteaccess%2fadd-daentrypoint.md&amp;_a=contents" name="ref_skeleton_gitcommit"/>
+  <meta content="https://cpubwin.visualstudio.com/DefaultCollection/powershell/_git/powershell?path=%2fdocset%2fwindows%2fremoteaccess%2fadd-daentrypoint.md&amp;version=GBlive&amp;_a=contents" name="original_ref_skeleton_git_url"/>
+  <meta content="2017-09-15 03:44 AM" name="updated_at"/>
+  <meta content="5c6f568d-21d4-9755-4cb2-825b4b072740" name="document_id"/>
+  <meta content="7be2b67c-8c2c-4eeb-ccc2-010598b09b96" name="document_version_independent_id"/>
+  <meta content="powershell" name="page_type"/>
+  <meta content="command" name="page_kind"/>
+  <meta content="manage" name="ms.mktglfcycl"/>
+  <meta content="library" name="ms.sitesec"/>
+  <meta content="brianlic" name="ms.author"/>
+  <meta content="brianlic-msft" name="author"/>
+  <meta content="PS_DAEntryPoint_v1.0.0.cdxml-help.xml" name="external_help_file"/>
+  <meta content="powershell, cmdlet" name="keywords"/>
+  <meta content="alanth" name="manager"/>
+  <meta content="12/20/2016" name="ms.date"/>
+  <meta content="w10" name="ms.prod"/>
+  <meta content="powershell-windows" name="ms.technology"/>
+  <meta content="reference" name="ms.topic"/>
+  <meta content="" name="online_version"/>
+  <meta content="2.0.0" name="schema"/>
+  <meta content="60DA8775-E477-45FB-9F25-A2B42EA4A97C" name="ms.assetid"/>
+  <meta content="powershell" name="ms.devlang"/>
+  <meta content="INDEX, FOLLOW" name="ROBOTS"/>
+  <meta content="/powershell/windows/bread/toc.json?view=win10-ps" name="breadcrumb_path"/>
+  <meta content="powershell" name="apiPlatform"/>
+  <meta content="MSDocsHeader-WindowsIT" name="uhfHeaderId"/>
+  <meta content="../win10-ps/toc.json?view=win10-ps" name="toc_rel"/>
+  <link href="https://docs.microsoft.com/en-us/powershell/module/remoteaccess/add-daentrypoint" rel="canonical"/>
+  <title>
+   Add-DAEntryPoint
+  </title>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/e4a1f3a3.site.css" rel="stylesheet"/>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/31353636.conceptual.css" rel="stylesheet"/>
+ </head>
+ <body dir="ltr" lang="en-us">
+  <div class="header-holder">
+   <div data-bi-name="header" id="headerAreaHolder">
+    <div id="uhf-placeholder">
+    </div>
+   </div>
+   <div class="disclaimer-holder" id="disclaimer-holder">
+   </div>
+  </div>
+  <div class="container mainContainer" data-bi-name="body">
+   <div class="content-header" data-bi-name="content-header">
+    <div class="content-header-controls">
+     <button class="contents-button button-border" data-bi-name="contents-expand" type="button">
+      <span class="docon docon-menu">
+      </span>
+      Contents
+     </button>
+    </div>
+    <div class="content-header-controls">
+     <button class="ap-collapse-behavior ap-expanded button-border" data-bi-name="ap-collapse" type="button">
+      <span class="docon docon-exit-mode">
+      </span>
+      Exit focus mode
+     </button>
+    </div>
+   </div>
+   <div class="primary-holder">
+    <main class="content" data-bi-name="content" dir="ltr" id="main" lang="en-us" role="main">
+     <!-- <content> -->
+     <h1>
+      Add-DAEntry
+      <wbr/>
+      Point
+     </h1>
+     <div class="metadata">
+      <dl class="attributeList">
+       <dt>
+        Module:
+       </dt>
+       <dd>
+        <a data-linktype="relative-path" href="./.html">
+         remoteaccess
+        </a>
+       </dd>
+      </dl>
+     </div>
+     <div class="summaryHolder">
+      <div class="summary">
+       Adds an entry point to a multi-site deployment.
+      </div>
+     </div>
+     <h2 class="hiddenAnchor" id="syntax">
+      Syntax
+     </h2>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Add-DAEntryPoint
+   [-ComputerName &lt;String&gt;]
+   [-ServerGpoName &lt;String&gt;]
+   [-Name] &lt;String&gt;
+   [-GslbIP &lt;IPAddress&gt;]
+   [-DeployNat]
+   [-NoPrerequisite]
+   [-PassThru]
+   -RemoteAccessServer &lt;String&gt;
+   [-InternalInterface &lt;String&gt;]
+   [-InternetInterface &lt;String&gt;]
+   [-ClientIPv6Prefix &lt;String&gt;]
+   -ConnectToAddress &lt;String&gt;
+   [-Force]
+   [-CimSession &lt;CimSession[]&gt;]
+   [-ThrottleLimit &lt;Int32&gt;]
+   [-AsJob]
+   [-WhatIf]
+   [-Confirm]
+   [&lt;CommonParameters&gt;]</code></pre>
+     <h2 id="description">
+      Description
+     </h2>
+     <p>
+      The
+      <strong>
+       Add-DAEntrypoint
+      </strong>
+      cmdlet adds an entry point to a multi-site deployment.
+This cmdlet checks that the server complies with the prerequisites for DirectAccess deployment, and adds the server as an entry point.
+     </p>
+     <h2 id="examples">
+      Examples
+     </h2>
+     <p>
+      <strong>
+       Example 1
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt;Add-DAEntryPoint -Name "Entry Point 2" -InternalInterface CorpNet1 -RemoteAccessServer "da2.domain1.corp.contoso.com" -InternetInterface Internet -ClientIPv6Prefix 3000:0:30:2000::/64 -ConnectToAddress "ep2.da.contoso.com" -PassThru -Force
+
+EntryPointName                 GslbIp                         Servers 
+--------------                 ------                         ------- 
+Entry Point 2                  0.0.0.0                        {DA2.domain1.corp.contoso.com} 
+
+
+To validate the name of the GPO which was created by this cmdlet, the following script should be used.
+PS C:\&gt;$daServer = Get-DAServer -EntrypointName "Entry Point 2"
+
+
+
+PS C:\&gt;$daServer.ServerConfiguration.GpoName
+
+domain1.corp.contoso.com\DirectAccess Server Settings - Entry Point 2
+
+
+In addition, running the Get-DAMultiSite cmdlet displays the newly added entry point.
+PS C:\&gt;Get-DAMultiSite
+
+EnterpriseName             : Company Enterprise 
+GslbFqdn                   : 
+ManualSiteSelectionAllowed : Enabled 
+DAEntryPoints              : {Entry Point 1, Entry Point 2}</code></pre>
+     <p>
+      This example adds the edge server named da2.domain1.corp.contoso.com to the multi-site deployment, names the server Entry Point 2 and declares CorpNet1 as the network interface which is connected to the corporate internal network.
+Since the company uses IPv6 prefixes, IPHTTPS remote clients will connect via ep2.da.contoso.com using predefined prefix 3000:0:30:2000::/64.
+     </p>
+     <p>
+      <strong>
+       Example 2
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt;Add-DAEntryPoint -Name "Entry Point 2" -InternalInterface CorpNet1 -RemoteAccessServer "da2.domain1.corp.contoso.com" -InternetInterface Internet -ClientIPv6Prefix 3000:0:30:2000::/64 -ConnectToAddress "ep2.da.contoso.com" -ServerGpoName "domain1.corp.contoso.com\EP2ServerGpo"  -PassThru -Force
+
+EntryPointName                 GslbIp                         Servers 
+--------------                 ------                         ------- 
+Entry Point 2                  0.0.0.0                        {DA2.domain1.corp.contoso.com}
+
+
+To validate, the following script should be used.
+PS C:\&gt;$daServer = Get-DAServer -EntrypointName "Entry Point 2"
+
+
+
+PS C:\&gt;$daServer.ServerConfiguration.GpoName
+
+domain1.corp.contoso.com\ EP2ServerGpo</code></pre>
+     <p>
+      This example adds the edge server named da2.domain1.corp.contoso.com to the multi-site deployment, names the server Entry Point 2 and declares CorpNet1 as the network interface which is connected to the corporate internal network using a pre-created GPO domain2.corp.contoso.com\EP2ServerGpo.
+     </p>
+     <p>
+      <strong>
+       Example 3
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt;Add-DAEntryPoint -Name "Entry Point 2" -InternalInterface CorpNet1 -RemoteAccessServer "da2.domain1.corp.contoso.com" -InternetInterface Internet -ClientIPv6Prefix 3000:0:30:2000::/64 -ConnectToAddress "ep2dmz.da.contoso.com" -ServerGpoName "domain1.corp.contoso.com\EP2ServerGpo" -PassThru -Force
+
+EntryPointName                 GslbIp                         Servers 
+--------------                 ------                         ------- 
+Entry Point 2                  0.0.0.0                        {da2.domain1.corp.contoso.com}</code></pre>
+     <p>
+      This example adds the edge server named da2.domain1.corp.contoso.com to the multi-site deployment, names the server Entry Point 2 and declares CorpNet1 as the network interface which is connected to the corporate internal network behind the NAT named DeployNat , with a defined internet interface named DMZNet1 and directs clients to connect to the entry point through ep2dmz.da.contoso.com.
+     </p>
+     <p>
+      <strong>
+       Example 4
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt;Add-DAEntryPoint -Name "Entry Point 2" -InternalInterface CorpNet1 -RemoteAccessServer "da2.domain1.corp.contoso.com" -InternetInterface Internet -ClientIPv6Prefix 3000:0:30:2000::/64 -ConnectToAddress "ep2.da.contoso.com" -GslbIP "137.5.0.50" -PassThru -Force
+
+EntryPointName                 GslbIp                         Servers 
+--------------                 ------                         ------- 
+Entry Point 2                  137.5.0.50                     {da2.domain1.corp.contoso.com}</code></pre>
+     <p>
+      This example adds the edge server named da2.domain1.corp.contoso.com to the multi-site deployment, names the server Entry Point 2 and declares CorpNet1 as the network interface which is connected to the corporate internal network using GSLB and the IP address for Entry Point 2 is 137.5.0.50.
+     </p>
+     <h2 id="required-parameters">
+      Required Parameters
+     </h2>
+     <div class="parameterName stack">
+      -ConnectToAddress
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the public name, or IPv4 address, of the Remote Access server, or network address translation (NAT) server, to which remote clients connect.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Name
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the name to be assigned to the entry point.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         EntryPointName
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         1
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -RemoteAccessServer
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the name or IP address, IPv4 or IPv6, of the server that will be the first server in the entry point.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="optional-parameters">
+      Optional Parameters
+     </h2>
+     <div class="parameterName stack">
+      -AsJob
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Runs the cmdlet as a background job. Use this parameter to run commands that take a long time to complete.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -CimSession
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Runs the cmdlet in a remote session or on a remote computer.
+Enter a computer name or a session object, such as the output of a
+       <a data-linktype="external" href="http://go.microsoft.com/fwlink/p/?LinkId=227967">
+        New-CimSession
+       </a>
+       or
+       <a data-linktype="external" href="http://go.microsoft.com/fwlink/p/?LinkId=227966">
+        Get-CimSession
+       </a>
+       cmdlet.
+The default is the current session on the local computer.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          CimSession[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         Session
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -ClientIPv6Prefix
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the IPv6 address prefix assigned to remote clients connecting over IP-HTTPS.
+The prefix length must be
+       <code>
+        59
+       </code>
+       or
+       <code>
+        64
+       </code>
+       bits.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -ComputerName
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the name or address, either IPv4 or IPv6, of a server or server cluster in the multi-site deployment.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         Cn
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Confirm
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Prompts you for confirmation before running the cmdlet.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         cf
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -DeployNat
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that the server or server cluster is deployed behind a NAT device.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Force
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Forces the command to run without asking for user confirmation.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -GslbIP
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the IPv4 or IPv6 dedicated IP address (DIP) of the server, or the virtual IP address (VIP) of the server cluster, to be used for global load balancing.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          IPAddress
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -InternalInterface
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the name of the internal network adapter of the first server in the entry point.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -InternetInterface
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the name of the external network adapter of the first server in the entry point.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -NoPrerequisite
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that a prerequisite check for DirectAccess deployment requirements should not be performed.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -PassThru
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Returns an object representing the item with which you are working.
+By default, this cmdlet does not generate any output.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -ServerGpoName
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the name of the GPO in which DirectAccess server configuration settings for the entry point are stored.
+The GPO is created in the domain that contains the server specified in RemoteAccessServer.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -ThrottleLimit
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the maximum number of concurrent operations that can be established to run the cmdlet.
+If this parameter is omitted or a value of
+       <code>
+        0
+       </code>
+       is entered, then Windows PowerShellÂ® calculates an optimum throttle limit for the cmdlet based on the number of CIM cmdlets that are running on the computer.
+The throttle limit applies only to the current cmdlet, not to the session or to the computer.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Int32
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -WhatIf
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         wi
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="inputs">
+      Inputs
+     </h2>
+     <p>
+      <strong>
+       None
+      </strong>
+     </p>
+     <h2 id="outputs">
+      Outputs
+     </h2>
+     <p>
+      <strong>
+       Microsoft.Management.Infrastructure.CimInstance#DAEntryPoint
+      </strong>
+     </p>
+     <p>
+      The
+      <code>
+       Microsoft.Management.Infrastructure.CimInstance
+      </code>
+      object is a wrapper class that displays Windows Management Instrumentation (WMI) objects.
+The path after the pound sign (
+      <code>
+       #
+      </code>
+      ) provides the namespace and class name for the underlying WMI object.
+     </p>
+     <h2 id="related-links">
+      Related Links
+     </h2>
+     <ul>
+      <li>
+       <a data-linktype="relative-path" href="./get-daentrypoint.html">
+        Get-DAEntryPoint
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="./remove-daentrypoint.html">
+        Remove-DAEntryPoint
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="./set-daentrypoint.html">
+        Set-DAEntryPoint
+       </a>
+      </li>
+     </ul>
+     <!-- </content> -->
+    </main>
+    <section class="feedback-section" data-bi-name="feedback-section">
+     <h2 id="feedback">
+      Feedback
+     </h2>
+     <div class="alert choose-feedback-type">
+      <p>
+       We'd love to hear your thoughts. Choose the type you'd like to provide:
+      </p>
+      <div class="choose-feedback-buttons">
+       <a class="button-border feedback-type-product" data-bi-name="product-feedback" href="https://windowsserver.uservoice.com/forums/301869-powershell">
+        Product feedback
+        <span aria-hidden="true" class="docon docon-navigate-external">
+        </span>
+       </a>
+       <div class="button-group">
+        <button class="button-border feedback-sign-in-button" data-bi-name="feedback-sign-in">
+         <span aria-hidden="true" class="docon docon-brand-github">
+         </span>
+         Sign in to give documentation feedback
+        </button>
+        <button aria-controls="feedback-form" aria-expanded="false" class="button-border feedback-form-toggle" data-bi-name="documentation-feedback" hidden="">
+         Content feedback
+        </button>
+        <div auto-align="" class="dropdown has-caret">
+         <button aria-controls="fbm0" aria-expanded="false" aria-haspopup="true" aria-label="Expand documentation feedback menu" class="button-border dropdown-trigger" data-bi-name="documentation-feedback-menu">
+          <span aria-hidden="true" class="docon docon-chevron-down-light">
+          </span>
+         </button>
+         <div class="dropdown-menu documentation-feedback-menu" id="fbm0" role="menu">
+          You may also leave feedback
+          <a data-bi-name="create-issue-on-github" href="{0}">
+           directly on GitHub
+           <span aria-hidden="true" class="docon docon-navigate-external">
+           </span>
+          </a>
+          .
+         </div>
+        </div>
+       </div>
+      </div>
+      <p>
+       <small>
+        Our new feedback system is built on GitHub Issues. Read about this change in
+        <a href="https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs">
+         our blog post
+        </a>
+        .
+       </small>
+      </p>
+     </div>
+     <form accept-charset="UTF-8" action="javascript:" autocomplete="off" class="feedback-form" hidden="" id="feedback-form">
+      <h3 class="feedback-form-heading current-user">
+       <img alt="Avatar" aria-hidden="true" class="avatar" height="36" width="36"/>
+       <span aria-hidden="true" class="username">
+       </span>
+       <span class="visually-hidden">
+        Liquid error: Can't find the localized string giveDocumentationFeedback for template Conceptual.
+       </span>
+      </h3>
+      <label>
+       <span class="visually-hidden">
+        Title
+       </span>
+       <input name="title" pattern=".*\w.*" placeholder="Title" required="" type="text"/>
+      </label>
+      <label>
+       <span class="visually-hidden">
+        Leave a comment
+       </span>
+       <textarea name="body" placeholder="Leave a comment" required=""></textarea>
+      </label>
+      <div class="action-container">
+       <button class="primary-action" name="submit" type="submit">
+        Submit feedback
+       </button>
+      </div>
+     </form>
+     <div class="feedback-status alert busy" role="alert">
+      <p>
+       Loading feedback...
+      </p>
+     </div>
+     <div class="feedback-tab-group tabGroup" data-tab-group-independent="" hidden="">
+      <ul role="tablist">
+       <li role="presentation">
+        <a aria-controls="tabpanel-issues-open" aria-label="Open Issues" data-tab="issues-open" href="#tabpanel-issues-open" role="tab">
+        </a>
+       </li>
+       <li role="presentation">
+        <a aria-controls="tabpanel-issues-closed" aria-label="Closed Issues" data-tab="issues-closed" href="#tabpanel-issues-closed" role="tab">
+        </a>
+       </li>
+      </ul>
+      <section data-tab="issues-open" id="tabpanel-issues-open" role="tabpanel">
+       <div class="no-issues-placeholder">
+        There are no open issues
+       </div>
+       <ul aria-label="Open Issues" class="github-issues-list">
+       </ul>
+      </section>
+      <section data-tab="issues-closed" id="tabpanel-issues-closed" role="tabpanel">
+       <div class="no-issues-placeholder">
+        There are no closed issues
+       </div>
+       <ul aria-label="Closed Issues" class="github-issues-list">
+       </ul>
+      </section>
+     </div>
+     <div class="action-container">
+      <a class="view-on-github" data-bi-name="view-on-github" hidden="" href="https://github.com/MicrosoftDocs/windows-powershell-docs/issues">
+       <span aria-hidden="true" class="docon docon-brand-github">
+       </span>
+       <span>
+        View on GitHub
+       </span>
+       <span aria-hidden="true" class="docon docon-navigate-external">
+       </span>
+      </a>
+     </div>
+    </section>
+   </div>
+  </div>
+  <div class="openfeedback-container" id="openFeedbackContainer">
+  </div>
+  <div class="action-panel">
+  </div>
+ </body>
+</html>

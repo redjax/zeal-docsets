@@ -1,0 +1,1185 @@
+<!DOCTYPE html>
+<html class="no-js hasSidebar hasPageActions hasBreadcrumb conceptual" data-authenticated="false" data-render="docs" dir="ltr" lang="en-us">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Find-Script (PowerShellGet)" property="og:title"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" property="og:image"/>
+  <meta content="summary" name="twitter:card"/>
+  <meta content="@docsmsft" name="twitter:site"/>
+  <meta content="Find-Script (PowerShellGet)" name="twitter:title"/>
+  <meta content="The Find-Script cmdlet finds a specified script in registered repositories. " name="twitter:description"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" name="twitter:image"/>
+  <meta content="Microsoft Logo" name="twitter:image:alt"/>
+  <meta content="The Find-Script cmdlet finds a specified script in registered repositories. " name="description"/>
+  <meta content="Docs" name="search.ms_sitename"/>
+  <meta content="PowerShell_PowerShell-docs_reference" name="search.ms_docsetname"/>
+  <meta content="0" name="version"/>
+  <meta content="en-us" name="locale"/>
+  <meta content="Docs" name="site_name"/>
+  <meta content="PowerShell" name="search.ms_product"/>
+  <meta content="PowerShell.PowerShell_PowerShell-docs_reference" name="depot_name"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/32c27c5b78fb8a8af58aaf73da28d5329aba66d1/reference/6/PowerShellGet/Find-Script.md" name="ref_skeleton_gitcommit"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/live/reference/6/PowerShellGet/Find-Script.md" name="original_ref_skeleton_git_url"/>
+  <meta content="2018-03-30 03:35 PM" name="updated_at"/>
+  <meta content="26b1ba15-a79d-c3ef-a0f9-e3bf0919a8bd" name="document_id"/>
+  <meta content="e0b87243-c5ba-719a-c312-b253781198ea" name="document_version_independent_id"/>
+  <meta content="powershell" name="page_type"/>
+  <meta content="command" name="page_kind"/>
+  <meta content="06/09/2017" name="ms.date"/>
+  <meta content="2.0.0" name="schema"/>
+  <meta content="powershell,cmdlet" name="keywords"/>
+  <meta content="http://go.microsoft.com/fwlink/?LinkId=822322" name="online_version"/>
+  <meta content="PSModule-help.xml" name="external_help_file"/>
+  <meta content="powershell" name="ms.devlang"/>
+  <meta content="INDEX, FOLLOW" name="ROBOTS"/>
+  <meta content="sdwheeler" name="author"/>
+  <meta content="sewhee" name="ms.author"/>
+  <meta content="carmonm" name="manager"/>
+  <meta content="/powershell/bread-pscore/toc.yml?view=powershell-6" name="breadcrumb_path"/>
+  <meta content="powershell" name="apiPlatform"/>
+  <meta content="reference" name="ms.topic"/>
+  <meta content="windows, macos, linux" name="ms.tgt_pltfr"/>
+  <meta content="powershell-scripting" name="ms.technology"/>
+  <meta content="powershell" name="ms.prod"/>
+  <meta content="MSDocsHeader-Powershell" name="uhfHeaderId"/>
+  <meta content="../psdocs/toc.json?view=powershell-6" name="toc_rel"/>
+  <link href="https://docs.microsoft.com/en-us/powershell/module/powershellget/find-script" rel="canonical"/>
+  <title>
+   Find-Script
+  </title>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/60aac04b.site.css" rel="stylesheet"/>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/fdb8a38a.conceptual.css" rel="stylesheet"/>
+ </head>
+ <body dir="ltr" lang="en-us">
+  <div class="header-holder">
+   <div data-bi-name="header" id="headerAreaHolder">
+    <div id="uhf-placeholder">
+    </div>
+   </div>
+   <div class="disclaimer-holder" id="disclaimer-holder">
+   </div>
+  </div>
+  <div class="container mainContainer" data-bi-name="body">
+   <div class="content-header" data-bi-name="content-header">
+    <div class="content-header-controls">
+     <button class="contents-button button-border" data-bi-name="contents-expand" type="button">
+      <span class="docon docon-menu">
+      </span>
+      Contents
+     </button>
+    </div>
+    <div class="content-header-controls">
+     <button class="ap-collapse-behavior ap-expanded button-border" data-bi-name="ap-collapse" type="button">
+      <span class="docon docon-exit-mode">
+      </span>
+      Exit focus mode
+     </button>
+    </div>
+   </div>
+   <div class="primary-holder">
+    <main class="content" data-bi-name="content" dir="ltr" id="main" lang="en-us" role="main">
+     <!-- <content> -->
+     <h1>
+      Find-Script
+     </h1>
+     <div class="metadata">
+      <dl class="attributeList">
+       <dt>
+        Module:
+       </dt>
+       <dd>
+        <a data-linktype="relative-path" href="./PowerShellGet.html">
+         PowerShellGet
+        </a>
+       </dd>
+      </dl>
+     </div>
+     <div class="summaryHolder">
+      <div class="summary">
+       Finds a script.
+      </div>
+     </div>
+     <h2 class="hiddenAnchor" id="syntax">
+      Syntax
+     </h2>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Find-Script
+    [[-Name] &lt;String[]&gt;]
+    [-MinimumVersion &lt;Version&gt;]
+    [-MaximumVersion &lt;Version&gt;]
+    [-RequiredVersion &lt;Version&gt;]
+    [-AllVersions]
+    [-IncludeDependencies]
+    [-Filter &lt;String&gt;]
+    [-Tag &lt;String[]&gt;]
+    [-Includes &lt;String[]&gt;]
+    [-Command &lt;String[]&gt;]
+    [-Proxy &lt;Uri&gt;]
+    [-ProxyCredential &lt;PSCredential&gt;]
+    [-Repository &lt;String[]&gt;]
+    [-Credential &lt;PSCredential&gt;]
+    [&lt;CommonParameters&gt;]</code></pre>
+     <h2 id="description">
+      Description
+     </h2>
+     <p>
+      The
+      <strong>
+       Find-Script
+      </strong>
+      cmdlet finds a specified script in registered repositories.
+     </p>
+     <h2 id="examples">
+      Examples
+     </h2>
+     <p>
+      <strong>
+       Example 1: Find all available scripts
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Find-Script
+
+Version    Name                                Type       Repository           Description
+
+-------    ----                                ----       ----------           -----------
+
+2.5        Fabrkiam-ClientScript               Script     LocalRepo1           Description for the Fabrkiam-ClientScript script
+
+2.5        Fabrkiam-Script                     Script     LocalRepo1           Description for the Fabrkiam-Script script
+
+2.5        Fabrkiam-ServerScript               Script     LocalRepo1           Description for the Fabrkiam-ServerScript script
+
+2.5        Required-Script1                    Script     LocalRepo1           Description for the Required-Script1 script
+
+2.5        Required-Script2                    Script     LocalRepo1           Description for the Required-Script2 script
+
+2.5        Required-Script3                    Script     LocalRepo1           Description for the Required-Script3 script
+
+2.0        Script-WithDependencies1            Script     LocalRepo1           Description for the Script-WithDependencies1 script
+
+2.0        Script-WithDependencies2            Script     LocalRepo1           Description for the Script-WithDependencies2 script
+
+2.0        Start-WFContosoServer               Script     LocalRepo1           Start-WFContosoServer Script example
+
+2.1        Test-Script1                        Script     LocalRepo1           Test-Script1 Script example
+
+2.0        Test-Script2                        Script     LocalRepo1           Test-Script2 Script example
+
+1.0        TestRunbook                         Script     LocalRepo1           Contoso Script example</code></pre>
+     <p>
+      This command finds all available scripts.
+     </p>
+     <p>
+      <strong>
+       Example 2: Find a script by name
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Find-Script -Name "Start-WFContosoServer"
+
+Version    Name                                Type       Repository           Description
+
+-------    ----                                ----       ----------           -----------
+
+2.0        Start-WFContosoServer               Script     LocalRepo1           Start-WFContosoServer Script example</code></pre>
+     <p>
+      This command find the script named Start-WFContosoServer.
+     </p>
+     <p>
+      <strong>
+       Example 3: Find a script by name, required version, and from a specified repository
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Find-Script -Name "Required-Script2" -RequiredVersion 2.0 -Repository "LocalRepo01"</code></pre>
+     <p>
+      This command finds a script by name and required version in the LocalRepo01 repository.
+     </p>
+     <p>
+      <strong>
+       Example 4: Find a script and format the output as a list
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Find-Script -Name "Required-Script2" -RequiredVersion 2.0 -Repository "LocalRepo1" | Format-List * -Force
+
+Name                       : Required-Script2
+
+Version                    : 2.0
+
+Type                       : Script
+
+Description                : Description for the Required-Script2 script
+
+Author                     : pattif
+
+CompanyName                : Microsoft Corporation
+
+Copyright                  : 2015 Microsoft Corporation. All rights reserved.
+
+PublishedDate              : 8/14/2015 2:37:01 PM
+
+LicenseUri                 : http://required-script2.com/license
+
+ProjectUri                 : http://required-script2.com/
+
+IconUri                    : http://required-script2.com/icon
+
+Tags                       : {, Tag1, Tag2, Tag-Required-Script2-2.0...}
+
+Includes                   : {Function, DscResource, Cmdlet, Command}
+
+PowerShellGetFormatVersion :
+
+ReleaseNotes               : Required-Script2 release notes
+
+Dependencies               : {}
+
+RepositorySourceLocation   : C:\MyLocalRepo
+
+Repository                 : LocalRepo01
+
+PackageManagementProvider  : NuGet</code></pre>
+     <p>
+      This command finds Required-Script2 in the LocalRepo1 repository, and then passes the resulting
+      <strong>
+       PSRepositoryItemInfo
+      </strong>
+      object to the Format-List cmdlet.
+     </p>
+     <p>
+      <strong>
+       Example 5: Find a script in the specified version range
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Find-Script -Name "Required-Script2" -MinimumVersion 2.1 -MaximumVersion 2.5 -Repository "LocalRepo1"
+
+Version    Name                                Type       Repository           Description
+
+-------    ----                                ----       ----------           -----------
+
+2.5        Required-Script2                    Script     LocalRepo1           Description for the Required-Script2 script</code></pre>
+     <p>
+      This command finds all versions of RequiredScript2 between versions 2.1 and 2.5 in the LocalRepo1 respository.
+     </p>
+     <p>
+      <strong>
+       Example 6: Find all versions of a script
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Find-Script -Name "Required-Script02" -AllVersions
+
+Version    Name                                Type       Repository           Description
+
+-------    ----                                ----       ----------           -----------
+
+1.0        Required-Script2                    Script     LocalRepo1           Description for the Required-Script2 script
+
+1.5        Required-Script2                    Script     LocalRepo1           Description for the Required-Script2 script
+
+2.0        Required-Script2                    Script     LocalRepo1           Description for the Required-Script2 script
+
+2.5        Required-Script2                    Script     LocalRepo1           Description for the Required-Script2 script</code></pre>
+     <p>
+      This command finds all versions of Required-Script02.
+     </p>
+     <p>
+      <strong>
+       Example 7: Find a script and its dependent modules and scripts
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Find-Script -Name "Script-WithDependencies1" -IncludeDependencies -Repository "LocalRepo1"
+
+Version    Name                                Type       Repository           Description
+
+-------    ----                                ----       ----------           -----------
+
+1.0        Script-WithDependencies1            Script     LocalRepo1           Description for the Script-WithDependencies1 script
+
+2.0        RequiredModule3                     Script     LocalRepo1           RequiredModule3 module
+
+2.5        Required-Script1                    Script     LocalRepo1           Description for the Required-Script1 script
+
+2.5        Required-Script2                    Script     LocalRepo1           Description for the Required-Script2 script</code></pre>
+     <p>
+      This command finds a script and it dependencies.
+     </p>
+     <p>
+      <strong>
+       Example 8: Find scripts with the specified tag
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Find-Script -Tag "Tag1" -Repository "LocalRepo1"
+
+Version    Name                                Type       Repository           Description
+
+-------    ----                                ----       ----------           -----------
+
+1.0        Fabrkiam-ClientScript               Script     LocalRepo1           Description for the Fabrkiam-ClientScript script</code></pre>
+     <p>
+      This command finds scripts that have the tag Tag1 in the LocalRepo1 repository
+     </p>
+     <p>
+      <strong>
+       Example 9: Find scripts with specified command name
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Find-Script -Command Test-FunctionFromScript_Required-Script3 -Repository "LocalRepo1"
+
+Version    Name                                Type       Repository           Description
+
+-------    ----                                ----       ----------           -----------
+
+2.5        Required-Script3                    Script     LocalRepo1           Description for the Required-Script3 script</code></pre>
+     <p>
+      This command finds a script that contains the specified command name.
+     </p>
+     <p>
+      <strong>
+       Example 10: Find scripts with workflows
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Find-Script -Includes "Workflow" -Repository "LocalRepo1"
+
+Version    Name                                Type       Repository           Description
+
+-------    ----                                ----       ----------           -----------
+
+2.5        Fabrkiam-ClientScript               Script     LocalRepo1           Description for the Fabrkiam-ClientScript script
+
+1.0        Fabrkiam-Script                     Script     LocalRepo1           Description for the Fabrkiam-Script script</code></pre>
+     <p>
+      This command finds workflow scripts in the LocalRepo1 repository.
+     </p>
+     <p>
+      <strong>
+       Example 11: Find scripts using wildcards
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Find-Script -Name "Required-Script*" -Repository "LocalRepo1"
+
+Version    Name                                Type       Repository           Description
+
+-------    ----                                ----       ----------           -----------
+
+2.5        Required-Script1                    Script     local1               Description for the Required-Script1 script
+
+2.5        Required-Script2                    Script     local1               Description for the Required-Script2 script
+
+2.5        Required-Script3                    Script     local1               Description for the Required-Script3 script</code></pre>
+     <p>
+      This command uses the wildcard character (*) to find scripts that begin with Required-Script.
+     </p>
+     <h2 id="optional-parameters">
+      Optional Parameters
+     </h2>
+     <div class="parameterName stack">
+      -AllVersions
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that this operation finds all script versions.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Command
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies an array of commands to find in scripts.
+A command can be a function or workflow.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Credential
+     </div>
+     <div class="parameterInfo">
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          PSCredential
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Filter
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Finds scripts based on the PackageManagement provider-specific search syntax.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -IncludeDependencies
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that this operation gets all scripts that are dependent upon the script specified in the
+       <em>
+        Name
+       </em>
+       parameter.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Includes
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies type of script to get.
+The acceptable values for this parameter are: Function, Workflow.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Parameter Sets:
+        </td>
+        <td>
+         Function, Workflow
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -MaximumVersion
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the maximum, or newest, version of the script to find.
+The
+       <em>
+        MaximumVersion
+       </em>
+       and
+       <em>
+        RequiredVersion
+       </em>
+       parameters are mutually exclusive; you cannot use both parameters in the same command.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Version
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -MinimumVersion
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the minimum version of the script to find.
+The
+       <em>
+        MinimumVersion
+       </em>
+       and
+       <em>
+        RequiredVersion
+       </em>
+       parameters are mutually exclusive; you cannot use both parameters in the same command.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Version
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Name
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies an array of names of scripts to find.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         1
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Proxy
+     </div>
+     <div class="parameterInfo">
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Uri
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -ProxyCredential
+     </div>
+     <div class="parameterInfo">
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          PSCredential
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Repository
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the friendly name of a repository that has been registered by running Register-PSRepository.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -RequiredVersion
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the exact version number of the script to find.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Version
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Tag
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies an array of tags.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="outputs">
+      Outputs
+     </h2>
+     <p>
+      <strong>
+       PSRepositoryItemInfo
+      </strong>
+     </p>
+     <h2 id="related-links">
+      Related Links
+     </h2>
+     <ul>
+      <li>
+       <a data-linktype="relative-path" href="install-script.html">
+        Install-Script
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="publish-script.html">
+        Publish-Script
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="save-script.html">
+        Save-Script
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="uninstall-script.html">
+        Uninstall-Script
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="update-script.html">
+        Update-Script
+       </a>
+      </li>
+     </ul>
+     <!-- </content> -->
+    </main>
+    <div class="note alert feedback-system-change-alert">
+     <p>
+      Note
+     </p>
+     <p>
+      The feedback system for this content will be changing soon. Old comments will not be carried over. If content within a comment thread is important to you, please save a copy. For more information on the upcoming change,
+      <a href="https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs">
+       we invite you to read our blog post
+      </a>
+      .
+     </p>
+    </div>
+    <div data-bi-name="comments" id="comments-container" role="form">
+    </div>
+   </div>
+  </div>
+  <div class="openfeedback-container" id="openFeedbackContainer">
+  </div>
+  <div class="action-panel">
+  </div>
+ </body>
+</html>

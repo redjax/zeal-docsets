@@ -1,0 +1,1006 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+<title>Properties — Jenkins Job Builder 2.0.0.0b3.dev264 documentation</title>
+<link href="_static/classic.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '2.0.0.0b3.dev264',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="index.html" rel="top" title="Jenkins Job Builder 2.0.0.0b3.dev264 documentation"/>
+<link href="definition.html" rel="up" title="Job Definitions"/>
+<link href="publishers.html" rel="next" title="Publishers"/>
+<link href="parameters.html" rel="prev" title="Parameters"/>
+</head>
+<body role="document">
+<div aria-label="related navigation" class="related" role="navigation">
+<h3>Navigation</h3>
+<ul>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="publishers.html" title="Publishers">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="parameters.html" title="Parameters">previous</a> |</li>
+<li class="nav-item nav-item-0"><a href="index.html">Jenkins Job Builder 2.0.0.0b3.dev264 documentation</a> »</li>
+<li class="nav-item nav-item-1"><a accesskey="U" href="definition.html">Job Definitions</a> »</li>
+</ul>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="bodywrapper">
+<div class="body" role="main">
+<div class="section" id="properties"><a name="//apple_ref/cpp/Module/properties"></a>
+<span id="id1"></span><h1>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h1>
+<span class="target" id="module-properties"></span><p>The Properties module supplies a wide range of options that are
+implemented as Jenkins job properties.</p>
+<dl class="docutils">
+<dt><strong>Component</strong>: properties</dt>
+<dd><table class="first last docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Macro:</th><td class="field-body">property</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Entry Point:</th><td class="field-body">jenkins_jobs.properties</td>
+</tr>
+</tbody>
+</table>
+</dd>
+</dl>
+<p>Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">job</span><span class="p">:</span>
+  <span class="n">name</span><span class="p">:</span> <span class="n">test_job</span>
+
+  <span class="n">properties</span><span class="p">:</span>
+    <span class="o">-</span> <span class="n">github</span><span class="p">:</span>
+        <span class="n">url</span><span class="p">:</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">openstack</span><span class="o">-</span><span class="n">infra</span><span class="o">/</span><span class="n">jenkins</span><span class="o">-</span><span class="n">job</span><span class="o">-</span><span class="n">builder</span><span class="o">/</span>
+</pre></div>
+</div>
+<dl class="yamlfunction">
+<dt id="properties.authenticated-build">
+<code class="descname">authenticated-build</code><a class="headerlink" href="#properties.authenticated-build" title="Permalink to this definition">¶</a></dt>
+<dd><p>Specifies an authorization matrix where only authenticated users
+may trigger a build.</p>
+<div class="deprecated">
+<p><span class="versionmodified">Deprecated since version 0.1.0.: </span>Please use <a class="reference internal" href="#authorization"><span class="std std-ref">authorization</span></a>.</p>
+</div>
+<p>Example:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">properties</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">authenticated-build</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="yamlfunction">
+<dt id="properties.authorization">
+<code class="descname">authorization</code><a class="headerlink" href="#properties.authorization" title="Permalink to this definition">¶</a></dt>
+<dd><p>Specifies an authorization matrix</p>
+<table class="docutils field-list" frame="void" id="authorization" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>&lt;name&gt;</strong> (<em>list</em>) – <dl class="docutils">
+<dt><cite>&lt;name&gt;</cite> is the name of the group or user, containing</dt>
+<dd>the list of rights to grant.</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">&lt;name&gt; rights:</th><td class="field-body"><ul class="first last simple">
+<li><strong>credentials-create</strong></li>
+<li><strong>credentials-delete</strong></li>
+<li><strong>credentials-manage-domains</strong></li>
+<li><strong>credentials-update</strong></li>
+<li><strong>credentials-view</strong></li>
+<li><strong>job-build</strong></li>
+<li><strong>job-cancel</strong></li>
+<li><strong>job-configure</strong></li>
+<li><strong>job-delete</strong></li>
+<li><strong>job-discover</strong></li>
+<li><strong>job-extended-read</strong></li>
+<li><strong>job-move</strong></li>
+<li><strong>job-read</strong></li>
+<li><strong>job-status</strong></li>
+<li><strong>job-workspace</strong></li>
+<li><strong>ownership-jobs</strong></li>
+<li><strong>run-delete</strong></li>
+<li><strong>run-update</strong></li>
+<li><strong>scm-tag</strong></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">properties</span><span class="p p-Indicator">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">authorization</span><span class="p p-Indicator">:</span>
+        <span class="l l-Scalar l-Scalar-Plain">admin</span><span class="p p-Indicator">:</span>
+            <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">credentials-create</span>
+            <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">credentials-delete</span>
+            <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">credentials-manage-domains</span>
+            <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">credentials-update</span>
+            <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">credentials-view</span>
+            <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">job-build</span>
+            <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">job-cancel</span>
+            <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">job-configure</span>
+            <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">job-delete</span>
+            <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">job-discover</span>
+            <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">job-move</span>
+            <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">job-read</span>
+            <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">job-status</span>
+            <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">job-workspace</span>
+            <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">ownership-jobs</span>
+            <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">run-delete</span>
+            <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">run-update</span>
+            <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">scm-tag</span>
+        <span class="l l-Scalar l-Scalar-Plain">anonymous</span><span class="p p-Indicator">:</span>
+            <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">job-read</span>
+            <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">job-extended-read</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="yamlfunction">
+<dt id="properties.batch-tasks">
+<code class="descname">batch-tasks</code><a class="headerlink" href="#properties.batch-tasks" title="Permalink to this definition">¶</a></dt>
+<dd><p>Batch tasks can be tasks for events like releases, integration, archiving,
+etc. In this way, anyone in the project team can execute them in a way that
+leaves a record.</p>
+<p>A batch task consists of a shell script and a name. When you execute
+a build, the shell script gets run on the workspace, just like a build.
+Batch tasks and builds “lock” the workspace, so when one of those
+activities is in progress, all the others will block in the queue.</p>
+<p>Requires the Jenkins <a class="reference external" href="https://wiki.jenkins.io/display/JENKINS/Batch+Task+Plugin">Batch Task Plugin</a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>batch-tasks</strong> (<em>list</em>) – <p>Batch tasks.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Tasks:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> (<cite>str</cite>) Task name.</li>
+<li><strong>script</strong> (<cite>str</cite>) Task script.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">properties</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">batch-tasks</span><span class="p p-Indicator">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">release</span>
+        <span class="l l-Scalar l-Scalar-Plain">script</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">mvn -B release:prepare release:perform</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">say hello</span>
+        <span class="l l-Scalar l-Scalar-Plain">script</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">echo "Hello world"</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="yamlfunction">
+<dt id="properties.build-blocker">
+<code class="descname">build-blocker</code><a class="headerlink" href="#properties.build-blocker" title="Permalink to this definition">¶</a></dt>
+<dd><p>This plugin keeps the actual job in the queue
+if at least one name of currently running jobs
+is matching with one of the given regular expressions.</p>
+<p>Requires the Jenkins <a class="reference external" href="https://wiki.jenkins.io/display/JENKINS/Build+Blocker+Plugin">Build Blocker Plugin</a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>use-build-blocker</strong> (<em>bool</em>) – Enable or disable build blocker (default true)</li>
+<li><strong>blocking-jobs</strong> (<em>list</em>) – One regular expression per line to select
+blocking jobs by their names. (required)</li>
+<li><strong>block-level</strong> (<em>str</em>) – block build globally (‘GLOBAL’) or per node (‘NODE’)
+(default ‘GLOBAL’)</li>
+<li><strong>queue-scanning</strong> (<em>str</em>) – scan build queue for all builds (‘ALL’) or only
+buildable builds (‘BUILDABLE’) (default ‘DISABLED’))</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">properties</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">build-blocker</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">use-build-blocker</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+      <span class="l l-Scalar l-Scalar-Plain">blocking-jobs</span><span class="p p-Indicator">:</span>
+        <span class="p p-Indicator">-</span> <span class="s">".*-deploy"</span>
+        <span class="p p-Indicator">-</span> <span class="s">"^maintenance.*"</span>
+      <span class="l l-Scalar l-Scalar-Plain">block_level</span><span class="p p-Indicator">:</span> <span class="s">'GLOBAL'</span>
+      <span class="l l-Scalar l-Scalar-Plain">queue-scanning</span><span class="p p-Indicator">:</span> <span class="s">'BUILDABLE'</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="yamlfunction">
+<dt id="properties.build-discarder">
+<code class="descname">build-discarder</code><a class="headerlink" href="#properties.build-discarder" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>days-to-keep</strong> (<em>int</em>) – Number of days to keep builds for (default -1)</li>
+<li><strong>num-to-keep</strong> (<em>int</em>) – Number of builds to keep (default -1)</li>
+<li><strong>artifact-days-to-keep</strong> (<em>int</em>) – Number of days to keep builds with
+artifacts (default -1)</li>
+<li><strong>artifact-num-to-keep</strong> (<em>int</em>) – Number of builds with artifacts to keep
+(default -1)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">properties</span><span class="p p-Indicator">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">build-discarder</span><span class="p p-Indicator">:</span>
+        <span class="l l-Scalar l-Scalar-Plain">days-to-keep</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">42</span>
+        <span class="l l-Scalar l-Scalar-Plain">num-to-keep</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">43</span>
+        <span class="l l-Scalar l-Scalar-Plain">artifact-days-to-keep</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">44</span>
+        <span class="l l-Scalar l-Scalar-Plain">artifact-num-to-keep</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">45</span>
+</pre></div>
+</div>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">properties</span><span class="p p-Indicator">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">build-discarder</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="yamlfunction">
+<dt id="properties.builds-chain-fingerprinter">
+<code class="descname">builds-chain-fingerprinter</code><a class="headerlink" href="#properties.builds-chain-fingerprinter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Builds chain fingerprinter.
+Requires the Jenkins <a class="reference external" href="https://wiki.jenkins.io/display/JENKINS/Builds+chain+fingerprinter">Builds chain fingerprinter Plugin</a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>per-builds-chain</strong> (<em>bool</em>) – enable builds hierarchy fingerprinting
+(default false)</li>
+<li><strong>per-job-chain</strong> (<em>bool</em>) – enable jobs hierarchy fingerprinting
+(default false)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">properties</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">builds-chain-fingerprinter</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">per-builds-chain</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+      <span class="l l-Scalar l-Scalar-Plain">per-job-chain</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="yamlfunction">
+<dt id="properties.copyartifact">
+<code class="descname">copyartifact</code><a class="headerlink" href="#properties.copyartifact" title="Permalink to this definition">¶</a></dt>
+<dd><p>Specify a list of projects that have access to copy the artifacts of
+this project.</p>
+<p>Requires the Jenkins <a class="reference external" href="https://wiki.jenkins.io/display/JENKINS/Copy+Artifact+Plugin">Copy Artifact plugin</a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>projects</strong> (<em>str</em>) – comma separated list of projects that can copy
+artifacts of this project. Wild card character ‘*’ is available.</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">properties</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">copyartifact</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">projects</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">foo*</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="yamlfunction">
+<dt id="properties.delivery-pipeline">
+<code class="descname">delivery-pipeline</code><a class="headerlink" href="#properties.delivery-pipeline" title="Permalink to this definition">¶</a></dt>
+<dd><p>Requires the Jenkins <a class="reference external" href="https://wiki.jenkins.io/display/JENKINS/Delivery+Pipeline+Plugin">Delivery Pipeline Plugin</a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>stage</strong> (<em>str</em>) – Name of the stage for this job (default ‘’)</li>
+<li><strong>task</strong> (<em>str</em>) – Name of the task for this job (default ‘’)</li>
+<li><strong>description</strong> (<em>str</em>) – task description template for this job
+(default ‘’)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Minimal Example:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">properties</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">delivery-pipeline</span>
+</pre></div>
+</div>
+<p>Full Example:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">properties</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">delivery-pipeline</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">stage</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Stage</span>
+      <span class="l l-Scalar l-Scalar-Plain">task</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Task</span>
+      <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Task-Description</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="yamlfunction">
+<dt id="properties.docker-container">
+<code class="descname">docker-container</code><a class="headerlink" href="#properties.docker-container" title="Permalink to this definition">¶</a></dt>
+<dd><p>Requires the Jenkins: <a class="reference external" href="https://wiki.jenkins.io/display/JENKINS/Docker+Plugin">Docker Plugin</a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>commit-on-success</strong> (<em>bool</em>) – When a job completes, the docker slave
+instance is committed with repository based on the job name and build
+number as tag. (default false)</li>
+<li><strong>additional-tag</strong> (<em>str</em>) – Additional tag to apply to the docker slave
+instance when committing it. (default ‘’)</li>
+<li><strong>push-on-success</strong> (<em>bool</em>) – Also push the resulting image when committing
+the docker slave instance. (default false)</li>
+<li><strong>clean-local-images</strong> (<em>bool</em>) – Clean images from the local daemon after
+building. (default true)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Minimal Example:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">properties</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">docker-container</span>
+</pre></div>
+</div>
+<p>Full Example:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">properties</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">docker-container</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">commit-on-success</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+      <span class="l l-Scalar l-Scalar-Plain">additional-tag</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">latest</span>
+      <span class="l l-Scalar l-Scalar-Plain">push-on-success</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+      <span class="l l-Scalar l-Scalar-Plain">clean-local-images</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="yamlfunction">
+<dt id="properties.gitbucket">
+<code class="descname">gitbucket</code><a class="headerlink" href="#properties.gitbucket" title="Permalink to this definition">¶</a></dt>
+<dd><p>Integrate GitBucket to Jenkins.
+Requires the Jenkins <a class="reference external" href="https://wiki.jenkins.io/display/JENKINS/GitBucket+Plugin">GitBucket Plugin</a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>url</strong> (<em>str</em>) – GitBucket URL to issue (required)</li>
+<li><strong>link-enabled</strong> (<em>bool</em>) – Enable hyperlink to issue (default false)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Minimal Example:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">properties</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">gitbucket</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">url</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">https://foo.com</span>
+</pre></div>
+</div>
+<p>Full Example:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">properties</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">gitbucket</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">url</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">https://foo.com</span>
+      <span class="l l-Scalar l-Scalar-Plain">link-enabled</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="yamlfunction">
+<dt id="properties.github">
+<code class="descname">github</code><a class="headerlink" href="#properties.github" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the GitHub URL for the project.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>url</strong> (<em>str</em>) – the GitHub URL (required)</li>
+<li><strong>display-name</strong> (<em>str</em>) – This value will be used as context name for commit
+status if status builder or status publisher is defined for this
+project. (&gt;= 1.14.1) (default ‘’)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Minimal Example:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">properties</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">github</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">url</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">https://github.com/openstack-infra/jenkins-job-builder/</span>
+</pre></div>
+</div>
+<p>Full Example:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">properties</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">github</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">url</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">https://github.com/openstack-infra/jenkins-job-builder/</span>
+      <span class="l l-Scalar l-Scalar-Plain">display-name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">foo</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="yamlfunction">
+<dt id="properties.gitlab">
+<code class="descname">gitlab</code><a class="headerlink" href="#properties.gitlab" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the GitLab connection for the project. Configured via Jenkins Global
+Configuration.
+Requires the Jenkins <a class="reference external" href="https://wiki.jenkins.io/display/JENKINS/GitLab+Plugin">GitLab Plugin</a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>connection</strong> (<em>str</em>) – the GitLab connection name (required)</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">properties</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">gitlab</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">connection</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">gitlab-connection</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="yamlfunction">
+<dt id="properties.groovy-label">
+<code class="descname">groovy-label</code><a class="headerlink" href="#properties.groovy-label" title="Permalink to this definition">¶</a></dt>
+<dd><p>This plugin allows to use Groovy script to restrict where this project
+can be run.</p>
+<p>Requires the Jenkins <a class="reference external" href="https://wiki.jenkins.io/display/JENKINS/Groovy+Label+Assignment+plugin">Groovy Label Assignment Plugin</a>.</p>
+<p>Return value from Groovy script is treated as Label Expression.
+It is treated as followings:</p>
+<ul class="simple">
+<li>A non-string value will be converted to a string using toString()</li>
+<li>When null or blank string is returned, node restriction does not take
+effect (or is not overwritten).</li>
+<li>When exception occurred or Label Expression is not parsed correctly,
+builds are canceled.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>script</strong> (<em>str</em>) – Groovy script (default ‘’)</li>
+<li><strong>sandbox</strong> (<em>bool</em>) – Use Groovy Sandbox. (default false)
+If checked, run this Groovy script in a sandbox with limited abilities.
+If unchecked, and you are not a Jenkins administrator, you will need to
+wait for an administrator to approve the script</li>
+<li><strong>classpath</strong> (<em>list</em>) – Additional classpath entries accessible from
+the script, each of which should be an absolute local path or
+URL to a JAR file, according to “The file URI Scheme” (optional)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Minimal Example:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">properties</span><span class="p p-Indicator">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">groovy-label</span>
+</pre></div>
+</div>
+<p>Full Example:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">properties</span><span class="p p-Indicator">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">groovy-label</span><span class="p p-Indicator">:</span>
+        <span class="l l-Scalar l-Scalar-Plain">script</span><span class="p p-Indicator">:</span> <span class="s">"$LABEL_NAME"</span>
+        <span class="l l-Scalar l-Scalar-Plain">sandbox</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+        <span class="l l-Scalar l-Scalar-Plain">classpath</span><span class="p p-Indicator">:</span>
+            <span class="p p-Indicator">-</span> <span class="s">"file:/minimal/absolute/path/to/file.jar"</span>
+            <span class="p p-Indicator">-</span> <span class="s">"file:///traditional/absolute/path/to/file.jar"</span>
+            <span class="p p-Indicator">-</span> <span class="s">"http://example.org/path/to/file.jar"</span>
+            <span class="p p-Indicator">-</span> <span class="s">"https://example.org/path/to/file.jar"</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="yamlfunction">
+<dt id="properties.heavy-job">
+<code class="descname">heavy-job</code><a class="headerlink" href="#properties.heavy-job" title="Permalink to this definition">¶</a></dt>
+<dd><p>This plugin allows you to define “weight” on each job,
+and making each job consume that many executors</p>
+<p>Requires the Jenkins <a class="reference external" href="https://wiki.jenkins.io/display/JENKINS/Heavy+Job+Plugin">Heavy Job Plugin</a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>weight</strong> (<em>int</em>) – Specify the total number of executors
+that this job should occupy (default 1)</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">properties</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">heavy-job</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">weight</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">2</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="yamlfunction">
+<dt id="properties.inject">
+<code class="descname">inject</code><a class="headerlink" href="#properties.inject" title="Permalink to this definition">¶</a></dt>
+<dd><p>Allows you to inject environment variables into the build.
+Requires the Jenkins <a class="reference external" href="https://wiki.jenkins.io/display/JENKINS/EnvInject+Plugin">Env Inject Plugin</a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>properties-file</strong> (<em>str</em>) – file to read with properties (optional)</li>
+<li><strong>properties-content</strong> (<em>str</em>) – key=value properties (optional)</li>
+<li><strong>script-file</strong> (<em>str</em>) – file with script to run (optional)</li>
+<li><strong>script-content</strong> (<em>str</em>) – script to run (optional)</li>
+<li><strong>groovy-content</strong> (<em>str</em>) – groovy script to run (optional)</li>
+<li><strong>load-from-master</strong> (<em>bool</em>) – load files from master (default false)</li>
+<li><strong>enabled</strong> (<em>bool</em>) – injection enabled (default true)</li>
+<li><strong>keep-system-variables</strong> (<em>bool</em>) – keep system variables (default true)</li>
+<li><strong>keep-build-variables</strong> (<em>bool</em>) – keep build variable (default true)</li>
+<li><strong>override-build-parameters</strong> (<em>bool</em>) – override build parameters
+(default false)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">properties</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">inject</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">properties-content</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">|</span>
+        <span class="no">FOO=bar</span>
+        <span class="no">BAZ=foobar</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="yamlfunction">
+<dt id="properties.least-load">
+<code class="descname">least-load</code><a class="headerlink" href="#properties.least-load" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enables the Least Load Plugin.
+Requires the Jenkins <a class="reference external" href="https://wiki.jenkins.io/display/JENKINS/Least+Load+Plugin">Least Load Plugin</a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>disabled</strong> (<em>bool</em>) – whether or not leastload is disabled (default true)</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">properties</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">least-load</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">disabled</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="yamlfunction">
+<dt id="properties.lockable-resources">
+<code class="descname">lockable-resources</code><a class="headerlink" href="#properties.lockable-resources" title="Permalink to this definition">¶</a></dt>
+<dd><p>Requires the Jenkins <a class="reference external" href="https://wiki.jenkins.io/display/JENKINS/Lockable+Resources+Plugin">Lockable Resources Plugin</a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>resources</strong> (<em>str</em>) – List of required resources, space separated.
+(required, mutual exclusive with label)</li>
+<li><strong>label</strong> (<em>str</em>) – If you have created a pool of resources, i.e. a label,
+you can take it into use here. The build will select the resource(s)
+from the pool that includes all resources sharing the given label.
+(required, mutual exclusive with resources)</li>
+<li><strong>var-name</strong> (<em>str</em>) – Name for the Jenkins variable to store the reserved
+resources in. Leave empty to disable. (default ‘’)</li>
+<li><strong>number</strong> (<em>int</em>) – Number of resources to request, empty value or 0 means
+all. This is useful, if you have a pool of similar resources,
+from which you want one or more to be reserved. (default 0)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<span class="l l-Scalar l-Scalar-Plain">properties</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">lockable-resources</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">resources</span><span class="p p-Indicator">:</span> <span class="s">"the-resource"</span>
+</pre></div>
+</div>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<span class="l l-Scalar l-Scalar-Plain">properties</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">lockable-resources</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">label</span><span class="p p-Indicator">:</span> <span class="s">"pool-1"</span>
+</pre></div>
+</div>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<span class="l l-Scalar l-Scalar-Plain">properties</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">lockable-resources</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">resources</span><span class="p p-Indicator">:</span> <span class="s">"the-resource"</span>
+      <span class="l l-Scalar l-Scalar-Plain">var-name</span><span class="p p-Indicator">:</span> <span class="s">"RESOURCE_NAME"</span>
+      <span class="l l-Scalar l-Scalar-Plain">number</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">10</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="yamlfunction">
+<dt id="properties.ownership">
+<code class="descname">ownership</code><a class="headerlink" href="#properties.ownership" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plugin provides explicit ownership for jobs and slave nodes.
+Requires the Jenkins <a class="reference external" href="https://wiki.jenkins.io/display/JENKINS/Ownership+Plugin">Ownership Plugin</a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>enabled</strong> (<em>bool</em>) – whether ownership enabled (default : true)</li>
+<li><strong>owner</strong> (<em>str</em>) – the owner of job</li>
+<li><strong>co-owners</strong> (<em>list</em>) – list of job co-owners</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">properties</span><span class="p p-Indicator">:</span>
+ <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">ownership</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">owner</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">foo</span>
+    <span class="l l-Scalar l-Scalar-Plain">co-owners</span><span class="p p-Indicator">:</span>
+     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">bar</span>
+     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">moo</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="yamlfunction">
+<dt id="properties.priority-sorter">
+<code class="descname">priority-sorter</code><a class="headerlink" href="#properties.priority-sorter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Allows simple ordering of builds, using a configurable job priority.</p>
+<p>Requires the Jenkins <a class="reference external" href="https://wiki.jenkins.io/display/JENKINS/Priority+Sorter+Plugin">Priority Sorter Plugin</a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>priority</strong> (<em>int</em>) – Priority of the job.  Higher value means higher
+priority, with 100 as the standard priority. (required)</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">properties</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">priority-sorter</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">priority</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">150</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="yamlfunction">
+<dt id="properties.promoted-build">
+<code class="descname">promoted-build</code><a class="headerlink" href="#properties.promoted-build" title="Permalink to this definition">¶</a></dt>
+<dd><p>Marks a build for promotion. A promotion process with an identical
+name must be created via the web interface in the job in order for the job
+promotion to persist. Promotion processes themselves cannot be configured
+by jenkins-jobs due to the separate storage of plugin configuration files.
+Requires the Jenkins <a class="reference external" href="https://wiki.jenkins.io/display/JENKINS/Promoted+Builds+Plugin">Promoted Builds Plugin</a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>names</strong> (<em>list</em>) – the promoted build names (optional)</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">properties</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">promoted-build</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">names</span><span class="p p-Indicator">:</span>
+        <span class="p p-Indicator">-</span> <span class="s">"Release</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">QA"</span>
+        <span class="p p-Indicator">-</span> <span class="s">"Jane</span><span class="nv"> </span><span class="s">Must</span><span class="nv"> </span><span class="s">Approve"</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="yamlfunction">
+<dt id="properties.rebuild">
+<code class="descname">rebuild</code><a class="headerlink" href="#properties.rebuild" title="Permalink to this definition">¶</a></dt>
+<dd><p>This plug-in allows the user to rebuild a parameterized build without
+entering the parameters again.It will also allow the user to edit the
+parameters before rebuilding.
+Requires the Jenkins <a class="reference external" href="https://wiki.jenkins.io/display/JENKINS/Rebuild+Plugin">Rebuild Plugin</a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>auto-rebuild</strong> (<em>bool</em>) – Rebuild without asking for parameters
+(default false)</li>
+<li><strong>rebuild-disabled</strong> (<em>bool</em>) – Disable rebuilding for this job
+(default false)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Minimal Example:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">properties</span><span class="p p-Indicator">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">rebuild</span>
+</pre></div>
+</div>
+<p>Full Example:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">properties</span><span class="p p-Indicator">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">rebuild</span><span class="p p-Indicator">:</span>
+        <span class="l l-Scalar l-Scalar-Plain">auto-rebuild</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+        <span class="l l-Scalar l-Scalar-Plain">rebuild-disabled</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="yamlfunction">
+<dt id="properties.sidebar">
+<code class="descname">sidebar</code><a class="headerlink" href="#properties.sidebar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Allows you to add links in the sidebar.
+Requires the Jenkins <a class="reference external" href="https://wiki.jenkins.io/display/JENKINS/Sidebar-Link+Plugin">Sidebar-Link Plugin</a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>url</strong> (<em>str</em>) – url to link to (optional)</li>
+<li><strong>text</strong> (<em>str</em>) – text for the link (optional)</li>
+<li><strong>icon</strong> (<em>str</em>) – path to icon (optional)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">properties</span><span class="p p-Indicator">:</span>
+   <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">sidebar</span><span class="p p-Indicator">:</span>
+       <span class="l l-Scalar l-Scalar-Plain">url</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">https://jenkins.debian.net/userContent/about.html</span>
+       <span class="l l-Scalar l-Scalar-Plain">text</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">About jenkins.debian.net</span>
+       <span class="l l-Scalar l-Scalar-Plain">icon</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/userContent/images/debian-swirl-24x24.png</span>
+   <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">sidebar</span><span class="p p-Indicator">:</span>
+       <span class="l l-Scalar l-Scalar-Plain">url</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">https://jenkins.debian.net/view/reproducible</span>
+       <span class="l l-Scalar l-Scalar-Plain">text</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">reproducible builds jobs</span>
+       <span class="l l-Scalar l-Scalar-Plain">icon</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/userContent/images/debian-jenkins-24x24.png</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="yamlfunction">
+<dt id="properties.slack">
+<code class="descname">slack</code><a class="headerlink" href="#properties.slack" title="Permalink to this definition">¶</a></dt>
+<dd><p>Requires the Jenkins <a class="reference external" href="https://wiki.jenkins.io/display/JENKINS/Slack+Plugin">Slack Plugin</a></p>
+<p>When using Slack Plugin version &lt; 2.0, Slack Plugin itself requires a
+publisher aswell as properties please note that you have to add the
+publisher to your job configuration aswell. When using Slack Plugin
+version &gt;= 2.0, you should only configure the publisher.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>notify-start</strong> (<em>bool</em>) – Send notification when the job starts
+(default false)</li>
+<li><strong>notify-success</strong> (<em>bool</em>) – Send notification on success. (default false)</li>
+<li><strong>notify-aborted</strong> (<em>bool</em>) – Send notification when job is aborted. (
+default false)</li>
+<li><strong>notify-not-built</strong> (<em>bool</em>) – Send notification when job set to NOT_BUILT
+status. (default false)</li>
+<li><strong>notify-unstable</strong> (<em>bool</em>) – Send notification when job becomes unstable.
+(default false)</li>
+<li><strong>notify-failure</strong> (<em>bool</em>) – Send notification when job fails.
+(default false)</li>
+<li><strong>notify-back-to-normal</strong> (<em>bool</em>) – Send notification when job is
+succeeding again after being unstable or failed. (default false)</li>
+<li><strong>'notify-repeated-failure'</strong> (<em>bool</em>) – Send notification when job is
+still failing after last failure. (default false)</li>
+<li><strong>include-test-summary</strong> (<em>bool</em>) – Include the test summary. (default
+False)</li>
+<li><strong>include-custom-message</strong> (<em>bool</em>) – Include a custom message into the
+notification. (default false)</li>
+<li><strong>custom-message</strong> (<em>str</em>) – Custom message to be included. (default ‘’)</li>
+<li><strong>room</strong> (<em>str</em>) – A comma seperated list of rooms / channels to send
+the notifications to. (default ‘’)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">properties</span><span class="p p-Indicator">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">slack</span><span class="p p-Indicator">:</span>
+        <span class="l l-Scalar l-Scalar-Plain">room</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">dummy, dummy2</span>
+        <span class="l l-Scalar l-Scalar-Plain">notify-start</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+        <span class="l l-Scalar l-Scalar-Plain">notify-success</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="yamlfunction">
+<dt id="properties.slave-prerequisites">
+<code class="descname">slave-prerequisites</code><a class="headerlink" href="#properties.slave-prerequisites" title="Permalink to this definition">¶</a></dt>
+<dd><p>This plugin allows to check prerequisites on slave before
+a job can run a build on it</p>
+<p>Requires the Jenkins <a class="reference external" href="https://wiki.jenkins.io/display/JENKINS/Slave+Prerequisites+Plugin">Slave Prerequisites Plugin</a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>script</strong> (<em>str</em>) – A script to be executed on slave node.
+If returning non 0 status, the node will be vetoed from hosting
+the build. (required)</li>
+<li><strong>interpreter</strong> (<em>str</em>) – Command line interpreter to be used for executing
+the prerequisite script - either <cite>shell</cite> for Unix shell or <cite>cmd</cite> for
+Windows batch script. (default shell)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">properties</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">slave-prerequisites</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">script</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">|</span>
+        <span class="no">#!/bin/bash</span>
+        <span class="no">AVAILABLE=$(df -BG --output=avail / | tail -1)</span>
+        <span class="no">test ${AVAILABLE%G} -ge 10</span>
+</pre></div>
+</div>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">properties</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">slave-prerequisites</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">interpreter</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">cmd</span>
+      <span class="l l-Scalar l-Scalar-Plain">script</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">|</span>
+        <span class="no">@echo off</span>
+        <span class="no">if exist C:\Jenkins\workspace.lock exit /b 1</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="yamlfunction">
+<dt id="properties.slave-utilization">
+<code class="descname">slave-utilization</code><a class="headerlink" href="#properties.slave-utilization" title="Permalink to this definition">¶</a></dt>
+<dd><p>This plugin allows you to specify the percentage of a slave’s capacity a
+job wants to use.</p>
+<p>Requires the Jenkins <a class="reference external" href="https://wiki.jenkins.io/display/JENKINS/Slave+Utilization+Plugin">Slave Utilization Plugin</a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>slave-percentage</strong> (<em>int</em>) – Specify the percentage of a slave’s execution
+slots that this job should occupy (default 0)</li>
+<li><strong>single-instance-per-slave</strong> (<em>bool</em>) – Control whether concurrent instances
+of this job will be permitted to run in parallel on a single slave
+(default false)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">properties</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">slave-utilization</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">slave-percentage</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">40</span>
+      <span class="l l-Scalar l-Scalar-Plain">single-instance-per-slave</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="yamlfunction">
+<dt id="properties.throttle">
+<code class="descname">throttle</code><a class="headerlink" href="#properties.throttle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Throttles the number of builds for this job.
+Requires the Jenkins <a class="reference external" href="https://wiki.jenkins.io/display/JENKINS/Throttle+Concurrent+Builds+Plugin">Throttle Concurrent Builds Plugin</a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>option</strong> (<em>str</em>) – throttle <cite>project</cite> (throttle the project alone)
+or <cite>category</cite> (throttle the project as part of one or more categories)</li>
+<li><strong>max-per-node</strong> (<em>int</em>) – max concurrent builds per node (default 0)</li>
+<li><strong>max-total</strong> (<em>int</em>) – max concurrent builds (default 0)</li>
+<li><strong>enabled</strong> (<em>bool</em>) – whether throttling is enabled (default true)</li>
+<li><strong>categories</strong> (<em>list</em>) – multiproject throttle categories</li>
+<li><strong>matrix-builds</strong> (<em>bool</em>) – throttle matrix master builds (default true)</li>
+<li><strong>matrix-configs</strong> (<em>bool</em>) – throttle matrix config builds (default false)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">properties</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">throttle</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">max-per-node</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">2</span>
+      <span class="l l-Scalar l-Scalar-Plain">max-total</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">4</span>
+      <span class="l l-Scalar l-Scalar-Plain">categories</span><span class="p p-Indicator">:</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">cat1</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">cat2</span>
+      <span class="l l-Scalar l-Scalar-Plain">option</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">category</span>
+      <span class="l l-Scalar l-Scalar-Plain">matrix-builds</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+      <span class="l l-Scalar l-Scalar-Plain">matrix-configs</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="yamlfunction">
+<dt id="properties.zeromq-event">
+<code class="descname">zeromq-event</code><a class="headerlink" href="#properties.zeromq-event" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is a Jenkins plugin that will publish Jenkins Job run events
+(start, complete, finish) to a ZMQ PUB socket.</p>
+<p>Requires the Jenkins <a class="reference external" href="https://git.openstack.org/cgit/openstack-infra/zmq-event-publisher">ZMQ Event Publisher.</a></p>
+<p>Example:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">properties</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">zeromq-event</span>
+</pre></div>
+</div>
+</dd></dl>
+</div>
+</div>
+</div>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<h4>Previous topic</h4>
+<p class="topless"><a href="parameters.html" title="previous chapter">Parameters</a></p>
+<h4>Next topic</h4>
+<p class="topless"><a href="publishers.html" title="next chapter">Publishers</a></p>
+<div aria-label="source link" role="note">
+<h3>This Page</h3>
+<ul class="this-page-menu">
+<li><a href="_sources/properties.txt" rel="nofollow">Show Source</a></li>
+</ul>
+</div>
+<div id="searchbox" role="search" style="display: none">
+<h3>Quick search</h3>
+<form action="search.html" class="search" method="get">
+<div><input name="q" type="text"/></div>
+<div><input type="submit" value="Go"/></div>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div aria-label="related navigation" class="related" role="navigation">
+<h3>Navigation</h3>
+<ul>
+<li class="right" style="margin-right: 10px">
+<a href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a href="publishers.html" title="Publishers">next</a> |</li>
+<li class="right">
+<a href="parameters.html" title="Parameters">previous</a> |</li>
+<li class="nav-item nav-item-0"><a href="index.html">Jenkins Job Builder 2.0.0.0b3.dev264 documentation</a> »</li>
+<li class="nav-item nav-item-1"><a href="definition.html">Job Definitions</a> »</li>
+</ul>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012, Jenkins Job Builder Maintainers.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.9.
+    </div>
+</body>
+</html>

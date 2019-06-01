@@ -1,0 +1,38 @@
+<html><!-- Mirrored from mdn.mozillademos.org/fr/docs/Web/HTML/Element/Input$samples/Messages_d'erreur_personnalisés?revision=1546438 by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 01 May 2019 11:31:24 GMT --><!-- Added by HTTrack --><head><meta http-equiv="content-type" content="text/html;charset=utf-8"><!-- /Added by HTTrack -->
+
+        <meta charset="utf-8">
+        <link href="../../../../../../../developer.mozilla.org/static/build/styles/samples.37902ba3b7fe.css" rel="stylesheet" type="text/css">
+        
+        <title>&lt;input&gt;</title>
+    </head>
+    <body>
+        
+            <form>
+  <label for="name">Saisir un nom d'utilisateur (lettres minuscules et majuscules) : </label>
+  <input type="text" name="name" id="name" required="" pattern="[A-Za-z]+" spellcheck="false">
+  <button>Envoyer</button>
+</form>
+        
+        
+            <script>
+                const nameInput = document.querySelector('input');
+const form = document.querySelector('form');
+
+nameInput.addEventListener('input', () => {
+  nameInput.setCustomValidity('');
+  nameInput.checkValidity();
+});
+
+nameInput.addEventListener('invalid', () => {
+  if(nameInput.value === '') {
+    nameInput.setCustomValidity("Veuillez saisir votre nom d'utilisateur !");
+  } else {
+    nameInput.setCustomValidity("Un nom d'utilisateur ne peut contenir que des lettres minuscules et majuscules, veuillez réessayer");
+  }
+});
+            </script>
+        
+    
+
+<!-- Mirrored from mdn.mozillademos.org/fr/docs/Web/HTML/Element/Input$samples/Messages_d'erreur_personnalisés?revision=1546438 by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 01 May 2019 11:31:24 GMT -->
+</body></html>

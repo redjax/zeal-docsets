@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html class="no-js hasSidebar hasPageActions hasBreadcrumb conceptual" data-authenticated="false" data-render="docs" dir="ltr" lang="en-us">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Get-EventSubscriber (Microsoft.PowerShell.Utility)" property="og:title"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" property="og:image"/>
+  <meta content="summary" name="twitter:card"/>
+  <meta content="@docsmsft" name="twitter:site"/>
+  <meta content="Get-EventSubscriber (Microsoft.PowerShell.Utility)" name="twitter:title"/>
+  <meta content="The Get-EventSubscriber cmdlet gets the event subscribers in the current session. When you subscribe to an event by using a Register event cmdlet, an event subscriber is added to your Windows PowerShâ¦" name="twitter:description"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" name="twitter:image"/>
+  <meta content="Microsoft Logo" name="twitter:image:alt"/>
+  <meta content="The Get-EventSubscriber cmdlet gets the event subscribers in the current session. When you subscribe to an event by using a Register event cmdlet, an event subscriber is added to your Windows PowerShâ¦" name="description"/>
+  <meta content="Docs" name="search.ms_sitename"/>
+  <meta content="PowerShell_PowerShell-docs_reference" name="search.ms_docsetname"/>
+  <meta content="0" name="version"/>
+  <meta content="en-us" name="locale"/>
+  <meta content="Docs" name="site_name"/>
+  <meta content="PowerShell" name="search.ms_product"/>
+  <meta content="PowerShell.PowerShell_PowerShell-docs_reference" name="depot_name"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/57cd861e6079bc530a60692b1bbf35cfef1d3f35/reference/6/Microsoft.PowerShell.Utility/Get-EventSubscriber.md" name="ref_skeleton_gitcommit"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/live/reference/6/Microsoft.PowerShell.Utility/Get-EventSubscriber.md" name="original_ref_skeleton_git_url"/>
+  <meta content="2018-03-30 03:35 PM" name="updated_at"/>
+  <meta content="d994e83d-6509-3773-9bf3-fb53f0b6c8e6" name="document_id"/>
+  <meta content="c8178966-dae4-53d5-8c9f-f84a78509939" name="document_version_independent_id"/>
+  <meta content="powershell" name="page_type"/>
+  <meta content="command" name="page_kind"/>
+  <meta content="06/09/2017" name="ms.date"/>
+  <meta content="2.0.0" name="schema"/>
+  <meta content="powershell,cmdlet" name="keywords"/>
+  <meta content="http://go.microsoft.com/fwlink/?LinkId=821786" name="online_version"/>
+  <meta content="Microsoft.PowerShell.Commands.Utility.dll-Help.xml" name="external_help_file"/>
+  <meta content="powershell" name="ms.devlang"/>
+  <meta content="INDEX, FOLLOW" name="ROBOTS"/>
+  <meta content="sdwheeler" name="author"/>
+  <meta content="sewhee" name="ms.author"/>
+  <meta content="carmonm" name="manager"/>
+  <meta content="/powershell/bread-pscore/toc.yml?view=powershell-6" name="breadcrumb_path"/>
+  <meta content="powershell" name="apiPlatform"/>
+  <meta content="reference" name="ms.topic"/>
+  <meta content="windows, macos, linux" name="ms.tgt_pltfr"/>
+  <meta content="powershell-scripting" name="ms.technology"/>
+  <meta content="powershell" name="ms.prod"/>
+  <meta content="MSDocsHeader-Powershell" name="uhfHeaderId"/>
+  <meta content="../psdocs/toc.json?view=powershell-6" name="toc_rel"/>
+  <link href="https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/get-eventsubscriber" rel="canonical"/>
+  <title>
+   Get-EventSubscriber
+  </title>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/60aac04b.site.css" rel="stylesheet"/>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/fdb8a38a.conceptual.css" rel="stylesheet"/>
+ </head>
+ <body dir="ltr" lang="en-us">
+  <div class="header-holder">
+   <div data-bi-name="header" id="headerAreaHolder">
+    <div id="uhf-placeholder">
+    </div>
+   </div>
+   <div class="disclaimer-holder" id="disclaimer-holder">
+   </div>
+  </div>
+  <div class="container mainContainer" data-bi-name="body">
+   <div class="content-header" data-bi-name="content-header">
+    <div class="content-header-controls">
+     <button class="contents-button button-border" data-bi-name="contents-expand" type="button">
+      <span class="docon docon-menu">
+      </span>
+      Contents
+     </button>
+    </div>
+    <div class="content-header-controls">
+     <button class="ap-collapse-behavior ap-expanded button-border" data-bi-name="ap-collapse" type="button">
+      <span class="docon docon-exit-mode">
+      </span>
+      Exit focus mode
+     </button>
+    </div>
+   </div>
+   <div class="primary-holder">
+    <main class="content" data-bi-name="content" dir="ltr" id="main" lang="en-us" role="main">
+     <!-- <content> -->
+     <h1>
+      Get-Event
+      <wbr/>
+      Subscriber
+     </h1>
+     <div class="metadata">
+      <dl class="attributeList">
+       <dt>
+        Module:
+       </dt>
+       <dd>
+        <a data-linktype="relative-path" href="./Microsoft.PowerShell.Utility.html">
+         Microsoft.PowerShell.Utility
+        </a>
+       </dd>
+      </dl>
+     </div>
+     <div class="summaryHolder">
+      <div class="summary">
+       Gets the event subscribers in the current session.
+      </div>
+     </div>
+     <h2 class="hiddenAnchor" id="syntax">
+      Syntax
+     </h2>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Get-EventSubscriber
+   [[-SourceIdentifier] &lt;String&gt;]
+   [-Force]
+   [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Get-EventSubscriber
+   [-SubscriptionId] &lt;Int32&gt;
+   [-Force]
+   [&lt;CommonParameters&gt;]</code></pre>
+     <h2 id="description">
+      Description
+     </h2>
+     <p>
+      The
+      <strong>
+       Get-EventSubscriber
+      </strong>
+      cmdlet gets the event subscribers in the current session.
+     </p>
+     <p>
+      When you subscribe to an event by using a Register event cmdlet, an event subscriber is added to your Windows PowerShell session, and the events to which you subscribed are added to your event queue whenever they are raised.
+To cancel an event subscription, delete the event subscriber by using the Unregister-Event cmdlet.
+     </p>
+     <h2 id="examples">
+      Examples
+     </h2>
+     <p>
+      <strong>
+       Example 1: Get the event subscriber for a timer event
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; $Timer = New-Object Timers.Timer
+
+PS C:\&gt; $Timer | Get-Member -Type Event
+
+PS C:\&gt; Register-ObjectEvent -InputObject $Timer -EventName Elapsed -SourceIdentifier Timer.Elapsed
+
+PS C:\&gt; Get-EventSubscriber
+
+PS C:\&gt; $Timer = New-Object Timers.Timer
+
+PS C:\&gt; $Timer | Get-Member -Type Event
+
+TypeName: System.Timers.Timer
+
+Name     MemberType Definition
+
+----     ---------- ----------
+
+Disposed Event      System.EventHandler Disposed(System.Object, System.EventArgs)
+
+Elapsed  Event      System.Timers.ElapsedEventHandler Elapsed(System.Object, System.Timers.ElapsedEventArgs) PS C:\&gt; Register-ObjectEvent -InputObject $Timer -EventName Elapsed -SourceIdentifier Timer.Elapsed
+
+PS C:\&gt; Get-EventSubscriber
+
+SubscriptionId   : 4
+
+SourceObject     : System.Timers.Timer
+
+EventName        : Elapsed
+
+SourceIdentifier : Timer.Elapsed
+
+Action           :
+
+HandlerDelegate  :
+
+SupportEvent     : False
+
+ForwardEvent     : False</code></pre>
+     <p>
+      This example uses a
+      <strong>
+       Get-EventSubscriber
+      </strong>
+      command to get the event subscriber for a timer event.
+     </p>
+     <p>
+      The first command uses the New-Object cmdlet to create an instance of a timer object.
+It saves the new timer object in the $Timer variable.
+     </p>
+     <p>
+      The second command uses the Get-Member cmdlet to display the events that are available for timer objects.
+The command uses the Type parameter of the
+      <strong>
+       Get-Member
+      </strong>
+      cmdlet with a value of Event.
+     </p>
+     <p>
+      The third command uses the Register-ObjectEvent cmdlet to register for the Elapsed event on the timer object.
+     </p>
+     <p>
+      The fourth command uses the
+      <strong>
+       Get-EventSubscriber
+      </strong>
+      cmdlet to get the event subscriber for the Elapsed event.
+     </p>
+     <p>
+      <strong>
+       Example 2: Use the dynamic module in PSEventJob in the Action property of the event subscriber
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; $Timer = New-Object Timers.Timer
+
+PS C:\&gt; $Timer.Interval = 500
+
+PS C:\&gt; Register-ObjectEvent -InputObject $Timer -EventName Elapsed -SourceIdentifier Timer.Random -Action { $Random = Get-Random -Min 0 -Max 100 }
+
+Id  Name           State      HasMoreData  Location  Command
+
+--  ----           -----      -----------  --------  -------
+
+3   Timer.Random   NotStarted False                  $Random = Get-Random ... PS C:\&gt; $Timer.Enabled = $True
+
+PS C:\&gt; $Subscriber = Get-EventSubcriber -SourceIdentifer Timer.Random
+
+PS C:\&gt; ($Subscriber.action).gettype().fullname
+
+PSEventJob PS C:\&gt; $Subscriber.action | Format-List -Property *
+
+State         : Running
+
+Module        : __DynamicModule_6b5cbe82-d634-41d1-ae5e-ad7fe8d57fe0
+
+StatusMessage :
+
+HasMoreData   : True
+
+Location      :
+
+Command       : $random = Get-Random -Min 0 -Max 100
+
+JobStateInfo  : Running
+
+Finished      : System.Threading.ManualResetEvent
+
+InstanceId    : 88944290-133d-4b44-8752-f901bd8012e2
+
+Id            : 1
+
+Name          : Timer.Random
+
+ChildJobs     : {}
+
+... PS C:\&gt; &amp; $Subscriber.action.module {$Random}
+
+96 PS C:\&gt; &amp; $Subscriber.action.module {$Random}
+
+23</code></pre>
+     <p>
+      This example shows how to use the dynamic module in the
+      <strong>
+       PSEventJob
+      </strong>
+      object in the Action property of the event subscriber.
+     </p>
+     <p>
+      The first command uses the New-Object cmdlet to create a timer object.
+The second command sets the interval of the timer to 500 (milliseconds).
+     </p>
+     <p>
+      The third command uses the Register-ObjectEvent cmdlet to register the Elapsed event of the timer object.
+The command includes an action that handles the event.
+Whenever the timer interval elapses, an event is raised and the commands in the action run.
+In this case, the Get-Random cmdlet generates a random number between 0 and 100 and saves it in the $Random variable.
+The source identifier of the event is Timer.Random.
+     </p>
+     <p>
+      When you use an
+      <em>
+       Action
+      </em>
+      parameter in a
+      <strong>
+       Register-ObjectEvent
+      </strong>
+      command, the command returns a
+      <strong>
+       PSEventJob
+      </strong>
+      object that represents the action.
+     </p>
+     <p>
+      The fourth command enables the timer.
+     </p>
+     <p>
+      The fifth command uses the
+      <strong>
+       Get-EventSubscriber
+      </strong>
+      cmdlet to get the event subscriber of the Timer.Random event.
+It saves the event subscriber object in the $Subscriber variable.
+     </p>
+     <p>
+      The sixth command shows that the Action property of the event subscriber object contains a
+      <strong>
+       PSEventJob
+      </strong>
+      object.
+In fact, it contains the same
+      <strong>
+       PSEventJob
+      </strong>
+      object that the
+      <strong>
+       Register-ObjectEvent
+      </strong>
+      command returned.
+     </p>
+     <p>
+      The seventh command uses the Format-List cmdlet to display all of the properties of the
+      <strong>
+       PSEventJob
+      </strong>
+      object in the Action property in a list.
+The result reveals that the
+      <strong>
+       PSEventJob
+      </strong>
+      object has a Module property that contains a dynamic script module that implements the action.
+     </p>
+     <p>
+      The remaining commands use the call operator (&amp;) to invoke the command in the module and display the value of the $Random variable.
+You can use the call operator to invoke any command in a module, including commands that are not exported.
+In this case, the commands show the random number that is being generated when the Elapsed event occurs.
+     </p>
+     <p>
+      For more information about modules, see about_Modules.
+     </p>
+     <h2 id="required-parameters">
+      Required Parameters
+     </h2>
+     <div class="parameterName stack">
+      -SubscriptionId
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the subscription identifier that this cmdlet gets.
+By default,
+       <strong>
+        Get-EventSubscriber
+       </strong>
+       gets all event subscribers in the session.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Int32
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         Id
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         1
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="optional-parameters">
+      Optional Parameters
+     </h2>
+     <div class="parameterName stack">
+      -Force
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that this cmdlet gets all event subscribers, including subscribers for events that are hidden by using the
+       <em>
+        SupportEvent
+       </em>
+       parameter of Register-ObjectEvent, Register-WmiEvent, and Register-EngineEvent.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         2
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -SourceIdentifier
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the
+       <strong>
+        SourceIdentifier
+       </strong>
+       property value that gets only the event subscribers.
+By default,
+       <strong>
+        Get-EventSubscriber
+       </strong>
+       gets all event subscribers in the session.
+Wildcards are not permitted.
+This parameter is case-sensitive.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         1
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="inputs">
+      Inputs
+     </h2>
+     <p>
+      <strong>
+       None
+      </strong>
+     </p>
+     <p>
+      You cannot pipe input to this cmdlet.
+     </p>
+     <h2 id="outputs">
+      Outputs
+     </h2>
+     <p>
+      <strong>
+       System.Management.Automation.PSEventSubscriber
+      </strong>
+     </p>
+     <p>
+      <strong>
+       Get-EventSubscriber
+      </strong>
+      returns an object that represents each event subscriber.
+     </p>
+     <h2 id="notes">
+      Notes
+     </h2>
+     <ul>
+      <li>
+       <p>
+        The New-Event cmdlet, which creates a custom event, does not generate a subscriber. Therefore, the
+        <strong>
+         Get-EventSubscriber
+        </strong>
+        cmdlet will not find a subscriber object for these events. However, if you use the Register-EngineEvent cmdlet to subscribe to a custom event (in order to forward the event or to specify an action),
+        <strong>
+         Get-EventSubscriber
+        </strong>
+        will find the subscriber that
+        <strong>
+         Register-EngineEvent
+        </strong>
+        generates.
+       </p>
+       <p>
+        Events, event subscriptions, and the event queue exist only in the current session.
+If you close the current session, the event queue is discarded and the event subscription is canceled.
+       </p>
+      </li>
+     </ul>
+     <p>
+      *
+     </p>
+     <h2 id="related-links">
+      Related Links
+     </h2>
+     <ul>
+      <li>
+       <a data-linktype="relative-path" href="get-event.html">
+        Get-Event
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="new-event.html">
+        New-Event
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="register-engineevent.html">
+        Register-EngineEvent
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="register-objectevent.html">
+        Register-ObjectEvent
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="remove-event.html">
+        Remove-Event
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="unregister-event.html">
+        Unregister-Event
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="wait-event.html">
+        Wait-Event
+       </a>
+      </li>
+     </ul>
+     <!-- </content> -->
+    </main>
+    <div class="note alert feedback-system-change-alert">
+     <p>
+      Note
+     </p>
+     <p>
+      The feedback system for this content will be changing soon. Old comments will not be carried over. If content within a comment thread is important to you, please save a copy. For more information on the upcoming change,
+      <a href="https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs">
+       we invite you to read our blog post
+      </a>
+      .
+     </p>
+    </div>
+    <div data-bi-name="comments" id="comments-container" role="form">
+    </div>
+   </div>
+  </div>
+  <div class="openfeedback-container" id="openFeedbackContainer">
+  </div>
+  <div class="action-panel">
+  </div>
+ </body>
+</html>

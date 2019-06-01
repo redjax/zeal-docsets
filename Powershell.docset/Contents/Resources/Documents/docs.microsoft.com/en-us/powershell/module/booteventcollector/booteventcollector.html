@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html class="no-js hasSidebar hasPageActions hasBreadcrumb conceptual" data-authenticated="false" data-render="docs" dir="ltr" lang="en-us">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="BootEventCollector" property="og:title"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" property="og:image"/>
+  <meta content="summary" name="twitter:card"/>
+  <meta content="@docsmsft" name="twitter:site"/>
+  <meta content="BootEventCollector" name="twitter:title"/>
+  <meta content="Use this topic to help manage Windows and Windows Server technologies with Windows PowerShell." name="twitter:description"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" name="twitter:image"/>
+  <meta content="Microsoft Logo" name="twitter:image:alt"/>
+  <meta content="Docs" name="search.ms_sitename"/>
+  <meta content="powershell-windows" name="search.ms_docsetname"/>
+  <meta content="0" name="version"/>
+  <meta content="en-us" name="locale"/>
+  <meta content="Docs" name="site_name"/>
+  <meta content="MSDN" name="search.ms_product"/>
+  <meta content="MSDN.powershell-windows" name="depot_name"/>
+  <meta content="https://cpubwin.visualstudio.com/DefaultCollection/powershell/_git/powershell/commit/ced7757924addcaea0b7a244ae4d240e4d28d93a?path=%2fdocset%2fwindows%2fbooteventcollector%2fbooteventcollector.md&amp;_a=contents" name="ref_skeleton_gitcommit"/>
+  <meta content="https://cpubwin.visualstudio.com/DefaultCollection/powershell/_git/powershell?path=%2fdocset%2fwindows%2fbooteventcollector%2fbooteventcollector.md&amp;version=GBlive&amp;_a=contents" name="original_ref_skeleton_git_url"/>
+  <meta content="2017-09-15 03:44 AM" name="updated_at"/>
+  <meta content="49bf6f39-ca5c-1af3-6ddb-85aed0583a4a" name="document_id"/>
+  <meta content="b6974cf1-40e0-79ec-88c9-8ad71ac0e122" name="document_version_independent_id"/>
+  <meta content="powershell" name="page_type"/>
+  <meta content="module" name="page_kind"/>
+  <meta content="../win10-ps/toc.json?view=win10-ps" name="toc_rel"/>
+  <meta content="manage" name="ms.mktglfcycl"/>
+  <meta content="library" name="ms.sitesec"/>
+  <meta content="brianlic" name="ms.author"/>
+  <meta content="BootEventCollector" name="Module_Name"/>
+  <meta content="7E4C6113-1789-4C2D-ABAA-BEA1EF5C62E8" name="Module_Guid"/>
+  <meta content="http://go.microsoft.com/fwlink/?LinkId=518772" name="Download_Help_Link"/>
+  <meta content="5.0.0.2" name="Help_Version"/>
+  <meta content="en-US" name="Locale"/>
+  <meta content="Use this topic to help manage Windows and Windows Server technologies with Windows PowerShell." name="description"/>
+  <meta content="powershell, cmdlet" name="keywords"/>
+  <meta content="brianlic-msft" name="author"/>
+  <meta content="alanth" name="manager"/>
+  <meta content="12/20/2016" name="ms.date"/>
+  <meta content="reference" name="ms.topic"/>
+  <meta content="w10" name="ms.prod"/>
+  <meta content="powershell-windows" name="ms.technology"/>
+  <meta content="394B60AC-9516-494B-86D7-50F767321820" name="ms.assetid"/>
+  <meta content="booteventcollector" name="Checkpoint-SbecActiveConfig"/>
+  <meta content="booteventcollector" name="Clear-SbecProviderCache"/>
+  <meta content="booteventcollector" name="Disable-SbecAutologger"/>
+  <meta content="booteventcollector" name="Disable-SbecBcd"/>
+  <meta content="booteventcollector" name="Enable-SbecAutologger"/>
+  <meta content="booteventcollector" name="Enable-SbecBcd"/>
+  <meta content="booteventcollector" name="Enable-SbecBootImage"/>
+  <meta content="booteventcollector" name="Enable-SbecWdsBcd"/>
+  <meta content="booteventcollector" name="Get-SbecActiveConfig"/>
+  <meta content="booteventcollector" name="Get-SbecBackupConfig"/>
+  <meta content="booteventcollector" name="Get-SbecDestination"/>
+  <meta content="booteventcollector" name="Get-SbecForwarding"/>
+  <meta content="booteventcollector" name="Get-SbecHistory"/>
+  <meta content="booteventcollector" name="Get-SbecLocalizedMessage"/>
+  <meta content="booteventcollector" name="Get-SbecLogSession"/>
+  <meta content="booteventcollector" name="Get-SbecTraceProviders"/>
+  <meta content="booteventcollector" name="New-SbecUnattendFragment"/>
+  <meta content="booteventcollector" name="Redo-SbecActiveConfig"/>
+  <meta content="booteventcollector" name="Restore-SbecBackupConfig"/>
+  <meta content="booteventcollector" name="Save-SbecInstance"/>
+  <meta content="booteventcollector" name="Save-SbecLogSession"/>
+  <meta content="booteventcollector" name="Set-SbecActiveConfig"/>
+  <meta content="booteventcollector" name="Set-SbecLogSession"/>
+  <meta content="booteventcollector" name="Start-SbecInstance"/>
+  <meta content="booteventcollector" name="Start-SbecLogSession"/>
+  <meta content="booteventcollector" name="Start-SbecNtKernelLogSession"/>
+  <meta content="booteventcollector" name="Start-SbecSimpleLogSession"/>
+  <meta content="booteventcollector" name="Stop-SbecInstance"/>
+  <meta content="booteventcollector" name="Stop-SbecLogSession"/>
+  <meta content="booteventcollector" name="Test-SbecActiveConfig"/>
+  <meta content="booteventcollector" name="Test-SbecConfig"/>
+  <meta content="booteventcollector" name="Undo-SbecActiveConfig"/>
+  <meta content="powershell" name="ms.devlang"/>
+  <meta content="INDEX, FOLLOW" name="ROBOTS"/>
+  <meta content="/powershell/windows/bread/toc.json?view=win10-ps" name="breadcrumb_path"/>
+  <meta content="powershell" name="apiPlatform"/>
+  <meta content="MSDocsHeader-WindowsIT" name="uhfHeaderId"/>
+  <link href="https://docs.microsoft.com/en-us/powershell/module/booteventcollector/" rel="canonical"/>
+  <title>
+   BootEventCollector
+  </title>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/e4a1f3a3.site.css" rel="stylesheet"/>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/31353636.conceptual.css" rel="stylesheet"/>
+ </head>
+ <body dir="ltr" lang="en-us">
+  <div class="header-holder">
+   <div data-bi-name="header" id="headerAreaHolder">
+    <div id="uhf-placeholder">
+    </div>
+   </div>
+   <div class="disclaimer-holder" id="disclaimer-holder">
+   </div>
+  </div>
+  <div class="container mainContainer" data-bi-name="body">
+   <div class="content-header" data-bi-name="content-header">
+    <div class="content-header-controls">
+     <button class="contents-button button-border" data-bi-name="contents-expand" type="button">
+      <span class="docon docon-menu">
+      </span>
+      Contents
+     </button>
+    </div>
+    <div class="content-header-controls">
+     <button class="ap-collapse-behavior ap-expanded button-border" data-bi-name="ap-collapse" type="button">
+      <span class="docon docon-exit-mode">
+      </span>
+      Exit focus mode
+     </button>
+    </div>
+   </div>
+   <div class="primary-holder">
+    <main class="content" data-bi-name="content" dir="ltr" id="main" lang="en-us" role="main">
+     <!-- <content> -->
+     <h1>
+      Boot
+      <wbr/>
+      Event
+      <wbr/>
+      Collector
+     </h1>
+     <div class="summaryHolder">
+      <div class="summary">
+       <p>
+        The Boot Event Collector module contains cmdlets to help you administer Boot Event Collector tasks in Windows Server 2016 Technical Preview.
+       </p>
+      </div>
+     </div>
+     <h2 id="booteventcollector">
+      booteventcollector
+     </h2>
+     <table class="nameValue">
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Checkpoint-SbecActiveConfig.html">
+         Checkpoint-Sbec
+         <wbr/>
+         Active
+         <wbr/>
+         Config
+        </a>
+       </td>
+       <td>
+        <p>
+         Creates a configuration checkpoint.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Clear-SbecProviderCache.html">
+         Clear-Sbec
+         <wbr/>
+         Provider
+         <wbr/>
+         Cache
+        </a>
+       </td>
+       <td>
+        <p>
+         Clears the provider cache.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Disable-SbecAutologger.html">
+         Disable-Sbec
+         <wbr/>
+         Autologger
+        </a>
+       </td>
+       <td>
+        <p>
+         Disables the forwarding of events to the Setup and Boot Event Collector in the AutoLogger settings.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Disable-SbecBcd.html">
+         Disable-Sbec
+         <wbr/>
+         Bcd
+        </a>
+       </td>
+       <td>
+        <p>
+         Disables the event forwarding mode in BCD settings.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Enable-SbecAutologger.html">
+         Enable-Sbec
+         <wbr/>
+         Autologger
+        </a>
+       </td>
+       <td>
+        <p>
+         Enables the forwarding of the events to the Setup and Boot Event Collector in the AutoLogger settings.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Enable-SbecBcd.html">
+         Enable-Sbec
+         <wbr/>
+         Bcd
+        </a>
+       </td>
+       <td>
+        <p>
+         Enables and configures the event forwarding mode in the BCD settings.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Enable-SbecBootImage.html">
+         Enable-Sbec
+         <wbr/>
+         Boot
+         <wbr/>
+         Image
+        </a>
+       </td>
+       <td>
+        <p>
+         Enables AutoLogger settings in offline WinPE Setup images.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Enable-SbecWdsBcd.html">
+         Enable-Sbec
+         <wbr/>
+         Wds
+         <wbr/>
+         Bcd
+        </a>
+       </td>
+       <td>
+        <p>
+         Enables the BCD settings in the offline boot images imported into the WDS server.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-SbecActiveConfig.html">
+         Get-Sbec
+         <wbr/>
+         Active
+         <wbr/>
+         Config
+        </a>
+       </td>
+       <td>
+        <p>
+         Gets the current active configuration from the running Setup and Boot Event Collector.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-SbecBackupConfig.html">
+         Get-Sbec
+         <wbr/>
+         Backup
+         <wbr/>
+         Config
+        </a>
+       </td>
+       <td>
+        <p>
+         Get the backup configuration files that are available to restore.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-SbecDestination.html">
+         Get-Sbec
+         <wbr/>
+         Destination
+        </a>
+       </td>
+       <td>
+        <p>
+         Get destination data files.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-SbecForwarding.html">
+         Get-Sbec
+         <wbr/>
+         Forwarding
+        </a>
+       </td>
+       <td>
+        <p>
+         Gets the current connections and how data is forwarded.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-SbecHistory.html">
+         Get-Sbec
+         <wbr/>
+         History
+        </a>
+       </td>
+       <td>
+        <p>
+         Gets the recent history of changes in connection status.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-SbecLocalizedMessage.html">
+         Get-Sbec
+         <wbr/>
+         Localized
+         <wbr/>
+         Message
+        </a>
+       </td>
+       <td>
+        <p>
+         Gets a localized message string.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-SbecLogSession.html">
+         Get-Sbec
+         <wbr/>
+         Log
+         <wbr/>
+         Session
+        </a>
+       </td>
+       <td>
+        <p>
+         Gets the running log sessions.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-SbecTraceProviders.html">
+         Get-Sbec
+         <wbr/>
+         Trace
+         <wbr/>
+         Providers
+        </a>
+       </td>
+       <td>
+        <p>
+         Gets the ETW trace providers.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="New-SbecUnattendFragment.html">
+         New-Sbec
+         <wbr/>
+         Unattend
+         <wbr/>
+         Fragment
+        </a>
+       </td>
+       <td>
+        <p>
+         Creates a fragment for Unattend.xml with post-install commands.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Redo-SbecActiveConfig.html">
+         Redo-Sbec
+         <wbr/>
+         Active
+         <wbr/>
+         Config
+        </a>
+       </td>
+       <td>
+        <p>
+         Redoes a change to the current active configuration.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Restore-SbecBackupConfig.html">
+         Restore-Sbec
+         <wbr/>
+         Backup
+         <wbr/>
+         Config
+        </a>
+       </td>
+       <td>
+        <p>
+         Restores a configuration from a backup file.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Save-SbecInstance.html">
+         Save-Sbec
+         <wbr/>
+         Instance
+        </a>
+       </td>
+       <td>
+        <p>
+         Writes in-memory buffers to disk.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Save-SbecLogSession.html">
+         Save-Sbec
+         <wbr/>
+         Log
+         <wbr/>
+         Session
+        </a>
+       </td>
+       <td>
+        <p>
+         Flushes the buffers in a log session to disk.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Set-SbecActiveConfig.html">
+         Set-Sbec
+         <wbr/>
+         Active
+         <wbr/>
+         Config
+        </a>
+       </td>
+       <td>
+        <p>
+         Sets the new active configuration for the running Setup and Boot Event Collector.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Set-SbecLogSession.html">
+         Set-Sbec
+         <wbr/>
+         Log
+         <wbr/>
+         Session
+        </a>
+       </td>
+       <td>
+        <p>
+         Updates the settings for a log session.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Start-SbecInstance.html">
+         Start-Sbec
+         <wbr/>
+         Instance
+        </a>
+       </td>
+       <td>
+        <p>
+         Starts the Setup and Boot Event Collector service.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Start-SbecLogSession.html">
+         Start-Sbec
+         <wbr/>
+         Log
+         <wbr/>
+         Session
+        </a>
+       </td>
+       <td>
+        <p>
+         Starts an ETW log session.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Start-SbecNtKernelLogSession.html">
+         Start-Sbec
+         <wbr/>
+         NtKernel
+         <wbr/>
+         Log
+         <wbr/>
+         Session
+        </a>
+       </td>
+       <td>
+        <p>
+         Starts an NT Kernel Logger log session with forwarding of events to the Collector.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Start-SbecSimpleLogSession.html">
+         Start-Sbec
+         <wbr/>
+         Simple
+         <wbr/>
+         Log
+         <wbr/>
+         Session
+        </a>
+       </td>
+       <td>
+        <p>
+         Starts a log session with the forwarding of events to the Collector.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Stop-SbecInstance.html">
+         Stop-Sbec
+         <wbr/>
+         Instance
+        </a>
+       </td>
+       <td>
+        <p>
+         Stops the Setup and Boot Event Collector.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Stop-SbecLogSession.html">
+         Stop-Sbec
+         <wbr/>
+         Log
+         <wbr/>
+         Session
+        </a>
+       </td>
+       <td>
+        <p>
+         Stops a log session.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Test-SbecActiveConfig.html">
+         Test-Sbec
+         <wbr/>
+         Active
+         <wbr/>
+         Config
+        </a>
+       </td>
+       <td>
+        <p>
+         Tests the active Boot Event Collector configuration.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Test-SbecConfig.html">
+         Test-Sbec
+         <wbr/>
+         Config
+        </a>
+       </td>
+       <td>
+        <p>
+         Validates a configuration.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Undo-SbecActiveConfig.html">
+         Undo-Sbec
+         <wbr/>
+         Active
+         <wbr/>
+         Config
+        </a>
+       </td>
+       <td>
+        <p>
+         Reverts a change to the active configuration.
+        </p>
+       </td>
+      </tr>
+     </table>
+     <!-- </content> -->
+    </main>
+    <section class="feedback-section" data-bi-name="feedback-section">
+     <h2 id="feedback">
+      Feedback
+     </h2>
+     <div class="alert choose-feedback-type">
+      <p>
+       We'd love to hear your thoughts. Choose the type you'd like to provide:
+      </p>
+      <div class="choose-feedback-buttons">
+       <a class="button-border feedback-type-product" data-bi-name="product-feedback" href="https://windowsserver.uservoice.com/forums/301869-powershell">
+        Product feedback
+        <span aria-hidden="true" class="docon docon-navigate-external">
+        </span>
+       </a>
+       <div class="button-group">
+        <button class="button-border feedback-sign-in-button" data-bi-name="feedback-sign-in">
+         <span aria-hidden="true" class="docon docon-brand-github">
+         </span>
+         Sign in to give documentation feedback
+        </button>
+        <button aria-controls="feedback-form" aria-expanded="false" class="button-border feedback-form-toggle" data-bi-name="documentation-feedback" hidden="">
+         Content feedback
+        </button>
+        <div auto-align="" class="dropdown has-caret">
+         <button aria-controls="fbm0" aria-expanded="false" aria-haspopup="true" aria-label="Expand documentation feedback menu" class="button-border dropdown-trigger" data-bi-name="documentation-feedback-menu">
+          <span aria-hidden="true" class="docon docon-chevron-down-light">
+          </span>
+         </button>
+         <div class="dropdown-menu documentation-feedback-menu" id="fbm0" role="menu">
+          You may also leave feedback
+          <a data-bi-name="create-issue-on-github" href="{0}">
+           directly on GitHub
+           <span aria-hidden="true" class="docon docon-navigate-external">
+           </span>
+          </a>
+          .
+         </div>
+        </div>
+       </div>
+      </div>
+      <p>
+       <small>
+        Our new feedback system is built on GitHub Issues. Read about this change in
+        <a href="https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs">
+         our blog post
+        </a>
+        .
+       </small>
+      </p>
+     </div>
+     <form accept-charset="UTF-8" action="javascript:" autocomplete="off" class="feedback-form" hidden="" id="feedback-form">
+      <h3 class="feedback-form-heading current-user">
+       <img alt="Avatar" aria-hidden="true" class="avatar" height="36" width="36"/>
+       <span aria-hidden="true" class="username">
+       </span>
+       <span class="visually-hidden">
+        Liquid error: Can't find the localized string giveDocumentationFeedback for template Conceptual.
+       </span>
+      </h3>
+      <label>
+       <span class="visually-hidden">
+        Title
+       </span>
+       <input name="title" pattern=".*\w.*" placeholder="Title" required="" type="text"/>
+      </label>
+      <label>
+       <span class="visually-hidden">
+        Leave a comment
+       </span>
+       <textarea name="body" placeholder="Leave a comment" required=""></textarea>
+      </label>
+      <div class="action-container">
+       <button class="primary-action" name="submit" type="submit">
+        Submit feedback
+       </button>
+      </div>
+     </form>
+     <div class="feedback-status alert busy" role="alert">
+      <p>
+       Loading feedback...
+      </p>
+     </div>
+     <div class="feedback-tab-group tabGroup" data-tab-group-independent="" hidden="">
+      <ul role="tablist">
+       <li role="presentation">
+        <a aria-controls="tabpanel-issues-open" aria-label="Open Issues" data-tab="issues-open" href="#tabpanel-issues-open" role="tab">
+        </a>
+       </li>
+       <li role="presentation">
+        <a aria-controls="tabpanel-issues-closed" aria-label="Closed Issues" data-tab="issues-closed" href="#tabpanel-issues-closed" role="tab">
+        </a>
+       </li>
+      </ul>
+      <section data-tab="issues-open" id="tabpanel-issues-open" role="tabpanel">
+       <div class="no-issues-placeholder">
+        There are no open issues
+       </div>
+       <ul aria-label="Open Issues" class="github-issues-list">
+       </ul>
+      </section>
+      <section data-tab="issues-closed" id="tabpanel-issues-closed" role="tabpanel">
+       <div class="no-issues-placeholder">
+        There are no closed issues
+       </div>
+       <ul aria-label="Closed Issues" class="github-issues-list">
+       </ul>
+      </section>
+     </div>
+     <div class="action-container">
+      <a class="view-on-github" data-bi-name="view-on-github" hidden="" href="https://github.com/MicrosoftDocs/windows-powershell-docs/issues">
+       <span aria-hidden="true" class="docon docon-brand-github">
+       </span>
+       <span>
+        View on GitHub
+       </span>
+       <span aria-hidden="true" class="docon docon-navigate-external">
+       </span>
+      </a>
+     </div>
+    </section>
+   </div>
+  </div>
+  <div class="openfeedback-container" id="openFeedbackContainer">
+  </div>
+  <div class="action-panel">
+  </div>
+ </body>
+</html>

@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html class="no-js hasSidebar hasPageActions hasBreadcrumb conceptual" data-authenticated="false" data-render="docs" dir="ltr" lang="en-us">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Remove-ItemProperty (Microsoft.PowerShell.Management)" property="og:title"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" property="og:image"/>
+  <meta content="summary" name="twitter:card"/>
+  <meta content="@docsmsft" name="twitter:site"/>
+  <meta content="Remove-ItemProperty (Microsoft.PowerShell.Management)" name="twitter:title"/>
+  <meta content="The Remove-ItemProperty cmdlet deletes a property and its value from an item. You can use it to delete registry values and the data that they store. " name="twitter:description"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" name="twitter:image"/>
+  <meta content="Microsoft Logo" name="twitter:image:alt"/>
+  <meta content="The Remove-ItemProperty cmdlet deletes a property and its value from an item. You can use it to delete registry values and the data that they store. " name="description"/>
+  <meta content="Docs" name="search.ms_sitename"/>
+  <meta content="PowerShell_PowerShell-docs_reference" name="search.ms_docsetname"/>
+  <meta content="0" name="version"/>
+  <meta content="en-us" name="locale"/>
+  <meta content="Docs" name="site_name"/>
+  <meta content="PowerShell" name="search.ms_product"/>
+  <meta content="PowerShell.PowerShell_PowerShell-docs_reference" name="depot_name"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/446813f2b0922607a6ae1d2df7a11be56edfa4c1/reference/6/Microsoft.PowerShell.Management/Remove-ItemProperty.md" name="ref_skeleton_gitcommit"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/live/reference/6/Microsoft.PowerShell.Management/Remove-ItemProperty.md" name="original_ref_skeleton_git_url"/>
+  <meta content="2018-03-30 03:35 PM" name="updated_at"/>
+  <meta content="a14a65e0-4f8f-3c82-2f58-88f79dd1c493" name="document_id"/>
+  <meta content="06246ea4-b812-b953-cb6e-740bd328b5bf" name="document_version_independent_id"/>
+  <meta content="powershell" name="page_type"/>
+  <meta content="command" name="page_kind"/>
+  <meta content="06/09/2017" name="ms.date"/>
+  <meta content="2.0.0" name="schema"/>
+  <meta content="powershell,cmdlet" name="keywords"/>
+  <meta content="http://go.microsoft.com/fwlink/?LinkId=821617" name="online_version"/>
+  <meta content="Microsoft.PowerShell.Commands.Management.dll-Help.xml" name="external_help_file"/>
+  <meta content="powershell" name="ms.devlang"/>
+  <meta content="INDEX, FOLLOW" name="ROBOTS"/>
+  <meta content="sdwheeler" name="author"/>
+  <meta content="sewhee" name="ms.author"/>
+  <meta content="carmonm" name="manager"/>
+  <meta content="/powershell/bread-pscore/toc.yml?view=powershell-6" name="breadcrumb_path"/>
+  <meta content="powershell" name="apiPlatform"/>
+  <meta content="reference" name="ms.topic"/>
+  <meta content="windows, macos, linux" name="ms.tgt_pltfr"/>
+  <meta content="powershell-scripting" name="ms.technology"/>
+  <meta content="powershell" name="ms.prod"/>
+  <meta content="MSDocsHeader-Powershell" name="uhfHeaderId"/>
+  <meta content="../psdocs/toc.json?view=powershell-6" name="toc_rel"/>
+  <link href="https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.management/remove-itemproperty" rel="canonical"/>
+  <title>
+   Remove-ItemProperty
+  </title>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/60aac04b.site.css" rel="stylesheet"/>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/fdb8a38a.conceptual.css" rel="stylesheet"/>
+ </head>
+ <body dir="ltr" lang="en-us">
+  <div class="header-holder">
+   <div data-bi-name="header" id="headerAreaHolder">
+    <div id="uhf-placeholder">
+    </div>
+   </div>
+   <div class="disclaimer-holder" id="disclaimer-holder">
+   </div>
+  </div>
+  <div class="container mainContainer" data-bi-name="body">
+   <div class="content-header" data-bi-name="content-header">
+    <div class="content-header-controls">
+     <button class="contents-button button-border" data-bi-name="contents-expand" type="button">
+      <span class="docon docon-menu">
+      </span>
+      Contents
+     </button>
+    </div>
+    <div class="content-header-controls">
+     <button class="ap-collapse-behavior ap-expanded button-border" data-bi-name="ap-collapse" type="button">
+      <span class="docon docon-exit-mode">
+      </span>
+      Exit focus mode
+     </button>
+    </div>
+   </div>
+   <div class="primary-holder">
+    <main class="content" data-bi-name="content" dir="ltr" id="main" lang="en-us" role="main">
+     <!-- <content> -->
+     <h1>
+      Remove-Item
+      <wbr/>
+      Property
+     </h1>
+     <div class="metadata">
+      <dl class="attributeList">
+       <dt>
+        Module:
+       </dt>
+       <dd>
+        <a data-linktype="relative-path" href="./Microsoft.PowerShell.Management.html">
+         Microsoft.PowerShell.Management
+        </a>
+       </dd>
+      </dl>
+     </div>
+     <div class="summaryHolder">
+      <div class="summary">
+       Deletes the property and its value from an item.
+      </div>
+     </div>
+     <h2 class="hiddenAnchor" id="syntax">
+      Syntax
+     </h2>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Remove-ItemProperty
+      [-Path] &lt;String[]&gt;
+      [-Name] &lt;String[]&gt;
+      [-Force]
+      [-Filter &lt;String&gt;]
+      [-Include &lt;String[]&gt;]
+      [-Exclude &lt;String[]&gt;]
+      [-Credential &lt;PSCredential&gt;]
+      [-InformationAction &lt;ActionPreference&gt;]
+      [-InformationVariable &lt;String&gt;]
+      [-WhatIf]
+      [-Confirm]
+      [-UseTransaction]
+      [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Remove-ItemProperty
+      -LiteralPath &lt;String[]&gt;
+      [-Name] &lt;String[]&gt;
+      [-Force]
+      [-Filter &lt;String&gt;]
+      [-Include &lt;String[]&gt;]
+      [-Exclude &lt;String[]&gt;]
+      [-Credential &lt;PSCredential&gt;]
+      [-WhatIf]
+      [-Confirm]
+      [-UseTransaction]
+      [&lt;CommonParameters&gt;]</code></pre>
+     <h2 id="description">
+      Description
+     </h2>
+     <p>
+      The
+      <strong>
+       Remove-ItemProperty
+      </strong>
+      cmdlet deletes a property and its value from an item.
+You can use it to delete registry values and the data that they store.
+     </p>
+     <h2 id="examples">
+      Examples
+     </h2>
+     <p>
+      <strong>
+       Example 1: Delete a registry value
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Remove-ItemProperty -Path "HKLM:\Software\SmpApplication" -Name "SmpProperty"</code></pre>
+     <p>
+      This command deletes the SmpProperty registry value, and its data, from the SmpApplication subkey of the HKEY_LOCAL_MACHINE\Software registry key.
+     </p>
+     <p>
+      Because the command is issued from a file system drive (PS C:\&gt;), it includes the fully qualified path of the SmpApplication subkey, including the drive, HKLM:, and the Software key.
+     </p>
+     <p>
+      It uses the
+      <em>
+       Name
+      </em>
+      parameter to identify the registry value that is being deleted.
+     </p>
+     <p>
+      <strong>
+       Example 2: Delete a registry value from the HKCU location
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Set-Location HKCU:\Software\MyCompany\MyApp
+
+PS HKCU:\Software\MyCompany\MyApp&gt; Remove-ItemProperty -Path . -Name "Options" -Confirm</code></pre>
+     <p>
+      These commands delete the Options registry value, and its data, from the MyApp subkey of HKEY_CURRENT_USER\Software\MyCompany.
+     </p>
+     <p>
+      The first command uses the Set-Location cmdlet to change the current location to the HKEY_CURRENT_USER drive (HKCU:) and the Software\MyCompany\MyApp subkey.
+     </p>
+     <p>
+      The second command uses
+      <strong>
+       Remove-ItemProperty
+      </strong>
+      to remove the Options registry value, and its data, from the MyApp subkey.
+Because
+      <em>
+       Path
+      </em>
+      is required, the command uses a dot (.) to indicate the current location.
+It uses
+      <em>
+       Name
+      </em>
+      to specify which registry value to delete.
+It uses the
+      <em>
+       Confirm
+      </em>
+      parameter to request a user prompt before deleting the value.
+     </p>
+     <p>
+      <strong>
+       Example 3: Remove a registry value by using the pipeline
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-Item -Path HKLM:\Software\MyCompany | Remove-ItemProperty -Name NoOfEmployees</code></pre>
+     <p>
+      This command deletes the NoOfEmployees registry value, and its data, from the HKLM\Software\MyCompany registry key.
+     </p>
+     <p>
+      The command uses the Get-Item cmdlet to get an item that represents the registry key.
+It uses a pipeline operator (|) to send the object to
+      <strong>
+       Remove-ItemProperty
+      </strong>
+      .
+Then, it uses the
+      <em>
+       Name
+      </em>
+      parameter of
+      <strong>
+       Remove-ItemProperty
+      </strong>
+      to specify the name of the registry value.
+     </p>
+     <h2 id="required-parameters">
+      Required Parameters
+     </h2>
+     <div class="parameterName stack">
+      -LiteralPath
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a path of the item property.
+The value of the
+       <em>
+        LiteralPath
+       </em>
+       parameter is used exactly as it is typed.
+No characters are interpreted as wildcard characters.
+If the path includes escape characters, enclose it in single quotation marks.
+Single quotation marks tell Windows PowerShell not to interpret any characters as escape sequences.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         PSPath
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Name
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the names of the properties to remove.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         PSProperty
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         2
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Path
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the path of the item whose properties are being removed.
+Wildcard characters are permitted.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         1
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName, ByValue)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="optional-parameters">
+      Optional Parameters
+     </h2>
+     <div class="parameterName stack">
+      -Confirm
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Prompts you for confirmation before running the cmdlet.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         cf
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Credential
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a user account that has permission to perform this action.
+The default is the current user.
+      </p>
+      <p>
+       Type a user name, such as User01 or Domain01\User01, or enter a
+       <strong>
+        PSCredential
+       </strong>
+       object, such as one generated by the Get-Credential cmdlet.
+If you type a user name, this cmdlet prompts you for a password.
+      </p>
+      <p>
+       This parameter is not supported by any providers installed with Windows PowerShell.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          PSCredential
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Exclude
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies items that this cmdlet omits.
+The value of this parameter qualifies the
+       <em>
+        Path
+       </em>
+       parameter.
+Enter a path element or pattern, such as *.txt.
+Wildcard characters are permitted.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Filter
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a filter in the format or language of the provider.
+The value of this parameter qualifies the
+       <em>
+        Path
+       </em>
+       parameter.
+The syntax of the filter, including the use of wildcard characters, depends on the provider.
+Filters are more efficient than other parameters, because the provider applies them when it retrieves the objects instead of having Windows PowerShell filter the objects after they are retrieved.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Force
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Forces the cmdlet to remove a property of an object that cannot otherwise be accessed by the user.
+Implementation varies from provider to provider.
+For more information, see about_Providers.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Include
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies items to delete.
+The value of this parameter qualifies the
+       <em>
+        Path
+       </em>
+       parameter.
+Enter a path element or pattern, such as *.txt.
+Wildcard characters are permitted.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -UseTransaction
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Includes the command in the active transaction.
+This parameter is valid only when a transaction is in progress.
+For more information, see Includes the command in the active transaction.
+This parameter is valid only when a transaction is in progress.
+For more information, see
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         usetx
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -WhatIf
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         wi
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="inputs">
+      Inputs
+     </h2>
+     <p>
+      <strong>
+       System.String
+      </strong>
+     </p>
+     <p>
+      You can pipe a string that contains a path, but not a literal path, to this cmdlet.
+     </p>
+     <h2 id="outputs">
+      Outputs
+     </h2>
+     <p>
+      <strong>
+       None
+      </strong>
+     </p>
+     <p>
+      This cmdlet does not return any output.
+     </p>
+     <h2 id="notes">
+      Notes
+     </h2>
+     <ul>
+      <li>
+       You can also refer to
+       <strong>
+        Remove-ItemProperty
+       </strong>
+       by its built-in alias,
+       <strong>
+        rp
+       </strong>
+       . For more information, see about_Aliases.
+      </li>
+      <li>
+       In the Windows PowerShell Registry provider, registry values are considered to be properties of a registry key or subkey. You can use the
+       <strong>
+        ItemProperty
+       </strong>
+       cmdlets to manage these values.
+      </li>
+      <li>
+       <strong>
+        Remove-ItemProperty
+       </strong>
+       is designed to work with the data exposed by any provider. To list the providers available in your session, type
+       <code>
+        Get-PSProvider
+       </code>
+       . For more information, see about_Providers.
+      </li>
+     </ul>
+     <h2 id="related-links">
+      Related Links
+     </h2>
+     <ul>
+      <li>
+       <a data-linktype="relative-path" href="get-item.html">
+        Get-Item
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="clear-itemproperty.html">
+        Clear-ItemProperty
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="copy-itemproperty.html">
+        Copy-ItemProperty
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="get-itemproperty.html">
+        Get-ItemProperty
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="move-itemproperty.html">
+        Move-ItemProperty
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="new-itemproperty.html">
+        New-ItemProperty
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="remove-item.html">
+        Remove-Item
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="rename-itemproperty.html">
+        Rename-ItemProperty
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="set-itemproperty.html">
+        Set-ItemProperty
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="set-location.html">
+        Set-Location
+       </a>
+      </li>
+     </ul>
+     <!-- </content> -->
+    </main>
+    <div class="note alert feedback-system-change-alert">
+     <p>
+      Note
+     </p>
+     <p>
+      The feedback system for this content will be changing soon. Old comments will not be carried over. If content within a comment thread is important to you, please save a copy. For more information on the upcoming change,
+      <a href="https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs">
+       we invite you to read our blog post
+      </a>
+      .
+     </p>
+    </div>
+    <div data-bi-name="comments" id="comments-container" role="form">
+    </div>
+   </div>
+  </div>
+  <div class="openfeedback-container" id="openFeedbackContainer">
+  </div>
+  <div class="action-panel">
+  </div>
+ </body>
+</html>

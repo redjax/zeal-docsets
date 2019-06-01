@@ -1,0 +1,1249 @@
+<!DOCTYPE html>
+<html class="no-js hasSidebar hasPageActions hasBreadcrumb conceptual" data-authenticated="false" data-render="docs" dir="ltr" lang="en-us">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Select-Object (Microsoft.PowerShell.Utility)" property="og:title"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" property="og:image"/>
+  <meta content="summary" name="twitter:card"/>
+  <meta content="@docsmsft" name="twitter:site"/>
+  <meta content="Select-Object (Microsoft.PowerShell.Utility)" name="twitter:title"/>
+  <meta content="The Select-Object cmdlet selects specified properties of an object or set of objects. It can also select unique objects, a specified number of objects, or objects in a specified position in an array.â¦" name="twitter:description"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" name="twitter:image"/>
+  <meta content="Microsoft Logo" name="twitter:image:alt"/>
+  <meta content="The Select-Object cmdlet selects specified properties of an object or set of objects. It can also select unique objects, a specified number of objects, or objects in a specified position in an array.â¦" name="description"/>
+  <meta content="Docs" name="search.ms_sitename"/>
+  <meta content="PowerShell_PowerShell-docs_reference" name="search.ms_docsetname"/>
+  <meta content="0" name="version"/>
+  <meta content="en-us" name="locale"/>
+  <meta content="Docs" name="site_name"/>
+  <meta content="PowerShell" name="search.ms_product"/>
+  <meta content="PowerShell.PowerShell_PowerShell-docs_reference" name="depot_name"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/45404d4ca212afa615798d3d5cbfea5dc5cc1efb/reference/6/Microsoft.PowerShell.Utility/Select-Object.md" name="ref_skeleton_gitcommit"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/live/reference/6/Microsoft.PowerShell.Utility/Select-Object.md" name="original_ref_skeleton_git_url"/>
+  <meta content="2018-03-30 03:35 PM" name="updated_at"/>
+  <meta content="de5b7722-8a95-74e1-0cc3-83ccaaa2db71" name="document_id"/>
+  <meta content="b02a39dc-b661-7dac-4482-276ca3724504" name="document_version_independent_id"/>
+  <meta content="powershell" name="page_type"/>
+  <meta content="command" name="page_kind"/>
+  <meta content="06/09/2017" name="ms.date"/>
+  <meta content="2.0.0" name="schema"/>
+  <meta content="powershell,cmdlet" name="keywords"/>
+  <meta content="http://go.microsoft.com/fwlink/?LinkId=821852" name="online_version"/>
+  <meta content="Microsoft.PowerShell.Commands.Utility.dll-Help.xml" name="external_help_file"/>
+  <meta content="powershell" name="ms.devlang"/>
+  <meta content="INDEX, FOLLOW" name="ROBOTS"/>
+  <meta content="sdwheeler" name="author"/>
+  <meta content="sewhee" name="ms.author"/>
+  <meta content="carmonm" name="manager"/>
+  <meta content="/powershell/bread-pscore/toc.yml?view=powershell-6" name="breadcrumb_path"/>
+  <meta content="powershell" name="apiPlatform"/>
+  <meta content="reference" name="ms.topic"/>
+  <meta content="windows, macos, linux" name="ms.tgt_pltfr"/>
+  <meta content="powershell-scripting" name="ms.technology"/>
+  <meta content="powershell" name="ms.prod"/>
+  <meta content="MSDocsHeader-Powershell" name="uhfHeaderId"/>
+  <meta content="../psdocs/toc.json?view=powershell-6" name="toc_rel"/>
+  <link href="https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/select-object" rel="canonical"/>
+  <title>
+   Select-Object
+  </title>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/60aac04b.site.css" rel="stylesheet"/>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/fdb8a38a.conceptual.css" rel="stylesheet"/>
+ </head>
+ <body dir="ltr" lang="en-us">
+  <div class="header-holder">
+   <div data-bi-name="header" id="headerAreaHolder">
+    <div id="uhf-placeholder">
+    </div>
+   </div>
+   <div class="disclaimer-holder" id="disclaimer-holder">
+   </div>
+  </div>
+  <div class="container mainContainer" data-bi-name="body">
+   <div class="content-header" data-bi-name="content-header">
+    <div class="content-header-controls">
+     <button class="contents-button button-border" data-bi-name="contents-expand" type="button">
+      <span class="docon docon-menu">
+      </span>
+      Contents
+     </button>
+    </div>
+    <div class="content-header-controls">
+     <button class="ap-collapse-behavior ap-expanded button-border" data-bi-name="ap-collapse" type="button">
+      <span class="docon docon-exit-mode">
+      </span>
+      Exit focus mode
+     </button>
+    </div>
+   </div>
+   <div class="primary-holder">
+    <main class="content" data-bi-name="content" dir="ltr" id="main" lang="en-us" role="main">
+     <!-- <content> -->
+     <h1>
+      Select-Object
+     </h1>
+     <div class="metadata">
+      <dl class="attributeList">
+       <dt>
+        Module:
+       </dt>
+       <dd>
+        <a data-linktype="relative-path" href="./Microsoft.PowerShell.Utility.html">
+         Microsoft.PowerShell.Utility
+        </a>
+       </dd>
+      </dl>
+     </div>
+     <div class="summaryHolder">
+      <div class="summary">
+       Selects objects or object properties.
+      </div>
+     </div>
+     <h2 class="hiddenAnchor" id="syntax">
+      Syntax
+     </h2>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Select-Object
+      [[-Property] &lt;Object[]&gt;]
+      [-InputObject &lt;PSObject&gt;]
+      [-ExcludeProperty &lt;String[]&gt;]
+      [-ExpandProperty &lt;String&gt;]
+      [-Unique]
+      [-Last &lt;Int32&gt;]
+      [-First &lt;Int32&gt;]
+      [-Skip &lt;Int32&gt;]
+      [-Wait]
+      [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Select-Object
+      [[-Property] &lt;Object[]&gt;]
+      [-InputObject &lt;PSObject&gt;]
+      [-ExcludeProperty &lt;String[]&gt;]
+      [-ExpandProperty &lt;String&gt;]
+      [-Unique]
+      [-SkipLast &lt;Int32&gt;]
+      [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Select-Object
+      [-InputObject &lt;PSObject&gt;]
+      [-Unique]
+      [-Wait]
+      [-Index &lt;Int32[]&gt;]
+      [&lt;CommonParameters&gt;]</code></pre>
+     <h2 id="description">
+      Description
+     </h2>
+     <p>
+      The
+      <strong>
+       Select-Object
+      </strong>
+      cmdlet selects specified properties of an object or set of objects.
+It can also select unique objects, a specified number of objects, or objects in a specified position in an array.
+     </p>
+     <p>
+      To select objects from a collection, use the
+      <em>
+       First
+      </em>
+      ,
+      <em>
+       Last
+      </em>
+      ,
+      <em>
+       Unique
+      </em>
+      ,
+      <em>
+       Skip
+      </em>
+      , and
+      <em>
+       Index
+      </em>
+      parameters.
+To select object properties, use the
+      <em>
+       Property
+      </em>
+      parameter.
+When you select properties, Select-Object returns new objects that have only the specified properties.
+     </p>
+     <p>
+      Beginning in Windows PowerShell 3.0,
+      <strong>
+       Select-Object
+      </strong>
+      includes an optimization feature that prevents commands from creating and processing objects that are not used.
+When you include a
+      <strong>
+       Select-Object
+      </strong>
+      command with the
+      <em>
+       First
+      </em>
+      or
+      <em>
+       Index
+      </em>
+      parameter in a command pipeline, Windows PowerShell stops the command that generates the objects as soon as the selected number of objects is generated, even when the command that generates the objects appears before the
+      <strong>
+       Select-Object
+      </strong>
+      command in the pipeline.
+To turn off this optimizing behavior, use the
+      <em>
+       Wait
+      </em>
+      parameter.
+     </p>
+     <h2 id="examples">
+      Examples
+     </h2>
+     <p>
+      <strong>
+       Example 1: Select objects by property
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-Process | Select-Object -Property ProcessName, Id, WS</code></pre>
+     <p>
+      This command creates objects that have the Name, ID, and working set (WS) properties of process objects.
+     </p>
+     <p>
+      <strong>
+       Example 2: Select objects by property and format the results
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-Process Explorer | Select-Object -Property ProcessName -ExpandProperty Modules | Format-List
+
+
+
+ProcessName       : 00THotkey
+
+Size              : 256
+
+Company           : TOSHIBA Corporation
+
+FileVersion       : 1, 0, 0, 27
+
+ProductVersion    : 6, 2, 0, 0
+
+Description       : THotkey
+
+Product           : TOSHIBA THotkey
+
+ModuleName        : 00THotkey.exe
+
+FileName          : C:\WINDOWS\system32\00THotkey.exe
+
+BaseAddress       : 4194304</code></pre>
+     <p>
+      This command gets information about the modules used by the processes on the computer.
+It uses Get-Process cmdlet to get the process on the computer.
+It uses the
+      <strong>
+       Select-Object
+      </strong>
+      cmdlet to create new objects with only the selected properties.
+The command uses the
+      <em>
+       Property
+      </em>
+      parameter of the
+      <strong>
+       Select-Object
+      </strong>
+      cmdlet to select the process names.
+Because the
+      <strong>
+       Modules
+      </strong>
+      property contains a
+      <strong>
+       ModuleProcess
+      </strong>
+      object that has many properties, the command uses the
+      <em>
+       ExpandProperty
+      </em>
+      parameter to get the properties of the objects in the
+      <strong>
+       Modules
+      </strong>
+      property of each process.
+The command uses the Format-List cmdlet to display the name and modules of each process in a list.
+     </p>
+     <p>
+      <strong>
+       Example 3: Select processes using the most memory
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-Process | Sort-Object -Property WS | Select-Object -Last 5
+
+
+
+Handles  NPM(K)    PM(K)      WS(K) VS(M)   CPU(s)     Id ProcessName
+
+-------  ------    -----      ----- -----   ------     -- -----------
+
+2866     320       33432      45764   203   222.41   1292 svchost
+
+577      17        23676      50516   265    50.58   4388 WINWORD
+
+826      11        75448      76712   188    19.77   3780 Ps
+
+1367     14        73152      88736   216    61.69    676 Ps
+
+1612     44        66080      92780   380   900.59   6132 INFOPATH</code></pre>
+     <p>
+      This command gets the five processes that are using the most memory.
+The Get-Process cmdlet gets the processes on the computer.
+The Sort-Object cmdlet sorts the processes according to memory (working set) usage, and the Select-Object cmdlet selects only the last five members of the resulting array of objects.
+     </p>
+     <p>
+      The
+      <em>
+       Wait
+      </em>
+      parameter is not required in commands that include the
+      <strong>
+       Sort-Object
+      </strong>
+      cmdlet because
+      <strong>
+       Sort-Object
+      </strong>
+      processes all objects and then returns a collection.
+The
+      <strong>
+       Select-Object
+      </strong>
+      optimization is available only for commands that return objects individually as they are processed.
+     </p>
+     <p>
+      <strong>
+       Example 4: Select the name and start day of processes
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-Process | Select-Object -Property ProcessName,@{Name="Start Day"; Expression = {$_.StartTime.DayOfWeek}}
+
+
+
+ProcessName  StartDay
+
+----         --------
+
+alg          Wednesday
+
+ati2evxx     Wednesday
+
+ati2evxx     Thursday
+
+...</code></pre>
+     <p>
+      This command gets the name and start day of the processes running on a computer.
+     </p>
+     <p>
+      The command uses the Get-Process cmdlet to get the processes on the computer.
+It passes the processes to the
+      <strong>
+       Select-Object
+      </strong>
+      cmdlet, which creates objects that have only the
+      <em>
+       ProcessName
+      </em>
+      parameter and a calculated property named Start Day.
+The Start Day property is added by using a hash table with Name and Expression keys.
+The value of the Expression key is a script blocks that gets the
+      <strong>
+       StartTime
+      </strong>
+      property of each process and the
+      <strong>
+       DayofWeek
+      </strong>
+      property of the StartTime.
+     </p>
+     <p>
+      <strong>
+       Example 5: Select unique characters from an array
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; "a","b","c","a","a","a" | Select-Object -Unique
+
+
+
+a
+
+b
+
+c</code></pre>
+     <p>
+      This command uses the
+      <em>
+       Unique
+      </em>
+      parameter of
+      <strong>
+       Select-Object
+      </strong>
+      to get unique characters from an array of characters.
+     </p>
+     <p>
+      <strong>
+       Example 6: Select newest and oldest events in the event log
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; $A = Get-Eventlog -Log "Windows PowerShell"
+
+PS C:\&gt; $A | Select-Object -Index 0, ($A.count - 1)</code></pre>
+     <p>
+      These commands gets the first (newest) and last (oldest) events in the Windows PowerShell event log.
+     </p>
+     <p>
+      The command uses the Get-EventLog cmdlet to get all events in the Windows PowerShell log.
+It saves them in the $A variable.
+     </p>
+     <p>
+      The second command uses a pipeline operator (|) to send the events in $A to the
+      <strong>
+       Select-Object
+      </strong>
+      cmdlet.
+The
+      <strong>
+       Select-Object
+      </strong>
+      command uses the
+      <em>
+       Index
+      </em>
+      parameter to select events from the array of events in the $A variable.
+The index of the first event is 0.
+The index of the last event is the number of items in $A minus 1.
+     </p>
+     <p>
+      <strong>
+       Example 7: Select all but the first object
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; New-PSSession -ComputerName (Get-Content Servers.txt | Select-Object -Skip 1)</code></pre>
+     <p>
+      This command creates a new PSSession on each of the computers listed in the Servers.txt files, except for the first one.
+     </p>
+     <p>
+      This command uses the
+      <strong>
+       Select-Object
+      </strong>
+      cmdlet to select all but the first computer in a list of computer names.
+The resulting list of computers is set as the value of the
+      <em>
+       ComputerName
+      </em>
+      parameter of the New-PSSession cmdlet.
+     </p>
+     <p>
+      <strong>
+       Example 8: Rename files and select several to review
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-ChildItem *.txt -ReadOnly | Rename-Item -NewName {$_.BaseName + "-ro.txt"} -PassThru | Select-Object -First 5 -Wait</code></pre>
+     <p>
+      This command adds a -ro suffix to the base names of text files that have the read-only attribute and then displays the first five files so the user can see a sample of the effect.
+     </p>
+     <p>
+      The command uses the
+      <em>
+       ReadOnly
+      </em>
+      dynamic parameter of the Get-ChildItem for FileSystem cmdlet to get read-only files.
+It uses a pipeline operator (|) to send the files to the Rename-Item cmdlet, which renames the file.
+It uses the
+      <em>
+       Passthru
+      </em>
+      parameter of
+      <strong>
+       Rename-Item
+      </strong>
+      to send the renamed files to the
+      <strong>
+       Select-Object
+      </strong>
+      cmdlet, which selects the first five for display.
+     </p>
+     <p>
+      The
+      <em>
+       Wait
+      </em>
+      parameter of
+      <strong>
+       Select-Object
+      </strong>
+      prevents Windows PowerShell from stopping the
+      <strong>
+       Get-ChildItem
+      </strong>
+      cmdlet after it gets the first five read-only text files.
+Without this parameter, only the first five read-only files would be renamed.
+     </p>
+     <h2 id="optional-parameters">
+      Optional Parameters
+     </h2>
+     <div class="parameterName stack">
+      -ExcludeProperty
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the properties that this cmdlet excludes from the operation.
+Wildcards are permitted.
+This parameter is effective only when the command also includes the
+       <em>
+        Property
+       </em>
+       parameter.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -ExpandProperty
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a property to select, and indicates that an attempt should be made to expand that property.
+Wildcards are permitted in the property name.
+      </p>
+      <p>
+       For example, if the specified property is an array, each value of the array is included in the output.
+If the property contains an object, the properties of that object are displayed in the output.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -First
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Gets only the specified number of objects.
+Enter the number of objects to get.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Int32
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Index
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies an array of objects based on their index values.
+Enter the indexes in a comma-separated list.
+      </p>
+      <p>
+       Indexes in an array begin with 0, where 0 represents the first value and (n-1) represents the last value.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Int32[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -InputObject
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies objects to send to the cmdlet through the pipeline.
+This parameter enables you to pipe objects to
+       <strong>
+        Select-Object
+       </strong>
+       .
+      </p>
+      <p>
+       When you use the
+       <em>
+        InputObject
+       </em>
+       parameter with
+       <strong>
+        Select-Object
+       </strong>
+       , instead of piping command results to
+       <strong>
+        Select-Object
+       </strong>
+       , the
+       <em>
+        InputObject
+       </em>
+       value-even if the value is a collection that is the result of a command, such as
+       <code>
+        -InputObject (Get-Process)
+       </code>
+       -is treated as a single object.
+Because
+       <em>
+        InputObject
+       </em>
+       cannot return individual properties from an array or collection of objects, it is recommended that if you use
+       <strong>
+        Select-Object
+       </strong>
+       to filter a collection of objects for those objects that have specific values in defined properties, you use
+       <strong>
+        Select-Object
+       </strong>
+       in the pipeline, as shown in the examples in this topic.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          PSObject
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByValue)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Last
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the number of objects to select from the end of an array of input objects.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Int32
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Property
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the properties to select.
+Wildcards are permitted.
+      </p>
+      <p>
+       The value of the
+       <em>
+        Property
+       </em>
+       parameter can be a new calculated property.
+To create a calculated, property, use a hash table.
+Valid keys are:
+      </p>
+      <ul>
+       <li>
+        Name (or Label) &lt;string&gt;
+       </li>
+       <li>
+        Expression &lt;string&gt; or &lt;script block&gt;
+       </li>
+      </ul>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Object[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         0
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Skip
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Ignores the specified number of objects and then gets the remaining objects.
+Enter the number of objects to skip.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Int32
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -SkipLast
+     </div>
+     <div class="parameterInfo">
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Int32
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Unique
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies that if a subset of the input objects has identical properties and values, only a single member of the subset will be selected.
+      </p>
+      <p>
+       This parameter is case-sensitive.
+As a result, strings that differ only in character casing are considered to be unique.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Wait
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that the cmdlet turns off optimization.Windows PowerShell runs commands in the order that they appear in the command pipeline and lets them generate all objects.
+By default, if you include a
+       <strong>
+        Select-Object
+       </strong>
+       command with the
+       <em>
+        First
+       </em>
+       or
+       <em>
+        Index
+       </em>
+       parameters in a command pipeline, Windows PowerShell stops the command that generates the objects as soon as the selected number of objects is generated.
+      </p>
+      <p>
+       This parameter was introduced in Windows PowerShell 3.0.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="inputs">
+      Inputs
+     </h2>
+     <p>
+      <strong>
+       System.Management.Automation.PSObject
+      </strong>
+     </p>
+     <p>
+      You can pipe any object to
+      <strong>
+       Select-Object
+      </strong>
+      .
+     </p>
+     <h2 id="outputs">
+      Outputs
+     </h2>
+     <p>
+      <strong>
+       System.Management.Automation.PSObject
+      </strong>
+     </p>
+     <h2 id="notes">
+      Notes
+     </h2>
+     <ul>
+      <li>
+       You can also refer to the
+       <code>
+        Select-Object
+       </code>
+       cmdlet by its built-in alias,
+       <code>
+        select
+       </code>
+       . For more information, see about_Aliases.
+      </li>
+      <li>
+       The optimization feature of
+       <code>
+        Select-Object
+       </code>
+       is available only for commands that write objects to the pipeline as they are processed. It has no effect on commands that buffer processed objects and write them as a collection. Writing objects immediately is a cmdlet design best practice. For more information, see Write Single Records to the Pipeline in
+       <a data-linktype="external" href="https://msdn.microsoft.com/library/dd878270">
+        Strongly Encouraged Development Guidelines
+       </a>
+       in the MSDN library.
+      </li>
+     </ul>
+     <h2 id="related-links">
+      Related Links
+     </h2>
+     <ul>
+      <li>
+       <a data-linktype="relative-path" href="group-object.html">
+        Group-Object
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="sort-object.html">
+        Sort-Object
+       </a>
+      </li>
+     </ul>
+     <!-- </content> -->
+    </main>
+    <div class="note alert feedback-system-change-alert">
+     <p>
+      Note
+     </p>
+     <p>
+      The feedback system for this content will be changing soon. Old comments will not be carried over. If content within a comment thread is important to you, please save a copy. For more information on the upcoming change,
+      <a href="https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs">
+       we invite you to read our blog post
+      </a>
+      .
+     </p>
+    </div>
+    <div data-bi-name="comments" id="comments-container" role="form">
+    </div>
+   </div>
+  </div>
+  <div class="openfeedback-container" id="openFeedbackContainer">
+  </div>
+  <div class="action-panel">
+  </div>
+ </body>
+</html>

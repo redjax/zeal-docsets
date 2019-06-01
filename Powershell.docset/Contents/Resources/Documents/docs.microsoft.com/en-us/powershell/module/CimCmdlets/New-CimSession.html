@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html class="no-js hasSidebar hasPageActions hasBreadcrumb conceptual" data-authenticated="false" data-render="docs" dir="ltr" lang="en-us">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="New-CimSession (CimCmdlets)" property="og:title"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" property="og:image"/>
+  <meta content="summary" name="twitter:card"/>
+  <meta content="@docsmsft" name="twitter:site"/>
+  <meta content="New-CimSession (CimCmdlets)" name="twitter:title"/>
+  <meta content="The New-CimSession cmdlet creates a CIM session. A CIM session is a client-side object representing a connection to a local computer or a remote computer. The CIM session contains information about tâ¦" name="twitter:description"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" name="twitter:image"/>
+  <meta content="Microsoft Logo" name="twitter:image:alt"/>
+  <meta content="The New-CimSession cmdlet creates a CIM session. A CIM session is a client-side object representing a connection to a local computer or a remote computer. The CIM session contains information about tâ¦" name="description"/>
+  <meta content="Docs" name="search.ms_sitename"/>
+  <meta content="PowerShell_PowerShell-docs_reference" name="search.ms_docsetname"/>
+  <meta content="0" name="version"/>
+  <meta content="en-us" name="locale"/>
+  <meta content="Docs" name="site_name"/>
+  <meta content="PowerShell" name="search.ms_product"/>
+  <meta content="PowerShell.PowerShell_PowerShell-docs_reference" name="depot_name"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/57336f45d3bea4e66469ebf37e9162b32464a8d3/reference/6/CimCmdlets/New-CimSession.md" name="ref_skeleton_gitcommit"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/live/reference/6/CimCmdlets/New-CimSession.md" name="original_ref_skeleton_git_url"/>
+  <meta content="2018-05-10 07:01 PM" name="updated_at"/>
+  <meta content="96338e7a-3f4c-56cc-3ba9-3f421c70ef87" name="document_id"/>
+  <meta content="4d303559-7069-6d5f-eb9a-c227ffe73666" name="document_version_independent_id"/>
+  <meta content="powershell" name="page_type"/>
+  <meta content="command" name="page_kind"/>
+  <meta content="06/09/2017" name="ms.date"/>
+  <meta content="2.0.0" name="schema"/>
+  <meta content="powershell,cmdlet" name="keywords"/>
+  <meta content="Microsoft.Management.Infrastructure.CimCmdlets.dll-Help.xml" name="external_help_file"/>
+  <meta content="powershell" name="ms.devlang"/>
+  <meta content="INDEX, FOLLOW" name="ROBOTS"/>
+  <meta content="sdwheeler" name="author"/>
+  <meta content="sewhee" name="ms.author"/>
+  <meta content="carmonm" name="manager"/>
+  <meta content="/powershell/bread-pscore/toc.yml?view=powershell-6" name="breadcrumb_path"/>
+  <meta content="powershell" name="apiPlatform"/>
+  <meta content="reference" name="ms.topic"/>
+  <meta content="windows, macos, linux" name="ms.tgt_pltfr"/>
+  <meta content="powershell-scripting" name="ms.technology"/>
+  <meta content="powershell" name="ms.prod"/>
+  <meta content="MSDocsHeader-Powershell" name="uhfHeaderId"/>
+  <meta content="../psdocs/toc.json?view=powershell-6" name="toc_rel"/>
+  <link href="https://docs.microsoft.com/en-us/powershell/module/cimcmdlets/new-cimsession" rel="canonical"/>
+  <title>
+   New-CimSession (CimCmdlets) | Microsoft Docs
+  </title>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/60aac04b.site.css" rel="stylesheet"/>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/fdb8a38a.conceptual.css" rel="stylesheet"/>
+ </head>
+ <body dir="ltr" lang="en-us">
+  <div class="header-holder">
+   <div data-bi-name="header" id="headerAreaHolder">
+    <div id="uhf-placeholder">
+    </div>
+   </div>
+   <div class="disclaimer-holder" id="disclaimer-holder">
+   </div>
+  </div>
+  <div class="container mainContainer" data-bi-name="body">
+   <div class="content-header" data-bi-name="content-header">
+    <div class="content-header-controls">
+     <button class="contents-button button-border" data-bi-name="contents-expand" type="button">
+      <span class="docon docon-menu">
+      </span>
+      Contents
+     </button>
+    </div>
+    <div class="content-header-controls">
+     <button class="ap-collapse-behavior ap-expanded button-border" data-bi-name="ap-collapse" type="button">
+      <span class="docon docon-exit-mode">
+      </span>
+      Exit focus mode
+     </button>
+    </div>
+   </div>
+   <div class="primary-holder">
+    <main class="content" data-bi-name="content" dir="ltr" id="main" lang="en-us" role="main">
+     <!-- <content> -->
+     <h1>
+      New-Cim
+      <wbr/>
+      Session
+     </h1>
+     <div class="metadata">
+      <dl class="attributeList">
+       <dt>
+        Module:
+       </dt>
+       <dd>
+        <a data-linktype="relative-path" href="./CimCmdlets.html">
+         CimCmdlets
+        </a>
+       </dd>
+      </dl>
+     </div>
+     <div class="summaryHolder">
+      <div class="summary">
+       Creates a CIM session.
+      </div>
+     </div>
+     <h2 class="hiddenAnchor" id="syntax">
+      Syntax
+     </h2>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">New-CimSession
+   [-Authentication &lt;PasswordAuthenticationMechanism&gt;]
+   [[-Credential] &lt;PSCredential&gt;]
+   [[-ComputerName] &lt;String[]&gt;]
+   [-Name &lt;String&gt;]
+   [-OperationTimeoutSec &lt;UInt32&gt;]
+   [-SkipTestConnection]
+   [-Port &lt;UInt32&gt;]
+   [-SessionOption &lt;CimSessionOptions&gt;]
+   [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">New-CimSession
+   [-CertificateThumbprint &lt;String&gt;]
+   [[-ComputerName] &lt;String[]&gt;]
+   [-Name &lt;String&gt;]
+   [-OperationTimeoutSec &lt;UInt32&gt;]
+   [-SkipTestConnection]
+   [-Port &lt;UInt32&gt;]
+   [-SessionOption &lt;CimSessionOptions&gt;]
+   [&lt;CommonParameters&gt;]</code></pre>
+     <h2 id="description">
+      Description
+     </h2>
+     <p>
+      The
+      <code>
+       New-CimSession
+      </code>
+      cmdlet creates a CIM session.
+A CIM session is a client-side object representing a connection to a local computer or a remote computer.
+The CIM session contains information about the connection, such as ComputerName, the protocol used for the connection, session ID and instance ID.
+     </p>
+     <p>
+      This cmdlet returns a CIM session object that can be used by all other CIM cmdlets.
+     </p>
+     <h2 id="examples">
+      Examples
+     </h2>
+     <p>
+      <strong>
+       Example 1: Create a CIM session with default options
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">New-CimSession</code></pre>
+     <p>
+      This command creates a local CIM session with default options.
+If
+      <strong>
+       ComputerName
+      </strong>
+      is not specified,
+      <code>
+       New-CimSession
+      </code>
+      creates a DCOM session to the local computer.
+     </p>
+     <p>
+      <strong>
+       Example 2: Create a CIM session to a specific computer
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">New-CimSession -ComputerName Server01</code></pre>
+     <p>
+      This command creates a CIM session to the computer specified by
+      <strong>
+       ComputerName
+      </strong>
+      .
+By default,
+      <code>
+       New-CimSession
+      </code>
+      creates a WsMan session when
+      <strong>
+       ComputerName
+      </strong>
+      is specified.
+     </p>
+     <p>
+      <strong>
+       Example 3: Create a CIM session to multiple computers
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">New-CimSession -ComputerName Server01,Server02,Server03</code></pre>
+     <p>
+      This command creates a CIM session to each of the computers specified by
+      <strong>
+       ComputerName
+      </strong>
+      , in the comma separated list.
+     </p>
+     <p>
+      <strong>
+       Example 4: Create a CIM session with a friendly name
+      </strong>
+     </p>
+     <p>
+      You can use the friendly name of a CIM session to easily refer to the session in other CIM cmdlets, for example,
+      <a data-linktype="relative-path" href="get-cimsession.html">
+       Get-CimSession
+      </a>
+      .
+     </p>
+     <pre><code class="lang-powershell">New-CimSession -ComputerName Server01,Server02 -Name FileServers
+
+
+
+Get-CimSession -Name File*</code></pre>
+     <p>
+      This command creates a remote CIM session to each of the computers specified by
+      <strong>
+       ComputerName
+      </strong>
+      , in the comma separated list, and assigns a friendly name to the new sessions, by specifying
+      <strong>
+       Name
+      </strong>
+      .
+     </p>
+     <p>
+      <strong>
+       Example 5: Create a CIM session to a computer using a PSCredential object
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">New-CimSession -ComputerName Server01 -Credential $cred -Authentication Negotiate</code></pre>
+     <p>
+      This command creates a CIM session to the computer specified by
+      <strong>
+       ComputerName
+      </strong>
+      , using the PSCredential object specified by
+      <strong>
+       Credential
+      </strong>
+      , and the authentication type specified by
+      <strong>
+       Authentication
+      </strong>
+      .
+     </p>
+     <p>
+      You can create a PSCredential object by using the
+      <a data-linktype="relative-path" href="../microsoft.powershell.security/get-credential.html">
+       <code>
+        Get-Credential
+       </code>
+      </a>
+      cmdlet.
+     </p>
+     <p>
+      <strong>
+       Example 6: Create a CIM session to a computer using a specific port
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">New-CimSession -ComputerName Server01 -Port 1234</code></pre>
+     <p>
+      This command creates a CIM session to the computer specified by ComputerName using the TCP port specified by
+      <strong>
+       Port
+      </strong>
+      .
+     </p>
+     <p>
+      <strong>
+       Example 7: Create a CIM session using DCOM
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">$SessionOption = New-CimSessionOption -Protocol DCOM
+
+
+
+New-CimSession -ComputerName Server1 -SessionOption $SessionOption</code></pre>
+     <p>
+      This command creates a CIM session by using the Distributed COM (DCOM) protocol instead of WSMan.
+     </p>
+     <h2 id="optional-parameters">
+      Optional Parameters
+     </h2>
+     <div class="parameterName stack">
+      -Authentication
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the authentication type used for the user's credentials.
+The acceptable values for this parameter are:
+      </p>
+      <ul>
+       <li>
+        Default
+       </li>
+       <li>
+        Digest
+       </li>
+       <li>
+        Negotiate
+       </li>
+       <li>
+        Basic
+       </li>
+       <li>
+        Kerberos
+       </li>
+       <li>
+        NtlmDomain
+       </li>
+       <li>
+        CredSsp
+       </li>
+      </ul>
+      <p>
+       You cannot use the NtlmDomain authentication type for connection to the local computer.
+CredSSP authentication is available only in Windows Vista, Windows Server 2008, and later versions of Windows.
+      </p>
+      <p>
+       Caution: Credential Security Service Provider (CredSSP) authentication, in which the user's credentials are passed to a remote computer to be authenticated, is designed for commands that require authentication on more than one resource, such as accessing a remote network share.
+This mechanism increases the security risk of the remote operation.
+If the remote computer is compromised, the credentials that are passed to it can be used to control the network session.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          PasswordAuthenticationMechanism
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -CertificateThumbprint
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the digital public key certificate (X.509) of a user account that has permission to perform this action.
+Enter the certificate thumbprint of the certificate.
+      </p>
+      <p>
+       Certificates are used in client certificate-based authentication.
+They can be mapped only to local user accounts; they do not work with domain accounts.
+      </p>
+      <p>
+       To get a certificate thumbprint, use the
+       <a data-linktype="relative-path" href="../microsoft.powershell.management/get-item.html">
+        <code>
+         Get-Item
+        </code>
+       </a>
+       or
+       <a data-linktype="relative-path" href="../microsoft.powershell.management/get-childitem.html">
+        <code>
+         Get-ChildItem
+        </code>
+       </a>
+       cmdlets in the PowerShell
+       <a data-linktype="relative-path" href="../microsoft.powershell.security/providers/certificate-provider.html">
+        Certificate Provider
+       </a>
+       .
+For more information about using the PowerShell Certificate provider, type
+       <code>
+        Get-Help Certificate
+       </code>
+       , or see
+       <a data-linktype="relative-path" href="../microsoft.powershell.security/providers/certificate-provider.html">
+        Certificate Provider
+       </a>
+       on docs.microsoft.com.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -ComputerName
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the name of the computer to which to create the CIM session.
+Specify either a single computer name, or multiple computer names separated by a comma.
+      </p>
+      <p>
+       If
+       <strong>
+        ComputerName
+       </strong>
+       is not specified, a CIM session to the local computer is created.
+      </p>
+      <p>
+       You can specify the value for computer name in one of the following formats:
+      </p>
+      <ul>
+       <li>
+        One or more NetBIOS names
+       </li>
+       <li>
+        One or more IP addresses
+       </li>
+       <li>
+        One or more fully qualified domain names.
+       </li>
+      </ul>
+      <p>
+       If the computer is in a different domain than the user, you must specify the fully qualified domain name.
+      </p>
+      <p>
+       You can also pass a computer name (in quotes) to
+       <code>
+        New-CimSession
+       </code>
+       by using the pipeline.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         CN, ServerName
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         1
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Credential
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a user account that has permission to perform this action.
+If
+       <strong>
+        Credential
+       </strong>
+       is not specified, the current user account is used.
+      </p>
+      <p>
+       Specify the value for
+       <strong>
+        Credential
+       </strong>
+       by using one of the following formats:
+      </p>
+      <ul>
+       <li>
+        A user name: "User01"
+       </li>
+       <li>
+        A domain name and a user name: "Domain01\User01"
+       </li>
+       <li>
+        A user principal name: "User@Domain.com"
+       </li>
+       <li>
+        A PSCredential object, such as one returned by the
+        <a data-linktype="relative-path" href="../microsoft.powershell.security/get-credential.html">
+         <code>
+          Get-Credential
+         </code>
+        </a>
+        cmdlet.
+       </li>
+      </ul>
+      <p>
+       When you type a user name, you are prompted for a password.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          PSCredential
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         2
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Name
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a friendly name for the CIM session.
+      </p>
+      <p>
+       You can use the name to refer to the CIM session when using other cmdlets, such as the
+       <a data-linktype="relative-path" href="get-cimsession.html">
+        <code>
+         Get-CimSession
+        </code>
+       </a>
+       cmdlet.
+The name is not required to be unique to the computer or the current session.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -OperationTimeoutSec
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Duration for which the cmdlet waits for a response from the server.
+      </p>
+      <p>
+       By default, the value of this parameter is 0, which means that the cmdlet uses the default timeout value for the server.
+      </p>
+      <p>
+       If the
+       <strong>
+        OperationTimeoutSec
+       </strong>
+       parameter is set to a value less than the robust connection retry timeout of 3 minutes, network failures that last more than the value of the
+       <strong>
+        OperationTimeoutSec
+       </strong>
+       parameter are not recoverable, because the operation on the server times out before the client can reconnect.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          UInt32
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         OT
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Port
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the network port on the remote computer that is used for this connection.
+To connect to a remote computer, the remote computer must be listening on the port that the connection uses.
+The default ports are 5985 (the WinRM port for HTTP) and 5986 (the WinRM port for HTTPS).
+      </p>
+      <p>
+       Before using an alternate port, you must configure the WinRM listener on the remote computer to listen at that port.
+Use the following commands to configure the listener:
+      </p>
+      <p>
+       winrm delete winrm/config/listener?Address=*+Transport=HTTP
+      </p>
+      <p>
+       winrm create winrm/config/listener?Address=*+Transport=HTTP @{Port="&lt;port-number&gt;"}
+      </p>
+      <p>
+       Do not use the
+       <strong>
+        Port
+       </strong>
+       parameter unless you must.
+The port setting in the command applies to all computers or sessions on which the command runs.
+An alternate port setting might prevent the command from running on all computers.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          UInt32
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -SessionOption
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Sets advanced options for the new CIM session.
+Enter the name of a CimSessionOption object created by using the
+       <a data-linktype="relative-path" href="new-cimsessionoption.html">
+        <code>
+         New-CimSessionOption
+        </code>
+       </a>
+       cmdlet.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          CimSessionOptions
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -SkipTestConnection
+     </div>
+     <div class="parameterInfo">
+      <p>
+       By default, the
+       <code>
+        New-CimSession
+       </code>
+       cmdlet establishes a connection with a remote WS-Management endpoint for two reasons: to verify that the remote server is listening on the port number that is specified by using the
+       <strong>
+        Port
+       </strong>
+       parameter, and to verify the specified account credentials.
+The verification is accomplished by using a standard WS-Identity operation.
+You can add the
+       <strong>
+        SkipTestConnection
+       </strong>
+       switch parameter if the remote WS-Management endpoint cannot use WS-Identify, or if you want to reduce some data transmission time.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="inputs">
+      Inputs
+     </h2>
+     <p>
+      <strong>
+       None
+      </strong>
+     </p>
+     <p>
+      This cmdlet accepts no inputs.
+     </p>
+     <h2 id="outputs">
+      Outputs
+     </h2>
+     <p>
+      <strong>
+       Microsoft.Management.Infrastructure.CimSession
+      </strong>
+     </p>
+     <h2 id="related-links">
+      Related Links
+     </h2>
+     <ul>
+      <li>
+       <a data-linktype="relative-path" href="../microsoft.powershell.management/get-childitem.html">
+        Get-ChildItem
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="../microsoft.powershell.security/get-credential.html">
+        Get-Credential
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="../microsoft.powershell.management/get-item.html">
+        Get-Item
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="get-cimsession.html">
+        Get-CimSession
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="remove-cimsession.html">
+        Remove-CimSession
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="new-cimsessionoption.html">
+        New-CimSessionOption
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="../microsoft.powershell.core/about/about_cimsession.html">
+        about_CimSession
+       </a>
+      </li>
+     </ul>
+     <!-- </content> -->
+    </main>
+    <div class="note alert feedback-system-change-alert">
+     <p>
+      Note
+     </p>
+     <p>
+      The feedback system for this content will be changing soon. Old comments will not be carried over. If content within a comment thread is important to you, please save a copy. For more information on the upcoming change,
+      <a href="https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs">
+       we invite you to read our blog post
+      </a>
+      .
+     </p>
+    </div>
+    <div data-bi-name="comments" id="comments-container" role="form">
+    </div>
+   </div>
+  </div>
+  <div class="openfeedback-container" id="openFeedbackContainer">
+  </div>
+  <div class="action-panel">
+  </div>
+ </body>
+</html>

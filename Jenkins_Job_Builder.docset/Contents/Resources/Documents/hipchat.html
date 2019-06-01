@@ -1,0 +1,169 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+<title>Hipchat — Jenkins Job Builder 2.0.0.0b3.dev264 documentation</title>
+<link href="_static/classic.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '2.0.0.0b3.dev264',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="index.html" rel="top" title="Jenkins Job Builder 2.0.0.0b3.dev264 documentation"/>
+<link href="definition.html" rel="up" title="Job Definitions"/>
+<link href="metadata.html" rel="next" title="Metadata"/>
+<link href="builders.html" rel="prev" title="Builders"/>
+</head>
+<body role="document">
+<div aria-label="related navigation" class="related" role="navigation">
+<h3>Navigation</h3>
+<ul>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="metadata.html" title="Metadata">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="builders.html" title="Builders">previous</a> |</li>
+<li class="nav-item nav-item-0"><a href="index.html">Jenkins Job Builder 2.0.0.0b3.dev264 documentation</a> »</li>
+<li class="nav-item nav-item-1"><a accesskey="U" href="definition.html">Job Definitions</a> »</li>
+</ul>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="bodywrapper">
+<div class="body" role="main">
+<div class="section" id="hipchat"><a name="//apple_ref/cpp/Module/hipchat_notif"></a>
+<span id="id1"></span><h1>Hipchat<a class="headerlink" href="#hipchat" title="Permalink to this headline">¶</a></h1>
+<span class="target" id="module-hipchat_notif"></span><p>Enable HipChat notifications of build execution.</p>
+<p>Supports hipchat plugin versions &lt; 1.9. Will automatically redirect to the
+publishers module for newer versions, but still recommended that you convert
+to the newer module.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last">
+<li><p class="first"><strong>enabled</strong> <em>(bool)</em>: general cut off switch. If not explicitly set to
+<code class="docutils literal"><span class="pre">true</span></code>, no hipchat parameters are written to XML. For Jenkins HipChat
+plugin of version prior to 0.1.5, also enables all build results to be
+reported in HipChat room. For later plugin versions, explicit notify-*
+setting is required (see below).</p>
+</li>
+<li><p class="first"><strong>room</strong> <em>(str)</em>: name of HipChat room to post messages to (default ‘’)</p>
+<div class="deprecated">
+<p><span class="versionmodified">Deprecated since version 1.2.0: </span>Please use ‘rooms’.</p>
+</div>
+</li>
+<li><p class="first"><strong>rooms</strong> <em>(list)</em>: list of HipChat rooms to post messages to
+(default empty)</p>
+</li>
+<li><p class="first"><strong>start-notify</strong> <em>(bool)</em>: post messages about build start event</p>
+<div class="deprecated">
+<p><span class="versionmodified">Deprecated since version 1.2.0: </span>use notify-start parameter instead</p>
+</div>
+</li>
+<li><p class="first"><strong>notify-start</strong> <em>(bool)</em>: post messages about build start event
+(default false)</p>
+</li>
+<li><p class="first"><strong>notify-success</strong> <em>(bool)</em>: post messages about successful build event
+(Jenkins HipChat plugin &gt;= 0.1.5) (default false)</p>
+</li>
+<li><p class="first"><strong>notify-aborted</strong> <em>(bool)</em>: post messages about aborted build event
+(Jenkins HipChat plugin &gt;= 0.1.5) (default false)</p>
+</li>
+<li><p class="first"><strong>notify-not-built</strong> <em>(bool)</em>: post messages about build set to NOT_BUILT
+status (Jenkins HipChat plugin &gt;= 0.1.5). This status code is used in a
+multi-stage build (like maven2) where a problem in earlier stage prevented
+later stages from building. (default false)</p>
+</li>
+<li><p class="first"><strong>notify-unstable</strong> <em>(bool)</em>: post messages about unstable build event
+(Jenkins HipChat plugin &gt;= 0.1.5) (default false)</p>
+</li>
+<li><p class="first"><strong>notify-failure</strong> <em>(bool)</em>:  post messages about build failure event
+(Jenkins HipChat plugin &gt;= 0.1.5) (default false)</p>
+</li>
+<li><p class="first"><strong>notify-back-to-normal</strong> <em>(bool)</em>: post messages about build being back to
+normal after being unstable or failed (Jenkins HipChat plugin &gt;= 0.1.5)
+(default false)</p>
+</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">hipchat</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">enabled</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+  <span class="l l-Scalar l-Scalar-Plain">room</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">My Room</span>
+  <span class="l l-Scalar l-Scalar-Plain">notify-start</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+  <span class="l l-Scalar l-Scalar-Plain">notify-success</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+  <span class="l l-Scalar l-Scalar-Plain">notify-aborted</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+  <span class="l l-Scalar l-Scalar-Plain">notify-not-built</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+  <span class="l l-Scalar l-Scalar-Plain">notify-unstable</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+  <span class="l l-Scalar l-Scalar-Plain">notify-failure</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+  <span class="l l-Scalar l-Scalar-Plain">notify-back-to-normal</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<h4>Previous topic</h4>
+<p class="topless"><a href="builders.html" title="previous chapter">Builders</a></p>
+<h4>Next topic</h4>
+<p class="topless"><a href="metadata.html" title="next chapter">Metadata</a></p>
+<div aria-label="source link" role="note">
+<h3>This Page</h3>
+<ul class="this-page-menu">
+<li><a href="_sources/hipchat.txt" rel="nofollow">Show Source</a></li>
+</ul>
+</div>
+<div id="searchbox" role="search" style="display: none">
+<h3>Quick search</h3>
+<form action="search.html" class="search" method="get">
+<div><input name="q" type="text"/></div>
+<div><input type="submit" value="Go"/></div>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div aria-label="related navigation" class="related" role="navigation">
+<h3>Navigation</h3>
+<ul>
+<li class="right" style="margin-right: 10px">
+<a href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a href="metadata.html" title="Metadata">next</a> |</li>
+<li class="right">
+<a href="builders.html" title="Builders">previous</a> |</li>
+<li class="nav-item nav-item-0"><a href="index.html">Jenkins Job Builder 2.0.0.0b3.dev264 documentation</a> »</li>
+<li class="nav-item nav-item-1"><a href="definition.html">Job Definitions</a> »</li>
+</ul>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012, Jenkins Job Builder Maintainers.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.9.
+    </div>
+</body>
+</html>

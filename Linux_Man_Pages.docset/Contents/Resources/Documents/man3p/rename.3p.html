@@ -1,0 +1,786 @@
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML><HEAD><TITLE>Man page of RENAME</TITLE>
+</HEAD><BODY>
+<H1>RENAME</H1>
+Section: POSIX Programmer's Manual (3P)<BR>Updated: 2013<BR><A HREF="#index">Index</A>
+<A HREF="../index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>PROLOG</H2>
+
+This manual page is part of the POSIX Programmer's Manual.
+The Linux implementation of this interface may differ (consult
+the corresponding Linux manual page for details of Linux behavior),
+or the interface may not be implemented on Linux.
+<P>
+<A NAME="lbAC">&nbsp;</A>
+<H2>NAME</H2>
+
+rename, renameat
+--- rename file relative to directory file descriptor
+<A NAME="lbAD">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<P>
+
+<PRE>
+#include &lt;<A HREF="file:///usr/include/stdio.h">stdio.h</A>&gt;
+
+int rename(const char *<I>old</I>, const char *<I>new</I>);
+int renameat(int <I>oldfd</I>, const char *<I>old</I>, int <I>newfd</I>,
+    const char *<I>new</I>);
+</PRE>
+
+<A NAME="lbAE">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+For
+<I>rename</I>():
+The functionality described on this reference page is aligned with the
+ISO&nbsp;C standard. Any conflict between the requirements described here and the
+ISO&nbsp;C standard is unintentional. This volume of POSIX.1-2008 defers to the ISO&nbsp;C standard.
+<P>
+
+The
+<I>rename</I>()
+function shall change the name of a file. The
+<I>old</I>
+
+argument points to the pathname of the file to be renamed. The
+<I>new</I>
+
+argument points to the new pathname of the file.
+If the
+<I>new</I>
+
+argument does not resolve to an existing directory entry for a file of
+type directory and the
+<I>new</I>
+
+argument contains at least one non-&lt;slash&gt;
+character and ends with one or more trailing
+&lt;slash&gt;
+characters after all symbolic links have been processed,
+<I>rename</I>()
+shall fail.
+<P>
+
+If either the
+<I>old</I>
+
+or
+<I>new</I>
+
+argument names a symbolic link,
+<I>rename</I>()
+shall operate on the symbolic link itself, and shall not resolve the
+last component of the argument. If the
+<I>old</I>
+
+argument and the
+<I>new</I>
+
+argument resolve to either the same existing directory entry or different
+directory entries for the same existing file,
+<I>rename</I>()
+shall return successfully and perform no other action.
+<P>
+
+If the
+<I>old</I>
+
+argument points to the pathname of a file that is not a directory, the
+<I>new</I>
+
+argument shall not point to the pathname of a directory. If the link
+named by the
+<I>new</I>
+
+argument exists, it shall be removed and
+<I>old</I>
+
+renamed to
+<I>new</I>.
+
+In this case, a link named
+<I>new</I>
+
+shall remain visible to other processes throughout the renaming operation
+and refer either to the file referred to by
+<I>new</I>
+
+or
+<I>old</I>
+
+before the operation began. Write access permission is required for
+both the directory containing
+<I>old</I>
+
+and the directory containing
+<I>new</I>.
+
+<P>
+
+If the
+<I>old</I>
+
+argument points to the pathname of a directory, the
+<I>new</I>
+
+argument shall not point to the pathname of a file that is not a
+directory. If the directory named by the
+<I>new</I>
+
+argument exists, it shall be removed and
+<I>old</I>
+
+renamed to
+<I>new</I>.
+
+In this case, a link named
+<I>new</I>
+
+shall exist throughout the renaming operation and shall refer either to
+the directory referred to by
+<I>new</I>
+
+or
+<I>old</I>
+
+before the operation began. If
+<I>new</I>
+
+names an existing directory, it shall be required to be an empty
+directory.
+<P>
+
+If either
+<I>pathname</I>
+
+argument refers to a path whose final component is either dot or
+dot-dot,
+<I>rename</I>()
+shall fail.
+<P>
+
+If the
+<I>old</I>
+
+argument points to a pathname of a symbolic link, the symbolic link
+shall be renamed. If the
+<I>new</I>
+
+argument points to a pathname of a symbolic link, the symbolic link
+shall be removed.
+<P>
+
+The
+<I>old</I>
+
+pathname shall not name an ancestor directory of the
+<I>new</I>
+
+pathname. Write access permission is required for the directory containing
+<I>old</I>
+
+and the directory containing
+<I>new</I>.
+
+If the
+<I>old</I>
+
+argument points to the pathname of a directory, write access permission
+may be required for the directory named by
+<I>old</I>,
+
+and, if it exists, the directory named by
+<I>new</I>.
+
+<P>
+
+If the link named by the
+<I>new</I>
+
+argument exists and the file's link count becomes 0 when it is removed
+and no process has the file open, the space occupied by the file shall
+be freed and the file shall no longer be accessible. If one or more
+processes have the file open when the last link is removed, the link
+shall be removed before
+<I>rename</I>()
+returns, but the removal of the file contents shall be postponed until
+all references to the file are closed.
+<P>
+
+Upon successful completion,
+<I>rename</I>()
+shall mark for update the last data modification and last file status
+change timestamps of the parent directory of each file.
+<P>
+
+If the
+<I>rename</I>()
+function fails for any reason other than
+<B>[EIO]</B>,
+
+any file named by
+<I>new</I>
+
+shall be unaffected.
+<P>
+
+The
+<I>renameat</I>()
+function shall be equivalent to the
+<I>rename</I>()
+function except in the case where either
+<I>old</I>
+
+or
+<I>new</I>
+
+specifies a relative path. If
+<I>old</I>
+
+is a relative path, the file to be renamed is located relative to the
+directory associated with the file descriptor
+<I>oldfd</I>
+
+instead of the current working directory. If
+<I>new</I>
+
+is a relative path, the same happens only relative to the directory
+associated with
+<I>newfd</I>.
+
+If the file descriptor was opened without O_SEARCH, the function
+shall check whether directory searches are permitted using the current
+permissions of the directory underlying the file descriptor. If the
+file descriptor was opened with O_SEARCH, the function shall not perform
+the check.
+<P>
+
+If
+<I>renameat</I>()
+is passed the special value AT_FDCWD in the
+<I>oldfd</I>
+
+or
+<I>newfd</I>
+
+parameter, the current working directory shall be used in the
+determination of the file for the respective
+<I>path</I>
+
+parameter.
+<A NAME="lbAF">&nbsp;</A>
+<H2>RETURN VALUE</H2>
+
+Upon successful completion, the
+<I>rename</I>()
+function shall return 0. Otherwise, it shall return -1,
+<I>errno</I>
+
+shall be set to indicate the error,
+and neither the file named by
+<I>old</I>
+
+nor the file named by
+<I>new</I>
+
+shall be changed or created.
+<P>
+
+Upon successful completion, the
+<I>renameat</I>()
+function shall return 0. Otherwise, it shall return -1 and set
+<I>errno</I>
+
+to indicate the error.
+<A NAME="lbAG">&nbsp;</A>
+<H2>ERRORS</H2>
+
+The
+<I>rename</I>()
+and
+<I>renameat</I>()
+functions shall fail if:
+<DL COMPACT>
+<DT><B>EACCES</B>
+
+<DD>
+A component of either path prefix denies search permission; or one of
+the directories containing
+<I>old</I>
+
+or
+<I>new</I>
+
+denies write permissions; or, write permission is required and is
+denied for a directory pointed to by the
+<I>old</I>
+
+or
+<I>new</I>
+
+arguments.
+<DT><B>EBUSY</B>
+
+<DD>
+The directory named by
+<I>old</I>
+
+or
+<I>new</I>
+
+is currently in use by the system or another process, and the
+implementation considers this an error.
+<DT>[EEXIST]&nbsp;or&nbsp;[ENOTEMPTY]<DD>
+<BR>
+
+The link named by
+<I>new</I>
+
+is a directory that is not an empty directory.
+<DT><B>EINVAL</B>
+
+<DD>
+The
+<I>old</I>
+
+pathname names an ancestor directory of the
+<I>new</I>
+
+pathname, or either pathname argument contains a final component that
+is dot or dot-dot.
+<DT><B>EIO</B>
+
+<DD>
+A physical I/O error has occurred.
+<DT><B>EISDIR</B>
+
+<DD>
+The
+<I>new</I>
+
+argument points to a directory and the
+<I>old</I>
+
+argument points to a file that is not a directory.
+<DT><B>ELOOP</B>
+
+<DD>
+A loop exists in symbolic links encountered during resolution of the
+<I>path</I>
+
+argument.
+<DT><B>EMLINK</B>
+
+<DD>
+The file named by
+<I>old</I>
+
+is a directory, and the link count of the parent directory of
+<I>new</I>
+
+would exceed
+{LINK_MAX}.
+<DT><B>ENAMETOOLONG</B>
+
+<DD>
+<BR>
+
+The length of a component of a pathname is longer than
+{NAME_MAX}.
+<DT><B>ENOENT</B>
+
+<DD>
+The link named by
+<I>old</I>
+
+does not name an existing file, a component of the path prefix of
+<I>new</I>
+
+does not exist, or either
+<I>old</I>
+
+or
+<I>new</I>
+
+points to an empty string.
+<DT><B>ENOSPC</B>
+
+<DD>
+The directory that would contain
+<I>new</I>
+
+cannot be extended.
+<DT><B>ENOTDIR</B>
+
+<DD>
+A component of either path prefix names an existing file that is
+neither a directory nor a symbolic link to a directory; or the
+<I>old</I>
+
+argument names a directory and the
+<I>new</I>
+
+argument names a non-directory file; or the
+<I>old</I>
+
+argument contains at least one non-&lt;slash&gt;
+character and ends with one or more trailing
+&lt;slash&gt;
+characters and the last pathname component names an existing file that
+is neither a directory nor a symbolic link to a directory; or the
+<I>old</I>
+
+argument names an existing non-directory file and the
+<I>new</I>
+
+argument names a nonexistent file, contains at least one non-&lt;slash&gt;
+character, and ends with one or more trailing
+&lt;slash&gt;
+characters; or the
+<I>new</I>
+
+argument names an existing non-directory file, contains at least one non-&lt;slash&gt;
+character, and ends with one or more trailing
+&lt;slash&gt;
+characters.
+<DT><B>EPERM</B> or <B>EACCES</B>
+
+<DD>
+<BR>
+
+The S_ISVTX flag is set on the directory containing the file referred
+to by
+<I>old</I>
+
+and the process does not satisfy the criteria specified in the Base Definitions volume of POSIX.1-2008,
+<I>Section 4.2</I>, <I>Directory Protection</I>
+
+with respect to
+<I>old</I>;
+
+or
+<I>new</I>
+
+refers to an existing file, the S_ISVTX flag is set on the directory
+containing this file, and the process does not satisfy the criteria
+specified in the Base Definitions volume of POSIX.1-2008,
+<I>Section 4.2</I>, <I>Directory Protection</I>
+
+with respect to this file.
+<DT><B>EROFS</B>
+
+<DD>
+The requested operation requires writing in a directory on a read-only
+file system.
+<DT><B>EXDEV</B>
+
+<DD>
+The links named by
+<I>new</I>
+
+and
+<I>old</I>
+
+are on different file systems and the implementation does not support
+links between file systems.
+</DL>
+<P>
+
+In addition, the
+<I>renameat</I>()
+function shall fail if:
+<DL COMPACT>
+<DT><B>EACCES</B>
+
+<DD>
+<I>oldfd</I>
+
+or
+<I>newfd</I>
+
+was not opened with O_SEARCH and the permissions of the directory
+underlying
+<I>oldfd</I>
+
+or
+<I>newfd</I>
+
+respectively do not permit directory searches.
+<DT><B>EBADF</B>
+
+<DD>
+The
+<I>old</I>
+
+argument does not specify an absolute path and the
+<I>oldfd</I>
+
+argument is neither AT_FDCWD nor a valid file descriptor open for
+reading or searching, or the
+<I>new</I>
+
+argument does not specify an absolute path and the
+<I>newfd</I>
+
+argument is neither AT_FDCWD nor a valid file descriptor open
+for reading or searching.
+<DT><B>ENOTDIR</B>
+
+<DD>
+The
+<I>old</I>
+
+or
+<I>new</I>
+
+argument is not an absolute path and
+<I>oldfd</I>
+
+or
+<I>newfd</I>,
+
+respectively, is a file descriptor associated with a non-directory file.
+</DL>
+<P>
+
+The
+<I>rename</I>()
+and
+<I>renameat</I>()
+functions may fail if:
+<DL COMPACT>
+<DT><B>EBUSY</B>
+
+<DD>
+The file named by the
+<I>old</I>
+
+or
+<I>new</I>
+
+arguments is a named STREAM.
+<DT><B>ELOOP</B>
+
+<DD>
+More than
+{SYMLOOP_MAX}
+symbolic links were encountered during resolution of the
+<I>path</I>
+
+argument.
+<DT><B>ENAMETOOLONG</B>
+
+<DD>
+<BR>
+
+The length of a pathname exceeds
+{PATH_MAX},
+or pathname resolution of a symbolic link produced an intermediate
+result with a length that exceeds
+{PATH_MAX}.
+<DT><B>ETXTBSY</B>
+
+<DD>
+The file named by
+<I>new</I>
+
+exists and is the last directory entry to a pure procedure (shared text)
+file that is being executed.
+</DL>
+<P>
+
+<I>The following sections are informative.</I>
+
+<A NAME="lbAH">&nbsp;</A>
+<H2>EXAMPLES</H2>
+
+<A NAME="lbAI">&nbsp;</A>
+<H3>Renaming a File</H3>
+
+<P>
+
+The following example shows how to rename a file named
+<B>/home/cnd/mod1</B>
+
+to
+<B>/home/cnd/mod2</B>.
+
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+#include &lt;<A HREF="file:///usr/include/stdio.h">stdio.h</A>&gt;
+
+int status;
+...
+status = rename(&quot;/home/cnd/mod1&quot;, &quot;/home/cnd/mod2&quot;);
+</B></PRE>
+
+<P>
+
+</DL>
+
+<A NAME="lbAJ">&nbsp;</A>
+<H2>APPLICATION USAGE</H2>
+
+Some implementations mark for update the last file status change timestamp
+of renamed files and some do not. Applications which make use of the
+last file status change timestamp may behave differently with respect
+to renamed files unless they are designed to allow for either behavior.
+<A NAME="lbAK">&nbsp;</A>
+<H2>RATIONALE</H2>
+
+This
+<I>rename</I>()
+function is equivalent for regular files to that defined by the ISO&nbsp;C standard.
+Its inclusion here expands that definition to include actions on
+directories and specifies behavior when the
+<I>new</I>
+
+parameter names a file that already exists. That specification
+requires that the action of the function be atomic.
+<P>
+
+One of the reasons for introducing this function was to have a means of
+renaming directories while permitting implementations to prohibit the
+use of
+<I>link</I>()
+and
+<I>unlink</I>()
+with directories, thus constraining links to directories to those made by
+<I>mkdir</I>().
+<P>
+
+The specification that if
+<I>old</I>
+
+and
+<I>new</I>
+
+refer to the same file is intended to guarantee that:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+rename(&quot;x&quot;, &quot;x&quot;);
+</B></PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+does not remove the file.
+<P>
+
+Renaming dot or dot-dot is prohibited in order to prevent cyclical file
+system paths.
+<P>
+
+See also the descriptions of
+<B>[ENOTEMPTY]</B>
+
+and
+<B>[ENAMETOOLONG]</B>
+
+in
+<I>rmdir</I>()
+and
+<B>[EBUSY]</B>
+
+in
+<I>unlink</I>().
+For a discussion of
+<B>[EXDEV]</B>,
+
+see
+<I>link</I>().
+<P>
+
+The purpose of the
+<I>renameat</I>()
+function is to rename files in directories other than the current
+working directory without exposure to race conditions. Any part of the
+path of a file could be changed in parallel to a call to
+<I>rename</I>(),
+resulting in unspecified behavior. By opening file descriptors for the
+source and target directories and using the
+<I>renameat</I>()
+function it can be guaranteed that that renamed file is located correctly
+and the resulting file is in the desired directory.
+<A NAME="lbAL">&nbsp;</A>
+<H2>FUTURE DIRECTIONS</H2>
+
+None.
+<A NAME="lbAM">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+<I>link</I>(),
+
+<I>rmdir</I>(),
+
+<I>symlink</I>(),
+
+<I>unlink</I>()
+
+<P>
+
+The Base Definitions volume of POSIX.1-2008,
+<I>Section 4.2</I>, <I>Directory Protection,</I>
+
+<I></I><B>&lt;<A HREF="file:///usr/include/stdio.h">stdio.h</A>&gt;</B>
+
+<A NAME="lbAN">&nbsp;</A>
+<H2>COPYRIGHT</H2>
+
+Portions of this text are reprinted and reproduced in electronic form
+from IEEE Std 1003.1, 2013 Edition, Standard for Information Technology
+-- Portable Operating System Interface (POSIX), The Open Group Base
+Specifications Issue 7, Copyright (C) 2013 by the Institute of
+Electrical and Electronics Engineers, Inc and The Open Group.
+(This is POSIX.1-2008 with the 2013 Technical Corrigendum 1 applied.) In the
+event of any discrepancy between this version and the original IEEE and
+The Open Group Standard, the original IEEE and The Open Group Standard
+is the referee document. The original Standard can be obtained online at
+<A HREF="http://www.unix.org/online.html">http://www.unix.org/online.html</A> .
+<P>
+Any typographical or formatting errors that appear
+in this page are most likely
+to have been introduced during the conversion of the source files to
+man page format. To report such errors, see
+<A HREF="https://www.kernel.org/doc/man-pages/reporting_bugs.html">https://www.kernel.org/doc/man-pages/reporting_bugs.html</A> .
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">PROLOG</A><DD>
+<DT><A HREF="#lbAC">NAME</A><DD>
+<DT><A HREF="#lbAD">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAE">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAF">RETURN VALUE</A><DD>
+<DT><A HREF="#lbAG">ERRORS</A><DD>
+<DT><A HREF="#lbAH">EXAMPLES</A><DD>
+<DL>
+<DT><A HREF="#lbAI">Renaming a File</A><DD>
+</DL>
+<DT><A HREF="#lbAJ">APPLICATION USAGE</A><DD>
+<DT><A HREF="#lbAK">RATIONALE</A><DD>
+<DT><A HREF="#lbAL">FUTURE DIRECTIONS</A><DD>
+<DT><A HREF="#lbAM">SEE ALSO</A><DD>
+<DT><A HREF="#lbAN">COPYRIGHT</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 14:28:55 GMT, February 25, 2017
+</BODY>
+</HTML>

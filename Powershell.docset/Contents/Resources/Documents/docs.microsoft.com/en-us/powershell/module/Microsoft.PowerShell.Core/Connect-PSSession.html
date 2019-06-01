@@ -1,0 +1,2034 @@
+<!DOCTYPE html>
+<html class="no-js hasSidebar hasPageActions hasBreadcrumb conceptual" data-authenticated="false" data-render="docs" dir="ltr" lang="en-us">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Connect-PSSession (Microsoft.PowerShell.Core)" property="og:title"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" property="og:image"/>
+  <meta content="summary" name="twitter:card"/>
+  <meta content="@docsmsft" name="twitter:site"/>
+  <meta content="Connect-PSSession (Microsoft.PowerShell.Core)" name="twitter:title"/>
+  <meta content="The Connect-PSSession cmdlet reconnects to user-managed Windows PowerShell sessions (PSSessions) that were disconnected. It works on sessions that are disconnected intentionally, such as by using theâ¦" name="twitter:description"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" name="twitter:image"/>
+  <meta content="Microsoft Logo" name="twitter:image:alt"/>
+  <meta content="The Connect-PSSession cmdlet reconnects to user-managed Windows PowerShell sessions (PSSessions) that were disconnected. It works on sessions that are disconnected intentionally, such as by using theâ¦" name="description"/>
+  <meta content="Docs" name="search.ms_sitename"/>
+  <meta content="PowerShell_PowerShell-docs_reference" name="search.ms_docsetname"/>
+  <meta content="0" name="version"/>
+  <meta content="en-us" name="locale"/>
+  <meta content="Docs" name="site_name"/>
+  <meta content="PowerShell" name="search.ms_product"/>
+  <meta content="PowerShell.PowerShell_PowerShell-docs_reference" name="depot_name"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/6a6d85dfc6556f4605f45163661aeed4e68cf400/reference/6/Microsoft.PowerShell.Core/Connect-PSSession.md" name="ref_skeleton_gitcommit"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/live/reference/6/Microsoft.PowerShell.Core/Connect-PSSession.md" name="original_ref_skeleton_git_url"/>
+  <meta content="2018-03-30 03:35 PM" name="updated_at"/>
+  <meta content="3e1928db-0330-4731-5d22-fb9efd41b186" name="document_id"/>
+  <meta content="344ca7b4-82f0-032a-8960-262fe5fc9e06" name="document_version_independent_id"/>
+  <meta content="powershell" name="page_type"/>
+  <meta content="command" name="page_kind"/>
+  <meta content="06/09/2017" name="ms.date"/>
+  <meta content="2.0.0" name="schema"/>
+  <meta content="powershell,cmdlet" name="keywords"/>
+  <meta content="http://go.microsoft.com/fwlink/?LinkId=821471" name="online_version"/>
+  <meta content="System.Management.Automation.dll-Help.xml" name="external_help_file"/>
+  <meta content="powershell" name="ms.devlang"/>
+  <meta content="INDEX, FOLLOW" name="ROBOTS"/>
+  <meta content="sdwheeler" name="author"/>
+  <meta content="sewhee" name="ms.author"/>
+  <meta content="carmonm" name="manager"/>
+  <meta content="/powershell/bread-pscore/toc.yml?view=powershell-6" name="breadcrumb_path"/>
+  <meta content="powershell" name="apiPlatform"/>
+  <meta content="reference" name="ms.topic"/>
+  <meta content="windows, macos, linux" name="ms.tgt_pltfr"/>
+  <meta content="powershell-scripting" name="ms.technology"/>
+  <meta content="powershell" name="ms.prod"/>
+  <meta content="MSDocsHeader-Powershell" name="uhfHeaderId"/>
+  <meta content="../psdocs/toc.json?view=powershell-6" name="toc_rel"/>
+  <link href="https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/connect-pssession" rel="canonical"/>
+  <title>
+   Connect-PSSession
+  </title>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/60aac04b.site.css" rel="stylesheet"/>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/fdb8a38a.conceptual.css" rel="stylesheet"/>
+ </head>
+ <body dir="ltr" lang="en-us">
+  <div class="header-holder">
+   <div data-bi-name="header" id="headerAreaHolder">
+    <div id="uhf-placeholder">
+    </div>
+   </div>
+   <div class="disclaimer-holder" id="disclaimer-holder">
+   </div>
+  </div>
+  <div class="container mainContainer" data-bi-name="body">
+   <div class="content-header" data-bi-name="content-header">
+    <div class="content-header-controls">
+     <button class="contents-button button-border" data-bi-name="contents-expand" type="button">
+      <span class="docon docon-menu">
+      </span>
+      Contents
+     </button>
+    </div>
+    <div class="content-header-controls">
+     <button class="ap-collapse-behavior ap-expanded button-border" data-bi-name="ap-collapse" type="button">
+      <span class="docon docon-exit-mode">
+      </span>
+      Exit focus mode
+     </button>
+    </div>
+   </div>
+   <div class="primary-holder">
+    <main class="content" data-bi-name="content" dir="ltr" id="main" lang="en-us" role="main">
+     <!-- <content> -->
+     <h1>
+      Connect-PSSession
+     </h1>
+     <div class="metadata">
+      <dl class="attributeList">
+       <dt>
+        Module:
+       </dt>
+       <dd>
+        <a data-linktype="relative-path" href="./Microsoft.PowerShell.Core.html">
+         Microsoft.PowerShell.Core
+        </a>
+       </dd>
+      </dl>
+     </div>
+     <div class="summaryHolder">
+      <div class="summary">
+       Reconnects to disconnected sessions.
+      </div>
+     </div>
+     <h2 class="hiddenAnchor" id="syntax">
+      Syntax
+     </h2>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Connect-PSSession
+       -Name &lt;String[]&gt;
+       [-ThrottleLimit &lt;Int32&gt;]
+       [-WhatIf]
+       [-Confirm]
+       [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Connect-PSSession
+       [-Session] &lt;PSSession[]&gt;
+       [-ThrottleLimit &lt;Int32&gt;]
+       [-WhatIf]
+       [-Confirm]
+       [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Connect-PSSession
+       -ComputerName &lt;String[]&gt;
+       [-ApplicationName &lt;String&gt;]
+       [-ConfigurationName &lt;String&gt;]
+       [-Name &lt;String[]&gt;]
+       [-Credential &lt;PSCredential&gt;]
+       [-Authentication &lt;AuthenticationMechanism&gt;]
+       [-CertificateThumbprint &lt;String&gt;]
+       [-Port &lt;Int32&gt;]
+       [-UseSSL]
+       [-SessionOption &lt;PSSessionOption&gt;]
+       [-ThrottleLimit &lt;Int32&gt;]
+       [-WhatIf]
+       [-Confirm]
+       [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Connect-PSSession
+       -ComputerName &lt;String[]&gt;
+       [-ApplicationName &lt;String&gt;]
+       [-ConfigurationName &lt;String&gt;]
+       -InstanceId &lt;Guid[]&gt;
+       [-Credential &lt;PSCredential&gt;]
+       [-Authentication &lt;AuthenticationMechanism&gt;]
+       [-CertificateThumbprint &lt;String&gt;]
+       [-Port &lt;Int32&gt;]
+       [-UseSSL]
+       [-SessionOption &lt;PSSessionOption&gt;]
+       [-ThrottleLimit &lt;Int32&gt;]
+       [-WhatIf]
+       [-Confirm]
+       [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Connect-PSSession
+       [-ConfigurationName &lt;String&gt;]
+       [-ConnectionUri] &lt;Uri[]&gt;
+       [-AllowRedirection]
+       [-Name &lt;String[]&gt;]
+       [-Credential &lt;PSCredential&gt;]
+       [-Authentication &lt;AuthenticationMechanism&gt;]
+       [-CertificateThumbprint &lt;String&gt;]
+       [-SessionOption &lt;PSSessionOption&gt;]
+       [-ThrottleLimit &lt;Int32&gt;]
+       [-WhatIf]
+       [-Confirm]
+       [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Connect-PSSession
+       [-ConfigurationName &lt;String&gt;]
+       [-ConnectionUri] &lt;Uri[]&gt;
+       [-AllowRedirection]
+       -InstanceId &lt;Guid[]&gt;
+       [-Credential &lt;PSCredential&gt;]
+       [-Authentication &lt;AuthenticationMechanism&gt;]
+       [-CertificateThumbprint &lt;String&gt;]
+       [-SessionOption &lt;PSSessionOption&gt;]
+       [-ThrottleLimit &lt;Int32&gt;]
+       [-WhatIf]
+       [-Confirm]
+       [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Connect-PSSession
+       -InstanceId &lt;Guid[]&gt;
+       [-ThrottleLimit &lt;Int32&gt;]
+       [-WhatIf]
+       [-Confirm]
+       [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Connect-PSSession
+       [-ThrottleLimit &lt;Int32&gt;]
+       [-Id] &lt;Int32[]&gt;
+       [-WhatIf]
+       [-Confirm]
+       [&lt;CommonParameters&gt;]</code></pre>
+     <h2 id="description">
+      Description
+     </h2>
+     <p>
+      The
+      <strong>
+       Connect-PSSession
+      </strong>
+      cmdlet reconnects to user-managed Windows PowerShell sessions (
+      <strong>
+       PSSessions
+      </strong>
+      ) that were disconnected.
+It works on sessions that are disconnected intentionally, such as by using the Disconnect-PSSession cmdlet or the
+      <em>
+       InDisconnectedSession
+      </em>
+      parameter of the Invoke-Command cmdlet, and those that were disconnected unintentionally, such as by a temporary network outage.
+     </p>
+     <p>
+      <strong>
+       Connect-PSSession
+      </strong>
+      can connect to any disconnected session that was started by the same user.
+These include those that were started by or disconnected from other sessions on other computers.
+     </p>
+     <p>
+      However,
+      <strong>
+       Connect-PSSession
+      </strong>
+      cannot connect to broken or closed sessions, or interactive sessions started by using the Enter-PSSession cmdlet.
+Also you cannot connect sessions to sessions started by other users, unless you can provide the credentials of the user who created the session.
+     </p>
+     <p>
+      For more information about the Disconnected Sessions feature, see about_Remote_Disconnected_Sessions.
+     </p>
+     <p>
+      This cmdlet was introduced in Windows PowerShell 3.0.
+     </p>
+     <h2 id="examples">
+      Examples
+     </h2>
+     <p>
+      <strong>
+       Example 1: Reconnect to a session
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Connect-PSSession -ComputerName Server01 -Name ITTask
+
+Id Name            ComputerName    State         ConfigurationName     Availability
+
+-- ----            ------------    -----         -----------------     ------------
+
+ 4 ITTask          Server01        Opened        ITTasks                  Available</code></pre>
+     <p>
+      This command reconnects to the ITTask session on the Server01 computer.
+     </p>
+     <p>
+      The output shows that the command was successful.
+The
+      <strong>
+       State
+      </strong>
+      of the session is Opened and the
+      <strong>
+       Availability
+      </strong>
+      is Available, which indicates that you can run commands in the session.
+     </p>
+     <p>
+      <strong>
+       Example 2: Effect of disconnecting and reconnecting
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-PSSession
+
+
+
+Id Name            ComputerName    State         ConfigurationName     Availability
+
+-- ----            ------------    -----         -----------------     ------------
+
+ 1 Backups         Localhost       Opened        Microsoft.PowerShell     Available
+
+
+
+
+
+PS C:\&gt; Get-PSSession | Disconnect-PSSession
+
+
+
+Id Name            ComputerName    State         ConfigurationName     Availability
+
+-- ----            ------------    -----         -----------------     ------------
+
+ 1 Backups         Localhost       Disconnected  Microsoft.PowerShell          None
+
+
+
+
+
+PS C:\&gt; Get-PSSession | Connect-PSSession
+
+
+
+Id Name            ComputerName    State         ConfigurationName     Availability
+
+-- ----            ------------    -----         -----------------     ------------
+
+ 1 Backups         Localhost       Opened        Microsoft.PowerShell     Available</code></pre>
+     <p>
+      This example shows the effect of disconnecting and then reconnecting to a session.
+     </p>
+     <p>
+      The first command uses the Get-PSSession cmdlet.
+Without the
+      <em>
+       ComputerName
+      </em>
+      parameter, the command gets only sessions that were created in the current session.
+     </p>
+     <p>
+      The output shows that the command gets the Backups session on the local computer.
+The
+      <strong>
+       State
+      </strong>
+      of the session is Opened and the
+      <strong>
+       Availability
+      </strong>
+      is Available.
+     </p>
+     <p>
+      The second command uses the
+      <strong>
+       Get-PSSession
+      </strong>
+      cmdlet to get the
+      <strong>
+       PSSession
+      </strong>
+      objects that were created in the current session and the
+      <strong>
+       Disconnect-PSSession
+      </strong>
+      cmdlet to disconnect the sessions.
+The output shows that the Backups session was disconnected.
+The
+      <strong>
+       State
+      </strong>
+      of the session is Disconnected and the
+      <strong>
+       Availability
+      </strong>
+      is None.
+     </p>
+     <p>
+      The third command uses the
+      <strong>
+       Get-PSSession
+      </strong>
+      cmdlet to get the
+      <strong>
+       PSSession
+      </strong>
+      objects that were created in the current session and the
+      <strong>
+       Connect-PSSession
+      </strong>
+      cmdlet to reconnect the sessions.
+The output shows that the Backups session was reconnected.
+The
+      <strong>
+       State
+      </strong>
+      of the session is Opened and the
+      <strong>
+       Availability
+      </strong>
+      is Available.
+     </p>
+     <p>
+      If you use the
+      <strong>
+       Connect-PSSession
+      </strong>
+      cmdlet on a session that is not disconnected, the command does not affect the session and it does not generate any errors.
+     </p>
+     <p>
+      <strong>
+       Example 3: Series of commands in an enterprise scenario
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">The administrator starts by creating a sessions on a remote computer and running a script in the session.The first command uses the **New-PSSession** cmdlet to create the ITTask session on the Server01 remote computer. The command uses the *ConfigurationName* parameter to specify the ITTasks session configuration. The command saves the sessions in the $s variable.
+
+PS C:\&gt; $s = New-PSSession -ComputerName Server01 -Name ITTask -ConfigurationName ITTasks
+
+
+
+ The second command **Invoke-Command** cmdlet to start a background job in the session in the $s variable. It uses the *FilePath* parameter to run the script in the background job.
+
+PS C:\&gt; Invoke-Command -Session $s {Start-Job -FilePath \\Server30\Scripts\Backup-SQLDatabase.ps1}
+
+Id     Name            State         HasMoreData     Location             Command
+
+--     ----            -----         -----------     --------             -------
+
+2      Job2            Running       True            Server01             \\Server30\Scripts\Backup...
+
+
+
+The third command uses the Disconnect-PSSession cmdlet to disconnect from the session in the $s variable. The command uses the *OutputBufferingMode* parameter with a value of Drop to prevent the script from being blocked by having to deliver output to the session. It uses the *IdleTimeoutSec* parameter to extend the session time-out to 15 hours.When the command is completed, the administrator locks her computer and goes home for the evening.
+
+PS C:\&gt; Disconnect-PSSession -Session $s -OutputBufferingMode Drop -IdleTimeoutSec 60*60*15
+
+Id Name            ComputerName    State         ConfigurationName     Availability
+
+-- ----            ------------    -----         -----------------     ------------
+
+ 1 ITTask          Server01        Disconnected  ITTasks               None
+
+
+
+Later that evening, the administrator starts her home computer, logs on to the corporate network, and starts Windows PowerShell. The fourth command uses the Get-PSSession cmdlet to get the sessions on the Server01 computer. The command finds the ITTask session.The fifth command uses the **Connect-PSSession** cmdlet to connect to the ITTask session. The command saves the session in the $s variable.
+
+PS C:\&gt; Get-PSSession -ComputerName Server01 -Name ITTask
+
+
+
+Id Name            ComputerName    State         ConfigurationName     Availability
+
+-- ----            ------------    -----         -----------------     ------------
+
+ 1 ITTask          Server01        Disconnected  ITTasks               None
+
+
+
+
+
+PS C:\&gt; $s = Connect-PSSession -ComputerName Server01 -Name ITTask
+
+
+
+
+
+Id Name            ComputerName    State         ConfigurationName     Availability
+
+-- ----            ------------    -----         -----------------     ------------
+
+ 1 ITTask          Server01        Opened        ITTasks               Available
+
+
+
+The sixth command uses the **Invoke-Command** cmdlet to run a Get-Job command in the session in the $s variable. The output shows that the job finished successfully.The seventh command uses the **Invoke-Command** cmdlet to run a Receive-Job command in the session in the $s variable in the session. The command saves the results in the $BackupSpecs variable.The eighth command uses the **Invoke-Command** cmdlet to runs another script in the session. The command uses the value of the $BackupSpecs variable in the session as input to the script.
+
+
+
+
+
+PS C:\&gt; Invoke-Command -Session $s {Get-Job}
+
+
+
+Id     Name            State         HasMoreData     Location             Command
+
+--     ----            -----         -----------     --------             -------
+
+2      Job2            Completed     True            Server01             \\Server30\Scripts\Backup...
+
+
+
+PS C:\&gt; Invoke-Command -Session $s {$BackupSpecs = Receive-Job -JobName Job2}
+
+
+
+PS C:\&gt; Invoke-Command -Session $s {\\Server30\Scripts\New-SQLDatabase.ps1 -InitData $BackupSpecs.Initialization}
+
+
+
+The ninth command disconnects from the session in the $s variable.The administrator closes Windows PowerShell and closes the computer. She can reconnect to the session on the next day and check the script status from her work computer.
+
+PS C:\&gt; Disconnect-PSSession -Session $s -OutputBufferingMode Drop -IdleTimeoutSec 60*60*15
+
+Id Name            ComputerName    State         ConfigurationName     Availability
+
+-- ----            ------------    -----         -----------------     ------------
+
+ 1 ITTask          Server01        Disconnected  ITTasks               None</code></pre>
+     <p>
+      This series of commands shows how the
+      <strong>
+       Connect-PSSession
+      </strong>
+      cmdlet might be used in an enterprise scenario.
+In this case, a system administrator starts a long-running job in a session on a remote computer.
+After starting the job, the administrator disconnects from the session and goes home.
+Later that evening, the administrator logs on to her home computer and verifies that the job ran until it is completed.
+     </p>
+     <h2 id="required-parameters">
+      Required Parameters
+     </h2>
+     <div class="parameterName stack">
+      -ComputerName
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the computers on which the disconnected sessions are stored.
+Sessions are stored on the computer that is at the server-side or receiving end of a connection.
+The default is the local computer.
+      </p>
+      <p>
+       Type the NetBIOS name, an IP address, or a fully qualified domain name of one computer.
+Wildcard characters are not permitted.
+To specify the local computer, type the computer name, localhost, or a dot (.)
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         Cn
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -ConnectionUri
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the URIs of the connection endpoints for the disconnected sessions.
+      </p>
+      <p>
+       The URI must be fully qualified.
+The format of this string is as follows:
+      </p>
+      <p>
+       <code>
+        \&lt;Transport\&gt;://\&lt;ComputerName\&gt;:\&lt;Port\&gt;/\&lt;ApplicationName\&gt;
+       </code>
+      </p>
+      <p>
+       The default value is as follows:
+      </p>
+      <p>
+       <code>
+        http://localhost:5985/WSMAN
+       </code>
+      </p>
+      <p>
+       If you do not specify a connection URI, you can use the
+       <em>
+        UseSSL
+       </em>
+       and
+       <em>
+        Port
+       </em>
+       parameters to specify the connection URI values.
+      </p>
+      <p>
+       Valid values for the
+       <strong>
+        Transport
+       </strong>
+       segment of the URI are HTTP and HTTPS.
+If you specify a connection URI with a Transport segment, but do not specify a port, the session is created with standards ports: 80 for HTTP and 443 for HTTPS.
+To use the default ports for Windows PowerShell remoting, specify port 5985 for HTTP or 5986 for HTTPS.
+      </p>
+      <p>
+       If the destination computer redirects the connection to a different URI, Windows PowerShell prevents the redirection unless you use the
+       <em>
+        AllowRedirection
+       </em>
+       parameter in the command.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Uri[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         URI, CU
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         0
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Id
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the IDs of the disconnected sessions.
+The
+       <em>
+        Id
+       </em>
+       parameter works only when the disconnected session was previously connected to the current session.
+      </p>
+      <p>
+       This parameter is valid, but not effective, when the session is stored on the local computer, but was not connected to the current session.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Int32[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         0
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -InstanceId
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the instance IDs of the disconnected sessions.
+      </p>
+      <p>
+       The instance ID is a GUID that uniquely identifies a
+       <strong>
+        PSSession
+       </strong>
+       on a local or remote computer.
+      </p>
+      <p>
+       The instance ID is stored in the
+       <strong>
+        InstanceID
+       </strong>
+       property of the
+       <strong>
+        PSSession
+       </strong>
+       .
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Guid[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Name
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the friendly names of the disconnected sessions.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Session
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the disconnected sessions.
+Enter a variable that contains the
+       <strong>
+        PSSession
+       </strong>
+       objects or a command that creates or gets the
+       <strong>
+        PSSession
+       </strong>
+       objects, such as a Get-PSSession command.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          PSSession[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         0
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName, ByValue)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="optional-parameters">
+      Optional Parameters
+     </h2>
+     <div class="parameterName stack">
+      -AllowRedirection
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that this cmdlet allows redirection of this connection to an alternate URI.
+      </p>
+      <p>
+       When you use the
+       <em>
+        ConnectionURI
+       </em>
+       parameter, the remote destination can return an instruction to redirect to a different URI.
+By default, Windows PowerShell does not redirect connections, but you can use this parameter to allow it to redirect the connection.
+      </p>
+      <p>
+       You can also limit the number of times the connection is redirected by changing the
+       <strong>
+        MaximumConnectionRedirectionCount
+       </strong>
+       session option value.
+Use the
+       <em>
+        MaximumRedirection
+       </em>
+       parameter of the New-PSSessionOption cmdlet or set the
+       <strong>
+        MaximumConnectionRedirectionCount
+       </strong>
+       property of the
+       <strong>
+        $PSSessionOption
+       </strong>
+       preference variable.
+The default value is 5.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -ApplicationName
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the name of an application.
+This cmdlet connects only to sessions that use the specified application.
+      </p>
+      <p>
+       Enter the application name segment of the connection URI.
+For example, in the following connection URI, the application name is WSMan:
+       <code>
+        http://localhost:5985/WSMAN
+       </code>
+       .
+The application name of a session is stored in the
+       <strong>
+        Runspace.ConnectionInfo.AppName
+       </strong>
+       property of the session.
+      </p>
+      <p>
+       The value of this parameter is used to select and filter sessions.
+It does not change the application that the session uses.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Authentication
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the mechanism that is used to authenticate user credentials in the command to reconnect to the disconnected session.
+The acceptable values for this parameter are:
+      </p>
+      <ul>
+       <li>
+        Default
+       </li>
+       <li>
+        Basic
+       </li>
+       <li>
+        Credssp
+       </li>
+       <li>
+        Digest
+       </li>
+       <li>
+        Kerberos
+       </li>
+       <li>
+        Negotiate
+       </li>
+       <li>
+        NegotiateWithImplicitCredential
+       </li>
+      </ul>
+      <p>
+       The default value is Default.
+      </p>
+      <p>
+       For more information about the values of this parameter, see
+       <a data-linktype="external" href="https://msdn.microsoft.com/library/system.management.automation.runspaces.authenticationmechanism">
+        AuthenticationMechanism Enumeration
+       </a>
+       in the MSDN library.
+      </p>
+      <p>
+       Caution: Credential Security Support Provider (CredSSP) authentication, in which the user's credentials are passed to a remote computer to be authenticated, is designed for commands that require authentication on more than one resource, such as accessing a remote network share.
+This mechanism increases the security risk of the remote operation.
+If the remote computer is compromised, the credentials that are passed to it can be used to control the network session.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          AuthenticationMechanism
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Parameter Sets:
+        </td>
+        <td>
+         Default, Basic, Negotiate, NegotiateWithImplicitCredential, Credssp, Digest, Kerberos
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -CertificateThumbprint
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the digital public key certificate (X509) of a user account that has permission to connect to the disconnected session.
+Enter the certificate thumbprint of the certificate.
+      </p>
+      <p>
+       Certificates are used in client certificate-based authentication.
+They can be mapped only to local user accounts.
+They do not work with domain accounts.
+      </p>
+      <p>
+       To get a certificate thumbprint, use a Get-Item or Get-ChildItem command in the Windows PowerShell Cert: drive.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -ConfigurationName
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Connects only to sessions that use the specified session configuration.
+      </p>
+      <p>
+       Enter a configuration name or the fully qualified resource URI for a session configuration.
+If you specify only the configuration name, the following schema URI is prepended:
+       <a data-linktype="external" href="http://schemas.microsoft.com/powershell">
+        http://schemas.microsoft.com/powershell
+       </a>
+       .
+The configuration name of a session is stored in the
+       <strong>
+        ConfigurationName
+       </strong>
+       property of the session.
+      </p>
+      <p>
+       The value of this parameter is used to select and filter sessions.
+It does not change the session configuration that the session uses.
+      </p>
+      <p>
+       For more information about session configurations, see about_Session_Configurations.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Confirm
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Prompts you for confirmation before running the cmdlet.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         cf
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Credential
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a user account that has permission to connect to the disconnected session.
+The default is the current user.
+      </p>
+      <p>
+       Type a user name, such as User01 or Domain01\User01.
+Or, enter a
+       <strong>
+        PSCredential
+       </strong>
+       object, such as one generated by the Get-Credential cmdlet.
+If you type a user name, this cmdlet prompts you for a password.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          PSCredential
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Port
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the network port on the remote computer that is used to reconnect to the session.
+To connect to a remote computer, the remote computer must be listening on the port that the connection uses.
+The default ports are 5985, which is the WinRM port for HTTP, and 5986, which is the WinRM port for HTTPS.
+      </p>
+      <p>
+       Before using an alternate port, you must configure the WinRM listener on the remote computer to listen at that port.
+To configure the listener, type the following two commands at the Windows PowerShell prompt:
+      </p>
+      <p>
+       <code>
+        Remove-Item -Path WSMan:\Localhost\listener\listener* -Recurse
+       </code>
+      </p>
+      <p>
+       <code>
+        New-Item -Path WSMan:\Localhost\listener -Transport http -Address * -Port \&lt;port-number\&gt;
+       </code>
+      </p>
+      <p>
+       Do not use the
+       <em>
+        Port
+       </em>
+       parameter unless you must.
+The port that is set in the command applies to all computers or sessions on which the command runs.
+An alternate port setting might prevent the command from running on all computers.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Int32
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -SessionOption
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies advanced options for the session.
+Enter a
+       <strong>
+        SessionOption
+       </strong>
+       object, such as one that you create by using the New-PSSessionOption cmdlet, or a hash table in which the keys are session option names and the values are session option values.
+      </p>
+      <p>
+       The default values for the options are determined by the value of the $PSSessionOption preference variable, if it is set.
+Otherwise, the default values are established by options set in the session configuration.
+      </p>
+      <p>
+       The session option values take precedence over default values for sessions set in the $PSSessionOption preference variable and in the session configuration.
+However, they do not take precedence over maximum values, quotas or limits set in the session configuration.
+      </p>
+      <p>
+       For a description of the session options that includes the default values, see New-PSSessionOption.
+For information about the
+       <strong>
+        $PSSessionOption
+       </strong>
+       preference variable, see
+       <a data-linktype="relative-path" href="about/about_preference_variables.html">
+        about_Preference_Variables
+       </a>
+       .
+For more information about session configurations, see about_Session_Configurations (
+       <a data-linktype="external" href="http://go.microsoft.com/fwlink/?LinkID=145152">
+        http://go.microsoft.com/fwlink/?LinkID=145152
+       </a>
+       ).
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          PSSessionOption
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -ThrottleLimit
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the maximum number of concurrent connections that can be established to run this command.
+If you omit this parameter or enter a value of 0, the default value, 32, is used.
+      </p>
+      <p>
+       The throttle limit applies only to the current command, not to the session or to the computer.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Int32
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -UseSSL
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that this cmdlet uses the Secure Sockets Layer (SSL) protocol to connect to the disconnected session.
+By default, SSL is not used.
+      </p>
+      <p>
+       WS-Management encrypts all Windows PowerShell content transmitted over the network.
+The
+       <em>
+        UseSSL
+       </em>
+       parameter is an additional protection that sends the data across an HTTPS connection instead of an HTTP connection.
+      </p>
+      <p>
+       If you use this parameter, but SSL is not available on the port that is used for the command, the command fails.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -WhatIf
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         wi
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="inputs">
+      Inputs
+     </h2>
+     <p>
+      <strong>
+       System.Management.Automation.Runspaces.PSSession
+      </strong>
+     </p>
+     <p>
+      You can pipe a session (
+      <strong>
+       PSSession
+      </strong>
+      ) to this cmdlet.
+     </p>
+     <h2 id="outputs">
+      Outputs
+     </h2>
+     <p>
+      <strong>
+       System.Management.Automation.Runspaces.PSSession
+      </strong>
+     </p>
+     <p>
+      This cmdlet returns an object that represents the session to which it reconnected.
+     </p>
+     <h2 id="notes">
+      Notes
+     </h2>
+     <ul>
+      <li>
+       <strong>
+        Connect-PSSession
+       </strong>
+       reconnects only to sessions that are disconnected, that is, sessions that have a value of Disconnected for the
+       <strong>
+        State
+       </strong>
+       property. Only sessions that are connected to, or end at, computers that run Windows PowerShell 3.0 or later versions can be disconnected and reconnected.
+      </li>
+      <li>
+       If you use
+       <strong>
+        Connect-PSSession
+       </strong>
+       on a session that is not disconnected, the command does not affect the session and it does not generate errors.
+      </li>
+      <li>
+       Disconnected loopback sessions with interactive tokens, which are created by using the
+       <em>
+        EnableNetworkAccess
+       </em>
+       parameter, can be reconnected only from the computer on which the session was created. This restriction protects the computer from malicious access.
+      </li>
+      <li>
+       <p>
+        The value of the
+        <strong>
+         State
+        </strong>
+        property of a
+        <strong>
+         PSSession
+        </strong>
+        is relative to the current session. Therefore, a value of
+        <strong>
+         Disconnected
+        </strong>
+        means that the
+        <strong>
+         PSSession
+        </strong>
+        is not connected to the current session. However, it does not mean that the
+        <strong>
+         PSSession
+        </strong>
+        is disconnected from all sessions. It might be connected to a different session. To determine whether you can connect or reconnect to the session, use the
+        <strong>
+         Availability
+        </strong>
+        property.
+       </p>
+       <p>
+        An
+        <strong>
+         Availability
+        </strong>
+        value of None indicates that you can connect to the session.
+A value of Busy indicates that you cannot connect to the
+        <strong>
+         PSSession
+        </strong>
+        because it is connected to another session.
+       </p>
+       <p>
+        For more information about the values of the
+        <strong>
+         State
+        </strong>
+        property of sessions, see
+        <a data-linktype="external" href="https://msdn.microsoft.com/library/system.management.automation.runspaces.runspacestate">
+         RunspaceState Enumeration
+        </a>
+        in the MSDN library.
+       </p>
+       <p>
+        For more information about the values of the
+        <strong>
+         Availability
+        </strong>
+        property of sessions, see
+        <a data-linktype="external" href="https://msdn.microsoft.com/library/system.management.automation.runspaces.runspaceavailability">
+         RunspaceAvailability Enumeration
+        </a>
+        in the MSDN library.
+       </p>
+      </li>
+      <li>
+       <p>
+        You cannot change the idle time-out value of a
+        <strong>
+         PSSession
+        </strong>
+        when you connect to the
+        <strong>
+         PSSession
+        </strong>
+        . The
+        <em>
+         SessionOption
+        </em>
+        parameter of
+        <strong>
+         Connect-PSSession
+        </strong>
+        takes a
+        <strong>
+         SessionOption
+        </strong>
+        object that has an
+        <strong>
+         IdleTimeout
+        </strong>
+        value. However, the
+        <strong>
+         IdleTimeout
+        </strong>
+        value of the
+        <strong>
+         SessionOption
+        </strong>
+        object and the
+        <strong>
+         IdleTimeout
+        </strong>
+        value of the $PSSessionOption variable are ignored when connecting to a
+        <strong>
+         PSSession
+        </strong>
+        .
+       </p>
+       <p>
+        You can set and change the idle time-out of a
+        <strong>
+         PSSession
+        </strong>
+        when you create the
+        <strong>
+         PSSession
+        </strong>
+        , by using the
+        <strong>
+         New-PSSession
+        </strong>
+        or
+        <strong>
+         Invoke-Command
+        </strong>
+        cmdlets, and when you disconnect from the
+        <strong>
+         PSSession
+        </strong>
+        .
+       </p>
+       <p>
+        The
+        <strong>
+         IdleTimeout
+        </strong>
+        property of a
+        <strong>
+         PSSession
+        </strong>
+        is critical to disconnected sessions, because it determines how long a disconnected session is maintained on the remote computer.
+Disconnected sessions are considered to be idle from the moment that they are disconnected, even if commands are running in the disconnected session.
+       </p>
+      </li>
+     </ul>
+     <h2 id="related-links">
+      Related Links
+     </h2>
+     <ul>
+      <li>
+       <a data-linktype="relative-path" href="disconnect-pssession.html">
+        Disconnect-PSSession
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="enter-pssession.html">
+        Enter-PSSession
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="exit-pssession.html">
+        Exit-PSSession
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="get-pssession.html">
+        Get-PSSession
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="get-pssessionconfiguration.html">
+        Get-PSSessionConfiguration
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="new-pssession.html">
+        New-PSSession
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="new-pssessionoption.html">
+        New-PSSessionOption
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="new-pstransportoption.html">
+        New-PSTransportOption
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="receive-pssession.html">
+        Receive-PSSession
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="register-pssessionconfiguration.html">
+        Register-PSSessionConfiguration
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="remove-pssession.html">
+        Remove-PSSession
+       </a>
+      </li>
+     </ul>
+     <!-- </content> -->
+    </main>
+    <div class="note alert feedback-system-change-alert">
+     <p>
+      Note
+     </p>
+     <p>
+      The feedback system for this content will be changing soon. Old comments will not be carried over. If content within a comment thread is important to you, please save a copy. For more information on the upcoming change,
+      <a href="https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs">
+       we invite you to read our blog post
+      </a>
+      .
+     </p>
+    </div>
+    <div data-bi-name="comments" id="comments-container" role="form">
+    </div>
+   </div>
+  </div>
+  <div class="openfeedback-container" id="openFeedbackContainer">
+  </div>
+  <div class="action-panel">
+  </div>
+ </body>
+</html>

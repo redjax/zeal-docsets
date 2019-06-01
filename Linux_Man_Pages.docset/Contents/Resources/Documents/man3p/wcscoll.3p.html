@@ -1,0 +1,220 @@
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML><HEAD><TITLE>Man page of WCSCOLL</TITLE>
+</HEAD><BODY>
+<H1>WCSCOLL</H1>
+Section: POSIX Programmer's Manual (3P)<BR>Updated: 2013<BR><A HREF="#index">Index</A>
+<A HREF="../index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>PROLOG</H2>
+
+This manual page is part of the POSIX Programmer's Manual.
+The Linux implementation of this interface may differ (consult
+the corresponding Linux manual page for details of Linux behavior),
+or the interface may not be implemented on Linux.
+<P>
+<A NAME="lbAC">&nbsp;</A>
+<H2>NAME</H2>
+
+wcscoll,
+wcscoll_l
+--- wide-character string comparison using collating information
+<A NAME="lbAD">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<P>
+
+<PRE>
+#include &lt;<A HREF="file:///usr/include/wchar.h">wchar.h</A>&gt;
+
+int wcscoll(const wchar_t *<I>ws1</I>, const wchar_t *<I>ws2</I>);
+int wcscoll_l(const wchar_t *<I>ws1</I>, const wchar_t *<I>ws2</I>,
+    locale_t <I>locale</I>);
+</PRE>
+
+<A NAME="lbAE">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+For
+<I>wcscoll</I>():
+The functionality described on this reference page is aligned with the
+ISO&nbsp;C standard. Any conflict between the requirements described here and the
+ISO&nbsp;C standard is unintentional. This volume of POSIX.1-2008 defers to the ISO&nbsp;C standard.
+<P>
+
+The
+<I>wcscoll</I>()
+and
+<I>wcscoll_l</I>()
+functions shall compare the wide-character string pointed to by
+<I>ws1</I>
+
+to the wide-character string pointed to by
+<I>ws2</I>,
+
+both interpreted as appropriate to the
+<I>LC_COLLATE</I>
+
+category of the current locale,
+or the locale represented by
+<I>locale</I>,
+
+respectively.
+<P>
+
+The
+<I>wcscoll</I>()
+and
+<I>wcscoll_l</I>()
+functions shall not change the setting of
+<I>errno</I>
+
+if successful.
+<P>
+
+An application wishing to check for error situations should set
+<I>errno</I>
+
+to 0 before calling
+<I>wcscoll</I>()
+or
+<I>wcscoll_l</I>().
+If
+<I>errno</I>
+
+is non-zero on return, an error has occurred.
+<P>
+
+The behavior is undefined if the
+<I>locale</I>
+
+argument to
+<I>wcscoll_l</I>()
+is the special locale object LC_GLOBAL_LOCALE or is not a valid locale
+object handle.
+<A NAME="lbAF">&nbsp;</A>
+<H2>RETURN VALUE</H2>
+
+Upon successful completion,
+<I>wcscoll</I>()
+and
+<I>wcscoll_l</I>()
+shall return an integer greater than, equal to, or less than 0,
+according to whether the wide-character string pointed to by
+<I>ws1</I>
+
+is greater than, equal to, or less than the wide-character string
+pointed to by
+<I>ws2</I>,
+
+when both are interpreted as appropriate to the current locale,
+or to the locale represented by
+<I>locale</I>,
+
+respectively. On error,
+<I>wcscoll</I>()
+and
+<I>wcscoll_l</I>()
+shall set
+<I>errno</I>,
+
+but no return value is reserved to indicate an error.
+<A NAME="lbAG">&nbsp;</A>
+<H2>ERRORS</H2>
+
+These functions may fail if:
+<DL COMPACT>
+<DT><B>EINVAL</B>
+
+<DD>
+The
+<I>ws1</I>
+
+or
+<I>ws2</I>
+
+arguments contain wide-character codes outside the domain of the
+collating sequence.
+</DL>
+<P>
+
+<I>The following sections are informative.</I>
+
+<A NAME="lbAH">&nbsp;</A>
+<H2>EXAMPLES</H2>
+
+None.
+<A NAME="lbAI">&nbsp;</A>
+<H2>APPLICATION USAGE</H2>
+
+The
+<I>wcsxfrm</I>()
+and
+<I>wcscmp</I>()
+functions should be used for sorting large lists.
+<A NAME="lbAJ">&nbsp;</A>
+<H2>RATIONALE</H2>
+
+None.
+<A NAME="lbAK">&nbsp;</A>
+<H2>FUTURE DIRECTIONS</H2>
+
+None.
+<A NAME="lbAL">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+<I>wcscmp</I>(),
+
+<I>wcsxfrm</I>()
+
+<P>
+
+The Base Definitions volume of POSIX.1-2008,
+<I></I><B>&lt;<A HREF="file:///usr/include/wchar.h">wchar.h</A>&gt;</B>
+
+<A NAME="lbAM">&nbsp;</A>
+<H2>COPYRIGHT</H2>
+
+Portions of this text are reprinted and reproduced in electronic form
+from IEEE Std 1003.1, 2013 Edition, Standard for Information Technology
+-- Portable Operating System Interface (POSIX), The Open Group Base
+Specifications Issue 7, Copyright (C) 2013 by the Institute of
+Electrical and Electronics Engineers, Inc and The Open Group.
+(This is POSIX.1-2008 with the 2013 Technical Corrigendum 1 applied.) In the
+event of any discrepancy between this version and the original IEEE and
+The Open Group Standard, the original IEEE and The Open Group Standard
+is the referee document. The original Standard can be obtained online at
+<A HREF="http://www.unix.org/online.html">http://www.unix.org/online.html</A> .
+<P>
+Any typographical or formatting errors that appear
+in this page are most likely
+to have been introduced during the conversion of the source files to
+man page format. To report such errors, see
+<A HREF="https://www.kernel.org/doc/man-pages/reporting_bugs.html">https://www.kernel.org/doc/man-pages/reporting_bugs.html</A> .
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">PROLOG</A><DD>
+<DT><A HREF="#lbAC">NAME</A><DD>
+<DT><A HREF="#lbAD">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAE">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAF">RETURN VALUE</A><DD>
+<DT><A HREF="#lbAG">ERRORS</A><DD>
+<DT><A HREF="#lbAH">EXAMPLES</A><DD>
+<DT><A HREF="#lbAI">APPLICATION USAGE</A><DD>
+<DT><A HREF="#lbAJ">RATIONALE</A><DD>
+<DT><A HREF="#lbAK">FUTURE DIRECTIONS</A><DD>
+<DT><A HREF="#lbAL">SEE ALSO</A><DD>
+<DT><A HREF="#lbAM">COPYRIGHT</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 14:28:56 GMT, February 25, 2017
+</BODY>
+</HTML>

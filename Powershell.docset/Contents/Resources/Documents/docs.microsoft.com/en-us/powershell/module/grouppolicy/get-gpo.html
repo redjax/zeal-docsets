@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html class="no-js hasSidebar hasPageActions hasBreadcrumb conceptual" data-authenticated="false" data-render="docs" dir="ltr" lang="en-us">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Get-GPO (grouppolicy)" property="og:title"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" property="og:image"/>
+  <meta content="summary" name="twitter:card"/>
+  <meta content="@docsmsft" name="twitter:site"/>
+  <meta content="Get-GPO (grouppolicy)" name="twitter:title"/>
+  <meta content="Use this topic to help manage Windows and Windows Server technologies with Windows PowerShell." name="twitter:description"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" name="twitter:image"/>
+  <meta content="Microsoft Logo" name="twitter:image:alt"/>
+  <meta content="Use this topic to help manage Windows and Windows Server technologies with Windows PowerShell." name="description"/>
+  <meta content="Docs" name="search.ms_sitename"/>
+  <meta content="powershell-windows" name="search.ms_docsetname"/>
+  <meta content="0" name="version"/>
+  <meta content="en-us" name="locale"/>
+  <meta content="Docs" name="site_name"/>
+  <meta content="MSDN" name="search.ms_product"/>
+  <meta content="MSDN.powershell-windows" name="depot_name"/>
+  <meta content="https://cpubwin.visualstudio.com/DefaultCollection/powershell/_git/powershell/commit/ced7757924addcaea0b7a244ae4d240e4d28d93a?path=%2fdocset%2fwindows%2fgrouppolicy%2fget-gpo.md&amp;_a=contents" name="ref_skeleton_gitcommit"/>
+  <meta content="https://cpubwin.visualstudio.com/DefaultCollection/powershell/_git/powershell?path=%2fdocset%2fwindows%2fgrouppolicy%2fget-gpo.md&amp;version=GBlive&amp;_a=contents" name="original_ref_skeleton_git_url"/>
+  <meta content="2017-09-15 03:44 AM" name="updated_at"/>
+  <meta content="e4b1b069-1d92-d783-ba1c-7f18f3a501ec" name="document_id"/>
+  <meta content="9ab7a246-fa1f-bd55-a9a9-bb48fba59738" name="document_version_independent_id"/>
+  <meta content="powershell" name="page_type"/>
+  <meta content="command" name="page_kind"/>
+  <meta content="manage" name="ms.mktglfcycl"/>
+  <meta content="library" name="ms.sitesec"/>
+  <meta content="brianlic" name="ms.author"/>
+  <meta content="brianlic-msft" name="author"/>
+  <meta content="Microsoft.GroupPolicy.Commands.dll-Help.xml" name="external_help_file"/>
+  <meta content="powershell, cmdlet" name="keywords"/>
+  <meta content="alanth" name="manager"/>
+  <meta content="12/20/2016" name="ms.date"/>
+  <meta content="w10" name="ms.prod"/>
+  <meta content="powershell-windows" name="ms.technology"/>
+  <meta content="reference" name="ms.topic"/>
+  <meta content="" name="online_version"/>
+  <meta content="2.0.0" name="schema"/>
+  <meta content="C19D7D52-EF72-44E3-AC03-FD5B401769D1" name="ms.assetid"/>
+  <meta content="powershell" name="ms.devlang"/>
+  <meta content="INDEX, FOLLOW" name="ROBOTS"/>
+  <meta content="/powershell/windows/bread/toc.json?view=win10-ps" name="breadcrumb_path"/>
+  <meta content="powershell" name="apiPlatform"/>
+  <meta content="MSDocsHeader-WindowsIT" name="uhfHeaderId"/>
+  <meta content="../win10-ps/toc.json?view=win10-ps" name="toc_rel"/>
+  <link href="https://docs.microsoft.com/en-us/powershell/module/grouppolicy/get-gpo" rel="canonical"/>
+  <title>
+   Get-GPO
+  </title>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/e4a1f3a3.site.css" rel="stylesheet"/>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/31353636.conceptual.css" rel="stylesheet"/>
+ </head>
+ <body dir="ltr" lang="en-us">
+  <div class="header-holder">
+   <div data-bi-name="header" id="headerAreaHolder">
+    <div id="uhf-placeholder">
+    </div>
+   </div>
+   <div class="disclaimer-holder" id="disclaimer-holder">
+   </div>
+  </div>
+  <div class="container mainContainer" data-bi-name="body">
+   <div class="content-header" data-bi-name="content-header">
+    <div class="content-header-controls">
+     <button class="contents-button button-border" data-bi-name="contents-expand" type="button">
+      <span class="docon docon-menu">
+      </span>
+      Contents
+     </button>
+    </div>
+    <div class="content-header-controls">
+     <button class="ap-collapse-behavior ap-expanded button-border" data-bi-name="ap-collapse" type="button">
+      <span class="docon docon-exit-mode">
+      </span>
+      Exit focus mode
+     </button>
+    </div>
+   </div>
+   <div class="primary-holder">
+    <main class="content" data-bi-name="content" dir="ltr" id="main" lang="en-us" role="main">
+     <!-- <content> -->
+     <h1>
+      Get-GPO
+     </h1>
+     <div class="metadata">
+      <dl class="attributeList">
+       <dt>
+        Module:
+       </dt>
+       <dd>
+        <a data-linktype="relative-path" href="./.html">
+         grouppolicy
+        </a>
+       </dd>
+      </dl>
+     </div>
+     <div class="summaryHolder">
+      <div class="summary">
+       Gets one GPO or all the GPOs in a domain.
+      </div>
+     </div>
+     <h2 class="hiddenAnchor" id="syntax">
+      Syntax
+     </h2>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Get-GPO
+   [-Guid] &lt;Guid&gt;
+   [[-Domain] &lt;String&gt;]
+   [[-Server] &lt;String&gt;]
+   [-All]
+   [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Get-GPO
+   [-Name] &lt;String&gt;
+   [[-Domain] &lt;String&gt;]
+   [[-Server] &lt;String&gt;]
+   [-All]
+   [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Get-GPO
+   [[-Domain] &lt;String&gt;]
+   [[-Server] &lt;String&gt;]
+   [-All]
+   [&lt;CommonParameters&gt;]</code></pre>
+     <h2 id="description">
+      Description
+     </h2>
+     <p>
+      The
+      <strong>
+       Get-GPO
+      </strong>
+      cmdlet gets one Group Policy Object (GPO) or all the GPOs in a domain.
+You can specify a GPO by its display name or by its globally unique identifier (GUID) to get a single GPO, or you can get all the GPOs in the domain through the
+      <em>
+       All
+      </em>
+      parameter.
+     </p>
+     <p>
+      This cmdlet returns one or more objects that represent the requested GPOs.
+By default, properties of the requested GPOs are printed to the display; however, you can also pipe the output of the
+      <strong>
+       Get-GPO
+      </strong>
+      cmdlet to other Group Policy cmdlets.
+     </p>
+     <h2 id="examples">
+      Examples
+     </h2>
+     <p>
+      <strong>
+       Example 1: Get a single GPO from a domain
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-GPO -Name "Group Policy Test" 
+DisplayName      : Group Policy Test 
+
+DomainName       : contoso.com 
+
+Owner            : CONTOSO\Domain Admins 
+
+Id               : 31a09564-cd4a-4520-98fa-446a2af23b4b 
+
+GpoStatus        : AllSettingsEnabled 
+
+Description      : 
+
+CreationTime     : 2/26/2009 12:15:42 AM 
+
+ModificationTime : 2/26/2009 12:15:42 AM 
+
+UserVersion      : AD Version: 0, SysVol Version: 0 
+
+ComputerVersion  : AD Version: 0, SysVol Version: 0 
+
+WmiFilter        :</code></pre>
+     <p>
+      This command gets the GPO named Group Policy Test.
+The GPO must exist in the domain of the user that is running the session (or, for startup and shutdown scripts, the computer).
+The command gets the GPO information by contacting the primary domain controller (PDC).
+     </p>
+     <p>
+      <strong>
+       Example 2: Get a single GPO by GUID
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-GPO -Guid 31a09564-cd4a-4520-98fa-446a2af23b4b -Domain "sales.contoso.com"
+DisplayName      : Group Policy Test 
+
+DomainName       : sales.contoso.com 
+
+Owner            : SALES\Domain Admins 
+
+Id               : 31a09564-cd4a-4520-98fa-446a2af23b4b 
+
+GpoStatus        : AllSettingsEnabled 
+
+Description      : 
+
+CreationTime     : 2/26/2009 12:15:42 AM 
+
+ModificationTime : 2/26/2009 12:15:42 AM 
+
+UserVersion      : AD Version: 0, SysVol Version: 0 
+
+ComputerVersion  : AD Version: 0, SysVol Version: 0 
+
+WmiFilter        :</code></pre>
+     <p>
+      This command gets the GPO that has the ID (GUID) 331a09564-cd4a-4520-98fa-446a2af23b4b in the sales.contoso.com domain.
+If the domain of the user that is running the session (or, for startup and shutdown scripts, the computer) is different that sales.contoso.com, a trust must exist between the two domains.
+The command retrieves the GPO information by contacting the PDC (in the sales.contoso.com domain).
+     </p>
+     <p>
+      <strong>
+       Example 3: Get all GPOs from a domain
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-GPO -All -Domain "sales.contoso.com"</code></pre>
+     <p>
+      This command get all the GPOs in the sales.contoso.com domain.
+     </p>
+     <h2 id="required-parameters">
+      Required Parameters
+     </h2>
+     <div class="parameterName stack">
+      -Guid
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the GPO to retrieve by its globally unique identifier (GUID).
+The GUID uniquely identifies the GPO.
+      </p>
+      <p>
+       You can also refer to the
+       <em>
+        Guid
+       </em>
+       parameter by its built-in alias, id.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Guid
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         Id
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         0
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Name
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the GPO to retrieve by its display name.
+      </p>
+      <p>
+       The display name is not guaranteed to be unique in the domain.
+If another GPO with the same display name exists in the domain an error occurs.
+You can use the Guid parameter to uniquely identify a GPO.
+      </p>
+      <p>
+       You can also refer to the
+       <em>
+        Name
+       </em>
+       parameter by its built-in alias, displayname.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         DisplayName
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         0
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByValue)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="optional-parameters">
+      Optional Parameters
+     </h2>
+     <div class="parameterName stack">
+      -All
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that the cmdlet gets all the GPOs in the domain.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Domain
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the domain for this cmdlet.
+You must specify the fully qualified domain name (FQDN) of the domain.
+      </p>
+      <p>
+       For the
+       <strong>
+        Get-GPO
+       </strong>
+       cmdlet, the GPO (or GPOs) to that this cmdlet gets must exist in this domain.
+      </p>
+      <p>
+       If you do not specify the
+       <em>
+        Domain
+       </em>
+       parameter, the domain of the user that is running the current session is used.
+If the cmdlet is being run from a computer startup or shutdown script, the domain of the computer is used.
+For more information, see the Notes section in the full Help.
+      </p>
+      <p>
+       If you specify a domain that is different from the domain of the user that is running the current session (or, for a startup or shutdown script, the computer), a trust must exist between that domain and the domain of the user or the computer.
+      </p>
+      <p>
+       You can also refer to the
+       <em>
+        Domain
+       </em>
+       parameter by its built-in alias, domainname.
+For more information, see about_Aliases.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         DomainName
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         1
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Server
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the name of the domain controller that this cmdlet contacts to complete the operation.
+You can specify either the fully qualified domain name (FQDN) or the host name.
+      </p>
+      <p>
+       If you do not specify the name by using the Server parameter, the primary domain controller (PDC) emulator is contacted.
+      </p>
+      <p>
+       You can also refer to the Server parameter by its built-in alias, dc.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         DC
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         2
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="inputs">
+      Inputs
+     </h2>
+     <p>
+      <strong>
+       Microsoft.GroupPolicy.Gpo
+      </strong>
+     </p>
+     <p>
+      You can pipe a GPO for which to get information to this cmdlet.
+You can pipe GPO objects into this cmdlet to display information about the GPOs.
+Collections that contain GPOs from different domains are not supported.
+     </p>
+     <h2 id="outputs">
+      Outputs
+     </h2>
+     <p>
+      <strong>
+       Microsoft.GroupPolicy.Gpo
+      </strong>
+     </p>
+     <p>
+      This cmdlet returns an object that represents the requested GPO.
+     </p>
+     <h2 id="notes">
+      Notes
+     </h2>
+     <ul>
+      <li>
+       <p>
+        You can use the
+        <em>
+         Domain
+        </em>
+        parameter to explicitly specify the domain for this cmdlet.
+       </p>
+       <p>
+        If you do not explicitly specify the domain, the cmdlet uses a default domain.
+The default domain is the domain that is used to access network resources by the security context under which the current session is running.
+This domain is typically the domain of the user that is running the session.
+For example, the domain of the user who started the session by opening Windows PowerShell from the Program Files menu, or the domain of a user that is specified in a runas command.
+However, computer startup and shutdown scripts run under the context of the LocalSystem account.
+The LocalSystem account is a built-in local account, and it accesses network resources under the context of the computer account.
+Therefore, when this cmdlet is run from a startup or shutdown script, the default domain is the domain to which the computer is joined.
+       </p>
+       <p>
+        Only one domain can be used by an instance of this cmdlet.
+If you pipe a collection of GPO (Microsoft.GroupPolicy.Gpo) objects to this cmdlet, the DomainName property of the first GPO object in the collection specifies the domain for the cmdlet.
+This is because domainname is a built-in alias for the
+        <em>
+         Domain
+        </em>
+        parameter, and the
+        <em>
+         Domain
+        </em>
+        parameter can take its value by property name from the pipeline.
+A non-terminating error occurs for any GPOs in the collection that are not in this domain.
+If this domain is different from the domain of the user account (for startup or shutdown scripts, the computer account), a trust must exist between the two domains.
+       </p>
+      </li>
+     </ul>
+     <h2 id="related-links">
+      Related Links
+     </h2>
+     <ul>
+      <li>
+       <a data-linktype="relative-path" href="./backup-gpo.html">
+        Backup-GPO
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="./copy-gpo.html">
+        Copy-GPO
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="./import-gpo.html">
+        Import-GPO
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="./new-gpo.html">
+        New-GPO
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="./remove-gpo.html">
+        Remove-GPO
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="./rename-gpo.html">
+        Rename-GPO
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="./restore-gpo.html">
+        Restore-GPO
+       </a>
+      </li>
+     </ul>
+     <!-- </content> -->
+    </main>
+    <section class="feedback-section" data-bi-name="feedback-section">
+     <h2 id="feedback">
+      Feedback
+     </h2>
+     <div class="alert choose-feedback-type">
+      <p>
+       We'd love to hear your thoughts. Choose the type you'd like to provide:
+      </p>
+      <div class="choose-feedback-buttons">
+       <a class="button-border feedback-type-product" data-bi-name="product-feedback" href="https://windowsserver.uservoice.com/forums/301869-powershell">
+        Product feedback
+        <span aria-hidden="true" class="docon docon-navigate-external">
+        </span>
+       </a>
+       <div class="button-group">
+        <button class="button-border feedback-sign-in-button" data-bi-name="feedback-sign-in">
+         <span aria-hidden="true" class="docon docon-brand-github">
+         </span>
+         Sign in to give documentation feedback
+        </button>
+        <button aria-controls="feedback-form" aria-expanded="false" class="button-border feedback-form-toggle" data-bi-name="documentation-feedback" hidden="">
+         Content feedback
+        </button>
+        <div auto-align="" class="dropdown has-caret">
+         <button aria-controls="fbm0" aria-expanded="false" aria-haspopup="true" aria-label="Expand documentation feedback menu" class="button-border dropdown-trigger" data-bi-name="documentation-feedback-menu">
+          <span aria-hidden="true" class="docon docon-chevron-down-light">
+          </span>
+         </button>
+         <div class="dropdown-menu documentation-feedback-menu" id="fbm0" role="menu">
+          You may also leave feedback
+          <a data-bi-name="create-issue-on-github" href="{0}">
+           directly on GitHub
+           <span aria-hidden="true" class="docon docon-navigate-external">
+           </span>
+          </a>
+          .
+         </div>
+        </div>
+       </div>
+      </div>
+      <p>
+       <small>
+        Our new feedback system is built on GitHub Issues. Read about this change in
+        <a href="https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs">
+         our blog post
+        </a>
+        .
+       </small>
+      </p>
+     </div>
+     <form accept-charset="UTF-8" action="javascript:" autocomplete="off" class="feedback-form" hidden="" id="feedback-form">
+      <h3 class="feedback-form-heading current-user">
+       <img alt="Avatar" aria-hidden="true" class="avatar" height="36" width="36"/>
+       <span aria-hidden="true" class="username">
+       </span>
+       <span class="visually-hidden">
+        Liquid error: Can't find the localized string giveDocumentationFeedback for template Conceptual.
+       </span>
+      </h3>
+      <label>
+       <span class="visually-hidden">
+        Title
+       </span>
+       <input name="title" pattern=".*\w.*" placeholder="Title" required="" type="text"/>
+      </label>
+      <label>
+       <span class="visually-hidden">
+        Leave a comment
+       </span>
+       <textarea name="body" placeholder="Leave a comment" required=""></textarea>
+      </label>
+      <div class="action-container">
+       <button class="primary-action" name="submit" type="submit">
+        Submit feedback
+       </button>
+      </div>
+     </form>
+     <div class="feedback-status alert busy" role="alert">
+      <p>
+       Loading feedback...
+      </p>
+     </div>
+     <div class="feedback-tab-group tabGroup" data-tab-group-independent="" hidden="">
+      <ul role="tablist">
+       <li role="presentation">
+        <a aria-controls="tabpanel-issues-open" aria-label="Open Issues" data-tab="issues-open" href="#tabpanel-issues-open" role="tab">
+        </a>
+       </li>
+       <li role="presentation">
+        <a aria-controls="tabpanel-issues-closed" aria-label="Closed Issues" data-tab="issues-closed" href="#tabpanel-issues-closed" role="tab">
+        </a>
+       </li>
+      </ul>
+      <section data-tab="issues-open" id="tabpanel-issues-open" role="tabpanel">
+       <div class="no-issues-placeholder">
+        There are no open issues
+       </div>
+       <ul aria-label="Open Issues" class="github-issues-list">
+       </ul>
+      </section>
+      <section data-tab="issues-closed" id="tabpanel-issues-closed" role="tabpanel">
+       <div class="no-issues-placeholder">
+        There are no closed issues
+       </div>
+       <ul aria-label="Closed Issues" class="github-issues-list">
+       </ul>
+      </section>
+     </div>
+     <div class="action-container">
+      <a class="view-on-github" data-bi-name="view-on-github" hidden="" href="https://github.com/MicrosoftDocs/windows-powershell-docs/issues">
+       <span aria-hidden="true" class="docon docon-brand-github">
+       </span>
+       <span>
+        View on GitHub
+       </span>
+       <span aria-hidden="true" class="docon docon-navigate-external">
+       </span>
+      </a>
+     </div>
+    </section>
+   </div>
+  </div>
+  <div class="openfeedback-container" id="openFeedbackContainer">
+  </div>
+  <div class="action-panel">
+  </div>
+ </body>
+</html>

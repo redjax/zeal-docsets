@@ -1,0 +1,187 @@
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML><HEAD><TITLE>Man page of nl_types.h</TITLE>
+</HEAD><BODY>
+<H1>nl_types.h</H1>
+Section: POSIX Programmer's Manual (0P)<BR>Updated: 2013<BR><A HREF="#index">Index</A>
+<A HREF="../index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>PROLOG</H2>
+
+This manual page is part of the POSIX Programmer's Manual.
+The Linux implementation of this interface may differ (consult
+the corresponding Linux manual page for details of Linux behavior),
+or the interface may not be implemented on Linux.
+<P>
+<A NAME="lbAC">&nbsp;</A>
+<H2>NAME</H2>
+
+nl_types.h
+--- data types
+<A NAME="lbAD">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<P>
+
+<PRE>
+#include &lt;<A HREF="file:///usr/include/nl_types.h">nl_types.h</A>&gt;
+</PRE>
+
+<A NAME="lbAE">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+The
+<I>&lt;<A HREF="file:///usr/include/nl_types.h">nl_types.h</A>&gt;</I>
+
+header shall define at least the following types:
+<DL COMPACT>
+<DT><B>nl_catd</B><DD>
+Used by the message catalog functions
+<I>catopen</I>(),
+<I>catgets</I>(),
+and
+<I>catclose</I>()
+to identify a catalog descriptor.
+<DT><B>nl_item</B><DD>
+Used by
+<I>nl_langinfo</I>()
+to identify items of
+<I>langinfo</I>
+
+data. Values of objects of type
+<B>nl_item</B>
+
+are defined in
+<I>&lt;<A HREF="file:///usr/include/langinfo.h">langinfo.h</A>&gt;</I>.
+
+</DL>
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/nl_types.h">nl_types.h</A>&gt;</I>
+
+header shall define at least the following symbolic constants:
+<DL COMPACT>
+<DT>NL_SETD<DD>
+Used by
+<I>gencat</I>
+
+when no $<I>set</I> directive is specified in a message text source
+file. This constant can be passed as the value of
+<I>set_id</I>
+
+on subsequent calls to
+<I>catgets</I>()
+(that is, to retrieve messages from the default message set). The
+value of NL_SETD is implementation-defined.
+<DT>NL_CAT_LOCALE<DD>
+Value that must be passed as the
+<I>oflag</I>
+
+argument to
+<I>catopen</I>()
+to ensure that message catalog selection depends on the
+<I>LC_MESSAGES</I>
+
+locale category, rather than directly on the
+<I>LANG</I>
+
+environment variable.
+</DL>
+<P>
+
+The following shall be declared as functions and may also be defined as
+macros. Function prototypes shall be provided.
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+int       catclose(nl_catd);
+char     *catgets(nl_catd, int, int, const char *);
+nl_catd   catopen(const char *, int);
+</B></PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+<I>The following sections are informative.</I>
+
+<A NAME="lbAF">&nbsp;</A>
+<H2>APPLICATION USAGE</H2>
+
+None.
+<A NAME="lbAG">&nbsp;</A>
+<H2>RATIONALE</H2>
+
+None.
+<A NAME="lbAH">&nbsp;</A>
+<H2>FUTURE DIRECTIONS</H2>
+
+None.
+<A NAME="lbAI">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+<I></I><B>&lt;<A HREF="file:///usr/include/langinfo.h">langinfo.h</A>&gt;</B>
+
+<P>
+
+The System Interfaces volume of POSIX.1-2008,
+<I>catclose</I>(),
+
+<I>catgets</I>(),
+
+<I>catopen</I>(),
+
+<I>nl_langinfo</I>()
+
+<P>
+
+The Shell and Utilities volume of POSIX.1-2008,
+<I>gencat</I>
+
+<A NAME="lbAJ">&nbsp;</A>
+<H2>COPYRIGHT</H2>
+
+Portions of this text are reprinted and reproduced in electronic form
+from IEEE Std 1003.1, 2013 Edition, Standard for Information Technology
+-- Portable Operating System Interface (POSIX), The Open Group Base
+Specifications Issue 7, Copyright (C) 2013 by the Institute of
+Electrical and Electronics Engineers, Inc and The Open Group.
+(This is POSIX.1-2008 with the 2013 Technical Corrigendum 1 applied.) In the
+event of any discrepancy between this version and the original IEEE and
+The Open Group Standard, the original IEEE and The Open Group Standard
+is the referee document. The original Standard can be obtained online at
+<A HREF="http://www.unix.org/online.html">http://www.unix.org/online.html</A> .
+<P>
+Any typographical or formatting errors that appear
+in this page are most likely
+to have been introduced during the conversion of the source files to
+man page format. To report such errors, see
+<A HREF="https://www.kernel.org/doc/man-pages/reporting_bugs.html">https://www.kernel.org/doc/man-pages/reporting_bugs.html</A> .
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">PROLOG</A><DD>
+<DT><A HREF="#lbAC">NAME</A><DD>
+<DT><A HREF="#lbAD">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAE">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAF">APPLICATION USAGE</A><DD>
+<DT><A HREF="#lbAG">RATIONALE</A><DD>
+<DT><A HREF="#lbAH">FUTURE DIRECTIONS</A><DD>
+<DT><A HREF="#lbAI">SEE ALSO</A><DD>
+<DT><A HREF="#lbAJ">COPYRIGHT</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 14:28:43 GMT, February 25, 2017
+</BODY>
+</HTML>

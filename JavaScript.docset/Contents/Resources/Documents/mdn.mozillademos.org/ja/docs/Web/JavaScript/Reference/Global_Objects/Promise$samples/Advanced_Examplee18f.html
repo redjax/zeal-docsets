@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    
+<!-- Mirrored from mdn.mozillademos.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise$samples/Advanced_Example?revision=1509069 by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 02 May 2019 01:21:28 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+        <meta charset="utf-8">
+        <link href="../../../../../../../../developer.mozilla.org/static/build/styles/samples.37902ba3b7fe.css" rel="stylesheet" type="text/css" />
+        
+        <title>Promise</title>
+    </head>
+    <body>
+        
+            <button id="btn">Make a promise!</button>
+<div id="log"></div>
+
+        
+        
+            <script>
+                'use strict';
+var promiseCount = 0;
+
+function testPromise() {
+    let thisPromiseCount = ++promiseCount;
+
+    let log = document.getElementById('log');
+    log.insertAdjacentHTML('beforeend', thisPromiseCount +
+        ') 開始 (<small>同期処理開始</small>)<br/>');
+
+    // 新しい Promise を作成: 1～3秒後に結果を返すことを約束します
+    let p1 = new Promise(
+        // executor 関数は Promise の成功または失敗に応じて呼ばれます
+       (resolve, reject) => {
+            log.insertAdjacentHTML('beforeend', thisPromiseCount +
+                ') Promise 開始 (<small>非同期処理開始</small>)<br/>');
+            // 非同期を作成するための一例です
+            window.setTimeout(
+                function() {
+                    // 約束を果たしました!
+                    resolve(thisPromiseCount);
+                }, Math.random() * 2000 + 1000);
+        }
+    );
+
+    // Promise が成功した時に何をするかを定めます then() で成功した時
+    // catch() で失敗した時
+    p1.then(
+        // メッセージと値を記録します
+        function(val) {
+            log.insertAdjacentHTML('beforeend', val +
+                ') Promise 成功 (<small>非同期処理終了</small>)<br/>');
+        }).catch(
+        // 失敗した理由を記録します
+       (reason) => {
+            console.log('Handle rejected promise ('+reason+') here.');
+        });
+
+    log.insertAdjacentHTML('beforeend', thisPromiseCount +
+        ') Promise は作成されました (<small>同期処理終了</small>)<br/>');
+} if ("Promise" in window) {
+  let btn = document.getElementById("btn");
+  btn.addEventListener("click",testPromise);
+} else {
+  log = document.getElementById('log');
+  log.innerHTML = "Live example not available as your browser doesn't support the <code>Promise<code> interface.";
+}
+
+            </script>
+        
+    </body>
+
+<!-- Mirrored from mdn.mozillademos.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise$samples/Advanced_Example?revision=1509069 by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 02 May 2019 01:21:28 GMT -->
+</html>

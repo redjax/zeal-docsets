@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    
+<!-- Mirrored from mdn.mozillademos.org/en-US/docs/Web/API/GlobalEventHandlers/onmousemove$samples/Tooltips?revision=1528683 by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 02 May 2019 00:10:53 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+        <meta charset="utf-8">
+        <link href="../../../../../../../developer.mozilla.org/static/build/styles/samples.37902ba3b7fe.css" rel="stylesheet" type="text/css" />
+        
+        <style type="text/css">
+            .tooltip {
+  position: absolute;
+  z-index: 9999;
+  padding: 6px;
+  background: #ffd;
+  border: 1px #886 solid;
+  border-radius: 5px;
+}
+        </style>
+        
+        <title>GlobalEventHandlers.onmousemove</title>
+    </head>
+    <body>
+        
+            <p><a href="#" data-tooltip="First link">See a tooltip here &hellip;</a></p>
+<p><a href="#" data-tooltip="Second link">&hellip; or here!</a></p>
+        
+        
+            <script>
+                const tooltip = new (function() {
+  const node = document.createElement('div');
+  node.className = 'tooltip';
+  node.setAttribute('hidden', '');
+  document.body.appendChild(node);
+
+  this.follow = function(event) {
+    node.style.left = event.clientX + 20 + 'px';
+    node.style.top = event.clientY + 10 + 'px';
+  };
+
+  this.show = function(event) {
+    node.textContent = event.target.dataset.tooltip;
+    node.removeAttribute('hidden');
+  };
+
+  this.hide = function() {
+    node.setAttribute('hidden', '');
+  };
+})();
+
+const links = document.querySelectorAll('a');
+
+links.forEach(link => {
+  link.onmouseover = tooltip.show;
+  link.onmousemove = tooltip.follow;
+  link.onmouseout = tooltip.hide;
+});
+            </script>
+        
+    </body>
+
+<!-- Mirrored from mdn.mozillademos.org/en-US/docs/Web/API/GlobalEventHandlers/onmousemove$samples/Tooltips?revision=1528683 by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 02 May 2019 00:10:53 GMT -->
+</html>

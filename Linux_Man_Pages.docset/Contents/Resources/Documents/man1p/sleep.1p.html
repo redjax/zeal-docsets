@@ -1,0 +1,300 @@
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML><HEAD><TITLE>Man page of SLEEP</TITLE>
+</HEAD><BODY>
+<H1>SLEEP</H1>
+Section: POSIX Programmer's Manual (1P)<BR>Updated: 2013<BR><A HREF="#index">Index</A>
+<A HREF="../index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>PROLOG</H2>
+
+This manual page is part of the POSIX Programmer's Manual.
+The Linux implementation of this interface may differ (consult
+the corresponding Linux manual page for details of Linux behavior),
+or the interface may not be implemented on Linux.
+<P>
+<A NAME="lbAC">&nbsp;</A>
+<H2>NAME</H2>
+
+sleep
+--- suspend execution for an interval
+<A NAME="lbAD">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<P>
+
+<PRE>
+sleep <I>time</I>
+</PRE>
+
+<A NAME="lbAE">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+The
+<I>sleep</I>
+
+utility shall suspend execution for at least the integral number of
+seconds specified by the
+<I>time</I>
+
+operand.
+<A NAME="lbAF">&nbsp;</A>
+<H2>OPTIONS</H2>
+
+None.
+<A NAME="lbAG">&nbsp;</A>
+<H2>OPERANDS</H2>
+
+The following operand shall be supported:
+<DL COMPACT>
+<DT><I>time</I><DD>
+A non-negative decimal integer specifying the number of seconds for
+which to suspend execution.
+</DL>
+<A NAME="lbAH">&nbsp;</A>
+<H2>STDIN</H2>
+
+Not used.
+<A NAME="lbAI">&nbsp;</A>
+<H2>INPUT FILES</H2>
+
+None.
+<A NAME="lbAJ">&nbsp;</A>
+<H2>ENVIRONMENT VARIABLES</H2>
+
+The following environment variables shall affect the execution of
+<I>sleep</I>:
+
+<DL COMPACT>
+<DT><I>LANG</I><DD>
+Provide a default value for the internationalization variables that are
+unset or null. (See the Base Definitions volume of POSIX.1-2008,
+<I>Section 8.2</I>, <I>Internationalization Variables</I>
+
+for the precedence of internationalization variables used to determine
+the values of locale categories.)
+<DT><I>LC_ALL</I><DD>
+If set to a non-empty string value, override the values of all the
+other internationalization variables.
+<DT><I>LC_CTYPE</I><DD>
+Determine the locale for the interpretation of sequences of bytes of
+text data as characters (for example, single-byte as opposed to
+multi-byte characters in arguments).
+<DT><I>LC_MESSAGES</I><DD>
+<BR>
+
+Determine the locale that should be used to affect the format and
+contents of diagnostic messages written to standard error.
+<DT><I>NLSPATH</I><DD>
+Determine the location of message catalogs for the processing of
+<I>LC_MESSAGES</I>.
+
+</DL>
+<A NAME="lbAK">&nbsp;</A>
+<H2>ASYNCHRONOUS EVENTS</H2>
+
+If the
+<I>sleep</I>
+
+utility receives a SIGALRM signal, one of the following actions shall
+be taken:
+<DL COMPACT>
+<DT> 1.<DD>
+Terminate normally with a zero exit status.
+<DT> 2.<DD>
+Effectively ignore the signal.
+<DT> 3.<DD>
+Provide the default behavior for signals described in the ASYNCHRONOUS
+EVENTS section of
+<I>Section 1.4</I>, <I>Utility Description Defaults.</I>
+
+This could include terminating with a non-zero exit status.
+</DL>
+<P>
+
+The
+<I>sleep</I>
+
+utility shall take the standard action for all other signals.
+<A NAME="lbAL">&nbsp;</A>
+<H2>STDOUT</H2>
+
+Not used.
+<A NAME="lbAM">&nbsp;</A>
+<H2>STDERR</H2>
+
+The standard error shall be used only for diagnostic messages.
+<A NAME="lbAN">&nbsp;</A>
+<H2>OUTPUT FILES</H2>
+
+None.
+<A NAME="lbAO">&nbsp;</A>
+<H2>EXTENDED DESCRIPTION</H2>
+
+None.
+<A NAME="lbAP">&nbsp;</A>
+<H2>EXIT STATUS</H2>
+
+The following exit values shall be returned:
+<DL COMPACT>
+<DT>&nbsp;0<DD>
+The execution was successfully suspended for at least
+<I>time</I>
+
+seconds, or a SIGALRM signal was received. See the ASYNCHRONOUS EVENTS
+section.
+<DT>&gt;0<DD>
+An error occurred.
+</DL>
+<A NAME="lbAQ">&nbsp;</A>
+<H2>CONSEQUENCES OF ERRORS</H2>
+
+Default.
+<P>
+
+<I>The following sections are informative.</I>
+
+<A NAME="lbAR">&nbsp;</A>
+<H2>APPLICATION USAGE</H2>
+
+None.
+<A NAME="lbAS">&nbsp;</A>
+<H2>EXAMPLES</H2>
+
+The
+<I>sleep</I>
+
+utility can be used to execute a command after a certain amount of
+time, as in:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+(sleep 105; </B><I>command</I>) &amp;
+</PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+or to execute a command every so often, as in:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+while true
+do
+    </B><I>command</I>
+    sleep 37
+done
+</PRE>
+
+<P>
+
+</DL>
+
+<A NAME="lbAT">&nbsp;</A>
+<H2>RATIONALE</H2>
+
+The exit status is allowed to be zero when
+<I>sleep</I>
+
+is interrupted by the SIGALRM signal because most implementations of
+this utility rely on the arrival of that signal to notify them that the
+requested finishing time has been successfully attained. Such
+implementations thus do not distinguish this situation from the
+successful completion case. Other implementations are allowed to catch
+the signal and go back to sleep until the requested time expires or to
+provide the normal signal termination procedures.
+<P>
+
+As with all other utilities that take integral operands and do not
+specify subranges of allowed values,
+<I>sleep</I>
+
+is required by this volume of POSIX.1-2008 to deal with
+<I>time</I>
+
+requests of up to 2147483647 seconds. This may mean that some
+implementations have to make multiple calls to the delay mechanism of
+the underlying operating system if its argument range is less than
+this.
+<A NAME="lbAU">&nbsp;</A>
+<H2>FUTURE DIRECTIONS</H2>
+
+None.
+<A NAME="lbAV">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+<I>wait</I>
+
+<P>
+
+The Base Definitions volume of POSIX.1-2008,
+<I>Chapter 8</I>, <I>Environment Variables</I>
+
+<P>
+
+The System Interfaces volume of POSIX.1-2008,
+<I>alarm</I>(),
+
+<I>sleep</I>()
+
+<A NAME="lbAW">&nbsp;</A>
+<H2>COPYRIGHT</H2>
+
+Portions of this text are reprinted and reproduced in electronic form
+from IEEE Std 1003.1, 2013 Edition, Standard for Information Technology
+-- Portable Operating System Interface (POSIX), The Open Group Base
+Specifications Issue 7, Copyright (C) 2013 by the Institute of
+Electrical and Electronics Engineers, Inc and The Open Group.
+(This is POSIX.1-2008 with the 2013 Technical Corrigendum 1 applied.) In the
+event of any discrepancy between this version and the original IEEE and
+The Open Group Standard, the original IEEE and The Open Group Standard
+is the referee document. The original Standard can be obtained online at
+<A HREF="http://www.unix.org/online.html">http://www.unix.org/online.html</A> .
+<P>
+Any typographical or formatting errors that appear
+in this page are most likely
+to have been introduced during the conversion of the source files to
+man page format. To report such errors, see
+<A HREF="https://www.kernel.org/doc/man-pages/reporting_bugs.html">https://www.kernel.org/doc/man-pages/reporting_bugs.html</A> .
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">PROLOG</A><DD>
+<DT><A HREF="#lbAC">NAME</A><DD>
+<DT><A HREF="#lbAD">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAE">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAF">OPTIONS</A><DD>
+<DT><A HREF="#lbAG">OPERANDS</A><DD>
+<DT><A HREF="#lbAH">STDIN</A><DD>
+<DT><A HREF="#lbAI">INPUT FILES</A><DD>
+<DT><A HREF="#lbAJ">ENVIRONMENT VARIABLES</A><DD>
+<DT><A HREF="#lbAK">ASYNCHRONOUS EVENTS</A><DD>
+<DT><A HREF="#lbAL">STDOUT</A><DD>
+<DT><A HREF="#lbAM">STDERR</A><DD>
+<DT><A HREF="#lbAN">OUTPUT FILES</A><DD>
+<DT><A HREF="#lbAO">EXTENDED DESCRIPTION</A><DD>
+<DT><A HREF="#lbAP">EXIT STATUS</A><DD>
+<DT><A HREF="#lbAQ">CONSEQUENCES OF ERRORS</A><DD>
+<DT><A HREF="#lbAR">APPLICATION USAGE</A><DD>
+<DT><A HREF="#lbAS">EXAMPLES</A><DD>
+<DT><A HREF="#lbAT">RATIONALE</A><DD>
+<DT><A HREF="#lbAU">FUTURE DIRECTIONS</A><DD>
+<DT><A HREF="#lbAV">SEE ALSO</A><DD>
+<DT><A HREF="#lbAW">COPYRIGHT</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 14:28:45 GMT, February 25, 2017
+</BODY>
+</HTML>

@@ -1,0 +1,3046 @@
+<!DOCTYPE html>
+<html class="no-js hasSidebar hasPageActions hasBreadcrumb conceptual" data-authenticated="false" data-render="docs" dir="ltr" lang="en-us">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Invoke-WebRequest (Microsoft.PowerShell.Utility)" property="og:title"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" property="og:image"/>
+  <meta content="summary" name="twitter:card"/>
+  <meta content="@docsmsft" name="twitter:site"/>
+  <meta content="Invoke-WebRequest (Microsoft.PowerShell.Utility)" name="twitter:title"/>
+  <meta content="The Invoke-WebRequest cmdlet sends HTTP and HTTPS requests to a web page or web service. It parses the response and returns collections of links, images, and other significant HTML elements. This cmdâ¦" name="twitter:description"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" name="twitter:image"/>
+  <meta content="Microsoft Logo" name="twitter:image:alt"/>
+  <meta content="The Invoke-WebRequest cmdlet sends HTTP and HTTPS requests to a web page or web service. It parses the response and returns collections of links, images, and other significant HTML elements. This cmdâ¦" name="description"/>
+  <meta content="Docs" name="search.ms_sitename"/>
+  <meta content="PowerShell_PowerShell-docs_reference" name="search.ms_docsetname"/>
+  <meta content="0" name="version"/>
+  <meta content="en-us" name="locale"/>
+  <meta content="Docs" name="site_name"/>
+  <meta content="PowerShell" name="search.ms_product"/>
+  <meta content="PowerShell.PowerShell_PowerShell-docs_reference" name="depot_name"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/1c458f9edf96584689f56e4b12d0dc2c8420f905/reference/6/Microsoft.PowerShell.Utility/Invoke-WebRequest.md" name="ref_skeleton_gitcommit"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/live/reference/6/Microsoft.PowerShell.Utility/Invoke-WebRequest.md" name="original_ref_skeleton_git_url"/>
+  <meta content="2018-04-09 11:01 PM" name="updated_at"/>
+  <meta content="1103bfa9-3680-14bb-2992-b992ff3c2297" name="document_id"/>
+  <meta content="fea87b3b-67e8-dbe5-dfb3-d60a5ebe0d39" name="document_version_independent_id"/>
+  <meta content="powershell" name="page_type"/>
+  <meta content="command" name="page_kind"/>
+  <meta content="11/17/2017" name="ms.date"/>
+  <meta content="2.0.0" name="schema"/>
+  <meta content="powershell,cmdlet" name="keywords"/>
+  <meta content="http://go.microsoft.com/fwlink/?LinkId=821826" name="online_version"/>
+  <meta content="Microsoft.PowerShell.Commands.Utility.dll-Help.xml" name="external_help_file"/>
+  <meta content="powershell" name="ms.devlang"/>
+  <meta content="INDEX, FOLLOW" name="ROBOTS"/>
+  <meta content="sdwheeler" name="author"/>
+  <meta content="sewhee" name="ms.author"/>
+  <meta content="carmonm" name="manager"/>
+  <meta content="/powershell/bread-pscore/toc.yml?view=powershell-6" name="breadcrumb_path"/>
+  <meta content="powershell" name="apiPlatform"/>
+  <meta content="reference" name="ms.topic"/>
+  <meta content="windows, macos, linux" name="ms.tgt_pltfr"/>
+  <meta content="powershell-scripting" name="ms.technology"/>
+  <meta content="powershell" name="ms.prod"/>
+  <meta content="MSDocsHeader-Powershell" name="uhfHeaderId"/>
+  <meta content="../psdocs/toc.json?view=powershell-6" name="toc_rel"/>
+  <link href="https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/invoke-webrequest" rel="canonical"/>
+  <title>
+   Invoke-WebRequest
+  </title>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/60aac04b.site.css" rel="stylesheet"/>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/fdb8a38a.conceptual.css" rel="stylesheet"/>
+ </head>
+ <body dir="ltr" lang="en-us">
+  <div class="header-holder">
+   <div data-bi-name="header" id="headerAreaHolder">
+    <div id="uhf-placeholder">
+    </div>
+   </div>
+   <div class="disclaimer-holder" id="disclaimer-holder">
+   </div>
+  </div>
+  <div class="container mainContainer" data-bi-name="body">
+   <div class="content-header" data-bi-name="content-header">
+    <div class="content-header-controls">
+     <button class="contents-button button-border" data-bi-name="contents-expand" type="button">
+      <span class="docon docon-menu">
+      </span>
+      Contents
+     </button>
+    </div>
+    <div class="content-header-controls">
+     <button class="ap-collapse-behavior ap-expanded button-border" data-bi-name="ap-collapse" type="button">
+      <span class="docon docon-exit-mode">
+      </span>
+      Exit focus mode
+     </button>
+    </div>
+   </div>
+   <div class="primary-holder">
+    <main class="content" data-bi-name="content" dir="ltr" id="main" lang="en-us" role="main">
+     <!-- <content> -->
+     <h1>
+      Invoke-Web
+      <wbr/>
+      Request
+     </h1>
+     <div class="metadata">
+      <dl class="attributeList">
+       <dt>
+        Module:
+       </dt>
+       <dd>
+        <a data-linktype="relative-path" href="./Microsoft.PowerShell.Utility.html">
+         Microsoft.PowerShell.Utility
+        </a>
+       </dd>
+      </dl>
+     </div>
+     <div class="summaryHolder">
+      <div class="summary">
+       Gets content from a web page on the Internet.
+      </div>
+     </div>
+     <h2 class="hiddenAnchor" id="syntax">
+      Syntax
+     </h2>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Invoke-WebRequest
+      [-UseBasicParsing]
+      [-Uri] &lt;Uri&gt;
+      [-WebSession &lt;WebRequestSession&gt;]
+      [-SessionVariable &lt;String&gt;]
+      [-AllowUnencryptedAuthentication]
+      [-Authentication &lt;WebAuthenticationType&gt;]
+      [-Credential &lt;PSCredential&gt;]
+      [-UseDefaultCredentials]
+      [-CertificateThumbprint &lt;String&gt;]
+      [-Certificate &lt;X509Certificate&gt;]
+      [-SkipCertificateCheck]
+      [-SslProtocol &lt;WebSslProtocol&gt;]
+      [-Token &lt;SecureString&gt;]
+      [-UserAgent &lt;String&gt;]
+      [-DisableKeepAlive]
+      [-TimeoutSec &lt;Int32&gt;]
+      [-Headers &lt;IDictionary&gt;]
+      [-MaximumRedirection &lt;Int32&gt;]
+      [-Method &lt;WebRequestMethod&gt;]
+      [-Proxy &lt;Uri&gt;]
+      [-ProxyCredential &lt;PSCredential&gt;]
+      [-ProxyUseDefaultCredentials]
+      [-Body &lt;Object&gt;]
+      [-ContentType &lt;String&gt;]
+      [-TransferEncoding &lt;String&gt;]
+      [-InFile &lt;String&gt;]
+      [-OutFile &lt;String&gt;]
+      [-PassThru]
+      [-PreserveAuthorizationOnRedirect]
+      [-SkipHeaderValidation]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Invoke-WebRequest
+      [-UseBasicParsing]
+      [-Uri] &lt;Uri&gt;
+      [-WebSession &lt;WebRequestSession&gt;]
+      [-SessionVariable &lt;String&gt;]
+      [-AllowUnencryptedAuthentication]
+      [-Authentication &lt;WebAuthenticationType&gt;]
+      [-Credential &lt;PSCredential&gt;]
+      [-UseDefaultCredentials]
+      [-CertificateThumbprint &lt;String&gt;]
+      [-Certificate &lt;X509Certificate&gt;]
+      [-SkipCertificateCheck]
+      [-SslProtocol &lt;WebSslProtocol&gt;]
+      [-Token &lt;SecureString&gt;]
+      [-UserAgent &lt;String&gt;]
+      [-DisableKeepAlive]
+      [-TimeoutSec &lt;Int32&gt;]
+      [-Headers &lt;IDictionary&gt;]
+      [-MaximumRedirection &lt;Int32&gt;]
+      [-Method &lt;WebRequestMethod&gt;]
+      [-NoProxy]
+      [-Body &lt;Object&gt;]
+      [-ContentType &lt;String&gt;]
+      [-TransferEncoding &lt;String&gt;]
+      [-InFile &lt;String&gt;]
+      [-OutFile &lt;String&gt;]
+      [-PassThru]
+      [-PreserveAuthorizationOnRedirect]
+      [-SkipHeaderValidation]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Invoke-WebRequest
+      [-UseBasicParsing]
+      [-Uri] &lt;Uri&gt;
+      [-WebSession &lt;WebRequestSession&gt;]
+      [-SessionVariable &lt;String&gt;]
+      [-AllowUnencryptedAuthentication]
+      [-Authentication &lt;WebAuthenticationType&gt;]
+      [-Credential &lt;PSCredential&gt;]
+      [-UseDefaultCredentials]
+      [-CertificateThumbprint &lt;String&gt;]
+      [-Certificate &lt;X509Certificate&gt;]
+      [-SkipCertificateCheck]
+      [-SslProtocol &lt;WebSslProtocol&gt;]
+      [-Token &lt;SecureString&gt;]
+      [-UserAgent &lt;String&gt;]
+      [-DisableKeepAlive]
+      [-TimeoutSec &lt;Int32&gt;]
+      [-Headers &lt;IDictionary&gt;]
+      [-MaximumRedirection &lt;Int32&gt;]
+      -CustomMethod &lt;String&gt;
+      [-Proxy &lt;Uri&gt;]
+      [-ProxyCredential &lt;PSCredential&gt;]
+      [-ProxyUseDefaultCredentials]
+      [-Body &lt;Object&gt;]
+      [-ContentType &lt;String&gt;]
+      [-TransferEncoding &lt;String&gt;]
+      [-InFile &lt;String&gt;]
+      [-OutFile &lt;String&gt;]
+      [-PassThru]
+      [-PreserveAuthorizationOnRedirect]
+      [-SkipHeaderValidation]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Invoke-WebRequest
+      [-UseBasicParsing]
+      [-Uri] &lt;Uri&gt;
+      [-WebSession &lt;WebRequestSession&gt;]
+      [-SessionVariable &lt;String&gt;]
+      [-AllowUnencryptedAuthentication]
+      [-Authentication &lt;WebAuthenticationType&gt;]
+      [-Credential &lt;PSCredential&gt;]
+      [-UseDefaultCredentials]
+      [-CertificateThumbprint &lt;String&gt;]
+      [-Certificate &lt;X509Certificate&gt;]
+      [-SkipCertificateCheck]
+      [-SslProtocol &lt;WebSslProtocol&gt;]
+      [-Token &lt;SecureString&gt;]
+      [-UserAgent &lt;String&gt;]
+      [-DisableKeepAlive]
+      [-TimeoutSec &lt;Int32&gt;]
+      [-Headers &lt;IDictionary&gt;]
+      [-MaximumRedirection &lt;Int32&gt;]
+      -CustomMethod &lt;String&gt;
+      [-NoProxy]
+      [-Body &lt;Object&gt;]
+      [-ContentType &lt;String&gt;]
+      [-TransferEncoding &lt;String&gt;]
+      [-InFile &lt;String&gt;]
+      [-OutFile &lt;String&gt;]
+      [-PassThru]
+      [-PreserveAuthorizationOnRedirect]
+      [-SkipHeaderValidation]</code></pre>
+     <h2 id="description">
+      Description
+     </h2>
+     <p>
+      The
+      <code>
+       Invoke-WebRequest
+      </code>
+      cmdlet sends HTTP and HTTPS requests to a web page or web service.
+It parses the response and returns collections of links, images, and other significant HTML elements.
+     </p>
+     <p>
+      This cmdlet was introduced in PowerShell 3.0.
+     </p>
+     <h2 id="examples">
+      Examples
+     </h2>
+     <p>
+      <strong>
+       Example 1: Use a stateful web service
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">$Body = @{
+
+    User = 'jdoe'
+
+    password = 'P@S$w0rd!'
+
+}
+
+$LoginResponse = Invoke-WebRequest 'http://www.contoso.com/login/' -SessionVariable 'Session' -Body $Body -Method 'POST'
+
+
+
+$Session
+
+
+
+$ProfileResponse = Invoke-WebRequest 'http://www.contoso.com/profile/' -WebSession $Session
+
+
+
+$ProfileResponse</code></pre>
+     <p>
+      This example shows how to use the
+      <code>
+       Invoke-WebRequest
+      </code>
+      cmdlet with a stateful web service.
+     </p>
+     <p>
+      The first call to
+      <code>
+       Invoke-WebRequest
+      </code>
+      sends a sign-in request. The command specifies a value of "Session" for the value of the
+      <strong>
+       -SessionVariable
+      </strong>
+      parameter, and saves the result in the
+      <code>
+       $LoginResponse
+      </code>
+      variable. When the command completes, the
+      <code>
+       $LoginResponse
+      </code>
+      variable contains an
+      <code>
+       BasicHtmlWebResponseObject
+      </code>
+      and the
+      <code>
+       $Session
+      </code>
+      variable contains a
+      <code>
+       WebRequestSession
+      </code>
+      object. This logs the user into the site.
+     </p>
+     <p>
+      The call to
+      <code>
+       $Session
+      </code>
+      by itself shows the
+      <code>
+       WebRequestSession
+      </code>
+      object in the variable.
+     </p>
+     <p>
+      The second call to
+      <code>
+       Invoke-WebRequest
+      </code>
+      fetches the user's profile which requires that the user be logged into the site. The session data stored in the
+      <code>
+       $Session
+      </code>
+      variable is used to provide session cookies to the site created during the login. The result is saved in the
+      <code>
+       $ProfileResponse
+      </code>
+      variable.
+     </p>
+     <p>
+      The call to
+      <code>
+       $ProfileResponse
+      </code>
+      by itself shows the
+      <code>
+       BasicHtmlWebResponseObject
+      </code>
+      in the variable.
+     </p>
+     <p>
+      <strong>
+       Example 2: Get links from a web page
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">(Invoke-WebRequest -Uri "https://aka.ms/pscore6-docs").Links.Href</code></pre>
+     <p>
+      This command gets the links in a web page.
+It uses the
+      <code>
+       Invoke-WebRequest
+      </code>
+      cmdlet to get the web page content.
+Then it users the
+      <strong>
+       Links
+      </strong>
+      property of the
+      <code>
+       BasicHtmlWebResponseObject
+      </code>
+      that
+      <code>
+       Invoke-WebRequest
+      </code>
+      returns, and the Href property of each link.
+     </p>
+     <p>
+      <strong>
+       Example 3: Writes the response content to a file using the encoding defined in the requested page.
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">$Response = Invoke-WebRequest -Uri "https://aka.ms/pscore6-docs"
+
+$Stream = [System.IO.StreamWriter]::new('.\docspage.html', $false, $Response.Encoding)
+
+try {
+
+    $Stream.Write($response.Content)
+
+}
+
+finally {
+
+    $Stream.Dispose()
+
+}</code></pre>
+     <p>
+      This command uses the
+      <code>
+       Invoke-WebRequest
+      </code>
+      cmdlet to retrieve the web page content of an msdn page.
+     </p>
+     <p>
+      The first command retrieves the page and saves the response object in a variable.
+     </p>
+     <p>
+      The second command creates a
+      <code>
+       StreamWriter
+      </code>
+      to use to write the response content to a file. The
+      <strong>
+       Encoding
+      </strong>
+      property of the response object is used to set the encoding for the file.
+     </p>
+     <p>
+      The final few commands write the
+      <strong>
+       Content
+      </strong>
+      property to the file then disposes the
+      <code>
+       StreamWriter
+      </code>
+      .
+     </p>
+     <p>
+      Note that the
+      <strong>
+       Encoding
+      </strong>
+      property will be null if the web request does not return text content.
+     </p>
+     <p>
+      <strong>
+       Example 4: Submit a multipart/form-data file
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">$FilePath = 'c:\document.txt'
+
+$FieldName = 'document'
+
+$ContentType = 'text/plain'
+
+
+
+$FileStream = [System.IO.FileStream]::new($filePath, [System.IO.FileMode]::Open)
+
+$FileHeader = [System.Net.Http.Headers.ContentDispositionHeaderValue]::new('form-data')
+
+$FileHeader.Name = $FieldName
+
+$FileHeader.FileName = Split-Path -leaf $FilePath
+
+$FileContent = [System.Net.Http.StreamContent]::new($FileStream)
+
+$FileContent.Headers.ContentDisposition = $FileHeader
+
+$FileContent.Headers.ContentType = [System.Net.Http.Headers.MediaTypeHeaderValue]::Parse($ContentType)
+
+
+
+$MultipartContent = [System.Net.Http.MultipartFormDataContent]::new()
+
+$MultipartContent.Add($FileContent)
+
+
+
+$Response = Invoke-WebRequest -Body $MultipartContent -Method 'POST' -Uri 'https://api.contoso.com/upload'</code></pre>
+     <p>
+      This example uses the
+      <code>
+       Invoke-WebRequest
+      </code>
+      cmdlet upload a file as a
+      <code>
+       multipart/form-data
+      </code>
+      submission. The file
+      <code>
+       c:\document.txt
+      </code>
+      will be submitted as the form field
+      <code>
+       document
+      </code>
+      with the
+      <code>
+       Content-Type
+      </code>
+      of
+      <code>
+       text/plain
+      </code>
+      .
+     </p>
+     <h2 id="required-parameters">
+      Required Parameters
+     </h2>
+     <div class="parameterName stack">
+      -CustomMethod
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies custom method used for the web request. This can be used with the Request Method required by the endpoint is not an available option on the
+       <strong>
+        -Method
+       </strong>
+       .
+       <strong>
+        -Method
+       </strong>
+       and
+       <strong>
+        -CustomMethod
+       </strong>
+       cannot be used together.
+      </p>
+      <p>
+       Example:
+      </p>
+      <p>
+       Invoke-WebRequest -uri '
+       <a data-linktype="external" href="https://api.contoso.com/widget/">
+        https://api.contoso.com/widget/
+       </a>
+       ' -CustomMethod 'TEST'
+      </p>
+      <p>
+       This makes a
+       <code>
+        TEST
+       </code>
+       HTTP request to the API.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         CM
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -NoProxy
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that the cmdlet will not use a proxy to reach the destination.
+      </p>
+      <p>
+       When you need to bypass the proxy configured in the environment, use this switch.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Uri
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the Uniform Resource Identifier (URI) of the Internet resource to which the web request is sent.
+Enter a URI.
+This parameter supports HTTP or HTTPS only.
+      </p>
+      <p>
+       This parameter is required.
+The parameter name (
+       <strong>
+        -Uri
+       </strong>
+       ) is optional.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Uri
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         1
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="optional-parameters">
+      Optional Parameters
+     </h2>
+     <div class="parameterName stack">
+      -AllowUnencryptedAuthentication
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Allows sending of credentials and secrets over unencrypted connections. By default, supplying
+       <strong>
+        -Credential
+       </strong>
+       or any
+       <strong>
+        -Authentication
+       </strong>
+       option with a
+       <strong>
+        -Uri
+       </strong>
+       that does not begin with
+       <code>
+        https://
+       </code>
+       will result in an error and the request will abort to prevent unintentionally communicating secrets in plain text over unencrypted connections. To override this behavior at your own risk, supply the
+       <strong>
+        -AllowUnencryptedAuthentication
+       </strong>
+       parameter.
+      </p>
+      <blockquote>
+       <p>
+        <strong>
+         Warning
+        </strong>
+        : Using this parameter is not secure and is not recommended. It is provided only for compatibility with legacy systems that cannot provide encrypted connections. Use at your own risk.
+       </p>
+      </blockquote>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Authentication
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the explicit authentication type to use for the request. The default is
+       <strong>
+        None
+       </strong>
+       .
+       <strong>
+        -Authentication
+       </strong>
+       cannot be used with
+       <strong>
+        -UseDefaultCredentials
+       </strong>
+       .
+      </p>
+      <p>
+       Available Authentication Options:
+      </p>
+      <ul>
+       <li>
+        <strong>
+         None
+        </strong>
+        : This is the default option when
+        <strong>
+         -Authentication
+        </strong>
+        is not supplied. No explicit authentication will be used.
+       </li>
+       <li>
+        <strong>
+         Basic
+        </strong>
+        : Requires
+        <strong>
+         -Credential
+        </strong>
+        . The credentials will be used to send an RFC 7617 Basic Authentication
+        <code>
+         Authorization: Basic
+        </code>
+        header in the format of
+        <code>
+         base64(user:password)
+        </code>
+        .
+       </li>
+       <li>
+        <strong>
+         Bearer
+        </strong>
+        : Requires
+        <strong>
+         -Token
+        </strong>
+        . Will send and RFC 6750
+        <code>
+         Authorization: Bearer
+        </code>
+        header with the supplied token. This is an alias for
+        <strong>
+         OAuth
+        </strong>
+       </li>
+       <li>
+        <strong>
+         OAuth
+        </strong>
+        : Requires
+        <strong>
+         -Token
+        </strong>
+        . Will send and RFC 6750
+        <code>
+         Authorization: Bearer
+        </code>
+        header with the supplied token. This is an alias for
+        <strong>
+         Bearer
+        </strong>
+       </li>
+      </ul>
+      <p>
+       Supplying
+       <strong>
+        -Authentication
+       </strong>
+       will override any
+       <code>
+        Authorization
+       </code>
+       headers supplied to
+       <strong>
+        -Headers
+       </strong>
+       or included in
+       <strong>
+        -WebSession
+       </strong>
+       .
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          WebAuthenticationType
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Parameter Sets:
+        </td>
+        <td>
+         None, Basic, Bearer, OAuth
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Body
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the body of the request.
+The body is the content of the request that follows the headers.
+You can also pipe a body value to
+       <code>
+        Invoke-WebRequest
+       </code>
+       .
+      </p>
+      <p>
+       The
+       <strong>
+        -Body
+       </strong>
+       parameter can be used to specify a list of query parameters or specify the content of the response.
+      </p>
+      <p>
+       When the input is a GET request and the body is an
+       <code>
+        IDictionary
+       </code>
+       (typically, a hash table), the body is added to the URI as query parameters.
+For other request types (such as POST), the body is set as the value of the request body in the standard name=value format.
+      </p>
+      <p>
+       The
+       <strong>
+        -Body
+       </strong>
+       parameter may also accept a
+       <code>
+        System.Net.Http.MultipartFormDataContent
+       </code>
+       object. This will facilitate
+       <code>
+        multipart/form-data
+       </code>
+       requests. When a
+       <code>
+        MultipartFormDataContent
+       </code>
+       object is supplied for
+       <strong>
+        -Body
+       </strong>
+       , any Content related headers supplied to the
+       <strong>
+        -ContentType
+       </strong>
+       ,
+       <strong>
+        -Headers
+       </strong>
+       , or
+       <strong>
+        -WebSession
+       </strong>
+       parameters will be overridden by the Content headers of the
+       <code>
+        MultipartFormDataContent
+       </code>
+       object.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Object
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByValue)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Certificate
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the client certificate that is used for a secure web request.
+Enter a variable that contains a certificate or a command or expression that gets the certificate.
+      </p>
+      <p>
+       To find a certificate, use
+       <code>
+        Get-PfxCertificate
+       </code>
+       or use the
+       <code>
+        Get-ChildItem
+       </code>
+       cmdlet in the Certificate (
+       <code>
+        Cert:
+       </code>
+       ) drive.
+If the certificate is not valid or does not have sufficient authority, the command fails.
+      </p>
+      <blockquote>
+       <p>
+        <strong>
+         Note
+        </strong>
+        : This feature may not work on OS platforms where
+        <code>
+         libcurl
+        </code>
+        is configured with a TLS provider other than OpenSSL.
+       </p>
+      </blockquote>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          X509Certificate
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -CertificateThumbprint
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the digital public key certificate (X509) of a user account that has permission to send the request.
+Enter the certificate thumbprint of the certificate.
+      </p>
+      <p>
+       Certificates are used in client certificate-based authentication.
+They can be mapped only to local user accounts; they do not work with domain accounts.
+      </p>
+      <p>
+       To get a certificate thumbprint, use the
+       <code>
+        Get-Item
+       </code>
+       or
+       <code>
+        Get-ChildItem
+       </code>
+       command in the PowerShell
+       <code>
+        Cert:
+       </code>
+       drive.
+      </p>
+      <blockquote>
+       <p>
+        Note: This feature is currently only supported on Windows OS platforms.
+       </p>
+      </blockquote>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -ContentType
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the content type of the web request.
+      </p>
+      <p>
+       If this parameter is omitted and the request method is POST,
+       <code>
+        Invoke-WebRequest
+       </code>
+       sets the content type to
+       <code>
+        application/x-www-form-urlencoded
+       </code>
+       .
+Otherwise, the content type is not specified in the call.
+      </p>
+      <p>
+       <strong>
+        -ContentType
+       </strong>
+       will be overridden when a
+       <code>
+        MultipartFormDataContent
+       </code>
+       object is supplied for
+       <strong>
+        -Body
+       </strong>
+       .
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Credential
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a user account that has permission to send the request.
+The default is the current user.
+      </p>
+      <p>
+       Type a user name, such as "User01", "Domain01\User01", "User01@Domain.com", or enter a
+       <code>
+        PSCredential
+       </code>
+       object, such as one generated by the
+       <code>
+        Get-Credential
+       </code>
+       cmdlet.
+      </p>
+      <p>
+       <strong>
+        -Credential
+       </strong>
+       can be used alone or in conjunction with certain
+       <strong>
+        -Authentication
+       </strong>
+       options. When used alone, it will only supply credentials to the remote server if the remote server
+sends an authentication challenge request. When used with
+       <strong>
+        -Authentication
+       </strong>
+       options, the credentials will be explicitly sent.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          PSCredential
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -DisableKeepAlive
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that the cmdlet sets the
+       <strong>
+        KeepAlive
+       </strong>
+       value in the HTTP header to False.
+By default,
+       <strong>
+        KeepAlive
+       </strong>
+       is True.
+       <strong>
+        KeepAlive
+       </strong>
+       establishes a persistent connection to the server to facilitate subsequent requests.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Headers
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the headers of the web request.
+Enter a hash table or dictionary.
+      </p>
+      <p>
+       To set UserAgent headers, use the
+       <strong>
+        -UserAgent
+       </strong>
+       parameter.
+You cannot use this parameter to specify
+       <code>
+        User-Agent
+       </code>
+       or cookie headers.
+      </p>
+      <p>
+       Content related headers, such as
+       <code>
+        Content-Type
+       </code>
+       will be overridden when a
+       <code>
+        MultipartFormDataContent
+       </code>
+       object is supplied for
+       <strong>
+        -Body
+       </strong>
+       .
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          IDictionary
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -InFile
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Gets the content of the web request from a file.
+      </p>
+      <p>
+       Enter a path and file name.
+If you omit the path, the default is the current location.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -MaximumRedirection
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies how many times PowerShell redirects a connection to an alternate Uniform Resource Identifier (URI) before the connection fails.
+The default value is 5.
+A value of 0 (zero) prevents all redirection.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Int32
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Method
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the method used for the web request.
+The acceptable values for this parameter are:
+      </p>
+      <ul>
+       <li>
+        Default
+       </li>
+       <li>
+        Delete
+       </li>
+       <li>
+        Get
+       </li>
+       <li>
+        Head
+       </li>
+       <li>
+        Merge
+       </li>
+       <li>
+        Options
+       </li>
+       <li>
+        Patch
+       </li>
+       <li>
+        Post
+       </li>
+       <li>
+        Put
+       </li>
+       <li>
+        Trace
+       </li>
+      </ul>
+      <p>
+       The
+       <strong>
+        -CustomMethod
+       </strong>
+       parameter can be used for Request Methods not listed above.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          WebRequestMethod
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Parameter Sets:
+        </td>
+        <td>
+         Default, Get, Head, Post, Put, Delete, Trace, Options, Merge, Patch
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -OutFile
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the output file for which this cmdlet saves the response body.
+Enter a path and file name.
+If you omit the path, the default is the current location.
+      </p>
+      <p>
+       By default,
+       <code>
+        Invoke-WebRequest
+       </code>
+       returns the results to the pipeline.
+To send the results to a file and to the pipeline, use the
+       <strong>
+        -Passthru
+       </strong>
+       parameter.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -PassThru
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that the cmdlet returns the results, in addition to writing them to a file.
+This parameter is valid only when the
+       <strong>
+        -OutFile
+       </strong>
+       parameter is also used in the command.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -PreserveAuthorizationOnRedirect
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates the cmdlet should preserve the
+       <code>
+        Authorization
+       </code>
+       header, when present, across redirections.
+      </p>
+      <p>
+       By default, the cmdlet strips the
+       <code>
+        Authorization
+       </code>
+       header before redirecting. Specifying this parameter disables this logic for cases where the header needs to be sent to the redirection location.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Proxy
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a proxy server for the request, rather than connecting directly to the Internet resource.
+Enter the URI of a network proxy server.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Uri
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -ProxyCredential
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a user account that has permission to use the proxy server that is specified by the
+       <strong>
+        -Proxy
+       </strong>
+       parameter.
+The default is the current user.
+      </p>
+      <p>
+       Type a user name, such as "User01" or "Domain01\User01", "User@Domain.Com", or enter a
+       <code>
+        PSCredential
+       </code>
+       object, such as one generated by the
+       <code>
+        Get-Credential
+       </code>
+       cmdlet.
+      </p>
+      <p>
+       This parameter is valid only when the
+       <strong>
+        -Proxy
+       </strong>
+       parameter is also used in the command.
+You cannot use the
+       <strong>
+        -ProxyCredential
+       </strong>
+       and
+       <strong>
+        -ProxyUseDefaultCredentials
+       </strong>
+       parameters in the same command.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          PSCredential
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -ProxyUseDefaultCredentials
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that the cmdlet uses the credentials of the current user to access the proxy server that is specified by the
+       <strong>
+        -Proxy
+       </strong>
+       parameter.
+      </p>
+      <p>
+       This parameter is valid only when the
+       <strong>
+        -Proxy
+       </strong>
+       parameter is also used in the command.
+You cannot use the
+       <strong>
+        -ProxyCredential
+       </strong>
+       and
+       <strong>
+        -ProxyUseDefaultCredentials
+       </strong>
+       parameters in the same command.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -SessionVariable
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a variable for which this cmdlet creates a web request session and saves it in the value.
+Enter a variable name without the dollar sign (
+       <code>
+        $
+       </code>
+       ) symbol.
+      </p>
+      <p>
+       When you specify a session variable,
+       <code>
+        Invoke-WebRequest
+       </code>
+       creates a web request session object and assigns it to a variable with the specified name in your PowerShell session.
+You can use the variable in your session as soon as the command completes.
+      </p>
+      <p>
+       Unlike a remote session, the web request session is not a persistent connection.
+It is an object that contains information about the connection and the request, including cookies, credentials, the maximum redirection value, and the user agent string.
+You can use it to share state and data among web requests.
+      </p>
+      <p>
+       To use the web request session in subsequent web requests, specify the session variable in the value of the
+       <strong>
+        -WebSession
+       </strong>
+       parameter.
+PowerShell uses the data in the web request session object when establishing the new connection.
+To override a value in the web request session, use a cmdlet parameter, such as
+       <strong>
+        -UserAgent
+       </strong>
+       or
+       <strong>
+        -Credential
+       </strong>
+       .
+Parameter values take precedence over values in the web request session.
+      </p>
+      <p>
+       You cannot use the
+       <strong>
+        -SessionVariable
+       </strong>
+       and
+       <strong>
+        -WebSession
+       </strong>
+       parameters in the same command.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         SV
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -SkipCertificateCheck
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Skips certificate validation checks. This includes all validations such as expiration, revocation, trusted root authority, etc.
+      </p>
+      <blockquote>
+       <p>
+        <strong>
+         Warning
+        </strong>
+        : Using this parameter is not secure and is not recommended. This switch is only intended to be used against known hosts using a self-signed certificate for testing purposes. Use at your own risk.
+       </p>
+      </blockquote>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -SkipHeaderValidation
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates the cmdlet should add headers to the request without validation.
+      </p>
+      <p>
+       This switch should be used for sites that require header values that do not conform to standards. Specifying this switch disables validation to allow the value to be passed unchecked.  When specified, all headers are added without validation.
+      </p>
+      <p>
+       This will disable validation for values passed to both the
+       <strong>
+        -Headers
+       </strong>
+       and
+       <strong>
+        -UserAgent
+       </strong>
+       parameters.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -SslProtocol
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Sets the SSL/TLS protocols that are permissible for the web request. By default all, SSL/TLS protocols supported by the system are allowed.
+       <strong>
+        -SslProtocol
+       </strong>
+       allows for limiting to specific protocols for compliance purposes.
+      </p>
+      <p>
+       <strong>
+        -SslProtocol
+       </strong>
+       uses the
+       <code>
+        WebSslProtocol
+       </code>
+       Flag Enum. It is possible to supply more than one protocol using flag notation or combining multiple
+       <code>
+        WebSslProtocol
+       </code>
+       options with
+       <code>
+        -bor
+       </code>
+       , however supplying multiple protocols is not supported on all platforms.
+      </p>
+      <blockquote>
+       <p>
+        <strong>
+         Note
+        </strong>
+        : This feature may not work on OS platforms where
+        <code>
+         libcurl
+        </code>
+        is configured with a TLS provider other than OpenSSL.
+       </p>
+      </blockquote>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          WebSslProtocol
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Parameter Sets:
+        </td>
+        <td>
+         Default, Tls, Tls11, Tls12
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -TimeoutSec
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies how long the request can be pending before it times out.
+Enter a value in seconds.
+The default value, 0, specifies an indefinite time-out.
+      </p>
+      <p>
+       A Domain Name System (DNS) query can take up to 15 seconds to return or time out.
+If your request contains a host name that requires resolution, and you set
+       <strong>
+        -TimeoutSec
+       </strong>
+       to a value greater than zero, but less than 15 seconds, it can take 15 seconds or more before a WebException is thrown, and your request times out.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Int32
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Token
+     </div>
+     <div class="parameterInfo">
+      <p>
+       The OAuth or Bearer token to include in the request.
+       <strong>
+        -Token
+       </strong>
+       is required by certain
+       <strong>
+        -Authentication
+       </strong>
+       options. It cannot be used independently.
+      </p>
+      <p>
+       <strong>
+        -Token
+       </strong>
+       takes a
+       <code>
+        SecureString
+       </code>
+       containing the token. To supply the token manually use the following:
+      </p>
+      <p>
+       Invoke-WebRequest -Uri $uri -Authentication OAuth -Token (Read-Host -AsSecureString)
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SecureString
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -TransferEncoding
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a value for the transfer-encoding HTTP response header.
+The acceptable values for this parameter are:
+      </p>
+      <ul>
+       <li>
+        Chunked
+       </li>
+       <li>
+        Compress
+       </li>
+       <li>
+        Deflate
+       </li>
+       <li>
+        GZip
+       </li>
+       <li>
+        Identity
+       </li>
+      </ul>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Parameter Sets:
+        </td>
+        <td>
+         chunked, compress, deflate, gzip, identity
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -UseBasicParsing
+     </div>
+     <div class="parameterInfo">
+      <p>
+       This parameter has been deprecated. Beginning with PowerShell 6.0.0, all Web requests use basic parsing only. This parameter is included for backwards compatibility only and any use of it will have no effect on the operation of the cmdlet.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -UseDefaultCredentials
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that the cmdlet uses the credentials of the current user to send the web request. This cannot be used with
+       <strong>
+        -Authentication
+       </strong>
+       or
+       <strong>
+        -Credential
+       </strong>
+       and may not be supported on all platforms.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -UserAgent
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a user agent string for the web request.
+      </p>
+      <p>
+       The default user agent is similar to
+       <code>
+        Mozilla/5.0 (Windows NT 10.0; Microsoft Windows 10.0.15063; en-US) PowerShell/6.0.0
+       </code>
+       with slight variations for each operating system and platform.
+      </p>
+      <p>
+       To test a website with the standard user agent string that is used by most Internet browsers, use the properties of the
+       <a data-linktype="external" href="http://msdn.microsoft.com/library/windows/desktop/hh484857(v=vs.85)">
+        PSUserAgent
+       </a>
+       class, such as Chrome, FireFox, InternetExplorer, Opera, and Safari.
+      </p>
+      <p>
+       For example, the following command uses the user agent string for Internet Explorer
+      </p>
+      <p>
+       Invoke-WebRequest -Uri
+       <a data-linktype="external" href="http://website.com/">
+        http://website.com/
+       </a>
+       -UserAgent ([Microsoft.PowerShell.Commands.PSUserAgent]::InternetExplorer)
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -WebSession
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a web request session.
+Enter the variable name, including the dollar sign (
+       <code>
+        $
+       </code>
+       ).
+      </p>
+      <p>
+       To override a value in the web request session, use a cmdlet parameter, such as
+       <strong>
+        -UserAgent
+       </strong>
+       or
+       <strong>
+        -Credential
+       </strong>
+       .
+Parameter values take precedence over values in the web request session. Content related headers, such as
+       <code>
+        Content-Type
+       </code>
+       , will be also be overridden when a
+       <code>
+        MultipartFormDataContent
+       </code>
+       object is supplied for
+       <strong>
+        -Body
+       </strong>
+       .
+      </p>
+      <p>
+       Unlike a remote session, the web request session is not a persistent connection.
+It is an object that contains information about the connection and the request, including cookies, credentials, the maximum redirection value, and the user agent string.
+You can use it to share state and data among web requests.
+      </p>
+      <p>
+       To create a web request session, enter a variable name (without a dollar sign) in the value of the
+       <strong>
+        -SessionVariable
+       </strong>
+       parameter of an
+       <code>
+        Invoke-WebRequest
+       </code>
+       command.
+       <code>
+        Invoke-WebRequest
+       </code>
+       creates the session and saves it in the variable.
+In subsequent commands, use the variable as the value of the
+       <strong>
+        -WebSession
+       </strong>
+       parameter.
+      </p>
+      <p>
+       You cannot use the
+       <strong>
+        -SessionVariable
+       </strong>
+       and
+       <strong>
+        -WebSession
+       </strong>
+       parameters in the same command.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          WebRequestSession
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="inputs">
+      Inputs
+     </h2>
+     <p>
+      <strong>
+       System.Object
+      </strong>
+     </p>
+     <p>
+      You can pipe the body of a web request to
+      <code>
+       Invoke-WebRequest
+      </code>
+      .
+     </p>
+     <h2 id="outputs">
+      Outputs
+     </h2>
+     <p>
+      <strong>
+       Microsoft.PowerShell.Commands.BasicHtmlWebResponseObject
+      </strong>
+     </p>
+     <h2 id="notes">
+      Notes
+     </h2>
+     <p>
+      Some features may not be available on all platforms.
+     </p>
+     <p>
+      Beginning with PowerShell 6.0.0
+      <code>
+       Invoke-WebRequest
+      </code>
+      supports basic parsing only.
+     </p>
+     <h2 id="related-links">
+      Related Links
+     </h2>
+     <ul>
+      <li>
+       <a data-linktype="relative-path" href="invoke-restmethod.html">
+        Invoke-RestMethod
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="convertfrom-json.html">
+        ConvertFrom-Json
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="convertto-json.html">
+        ConvertTo-Json
+       </a>
+      </li>
+     </ul>
+     <!-- </content> -->
+    </main>
+    <div class="note alert feedback-system-change-alert">
+     <p>
+      Note
+     </p>
+     <p>
+      The feedback system for this content will be changing soon. Old comments will not be carried over. If content within a comment thread is important to you, please save a copy. For more information on the upcoming change,
+      <a href="https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs">
+       we invite you to read our blog post
+      </a>
+      .
+     </p>
+    </div>
+    <div data-bi-name="comments" id="comments-container" role="form">
+    </div>
+   </div>
+  </div>
+  <div class="openfeedback-container" id="openFeedbackContainer">
+  </div>
+  <div class="action-panel">
+  </div>
+ </body>
+</html>

@@ -1,0 +1,1797 @@
+<!DOCTYPE html>
+<html class="no-js hasSidebar hasPageActions hasBreadcrumb conceptual" data-authenticated="false" data-render="docs" dir="ltr" lang="en-us">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Get-PhysicalDisk (storage)" property="og:title"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" property="og:image"/>
+  <meta content="summary" name="twitter:card"/>
+  <meta content="@docsmsft" name="twitter:site"/>
+  <meta content="Get-PhysicalDisk (storage)" name="twitter:title"/>
+  <meta content="Use this topic to help manage Windows and Windows Server technologies with Windows PowerShell." name="twitter:description"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" name="twitter:image"/>
+  <meta content="Microsoft Logo" name="twitter:image:alt"/>
+  <meta content="Use this topic to help manage Windows and Windows Server technologies with Windows PowerShell." name="description"/>
+  <meta content="Docs" name="search.ms_sitename"/>
+  <meta content="powershell-windows" name="search.ms_docsetname"/>
+  <meta content="0" name="version"/>
+  <meta content="en-us" name="locale"/>
+  <meta content="Docs" name="site_name"/>
+  <meta content="MSDN" name="search.ms_product"/>
+  <meta content="MSDN.powershell-windows" name="depot_name"/>
+  <meta content="https://cpubwin.visualstudio.com/DefaultCollection/powershell/_git/powershell/commit/ced7757924addcaea0b7a244ae4d240e4d28d93a?path=%2fdocset%2fwindows%2fstorage%2fget-physicaldisk.md&amp;_a=contents" name="ref_skeleton_gitcommit"/>
+  <meta content="https://cpubwin.visualstudio.com/DefaultCollection/powershell/_git/powershell?path=%2fdocset%2fwindows%2fstorage%2fget-physicaldisk.md&amp;version=GBlive&amp;_a=contents" name="original_ref_skeleton_git_url"/>
+  <meta content="2017-09-15 03:44 AM" name="updated_at"/>
+  <meta content="35052498-b82f-d18d-77cb-1087cc5e22d6" name="document_id"/>
+  <meta content="87ce481a-ac88-aaeb-c5f7-6490376ef6e2" name="document_version_independent_id"/>
+  <meta content="powershell" name="page_type"/>
+  <meta content="command" name="page_kind"/>
+  <meta content="manage" name="ms.mktglfcycl"/>
+  <meta content="library" name="ms.sitesec"/>
+  <meta content="brianlic" name="ms.author"/>
+  <meta content="brianlic-msft" name="author"/>
+  <meta content="StorageScripts-help.xml" name="external_help_file"/>
+  <meta content="powershell, cmdlet" name="keywords"/>
+  <meta content="alanth" name="manager"/>
+  <meta content="12/20/2016" name="ms.date"/>
+  <meta content="w10" name="ms.prod"/>
+  <meta content="powershell-windows" name="ms.technology"/>
+  <meta content="reference" name="ms.topic"/>
+  <meta content="" name="online_version"/>
+  <meta content="2.0.0" name="schema"/>
+  <meta content="A204DCDE-BFAC-43AC-9B79-D81384F255BE" name="ms.assetid"/>
+  <meta content="powershell" name="ms.devlang"/>
+  <meta content="INDEX, FOLLOW" name="ROBOTS"/>
+  <meta content="/powershell/windows/bread/toc.json?view=win10-ps" name="breadcrumb_path"/>
+  <meta content="powershell" name="apiPlatform"/>
+  <meta content="MSDocsHeader-WindowsIT" name="uhfHeaderId"/>
+  <meta content="../win10-ps/toc.json?view=win10-ps" name="toc_rel"/>
+  <link href="https://docs.microsoft.com/en-us/powershell/module/storage/get-physicaldisk" rel="canonical"/>
+  <title>
+   Get-PhysicalDisk
+  </title>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/e4a1f3a3.site.css" rel="stylesheet"/>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/31353636.conceptual.css" rel="stylesheet"/>
+ </head>
+ <body dir="ltr" lang="en-us">
+  <div class="header-holder">
+   <div data-bi-name="header" id="headerAreaHolder">
+    <div id="uhf-placeholder">
+    </div>
+   </div>
+   <div class="disclaimer-holder" id="disclaimer-holder">
+   </div>
+  </div>
+  <div class="container mainContainer" data-bi-name="body">
+   <div class="content-header" data-bi-name="content-header">
+    <div class="content-header-controls">
+     <button class="contents-button button-border" data-bi-name="contents-expand" type="button">
+      <span class="docon docon-menu">
+      </span>
+      Contents
+     </button>
+    </div>
+    <div class="content-header-controls">
+     <button class="ap-collapse-behavior ap-expanded button-border" data-bi-name="ap-collapse" type="button">
+      <span class="docon docon-exit-mode">
+      </span>
+      Exit focus mode
+     </button>
+    </div>
+   </div>
+   <div class="primary-holder">
+    <main class="content" data-bi-name="content" dir="ltr" id="main" lang="en-us" role="main">
+     <!-- <content> -->
+     <h1>
+      Get-Physical
+      <wbr/>
+      Disk
+     </h1>
+     <div class="metadata">
+      <dl class="attributeList">
+       <dt>
+        Module:
+       </dt>
+       <dd>
+        <a data-linktype="relative-path" href="./.html">
+         storage
+        </a>
+       </dd>
+      </dl>
+     </div>
+     <div class="summaryHolder">
+      <div class="summary">
+       Gets a list of all PhysicalDisk objects visible across any available Storage Management Providers, or optionally a filtered list.
+      </div>
+     </div>
+     <h2 class="hiddenAnchor" id="syntax">
+      Syntax
+     </h2>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Get-PhysicalDisk
+   [-UniqueId &lt;String&gt;]
+   [-Usage &lt;PhysicalDiskUsage&gt;]
+   [-Description &lt;String&gt;]
+   [-Manufacturer &lt;String&gt;]
+   [-Model &lt;String&gt;]
+   [-CanPool &lt;Boolean&gt;]
+   [-HealthStatus &lt;PhysicalDiskHealthStatus&gt;]
+   [-CimSession &lt;CimSession&gt;]
+   [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Get-PhysicalDisk
+   [-ObjectId &lt;String&gt;]
+   [-Usage &lt;PhysicalDiskUsage&gt;]
+   [-Description &lt;String&gt;]
+   [-Manufacturer &lt;String&gt;]
+   [-Model &lt;String&gt;]
+   [-CanPool &lt;Boolean&gt;]
+   [-HealthStatus &lt;PhysicalDiskHealthStatus&gt;]
+   [-CimSession &lt;CimSession&gt;]
+   [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Get-PhysicalDisk
+   [[-FriendlyName] &lt;String&gt;]
+   [[-SerialNumber] &lt;String&gt;]
+   [-Usage &lt;PhysicalDiskUsage&gt;]
+   [-Description &lt;String&gt;]
+   [-Manufacturer &lt;String&gt;]
+   [-Model &lt;String&gt;]
+   [-CanPool &lt;Boolean&gt;]
+   [-HealthStatus &lt;PhysicalDiskHealthStatus&gt;]
+   [-CimSession &lt;CimSession&gt;]
+   [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Get-PhysicalDisk
+   -InputObject &lt;CimInstance&gt;
+   [-CimSession &lt;CimSession&gt;]
+   [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Get-PhysicalDisk
+   -StorageSubsystem &lt;CimInstance&gt;
+   [-Usage &lt;PhysicalDiskUsage&gt;]
+   [-Description &lt;String&gt;]
+   [-Manufacturer &lt;String&gt;]
+   [-Model &lt;String&gt;]
+   [-CanPool &lt;Boolean&gt;]
+   [-HealthStatus &lt;PhysicalDiskHealthStatus&gt;]
+   [-CimSession &lt;CimSession&gt;]
+   [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Get-PhysicalDisk
+   -StorageEnclosure &lt;CimInstance&gt;
+   [-Usage &lt;PhysicalDiskUsage&gt;]
+   [-Description &lt;String&gt;]
+   [-Manufacturer &lt;String&gt;]
+   [-Model &lt;String&gt;]
+   [-CanPool &lt;Boolean&gt;]
+   [-HealthStatus &lt;PhysicalDiskHealthStatus&gt;]
+   [-CimSession &lt;CimSession&gt;]
+   [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Get-PhysicalDisk
+   -StorageNode &lt;CimInstance&gt;
+   [-PhysicallyConnected]
+   [-Usage &lt;PhysicalDiskUsage&gt;]
+   [-Description &lt;String&gt;]
+   [-Manufacturer &lt;String&gt;]
+   [-Model &lt;String&gt;]
+   [-CanPool &lt;Boolean&gt;]
+   [-HealthStatus &lt;PhysicalDiskHealthStatus&gt;]
+   [-CimSession &lt;CimSession&gt;]
+   [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Get-PhysicalDisk
+   -StoragePool &lt;CimInstance&gt;
+   [-Usage &lt;PhysicalDiskUsage&gt;]
+   [-Description &lt;String&gt;]
+   [-Manufacturer &lt;String&gt;]
+   [-Model &lt;String&gt;]
+   [-CanPool &lt;Boolean&gt;]
+   [-HealthStatus &lt;PhysicalDiskHealthStatus&gt;]
+   [-CimSession &lt;CimSession&gt;]
+   [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Get-PhysicalDisk
+   -VirtualDisk &lt;CimInstance&gt;
+   [-VirtualRangeMin &lt;UInt64&gt;]
+   [-VirtualRangeMax &lt;UInt64&gt;]
+   [-HasAllocations &lt;Boolean&gt;]
+   [-SelectedForUse &lt;Boolean&gt;]
+   [-NoRedundancy]
+   [-Usage &lt;PhysicalDiskUsage&gt;]
+   [-Description &lt;String&gt;]
+   [-Manufacturer &lt;String&gt;]
+   [-Model &lt;String&gt;]
+   [-CanPool &lt;Boolean&gt;]
+   [-HealthStatus &lt;PhysicalDiskHealthStatus&gt;]
+   [-CimSession &lt;CimSession&gt;]
+   [&lt;CommonParameters&gt;]</code></pre>
+     <h2 id="description">
+      Description
+     </h2>
+     <p>
+      The
+      <strong>
+       Get-PhysicalDisk
+      </strong>
+      cmdlet gets a list of all PhysicalDisk objects visible across any available Storage Management Providers, or optionally a filtered list of disks.
+     </p>
+     <h2 id="examples">
+      Examples
+     </h2>
+     <p>
+      <strong>
+       Example 1: Getting all physical disks
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-PhysicalDisk
+FriendlyName        CanPool            OperationalStatus   HealthStatus        Usage                              Size 
+------------        --------            -----------------   ------------        -----                              ---- 
+PhysicalDisk4       False               OK                  Healthy             Data Store                        25 GB</code></pre>
+     <p>
+      This example returns an array of all PhysicalDisk objects present in the computer.
+A storage management provider is required to manage physical disks.
+     </p>
+     <p>
+      <strong>
+       Example 2: Getting all physical disks eligible for adding to a storage pool
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt;Get-PhysicalDisk -CanPool $True</code></pre>
+     <p>
+      This example returns an array of PhysicalDisk objects that are available for adding to a storage pool (they are in a primordial pool).
+     </p>
+     <h2 id="required-parameters">
+      Required Parameters
+     </h2>
+     <div class="parameterName stack">
+      -InputObject
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the input object that is used in a pipeline command.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          CimInstance
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByValue)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -StorageEnclosure
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a storage enclosure associated with the physical disk that this cmdlet gets.
+To obtain a
+       <strong>
+        StorageEnclosure
+       </strong>
+       object, use the Get-StorageEnclosure cmdlet.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          CimInstance
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByValue)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -StorageNode
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a storage node as a
+       <strong>
+        CimInstance
+       </strong>
+       object.
+The cmdlet gets the physical disk connected to the node that you specify.
+To obtain a storage node object, use the Get-StorageNode cmdlet.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          CimInstance
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByValue)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -StoragePool
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Accepts a StoragePool object as input and gets the physical disks that belong to the pool.
+The Storage Pool CIM object is exposed by the Get-StoragePool cmdlet.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          CimInstance
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByValue)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -StorageSubsystem
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a storage subsystem.
+This cmdlet gets physical disks attached to the storage subsystem that you specify.
+To obtain a
+       <strong>
+        StorageSubsystem
+       </strong>
+       object, use the Get-StorageSubSystem cmdlet.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          CimInstance
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByValue)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -VirtualDisk
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Accepts a VirtualDisk object as input and gets the physical disks used by the virtual disk.
+The VirtualDisk object is exposed by the Get-VirtualDisk cmdlet.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          CimInstance
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByValue)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="optional-parameters">
+      Optional Parameters
+     </h2>
+     <div class="parameterName stack">
+      -CanPool
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that this cmdlet gets physical disks that are available for use in a storage pool.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Boolean
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -CimSession
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Runs the cmdlet in a remote session or on a remote computer.
+Enter a computer name or a session object, such as the output of a
+       <a data-linktype="external" href="http://go.microsoft.com/fwlink/p/?LinkId=227967">
+        New-CimSession
+       </a>
+       or
+       <a data-linktype="external" href="http://go.microsoft.com/fwlink/p/?LinkId=227966">
+        Get-CimSession
+       </a>
+       cmdlet.
+The default is the current session on the local computer.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          CimSession
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Description
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a description.
+The cmdlet gets the physical disks that contain the description.
+You can use wildcard characters to enter a description pattern.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -FriendlyName
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Gets the physical disk with the specified friendly name.
+Enter a friendly name, or use wildcard characters to enter a name pattern.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         0
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByValue)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -HasAllocations
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates whether the cmdlet gets a list of physical disks that host the extents of the virtual disk that you specify by using the
+       <em>
+        VirtualDisk
+       </em>
+       parameter.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Boolean
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -HealthStatus
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the health status of physical disks to get.
+The acceptable values for this parameter are:
+      </p>
+      <ul>
+       <li>
+        Healthy
+       </li>
+       <li>
+        Unhealthy
+       </li>
+       <li>
+        Unknown
+       </li>
+       <li>
+        Warning
+       </li>
+      </ul>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          PhysicalDiskHealthStatus
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Parameter Sets:
+        </td>
+        <td>
+         Healthy, Warning, Unhealthy, Unknown
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Manufacturer
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a manufacturer.
+The cmdlet gets the physical disks that match the value.
+You can use wildcard characters to enter a pattern.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Model
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a model.
+The cmdlet gets the physical disks that match the value.
+You can use wildcard characters to enter a pattern.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -NoRedundancy
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that this cmdlet gets physical disks that contain the last remaining copy of the data of a virtual disk.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -ObjectId
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the ID of the physical disk to get.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         PhysicalDiskObjectId
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByValue)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -PhysicallyConnected
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that this cmdlet gets physical disks that are physically connected to the specified storage node.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -SelectedForUse
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates whether the cmdlet gets a list of physical disks to host the extents that belong to the virtual disk specified by the
+       <em>
+        VirtualDisk
+       </em>
+       parameter.
+Specify the physical disks to host the extents of a virtual disk by using the
+       <em>
+        PhysicalDisksToUse
+       </em>
+       parameter of the New-VirtualDisk cmdlet.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Boolean
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -SerialNumber
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the serial number of the physical disk to get.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         1
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByValue)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -UniqueId
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Gets only the physical disks with the specified IDs.
+Type one or more IDs (separated by commas), or use wildcard characters to enter a pattern.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         Id
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByValue)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Usage
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies an allocation method or usage.
+This cmdlet gets the physical disks that have the specified allocation method.
+The acceptable values for this parameter are:
+      </p>
+      <ul>
+       <li>
+        AutoSelect
+       </li>
+       <li>
+        HotSpare
+       </li>
+       <li>
+        Journal
+       </li>
+       <li>
+        ManualSelect
+       </li>
+       <li>
+        Retired
+       </li>
+       <li>
+        Unknown
+       </li>
+      </ul>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          PhysicalDiskUsage
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Parameter Sets:
+        </td>
+        <td>
+         Unknown, AutoSelect, ManualSelect, HotSpare, Retired, Journal
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -VirtualRangeMax
+     </div>
+     <div class="parameterInfo">
+      <p>
+       This parameter is reserved for future use.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          UInt64
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -VirtualRangeMin
+     </div>
+     <div class="parameterInfo">
+      <p>
+       This parameter is reserved for future use.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          UInt64
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="inputs">
+      Inputs
+     </h2>
+     <p>
+      <strong>
+       Microsoft.Management.Infrastructure.CimInstance#ROOT/Microsoft/Windows/Storage/MSFT_StoragePool
+      </strong>
+     </p>
+     <p>
+      You can use the pipeline operator to pass an MSFT_StoragePool object to the
+      <em>
+       StoragePool
+      </em>
+      parameter.
+     </p>
+     <h2 id="inputs">
+      Inputs
+     </h2>
+     <p>
+      <strong>
+       Microsoft.Management.Infrastructure.CimInstance#ROOT/Microsoft/Windows/Storage/MSFT_StorageSubsystem
+      </strong>
+     </p>
+     <p>
+      You can use the pipeline operator to pass an MSFT_StorageSubsystem object to the
+      <em>
+       StorageSubsystem
+      </em>
+      parameter.
+     </p>
+     <h2 id="inputs">
+      Inputs
+     </h2>
+     <p>
+      <strong>
+       Microsoft.Management.Infrastructure.CimInstance#ROOT/Microsoft/Windows/Storage/MSFT_VirtualDisk
+      </strong>
+     </p>
+     <p>
+      You can use the pipeline operator to pass an MSFT_VirtualDisk object to the
+      <em>
+       VirtualDisk
+      </em>
+      parameter.
+     </p>
+     <h2 id="outputs">
+      Outputs
+     </h2>
+     <p>
+      <strong>
+       Microsoft.Management.Infrastructure.CimInstance#ROOT/Microsoft/Windows/Storage/MSFT_PhysicalDisk
+      </strong>
+     </p>
+     <p>
+      The Get-PhysicalDisk cmdlet returns objects that represent physical disks.
+     </p>
+     <h2 id="related-links">
+      Related Links
+     </h2>
+     <ul>
+      <li>
+       <a data-linktype="relative-path" href="./add-physicaldisk.html">
+        Add-PhysicalDisk
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="./get-storageenclosure.html">
+        Get-StorageEnclosure
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="./get-storagepool.html">
+        Get-StoragePool
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="./get-storagesubsystem.html">
+        Get-StorageSubSystem
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="./new-storagepool.html">
+        New-StoragePool
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="./remove-physicaldisk.html">
+        Remove-PhysicalDisk
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="./reset-physicaldisk.html">
+        Reset-PhysicalDisk
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="./set-physicaldisk.html">
+        Set-PhysicalDisk
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="./new-virtualdisk.html">
+        New-VirtualDisk
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="./get-storagenode.html">
+        Get-StorageNode
+       </a>
+      </li>
+     </ul>
+     <!-- </content> -->
+    </main>
+    <section class="feedback-section" data-bi-name="feedback-section">
+     <h2 id="feedback">
+      Feedback
+     </h2>
+     <div class="alert choose-feedback-type">
+      <p>
+       We'd love to hear your thoughts. Choose the type you'd like to provide:
+      </p>
+      <div class="choose-feedback-buttons">
+       <a class="button-border feedback-type-product" data-bi-name="product-feedback" href="https://windowsserver.uservoice.com/forums/301869-powershell">
+        Product feedback
+        <span aria-hidden="true" class="docon docon-navigate-external">
+        </span>
+       </a>
+       <div class="button-group">
+        <button class="button-border feedback-sign-in-button" data-bi-name="feedback-sign-in">
+         <span aria-hidden="true" class="docon docon-brand-github">
+         </span>
+         Sign in to give documentation feedback
+        </button>
+        <button aria-controls="feedback-form" aria-expanded="false" class="button-border feedback-form-toggle" data-bi-name="documentation-feedback" hidden="">
+         Content feedback
+        </button>
+        <div auto-align="" class="dropdown has-caret">
+         <button aria-controls="fbm0" aria-expanded="false" aria-haspopup="true" aria-label="Expand documentation feedback menu" class="button-border dropdown-trigger" data-bi-name="documentation-feedback-menu">
+          <span aria-hidden="true" class="docon docon-chevron-down-light">
+          </span>
+         </button>
+         <div class="dropdown-menu documentation-feedback-menu" id="fbm0" role="menu">
+          You may also leave feedback
+          <a data-bi-name="create-issue-on-github" href="{0}">
+           directly on GitHub
+           <span aria-hidden="true" class="docon docon-navigate-external">
+           </span>
+          </a>
+          .
+         </div>
+        </div>
+       </div>
+      </div>
+      <p>
+       <small>
+        Our new feedback system is built on GitHub Issues. Read about this change in
+        <a href="https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs">
+         our blog post
+        </a>
+        .
+       </small>
+      </p>
+     </div>
+     <form accept-charset="UTF-8" action="javascript:" autocomplete="off" class="feedback-form" hidden="" id="feedback-form">
+      <h3 class="feedback-form-heading current-user">
+       <img alt="Avatar" aria-hidden="true" class="avatar" height="36" width="36"/>
+       <span aria-hidden="true" class="username">
+       </span>
+       <span class="visually-hidden">
+        Liquid error: Can't find the localized string giveDocumentationFeedback for template Conceptual.
+       </span>
+      </h3>
+      <label>
+       <span class="visually-hidden">
+        Title
+       </span>
+       <input name="title" pattern=".*\w.*" placeholder="Title" required="" type="text"/>
+      </label>
+      <label>
+       <span class="visually-hidden">
+        Leave a comment
+       </span>
+       <textarea name="body" placeholder="Leave a comment" required=""></textarea>
+      </label>
+      <div class="action-container">
+       <button class="primary-action" name="submit" type="submit">
+        Submit feedback
+       </button>
+      </div>
+     </form>
+     <div class="feedback-status alert busy" role="alert">
+      <p>
+       Loading feedback...
+      </p>
+     </div>
+     <div class="feedback-tab-group tabGroup" data-tab-group-independent="" hidden="">
+      <ul role="tablist">
+       <li role="presentation">
+        <a aria-controls="tabpanel-issues-open" aria-label="Open Issues" data-tab="issues-open" href="#tabpanel-issues-open" role="tab">
+        </a>
+       </li>
+       <li role="presentation">
+        <a aria-controls="tabpanel-issues-closed" aria-label="Closed Issues" data-tab="issues-closed" href="#tabpanel-issues-closed" role="tab">
+        </a>
+       </li>
+      </ul>
+      <section data-tab="issues-open" id="tabpanel-issues-open" role="tabpanel">
+       <div class="no-issues-placeholder">
+        There are no open issues
+       </div>
+       <ul aria-label="Open Issues" class="github-issues-list">
+       </ul>
+      </section>
+      <section data-tab="issues-closed" id="tabpanel-issues-closed" role="tabpanel">
+       <div class="no-issues-placeholder">
+        There are no closed issues
+       </div>
+       <ul aria-label="Closed Issues" class="github-issues-list">
+       </ul>
+      </section>
+     </div>
+     <div class="action-container">
+      <a class="view-on-github" data-bi-name="view-on-github" hidden="" href="https://github.com/MicrosoftDocs/windows-powershell-docs/issues">
+       <span aria-hidden="true" class="docon docon-brand-github">
+       </span>
+       <span>
+        View on GitHub
+       </span>
+       <span aria-hidden="true" class="docon docon-navigate-external">
+       </span>
+      </a>
+     </div>
+    </section>
+   </div>
+  </div>
+  <div class="openfeedback-container" id="openFeedbackContainer">
+  </div>
+  <div class="action-panel">
+  </div>
+ </body>
+</html>

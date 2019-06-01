@@ -1,0 +1,550 @@
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML><HEAD><TITLE>Man page of fcntl.h</TITLE>
+</HEAD><BODY>
+<H1>fcntl.h</H1>
+Section: POSIX Programmer's Manual (0P)<BR>Updated: 2013<BR><A HREF="#index">Index</A>
+<A HREF="../index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>PROLOG</H2>
+
+This manual page is part of the POSIX Programmer's Manual.
+The Linux implementation of this interface may differ (consult
+the corresponding Linux manual page for details of Linux behavior),
+or the interface may not be implemented on Linux.
+<P>
+<A NAME="lbAC">&nbsp;</A>
+<H2>NAME</H2>
+
+fcntl.h
+--- file control options
+<A NAME="lbAD">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<P>
+
+<PRE>
+#include &lt;<A HREF="file:///usr/include/fcntl.h">fcntl.h</A>&gt;
+</PRE>
+
+<A NAME="lbAE">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+The
+<I>&lt;<A HREF="file:///usr/include/fcntl.h">fcntl.h</A>&gt;</I>
+
+header shall define the following symbolic constants for the
+<I>cmd</I>
+
+argument used by
+<I>fcntl</I>().
+The values shall be unique and shall be suitable for use in
+<B>#if</B>
+
+preprocessing directives.
+<DL COMPACT>
+<DT>F_DUPFD<DD>
+Duplicate file descriptor.
+<DT>F_DUPFD_CLOEXEC<DD>
+<BR>
+
+Duplicate file descriptor with the close-on-<I>exec</I>
+
+flag FD_CLOEXEC set.
+<DT>F_GETFD<DD>
+Get file descriptor flags.
+<DT>F_SETFD<DD>
+Set file descriptor flags.
+<DT>F_GETFL<DD>
+Get file status flags and file access modes.
+<DT>F_SETFL<DD>
+Set file status flags.
+<DT>F_GETLK<DD>
+Get record locking information.
+<DT>F_SETLK<DD>
+Set record locking information.
+<DT>F_SETLKW<DD>
+Set record locking information; wait if blocked.
+<DT>F_GETOWN<DD>
+Get process or process group ID to receive SIGURG signals.
+<DT>F_SETOWN<DD>
+Set process or process group ID to receive SIGURG signals.
+</DL>
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/fcntl.h">fcntl.h</A>&gt;</I>
+
+header shall define the following symbolic constant used for the
+<I>fcntl</I>()
+file descriptor flags, which shall be suitable for use in
+<B>#if</B>
+
+preprocessing directives.
+<DL COMPACT>
+<DT>FD_CLOEXEC<DD>
+Close the file descriptor upon execution of an
+<I>exec</I>
+
+family function.
+</DL>
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/fcntl.h">fcntl.h</A>&gt;</I>
+
+header shall also define the following symbolic constants for the
+<I>l_type</I>
+
+argument used for record locking with
+<I>fcntl</I>().
+The values shall be unique and shall be suitable for use in
+<B>#if</B>
+
+preprocessing directives.
+<DL COMPACT>
+<DT>F_RDLCK<DD>
+Shared or read lock.
+<DT>F_UNLCK<DD>
+Unlock.
+<DT>F_WRLCK<DD>
+Exclusive or write lock.
+</DL>
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/fcntl.h">fcntl.h</A>&gt;</I>
+
+header shall define the values used for
+<I>l_whence</I>,
+
+SEEK_SET, SEEK_CUR, and SEEK_END
+as described in
+<I>&lt;<A HREF="file:///usr/include/stdio.h">stdio.h</A>&gt;</I>.
+
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/fcntl.h">fcntl.h</A>&gt;</I>
+
+header shall define the following symbolic constants as file creation
+flags for use in the
+<I>oflag</I>
+
+value to
+<I>open</I>()
+and
+<I>openat</I>().
+The values shall be bitwise-distinct and shall be suitable for use in
+<B>#if</B>
+
+preprocessing directives.
+<DL COMPACT>
+<DT>O_CLOEXEC<DD>
+The FD_CLOEXEC flag associated with the new descriptor shall be
+set to close the file descriptor upon execution of an
+<I>exec</I>
+
+family function.
+<DT>O_CREAT<DD>
+Create file if it does not exist.
+<DT>O_DIRECTORY<DD>
+Fail if not a directory.
+<DT>O_EXCL<DD>
+Exclusive use flag.
+<DT>O_NOCTTY<DD>
+Do not assign controlling terminal.
+<DT>O_NOFOLLOW<DD>
+Do not follow symbolic links.
+<DT>O_TRUNC<DD>
+Truncate flag.
+<DT>O_TTY_INIT<DD>
+Set the
+<B>termios</B>
+
+structure terminal parameters to a state that provides conforming
+behavior; see
+<I>Section 11.2</I>, <I>Parameters that Can be Set.</I>
+
+</DL>
+<P>
+
+The O_TTY_INIT flag can have the value zero and in this case it need
+not be bitwise-distinct from the other flags.
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/fcntl.h">fcntl.h</A>&gt;</I>
+
+header shall define the following symbolic constants for use as
+file status flags for
+<I>open</I>(),
+<I>openat</I>(),
+and
+<I>fcntl</I>().
+The values shall be suitable for use in
+<B>#if</B>
+
+preprocessing directives.
+<DL COMPACT>
+<DT>O_APPEND<DD>
+Set append mode.
+<DT>O_DSYNC<DD>
+Write according to synchronized I/O data integrity completion.
+<DT>O_NONBLOCK<DD>
+Non-blocking mode.
+<DT>O_RSYNC<DD>
+Synchronized read I/O operations.
+<DT>O_SYNC<DD>
+Write according to synchronized I/O file integrity completion.
+</DL>
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/fcntl.h">fcntl.h</A>&gt;</I>
+
+header shall define the following symbolic constant for use as the mask
+for file access modes. The value shall be suitable for use in
+<B>#if</B>
+
+preprocessing directives.
+<DL COMPACT>
+<DT>O_ACCMODE<DD>
+Mask for file access modes.
+</DL>
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/fcntl.h">fcntl.h</A>&gt;</I>
+
+header shall define the following symbolic constants for use as
+the file access modes for
+<I>open</I>(),
+<I>openat</I>(),
+and
+<I>fcntl</I>().
+The values shall be unique, except that O_EXEC and O_SEARCH may have
+equal values. The values shall be suitable for use in
+<B>#if</B>
+
+preprocessing directives.
+<DL COMPACT>
+<DT>O_EXEC<DD>
+Open for execute only (non-directory files). The result is unspecified
+if this flag is applied to a directory.
+<DT>O_RDONLY<DD>
+Open for reading only.
+<DT>O_RDWR<DD>
+Open for reading and writing.
+<DT>O_SEARCH<DD>
+Open directory for search only. The result is unspecified if this flag
+is applied to a non-directory file.
+<DT>O_WRONLY<DD>
+Open for writing only.
+</DL>
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/fcntl.h">fcntl.h</A>&gt;</I>
+
+header shall define the symbolic constants for file modes for use as
+values of
+<B>mode_t</B>
+
+as described in
+<I>&lt;<A HREF="file:///usr/include/sys/stat.h">sys/stat.h</A>&gt;</I>.
+
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/fcntl.h">fcntl.h</A>&gt;</I>
+
+header shall define the following symbolic constant as a special value
+used in place of a file descriptor for the
+<I>*at</I>()
+
+functions which take a directory file descriptor as a parameter:
+<DL COMPACT>
+<DT>AT_FDCWD<DD>
+Use the current working directory to determine the target of relative
+file paths.
+</DL>
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/fcntl.h">fcntl.h</A>&gt;</I>
+
+header shall define the following symbolic constant as a value for the
+<I>flag</I>
+
+used by
+<I>faccessat</I>():
+<DL COMPACT>
+<DT>AT_EACCESS<DD>
+Check access using effective user and group ID.
+</DL>
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/fcntl.h">fcntl.h</A>&gt;</I>
+
+header shall define the following symbolic constant as a value for the
+<I>flag</I>
+
+used by
+<I>fstatat</I>(),
+<I>fchmodat</I>(),
+<I>fchownat</I>(),
+and
+<I>utimensat</I>():
+<DL COMPACT>
+<DT>AT_SYMLINK_NOFOLLOW<DD>
+<BR>
+
+Do not follow symbolic links.
+</DL>
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/fcntl.h">fcntl.h</A>&gt;</I>
+
+header shall define the following symbolic constant as a value for
+the flag used by
+<I>linkat</I>():
+<DL COMPACT>
+<DT>AT_SYMLINK_FOLLOW<DD>
+<BR>
+
+Follow symbolic link.
+<BR>
+
+</DL>
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/fcntl.h">fcntl.h</A>&gt;</I>
+
+header shall define the following symbolic constant as a value
+for the flag used by
+<I>unlinkat</I>():
+<DL COMPACT>
+<DT>AT_REMOVEDIR<DD>
+<BR>
+
+Remove directory instead of file.
+</DL>
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/fcntl.h">fcntl.h</A>&gt;</I>
+
+header shall define the following symbolic constants for the
+<I>advice</I>
+
+argument used by
+<I>posix_fadvise</I>():
+<DL COMPACT>
+<DT>POSIX_FADV_DONTNEED<DD>
+<BR>
+
+The application expects that it will not access the specified data in
+the near future.
+<DT>POSIX_FADV_NOREUSE<DD>
+<BR>
+
+The application expects to access the specified data once and then not
+reuse it thereafter.
+<DT>POSIX_FADV_NORMAL<DD>
+<BR>
+
+The application has no advice to give on its behavior with respect to
+the specified data. It is the default characteristic if no advice is
+given for an open file.
+<DT>POSIX_FADV_RANDOM<DD>
+<BR>
+
+The application expects to access the specified data in a random
+order.
+<DT>POSIX_FADV_SEQUENTIAL<DD>
+<BR>
+
+The application expects to access the specified data sequentially from
+lower offsets to higher offsets.
+<DT>POSIX_FADV_WILLNEED<DD>
+<BR>
+
+The application expects to access the specified data in the near
+future.
+</DL>
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/fcntl.h">fcntl.h</A>&gt;</I>
+
+header shall define the
+<B>flock</B>
+
+structure describing a file lock. It shall include the following members:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+short  l_type   </B>Type of lock; F_RDLCK, F_WRLCK, F_UNLCK.
+short  l_whence Flag for starting offset.
+off_t  l_start  Relative offset in bytes.
+off_t  l_len    Size; if 0 then until EOF.
+pid_t  l_pid    Process ID of the process holding the lock; returned with F_GETLK.
+</PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/fcntl.h">fcntl.h</A>&gt;</I>
+
+header shall define the
+<B>mode_t</B>,
+
+<B>off_t</B>,
+
+and
+<B>pid_t</B>
+
+types as described in
+<I>&lt;<A HREF="file:///usr/include/sys/types.h">sys/types.h</A>&gt;</I>.
+
+<P>
+
+The following shall be declared as functions and may also be defined as
+macros. Function prototypes shall be provided.
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+int  creat(const char *, mode_t);
+int  fcntl(int, int, ...);
+int  open(const char *, int, ...);
+int  openat(int, const char *, int, ...);
+int  posix_fadvise(int, off_t, off_t, int);
+int  posix_fallocate(int, off_t, off_t);
+</B></PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+Inclusion of the
+<I>&lt;<A HREF="file:///usr/include/fcntl.h">fcntl.h</A>&gt;</I>
+
+header may also make visible all symbols from
+<I>&lt;<A HREF="file:///usr/include/sys/stat.h">sys/stat.h</A>&gt;</I>
+
+and
+<I>&lt;<A HREF="file:///usr/include/unistd.h">unistd.h</A>&gt;</I>.
+
+<P>
+
+<I>The following sections are informative.</I>
+
+<A NAME="lbAF">&nbsp;</A>
+<H2>APPLICATION USAGE</H2>
+
+Although no existing implementation defines AT_SYMLINK_FOLLOW and
+AT_SYMLINK_NOFOLLOW as the same numeric value, POSIX.1-2008 does not prohibit
+that as the two constants are not used with the same interfaces.
+<A NAME="lbAG">&nbsp;</A>
+<H2>RATIONALE</H2>
+
+While many of the symbolic constants introduced in the
+<I>&lt;<A HREF="file:///usr/include/fcntl.h">fcntl.h</A>&gt;</I>
+
+header do not strictly need to be used in
+<B>#if</B>
+
+preprocessor directives, widespread historic practice has defined
+them as macros that are usable in such constructs, and examination
+of existing applications has shown that they are occasionally used in
+such a way. Therefore it was decided to retain this requirement on an
+implementation in POSIX.1-2008.
+<A NAME="lbAH">&nbsp;</A>
+<H2>FUTURE DIRECTIONS</H2>
+
+None.
+<A NAME="lbAI">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+<I></I><B>&lt;<A HREF="file:///usr/include/stdio.h">stdio.h</A>&gt;</B>,
+
+<I></I><B>&lt;<A HREF="file:///usr/include/sys_stat.h">sys_stat.h</A>&gt;</B>,
+
+<I></I><B>&lt;<A HREF="file:///usr/include/sys_types.h">sys_types.h</A>&gt;</B>,
+
+<I></I><B>&lt;<A HREF="file:///usr/include/unistd.h">unistd.h</A>&gt;</B>
+
+<P>
+
+The System Interfaces volume of POSIX.1-2008,
+<I>creat</I>(),
+
+<I>exec</I>,
+
+<I>fcntl</I>(),
+
+<I>futimens</I>(),
+
+<I>open</I>(),
+
+<I>posix_fadvise</I>(),
+
+<I>posix_fallocate</I>(),
+
+<I>posix_madvise</I>()
+
+<A NAME="lbAJ">&nbsp;</A>
+<H2>COPYRIGHT</H2>
+
+Portions of this text are reprinted and reproduced in electronic form
+from IEEE Std 1003.1, 2013 Edition, Standard for Information Technology
+-- Portable Operating System Interface (POSIX), The Open Group Base
+Specifications Issue 7, Copyright (C) 2013 by the Institute of
+Electrical and Electronics Engineers, Inc and The Open Group.
+(This is POSIX.1-2008 with the 2013 Technical Corrigendum 1 applied.) In the
+event of any discrepancy between this version and the original IEEE and
+The Open Group Standard, the original IEEE and The Open Group Standard
+is the referee document. The original Standard can be obtained online at
+<A HREF="http://www.unix.org/online.html">http://www.unix.org/online.html</A> .
+<P>
+Any typographical or formatting errors that appear
+in this page are most likely
+to have been introduced during the conversion of the source files to
+man page format. To report such errors, see
+<A HREF="https://www.kernel.org/doc/man-pages/reporting_bugs.html">https://www.kernel.org/doc/man-pages/reporting_bugs.html</A> .
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">PROLOG</A><DD>
+<DT><A HREF="#lbAC">NAME</A><DD>
+<DT><A HREF="#lbAD">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAE">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAF">APPLICATION USAGE</A><DD>
+<DT><A HREF="#lbAG">RATIONALE</A><DD>
+<DT><A HREF="#lbAH">FUTURE DIRECTIONS</A><DD>
+<DT><A HREF="#lbAI">SEE ALSO</A><DD>
+<DT><A HREF="#lbAJ">COPYRIGHT</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 14:28:43 GMT, February 25, 2017
+</BODY>
+</HTML>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+    
+<!-- Mirrored from mdn.mozillademos.org/en-US/docs/Web/API/HTMLElement/animationend_event$samples/Live_example?revision=1468583 by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 02 May 2019 00:02:16 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+        <meta charset="utf-8">
+        <link href="../../../../../../../developer.mozilla.org/static/build/styles/samples.37902ba3b7fe.css" rel="stylesheet" type="text/css" />
+        
+        <style type="text/css">
+            .container {
+  height: 3rem;
+}
+
+.event-log {
+  width: 25rem;
+  height: 2rem;
+  border: 1px solid black;
+  margin: .2rem;
+  padding: .2rem;
+}
+
+.animation.active {
+  animation-duration: 2s;
+  animation-name: slidein;
+  animation-iteration-count: 2;
+}
+
+@keyframes slidein {
+  from {
+    margin-left: 100%;
+    width: 300%; 
+  }
+
+  to {
+    margin-left: 0%;
+    width: 100%;
+  }
+}
+
+        </style>
+        
+        <title>HTMLElement: animationend event</title>
+    </head>
+    <body>
+        
+            <div class="animation-example">
+    <div class="container">
+        <p class="animation">You chose a cold night to visit our planet.</p>
+    </div>
+    <button class="activate" type="button">Activate animation</button>
+    <div class="event-log"></div>
+</div>
+
+        
+        
+            <script>
+                const animation = document.querySelector('p.animation');
+const animationEventLog = document.querySelector('.animation-example>.event-log');
+const applyAnimation = document.querySelector('.animation-example>button.activate');
+let iterationCount = 0;
+
+animation.addEventListener('animationstart', () => {
+  animationEventLog.textContent = `${animationEventLog.textContent}'animation started' `;
+});
+
+animation.addEventListener('animationiteration', () => {
+  iterationCount++;
+  animationEventLog.textContent = `${animationEventLog.textContent}'animation iterations: ${iterationCount}' `;
+});
+
+animation.addEventListener('animationend', () => {
+  animationEventLog.textContent = `${animationEventLog.textContent}'animation ended'`;
+  animation.classList.remove('active');
+  applyAnimation.textContent = "Activate animation";
+});
+
+animation.addEventListener('animationcancel', () => {
+  animationEventLog.textContent = `${animationEventLog.textContent}'animation canceled'`;
+});
+
+applyAnimation.addEventListener('click', () => {
+  animation.classList.toggle('active');
+  animationEventLog.textContent = '';
+  iterationCount = 0;
+  let active = animation.classList.contains('active');
+  if (active) {
+    applyAnimation.textContent = "Cancel animation";
+  } else {
+    applyAnimation.textContent = "Activate animation";
+  }
+});
+
+            </script>
+        
+    </body>
+
+<!-- Mirrored from mdn.mozillademos.org/en-US/docs/Web/API/HTMLElement/animationend_event$samples/Live_example?revision=1468583 by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 02 May 2019 00:02:16 GMT -->
+</html>

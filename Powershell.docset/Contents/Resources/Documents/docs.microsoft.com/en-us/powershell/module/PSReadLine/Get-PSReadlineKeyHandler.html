@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html class="no-js hasSidebar hasPageActions hasBreadcrumb conceptual" data-authenticated="false" data-render="docs" dir="ltr" lang="en-us">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Get-PSReadlineKeyHandler (PSReadLine)" property="og:title"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" property="og:image"/>
+  <meta content="summary" name="twitter:card"/>
+  <meta content="@docsmsft" name="twitter:site"/>
+  <meta content="Get-PSReadlineKeyHandler (PSReadLine)" name="twitter:title"/>
+  <meta content="The Get-PSReadlineKeyHandler cmdlet gets key bindings. If you specify the Bound and Unbound parameters, this cmdlet returns all bound keys and unbound functions. If you specify Bound, but not Unboundâ¦" name="twitter:description"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" name="twitter:image"/>
+  <meta content="Microsoft Logo" name="twitter:image:alt"/>
+  <meta content="The Get-PSReadlineKeyHandler cmdlet gets key bindings. If you specify the Bound and Unbound parameters, this cmdlet returns all bound keys and unbound functions. If you specify Bound, but not Unboundâ¦" name="description"/>
+  <meta content="Docs" name="search.ms_sitename"/>
+  <meta content="PowerShell_PowerShell-docs_reference" name="search.ms_docsetname"/>
+  <meta content="0" name="version"/>
+  <meta content="en-us" name="locale"/>
+  <meta content="Docs" name="site_name"/>
+  <meta content="PowerShell" name="search.ms_product"/>
+  <meta content="PowerShell.PowerShell_PowerShell-docs_reference" name="depot_name"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/32c27c5b78fb8a8af58aaf73da28d5329aba66d1/reference/6/PSReadLine/Get-PSReadlineKeyHandler.md" name="ref_skeleton_gitcommit"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/live/reference/6/PSReadLine/Get-PSReadlineKeyHandler.md" name="original_ref_skeleton_git_url"/>
+  <meta content="2018-03-30 03:35 PM" name="updated_at"/>
+  <meta content="dfb83158-ac36-a40c-d362-c79f4f0d718c" name="document_id"/>
+  <meta content="b8fe8ac7-8c7f-7235-13c4-f1d77e1eb8a2" name="document_version_independent_id"/>
+  <meta content="powershell" name="page_type"/>
+  <meta content="command" name="page_kind"/>
+  <meta content="06/09/2017" name="ms.date"/>
+  <meta content="2.0.0" name="schema"/>
+  <meta content="powershell,cmdlet" name="keywords"/>
+  <meta content="http://go.microsoft.com/fwlink/?LinkID=821449" name="online_version"/>
+  <meta content="Microsoft.PowerShell.PSReadLine.dll-Help.xml" name="external_help_file"/>
+  <meta content="powershell" name="ms.devlang"/>
+  <meta content="INDEX, FOLLOW" name="ROBOTS"/>
+  <meta content="sdwheeler" name="author"/>
+  <meta content="sewhee" name="ms.author"/>
+  <meta content="carmonm" name="manager"/>
+  <meta content="/powershell/bread-pscore/toc.yml?view=powershell-6" name="breadcrumb_path"/>
+  <meta content="powershell" name="apiPlatform"/>
+  <meta content="reference" name="ms.topic"/>
+  <meta content="windows, macos, linux" name="ms.tgt_pltfr"/>
+  <meta content="powershell-scripting" name="ms.technology"/>
+  <meta content="powershell" name="ms.prod"/>
+  <meta content="MSDocsHeader-Powershell" name="uhfHeaderId"/>
+  <meta content="../psdocs/toc.json?view=powershell-6" name="toc_rel"/>
+  <link href="https://docs.microsoft.com/en-us/powershell/module/psreadline/get-psreadlinekeyhandler" rel="canonical"/>
+  <title>
+   Get-PSReadlineKeyHandler
+  </title>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/60aac04b.site.css" rel="stylesheet"/>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/fdb8a38a.conceptual.css" rel="stylesheet"/>
+ </head>
+ <body dir="ltr" lang="en-us">
+  <div class="header-holder">
+   <div data-bi-name="header" id="headerAreaHolder">
+    <div id="uhf-placeholder">
+    </div>
+   </div>
+   <div class="disclaimer-holder" id="disclaimer-holder">
+   </div>
+  </div>
+  <div class="container mainContainer" data-bi-name="body">
+   <div class="content-header" data-bi-name="content-header">
+    <div class="content-header-controls">
+     <button class="contents-button button-border" data-bi-name="contents-expand" type="button">
+      <span class="docon docon-menu">
+      </span>
+      Contents
+     </button>
+    </div>
+    <div class="content-header-controls">
+     <button class="ap-collapse-behavior ap-expanded button-border" data-bi-name="ap-collapse" type="button">
+      <span class="docon docon-exit-mode">
+      </span>
+      Exit focus mode
+     </button>
+    </div>
+   </div>
+   <div class="primary-holder">
+    <main class="content" data-bi-name="content" dir="ltr" id="main" lang="en-us" role="main">
+     <!-- <content> -->
+     <h1>
+      Get-PSReadline
+      <wbr/>
+      Key
+      <wbr/>
+      Handler
+     </h1>
+     <div class="metadata">
+      <dl class="attributeList">
+       <dt>
+        Module:
+       </dt>
+       <dd>
+        <a data-linktype="relative-path" href="./PSReadLine.html">
+         PSReadLine
+        </a>
+       </dd>
+      </dl>
+     </div>
+     <div class="summaryHolder">
+      <div class="summary">
+       Gets the key bindings for the PSReadline module.
+      </div>
+     </div>
+     <h2 class="hiddenAnchor" id="syntax">
+      Syntax
+     </h2>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Get-PSReadlineKeyHandler
+   [-Bound]
+   [-Unbound]
+   [&lt;CommonParameters&gt;]</code></pre>
+     <h2 id="description">
+      Description
+     </h2>
+     <p>
+      The
+      <strong>
+       Get-PSReadlineKeyHandler
+      </strong>
+      cmdlet gets key bindings.
+If you specify the
+      <em>
+       Bound
+      </em>
+      and
+      <em>
+       Unbound
+      </em>
+      parameters, this cmdlet returns all bound keys and unbound functions.
+If you specify
+      <em>
+       Bound
+      </em>
+      , but not
+      <em>
+       Unbound
+      </em>
+      , the cmdlet returns only bound keys.
+If you specify
+      <em>
+       Unbound
+      </em>
+      , but not
+      <em>
+       Bound
+      </em>
+      , the cmdlet returns only unbound keys.
+     </p>
+     <h2 id="examples">
+      Examples
+     </h2>
+     <p>
+      <strong>
+       Example 1: Get all key mappings
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-PSReadlineKeyHandler
+
+Key                   Function                Description
+
+---                   --------                -----------
+
+Enter                 AcceptLine              Accept the input or move to the next line if input is missing a closing token.
+
+Shift+Enter           AddLine                 Move the cursor to the next line without attempting to execute the input
+
+Escape                RevertLine              Equivalent to undo all edits (clears the line except lines imported from history)
+
+LeftArrow             BackwardChar            Move the cursor back one character
+
+RightArrow            ForwardChar             Move the cursor forward one character
+
+Ctrl+LeftArrow        BackwardWord            Move the cursor to the beginning of the current or previous word
+
+Ctrl+RightArrow       NextWord                Move the cursor forward to the start of the next word
+
+Shift+LeftArrow       SelectBackwardChar      Adjust the current selection to include the previous character
+
+Shift+RightArrow      SelectForwardChar       Adjust the current selection to include the next character
+
+Ctrl+Shift+LeftArrow  SelectBackwardWord      Adjust the current selection to include the previous word
+
+Ctrl+Shift+RightArrow SelectNextWord          Adjust the current selection to include the next word
+
+UpArrow               PreviousHistory         Replace the input with the previous item in the history
+
+DownArrow             NextHistory             Replace the input with the next item in the history
+
+Home                  BeginningOfLine         Move the cursor to the beginning of the line
+
+End                   EndOfLine               Move the cursor to the end of the line
+
+Shift+Home            SelectBackwardsLine     Adjust the current selection to include from the cursor to the end of the line
+
+Shift+End             SelectLine              Adjust the current selection to include from the cursor to the start of the line
+
+Delete                DeleteChar              Delete the character under the cursor
+
+Backspace             BackwardDeleteChar      Delete the charcter before the cursor
+
+Ctrl+Spacebar         MenuComplete            Complete the input if there is a single completion, otherwise complete the input by selecting from a menu o...
+
+Tab                   TabCompleteNext         Complete the input using the next completion
+
+Shift+Tab             TabCompletePrevious     Complete the input using the previous completion
+
+Ctrl+a                SelectAll               Select the entire line. Moves the cursor to the end of the line
+
+Ctrl+c                CopyOrCancelLine        Either copy selected text to the clipboard, or if no text is selected, cancel editing the line with Cancel...
+
+Ctrl+C                Copy                    Copy selected region to the system clipboard.  If no region is selected, copy the whole line
+
+Ctrl+l                ClearScreen             Clear the screen and redraw the current line at the top of the screen
+
+Ctrl+r                ReverseSearchHistory    Search history backwards interactively
+
+Ã¢â¬Â¦</code></pre>
+     <p>
+      This command returns all key mappings, bound and unbound.
+     </p>
+     <p>
+      <strong>
+       Example 2: Get bound keys
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-PSReadlineKeyHandler -Bound
+
+Key                   Function                Description
+
+---                   --------                -----------
+
+Enter                 AcceptLine              Accept the input or move to the next line if input is missing a closing token.
+
+Shift+Enter           AddLine                 Move the cursor to the next line without attempting to execute the input
+
+Escape                RevertLine              Equivalent to undo all edits (clears the line except lines imported from history)
+
+LeftArrow             BackwardChar            Move the cursor back one character
+
+RightArrow            ForwardChar             Move the cursor forward one character
+
+Ctrl+LeftArrow        BackwardWord            Move the cursor to the beginning of the current or previous word
+
+Ctrl+RightArrow       NextWord                Move the cursor forward to the start of the next word
+
+Shift+LeftArrow       SelectBackwardChar      Adjust the current selection to include the previous character
+
+Shift+RightArrow      SelectForwardChar       Adjust the current selection to include the next character
+
+Ctrl+Shift+LeftArrow  SelectBackwardWord      Adjust the current selection to include the previous word
+
+Ctrl+Shift+RightArrow SelectNextWord          Adjust the current selection to include the next word
+
+UpArrow               PreviousHistory         Replace the input with the previous item in the history
+
+DownArrow             NextHistory             Replace the input with the next item in the history
+
+Home                  BeginningOfLine         Move the cursor to the beginning of the line
+
+End                   EndOfLine               Move the cursor to the end of the line
+
+Shift+Home            SelectBackwardsLine     Adjust the current selection to include from the cursor to the end of the line
+
+Shift+End             SelectLine              Adjust the current selection to include from the cursor to the start of the line
+
+Delete                DeleteChar              Delete the character under the cursor
+
+Backspace             BackwardDeleteChar      Delete the charcter before the cursor
+
+Ctrl+Spacebar         MenuComplete            Complete the input if there is a single completion, otherwise complete the input by selecting from a menu o...
+
+Tab                   TabCompleteNext         Complete the input using the next completion
+
+Ã¢â¬Â¦</code></pre>
+     <p>
+      This command returns only bound keys and key combinations.
+     </p>
+     <h2 id="optional-parameters">
+      Optional Parameters
+     </h2>
+     <div class="parameterName stack">
+      -Bound
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that this cmdlet returns functions that are bound.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Unbound
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that this cmdlet returns functions that are unbound.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="inputs">
+      Inputs
+     </h2>
+     <p>
+      <strong>
+       None
+      </strong>
+     </p>
+     <p>
+      You cannot pipe objects to this cmdlet.
+     </p>
+     <h2 id="outputs">
+      Outputs
+     </h2>
+     <p>
+      <strong>
+       PSConsoleUtilities.KeyHandler
+      </strong>
+     </p>
+     <p>
+      This cmdlet returns one entry for each key binding, or chord, for bound functions and one entry for each unbound function.
+     </p>
+     <h2 id="related-links">
+      Related Links
+     </h2>
+     <ul>
+      <li>
+       <a data-linktype="relative-path" href="remove-psreadlinekeyhandler.html">
+        Remove-PSReadlineKeyHandler
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="get-psreadlineoption.html">
+        Get-PSReadlineOption
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="set-psreadlineoption.html">
+        Set-PSReadlineOption
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="set-psreadlinekeyhandler.html">
+        Set-PSReadlineKeyHandler
+       </a>
+      </li>
+     </ul>
+     <!-- </content> -->
+    </main>
+    <div class="note alert feedback-system-change-alert">
+     <p>
+      Note
+     </p>
+     <p>
+      The feedback system for this content will be changing soon. Old comments will not be carried over. If content within a comment thread is important to you, please save a copy. For more information on the upcoming change,
+      <a href="https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs">
+       we invite you to read our blog post
+      </a>
+      .
+     </p>
+    </div>
+    <div data-bi-name="comments" id="comments-container" role="form">
+    </div>
+   </div>
+  </div>
+  <div class="openfeedback-container" id="openFeedbackContainer">
+  </div>
+  <div class="action-panel">
+  </div>
+ </body>
+</html>

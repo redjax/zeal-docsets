@@ -1,0 +1,315 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+<title>Extending — Jenkins Job Builder 2.0.0.0b3.dev264 documentation</title>
+<link href="_static/classic.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '2.0.0.0b3.dev264',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="index.html" rel="top" title="Jenkins Job Builder 2.0.0.0b3.dev264 documentation"/>
+<link href="zuul.html" rel="prev" title="Zuul"/>
+</head>
+<body role="document">
+<div aria-label="related navigation" class="related" role="navigation">
+<h3>Navigation</h3>
+<ul>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="P" href="zuul.html" title="Zuul">previous</a> |</li>
+<li class="nav-item nav-item-0"><a href="index.html">Jenkins Job Builder 2.0.0.0b3.dev264 documentation</a> »</li>
+</ul>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="bodywrapper">
+<div class="body" role="main">
+<div class="section" id="extending">
+<span id="id1"></span><h1>Extending<a class="headerlink" href="#extending" title="Permalink to this headline">¶</a></h1>
+<p>Jenkins Job Builder is quite modular.  It is easy to add new
+attributes to existing components, a new module to support a Jenkins
+plugin, or include locally defined methods to deal with an
+idiosyncratic build system.</p>
+<div class="section" id="the-builder">
+<h2>The Builder<a class="headerlink" href="#the-builder" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal"><span class="pre">Builder</span></code> class manages Jenkins jobs. It’s responsible for
+creating/deleting/updating jobs and can be called from your application. You
+can pass it a filename or an open file-like object that represents your YAML
+configuration. See the <code class="docutils literal"><span class="pre">jenkins_jobs/builder.py</span></code> file for more details.</p>
+</div>
+<div class="section" id="xml-processing">
+<h2>XML Processing<a class="headerlink" href="#xml-processing" title="Permalink to this headline">¶</a></h2>
+<p>Most of the work of building XML from the YAML configuration file is
+handled by individual functions that implement a single
+characteristic.  For example, see the
+<code class="docutils literal"><span class="pre">jenkins_jobs/modules/builders.py</span></code> file for the Python module that
+implements the standard Jenkins builders.  The <code class="docutils literal"><span class="pre">shell</span></code> function at
+the top of the file implements the standard <cite>Execute a shell</cite> build
+step.  All of the YAML to XML functions in Jenkins Job Builder have
+the same signature:</p>
+<span class="target" id="component-interface"></span><dl class="function">
+<dt>
+<code class="descname">component</code><span class="sig-paren">(</span><em>parser</em>, <em>xml_parent</em>, <em>data</em><span class="sig-paren">)</span></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>parser</strong> (<em>YAMLParser</em>) – the jenkins jobs YAML parser</li>
+<li><strong>xml_parent</strong> (<em>Element</em>) – this attribute’s parent XML element</li>
+<li><strong>data</strong> (<em>dict</em>) – the YAML data structure for this attribute and below</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+<p>The function is expected to examine the YAML data structure and create
+new XML nodes and attach them to the xml_parent element.  This general
+pattern is applied throughout the included modules.</p>
+</div>
+<div class="section" id="modules">
+<span id="module"></span><h2>Modules<a class="headerlink" href="#modules" title="Permalink to this headline">¶</a></h2>
+<p>Nearly all of Jenkins Job Builder is implemented in modules.  The main
+program has no concept of builders, publishers, properties, or any
+other aspects of job definition.  Each of those building blocks is
+defined in a module, and due to the use of setuptools entry points,
+most modules are easily extensible with new components.</p>
+<p>To add a new module, define a class that inherits from
+<a class="reference internal" href="#jenkins_jobs.modules.base.Base" title="jenkins_jobs.modules.base.Base"><code class="xref py py-class docutils literal"><span class="pre">jenkins_jobs.modules.base.Base</span></code></a>, and add it to the
+<code class="docutils literal"><span class="pre">jenkins_jobs.modules</span></code> entry point in your setup.py.</p>
+<dl class="class">
+<dt id="jenkins_jobs.modules.base.Base"><a name="//apple_ref/cpp/Class/jenkins_jobs.modules.base.Base"></a>
+<em class="property">class </em><code class="descclassname">jenkins_jobs.modules.base.</code><code class="descname">Base</code><span class="sig-paren">(</span><em>registry</em><span class="sig-paren">)</span><a class="headerlink" href="#jenkins_jobs.modules.base.Base" title="Permalink to this definition">¶</a></dt>
+<dd><p>A base class for a Jenkins Job Builder Module.</p>
+<p>The module is initialized before any YAML is parsed.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>registry</strong> (<a class="reference internal" href="#jenkins_jobs.registry.ModuleRegistry" title="jenkins_jobs.registry.ModuleRegistry"><em>ModuleRegistry</em></a>) – the global module registry.</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="jenkins_jobs.modules.base.Base.component_list_type"><a name="//apple_ref/cpp/Attribute/jenkins_jobs.modules.base.Base.component_list_type"></a>
+<code class="descname">component_list_type</code><em class="property"> = None</em><a class="headerlink" href="#jenkins_jobs.modules.base.Base.component_list_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>The component list type will be used to look up possible
+implementations of the component type via entry points (entry
+points provide a list of components, so it should be plural).
+Set both component_type and component_list_type to None if module
+doesn’t have components.</p>
+</dd></dl>
+<dl class="attribute">
+<dt id="jenkins_jobs.modules.base.Base.component_type"><a name="//apple_ref/cpp/Attribute/jenkins_jobs.modules.base.Base.component_type"></a>
+<code class="descname">component_type</code><em class="property"> = None</em><a class="headerlink" href="#jenkins_jobs.modules.base.Base.component_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>The component type for components of this module.  This will be
+used to look for macros (they are defined singularly, and should
+not be plural).
+Set both component_type and component_list_type to None if module
+doesn’t have components.</p>
+</dd></dl>
+<dl class="method">
+<dt id="jenkins_jobs.modules.base.Base.gen_xml"><a name="//apple_ref/cpp/Method/jenkins_jobs.modules.base.Base.gen_xml"></a>
+<code class="descname">gen_xml</code><span class="sig-paren">(</span><em>xml_parent</em>, <em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#jenkins_jobs.modules.base.Base.gen_xml" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the XML element tree based on YAML data.  Override
+this method to add elements to the XML output.  Create new
+Element objects and add them to the xml_parent.  The YAML data
+structure must not be modified.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>parser</strong> (<em>YAMLParser</em>) – the global YAML Parser</li>
+<li><strong>xml_parent</strong> (<em>Element</em>) – the parent XML element</li>
+<li><strong>data</strong> (<em>dict</em>) – the YAML data structure</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+<dl class="method">
+<dt id="jenkins_jobs.modules.base.Base.handle_data"><a name="//apple_ref/cpp/Method/jenkins_jobs.modules.base.Base.handle_data"></a>
+<code class="descname">handle_data</code><span class="sig-paren">(</span><em>job_data</em><span class="sig-paren">)</span><a class="headerlink" href="#jenkins_jobs.modules.base.Base.handle_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method is called before any XML is generated.  By
+overriding this method, a module may arbitrarily modify a data
+structure which will probably be the JJB YamlParser’s intermediate data
+representation. If it has changed the data structure at all, it must
+return <code class="docutils literal"><span class="pre">True</span></code>, otherwise, it must return <code class="docutils literal"><span class="pre">False</span></code>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>job_data</strong> (<em>dict</em>) – the intermediate representation of job data</td>
+</tr>
+</tbody>
+</table>
+<p>loaded from JJB Yaml files without variables interpolation or other
+yaml expansions.
+:rtype: boolean</p>
+</dd></dl>
+<dl class="attribute">
+<dt id="jenkins_jobs.modules.base.Base.sequence"><a name="//apple_ref/cpp/Attribute/jenkins_jobs.modules.base.Base.sequence"></a>
+<code class="descname">sequence</code><em class="property"> = 10</em><a class="headerlink" href="#jenkins_jobs.modules.base.Base.sequence" title="Permalink to this definition">¶</a></dt>
+<dd><p>The sequence number for the module.  Modules are invoked in the
+order of their sequence number in order to produce consistently
+ordered XML output.</p>
+</dd></dl>
+</dd></dl>
+</div>
+<div class="section" id="components">
+<span id="component"></span><h2>Components<a class="headerlink" href="#components" title="Permalink to this headline">¶</a></h2>
+<p>Most of the standard modules supply a number of components, and it’s
+easy to provide your own components for use by those modules.  For
+instance, the Builders module provides several builders, such as the
+<cite>shell</cite> builder as well as the <cite>trigger_builds</cite> builder.  If you
+wanted to add a new builder, all you need to do is write a function
+that conforms to the <a class="reference internal" href="#component-interface"><span class="std std-ref">Component Interface</span></a>,
+and then add that function to the appropriate entry point (via a
+setup.py file).</p>
+</div>
+<div class="section" id="module-registry">
+<span id="id2"></span><h2>Module Registry<a class="headerlink" href="#module-registry" title="Permalink to this headline">¶</a></h2>
+<p>All modules and their associated components are registered in the
+module registry. It can be accessed either from modules via the registry
+field, or via the parser parameter of components.</p>
+<dl class="class">
+<dt id="jenkins_jobs.registry.ModuleRegistry"><a name="//apple_ref/cpp/Class/jenkins_jobs.registry.ModuleRegistry"></a>
+<em class="property">class </em><code class="descclassname">jenkins_jobs.registry.</code><code class="descname">ModuleRegistry</code><span class="sig-paren">(</span><em>jjb_config</em>, <em>plugins_list=None</em><span class="sig-paren">)</span><a class="headerlink" href="#jenkins_jobs.registry.ModuleRegistry" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="jenkins_jobs.registry.ModuleRegistry.dispatch"><a name="//apple_ref/cpp/Method/jenkins_jobs.registry.ModuleRegistry.dispatch"></a>
+<code class="descname">dispatch</code><span class="sig-paren">(</span><em>component_type</em>, <em>xml_parent</em>, <em>component</em>, <em>template_data={}</em><span class="sig-paren">)</span><a class="headerlink" href="#jenkins_jobs.registry.ModuleRegistry.dispatch" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is a method that you can call from your implementation of
+Base.gen_xml or component.  It allows modules to define a type
+of component, and benefit from extensibility via Python
+entry points and Jenkins Job Builder <a class="reference internal" href="definition.html#macro"><span class="std std-ref">Macros</span></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>component_type</strong> (<em>string</em>) – the name of the component
+(e.g., <cite>builder</cite>)</li>
+<li><strong>parser</strong> (<em>YAMLParser</em>) – the global YAML Parser</li>
+<li><strong>xml_parent</strong> (<em>Element</em>) – the parent XML element</li>
+<li><strong>template_data</strong> (<em>dict</em>) – values that should be interpolated into
+the component definition</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>See <a class="reference internal" href="#jenkins_jobs.modules.base.Base" title="jenkins_jobs.modules.base.Base"><code class="xref py py-class docutils literal"><span class="pre">jenkins_jobs.modules.base.Base</span></code></a> for how to register
+components of a module.</p>
+<p>See the Publishers module for a simple example of how to use
+this method.</p>
+</dd></dl>
+<dl class="method">
+<dt id="jenkins_jobs.registry.ModuleRegistry.get_plugin_info"><a name="//apple_ref/cpp/Method/jenkins_jobs.registry.ModuleRegistry.get_plugin_info"></a>
+<code class="descname">get_plugin_info</code><span class="sig-paren">(</span><em>plugin_name</em><span class="sig-paren">)</span><a class="headerlink" href="#jenkins_jobs.registry.ModuleRegistry.get_plugin_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method is intended to provide information about plugins within
+a given module’s implementation of Base.gen_xml. The return value is a
+dictionary with data obtained directly from a running Jenkins instance.
+This allows module authors to differentiate generated XML output based
+on information such as specific plugin versions.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>plugin_name</strong> (<em>string</em>) – Either the shortName or longName of a plugin
+as see in a query that looks like:
+<code class="docutils literal"><span class="pre">http://&lt;jenkins-hostname&gt;/pluginManager/api/json?pretty&amp;depth=2</span></code></td>
+</tr>
+</tbody>
+</table>
+<p>During a ‘test’ run, it is possible to override JJB’s query to a live
+Jenkins instance by passing it a path to a file containing a YAML list
+of dictionaries that mimics the plugin properties you want your test
+output to reflect:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">jenkins</span><span class="o">-</span><span class="n">jobs</span> <span class="n">test</span> <span class="o">-</span><span class="n">p</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">plugins</span><span class="o">-</span><span class="n">info</span><span class="o">.</span><span class="n">yaml</span>
+</pre></div>
+</div>
+<p>Below is example YAML that might be included in
+/path/to/plugins-info.yaml.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">longName</span><span class="p">:</span> <span class="s1">'Jenkins HipChat Plugin'</span>
+  <span class="n">shortName</span><span class="p">:</span> <span class="s1">'hipchat'</span>
+  <span class="n">version</span><span class="p">:</span> <span class="s2">"0.1.8"</span>
+</pre></div>
+</div>
+</dd></dl>
+</dd></dl>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<h3><a href="index.html">Table Of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#">Extending</a><ul>
+<li><a class="reference internal" href="#the-builder">The Builder</a></li>
+<li><a class="reference internal" href="#xml-processing">XML Processing</a></li>
+<li><a class="reference internal" href="#modules">Modules</a></li>
+<li><a class="reference internal" href="#components">Components</a></li>
+<li><a class="reference internal" href="#module-registry">Module Registry</a></li>
+</ul>
+</li>
+</ul>
+<h4>Previous topic</h4>
+<p class="topless"><a href="zuul.html" title="previous chapter">Zuul</a></p>
+<div aria-label="source link" role="note">
+<h3>This Page</h3>
+<ul class="this-page-menu">
+<li><a href="_sources/extending.txt" rel="nofollow">Show Source</a></li>
+</ul>
+</div>
+<div id="searchbox" role="search" style="display: none">
+<h3>Quick search</h3>
+<form action="search.html" class="search" method="get">
+<div><input name="q" type="text"/></div>
+<div><input type="submit" value="Go"/></div>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div aria-label="related navigation" class="related" role="navigation">
+<h3>Navigation</h3>
+<ul>
+<li class="right" style="margin-right: 10px">
+<a href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a href="zuul.html" title="Zuul">previous</a> |</li>
+<li class="nav-item nav-item-0"><a href="index.html">Jenkins Job Builder 2.0.0.0b3.dev264 documentation</a> »</li>
+</ul>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012, Jenkins Job Builder Maintainers.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.9.
+    </div>
+</body>
+</html>

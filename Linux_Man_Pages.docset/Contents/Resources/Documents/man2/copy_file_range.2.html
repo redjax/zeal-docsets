@@ -1,0 +1,307 @@
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML><HEAD><TITLE>Man page of COPY</TITLE>
+</HEAD><BODY>
+<H1>COPY</H1>
+Section: Linux Programmer's Manual (2)<BR>Updated: 2016-03-15<BR><A HREF="#index">Index</A>
+<A HREF="../index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+copy_file_range - Copy a range of data from one file to another
+<A NAME="lbAC">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<PRE>
+<B>#include &lt;<A HREF="file:///usr/include/sys/syscall.h">sys/syscall.h</A>&gt;</B>
+<B>#include &lt;<A HREF="file:///usr/include/unistd.h">unistd.h</A>&gt;</B>
+
+<B>ssize_t copy_file_range(int </B><I>fd_in</I><B>, loff_t *</B><I>off_in</I><B>,</B>
+<B>                        int </B><I>fd_out</I><B>, loff_t *</B><I>off_out</I><B>,</B>
+<B>                        size_t </B><I>len</I><B>, unsigned int </B><I>flags</I><B>);</B>
+</PRE>
+
+<A NAME="lbAD">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+The
+<B>copy_file_range</B>()
+
+system call performs an in-kernel copy between two file descriptors
+without the additional cost of transferring data from the kernel to user space
+and then back into the kernel.
+It copies up to
+<I>len</I>
+
+bytes of data from file descriptor
+<I>fd_in</I>
+
+to file descriptor
+<I>fd_out</I>,
+
+overwriting any data that exists within the requested range of the target file.
+<P>
+The following semantics apply for
+<I>off_in</I>,
+
+and similar statements apply to
+<I>off_out</I>:
+
+<DL COMPACT>
+<DT>*<DD>
+If
+<I>off_in</I>
+
+is NULL, then bytes are read from
+<I>fd_in</I>
+
+starting from the file offset, and the file offset is
+adjusted by the number of bytes copied.
+<DT>*<DD>
+If
+<I>off_in</I>
+
+is not NULL, then
+<I>off_in</I>
+
+must point to a buffer that specifies the starting
+offset where bytes from
+<I>fd_in</I>
+
+will be read.
+The file offset of
+<I>fd_in</I>
+
+is not changed, but
+<I>off_in</I>
+
+is adjusted appropriately.
+</DL>
+<P>
+
+<P>
+The
+<I>flags</I>
+
+argument is provided to allow for future extensions
+and currently must be to 0.
+<A NAME="lbAE">&nbsp;</A>
+<H2>RETURN VALUE</H2>
+
+Upon successful completion,
+<B>copy_file_range</B>()
+
+will return the number of bytes copied between files.
+This could be less than the length originally requested.
+<P>
+On error,
+<B>copy_file_range</B>()
+
+returns -1 and
+<I>errno</I>
+
+is set to indicate the error.
+<A NAME="lbAF">&nbsp;</A>
+<H2>ERRORS</H2>
+
+<DL COMPACT>
+<DT><B>EBADF</B>
+
+<DD>
+One or more file descriptors are not valid; or
+<I>fd_in</I>
+
+is not open for reading; or
+<I>fd_out</I>
+
+is not open for writing; or
+the
+<B>O_APPEND</B>
+
+flag is set for the open file description referred to by
+<I>fd_out</I>.
+
+<DT><B>EINVAL</B>
+
+<DD>
+Requested range extends beyond the end of the source file; or the
+<I>flags</I>
+
+argument is not 0.
+<DT><B>EIO</B>
+
+<DD>
+A low-level I/O error occurred while copying.
+<DT><B>ENOMEM</B>
+
+<DD>
+Out of memory.
+<DT><B>ENOSPC</B>
+
+<DD>
+There is not enough space on the target filesystem to complete the copy.
+<DT><B>EXDEV</B>
+
+<DD>
+The files referred to by
+<I>file_in</I> and <I>file_out</I>
+
+are not on the same mounted filesystem.
+</DL>
+<A NAME="lbAG">&nbsp;</A>
+<H2>VERSIONS</H2>
+
+The
+<B>copy_file_range</B>()
+
+system call first appeared in Linux 4.5.
+<A NAME="lbAH">&nbsp;</A>
+<H2>CONFORMING TO</H2>
+
+The
+<B>copy_file_range</B>()
+
+system call is a nonstandard Linux extension.
+<A NAME="lbAI">&nbsp;</A>
+<H2>NOTES</H2>
+
+If
+<I>file_in</I>
+
+is a sparse file, then
+<B>copy_file_range</B>()
+
+may expand any holes existing in the requested range.
+Users may benefit from calling
+<B>copy_file_range</B>()
+
+in a loop, and using the
+<B><A HREF="../man2/lseek.2.html">lseek</A></B>(2)
+
+<B>SEEK_DATA</B>
+
+and
+<B>SEEK_HOLE</B>
+
+operations to find the locations of data segments.
+<P>
+<B>copy_file_range</B>()
+
+gives filesystems an opportunity to implement &quot;copy acceleration&quot; techniques,
+such as the use of reflinks (i.e., two or more i-nodes that share
+pointers to the same copy-on-write disk blocks)
+or server-side-copy (in the case of NFS).
+<A NAME="lbAJ">&nbsp;</A>
+<H2>EXAMPLE</H2>
+
+<PRE>
+#define _GNU_SOURCE
+#include &lt;<A HREF="file:///usr/include/fcntl.h">fcntl.h</A>&gt;
+#include &lt;<A HREF="file:///usr/include/stdio.h">stdio.h</A>&gt;
+#include &lt;<A HREF="file:///usr/include/stdlib.h">stdlib.h</A>&gt;
+#include &lt;<A HREF="file:///usr/include/sys/stat.h">sys/stat.h</A>&gt;
+#include &lt;<A HREF="file:///usr/include/sys/syscall.h">sys/syscall.h</A>&gt;
+#include &lt;<A HREF="file:///usr/include/unistd.h">unistd.h</A>&gt;
+
+static loff_t
+copy_file_range(int fd_in, loff_t *off_in, int fd_out,
+                loff_t *off_out, size_t len, unsigned int flags)
+{
+    return syscall(__NR_copy_file_range, fd_in, off_in, fd_out,
+                   off_out, len, flags);
+}
+
+int
+main(int argc, char **argv)
+{
+    int fd_in, fd_out;
+    struct stat stat;
+    loff_t len, ret;
+
+    if (argc != 3) {
+        fprintf(stderr, &quot;Usage: %s &lt;source&gt; &lt;destination&gt;\n&quot;, argv[0]);
+        exit(EXIT_FAILURE);
+    }
+
+    fd_in = open(argv[1], O_RDONLY);
+    if (fd_in == -1) {
+        perror(&quot;open (argv[1])&quot;);
+        exit(EXIT_FAILURE);
+    }
+
+    if (fstat(fd_in, &amp;stat) == -1) {
+        perror(&quot;fstat&quot;);
+        exit(EXIT_FAILURE);
+    }
+
+    len = stat.st_size;
+
+    fd_out = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0644);
+    if (fd_out == -1) {
+        perror(&quot;open (argv[2])&quot;);
+        exit(EXIT_FAILURE);
+    }
+
+    do {
+        ret = copy_file_range(fd_in, NULL, fd_out, NULL, len, 0);
+        if (ret == -1) {
+            perror(&quot;copy_file_range&quot;);
+            exit(EXIT_FAILURE);
+        }
+
+        len -= ret;
+    } while (len &gt; 0);
+
+    close(fd_in);
+    close(fd_out);
+    exit(EXIT_SUCCESS);
+}
+</PRE>
+
+<A NAME="lbAK">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+<B><A HREF="../man2/lseek.2.html">lseek</A></B>(2),
+
+<B><A HREF="../man2/sendfile.2.html">sendfile</A></B>(2),
+
+<B><A HREF="../man2/splice.2.html">splice</A></B>(2)
+
+<A NAME="lbAL">&nbsp;</A>
+<H2>COLOPHON</H2>
+
+This page is part of release 4.09 of the Linux
+<I>man-pages</I>
+
+project.
+A description of the project,
+information about reporting bugs,
+and the latest version of this page,
+can be found at
+<A HREF="https://www.kernel.org/doc/man-pages/.">https://www.kernel.org/doc/man-pages/.</A>
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAD">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAE">RETURN VALUE</A><DD>
+<DT><A HREF="#lbAF">ERRORS</A><DD>
+<DT><A HREF="#lbAG">VERSIONS</A><DD>
+<DT><A HREF="#lbAH">CONFORMING TO</A><DD>
+<DT><A HREF="#lbAI">NOTES</A><DD>
+<DT><A HREF="#lbAJ">EXAMPLE</A><DD>
+<DT><A HREF="#lbAK">SEE ALSO</A><DD>
+<DT><A HREF="#lbAL">COLOPHON</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 14:28:26 GMT, February 25, 2017
+</BODY>
+</HTML>

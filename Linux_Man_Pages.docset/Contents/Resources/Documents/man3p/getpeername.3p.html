@@ -1,0 +1,212 @@
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML><HEAD><TITLE>Man page of GETPEERNAME</TITLE>
+</HEAD><BODY>
+<H1>GETPEERNAME</H1>
+Section: POSIX Programmer's Manual (3P)<BR>Updated: 2013<BR><A HREF="#index">Index</A>
+<A HREF="../index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>PROLOG</H2>
+
+This manual page is part of the POSIX Programmer's Manual.
+The Linux implementation of this interface may differ (consult
+the corresponding Linux manual page for details of Linux behavior),
+or the interface may not be implemented on Linux.
+<P>
+<A NAME="lbAC">&nbsp;</A>
+<H2>NAME</H2>
+
+getpeername
+--- get the name of the peer socket
+<A NAME="lbAD">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<P>
+
+<PRE>
+#include &lt;<A HREF="file:///usr/include/sys/socket.h">sys/socket.h</A>&gt;
+
+int getpeername(int <I>socket</I>, struct sockaddr *restrict <I>address</I>,
+    socklen_t *restrict <I>address_len</I>);
+</PRE>
+
+<A NAME="lbAE">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+The
+<I>getpeername</I>()
+function shall retrieve the peer address of the specified socket,
+store this address in the
+<B>sockaddr</B>
+
+structure pointed to by the
+<I>address</I>
+
+argument, and store the length of this address in the object pointed
+to by the
+<I>address_len</I>
+
+argument.
+<P>
+
+The
+<I>address_len</I>
+
+argument points to a
+<B>socklen_t</B>
+
+object which on input specifies the length of the supplied
+<B>sockaddr</B>
+
+structure, and on output specifies the length of the stored address.
+If the actual length of the address is greater than the length of the
+supplied
+<B>sockaddr</B>
+
+structure, the stored address shall be truncated.
+<P>
+
+If the protocol permits connections by unbound clients, and the peer is
+not bound, then the value stored in the object pointed to by
+<I>address</I>
+
+is unspecified.
+<A NAME="lbAF">&nbsp;</A>
+<H2>RETURN VALUE</H2>
+
+Upon successful completion, 0 shall be returned. Otherwise, -1 shall
+be returned and
+<I>errno</I>
+
+set to indicate the error.
+<A NAME="lbAG">&nbsp;</A>
+<H2>ERRORS</H2>
+
+The
+<I>getpeername</I>()
+function shall fail if:
+<DL COMPACT>
+<DT><B>EBADF</B>
+
+<DD>
+The
+<I>socket</I>
+
+argument is not a valid file descriptor.
+<DT><B>EINVAL</B>
+
+<DD>
+The socket has been shut down.
+<DT><B>ENOTCONN</B>
+
+<DD>
+The socket is not connected or otherwise has not had the peer
+pre-specified.
+<DT><B>ENOTSOCK</B>
+
+<DD>
+The
+<I>socket</I>
+
+argument does not refer to a socket.
+<DT><B>EOPNOTSUPP</B>
+
+<DD>
+The operation is not supported for the socket protocol.
+</DL>
+<P>
+
+The
+<I>getpeername</I>()
+function may fail if:
+<DL COMPACT>
+<DT><B>ENOBUFS</B>
+
+<DD>
+Insufficient resources were available in the system to complete the
+call.
+</DL>
+<P>
+
+<I>The following sections are informative.</I>
+
+<A NAME="lbAH">&nbsp;</A>
+<H2>EXAMPLES</H2>
+
+None.
+<A NAME="lbAI">&nbsp;</A>
+<H2>APPLICATION USAGE</H2>
+
+None.
+<A NAME="lbAJ">&nbsp;</A>
+<H2>RATIONALE</H2>
+
+None.
+<A NAME="lbAK">&nbsp;</A>
+<H2>FUTURE DIRECTIONS</H2>
+
+None.
+<A NAME="lbAL">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+<I>accept</I>(),
+
+<I>bind</I>(),
+
+<I>getsockname</I>(),
+
+<I>socket</I>()
+
+<P>
+
+The Base Definitions volume of POSIX.1-2008,
+<I></I><B>&lt;<A HREF="file:///usr/include/sys_socket.h">sys_socket.h</A>&gt;</B>
+
+<BR>
+
+<A NAME="lbAM">&nbsp;</A>
+<H2>COPYRIGHT</H2>
+
+Portions of this text are reprinted and reproduced in electronic form
+from IEEE Std 1003.1, 2013 Edition, Standard for Information Technology
+-- Portable Operating System Interface (POSIX), The Open Group Base
+Specifications Issue 7, Copyright (C) 2013 by the Institute of
+Electrical and Electronics Engineers, Inc and The Open Group.
+(This is POSIX.1-2008 with the 2013 Technical Corrigendum 1 applied.) In the
+event of any discrepancy between this version and the original IEEE and
+The Open Group Standard, the original IEEE and The Open Group Standard
+is the referee document. The original Standard can be obtained online at
+<A HREF="http://www.unix.org/online.html">http://www.unix.org/online.html</A> .
+<P>
+Any typographical or formatting errors that appear
+in this page are most likely
+to have been introduced during the conversion of the source files to
+man page format. To report such errors, see
+<A HREF="https://www.kernel.org/doc/man-pages/reporting_bugs.html">https://www.kernel.org/doc/man-pages/reporting_bugs.html</A> .
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">PROLOG</A><DD>
+<DT><A HREF="#lbAC">NAME</A><DD>
+<DT><A HREF="#lbAD">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAE">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAF">RETURN VALUE</A><DD>
+<DT><A HREF="#lbAG">ERRORS</A><DD>
+<DT><A HREF="#lbAH">EXAMPLES</A><DD>
+<DT><A HREF="#lbAI">APPLICATION USAGE</A><DD>
+<DT><A HREF="#lbAJ">RATIONALE</A><DD>
+<DT><A HREF="#lbAK">FUTURE DIRECTIONS</A><DD>
+<DT><A HREF="#lbAL">SEE ALSO</A><DD>
+<DT><A HREF="#lbAM">COPYRIGHT</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 14:28:46 GMT, February 25, 2017
+</BODY>
+</HTML>

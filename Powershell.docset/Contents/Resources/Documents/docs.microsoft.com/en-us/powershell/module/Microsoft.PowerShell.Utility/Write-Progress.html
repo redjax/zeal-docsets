@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html class="no-js hasSidebar hasPageActions hasBreadcrumb conceptual" data-authenticated="false" data-render="docs" dir="ltr" lang="en-us">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Write-Progress (Microsoft.PowerShell.Utility)" property="og:title"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" property="og:image"/>
+  <meta content="summary" name="twitter:card"/>
+  <meta content="@docsmsft" name="twitter:site"/>
+  <meta content="Write-Progress (Microsoft.PowerShell.Utility)" name="twitter:title"/>
+  <meta content="The Write-Progress cmdlet displays a progress bar in a Windows PowerShell command window that depicts the status of a running command or script. You can select the indicators that the bar reflects anâ¦" name="twitter:description"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" name="twitter:image"/>
+  <meta content="Microsoft Logo" name="twitter:image:alt"/>
+  <meta content="The Write-Progress cmdlet displays a progress bar in a Windows PowerShell command window that depicts the status of a running command or script. You can select the indicators that the bar reflects anâ¦" name="description"/>
+  <meta content="Docs" name="search.ms_sitename"/>
+  <meta content="PowerShell_PowerShell-docs_reference" name="search.ms_docsetname"/>
+  <meta content="0" name="version"/>
+  <meta content="en-us" name="locale"/>
+  <meta content="Docs" name="site_name"/>
+  <meta content="PowerShell" name="search.ms_product"/>
+  <meta content="PowerShell.PowerShell_PowerShell-docs_reference" name="depot_name"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/45404d4ca212afa615798d3d5cbfea5dc5cc1efb/reference/6/Microsoft.PowerShell.Utility/Write-Progress.md" name="ref_skeleton_gitcommit"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/live/reference/6/Microsoft.PowerShell.Utility/Write-Progress.md" name="original_ref_skeleton_git_url"/>
+  <meta content="2018-03-30 03:35 PM" name="updated_at"/>
+  <meta content="74b93648-92c2-0018-5c3d-95df5618b2ce" name="document_id"/>
+  <meta content="01ff8fbd-8abc-1419-0f9e-d56ddff65429" name="document_version_independent_id"/>
+  <meta content="powershell" name="page_type"/>
+  <meta content="command" name="page_kind"/>
+  <meta content="06/09/2017" name="ms.date"/>
+  <meta content="2.0.0" name="schema"/>
+  <meta content="powershell,cmdlet" name="keywords"/>
+  <meta content="http://go.microsoft.com/fwlink/?LinkId=821879" name="online_version"/>
+  <meta content="Microsoft.PowerShell.Commands.Utility.dll-Help.xml" name="external_help_file"/>
+  <meta content="powershell" name="ms.devlang"/>
+  <meta content="INDEX, FOLLOW" name="ROBOTS"/>
+  <meta content="sdwheeler" name="author"/>
+  <meta content="sewhee" name="ms.author"/>
+  <meta content="carmonm" name="manager"/>
+  <meta content="/powershell/bread-pscore/toc.yml?view=powershell-6" name="breadcrumb_path"/>
+  <meta content="powershell" name="apiPlatform"/>
+  <meta content="reference" name="ms.topic"/>
+  <meta content="windows, macos, linux" name="ms.tgt_pltfr"/>
+  <meta content="powershell-scripting" name="ms.technology"/>
+  <meta content="powershell" name="ms.prod"/>
+  <meta content="MSDocsHeader-Powershell" name="uhfHeaderId"/>
+  <meta content="../psdocs/toc.json?view=powershell-6" name="toc_rel"/>
+  <link href="https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/write-progress" rel="canonical"/>
+  <title>
+   Write-Progress
+  </title>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/60aac04b.site.css" rel="stylesheet"/>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/fdb8a38a.conceptual.css" rel="stylesheet"/>
+ </head>
+ <body dir="ltr" lang="en-us">
+  <div class="header-holder">
+   <div data-bi-name="header" id="headerAreaHolder">
+    <div id="uhf-placeholder">
+    </div>
+   </div>
+   <div class="disclaimer-holder" id="disclaimer-holder">
+   </div>
+  </div>
+  <div class="container mainContainer" data-bi-name="body">
+   <div class="content-header" data-bi-name="content-header">
+    <div class="content-header-controls">
+     <button class="contents-button button-border" data-bi-name="contents-expand" type="button">
+      <span class="docon docon-menu">
+      </span>
+      Contents
+     </button>
+    </div>
+    <div class="content-header-controls">
+     <button class="ap-collapse-behavior ap-expanded button-border" data-bi-name="ap-collapse" type="button">
+      <span class="docon docon-exit-mode">
+      </span>
+      Exit focus mode
+     </button>
+    </div>
+   </div>
+   <div class="primary-holder">
+    <main class="content" data-bi-name="content" dir="ltr" id="main" lang="en-us" role="main">
+     <!-- <content> -->
+     <h1>
+      Write-Progress
+     </h1>
+     <div class="metadata">
+      <dl class="attributeList">
+       <dt>
+        Module:
+       </dt>
+       <dd>
+        <a data-linktype="relative-path" href="./Microsoft.PowerShell.Utility.html">
+         Microsoft.PowerShell.Utility
+        </a>
+       </dd>
+      </dl>
+     </div>
+     <div class="summaryHolder">
+      <div class="summary">
+       Displays a progress bar within a Windows PowerShell command window.
+      </div>
+     </div>
+     <h2 class="hiddenAnchor" id="syntax">
+      Syntax
+     </h2>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Write-Progress
+     [-Activity] &lt;String&gt;
+     [[-Status] &lt;String&gt;]
+     [[-Id] &lt;Int32&gt;]
+     [-PercentComplete &lt;Int32&gt;]
+     [-SecondsRemaining &lt;Int32&gt;]
+     [-CurrentOperation &lt;String&gt;]
+     [-ParentId &lt;Int32&gt;]
+     [-Completed]
+     [-SourceId &lt;Int32&gt;]
+     [&lt;CommonParameters&gt;]</code></pre>
+     <h2 id="description">
+      Description
+     </h2>
+     <p>
+      The
+      <code>
+       Write-Progress
+      </code>
+      cmdlet displays a progress bar in a Windows PowerShell command window that depicts the status of a running command or script.
+You can select the indicators that the bar reflects and the text that appears above and below the progress bar.
+     </p>
+     <h2 id="examples">
+      Examples
+     </h2>
+     <p>
+      <strong>
+       Example 1: Display the progress of a For loop
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; for ($I = 1; $I -le 100; $I++ )
+
+{Write-Progress -Activity "Search in Progress" -Status "$I% Complete:" -PercentComplete $I;}</code></pre>
+     <p>
+      This command displays the progress of a For loop that counts from 1 to 100.
+The
+      <code>
+       Write-Progress
+      </code>
+      command includes a status bar heading ("activity"), a status line, and the variable $I (the counter in the For loop), which indicates the relative completeness of the task.
+     </p>
+     <p>
+      <strong>
+       Example 2: Display the progress of nested For loops
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; for($I = 1; $I -lt 101; $I++ )
+
+{Write-Progress -Activity Updating -Status 'Progress-&gt;' -PercentComplete $I -CurrentOperation OuterLoop; `
+
+PS C:\&gt; for($j = 1; $j -lt 101; $j++ )
+
+{Write-Progress -Id 1 -Activity Updating -Status 'Progress' - PercentComplete $j -CurrentOperation InnerLoop} }
+
+Updating
+
+Progress -&gt;
+
+ [ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo]
+
+OutsideLoop
+
+Updating
+
+Progress
+
+ [oooooooooooooooooo                                                   ]
+
+InnerLoop</code></pre>
+     <p>
+      This example displays the progress of two nested For loops, each of which is represented by a progress bar.
+     </p>
+     <p>
+      The
+      <code>
+       Write-Progress
+      </code>
+      command for the second progress bar includes the
+      <strong>
+       Id
+      </strong>
+      parameter that distinguishes it from the first progress bar.
+Without the
+      <strong>
+       Id
+      </strong>
+      parameter, the progress bars would be superimposed on each other instead of being displayed one below the other.
+     </p>
+     <p>
+      <strong>
+       Example 3: Display the progress while searching for a string
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; $Events = Get-EventLog -logname system
+
+PS C:\&gt; $Events | foreach-object -begin {clear-host;$I=0;$out=""} `
+
+-process {if($_.message -like "*bios*") {$out=$out + $_.Message}; $I = $I+1;
+
+Write-Progress -Activity "Searching Events" -Status "Progress:" -PercentComplete ($I/$Events.count*100)} `
+
+-end {$out}</code></pre>
+     <p>
+      This command displays the progress of a command to find the string "bios" in the System event log.
+     </p>
+     <p>
+      In the first line of the command, the Get-EventLog cmdlet gets the events in the System log and stores them in the $Events variable.
+     </p>
+     <p>
+      In the second line, the events are piped to the ForEach-Object
+      <code>
+       cmdlet.
+Before processing begins, the
+      </code>
+      Clear-Host` cmdlet is used to clear the screen, the $I counter variable is set to zero, and the $out output variable is set to the empty string.
+     </p>
+     <p>
+      In the third line, which is the Process script block of the
+      <code>
+       ForEach-Object
+      </code>
+      cmdlet, the cmdlet searches the message property of each incoming object for "bios".
+If the string is found, the message is added to $out.
+Then, the $I counter variable is incremented to record that another event has been examined.
+     </p>
+     <p>
+      The fourth line uses the
+      <code>
+       Write-Progress
+      </code>
+      cmdlet with values for the Activity and Status text fields that create the first and second lines of the progress bar heading, respectively.
+The
+      <strong>
+       PercentComplete
+      </strong>
+      parameter value is calculated by dividing the number of events that have been processed ($I) by the total number of events retrieved ($Events.count) and then multiplying that result by 100.
+     </p>
+     <p>
+      In the last line, the
+      <strong>
+       End
+      </strong>
+      parameter of the
+      <code>
+       ForEach-Object
+      </code>
+      cmdlet is used to display the messages that are stored in the $out variable.
+     </p>
+     <h2 id="required-parameters">
+      Required Parameters
+     </h2>
+     <div class="parameterName stack">
+      -Activity
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the first line of text in the heading above the status bar.
+This text describes the activity whose progress is being reported.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         1
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="optional-parameters">
+      Optional Parameters
+     </h2>
+     <div class="parameterName stack">
+      -Completed
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates whether the progress bar is visible.
+If this parameter is omitted,
+       <code>
+        Write-Progress
+       </code>
+       displays progress information.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -CurrentOperation
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the line of text below the progress bar.
+This text describes the operation that is currently taking place.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Id
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies an ID that distinguishes each progress bar from the others.
+Use this parameter when you are creating more than one progress bar in a single command.
+If the progress bars do not have different IDs, they are superimposed instead of being displayed in a series.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Int32
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         3
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -ParentId
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the parent activity of the current activity.
+Use the value -1 if the current activity has no parent activity.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Int32
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -PercentComplete
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the percentage of the activity that is completed.
+Use the value -1 if the percentage complete is unknown or not applicable.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Int32
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -SecondsRemaining
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the projected number of seconds remaining until the activity is completed.
+Use the value -1 if the number of seconds remaining is unknown or not applicable.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Int32
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -SourceId
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the source of the record.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Int32
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Status
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the second line of text in the heading above the status bar.
+This text describes current state of the activity.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         2
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="inputs">
+      Inputs
+     </h2>
+     <p>
+      <strong>
+       None
+      </strong>
+     </p>
+     <p>
+      You cannot pipe input to this cmdlet.
+     </p>
+     <h2 id="outputs">
+      Outputs
+     </h2>
+     <p>
+      <strong>
+       None
+      </strong>
+     </p>
+     <p>
+      <code>
+       Write-Progress
+      </code>
+      does not generate any output.
+     </p>
+     <h2 id="notes">
+      Notes
+     </h2>
+     <p>
+      If the progress bar does not appear, check the value of the $ProgressPreference variable. If the value is set to SilentlyContinue, the progress bar is not displayed. For more information about Windows PowerShell preferences, see about_Preference_Variables.
+     </p>
+     <p>
+      The parameters of the cmdlet correspond to the properties of the ProgressRecord class (System.Management.Automation.ProgressRecord). For more information, see
+      <a data-linktype="external" href="https://msdn.microsoft.com/library/system.management.automation.progressrecord">
+       ProgressRecord Class
+      </a>
+      in the MSDN library.
+     </p>
+     <h2 id="related-links">
+      Related Links
+     </h2>
+     <ul>
+      <li>
+       <a data-linktype="relative-path" href="write-debug.html">
+        Write-Debug
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="write-error.html">
+        Write-Error
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="../microsoft.powershell.management/write-eventlog.html">
+        Write-EventLog
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="write-host.html">
+        Write-Host
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="write-information.html">
+        Write-Information
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="write-output.html">
+        Write-Output
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="write-progress.html">
+        Write-Progress
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="write-verbose.html">
+        Write-Verbose
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="write-warning.html">
+        Write-Warning
+       </a>
+      </li>
+     </ul>
+     <!-- </content> -->
+    </main>
+    <div class="note alert feedback-system-change-alert">
+     <p>
+      Note
+     </p>
+     <p>
+      The feedback system for this content will be changing soon. Old comments will not be carried over. If content within a comment thread is important to you, please save a copy. For more information on the upcoming change,
+      <a href="https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs">
+       we invite you to read our blog post
+      </a>
+      .
+     </p>
+    </div>
+    <div data-bi-name="comments" id="comments-container" role="form">
+    </div>
+   </div>
+  </div>
+  <div class="openfeedback-container" id="openFeedbackContainer">
+  </div>
+  <div class="action-panel">
+  </div>
+ </body>
+</html>

@@ -1,0 +1,919 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+<title>Parameters — Jenkins Job Builder 2.0.0.0b3.dev264 documentation</title>
+<link href="_static/classic.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '2.0.0.0b3.dev264',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="index.html" rel="top" title="Jenkins Job Builder 2.0.0.0b3.dev264 documentation"/>
+<link href="definition.html" rel="up" title="Job Definitions"/>
+<link href="properties.html" rel="next" title="Properties"/>
+<link href="notifications.html" rel="prev" title="Notifications"/>
+</head>
+<body role="document">
+<div aria-label="related navigation" class="related" role="navigation">
+<h3>Navigation</h3>
+<ul>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="properties.html" title="Properties">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="notifications.html" title="Notifications">previous</a> |</li>
+<li class="nav-item nav-item-0"><a href="index.html">Jenkins Job Builder 2.0.0.0b3.dev264 documentation</a> »</li>
+<li class="nav-item nav-item-1"><a accesskey="U" href="definition.html">Job Definitions</a> »</li>
+</ul>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="bodywrapper">
+<div class="body" role="main">
+<div class="section" id="parameters"><a name="//apple_ref/cpp/Module/parameters"></a>
+<span id="id1"></span><h1>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h1>
+<span class="target" id="module-parameters"></span><p>The Parameters module allows you to specify build parameters for a job.</p>
+<dl class="docutils">
+<dt><strong>Component</strong>: parameters</dt>
+<dd><table class="first last docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Macro:</th><td class="field-body">parameter</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Entry Point:</th><td class="field-body">jenkins_jobs.parameters</td>
+</tr>
+</tbody>
+</table>
+</dd>
+</dl>
+<p>Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">job</span><span class="p">:</span>
+  <span class="n">name</span><span class="p">:</span> <span class="n">test_job</span>
+
+  <span class="n">parameters</span><span class="p">:</span>
+    <span class="o">-</span> <span class="n">string</span><span class="p">:</span>
+        <span class="n">name</span><span class="p">:</span> <span class="n">FOO</span>
+        <span class="n">default</span><span class="p">:</span> <span class="n">bar</span>
+        <span class="n">description</span><span class="p">:</span> <span class="s2">"A parameter named FOO, defaults to 'bar'."</span>
+</pre></div>
+</div>
+<dl class="yamlfunction">
+<dt id="parameters.bool">
+<code class="descname">bool</code><a class="headerlink" href="#parameters.bool" title="Permalink to this definition">¶</a></dt>
+<dd><p>A boolean parameter.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> (<em>str</em>) – the name of the parameter</li>
+<li><strong>default</strong> (<em>str</em>) – the default value of the parameter (optional)</li>
+<li><strong>description</strong> (<em>str</em>) – a description of the parameter (optional)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">parameters</span><span class="p">:</span>
+  <span class="o">-</span> <span class="nb">bool</span><span class="p">:</span>
+      <span class="n">name</span><span class="p">:</span> <span class="n">FOO</span>
+      <span class="n">default</span><span class="p">:</span> <span class="n">false</span>
+      <span class="n">description</span><span class="p">:</span> <span class="s2">"A parameter named FOO, defaults to 'false'."</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="yamlfunction">
+<dt id="parameters.choice">
+<code class="descname">choice</code><a class="headerlink" href="#parameters.choice" title="Permalink to this definition">¶</a></dt>
+<dd><p>A single selection parameter.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> (<em>str</em>) – the name of the parameter</li>
+<li><strong>choices</strong> (<em>list</em>) – the available choices, first one is the default one.</li>
+<li><strong>description</strong> (<em>str</em>) – a description of the parameter (optional)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">parameters</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">choice</span><span class="p">:</span>
+      <span class="n">name</span><span class="p">:</span> <span class="n">project</span>
+      <span class="n">choices</span><span class="p">:</span>
+        <span class="o">-</span> <span class="n">nova</span>
+        <span class="o">-</span> <span class="n">glance</span>
+      <span class="n">description</span><span class="p">:</span> <span class="s2">"On which project to run?"</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="yamlfunction">
+<dt id="parameters.copyartifact-build-selector">
+<code class="descname">copyartifact-build-selector</code><a class="headerlink" href="#parameters.copyartifact-build-selector" title="Permalink to this definition">¶</a></dt>
+<dd><p>Control via a build parameter, which build the copyartifact plugin should
+copy when it is configured to use ‘build-param’. Requires the Jenkins
+<a class="reference external" href="https://wiki.jenkins.io/display/JENKINS/Copy+Artifact+Plugin">Copy Artifact plugin</a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> (<em>str</em>) – name of the build parameter to store the selection in</li>
+<li><strong>description</strong> (<em>str</em>) – a description of the parameter (optional)</li>
+<li><strong>which-build</strong> (<em>str</em>) – which to provide as the default value in the UI. See
+<code class="docutils literal"><span class="pre">which-build</span></code> param of <a class="reference internal" href="builders.html#builders.copyartifact" title="builders.copyartifact"><code class="xref py py-mod docutils literal"><span class="pre">copyartifact</span></code></a> from the
+builders module for the available values as well as options available
+that control additional behaviour for the selected value.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">parameters</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">copyartifact-build-selector</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">BUILD_SELECTOR</span>
+      <span class="l l-Scalar l-Scalar-Plain">which-build</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">workspace-latest</span>
+      <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span> <span class="s">'Which</span><span class="nv"> </span><span class="s">build</span><span class="nv"> </span><span class="s">from</span><span class="nv"> </span><span class="s">upstream</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">copy</span><span class="nv"> </span><span class="s">artifacts</span><span class="nv"> </span><span class="s">from'</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="yamlfunction">
+<dt id="parameters.credentials">
+<code class="descname">credentials</code><a class="headerlink" href="#parameters.credentials" title="Permalink to this definition">¶</a></dt>
+<dd><p>A credentials selection parameter. Requires the Jenkins
+<a class="reference external" href="https://wiki.jenkins.io/display/JENKINS/Credentials+Plugin">Credentials Plugin</a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> (<em>str</em>) – the name of the parameter</li>
+<li><strong>type</strong> (<em>str</em>) – <p>credential type (optional, default ‘any’)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Allowed Values:</th><td class="field-body"><ul class="first last">
+<li><strong>any</strong> Any credential type (default)</li>
+<li><strong>usernamepassword</strong> Username with password</li>
+<li><strong>sshkey</strong> SSH Username with private key</li>
+<li><strong>secretfile</strong> Secret file</li>
+<li><strong>secrettext</strong> Secret text</li>
+<li><strong>certificate</strong> Certificate</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li><strong>required</strong> (<em>bool</em>) – whether this parameter is required (optional, default
+false)</li>
+<li><strong>default</strong> (<em>string</em>) – default credentials ID (optional)</li>
+<li><strong>description</strong> (<em>str</em>) – a description of the parameter (optional)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">literalinclude</span><span class="p">::</span>        <span class="o">/../../</span><span class="n">tests</span><span class="o">/</span><span class="n">parameters</span><span class="o">/</span><span class="n">fixtures</span><span class="o">/</span><span class="n">credentials</span><span class="o">-</span><span class="n">param001</span><span class="o">.</span><span class="n">yaml</span>
+</pre></div>
+</div>
+<blockquote>
+<div><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">language:</th><td class="field-body">yaml</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</dd></dl>
+<dl class="yamlfunction">
+<dt id="parameters.dynamic-choice">
+<code class="descname">dynamic-choice</code><a class="headerlink" href="#parameters.dynamic-choice" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dynamic Choice Parameter
+Requires the Jenkins <a class="reference external" href="https://wiki.jenkins.io/display/JENKINS/Dynamic+Parameter+Plug-in">Jenkins Dynamic Parameter Plug-in</a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> (<em>str</em>) – the name of the parameter</li>
+<li><strong>description</strong> (<em>str</em>) – a description of the parameter (optional)</li>
+<li><strong>script</strong> (<em>str</em>) – Groovy expression which generates the potential choices.</li>
+<li><strong>remote</strong> (<em>bool</em>) – the script will be executed on the slave where the build
+is started (default false)</li>
+<li><strong>classpath</strong> (<em>str</em>) – class path for script (optional)</li>
+<li><strong>read-only</strong> (<em>bool</em>) – user can’t modify parameter once populated
+(default false)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">parameters</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">dynamic</span><span class="o">-</span><span class="n">choice</span><span class="p">:</span>
+      <span class="n">name</span><span class="p">:</span> <span class="n">OPTIONS</span>
+      <span class="n">description</span><span class="p">:</span> <span class="s2">"Available options"</span>
+      <span class="n">script</span><span class="p">:</span> <span class="s2">"['optionA', 'optionB']"</span>
+      <span class="n">remote</span><span class="p">:</span> <span class="n">false</span>
+      <span class="n">read</span><span class="o">-</span><span class="n">only</span><span class="p">:</span> <span class="n">false</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="yamlfunction">
+<dt id="parameters.dynamic-choice-scriptler">
+<code class="descname">dynamic-choice-scriptler</code><a class="headerlink" href="#parameters.dynamic-choice-scriptler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dynamic Choice Parameter (Scriptler)
+Requires the Jenkins <a class="reference external" href="https://wiki.jenkins.io/display/JENKINS/Dynamic+Parameter+Plug-in">Jenkins Dynamic Parameter Plug-in</a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> (<em>str</em>) – the name of the parameter</li>
+<li><strong>description</strong> (<em>str</em>) – a description of the parameter (optional)</li>
+<li><strong>script-id</strong> (<em>str</em>) – Groovy script which generates the default value</li>
+<li><strong>parameters</strong> (<em>list</em>) – <p>parameters to corresponding script</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameter:</th><td class="field-body"><ul class="first last">
+<li><strong>name</strong> (<cite>str</cite>) Parameter name</li>
+<li><strong>value</strong> (<cite>str</cite>) Parameter value</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li><strong>remote</strong> (<em>bool</em>) – the script will be executed on the slave where the build
+is started (default false)</li>
+<li><strong>read-only</strong> (<em>bool</em>) – user can’t modify parameter once populated
+(default false)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">parameters</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">dynamic</span><span class="o">-</span><span class="n">choice</span><span class="o">-</span><span class="n">scriptler</span><span class="p">:</span>
+      <span class="n">name</span><span class="p">:</span> <span class="n">OPTIONS</span>
+      <span class="n">description</span><span class="p">:</span> <span class="s2">"Available options"</span>
+      <span class="n">script</span><span class="o">-</span><span class="nb">id</span><span class="p">:</span> <span class="s2">"scriptid.groovy"</span>
+      <span class="n">parameters</span><span class="p">:</span>
+        <span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="n">param1</span>
+          <span class="n">value</span><span class="p">:</span> <span class="n">value1</span>
+        <span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="n">param2</span>
+          <span class="n">value</span><span class="p">:</span> <span class="n">value2</span>
+      <span class="n">remote</span><span class="p">:</span> <span class="n">false</span>
+      <span class="n">read</span><span class="o">-</span><span class="n">only</span><span class="p">:</span> <span class="n">false</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="yamlfunction">
+<dt id="parameters.dynamic-string">
+<code class="descname">dynamic-string</code><a class="headerlink" href="#parameters.dynamic-string" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dynamic Parameter
+Requires the Jenkins <a class="reference external" href="https://wiki.jenkins.io/display/JENKINS/Dynamic+Parameter+Plug-in">Jenkins Dynamic Parameter Plug-in</a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> (<em>str</em>) – the name of the parameter</li>
+<li><strong>description</strong> (<em>str</em>) – a description of the parameter (optional)</li>
+<li><strong>script</strong> (<em>str</em>) – Groovy expression which generates the potential choices</li>
+<li><strong>remote</strong> (<em>bool</em>) – the script will be executed on the slave where the build
+is started (default false)</li>
+<li><strong>classpath</strong> (<em>str</em>) – class path for script (optional)</li>
+<li><strong>read-only</strong> (<em>bool</em>) – user can’t modify parameter once populated
+(default false)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">parameters</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">dynamic</span><span class="o">-</span><span class="n">string</span><span class="p">:</span>
+      <span class="n">name</span><span class="p">:</span> <span class="n">FOO</span>
+      <span class="n">description</span><span class="p">:</span> <span class="s2">"A parameter named FOO, defaults to 'bar'."</span>
+      <span class="n">script</span><span class="p">:</span> <span class="s2">"bar"</span>
+      <span class="n">remote</span><span class="p">:</span> <span class="n">false</span>
+      <span class="n">read</span><span class="o">-</span><span class="n">only</span><span class="p">:</span> <span class="n">false</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="yamlfunction">
+<dt id="parameters.dynamic-string-scriptler">
+<code class="descname">dynamic-string-scriptler</code><a class="headerlink" href="#parameters.dynamic-string-scriptler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dynamic Parameter (Scriptler)
+Requires the Jenkins <a class="reference external" href="https://wiki.jenkins.io/display/JENKINS/Dynamic+Parameter+Plug-in">Jenkins Dynamic Parameter Plug-in</a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> (<em>str</em>) – the name of the parameter</li>
+<li><strong>description</strong> (<em>str</em>) – a description of the parameter (optional)</li>
+<li><strong>script-id</strong> (<em>str</em>) – Groovy script which generates the default value</li>
+<li><strong>parameters</strong> (<em>list</em>) – <p>parameters to corresponding script</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameter:</th><td class="field-body"><ul class="first last">
+<li><strong>name</strong> (<cite>str</cite>) Parameter name</li>
+<li><strong>value</strong> (<cite>str</cite>) Parameter value</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li><strong>remote</strong> (<em>bool</em>) – the script will be executed on the slave where the build
+is started (default false)</li>
+<li><strong>read-only</strong> (<em>bool</em>) – user can’t modify parameter once populated
+(default false)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">parameters</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">dynamic</span><span class="o">-</span><span class="n">string</span><span class="o">-</span><span class="n">scriptler</span><span class="p">:</span>
+      <span class="n">name</span><span class="p">:</span> <span class="n">FOO</span>
+      <span class="n">description</span><span class="p">:</span> <span class="s2">"A parameter named FOO, defaults to 'bar'."</span>
+      <span class="n">script</span><span class="o">-</span><span class="nb">id</span><span class="p">:</span> <span class="s2">"scriptid.groovy"</span>
+      <span class="n">parameters</span><span class="p">:</span>
+        <span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="n">param1</span>
+          <span class="n">value</span><span class="p">:</span> <span class="n">value1</span>
+        <span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="n">param2</span>
+          <span class="n">value</span><span class="p">:</span> <span class="n">value2</span>
+      <span class="n">remote</span><span class="p">:</span> <span class="n">false</span>
+      <span class="n">read</span><span class="o">-</span><span class="n">only</span><span class="p">:</span> <span class="n">false</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="yamlfunction">
+<dt id="parameters.extended-choice">
+<code class="descname">extended-choice</code><a class="headerlink" href="#parameters.extended-choice" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates an extended choice parameter where values can be read from a file
+Requires the Jenkins <a class="reference external" href="https://wiki.jenkins.io/display/JENKINS/Extended+Choice+Parameter+plugin">Extended Choice Parameter Plugin</a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> (<em>str</em>) – name of the parameter</li>
+<li><strong>description</strong> (<em>str</em>) – description of the parameter
+(optional, default ‘’)</li>
+<li><strong>property-file</strong> (<em>str</em>) – location of property file to read from
+(optional, default ‘’)</li>
+<li><strong>property-key</strong> (<em>str</em>) – key for the property-file (optional, default ‘’)</li>
+<li><strong>quote-value</strong> (<em>bool</em>) – whether to put quotes around the property
+when passing to Jenkins (optional, default false)</li>
+<li><strong>visible-items</strong> (<em>str</em>) – number of items to show in the list
+(optional, default 5)</li>
+<li><strong>type</strong> (<em>str</em>) – type of select, can be single-select, multi-select,
+radio, checkbox or textbox (optional, default single-select)</li>
+<li><strong>value</strong> (<em>str</em>) – comma separated list of values for the single select
+or multi-select box (optional, default ‘’)</li>
+<li><strong>default-value</strong> (<em>str</em>) – used to set the initial selection of the
+single-select or multi-select box (optional, default ‘’)</li>
+<li><strong>value-description</strong> (<em>str</em>) – comma separated list of value descriptions
+for the single select or multi-select box (optional, default ‘’)</li>
+<li><strong>default-property-file</strong> (<em>str</em>) – location of property file when default
+value needs to come from a property file (optional, default ‘’)</li>
+<li><strong>default-property-key</strong> (<em>str</em>) – key for the default property file
+(optional, default ‘’)</li>
+<li><strong>description-property-file</strong> (<em>str</em>) – location of property file when value
+description needs to come from a property file (optional, default ‘’)</li>
+<li><strong>description-property-key</strong> (<em>str</em>) – key for the value description
+property file (optional, default ‘’)</li>
+<li><strong>multi-select-delimiter</strong> (<em>str</em>) – value between selections when the
+parameter is a multi-select (optiona, default ‘,’)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">parameters</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">extended-choice</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">OPTIONS</span>
+      <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span> <span class="s">"Available</span><span class="nv"> </span><span class="s">options"</span>
+      <span class="l l-Scalar l-Scalar-Plain">type</span><span class="p p-Indicator">:</span> <span class="s">'PT_CHECKBOX'</span>
+      <span class="l l-Scalar l-Scalar-Plain">value</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">OptionA,OptionB,OptionC</span>
+      <span class="l l-Scalar l-Scalar-Plain">visible-item-count</span><span class="p p-Indicator">:</span> <span class="s">"2"</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="yamlfunction">
+<dt id="parameters.file">
+<code class="descname">file</code><a class="headerlink" href="#parameters.file" title="Permalink to this definition">¶</a></dt>
+<dd><p>A file parameter.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> (<em>str</em>) – the target location for the file upload</li>
+<li><strong>description</strong> (<em>str</em>) – a description of the parameter (optional)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">parameters</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">file</span><span class="p">:</span>
+      <span class="n">name</span><span class="p">:</span> <span class="n">test</span><span class="o">.</span><span class="n">txt</span>
+      <span class="n">description</span><span class="p">:</span> <span class="s2">"Upload test.txt."</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="yamlfunction">
+<dt id="parameters.hidden">
+<code class="descname">hidden</code><a class="headerlink" href="#parameters.hidden" title="Permalink to this definition">¶</a></dt>
+<dd><p>Allows you to use parameters hidden from the build with parameter page.
+Requires the Jenkins <a class="reference external" href="https://wiki.jenkins.io/display/JENKINS/Hidden+Parameter+Plugin">Hidden Parameter Plugin</a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> (<em>str</em>) – the name of the parameter</li>
+<li><strong>default</strong> (<em>str</em>) – the default value of the parameter (optional)</li>
+<li><strong>description</strong> (<em>str</em>) – a description of the parameter (optional)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">parameters</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">hidden</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">FOO</span>
+      <span class="l l-Scalar l-Scalar-Plain">default</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">bar</span>
+      <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">A parameter named FOO, defaults to 'bar'</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="yamlfunction">
+<dt id="parameters.label">
+<code class="descname">label</code><a class="headerlink" href="#parameters.label" title="Permalink to this definition">¶</a></dt>
+<dd><p>A node label parameter.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> (<em>str</em>) – the name of the parameter</li>
+<li><strong>default</strong> (<em>str</em>) – the default value of the parameter (optional)</li>
+<li><strong>description</strong> (<em>str</em>) – a description of the parameter (optional)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">parameters</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">label</span><span class="p">:</span>
+      <span class="n">name</span><span class="p">:</span> <span class="n">node</span>
+      <span class="n">default</span><span class="p">:</span> <span class="n">precise</span>
+      <span class="n">description</span><span class="p">:</span> <span class="s2">"The node on which to run the job"</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="yamlfunction">
+<dt id="parameters.matrix-combinations">
+<code class="descname">matrix-combinations</code><a class="headerlink" href="#parameters.matrix-combinations" title="Permalink to this definition">¶</a></dt>
+<dd><p>Matrix combinations parameter
+Requires the Jenkins <a class="reference external" href="https://wiki.jenkins.io/display/JENKINS/Matrix+Combinations+Plugin">Matrix Combinations Plugin</a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> (<em>str</em>) – the name of the parameter</li>
+<li><strong>description</strong> (<em>str</em>) – a description of the parameter (optional)</li>
+<li><strong>filter</strong> (<em>str</em>) – Groovy expression to use filter the combination by
+default (optional)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">parameters</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">matrix-combinations</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">FOO</span>
+      <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span> <span class="s">"Select</span><span class="nv"> </span><span class="s">matrix</span><span class="nv"> </span><span class="s">combinations"</span>
+      <span class="l l-Scalar l-Scalar-Plain">filter</span><span class="p p-Indicator">:</span> <span class="s">"platform</span><span class="nv"> </span><span class="s">==</span><span class="nv"> </span><span class="s">foo"</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="yamlfunction">
+<dt id="parameters.maven-metadata">
+<code class="descname">maven-metadata</code><a class="headerlink" href="#parameters.maven-metadata" title="Permalink to this definition">¶</a></dt>
+<dd><p>This parameter allows the resolution of maven artifact versions
+by contacting the repository and reading the maven-metadata.xml.
+Requires the Jenkins <a class="reference external" href="https://wiki.jenkins.io/display/JENKINS/Maven+Metadata+Plugin">Maven Metadata Plugin</a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> (<em>str</em>) – Name of the parameter</li>
+<li><strong>description</strong> (<em>str</em>) – Description of the parameter (optional)</li>
+<li><strong>repository-base-url</strong> (<em>str</em>) – URL from where you retrieve your artifacts
+(default ‘’)</li>
+<li><strong>repository-username</strong> (<em>str</em>) – Repository’s username if authentication is
+required. (default ‘’)</li>
+<li><strong>repository-password</strong> (<em>str</em>) – Repository’s password if authentication is
+required. (default ‘’)</li>
+<li><strong>artifact-group-id</strong> (<em>str</em>) – Unique project identifier (default ‘’)</li>
+<li><strong>artifact-id</strong> (<em>str</em>) – Name of the artifact without version (default ‘’)</li>
+<li><strong>packaging</strong> (<em>str</em>) – Artifact packaging option. Could be something such as
+jar, zip, pom.... (default ‘’)</li>
+<li><strong>versions-filter</strong> (<em>str</em>) – Specify a regular expression which will be used
+to filter the versions which are actually displayed when triggering a
+new build. (default ‘’)</li>
+<li><strong>default-value</strong> (<em>str</em>) – For features such as SVN polling a default value
+is required. If job will only be started manually, this field is not
+necessary. (default ‘’)</li>
+<li><strong>maximum-versions-to-display</strong> (<em>str</em>) – The maximum number of versions to
+display in the drop-down. Any non-number value as well as 0 or negative
+values will default to all. (default 10)</li>
+<li><strong>sorting-order</strong> (<em>str</em>) – ascending or descending
+(default descending)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">parameters</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">maven-metadata</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">'maven</span><span class="nv"> </span><span class="s">metadata</span><span class="nv"> </span><span class="s">param'</span>
+      <span class="l l-Scalar l-Scalar-Plain">repository-base-url</span><span class="p p-Indicator">:</span> <span class="s">'http://nexus.example.com'</span>
+      <span class="l l-Scalar l-Scalar-Plain">repository-username</span><span class="p p-Indicator">:</span> <span class="s">'username'</span>
+      <span class="l l-Scalar l-Scalar-Plain">repository-password</span><span class="p p-Indicator">:</span> <span class="s">'password'</span>
+      <span class="l l-Scalar l-Scalar-Plain">artifact-group-id</span><span class="p p-Indicator">:</span> <span class="s">'com.example'</span>
+      <span class="l l-Scalar l-Scalar-Plain">artifact-id</span><span class="p p-Indicator">:</span> <span class="s">'example'</span>
+      <span class="l l-Scalar l-Scalar-Plain">packaging</span><span class="p p-Indicator">:</span> <span class="s">'jar'</span>
+      <span class="l l-Scalar l-Scalar-Plain">versions-filter</span><span class="p p-Indicator">:</span> <span class="s">'[0-9]+'</span>
+      <span class="l l-Scalar l-Scalar-Plain">default-value</span><span class="p p-Indicator">:</span> <span class="s">'FIRST'</span>
+      <span class="l l-Scalar l-Scalar-Plain">maximum-versions-to-display</span><span class="p p-Indicator">:</span> <span class="s">"5"</span>
+      <span class="l l-Scalar l-Scalar-Plain">sorting-order</span><span class="p p-Indicator">:</span> <span class="s">"Ascending"</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="yamlfunction">
+<dt id="parameters.node">
+<code class="descname">node</code><a class="headerlink" href="#parameters.node" title="Permalink to this definition">¶</a></dt>
+<dd><p>Defines a list of nodes where this job could potentially be executed on.
+Restrict where this project can be run, If your using a node or label
+parameter to run your job on a particular node, you should not use the
+option “Restrict where this project can be run” in the job configuration
+- it will not have any effect to the selection of your node anymore!</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> (<em>str</em>) – the name of the parameter</li>
+<li><strong>description</strong> (<em>str</em>) – a description of the parameter (optional)</li>
+<li><strong>default-slaves</strong> (<em>list</em>) – The nodes used when job gets triggered
+by anything else other than manually</li>
+<li><strong>allowed-slaves</strong> (<em>list</em>) – The nodes available for selection
+when job gets triggered manually. Empty means ‘All’.</li>
+<li><strong>ignore-offline-nodes</strong> (<em>bool</em>) – Ignore nodes not online or not having
+executors (default false)</li>
+<li><strong>allowed-multiselect</strong> (<em>bool</em>) – Allow multi node selection for concurrent
+builds - this option only makes sense (and must be selected!) in
+case the job is configured with: “Execute concurrent builds if
+necessary”. With this configuration the build will be executed on all
+the selected nodes in parallel. (default false)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">parameters</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">node</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">SLAVE_NAME</span>
+      <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span> <span class="s">"Select</span><span class="nv"> </span><span class="s">slave"</span>
+      <span class="l l-Scalar l-Scalar-Plain">allowed-slaves</span><span class="p p-Indicator">:</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">slave001</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">slave002</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">slave003</span>
+      <span class="l l-Scalar l-Scalar-Plain">ignore-offline-nodes</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+      <span class="l l-Scalar l-Scalar-Plain">allowed-multiselect</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="yamlfunction">
+<dt id="parameters.password">
+<code class="descname">password</code><a class="headerlink" href="#parameters.password" title="Permalink to this definition">¶</a></dt>
+<dd><p>A password parameter.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> (<em>str</em>) – the name of the parameter</li>
+<li><strong>default</strong> (<em>str</em>) – the default value of the parameter (optional)</li>
+<li><strong>description</strong> (<em>str</em>) – a description of the parameter (optional)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">parameters</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">password</span><span class="p">:</span>
+      <span class="n">name</span><span class="p">:</span> <span class="n">FOO</span>
+      <span class="n">default</span><span class="p">:</span> <span class="mi">1</span><span class="n">HSC0Ts6E161FysGf</span><span class="o">+</span><span class="n">e1xasgsHkgleLh09JUTYnipPvw</span><span class="o">=</span>
+      <span class="n">description</span><span class="p">:</span> <span class="s2">"A parameter named FOO."</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="yamlfunction">
+<dt id="parameters.promoted build">
+<code class="descname">promoted build</code><a class="headerlink" href="#parameters.promoted build" title="Permalink to this definition">¶</a></dt>
+<dd><p>A promoted build parameter.
+Requires the Jenkins <a class="reference external" href="https://wiki.jenkins.io/display/JENKINS/Promoted+Builds+Plugin">Promoted Builds Plugin</a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> (<em>str</em>) – the name of the parameter (required)</li>
+<li><strong>project-name</strong> (<em>str</em>) – the job from which the user can pick runs (required)</li>
+<li><strong>promotion-name</strong> (<em>str</em>) – promotion process to choose from (optional)</li>
+<li><strong>description</strong> (<em>str</em>) – a description of the parameter (optional)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">parameters</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">promoted</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">FOO</span>
+      <span class="l l-Scalar l-Scalar-Plain">project-name</span><span class="p p-Indicator">:</span> <span class="s">"foo-build"</span>
+      <span class="l l-Scalar l-Scalar-Plain">promotion-name</span><span class="p p-Indicator">:</span> <span class="s">"passed-promotion"</span>
+      <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span> <span class="s">"Select</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">foo-build</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">promotion"</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="yamlfunction">
+<dt id="parameters.random-string">
+<code class="descname">random-string</code><a class="headerlink" href="#parameters.random-string" title="Permalink to this definition">¶</a></dt>
+<dd><p>This parameter generates a random string and passes it to the
+build, preventing Jenkins from combining queued builds.
+Requires the Jenkins <a class="reference external" href="https://wiki.jenkins.io/display/JENKINS/Random+String+Parameter+Plugin">Random String Parameter Plugin</a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> (<em>str</em>) – Name of the parameter</li>
+<li><strong>description</strong> (<em>str</em>) – Description of the parameter (default ‘’)</li>
+<li><strong>failed-validation-message</strong> (<em>str</em>) – Failure message to display for invalid
+input (default ‘’)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">parameters</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">random-string</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">job-string</span>
+      <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span> <span class="s">"A</span><span class="nv"> </span><span class="s">random</span><span class="nv"> </span><span class="s">string</span><span class="nv"> </span><span class="s">passed</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">job"</span>
+      <span class="l l-Scalar l-Scalar-Plain">failed-validation-message</span><span class="p p-Indicator">:</span> <span class="s">"Your</span><span class="nv"> </span><span class="s">input</span><span class="nv"> </span><span class="s">string</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">invalid"</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="yamlfunction">
+<dt id="parameters.run">
+<code class="descname">run</code><a class="headerlink" href="#parameters.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>A run parameter.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> (<em>str</em>) – the name of the parameter</li>
+<li><strong>project-name</strong> (<em>str</em>) – the name of job from which the user can pick runs</li>
+<li><strong>description</strong> (<em>str</em>) – a description of the parameter (optional)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">parameters</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">run</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">FOO</span>
+      <span class="l l-Scalar l-Scalar-Plain">project-name</span><span class="p p-Indicator">:</span> <span class="s">"foo-build"</span>
+      <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span> <span class="s">"Select</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">foo-build</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">promotion"</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="yamlfunction">
+<dt id="parameters.string">
+<code class="descname">string</code><a class="headerlink" href="#parameters.string" title="Permalink to this definition">¶</a></dt>
+<dd><p>A string parameter.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> (<em>str</em>) – the name of the parameter</li>
+<li><strong>default</strong> (<em>str</em>) – the default value of the parameter (optional)</li>
+<li><strong>description</strong> (<em>str</em>) – a description of the parameter (optional)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">parameters</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">string</span><span class="p">:</span>
+      <span class="n">name</span><span class="p">:</span> <span class="n">FOO</span>
+      <span class="n">default</span><span class="p">:</span> <span class="n">bar</span>
+      <span class="n">description</span><span class="p">:</span> <span class="s2">"A parameter named FOO, defaults to 'bar'."</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="yamlfunction">
+<dt id="parameters.svn-tags">
+<code class="descname">svn-tags</code><a class="headerlink" href="#parameters.svn-tags" title="Permalink to this definition">¶</a></dt>
+<dd><p>A svn tag parameter
+Requires the Jenkins <a class="reference external" href="https://wiki.jenkins.io/display/JENKINS/Parameterized+Trigger+Plugin">Parameterized Trigger Plugin</a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> (<em>str</em>) – the name of the parameter</li>
+<li><strong>default</strong> (<em>str</em>) – the default value of the parameter (optional)</li>
+<li><strong>description</strong> (<em>str</em>) – a description of the parameter (optional)</li>
+<li><strong>url</strong> (<em>str</em>) – the url to list tags from</li>
+<li><strong>filter</strong> (<em>str</em>) – the regular expression to filter tags</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">parameters</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">svn</span><span class="o">-</span><span class="n">tags</span><span class="p">:</span>
+      <span class="n">name</span><span class="p">:</span> <span class="n">BRANCH_NAME</span>
+      <span class="n">default</span><span class="p">:</span> <span class="n">release</span>
+      <span class="n">description</span><span class="p">:</span> <span class="n">A</span> <span class="n">parameter</span> <span class="n">named</span> <span class="n">BRANCH_NAME</span> <span class="n">default</span> <span class="ow">is</span> <span class="n">release</span>
+      <span class="n">url</span><span class="p">:</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">svn</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">repo</span>
+      <span class="nb">filter</span><span class="p">:</span> <span class="p">[</span><span class="n">A</span><span class="o">-</span><span class="n">za</span><span class="o">-</span><span class="n">z0</span><span class="o">-</span><span class="mi">9</span><span class="p">]</span><span class="o">*</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="yamlfunction">
+<dt id="parameters.text">
+<code class="descname">text</code><a class="headerlink" href="#parameters.text" title="Permalink to this definition">¶</a></dt>
+<dd><p>A text parameter.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> (<em>str</em>) – the name of the parameter</li>
+<li><strong>default</strong> (<em>str</em>) – the default value of the parameter (optional)</li>
+<li><strong>description</strong> (<em>str</em>) – a description of the parameter (optional)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">parameters</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">text</span><span class="p">:</span>
+      <span class="n">name</span><span class="p">:</span> <span class="n">FOO</span>
+      <span class="n">default</span><span class="p">:</span> <span class="n">bar</span>
+      <span class="n">description</span><span class="p">:</span> <span class="s2">"A parameter named FOO, defaults to 'bar'."</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="yamlfunction">
+<dt id="parameters.validating-string">
+<code class="descname">validating-string</code><a class="headerlink" href="#parameters.validating-string" title="Permalink to this definition">¶</a></dt>
+<dd><p>A validating string parameter
+Requires the Jenkins <a class="reference external" href="https://wiki.jenkins.io/display/JENKINS/Validating+String+Parameter+Plugin">Validating String Plugin</a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> (<em>str</em>) – the name of the parameter</li>
+<li><strong>default</strong> (<em>str</em>) – the default value of the parameter (optional)</li>
+<li><strong>description</strong> (<em>str</em>) – a description of the parameter (optional)</li>
+<li><strong>regex</strong> (<em>str</em>) – a regular expression to validate the string</li>
+<li><strong>msg</strong> (<em>str</em>) – a message to display upon failed validation</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">parameters</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">validating</span><span class="o">-</span><span class="n">string</span><span class="p">:</span>
+      <span class="n">name</span><span class="p">:</span> <span class="n">FOO</span>
+      <span class="n">default</span><span class="p">:</span> <span class="n">bar</span>
+      <span class="n">description</span><span class="p">:</span> <span class="s2">"A parameter named FOO, defaults to 'bar'."</span>
+      <span class="n">regex</span><span class="p">:</span> <span class="p">[</span><span class="n">A</span><span class="o">-</span><span class="n">Za</span><span class="o">-</span><span class="n">z</span><span class="p">]</span><span class="o">*</span>
+      <span class="n">msg</span><span class="p">:</span> <span class="n">Your</span> <span class="n">entered</span> <span class="n">value</span> <span class="n">failed</span> <span class="n">validation</span>
+</pre></div>
+</div>
+</dd></dl>
+</div>
+</div>
+</div>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<h4>Previous topic</h4>
+<p class="topless"><a href="notifications.html" title="previous chapter">Notifications</a></p>
+<h4>Next topic</h4>
+<p class="topless"><a href="properties.html" title="next chapter">Properties</a></p>
+<div aria-label="source link" role="note">
+<h3>This Page</h3>
+<ul class="this-page-menu">
+<li><a href="_sources/parameters.txt" rel="nofollow">Show Source</a></li>
+</ul>
+</div>
+<div id="searchbox" role="search" style="display: none">
+<h3>Quick search</h3>
+<form action="search.html" class="search" method="get">
+<div><input name="q" type="text"/></div>
+<div><input type="submit" value="Go"/></div>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div aria-label="related navigation" class="related" role="navigation">
+<h3>Navigation</h3>
+<ul>
+<li class="right" style="margin-right: 10px">
+<a href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a href="properties.html" title="Properties">next</a> |</li>
+<li class="right">
+<a href="notifications.html" title="Notifications">previous</a> |</li>
+<li class="nav-item nav-item-0"><a href="index.html">Jenkins Job Builder 2.0.0.0b3.dev264 documentation</a> »</li>
+<li class="nav-item nav-item-1"><a href="definition.html">Job Definitions</a> »</li>
+</ul>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012, Jenkins Job Builder Maintainers.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.9.
+    </div>
+</body>
+</html>

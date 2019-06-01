@@ -1,0 +1,233 @@
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML><HEAD><TITLE>Man page of sys_wait.h</TITLE>
+</HEAD><BODY>
+<H1>sys_wait.h</H1>
+Section: POSIX Programmer's Manual (0P)<BR>Updated: 2013<BR><A HREF="#index">Index</A>
+<A HREF="../index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>PROLOG</H2>
+
+This manual page is part of the POSIX Programmer's Manual.
+The Linux implementation of this interface may differ (consult
+the corresponding Linux manual page for details of Linux behavior),
+or the interface may not be implemented on Linux.
+<P>
+<A NAME="lbAC">&nbsp;</A>
+<H2>NAME</H2>
+
+sys/wait.h
+--- declarations for waiting
+<A NAME="lbAD">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<P>
+
+<PRE>
+#include &lt;<A HREF="file:///usr/include/sys/wait.h">sys/wait.h</A>&gt;
+</PRE>
+
+<A NAME="lbAE">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+The
+<I>&lt;<A HREF="file:///usr/include/sys/wait.h">sys/wait.h</A>&gt;</I>
+
+header shall define the following symbolic constants for use with
+<I>waitpid</I>():
+<DL COMPACT>
+<DT>WCONTINUED<DD>
+Report status of continued child process.
+<DT>WNOHANG<DD>
+Do not hang if no status is available; return immediately.
+<DT>WUNTRACED<DD>
+Report status of stopped child process.
+</DL>
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/sys/wait.h">sys/wait.h</A>&gt;</I>
+
+header shall define the following macros for analysis of process status
+values:
+<DL COMPACT>
+<DT>WEXITSTATUS<DD>
+Return exit status.
+<DT>WIFCONTINUED<DD>
+True if child has been continued.
+<DT>WIFEXITED<DD>
+True if child exited normally.
+<DT>WIFSIGNALED<DD>
+True if child exited due to uncaught signal.
+<DT>WIFSTOPPED<DD>
+True if child is currently stopped.
+<DT>WSTOPSIG<DD>
+Return signal number that caused process to stop.
+<DT>WTERMSIG<DD>
+Return signal number that caused process to terminate.
+</DL>
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/sys/wait.h">sys/wait.h</A>&gt;</I>
+
+header shall define the following symbolic constants as possible values
+for the
+<I>options</I>
+
+argument to
+<I>waitid</I>():
+<DL COMPACT>
+<DT>WEXITED<DD>
+Wait for processes that have exited.
+<DT>WNOWAIT<DD>
+Keep the process whose status is returned in
+<I>infop</I>
+
+in a waitable state.
+<DT>WSTOPPED<DD>
+Status is returned for any child that has stopped upon receipt of a
+signal.
+</DL>
+<P>
+
+The
+WCONTINUED
+and WNOHANG constants, described above for
+<I>waitpid</I>(),
+can also be used with
+<I>waitid</I>().
+<P>
+
+The type
+<B>idtype_t</B>
+
+shall be defined as an enumeration type whose possible values shall
+include at least the following:
+P_ALL
+P_PGID
+P_PID
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/sys/wait.h">sys/wait.h</A>&gt;</I>
+
+header shall define the
+<B>id_t</B>
+
+and
+<B>pid_t</B>
+
+types as described in
+<I>&lt;<A HREF="file:///usr/include/sys/types.h">sys/types.h</A>&gt;</I>.
+
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/sys/wait.h">sys/wait.h</A>&gt;</I>
+
+header shall define the
+<B>siginfo_t</B>
+
+type as described in
+<I>&lt;<A HREF="file:///usr/include/signal.h">signal.h</A>&gt;</I>.
+
+<P>
+
+Inclusion of the
+<I>&lt;<A HREF="file:///usr/include/sys/wait.h">sys/wait.h</A>&gt;</I>
+
+header may also make visible
+all symbols from
+<I>&lt;<A HREF="file:///usr/include/signal.h">signal.h</A>&gt;</I>.
+
+<P>
+
+The following shall be declared as functions and may also be defined
+as macros. Function prototypes shall be provided.
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+pid_t  wait(int *);
+int    waitid(idtype_t, id_t, siginfo_t *, int);
+pid_t  waitpid(pid_t, int *, int);
+</B></PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+<I>The following sections are informative.</I>
+
+<A NAME="lbAF">&nbsp;</A>
+<H2>APPLICATION USAGE</H2>
+
+None.
+<A NAME="lbAG">&nbsp;</A>
+<H2>RATIONALE</H2>
+
+None.
+<A NAME="lbAH">&nbsp;</A>
+<H2>FUTURE DIRECTIONS</H2>
+
+None.
+<A NAME="lbAI">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+<I></I><B>&lt;<A HREF="file:///usr/include/signal.h">signal.h</A>&gt;</B>,
+
+<I></I><B>&lt;<A HREF="file:///usr/include/sys_types.h">sys_types.h</A>&gt;</B>
+
+<P>
+
+The System Interfaces volume of POSIX.1-2008,
+<I>wait</I>(),
+
+<I>waitid</I>()
+
+<A NAME="lbAJ">&nbsp;</A>
+<H2>COPYRIGHT</H2>
+
+Portions of this text are reprinted and reproduced in electronic form
+from IEEE Std 1003.1, 2013 Edition, Standard for Information Technology
+-- Portable Operating System Interface (POSIX), The Open Group Base
+Specifications Issue 7, Copyright (C) 2013 by the Institute of
+Electrical and Electronics Engineers, Inc and The Open Group.
+(This is POSIX.1-2008 with the 2013 Technical Corrigendum 1 applied.) In the
+event of any discrepancy between this version and the original IEEE and
+The Open Group Standard, the original IEEE and The Open Group Standard
+is the referee document. The original Standard can be obtained online at
+<A HREF="http://www.unix.org/online.html">http://www.unix.org/online.html</A> .
+<P>
+Any typographical or formatting errors that appear
+in this page are most likely
+to have been introduced during the conversion of the source files to
+man page format. To report such errors, see
+<A HREF="https://www.kernel.org/doc/man-pages/reporting_bugs.html">https://www.kernel.org/doc/man-pages/reporting_bugs.html</A> .
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">PROLOG</A><DD>
+<DT><A HREF="#lbAC">NAME</A><DD>
+<DT><A HREF="#lbAD">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAE">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAF">APPLICATION USAGE</A><DD>
+<DT><A HREF="#lbAG">RATIONALE</A><DD>
+<DT><A HREF="#lbAH">FUTURE DIRECTIONS</A><DD>
+<DT><A HREF="#lbAI">SEE ALSO</A><DD>
+<DT><A HREF="#lbAJ">COPYRIGHT</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 14:28:43 GMT, February 25, 2017
+</BODY>
+</HTML>

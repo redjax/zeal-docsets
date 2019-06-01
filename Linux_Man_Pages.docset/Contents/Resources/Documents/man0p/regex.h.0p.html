@@ -1,0 +1,314 @@
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML><HEAD><TITLE>Man page of regex.h</TITLE>
+</HEAD><BODY>
+<H1>regex.h</H1>
+Section: POSIX Programmer's Manual (0P)<BR>Updated: 2013<BR><A HREF="#index">Index</A>
+<A HREF="../index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>PROLOG</H2>
+
+This manual page is part of the POSIX Programmer's Manual.
+The Linux implementation of this interface may differ (consult
+the corresponding Linux manual page for details of Linux behavior),
+or the interface may not be implemented on Linux.
+<P>
+<A NAME="lbAC">&nbsp;</A>
+<H2>NAME</H2>
+
+regex.h
+--- regular expression matching types
+<A NAME="lbAD">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<P>
+
+<PRE>
+#include &lt;<A HREF="file:///usr/include/regex.h">regex.h</A>&gt;
+</PRE>
+
+<A NAME="lbAE">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+The
+<I>&lt;<A HREF="file:///usr/include/regex.h">regex.h</A>&gt;</I>
+
+header shall define the structures and symbolic constants used by the
+<I>regcomp</I>(),
+<I>regexec</I>(),
+<I>regerror</I>(),
+and
+<I>regfree</I>()
+functions.
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/regex.h">regex.h</A>&gt;</I>
+
+header shall define the
+<B>regex_t</B>
+
+structure type, which shall include at least the following member:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+size_t    re_nsub    </B>Number of parenthesized subexpressions.
+</PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/regex.h">regex.h</A>&gt;</I>
+
+header shall define the
+<B>size_t</B>
+
+type as described in
+<I>&lt;<A HREF="file:///usr/include/sys/types.h">sys/types.h</A>&gt;</I>.
+
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/regex.h">regex.h</A>&gt;</I>
+
+header shall define the
+<B>regoff_t</B>
+
+type as a signed integer type that can hold
+the largest value that can be stored in either a
+<B>ptrdiff_t</B>
+
+type or a
+<B>ssize_t</B>
+
+type.
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/regex.h">regex.h</A>&gt;</I>
+
+header shall define the
+<B>regmatch_t</B>
+
+structure type, which shall include at least the following members:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+regoff_t    rm_so    </B>Byte offset from start of string
+                     to start of substring.
+regoff_t    rm_eo    Byte offset from start of string of the
+                     first character after the end of substring.
+</PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/regex.h">regex.h</A>&gt;</I>
+
+header shall define the following symbolic constants for the
+<I>cflags</I>
+
+parameter to the
+<I>regcomp</I>()
+function:
+<DL COMPACT>
+<DT>REG_EXTENDED<DD>
+Use Extended Regular Expressions.
+<DT>REG_ICASE<DD>
+Ignore case in match.
+<DT>REG_NOSUB<DD>
+Report only success or fail in
+<I>regexec</I>().
+<DT>REG_NEWLINE<DD>
+Change the handling of
+&lt;newline&gt;.
+</DL>
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/regex.h">regex.h</A>&gt;</I>
+
+header shall define the following symbolic constants for the
+<I>eflags</I>
+
+parameter to the
+<I>regexec</I>()
+function:
+<DL COMPACT>
+<DT>REG_NOTBOL<DD>
+The
+&lt;circumflex&gt;
+character (<B>'^'</B>),
+
+when taken as a special character, does not match the beginning of
+<I>string</I>.
+
+<DT>REG_NOTEOL<DD>
+The
+&lt;dollar-sign&gt;
+(<B>'$'</B>),
+
+when taken as a special character, does not match the end of
+<I>string</I>.
+
+</DL>
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/regex.h">regex.h</A>&gt;</I>
+
+header shall define the following symbolic constants as error
+return values:
+<DL COMPACT>
+<DT>REG_NOMATCH<DD>
+<I>regexec</I>()
+failed to match.
+<DT>REG_BADPAT<DD>
+Invalid regular expression.
+<DT>REG_ECOLLATE<DD>
+Invalid collating element referenced.
+<DT>REG_ECTYPE<DD>
+Invalid character class type referenced.
+<DT>REG_EESCAPE<DD>
+Trailing
+&lt;backslash&gt;
+character in pattern.
+<DT>REG_ESUBREG<DD>
+Number in \<I>digit</I> invalid or in error.
+<DT>REG_EBRACK<DD>
+<B>&quot;[]&quot;</B>
+
+imbalance.
+<DT>REG_EPAREN<DD>
+<B>&quot;\(\)&quot;</B>
+
+or
+<B>&quot;()&quot;</B>
+
+imbalance.
+<DT>REG_EBRACE<DD>
+<B>&quot;\{\}&quot;</B>
+
+imbalance.
+<DT>REG_BADBR<DD>
+Content of
+<B>&quot;\{\}&quot;</B>
+
+invalid: not a number, number too large, more than two numbers, first
+larger than second.
+<DT>REG_ERANGE<DD>
+Invalid endpoint in range expression.
+<DT>REG_ESPACE<DD>
+Out of memory.
+<DT>REG_BADRPT<DD>
+<B>'?'</B>,
+
+<B>'*'</B>,
+
+or
+<B>'+'</B>
+
+not preceded by valid regular expression.
+</DL>
+<P>
+
+The following shall be declared as functions and may also be defined
+as macros. Function prototypes shall be provided.
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+int    regcomp(regex_t *restrict, const char *restrict, int);
+size_t regerror(int, const regex_t *restrict, char *restrict, size_t);
+int    regexec(const regex_t *restrict, const char *restrict, size_t,
+           regmatch_t [restrict], int);
+void   regfree(regex_t *);
+</B></PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+The implementation may define additional macros or constants using
+names beginning with REG_.
+<P>
+
+<I>The following sections are informative.</I>
+
+<A NAME="lbAF">&nbsp;</A>
+<H2>APPLICATION USAGE</H2>
+
+None.
+<A NAME="lbAG">&nbsp;</A>
+<H2>RATIONALE</H2>
+
+None.
+<A NAME="lbAH">&nbsp;</A>
+<H2>FUTURE DIRECTIONS</H2>
+
+None.
+<A NAME="lbAI">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+<I></I><B>&lt;<A HREF="file:///usr/include/sys_types.h">sys_types.h</A>&gt;</B>
+
+<P>
+
+The System Interfaces volume of POSIX.1-2008,
+<I>regcomp</I>()
+
+<A NAME="lbAJ">&nbsp;</A>
+<H2>COPYRIGHT</H2>
+
+Portions of this text are reprinted and reproduced in electronic form
+from IEEE Std 1003.1, 2013 Edition, Standard for Information Technology
+-- Portable Operating System Interface (POSIX), The Open Group Base
+Specifications Issue 7, Copyright (C) 2013 by the Institute of
+Electrical and Electronics Engineers, Inc and The Open Group.
+(This is POSIX.1-2008 with the 2013 Technical Corrigendum 1 applied.) In the
+event of any discrepancy between this version and the original IEEE and
+The Open Group Standard, the original IEEE and The Open Group Standard
+is the referee document. The original Standard can be obtained online at
+<A HREF="http://www.unix.org/online.html">http://www.unix.org/online.html</A> .
+<P>
+Any typographical or formatting errors that appear
+in this page are most likely
+to have been introduced during the conversion of the source files to
+man page format. To report such errors, see
+<A HREF="https://www.kernel.org/doc/man-pages/reporting_bugs.html">https://www.kernel.org/doc/man-pages/reporting_bugs.html</A> .
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">PROLOG</A><DD>
+<DT><A HREF="#lbAC">NAME</A><DD>
+<DT><A HREF="#lbAD">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAE">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAF">APPLICATION USAGE</A><DD>
+<DT><A HREF="#lbAG">RATIONALE</A><DD>
+<DT><A HREF="#lbAH">FUTURE DIRECTIONS</A><DD>
+<DT><A HREF="#lbAI">SEE ALSO</A><DD>
+<DT><A HREF="#lbAJ">COPYRIGHT</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 14:28:43 GMT, February 25, 2017
+</BODY>
+</HTML>

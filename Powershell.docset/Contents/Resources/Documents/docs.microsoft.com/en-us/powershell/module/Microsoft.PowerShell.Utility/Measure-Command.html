@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html class="no-js hasSidebar hasPageActions hasBreadcrumb conceptual" data-authenticated="false" data-render="docs" dir="ltr" lang="en-us">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Measure-Command (Microsoft.PowerShell.Utility)" property="og:title"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" property="og:image"/>
+  <meta content="summary" name="twitter:card"/>
+  <meta content="@docsmsft" name="twitter:site"/>
+  <meta content="Measure-Command (Microsoft.PowerShell.Utility)" name="twitter:title"/>
+  <meta content="The Measure-Command cmdlet runs a script block or cmdlet internally, times the execution of the operation, and returns the execution time. " name="twitter:description"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" name="twitter:image"/>
+  <meta content="Microsoft Logo" name="twitter:image:alt"/>
+  <meta content="The Measure-Command cmdlet runs a script block or cmdlet internally, times the execution of the operation, and returns the execution time. " name="description"/>
+  <meta content="Docs" name="search.ms_sitename"/>
+  <meta content="PowerShell_PowerShell-docs_reference" name="search.ms_docsetname"/>
+  <meta content="0" name="version"/>
+  <meta content="en-us" name="locale"/>
+  <meta content="Docs" name="site_name"/>
+  <meta content="PowerShell" name="search.ms_product"/>
+  <meta content="PowerShell.PowerShell_PowerShell-docs_reference" name="depot_name"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/57cd861e6079bc530a60692b1bbf35cfef1d3f35/reference/6/Microsoft.PowerShell.Utility/Measure-Command.md" name="ref_skeleton_gitcommit"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/live/reference/6/Microsoft.PowerShell.Utility/Measure-Command.md" name="original_ref_skeleton_git_url"/>
+  <meta content="2018-03-30 03:35 PM" name="updated_at"/>
+  <meta content="7df43abc-d3e3-dd3f-828c-4ee7f3612eb0" name="document_id"/>
+  <meta content="d596c6f2-d441-63f3-d0a9-650b421d05d8" name="document_version_independent_id"/>
+  <meta content="powershell" name="page_type"/>
+  <meta content="command" name="page_kind"/>
+  <meta content="06/09/2017" name="ms.date"/>
+  <meta content="2.0.0" name="schema"/>
+  <meta content="powershell,cmdlet" name="keywords"/>
+  <meta content="http://go.microsoft.com/fwlink/?LinkId=821828" name="online_version"/>
+  <meta content="Microsoft.PowerShell.Commands.Utility.dll-Help.xml" name="external_help_file"/>
+  <meta content="powershell" name="ms.devlang"/>
+  <meta content="INDEX, FOLLOW" name="ROBOTS"/>
+  <meta content="sdwheeler" name="author"/>
+  <meta content="sewhee" name="ms.author"/>
+  <meta content="carmonm" name="manager"/>
+  <meta content="/powershell/bread-pscore/toc.yml?view=powershell-6" name="breadcrumb_path"/>
+  <meta content="powershell" name="apiPlatform"/>
+  <meta content="reference" name="ms.topic"/>
+  <meta content="windows, macos, linux" name="ms.tgt_pltfr"/>
+  <meta content="powershell-scripting" name="ms.technology"/>
+  <meta content="powershell" name="ms.prod"/>
+  <meta content="MSDocsHeader-Powershell" name="uhfHeaderId"/>
+  <meta content="../psdocs/toc.json?view=powershell-6" name="toc_rel"/>
+  <link href="https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/measure-command" rel="canonical"/>
+  <title>
+   Measure-Command
+  </title>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/60aac04b.site.css" rel="stylesheet"/>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/fdb8a38a.conceptual.css" rel="stylesheet"/>
+ </head>
+ <body dir="ltr" lang="en-us">
+  <div class="header-holder">
+   <div data-bi-name="header" id="headerAreaHolder">
+    <div id="uhf-placeholder">
+    </div>
+   </div>
+   <div class="disclaimer-holder" id="disclaimer-holder">
+   </div>
+  </div>
+  <div class="container mainContainer" data-bi-name="body">
+   <div class="content-header" data-bi-name="content-header">
+    <div class="content-header-controls">
+     <button class="contents-button button-border" data-bi-name="contents-expand" type="button">
+      <span class="docon docon-menu">
+      </span>
+      Contents
+     </button>
+    </div>
+    <div class="content-header-controls">
+     <button class="ap-collapse-behavior ap-expanded button-border" data-bi-name="ap-collapse" type="button">
+      <span class="docon docon-exit-mode">
+      </span>
+      Exit focus mode
+     </button>
+    </div>
+   </div>
+   <div class="primary-holder">
+    <main class="content" data-bi-name="content" dir="ltr" id="main" lang="en-us" role="main">
+     <!-- <content> -->
+     <h1>
+      Measure-Command
+     </h1>
+     <div class="metadata">
+      <dl class="attributeList">
+       <dt>
+        Module:
+       </dt>
+       <dd>
+        <a data-linktype="relative-path" href="./Microsoft.PowerShell.Utility.html">
+         Microsoft.PowerShell.Utility
+        </a>
+       </dd>
+      </dl>
+     </div>
+     <div class="summaryHolder">
+      <div class="summary">
+       Measures the time it takes to run script blocks and cmdlets.
+      </div>
+     </div>
+     <h2 class="hiddenAnchor" id="syntax">
+      Syntax
+     </h2>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Measure-Command
+       [-Expression] &lt;ScriptBlock&gt;
+       [-InputObject &lt;PSObject&gt;]
+       [&lt;CommonParameters&gt;]</code></pre>
+     <h2 id="description">
+      Description
+     </h2>
+     <p>
+      The
+      <code>
+       Measure-Command
+      </code>
+      cmdlet runs a script block or cmdlet internally, times the execution of the operation, and returns the execution time.
+     </p>
+     <h2 id="examples">
+      Examples
+     </h2>
+     <p>
+      <strong>
+       Example 1: Measure the time to run a command
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">Measure-Command { Get-EventLog "windows powershell" }</code></pre>
+     <p>
+      This command measures the time it takes to run a
+      <code>
+       Get-EventLog
+      </code>
+      command that gets the events in the Windows PowerShell event log.
+     </p>
+     <p>
+      <strong>
+       Example 2
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">Measure-Command {Get-ChildItem -Path C:\Windows\*.txt -Recurse}
+
+
+
+Days              : 0
+
+Hours             : 0
+
+Minutes           : 0
+
+Seconds           : 8
+
+Milliseconds      : 618
+
+Ticks             : 86182763
+
+TotalDays         : 9.9748568287037E-05
+
+TotalHours        : 0.00239396563888889
+
+TotalMinutes      : 0.143637938333333
+
+TotalSeconds      : 8.6182763
+
+TotalMilliseconds : 8618.2763
+
+
+
+Measure-Command {Get-ChildItem C:\Windows -Filter "*.txt" -Recurse}
+
+
+
+Days              : 0
+
+Hours             : 0
+
+Minutes           : 0
+
+Seconds           : 1
+
+Milliseconds      : 140
+
+Ticks             : 11409189
+
+TotalDays         : 1.32050798611111E-05
+
+TotalHours        : 0.000316921916666667
+
+TotalMinutes      : 0.019015315
+
+TotalSeconds      : 1.1409189
+
+TotalMilliseconds : 1140.9189</code></pre>
+     <p>
+      The first command measures the time it takes to process a recursive
+      <code>
+       Get-ChildItem
+      </code>
+      command that uses the
+      <code>
+       -Path
+      </code>
+      parameter to get only .txt files in the C:\Windows directory and its subdirectories.
+     </p>
+     <p>
+      The second command measures the time it takes to process a recursive
+      <code>
+       Get-ChildItem
+      </code>
+      command that uses the provider-specific
+      <code>
+       -Filter
+      </code>
+      parameter.
+     </p>
+     <p>
+      These commands show the value of using a provider-specific filter in Windows PowerShell commands.
+     </p>
+     <h2 id="required-parameters">
+      Required Parameters
+     </h2>
+     <div class="parameterName stack">
+      -Expression
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the expression that is being timed.
+Enclose the expression in braces ({}).
+The parameter name ("
+       <strong>
+        Expression
+       </strong>
+       ") is optional.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          ScriptBlock
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         0
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="optional-parameters">
+      Optional Parameters
+     </h2>
+     <div class="parameterName stack">
+      -InputObject
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies objects representing the expressions to be measured.
+Enter a variable that contains the objects or type a command or expression that gets the objects.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          PSObject
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByValue)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="inputs">
+      Inputs
+     </h2>
+     <p>
+      <strong>
+       System.Management.Automation.PSObject
+      </strong>
+     </p>
+     <p>
+      You can pipe an object to
+      <code>
+       Measure-Command
+      </code>
+      .
+     </p>
+     <h2 id="outputs">
+      Outputs
+     </h2>
+     <p>
+      <strong>
+       System.TimeSpan
+      </strong>
+     </p>
+     <p>
+      <code>
+       Measure-Command
+      </code>
+      returns a time span object that represents the result.
+     </p>
+     <h2 id="notes">
+      Notes
+     </h2>
+     <ul>
+      <li>
+       <p>
+        For more information, type:
+        <code>
+         Get-Help Measure-Command -Detailed
+        </code>
+       </p>
+      </li>
+      <li>
+       <p>
+        For technical information, type:
+        <code>
+         Get-Help Measure-Command -Full
+        </code>
+       </p>
+      </li>
+      <li>
+       <p>
+        When specifying multiple values for a parameter, use commas to separate the values.
+For example,
+        <code>
+         \&lt;parameter-name\&gt; \&lt;value1\&gt;, \&lt;value2\&gt;
+        </code>
+        .
+       </p>
+      </li>
+     </ul>
+     <h2 id="related-links">
+      Related Links
+     </h2>
+     <ul>
+      <li>
+       <a data-linktype="relative-path" href="trace-command.html">
+        Trace-Command
+       </a>
+      </li>
+     </ul>
+     <!-- </content> -->
+    </main>
+    <div class="note alert feedback-system-change-alert">
+     <p>
+      Note
+     </p>
+     <p>
+      The feedback system for this content will be changing soon. Old comments will not be carried over. If content within a comment thread is important to you, please save a copy. For more information on the upcoming change,
+      <a href="https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs">
+       we invite you to read our blog post
+      </a>
+      .
+     </p>
+    </div>
+    <div data-bi-name="comments" id="comments-container" role="form">
+    </div>
+   </div>
+  </div>
+  <div class="openfeedback-container" id="openFeedbackContainer">
+  </div>
+  <div class="action-panel">
+  </div>
+ </body>
+</html>

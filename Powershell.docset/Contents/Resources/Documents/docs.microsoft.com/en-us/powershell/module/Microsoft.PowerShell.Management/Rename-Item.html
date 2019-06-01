@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html class="no-js hasSidebar hasPageActions hasBreadcrumb conceptual" data-authenticated="false" data-render="docs" dir="ltr" lang="en-us">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Rename-Item (Microsoft.PowerShell.Management)" property="og:title"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" property="og:image"/>
+  <meta content="summary" name="twitter:card"/>
+  <meta content="@docsmsft" name="twitter:site"/>
+  <meta content="Rename-Item (Microsoft.PowerShell.Management)" name="twitter:title"/>
+  <meta content="The Rename-Item cmdlet changes the name of a specified item. This cmdlet does not affect the content of the item being renamed. You cannot use Rename-Item to move an item, such as by specifying a patâ¦" name="twitter:description"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" name="twitter:image"/>
+  <meta content="Microsoft Logo" name="twitter:image:alt"/>
+  <meta content="The Rename-Item cmdlet changes the name of a specified item. This cmdlet does not affect the content of the item being renamed. You cannot use Rename-Item to move an item, such as by specifying a patâ¦" name="description"/>
+  <meta content="Docs" name="search.ms_sitename"/>
+  <meta content="PowerShell_PowerShell-docs_reference" name="search.ms_docsetname"/>
+  <meta content="0" name="version"/>
+  <meta content="en-us" name="locale"/>
+  <meta content="Docs" name="site_name"/>
+  <meta content="PowerShell" name="search.ms_product"/>
+  <meta content="PowerShell.PowerShell_PowerShell-docs_reference" name="depot_name"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/446813f2b0922607a6ae1d2df7a11be56edfa4c1/reference/6/Microsoft.PowerShell.Management/Rename-Item.md" name="ref_skeleton_gitcommit"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/live/reference/6/Microsoft.PowerShell.Management/Rename-Item.md" name="original_ref_skeleton_git_url"/>
+  <meta content="2018-03-30 03:35 PM" name="updated_at"/>
+  <meta content="af35d8f3-f95c-f382-b94a-4b89f8b6f8d1" name="document_id"/>
+  <meta content="0e1d944b-6c55-89ed-8e9a-5e5532dba818" name="document_version_independent_id"/>
+  <meta content="powershell" name="page_type"/>
+  <meta content="command" name="page_kind"/>
+  <meta content="06/09/2017" name="ms.date"/>
+  <meta content="2.0.0" name="schema"/>
+  <meta content="powershell,cmdlet" name="keywords"/>
+  <meta content="http://go.microsoft.com/fwlink/?LinkId=821621" name="online_version"/>
+  <meta content="Microsoft.PowerShell.Commands.Management.dll-Help.xml" name="external_help_file"/>
+  <meta content="powershell" name="ms.devlang"/>
+  <meta content="INDEX, FOLLOW" name="ROBOTS"/>
+  <meta content="sdwheeler" name="author"/>
+  <meta content="sewhee" name="ms.author"/>
+  <meta content="carmonm" name="manager"/>
+  <meta content="/powershell/bread-pscore/toc.yml?view=powershell-6" name="breadcrumb_path"/>
+  <meta content="powershell" name="apiPlatform"/>
+  <meta content="reference" name="ms.topic"/>
+  <meta content="windows, macos, linux" name="ms.tgt_pltfr"/>
+  <meta content="powershell-scripting" name="ms.technology"/>
+  <meta content="powershell" name="ms.prod"/>
+  <meta content="MSDocsHeader-Powershell" name="uhfHeaderId"/>
+  <meta content="../psdocs/toc.json?view=powershell-6" name="toc_rel"/>
+  <link href="https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.management/rename-item" rel="canonical"/>
+  <title>
+   Rename-Item
+  </title>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/60aac04b.site.css" rel="stylesheet"/>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/fdb8a38a.conceptual.css" rel="stylesheet"/>
+ </head>
+ <body dir="ltr" lang="en-us">
+  <div class="header-holder">
+   <div data-bi-name="header" id="headerAreaHolder">
+    <div id="uhf-placeholder">
+    </div>
+   </div>
+   <div class="disclaimer-holder" id="disclaimer-holder">
+   </div>
+  </div>
+  <div class="container mainContainer" data-bi-name="body">
+   <div class="content-header" data-bi-name="content-header">
+    <div class="content-header-controls">
+     <button class="contents-button button-border" data-bi-name="contents-expand" type="button">
+      <span class="docon docon-menu">
+      </span>
+      Contents
+     </button>
+    </div>
+    <div class="content-header-controls">
+     <button class="ap-collapse-behavior ap-expanded button-border" data-bi-name="ap-collapse" type="button">
+      <span class="docon docon-exit-mode">
+      </span>
+      Exit focus mode
+     </button>
+    </div>
+   </div>
+   <div class="primary-holder">
+    <main class="content" data-bi-name="content" dir="ltr" id="main" lang="en-us" role="main">
+     <!-- <content> -->
+     <h1>
+      Rename-Item
+     </h1>
+     <div class="metadata">
+      <dl class="attributeList">
+       <dt>
+        Module:
+       </dt>
+       <dd>
+        <a data-linktype="relative-path" href="./Microsoft.PowerShell.Management.html">
+         Microsoft.PowerShell.Management
+        </a>
+       </dd>
+      </dl>
+     </div>
+     <div class="summaryHolder">
+      <div class="summary">
+       Renames an item in a Windows PowerShell provider namespace.
+      </div>
+     </div>
+     <h2 class="hiddenAnchor" id="syntax">
+      Syntax
+     </h2>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Rename-Item
+      [-Path] &lt;String&gt;
+      [-NewName] &lt;String&gt;
+      [-Force]
+      [-PassThru]
+      [-Credential &lt;PSCredential&gt;]
+      [-WhatIf]
+      [-Confirm]
+      [-UseTransaction]
+      [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Rename-Item
+      -LiteralPath &lt;String&gt;
+      [-NewName] &lt;String&gt;
+      [-Force]
+      [-PassThru]
+      [-Credential &lt;PSCredential&gt;]
+      [-WhatIf]
+      [-Confirm]
+      [-UseTransaction]
+      [&lt;CommonParameters&gt;]</code></pre>
+     <h2 id="description">
+      Description
+     </h2>
+     <p>
+      The
+      <strong>
+       Rename-Item
+      </strong>
+      cmdlet changes the name of a specified item.
+This cmdlet does not affect the content of the item being renamed.
+     </p>
+     <p>
+      You cannot use
+      <strong>
+       Rename-Item
+      </strong>
+      to move an item, such as by specifying a path together with the new name.
+To move and rename an item, use the Move-Item cmdlet.
+     </p>
+     <h2 id="examples">
+      Examples
+     </h2>
+     <p>
+      <strong>
+       Example 1: Rename a file
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Rename-Item -Path "c:\logfiles\daily_file.txt" -NewName "monday_file.txt"</code></pre>
+     <p>
+      This command renames the file daily_file.txt to monday_file.txt.
+     </p>
+     <p>
+      <strong>
+       Example 2: Rename and move an item
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">The first command attempts to rename the project.txt file in the current directory to old-project.txt in the D:\Archive directory. The result is the error shown in the output.
+
+PS C:\&gt; Rename-Item -Path "project.txt" -NewName "d:\archive\old-project.txt"
+
+Rename-Item : Cannot rename because the target specified represents a path or device name.
+
+At line:1 char:12
+
++ rename-item &lt;&lt;&lt;&lt;  -path project.txt -newname d:\archive\old-project.txt
+
++ CategoryInfo          : InvalidArgument: (:) [Rename-Item], PSArgumentException
+
++ FullyQualifiedErrorId : Argument,Microsoft.PowerShell.Commands.RenameItemCommand
+
+
+
+The second command shows the correct way to move and rename a file by using **Move-Item**. The **Move-Item** cmdlet lets you specify both a new path and a new name in the value of its *Destination* parameter.
+
+PS C:\&gt; Move-Item -Path "project.txt" -Destination "d:\archive\old-project.txt"</code></pre>
+     <p>
+      This example shows that you cannot use
+      <strong>
+       Rename-Item
+      </strong>
+      to both rename and move an item.
+Specifically, you cannot supply a path for the value of the
+      <em>
+       NewName
+      </em>
+      parameter, unless the path is identical to the path specified in the
+      <em>
+       Path
+      </em>
+      parameter.
+Otherwise, only a new name is permitted.
+     </p>
+     <p>
+      <strong>
+       Example 3: Rename a registry key
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Rename-Item -Path "HKLM:\Software\MyCompany\Advertising" -NewName "Marketing"</code></pre>
+     <p>
+      This command renames a registry key from Advertising to Marketing.
+When the command is complete, the key is renamed, but the registry entries in the key are unchanged.
+     </p>
+     <p>
+      <strong>
+       Example 4: Rename multiple files
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-ChildItem *.txt | Rename-Item -NewName { $_.name -Replace '\.txt$','.log' }</code></pre>
+     <p>
+      This example shows how to use the
+      <strong>
+       Replace
+      </strong>
+      operator to rename multiple files, even though the
+      <em>
+       NewName
+      </em>
+      parameter does not accept wildcard characters.
+     </p>
+     <p>
+      This command renames all of the .txt files in the current directory to .log.
+     </p>
+     <p>
+      The command uses the Get-ChildItem cmdlet to get all of the files in the current folder that have a .txt file name extension.
+Then, it uses the pipeline operator (|) to send those files to
+      <strong>
+       Rename-Item
+      </strong>
+      .
+     </p>
+     <p>
+      The value of
+      <em>
+       NewName
+      </em>
+      is a script block that runs before the value is submitted to the
+      <em>
+       NewName
+      </em>
+      parameter.
+     </p>
+     <p>
+      In the script block, the $_ automatic variable represents each file object as it comes to the command through the pipeline.
+The command uses the dot format (.) to get the
+      <strong>
+       Name
+      </strong>
+      property of each file object.
+The
+      <strong>
+       Replace
+      </strong>
+      operator replaces the .txt file name extension of each file with .log.
+     </p>
+     <p>
+      Because the
+      <strong>
+       Replace
+      </strong>
+      operator works with regular expressions, the dot in front of txt is interpreted to match any character.
+To make sure that it matches only a dot (.), it is escaped with a backslash character (\).
+The backslash character is not required in .log because it is a string, not a regular expression.
+     </p>
+     <p>
+      To make sure that .txt is an extension, i.e. last part of the string representing the name, a dollar sign ($) is added after \.txt.
+     </p>
+     <h2 id="required-parameters">
+      Required Parameters
+     </h2>
+     <div class="parameterName stack">
+      -LiteralPath
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the path of the item to rename.
+      </p>
+      <p>
+       Unlike the
+       <em>
+        Path
+       </em>
+       parameter, the value of
+       <em>
+        LiteralPath
+       </em>
+       is used exactly as it is typed.
+No characters are interpreted as wildcard characters.
+If the path includes escape characters, enclose it in single quotation marks.
+Single quotation marks tell Windows PowerShell not to interpret any characters as escape sequences.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         PSPath
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -NewName
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the new name of the item.
+Enter only a name, not a path and name.
+If you enter a path that differs from the path that is specified in the
+       <em>
+        Path
+       </em>
+       parameter,
+       <strong>
+        Rename-Item
+       </strong>
+       generates an error.
+To rename and move an item, use
+       <strong>
+        Move-Item
+       </strong>
+       .
+      </p>
+      <p>
+       You cannot use wildcard characters in the value of the
+       <em>
+        NewName
+       </em>
+       parameter.
+To specify a name for multiple files, use the
+       <strong>
+        Replace
+       </strong>
+       operator in a regular expression.
+For more information about the Replace operator, see about_Comparison_Operators.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         2
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Path
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the path of the item to rename.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         1
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName, ByValue)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="optional-parameters">
+      Optional Parameters
+     </h2>
+     <div class="parameterName stack">
+      -Confirm
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Prompts you for confirmation before running the cmdlet.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         cf
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Credential
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a user account that has permission to perform this action.
+The default is the current user.
+      </p>
+      <p>
+       Type a user name, such as User01 or Domain01\User01, or enter a
+       <strong>
+        PSCredential
+       </strong>
+       object, such as one generated by the Get-Credential cmdlet.
+If you type a user name, this cmdlet prompts you for a password.
+      </p>
+      <p>
+       This parameter is not supported by any providers installed with Windows PowerShell.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          PSCredential
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Force
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Forces the cmdlet to rename items that cannot otherwise be changed, such as hidden or read-only files or read-only aliases or variables.
+The cmdlet cannot change constant aliases or variables.
+Implementation varies from provider to provider.
+For more information, see about_Providers.
+      </p>
+      <p>
+       Even using the
+       <em>
+        Force
+       </em>
+       parameter, the cmdlet cannot override security restrictions.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -PassThru
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Returns an object that represents the item to the pipeline.
+By default, this cmdlet does not generate any output.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -UseTransaction
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Includes the command in the active transaction.
+This parameter is valid only when a transaction is in progress.
+For more information, see Includes the command in the active transaction.
+This parameter is valid only when a transaction is in progress.
+For more information, see
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         usetx
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -WhatIf
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         wi
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="inputs">
+      Inputs
+     </h2>
+     <p>
+      <strong>
+       System.String
+      </strong>
+     </p>
+     <p>
+      You can pipe a string that contains a path to this cmdlet.
+     </p>
+     <h2 id="outputs">
+      Outputs
+     </h2>
+     <p>
+      <strong>
+       None or an object that represents the renamed item.
+      </strong>
+     </p>
+     <p>
+      This cmdlet generates an object that represents the renamed item, if you specify the
+      <em>
+       PassThru
+      </em>
+      parameter.
+Otherwise, this cmdlet does not generate any output.
+     </p>
+     <h2 id="notes">
+      Notes
+     </h2>
+     <ul>
+      <li>
+       <strong>
+        Rename-Item
+       </strong>
+       is designed to work with the data exposed by any provider. To list the providers available in your session, type
+       <code>
+        Get-PsProvider
+       </code>
+       . For more information, see about_Providers.
+      </li>
+     </ul>
+     <p>
+      *
+     </p>
+     <h2 id="related-links">
+      Related Links
+     </h2>
+     <ul>
+      <li>
+       <a data-linktype="relative-path" href="clear-item.html">
+        Clear-Item
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="copy-item.html">
+        Copy-Item
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="get-childitem.html">
+        Get-ChildItem
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="get-item.html">
+        Get-Item
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="invoke-item.html">
+        Invoke-Item
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="move-item.html">
+        Move-Item
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="new-item.html">
+        New-Item
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="remove-item.html">
+        Remove-Item
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="rename-itemproperty.html">
+        Rename-ItemProperty
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="set-item.html">
+        Set-Item
+       </a>
+      </li>
+     </ul>
+     <!-- </content> -->
+    </main>
+    <div class="note alert feedback-system-change-alert">
+     <p>
+      Note
+     </p>
+     <p>
+      The feedback system for this content will be changing soon. Old comments will not be carried over. If content within a comment thread is important to you, please save a copy. For more information on the upcoming change,
+      <a href="https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs">
+       we invite you to read our blog post
+      </a>
+      .
+     </p>
+    </div>
+    <div data-bi-name="comments" id="comments-container" role="form">
+    </div>
+   </div>
+  </div>
+  <div class="openfeedback-container" id="openFeedbackContainer">
+  </div>
+  <div class="action-panel">
+  </div>
+ </body>
+</html>

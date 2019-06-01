@@ -1,0 +1,658 @@
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML><HEAD><TITLE>Man page of termios.h</TITLE>
+</HEAD><BODY>
+<H1>termios.h</H1>
+Section: POSIX Programmer's Manual (0P)<BR>Updated: 2013<BR><A HREF="#index">Index</A>
+<A HREF="../index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>PROLOG</H2>
+
+This manual page is part of the POSIX Programmer's Manual.
+The Linux implementation of this interface may differ (consult
+the corresponding Linux manual page for details of Linux behavior),
+or the interface may not be implemented on Linux.
+<P>
+<A NAME="lbAC">&nbsp;</A>
+<H2>NAME</H2>
+
+termios.h
+--- define values for termios
+<A NAME="lbAD">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<P>
+
+<PRE>
+#include &lt;<A HREF="file:///usr/include/termios.h">termios.h</A>&gt;
+</PRE>
+
+<A NAME="lbAE">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+The
+<I>&lt;<A HREF="file:///usr/include/termios.h">termios.h</A>&gt;</I>
+
+header shall contain the definitions used by the terminal I/O
+interfaces (see
+<I>Chapter 11</I>, <I>General Terminal Interface</I>
+
+for the structures and names defined).
+<A NAME="lbAF">&nbsp;</A>
+<H3>The termios Structure</H3>
+
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/termios.h">termios.h</A>&gt;</I>
+
+header shall define the following data types through
+<B>typedef</B>:
+
+<DL COMPACT>
+<DT><B>cc_t</B><DD>
+Used for terminal special characters.
+<DT><B>speed_t</B><DD>
+Used for terminal baud rates.
+<DT><B>tcflag_t</B><DD>
+Used for terminal modes.
+</DL>
+<P>
+
+The above types shall be all unsigned integer types.
+<P>
+
+The implementation shall support one or more programming environments
+in which the widths of
+<B>cc_t</B>,
+
+<B>speed_t</B>,
+
+and
+<B>tcflag_t</B>
+
+are no greater than the width of type
+<B>long</B>.
+
+The names of these programming environments can be obtained using the
+<I>confstr</I>()
+function or the
+<I>getconf</I>
+
+utility.
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/termios.h">termios.h</A>&gt;</I>
+
+header shall define the
+<B>termios</B>
+
+structure, which shall include at least the following members:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+tcflag_t  c_iflag     </B>Input modes.
+tcflag_t  c_oflag     Output modes.
+tcflag_t  c_cflag     Control modes.
+tcflag_t  c_lflag     Local modes.
+cc_t      c_cc[NCCS]  Control characters.
+</PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/termios.h">termios.h</A>&gt;</I>
+
+header shall define the following symbolic constant:
+<DL COMPACT>
+<DT>NCCS<DD>
+Size of the array
+<I>c_cc</I>
+
+for control characters.
+</DL>
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/termios.h">termios.h</A>&gt;</I>
+
+header shall define the following symbolic constants for use as
+subscripts for the array
+<I>c_cc</I>:
+
+<CENTER><TABLE BORDER><TR><TD><TABLE>
+<TR VALIGN=top><TD ALIGN=center COLSPAN=2><B>Subscript Usage</B></TD><TD><BR></TD></TR>
+<TR VALIGN=top><TD ALIGN=center><B>Canonical Mode</B></TD><TD ALIGN=center><B>Non-Canonical Mode</B></TD><TD ALIGN=center><B>Description</B><BR></TD></TR>
+<TR VALIGN=top><TD COLSPAN=3><HR></TD></TR>
+<TR VALIGN=top><TD>VEOF</TD><TD></TD><TD>EOF character.<BR></TD></TR>
+<TR VALIGN=top><TD>VEOL</TD><TD></TD><TD>EOL character.<BR></TD></TR>
+<TR VALIGN=top><TD>VERASE</TD><TD></TD><TD>ERASE character.<BR></TD></TR>
+<TR VALIGN=top><TD>VINTR</TD><TD>VINTR</TD><TD>INTR character.<BR></TD></TR>
+<TR VALIGN=top><TD>VKILL</TD><TD></TD><TD>KILL character.<BR></TD></TR>
+<TR VALIGN=top><TD></TD><TD>VMIN</TD><TD>MIN value.<BR></TD></TR>
+<TR VALIGN=top><TD>VQUIT</TD><TD>VQUIT</TD><TD>QUIT character.<BR></TD></TR>
+<TR VALIGN=top><TD>VSTART</TD><TD>VSTART</TD><TD>START character.<BR></TD></TR>
+<TR VALIGN=top><TD>VSTOP</TD><TD>VSTOP</TD><TD>STOP character.<BR></TD></TR>
+<TR VALIGN=top><TD>VSUSP</TD><TD>VSUSP</TD><TD>SUSP character.<BR></TD></TR>
+<TR VALIGN=top><TD></TD><TD>VTIME</TD><TD>TIME value.<BR></TD></TR>
+</TABLE></TABLE></CENTER>
+
+<P>
+
+The subscript values shall be suitable for use in
+<B>#if</B>
+
+preprocessing directives and shall be distinct, except that the VMIN
+and VTIME subscripts may have the same values as the VEOF and
+VEOL subscripts, respectively.
+<A NAME="lbAG">&nbsp;</A>
+<H3>Input Modes</H3>
+
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/termios.h">termios.h</A>&gt;</I>
+
+header shall define the following symbolic constants for use as flags
+in the
+<I>c_iflag</I>
+
+field. The
+<I>c_iflag</I>
+
+field describes the basic terminal input control.
+<DL COMPACT>
+<DT>BRKINT<DD>
+Signal interrupt on break.
+<DT>ICRNL<DD>
+Map CR to NL on input.
+<DT>IGNBRK<DD>
+Ignore break condition.
+<DT>IGNCR<DD>
+Ignore CR.
+<DT>IGNPAR<DD>
+Ignore characters with parity errors.
+<DT>INLCR<DD>
+Map NL to CR on input.
+<DT>INPCK<DD>
+Enable input parity check.
+<DT>ISTRIP<DD>
+Strip character.
+<DT>IXANY<DD>
+Enable any character to restart output.
+<DT>IXOFF<DD>
+Enable start/stop input control.
+<DT>IXON<DD>
+Enable start/stop output control.
+<DT>PARMRK<DD>
+Mark parity errors.
+</DL>
+<A NAME="lbAH">&nbsp;</A>
+<H3>Output Modes</H3>
+
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/termios.h">termios.h</A>&gt;</I>
+
+header shall define the following symbolic constants for use as flags
+in the
+<I>c_oflag</I>
+
+field. The
+<I>c_oflag</I>
+
+field specifies the system treatment of output.
+<DL COMPACT>
+<DT>OPOST<DD>
+Post-process output.
+<DT>ONLCR<DD>
+Map NL to CR-NL on output.
+<DT>OCRNL<DD>
+Map CR to NL on output.
+<DT>ONOCR<DD>
+No CR output at column 0.
+<DT>ONLRET<DD>
+NL performs CR function.
+<DT>OFDEL<DD>
+Fill is DEL.
+<DT>OFILL<DD>
+Use fill characters for delay.
+<DT>NLDLY<DD>
+Select newline delays:
+<DL COMPACT><DT><DD>
+<P>
+<DL COMPACT>
+<DT>NL0<DD>
+Newline type 0.
+<DT>NL1<DD>
+Newline type 1.
+</DL>
+</DL>
+
+<DT>CRDLY<DD>
+Select carriage-return delays:
+<DL COMPACT><DT><DD>
+<P>
+<DL COMPACT>
+<DT>CR0<DD>
+Carriage-return delay type 0.
+<DT>CR1<DD>
+Carriage-return delay type 1.
+<DT>CR2<DD>
+Carriage-return delay type 2.
+<DT>CR3<DD>
+Carriage-return delay type 3.
+</DL>
+</DL>
+
+<DT>TABDLY<DD>
+Select horizontal-tab delays:
+<DL COMPACT><DT><DD>
+<P>
+<DL COMPACT>
+<DT>TAB0<DD>
+Horizontal-tab delay type 0.
+<DT>TAB1<DD>
+Horizontal-tab delay type 1.
+<DT>TAB2<DD>
+Horizontal-tab delay type 2.
+<DT>TAB3<DD>
+Expand tabs to spaces.
+</DL>
+</DL>
+
+<DT>BSDLY<DD>
+Select backspace delays:
+<DL COMPACT><DT><DD>
+<P>
+<DL COMPACT>
+<DT>BS0<DD>
+Backspace-delay type 0.
+<DT>BS1<DD>
+Backspace-delay type 1.
+</DL>
+</DL>
+
+<DT>VTDLY<DD>
+Select vertical-tab delays:
+<DL COMPACT><DT><DD>
+<P>
+<DL COMPACT>
+<DT>VT0<DD>
+Vertical-tab delay type 0.
+<DT>VT1<DD>
+Vertical-tab delay type 1.
+</DL>
+</DL>
+
+<DT>FFDLY<DD>
+Select form-feed delays:
+<DL COMPACT><DT><DD>
+<P>
+<DL COMPACT>
+<DT>FF0<DD>
+Form-feed delay type 0.
+<DT>FF1<DD>
+Form-feed delay type 1.
+</DL>
+</DL>
+
+</DL>
+<A NAME="lbAI">&nbsp;</A>
+<H3>Baud Rate Selection</H3>
+
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/termios.h">termios.h</A>&gt;</I>
+
+header shall define the following symbolic constants for use as values
+of objects of type
+<B>speed_t</B>.
+
+<P>
+
+The input and output baud rates are stored in the
+<B>termios</B>
+
+structure. These are the valid values for objects of type
+<B>speed_t</B>.
+
+Not all baud rates need be supported by the underlying hardware.
+<DL COMPACT>
+<DT>B0<DD>
+Hang up
+<DT>B50<DD>
+50 baud
+<DT>B75<DD>
+75 baud
+<DT>B110<DD>
+110 baud
+<DT>B134<DD>
+134.5 baud
+<DT>B150<DD>
+150 baud
+<DT>B200<DD>
+200 baud
+<DT>B300<DD>
+300 baud
+<DT>B600<DD>
+600 baud
+<DT>B1200<DD>
+1200 baud
+<DT>B1800<DD>
+1800 baud
+<DT>B2400<DD>
+2400 baud
+<DT>B4800<DD>
+4800 baud
+<DT>B9600<DD>
+9600 baud
+<DT>B19200<DD>
+19200 baud
+<DT>B38400<DD>
+38400 baud
+</DL>
+<A NAME="lbAJ">&nbsp;</A>
+<H3>Control Modes</H3>
+
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/termios.h">termios.h</A>&gt;</I>
+
+header shall define the following symbolic constants for use as flags
+in the
+<I>c_cflag</I>
+
+field. The
+<I>c_cflag</I>
+
+field describes the hardware control of the terminal; not all values
+specified are required to be supported by the underlying hardware.
+<DL COMPACT>
+<DT>CSIZE<DD>
+Character size:
+<DL COMPACT><DT><DD>
+<P>
+<DL COMPACT>
+<DT>CS5<DD>
+5 bits
+<DT>CS6<DD>
+6 bits
+<DT>CS7<DD>
+7 bits
+<DT>CS8<DD>
+8 bits
+</DL>
+</DL>
+
+<DT>CSTOPB<DD>
+Send two stop bits, else one.
+<DT>CREAD<DD>
+Enable receiver.
+<DT>PARENB<DD>
+Parity enable.
+<DT>PARODD<DD>
+Odd parity, else even.
+<DT>HUPCL<DD>
+Hang up on last close.
+<DT>CLOCAL<DD>
+Ignore modem status lines.
+</DL>
+<P>
+
+The implementation shall support the functionality associated with the
+symbols CS7, CS8, CSTOPB, PARODD, and PARENB.
+<A NAME="lbAK">&nbsp;</A>
+<H3>Local Modes</H3>
+
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/termios.h">termios.h</A>&gt;</I>
+
+header shall define the following symbolic constants for use as flags
+in the
+<I>c_lflag</I>
+
+field. The
+<I>c_lflag</I>
+
+field of the argument structure is used to control various terminal
+functions.
+<DL COMPACT>
+<DT>ECHO<DD>
+Enable echo.
+<DT>ECHOE<DD>
+Echo erase character as error-correcting backspace.
+<DT>ECHOK<DD>
+Echo KILL.
+<DT>ECHONL<DD>
+Echo NL.
+<DT>ICANON<DD>
+Canonical input (erase and kill processing).
+<DT>IEXTEN<DD>
+Enable extended input character processing.
+<DT>ISIG<DD>
+Enable signals.
+<DT>NOFLSH<DD>
+Disable flush after interrupt or quit.
+<DT>TOSTOP<DD>
+Send SIGTTOU for background output.
+</DL>
+<A NAME="lbAL">&nbsp;</A>
+<H3>Attribute Selection</H3>
+
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/termios.h">termios.h</A>&gt;</I>
+
+header shall define the following symbolic constants for use with
+<I>tcsetattr</I>():
+<DL COMPACT>
+<DT>TCSANOW<DD>
+Change attributes immediately.
+<DT>TCSADRAIN<DD>
+Change attributes when output has drained.
+<DT>TCSAFLUSH<DD>
+Change attributes when output has drained; also flush pending input.
+</DL>
+<A NAME="lbAM">&nbsp;</A>
+<H3>Line Control</H3>
+
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/termios.h">termios.h</A>&gt;</I>
+
+header shall define the following symbolic constants for use with
+<I>tcflush</I>():
+<DL COMPACT>
+<DT>TCIFLUSH<DD>
+Flush pending input.
+<DT>TCIOFLUSH<DD>
+Flush both pending input and untransmitted output.
+<DT>TCOFLUSH<DD>
+Flush untransmitted output.
+</DL>
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/termios.h">termios.h</A>&gt;</I>
+
+header shall define the following symbolic constants for use with
+<I>tcflow</I>():
+<DL COMPACT>
+<DT>TCIOFF<DD>
+Transmit a STOP character, intended to suspend input data.
+<DT>TCION<DD>
+Transmit a START character, intended to restart input data.
+<DT>TCOOFF<DD>
+Suspend output.
+<DT>TCOON<DD>
+Restart output.
+</DL>
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/termios.h">termios.h</A>&gt;</I>
+
+header shall define the
+<B>pid_t</B>
+
+type as described in
+<I>&lt;<A HREF="file:///usr/include/sys/types.h">sys/types.h</A>&gt;</I>.
+
+<P>
+
+The following shall be declared as functions and may also be defined
+as macros. Function prototypes shall be provided.
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+speed_t cfgetispeed(const struct termios *);
+speed_t cfgetospeed(const struct termios *);
+int     cfsetispeed(struct termios *, speed_t);
+int     cfsetospeed(struct termios *, speed_t);
+int     tcdrain(int);
+int     tcflow(int, int);
+int     tcflush(int, int);
+int     tcgetattr(int, struct termios *);
+pid_t   tcgetsid(int);
+int     tcsendbreak(int, int);
+int     tcsetattr(int, int, const struct termios *);
+</B></PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+<I>The following sections are informative.</I>
+
+<A NAME="lbAN">&nbsp;</A>
+<H2>APPLICATION USAGE</H2>
+
+The following names are reserved for XSI-conformant systems to use as
+an extension to the above; therefore strictly conforming applications
+shall not use them:
+<TABLE>
+<TR VALIGN=top><TD>CBAUD</TD><TD>EXTB</TD><TD>VDSUSP<BR></TD></TR>
+<TR VALIGN=top><TD>DEFECHO</TD><TD>FLUSHO</TD><TD>VLNEXT<BR></TD></TR>
+<TR VALIGN=top><TD>ECHOCTL</TD><TD>LOBLK</TD><TD>VREPRINT<BR></TD></TR>
+<TR VALIGN=top><TD>ECHOKE</TD><TD>PENDIN</TD><TD>VSTATUS<BR></TD></TR>
+<TR VALIGN=top><TD>ECHOPRT</TD><TD>SWTCH</TD><TD>VWERASE<BR></TD></TR>
+<TR VALIGN=top><TD>EXTA</TD><TD>VDISCARD</TD><TD><BR></TD></TR>
+</TABLE>
+
+<A NAME="lbAO">&nbsp;</A>
+<H2>RATIONALE</H2>
+
+None.
+<A NAME="lbAP">&nbsp;</A>
+<H2>FUTURE DIRECTIONS</H2>
+
+None.
+<A NAME="lbAQ">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+<I></I><B>&lt;<A HREF="file:///usr/include/sys_types.h">sys_types.h</A>&gt;</B>
+
+<P>
+
+The System Interfaces volume of POSIX.1-2008,
+<I>cfgetispeed</I>(),
+
+<I>cfgetospeed</I>(),
+
+<I>cfsetispeed</I>(),
+
+<I>cfsetospeed</I>(),
+
+<I>confstr</I>(),
+
+<I>tcdrain</I>(),
+
+<I>tcflow</I>(),
+
+<I>tcflush</I>(),
+
+<I>tcgetattr</I>(),
+
+<I>tcgetsid</I>(),
+
+<I>tcsendbreak</I>(),
+
+<I>tcsetattr</I>()
+
+<P>
+
+The Shell and Utilities volume of POSIX.1-2008,
+<I>Chapter 11</I>, <I>General Terminal Interface,</I>
+
+<I>getconf</I>
+
+<A NAME="lbAR">&nbsp;</A>
+<H2>COPYRIGHT</H2>
+
+Portions of this text are reprinted and reproduced in electronic form
+from IEEE Std 1003.1, 2013 Edition, Standard for Information Technology
+-- Portable Operating System Interface (POSIX), The Open Group Base
+Specifications Issue 7, Copyright (C) 2013 by the Institute of
+Electrical and Electronics Engineers, Inc and The Open Group.
+(This is POSIX.1-2008 with the 2013 Technical Corrigendum 1 applied.) In the
+event of any discrepancy between this version and the original IEEE and
+The Open Group Standard, the original IEEE and The Open Group Standard
+is the referee document. The original Standard can be obtained online at
+<A HREF="http://www.unix.org/online.html">http://www.unix.org/online.html</A> .
+<P>
+Any typographical or formatting errors that appear
+in this page are most likely
+to have been introduced during the conversion of the source files to
+man page format. To report such errors, see
+<A HREF="https://www.kernel.org/doc/man-pages/reporting_bugs.html">https://www.kernel.org/doc/man-pages/reporting_bugs.html</A> .
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">PROLOG</A><DD>
+<DT><A HREF="#lbAC">NAME</A><DD>
+<DT><A HREF="#lbAD">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAE">DESCRIPTION</A><DD>
+<DL>
+<DT><A HREF="#lbAF">The termios Structure</A><DD>
+<DT><A HREF="#lbAG">Input Modes</A><DD>
+<DT><A HREF="#lbAH">Output Modes</A><DD>
+<DT><A HREF="#lbAI">Baud Rate Selection</A><DD>
+<DT><A HREF="#lbAJ">Control Modes</A><DD>
+<DT><A HREF="#lbAK">Local Modes</A><DD>
+<DT><A HREF="#lbAL">Attribute Selection</A><DD>
+<DT><A HREF="#lbAM">Line Control</A><DD>
+</DL>
+<DT><A HREF="#lbAN">APPLICATION USAGE</A><DD>
+<DT><A HREF="#lbAO">RATIONALE</A><DD>
+<DT><A HREF="#lbAP">FUTURE DIRECTIONS</A><DD>
+<DT><A HREF="#lbAQ">SEE ALSO</A><DD>
+<DT><A HREF="#lbAR">COPYRIGHT</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 14:28:43 GMT, February 25, 2017
+</BODY>
+</HTML>

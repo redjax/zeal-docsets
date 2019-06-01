@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html class="no-js hasSidebar hasPageActions hasBreadcrumb conceptual" data-authenticated="false" data-render="docs" dir="ltr" lang="en-us">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Update-FormatData (Microsoft.PowerShell.Utility)" property="og:title"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" property="og:image"/>
+  <meta content="summary" name="twitter:card"/>
+  <meta content="@docsmsft" name="twitter:site"/>
+  <meta content="Update-FormatData (Microsoft.PowerShell.Utility)" name="twitter:title"/>
+  <meta content="The Update-FormatData cmdlet reloads the formatting data from formatting files into the current session. This cmdlet lets you update the formatting data without restarting Windows PowerShell. Withoutâ¦" name="twitter:description"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" name="twitter:image"/>
+  <meta content="Microsoft Logo" name="twitter:image:alt"/>
+  <meta content="The Update-FormatData cmdlet reloads the formatting data from formatting files into the current session. This cmdlet lets you update the formatting data without restarting Windows PowerShell. Withoutâ¦" name="description"/>
+  <meta content="Docs" name="search.ms_sitename"/>
+  <meta content="PowerShell_PowerShell-docs_reference" name="search.ms_docsetname"/>
+  <meta content="0" name="version"/>
+  <meta content="en-us" name="locale"/>
+  <meta content="Docs" name="site_name"/>
+  <meta content="PowerShell" name="search.ms_product"/>
+  <meta content="PowerShell.PowerShell_PowerShell-docs_reference" name="depot_name"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/45404d4ca212afa615798d3d5cbfea5dc5cc1efb/reference/6/Microsoft.PowerShell.Utility/Update-FormatData.md" name="ref_skeleton_gitcommit"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/live/reference/6/Microsoft.PowerShell.Utility/Update-FormatData.md" name="original_ref_skeleton_git_url"/>
+  <meta content="2018-03-30 03:35 PM" name="updated_at"/>
+  <meta content="ee550d4d-06a5-e48e-d1d0-c45c509731c5" name="document_id"/>
+  <meta content="cf029c0d-f5a9-30cc-783c-2a8b5637710f" name="document_version_independent_id"/>
+  <meta content="powershell" name="page_type"/>
+  <meta content="command" name="page_kind"/>
+  <meta content="06/09/2017" name="ms.date"/>
+  <meta content="2.0.0" name="schema"/>
+  <meta content="powershell,cmdlet" name="keywords"/>
+  <meta content="http://go.microsoft.com/fwlink/?LinkId=821869" name="online_version"/>
+  <meta content="Microsoft.PowerShell.Commands.Utility.dll-Help.xml" name="external_help_file"/>
+  <meta content="powershell" name="ms.devlang"/>
+  <meta content="INDEX, FOLLOW" name="ROBOTS"/>
+  <meta content="sdwheeler" name="author"/>
+  <meta content="sewhee" name="ms.author"/>
+  <meta content="carmonm" name="manager"/>
+  <meta content="/powershell/bread-pscore/toc.yml?view=powershell-6" name="breadcrumb_path"/>
+  <meta content="powershell" name="apiPlatform"/>
+  <meta content="reference" name="ms.topic"/>
+  <meta content="windows, macos, linux" name="ms.tgt_pltfr"/>
+  <meta content="powershell-scripting" name="ms.technology"/>
+  <meta content="powershell" name="ms.prod"/>
+  <meta content="MSDocsHeader-Powershell" name="uhfHeaderId"/>
+  <meta content="../psdocs/toc.json?view=powershell-6" name="toc_rel"/>
+  <link href="https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/update-formatdata" rel="canonical"/>
+  <title>
+   Update-FormatData
+  </title>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/60aac04b.site.css" rel="stylesheet"/>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/fdb8a38a.conceptual.css" rel="stylesheet"/>
+ </head>
+ <body dir="ltr" lang="en-us">
+  <div class="header-holder">
+   <div data-bi-name="header" id="headerAreaHolder">
+    <div id="uhf-placeholder">
+    </div>
+   </div>
+   <div class="disclaimer-holder" id="disclaimer-holder">
+   </div>
+  </div>
+  <div class="container mainContainer" data-bi-name="body">
+   <div class="content-header" data-bi-name="content-header">
+    <div class="content-header-controls">
+     <button class="contents-button button-border" data-bi-name="contents-expand" type="button">
+      <span class="docon docon-menu">
+      </span>
+      Contents
+     </button>
+    </div>
+    <div class="content-header-controls">
+     <button class="ap-collapse-behavior ap-expanded button-border" data-bi-name="ap-collapse" type="button">
+      <span class="docon docon-exit-mode">
+      </span>
+      Exit focus mode
+     </button>
+    </div>
+   </div>
+   <div class="primary-holder">
+    <main class="content" data-bi-name="content" dir="ltr" id="main" lang="en-us" role="main">
+     <!-- <content> -->
+     <h1>
+      Update-Format
+      <wbr/>
+      Data
+     </h1>
+     <div class="metadata">
+      <dl class="attributeList">
+       <dt>
+        Module:
+       </dt>
+       <dd>
+        <a data-linktype="relative-path" href="./Microsoft.PowerShell.Utility.html">
+         Microsoft.PowerShell.Utility
+        </a>
+       </dd>
+      </dl>
+     </div>
+     <div class="summaryHolder">
+      <div class="summary">
+       Updates the formatting data in the current session.
+      </div>
+     </div>
+     <h2 class="hiddenAnchor" id="syntax">
+      Syntax
+     </h2>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Update-FormatData
+      [[-AppendPath] &lt;String[]&gt;]
+      [-PrependPath &lt;String[]&gt;]
+      [-WhatIf]
+      [-Confirm]
+      [&lt;CommonParameters&gt;]</code></pre>
+     <h2 id="description">
+      Description
+     </h2>
+     <p>
+      The
+      <strong>
+       Update-FormatData
+      </strong>
+      cmdlet reloads the formatting data from formatting files into the current session.
+This cmdlet lets you update the formatting data without restarting Windows PowerShell.
+     </p>
+     <p>
+      Without parameters,
+      <strong>
+       Update-FormatData
+      </strong>
+      reloads the formatting files that it loaded previously.
+You can use the parameters of
+      <strong>
+       Update-FormatData
+      </strong>
+      to add new formatting files to the session.
+     </p>
+     <p>
+      Formatting files are text files in XML format with the format.ps1xml file name extension.
+The formatting data in the files defines the display of Microsoft .NET Framework objects in the session.
+     </p>
+     <p>
+      When Windows PowerShell starts, it loads the format data from the formatting files in the Windows PowerShell installation directory ($pshome) into the session.
+You can use
+      <strong>
+       Update-FormatData
+      </strong>
+      to reload the formatting data into the current session without restarting Windows PowerShell.
+This is useful when you have added or changed a formatting file, but do not want to interrupt the session.
+     </p>
+     <p>
+      For more information about formatting files in Windows PowerShell, see about_Format.ps1xml.
+     </p>
+     <h2 id="examples">
+      Examples
+     </h2>
+     <p>
+      <strong>
+       Example 1: Reload previously loaded formatting files
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Update-FormatData</code></pre>
+     <p>
+      This command reloads the formatting files that it loaded previously.
+     </p>
+     <p>
+      <strong>
+       Example 2: Reload formatting files and trace and log formatting files
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Update-FormatData -AppendPath "trace.format.ps1xml, log.format.ps1xml"</code></pre>
+     <p>
+      This command reloads the formatting files into the session, including two new files, Trace.format.ps1xml and Log.format.ps1xml.
+     </p>
+     <p>
+      Because the command uses the
+      <em>
+       AppendPath
+      </em>
+      parameter, the formatting data in the new files is loaded after the formatting data from the built-in files.
+     </p>
+     <p>
+      The
+      <em>
+       AppendPath
+      </em>
+      parameter is used because the new files contain formatting data for objects that are not referenced in the built-in files.
+     </p>
+     <p>
+      <strong>
+       Example 3: Edit a formatting file and reload it
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Update-FormatData -PrependPath "c:\test\NewFiles.format.ps1xml"
+
+
+
+# Edit the NewFiles.format.ps1 file.
+
+
+
+PS C:\&gt; Update-FormatData</code></pre>
+     <p>
+      This example shows how to reload a formatting file after you have edited it.
+     </p>
+     <p>
+      The first command adds the NewFiles.format.ps1xml file to the session.
+It uses the
+      <em>
+       PrependPath
+      </em>
+      parameter because the file contains formatting data for objects that are referenced in the built-in files.
+     </p>
+     <p>
+      After adding the NewFiles.format.ps1xml file and testing it in these sessions, the author edits the file.
+     </p>
+     <p>
+      The second command uses the
+      <strong>
+       Update-FormatData
+      </strong>
+      cmdlet to reload the formatting files.
+Because the NewFiles.format.ps1xml file was previously loaded,
+      <strong>
+       Update-FormatData
+      </strong>
+      automatically reloads it without using parameters.
+     </p>
+     <h2 id="optional-parameters">
+      Optional Parameters
+     </h2>
+     <div class="parameterName stack">
+      -AppendPath
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies formatting files that this cmdlet adds to the session.
+The files are loaded after Windows PowerShell loads the built-in formatting files.
+      </p>
+      <p>
+       When formatting .NET objects, Windows PowerShell uses the first formatting definition that it finds for each .NET type.
+If you use the
+       <em>
+        AppendPath
+       </em>
+       parameter, Windows PowerShell searches the data from the built-in files before it encounters the formatting data that you are adding.
+      </p>
+      <p>
+       Use this parameter to add a file that formats a .NET object that is not referenced in the built-in formatting files.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         PSPath, Path
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         1
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName, ByValue)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Confirm
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Prompts you for confirmation before running the cmdlet.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         cf
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -PrependPath
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies formatting files that this cmdlet adds to the session.
+The files are loaded before Windows PowerShell loads the built-in formatting files.
+      </p>
+      <p>
+       When formatting .NET objects, Windows PowerShell uses the first formatting definition that it finds for each .NET type.
+If you use the
+       <em>
+        PrependPath
+       </em>
+       parameter, Windows PowerShell searches the data from the files that you are adding before it encounters the formatting data from the built-in files.
+      </p>
+      <p>
+       Use this parameter to add a file that formats a .NET object that is also referenced in the built-in formatting files.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -WhatIf
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         wi
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="inputs">
+      Inputs
+     </h2>
+     <p>
+      <strong>
+       System.String
+      </strong>
+     </p>
+     <p>
+      You can pipe a string that contains the append path to
+      <strong>
+       Update-FormatData
+      </strong>
+      .
+     </p>
+     <h2 id="outputs">
+      Outputs
+     </h2>
+     <p>
+      <strong>
+       None
+      </strong>
+     </p>
+     <p>
+      The cmdlet does not return any output.
+     </p>
+     <h2 id="notes">
+      Notes
+     </h2>
+     <ul>
+      <li>
+       <strong>
+        Update-FormatData
+       </strong>
+       also updates the formatting data for commands in the session that were imported from modules. If the formatting file for a module changes, you can run an
+       <strong>
+        Update-FormatData
+       </strong>
+       command to update the formatting data for imported commands. You do not need to import the module again.
+      </li>
+     </ul>
+     <p>
+      *
+     </p>
+     <h2 id="related-links">
+      Related Links
+     </h2>
+     <ul>
+      <li>
+       <a data-linktype="relative-path" href="get-formatdata.html">
+        Get-FormatData
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="export-formatdata.html">
+        Export-FormatData
+       </a>
+      </li>
+     </ul>
+     <!-- </content> -->
+    </main>
+    <div class="note alert feedback-system-change-alert">
+     <p>
+      Note
+     </p>
+     <p>
+      The feedback system for this content will be changing soon. Old comments will not be carried over. If content within a comment thread is important to you, please save a copy. For more information on the upcoming change,
+      <a href="https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs">
+       we invite you to read our blog post
+      </a>
+      .
+     </p>
+    </div>
+    <div data-bi-name="comments" id="comments-container" role="form">
+    </div>
+   </div>
+  </div>
+  <div class="openfeedback-container" id="openFeedbackContainer">
+  </div>
+  <div class="action-panel">
+  </div>
+ </body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    
+<!-- Mirrored from mdn.mozillademos.org/fr/docs/Web/HTML/Element/dialog$samples/Exemples?revision=1546437 by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 01 May 2019 11:31:12 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+        <meta charset="utf-8">
+        <link href="../../../../../../../developer.mozilla.org/static/build/styles/samples.37902ba3b7fe.css" rel="stylesheet" type="text/css" />
+        
+        <title>&lt;dialog&gt; : l&#39;élément de boîte de dialogue</title>
+    </head>
+    <body>
+        
+            <!-- Une boîte de dialogue qui contient un formulaire -->
+<dialog id="favDialog">
+  <form method="dialog">
+    <p><label>Animal préféré :
+      <select>
+        <option></option>
+        <option>Panda roux</option>
+        <option>Macrotus</option>
+        <option>Koala</option>
+      </select>
+    </label></p>
+    <menu>
+      <button value="cancel">Annuler</button>
+      <button id="confirmBtn" value="default">Confirmer</button>
+    </menu>
+  </form>
+</dialog>
+
+<menu>
+  <button id="updateDetails">Mettre à jour les détails</button>
+</menu>
+
+<output aria-live="polite"></output>
+
+        
+        
+            <script>
+                (function() {
+  var updateButton = document.getElementById('updateDetails');
+  var favDialog = document.getElementById('favDialog');
+  var outputBox = document.getElementsByTagName('output')[0];
+  var selectEl = document.getElementsByTagName('select')[0];
+  var confirmBtn = document.getElementById('confirmBtn');
+
+  // Le bouton "mettre à jour les détails" ouvre la boîte de dialogue
+  updateButton.addEventListener('click', function onOpen() {
+    if (typeof favDialog.showModal === "function") {
+      favDialog.showModal();
+    } else {
+      console.error("L'API dialog n'est pas prise en charge par votre navigateur");
+    }
+  });
+  // Le champ "animal préféré" définit la valeur pour le bouton submit
+  selectEl.addEventListener('change', function onSelect(e) {
+    confirmBtn.value = selectEl.value;
+  });
+  // Le bouton "Confirmer" déclenche l'évènement "close" sur le dialog avec [method="dialog"]
+  favDialog.addEventListener('close', function onClose() {
+    outputBox.value = "Vous avez cliqué sur le bouton " + favDialog.returnValue + " !";
+  });
+})();
+
+
+            </script>
+        
+    </body>
+
+<!-- Mirrored from mdn.mozillademos.org/fr/docs/Web/HTML/Element/dialog$samples/Exemples?revision=1546437 by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 01 May 2019 11:31:12 GMT -->
+</html>

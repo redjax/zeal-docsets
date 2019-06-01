@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html class="no-js hasSidebar hasPageActions hasBreadcrumb conceptual" data-authenticated="false" data-render="docs" dir="ltr" lang="en-us">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Checkpoint-SbecActiveConfig (booteventcollector)" property="og:title"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" property="og:image"/>
+  <meta content="summary" name="twitter:card"/>
+  <meta content="@docsmsft" name="twitter:site"/>
+  <meta content="Checkpoint-SbecActiveConfig (booteventcollector)" name="twitter:title"/>
+  <meta content="Use this topic to help manage Windows and Windows Server technologies with Windows PowerShell." name="twitter:description"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" name="twitter:image"/>
+  <meta content="Microsoft Logo" name="twitter:image:alt"/>
+  <meta content="Use this topic to help manage Windows and Windows Server technologies with Windows PowerShell." name="description"/>
+  <meta content="Docs" name="search.ms_sitename"/>
+  <meta content="powershell-windows" name="search.ms_docsetname"/>
+  <meta content="0" name="version"/>
+  <meta content="en-us" name="locale"/>
+  <meta content="Docs" name="site_name"/>
+  <meta content="MSDN" name="search.ms_product"/>
+  <meta content="MSDN.powershell-windows" name="depot_name"/>
+  <meta content="https://cpubwin.visualstudio.com/DefaultCollection/powershell/_git/powershell/commit/ced7757924addcaea0b7a244ae4d240e4d28d93a?path=%2fdocset%2fwindows%2fbooteventcollector%2fcheckpoint-sbecactiveconfig.md&amp;_a=contents" name="ref_skeleton_gitcommit"/>
+  <meta content="https://cpubwin.visualstudio.com/DefaultCollection/powershell/_git/powershell?path=%2fdocset%2fwindows%2fbooteventcollector%2fcheckpoint-sbecactiveconfig.md&amp;version=GBlive&amp;_a=contents" name="original_ref_skeleton_git_url"/>
+  <meta content="2017-09-15 03:44 AM" name="updated_at"/>
+  <meta content="9e364060-b42f-58d8-6177-9cfc2f614d4d" name="document_id"/>
+  <meta content="b8320b4b-7256-3140-6557-03da0cdc78c6" name="document_version_independent_id"/>
+  <meta content="powershell" name="page_type"/>
+  <meta content="command" name="page_kind"/>
+  <meta content="manage" name="ms.mktglfcycl"/>
+  <meta content="library" name="ms.sitesec"/>
+  <meta content="brianlic" name="ms.author"/>
+  <meta content="brianlic-msft" name="author"/>
+  <meta content="BootEventCollector-help.xml" name="external_help_file"/>
+  <meta content="powershell, cmdlet" name="keywords"/>
+  <meta content="alanth" name="manager"/>
+  <meta content="12/20/2016" name="ms.date"/>
+  <meta content="w10" name="ms.prod"/>
+  <meta content="powershell-windows" name="ms.technology"/>
+  <meta content="reference" name="ms.topic"/>
+  <meta content="" name="online_version"/>
+  <meta content="2.0.0" name="schema"/>
+  <meta content="3599DBC8-708E-4807-B95E-3A5EA33167D5" name="ms.assetid"/>
+  <meta content="powershell" name="ms.devlang"/>
+  <meta content="INDEX, FOLLOW" name="ROBOTS"/>
+  <meta content="/powershell/windows/bread/toc.json?view=win10-ps" name="breadcrumb_path"/>
+  <meta content="powershell" name="apiPlatform"/>
+  <meta content="MSDocsHeader-WindowsIT" name="uhfHeaderId"/>
+  <meta content="../win10-ps/toc.json?view=win10-ps" name="toc_rel"/>
+  <link href="https://docs.microsoft.com/en-us/powershell/module/booteventcollector/checkpoint-sbecactiveconfig" rel="canonical"/>
+  <title>
+   Checkpoint-SbecActiveConfig
+  </title>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/e4a1f3a3.site.css" rel="stylesheet"/>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/31353636.conceptual.css" rel="stylesheet"/>
+ </head>
+ <body dir="ltr" lang="en-us">
+  <div class="header-holder">
+   <div data-bi-name="header" id="headerAreaHolder">
+    <div id="uhf-placeholder">
+    </div>
+   </div>
+   <div class="disclaimer-holder" id="disclaimer-holder">
+   </div>
+  </div>
+  <div class="container mainContainer" data-bi-name="body">
+   <div class="content-header" data-bi-name="content-header">
+    <div class="content-header-controls">
+     <button class="contents-button button-border" data-bi-name="contents-expand" type="button">
+      <span class="docon docon-menu">
+      </span>
+      Contents
+     </button>
+    </div>
+    <div class="content-header-controls">
+     <button class="ap-collapse-behavior ap-expanded button-border" data-bi-name="ap-collapse" type="button">
+      <span class="docon docon-exit-mode">
+      </span>
+      Exit focus mode
+     </button>
+    </div>
+   </div>
+   <div class="primary-holder">
+    <main class="content" data-bi-name="content" dir="ltr" id="main" lang="en-us" role="main">
+     <!-- <content> -->
+     <h1>
+      Checkpoint-Sbec
+      <wbr/>
+      Active
+      <wbr/>
+      Config
+     </h1>
+     <div class="metadata">
+      <dl class="attributeList">
+       <dt>
+        Module:
+       </dt>
+       <dd>
+        <a data-linktype="relative-path" href="./.html">
+         booteventcollector
+        </a>
+       </dd>
+      </dl>
+     </div>
+     <div class="summaryHolder">
+      <div class="summary">
+       Creates a configuration checkpoint.
+      </div>
+     </div>
+     <h2 class="hiddenAnchor" id="syntax">
+      Syntax
+     </h2>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Checkpoint-SbecActiveConfig
+          [[-OldTimestamp] &lt;UInt64&gt;]
+          [-Continue]
+          [[-ComputerName] &lt;String[]&gt;]
+          [[-CimSession] &lt;CimSession[]&gt;]
+          [&lt;CommonParameters&gt;]</code></pre>
+     <h2 id="description">
+      Description
+     </h2>
+     <p>
+      The
+      <strong>
+       Checkpoint-SbecActiveConfig
+      </strong>
+      cmdlet creates a checkpoint for the active Boot Event Collector configuration.
+     </p>
+     <p>
+      The checkpoint enables you to return to this configuration later using the
+      <strong>
+       Undo-SbecActiveConfig
+      </strong>
+      ,
+      <strong>
+       Redo-SbecActiveConfig
+      </strong>
+      , and
+      <strong>
+       Restore-SbecBackupConfig
+      </strong>
+      cmdlets.
+The checkpoints mark the known good configurations that you can revert to if a new configuration is incorrect.
+For example, if you changed a configuration yesterday, find an issue with it today, and want to revert to yesterday's configuration before you made a change, you can use the checkpointed configuration from yesterday.
+     </p>
+     <p>
+      Most checkpoints are created automatically, but on rare occasions you might need to explicitly create them.
+Automatic checkpoints are created when the current configuration has not yet been checkpointed and one of the following events occurs:
+     </p>
+     <ul>
+      <li>
+       The Collector service is restarted.
+      </li>
+      <li>
+       The configuration that was running for more than an hour is replaced with another configuration.
+In this case, the old configuration is checkpointed before being replaced.
+      </li>
+      <li>
+       A new configuration is set with
+       <strong>
+        Set-SbecActiveConfig
+       </strong>
+       .
+This new configuration is immediately checkpointed.
+      </li>
+     </ul>
+     <p>
+      A checkpoint ensures that the current configuration is remembered, but it doesn't immediately create a backup configuration file.
+Instead, the checkpointed current configuration is saved to a backup file when the configuration changes.
+     </p>
+     <p>
+      The repeated checkpointing succeeds but has no effect, because it only flags the configuration to create a backup in the future.
+     </p>
+     <p>
+      The
+      <strong>
+       Undo-SbecActiveConfig
+      </strong>
+      ,
+      <strong>
+       Redo-SbecActiveConfig
+      </strong>
+      , and
+      <strong>
+       Restore-SbecBackupConfig
+      </strong>
+      cmdlets change the current configuration by browsing through the backup configurations, but they don't do an immediate checkpointing.
+This lets you browse through the past configurations, try them out, and change your mind if a configuration doesn't work well without causing a flurry of spurious checkpoints and backup files with identical content.
+When you are satisfied with a configuration, checkpoint it with
+      <strong>
+       Checkpoint-SbecActiveConfig
+      </strong>
+      .
+If you forget to create a checkpoint for a configuration, it is automatically checkpointed after an hour.
+     </p>
+     <p>
+      Use
+      <strong>
+       Get-SbecBackupConfig
+      </strong>
+      to get the list of backup configuration files.
+     </p>
+     <p>
+      You can use the
+      <em>
+       OldTimestamp
+      </em>
+      parameter to modify the configuration atomically.
+     </p>
+     <p>
+      You must have the Builtin Administrator rights to run the cmdlet.
+     </p>
+     <h2 id="examples">
+      Examples
+     </h2>
+     <p>
+      <strong>
+       Example 1: Undo a configuration and create a checkpoint
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Undo-SbecActiveConfig | Format-List; Checkpoint-SbecActiveConfig | Format-List</code></pre>
+     <p>
+      This command undoes a configuration and creates a checkpoint, in a simple way.
+      <strong>
+       Format-List
+      </strong>
+      formats the information that this cmdlet returns.
+     </p>
+     <p>
+      <strong>
+       Example 2: Undo a configuration and create a checkpoint atomically
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; $res = Undo-SbecActiveConfig | Format-List 
+PS C:\&gt; $res = Checkpoint-SbecActiveConfig -OldTimestamp $res.OriginalTimestamp | Format-LIst</code></pre>
+     <p>
+      This command undoes a configuration and creates a checkpoint, making sure that no other changes are done in between, and throwing on errors.
+     </p>
+     <h2 id="optional-parameters">
+      Optional Parameters
+     </h2>
+     <div class="parameterName stack">
+      -CimSession
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Runs the cmdlet on the remote computers through a remote session.
+Enter a session object, such as the output of a
+       <strong>
+        New-CimSession
+       </strong>
+       or
+       <strong>
+        Get-CimSession
+       </strong>
+       cmdlet, or an array of these objects.
+The default is to run the cmdlet on the local computer.
+For more information, see About_CimSession.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          CimSession[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         2
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -ComputerName
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the names of the computers on which you want to perform the operation.
+You can specify a fully qualified domain name (FQDN), a NetBIOS name, or an IP address for each computer.
+For more information see
+       <a data-linktype="external" href="http://go.microsoft.com/fwlink/?LinkId=808801">
+        Invoke-CimMethod
+       </a>
+       on MSDN.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         1
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Continue
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that this operation will not throw an exception if a failure occurs.
+Instead, the caller should examine the output of the cmdlet for the error information.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -OldTimestamp
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the timestamp of the previous active configuration.
+This provides a way to perform the atomic changes of the configuration.
+      </p>
+      <p>
+       Each configuration has a timestamp (the time when it was last set or restored) and an original timestamp (if the configuration was restored, the time when it was originally set, otherwise the same as the normal timestamp).
+This operation checks that the
+       <em>
+        OldTimestamp
+       </em>
+       value matches either the normal or original timestamp of the current active configuration, thus ensuring that the active configuration has not changed since the last time you examined it.
+If the values do not match, an error is returned.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          UInt64
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         0
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="outputs">
+      Outputs
+     </h2>
+     <p>
+      <strong>
+       hashtable
+      </strong>
+     </p>
+     <p>
+      This cmdlet returns a hashtable that includes the following elements:
+     </p>
+     <ul>
+      <li>
+       <code>
+        &lt;Success&gt;
+       </code>
+      </li>
+      <li>
+       <code>
+        &lt;ErrorType&gt;
+       </code>
+      </li>
+      <li>
+       <code>
+        &lt;ErrorString&gt;
+       </code>
+      </li>
+      <li>
+       <code>
+        &lt;WarningString&gt;
+       </code>
+      </li>
+      <li>
+       <code>
+        &lt;InfoString&gt;
+       </code>
+      </li>
+     </ul>
+     <p>
+      The Success element is $True on success, $False otherwise.
+You can use the
+      <em>
+       Continue
+      </em>
+      parameter to not throw an error on failure.
+     </p>
+     <p>
+      The
+      <code>
+       &lt;ErrorType&gt;
+      </code>
+      element contains 0 on success.
+If a failure occurs,
+      <code>
+       &lt;ErrorType&gt;
+      </code>
+      has a code that describes the error:
+     </p>
+     <ul>
+      <li>
+       1 - Bad argument format.
+      </li>
+      <li>
+       2 - Bad argument value.
+      </li>
+      <li>
+       3 - Resource (socket) open error.
+      </li>
+      <li>
+       4 - Persistence (backup configuration file) error.
+      </li>
+      <li>
+       5 - Atomicity error (that is, the old timestamp does not match).
+      </li>
+     </ul>
+     <p>
+      <code>
+       &lt;ErrorString&gt;
+      </code>
+      ,
+      <code>
+       &lt;WarningString&gt;
+      </code>
+      , and
+      <code>
+       &lt;InfoString&gt;
+      </code>
+      contain detailed error messages.
+      <code>
+       &lt;ErrorString&gt;
+      </code>
+      contains information only if an error occurs.
+     </p>
+     <h2 id="related-links">
+      Related Links
+     </h2>
+     <ul>
+      <li>
+       <a data-linktype="relative-path" href="./get-sbecbackupconfig.html">
+        Get-SbecBackupConfig
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="./redo-sbecactiveconfig.html">
+        Redo-SbecActiveConfig
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="./restore-sbecbackupconfig.html">
+        Restore-SbecBackupConfig
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="./set-sbecactiveconfig.html">
+        Set-SbecActiveConfig
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="./undo-sbecactiveconfig.html">
+        Undo-SbecActiveConfig
+       </a>
+      </li>
+     </ul>
+     <!-- </content> -->
+    </main>
+    <section class="feedback-section" data-bi-name="feedback-section">
+     <h2 id="feedback">
+      Feedback
+     </h2>
+     <div class="alert choose-feedback-type">
+      <p>
+       We'd love to hear your thoughts. Choose the type you'd like to provide:
+      </p>
+      <div class="choose-feedback-buttons">
+       <a class="button-border feedback-type-product" data-bi-name="product-feedback" href="https://windowsserver.uservoice.com/forums/301869-powershell">
+        Product feedback
+        <span aria-hidden="true" class="docon docon-navigate-external">
+        </span>
+       </a>
+       <div class="button-group">
+        <button class="button-border feedback-sign-in-button" data-bi-name="feedback-sign-in">
+         <span aria-hidden="true" class="docon docon-brand-github">
+         </span>
+         Sign in to give documentation feedback
+        </button>
+        <button aria-controls="feedback-form" aria-expanded="false" class="button-border feedback-form-toggle" data-bi-name="documentation-feedback" hidden="">
+         Content feedback
+        </button>
+        <div auto-align="" class="dropdown has-caret">
+         <button aria-controls="fbm0" aria-expanded="false" aria-haspopup="true" aria-label="Expand documentation feedback menu" class="button-border dropdown-trigger" data-bi-name="documentation-feedback-menu">
+          <span aria-hidden="true" class="docon docon-chevron-down-light">
+          </span>
+         </button>
+         <div class="dropdown-menu documentation-feedback-menu" id="fbm0" role="menu">
+          You may also leave feedback
+          <a data-bi-name="create-issue-on-github" href="{0}">
+           directly on GitHub
+           <span aria-hidden="true" class="docon docon-navigate-external">
+           </span>
+          </a>
+          .
+         </div>
+        </div>
+       </div>
+      </div>
+      <p>
+       <small>
+        Our new feedback system is built on GitHub Issues. Read about this change in
+        <a href="https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs">
+         our blog post
+        </a>
+        .
+       </small>
+      </p>
+     </div>
+     <form accept-charset="UTF-8" action="javascript:" autocomplete="off" class="feedback-form" hidden="" id="feedback-form">
+      <h3 class="feedback-form-heading current-user">
+       <img alt="Avatar" aria-hidden="true" class="avatar" height="36" width="36"/>
+       <span aria-hidden="true" class="username">
+       </span>
+       <span class="visually-hidden">
+        Liquid error: Can't find the localized string giveDocumentationFeedback for template Conceptual.
+       </span>
+      </h3>
+      <label>
+       <span class="visually-hidden">
+        Title
+       </span>
+       <input name="title" pattern=".*\w.*" placeholder="Title" required="" type="text"/>
+      </label>
+      <label>
+       <span class="visually-hidden">
+        Leave a comment
+       </span>
+       <textarea name="body" placeholder="Leave a comment" required=""></textarea>
+      </label>
+      <div class="action-container">
+       <button class="primary-action" name="submit" type="submit">
+        Submit feedback
+       </button>
+      </div>
+     </form>
+     <div class="feedback-status alert busy" role="alert">
+      <p>
+       Loading feedback...
+      </p>
+     </div>
+     <div class="feedback-tab-group tabGroup" data-tab-group-independent="" hidden="">
+      <ul role="tablist">
+       <li role="presentation">
+        <a aria-controls="tabpanel-issues-open" aria-label="Open Issues" data-tab="issues-open" href="#tabpanel-issues-open" role="tab">
+        </a>
+       </li>
+       <li role="presentation">
+        <a aria-controls="tabpanel-issues-closed" aria-label="Closed Issues" data-tab="issues-closed" href="#tabpanel-issues-closed" role="tab">
+        </a>
+       </li>
+      </ul>
+      <section data-tab="issues-open" id="tabpanel-issues-open" role="tabpanel">
+       <div class="no-issues-placeholder">
+        There are no open issues
+       </div>
+       <ul aria-label="Open Issues" class="github-issues-list">
+       </ul>
+      </section>
+      <section data-tab="issues-closed" id="tabpanel-issues-closed" role="tabpanel">
+       <div class="no-issues-placeholder">
+        There are no closed issues
+       </div>
+       <ul aria-label="Closed Issues" class="github-issues-list">
+       </ul>
+      </section>
+     </div>
+     <div class="action-container">
+      <a class="view-on-github" data-bi-name="view-on-github" hidden="" href="https://github.com/MicrosoftDocs/windows-powershell-docs/issues">
+       <span aria-hidden="true" class="docon docon-brand-github">
+       </span>
+       <span>
+        View on GitHub
+       </span>
+       <span aria-hidden="true" class="docon docon-navigate-external">
+       </span>
+      </a>
+     </div>
+    </section>
+   </div>
+  </div>
+  <div class="openfeedback-container" id="openFeedbackContainer">
+  </div>
+  <div class="action-panel">
+  </div>
+ </body>
+</html>

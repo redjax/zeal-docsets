@@ -1,0 +1,674 @@
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML><HEAD><TITLE>Man page of LIRC</TITLE>
+</HEAD><BODY>
+<H1>LIRC</H1>
+Section: Linux Programmer's Manual (4)<BR>Updated: 2016-07-17<BR><A HREF="#index">Index</A>
+<A HREF="../index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+lirc - lirc devices
+<A NAME="lbAC">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+<P>
+
+The
+<B>/dev/lirc*</B>
+
+character devices provide a low-level
+bi-directional interface to infra-red (IR) remotes.
+When receiving data, the driver works in two different modes depending
+on the underlying hardware.
+<P>
+
+Some hardware (typically TV-cards) decodes the IR signal internally
+and just provides decoded button presses as integer values.
+Drivers for this kind of hardware work in
+<B>LIRC_MODE_LIRCCODE</B>
+
+mode.
+Such hardware usually does not support sending IR signals.
+Furthermore, it usually only works with a specific remote which is
+bundled with, for example, a TV-card.
+<P>
+
+Other hardware provides a stream of pulse/space durations.
+Such drivers work in
+<B>LIRC_MODE_MODE2</B>
+
+mode.
+Sometimes, this kind of hardware also supports
+sending IR data.
+Such hardware can be used with (almost) any kind of remote.
+<P>
+
+The <B>LIRC_GET_REC_MODE</B> ioctl (see below) allows probing for the
+mode.
+
+<A NAME="lbAD">&nbsp;</A>
+<H3>Reading input with the LIRC_MODE_MODE2 drivers</H3>
+
+<P>
+
+In the <B>LIRC_MODE_MODE2 mode</B>, the data returned by
+<B><A HREF="../man2/read.2.html">read</A></B>(2)
+
+provides 32-bit values representing a space or a pulse duration, by
+convention typed as
+<I>lirc_t</I>.
+
+The time of the duration (microseconds) is encoded in the lower 24 bits.
+The upper 8 bit reflects the type of package:
+<DL COMPACT>
+<DT><B>LIRC_MODE2_SPACE</B>.
+
+<DD>
+Value reflects a space duration (microseconds).
+<DT><B>LIRC_MODE2_PULSE</B>.
+
+<DD>
+Value reflects a pulse duration (microseconds).
+<DT><B>LIRC_MODE2_FREQUENCY</B>.
+
+<DD>
+Value reflects a frequency (Hz); see the
+<B>LIRC_SET_MEASURE_CARRIER_MODE</B>
+
+ioctl.
+<DT><B>LIRC_MODE2_TIMEOUT</B>.
+
+<DD>
+The package reflects a timeout; see the
+<B>LIRC_SET_REC_TIMEOUT_REPORTS</B>
+
+ioctl.
+
+</DL>
+<A NAME="lbAE">&nbsp;</A>
+<H3>Reading input with the</H3>
+
+<B>LIRC_MODE_LIRCCODE</B>
+
+drivers
+<P>
+
+In the <B>LIRC_MODE_LIRCCODE</B>
+mode, the data returned by
+<B><A HREF="../man2/read.2.html">read</A></B>(2)
+
+reflects decoded button presses.
+The length of each packet can be retrieved using
+the <B>LIRC_GET_LENGTH</B> ioctl.
+Reads must be done in blocks matching
+the bit count returned by the <B>LIRC_GET_LENGTH</B> ioctl, rounded
+up so it matches full bytes.
+
+<A NAME="lbAF">&nbsp;</A>
+<H3>Sending data</H3>
+
+<P>
+
+When sending data, only the <B>LIRC_MODE_PULSE</B>
+mode is supported.
+The data written to the character device using
+<B><A HREF="../man2/write.2.html">write</A></B>(2)
+
+is a pulse/space sequence of integer values.
+Pulses and spaces are only marked implicitly by their position.
+The data must start and end with a pulse, thus it must always include
+an odd number of samples.
+The
+<B><A HREF="../man2/write.2.html">write</A></B>(2)
+
+function blocks until the data has been transmitted by the
+hardware.
+If more data is provided than the hardware can send, the
+<B><A HREF="../man2/write.2.html">write</A></B>(2)
+
+call fails with the error
+<B>EINVAL</B>
+
+
+<A NAME="lbAG">&nbsp;</A>
+<H2>IOCTL COMMANDS</H2>
+
+<P>
+
+The complete list of ioctl commands is maintained in the kernel
+documentation, see SEE ALSO.
+The ioctl commands presented here is a subset of the kernel
+documentation.
+<P>
+
+The LIRC device's ioctl definition is bound by the ioctl function
+definition of struct file_operations, leaving us with an unsigned
+int for the ioctl command and an unsigned long for the argument.
+For the purposes of ioctl portability across 32-bit and 64-bit architectures,
+these values are capped to their 32-bit sizes.
+<P>
+
+<PRE>
+#include &lt;<A HREF="file:///usr/include/lirc/include/media/lirc.h">lirc/include/media/lirc.h</A>&gt;    /* But see BUGS */
+int ioctl(int fd, int cmd, ...);
+</PRE>
+
+<P>
+
+The following ioctls can be used to probe or change specific lirc
+hardware settings.
+Many require a third argument, usually an
+<I>int</I>.
+
+referred to below as
+<I>val</I>.
+
+<P>
+
+In general, each driver should have a default set of settings.
+The driver implementation is expected to re-apply the default settings
+when the device is closed by user space, so that every application
+opening the device can rely on working with the default settings
+initially.
+
+<A NAME="lbAH">&nbsp;</A>
+<H3>Always Supported Commands</H3>
+
+<P>
+
+<I>/dev/lirc*</I> devices always support the following commands:
+<DL COMPACT>
+<DT><B>LIRC_GET_FEATURES</B> (<I>void</I>)
+
+<DD>
+Returns a bit mask of combined features bits; see FEATURES.
+Some drivers have dynamic features which are not updated until after an
+<I>init()</I>
+
+command.
+If a driver does not announce support of certain features, calling of
+the corresponding ioctls is undefined.
+<DT><B>LIRC_GET_REC_MODE</B>
+
+<DD>
+Return the receive mode, which will be one of:
+<DL COMPACT><DT><DD>
+<DL COMPACT>
+<DT><B>LIRC_MODE_MODE2</B> (<I>void</I>)
+
+<DD>
+The driver returns a sequence of pulse/space durations.
+<DT><B>LIRC_MODE_LIRCCODE</B>
+
+<DD>
+The driver returns integer values, each of which represents a decoded
+button press.
+</DL>
+</DL>
+
+</DL>
+<P>
+
+If a device returns an error code for
+<B>LIRC_GET_REC_MODE</B>,
+
+it is safe to assume it is not a lirc device.
+
+<A NAME="lbAI">&nbsp;</A>
+<H3>Optional Commands</H3>
+
+<P>
+
+Some lirc devices support commands listed below.
+Unless otherwise stated, these fail with the error <B>ENOIOCTLCMD</B>
+or with the error <B>ENOSYS</B> if the operation
+isn't supported, or with the error <B>EINVAL</B> if the operation
+failed.
+<DL COMPACT>
+<DT><B>LIRC_SET_REC_MODE</B> (<I>int</I>)
+
+<DD>
+Set the receive mode.
+<I>val</I>
+
+is either
+<B>LIRC_MODE_LIRCCODE</B>
+
+or
+<B>LIRC_MODE_MODE2</B>.
+
+<DT><B>LIRC_GET_LENGTH</B> (<I>void</I>)
+
+<DD>
+Return the length of the returned codes for
+<B>LIRC_MODE_LIRCCODE</B>-type
+
+drivers, otherwise fail with the error
+<B>ENOIOCTLCMD</B>.
+
+<DT><B>LIRC_GET_SEND_MODE</B> (<I>void</I>)
+
+<DD>
+Return the send mode.
+Currently, only
+<B>LIRC_MODE_PULSE</B>
+
+is supported.
+<DT><B>LIRC_SET_SEND_MODE</B> (<I>int</I>)
+
+<DD>
+Set the send mode.
+Currently serves no purpose since only
+<B>LIRC_MODE_PULSE</B>
+
+is supported.
+<DT><B>LIRC_GET_SEND_CARRIER</B> (<I>void</I>)
+
+<DD>
+Get the modulation frequency (Hz).
+<DT><B>LIRC_SET_SEND_CARRIER</B> (<I>int</I>)
+
+<DD>
+Set the modulation frequency.
+The argument is the frequency (Hz).
+<DT><B>LIRC_GET_SEND_CARRIER</B> (<I>void</I>)
+
+<DD>
+Get the modulation frequency used when decoding (Hz).
+<DT><B>SET_SEND_DUTY_CYCLE</B> (<I>int</I>)
+
+<DD>
+Set the carrier duty cycle.
+<I>val</I>
+
+is a number in the range [0,100] which
+describes the pulse width as a percentage of the total cycle.
+Currently, no special meaning is defined for 0 or 100, but the values
+are reserved for future use.
+<P>
+<DT><B>LIRC_GET_MIN_TIMEOUT</B> (<I>void</I>),<B> LIRC_GET_MAX_TIMEOUT</B> (<I>void</I>)
+
+<DD>
+Some devices have internal timers that can be used to detect when
+there's no IR activity for a long time.
+This can help
+<B><A HREF="../man8/lircd.8.html">lircd</A></B>(8)
+
+in detecting that an IR signal is finished and can speed up the
+decoding process.
+These operations
+return integer values with the minimum/maximum timeout that can be
+set (microseconds).
+Some devices have a fixed timeout.
+For such drivers,
+<B>LIRC_GET_MIN_TIMEOUT</B>
+
+and
+<B>LIRC_GET_MAX_TIMEOUT</B>
+
+will return the same value.
+<DT><B>LIRC_SET_REC_TIMEOUT</B> (<I>int</I>)
+
+<DD>
+Set the integer value for IR inactivity timeout (microseconds).
+To be accepted, the value must be within the limits defined by
+<B>LIRC_GET_MIN_TIMEOUT</B>
+
+and
+<B>LIRC_GET_MAX_TIMEOUT</B>.
+
+A value of 0 (if supported by the hardware) disables all hardware
+timeouts and data should be reported as soon as possible.
+If the exact value cannot be set, then the next possible value
+<I>greater</I>
+
+than the given value should be set.
+<DT><B>LIRC_SET_REC_TIMEOUT_REPORTS</B> (<I>int</I>)
+
+<DD>
+Enable
+(<I>val</I>
+
+is 1) or disable
+(<I>val</I>
+
+is 0) timeout packages in
+<B>LIRC_MODE_MODE2</B>.
+
+By default, timeout reports should be turned off.
+<DT><B>LIRC_SET_REC_CARRIER</B> (<I>int</I>)
+
+<DD>
+Set the receive carrier frequency (Hz).
+<DT><B>LIRC_SET_REC_CARRIER_RANGE</B> (<I>int</I>)
+
+<DD>
+After opening device, the first use of this operation
+sets the lower bound of the carrier range,
+and the second use sets the upper bound (Hz).
+<DT><B>LIRC_SET_MEASURE_CARRIER_MODE</B> (<I>int</I>)
+
+<DD>
+Enable
+(<I>val</I>
+
+is 1) or disable
+(<I>val</I>
+
+is 0) the measure mode.
+If enabled, from the next key press on, the driver will send
+<B>LIRC_MODE2_FREQUENCY</B>
+
+packets.
+By default this should be turned off.
+<DT><B>LIRC_GET_REC_RESOLUTION</B> (<I>void</I>)
+
+<DD>
+Return the driver resolution (microseconds).
+<DT><B>LIRC_GET_MIN_FILTER_PULSE</B> (<I>void</I>),<B> </B>LIRC_GET_MAX_FILTER_PULSE<B> (</B><I>void</I>)
+
+<DD>
+Some devices are able to filter out spikes in the incoming signal
+using given filter rules.
+These ioctls return the hardware capabilities that describe the bounds
+of the possible filters.
+Filter settings depend on the IR protocols that are expected.
+<B><A HREF="../man8/lircd.8.html">lircd</A></B>(8)
+
+derives the settings from all protocols definitions found in its
+<B><A HREF="../man5/lircd.conf.5.html">lircd.conf</A></B>(5)
+
+config file.
+<DT><B>LIRC_GET_MIN_FILTER_SPACE</B> (<I>void</I>),<B> </B>LIRC_GET_MAX_FILTER_SPACE<B> (</B><I>void</I>)
+
+<DD>
+See
+<B>LIRC_GET_MIN_FILTER_PULSE</B>.
+
+<DT><B>LIRC_SET_REC_FILTER</B> (<I>int</I>)
+
+<DD>
+Pulses/spaces shorter than this (microseconds) are filtered out by
+hardware.
+<DT><B>LIRC_SET_REC_FILTER_PULSE</B> (<I>int</I>),<B> </B>LIRC_SET_REC_FILTER_SPACE<B> (</B><I>int</I>)
+
+<DD>
+Pulses/spaces shorter than this (microseconds) are filtered out by
+hardware.
+If filters cannot be set independently for pulse/space, the
+corresponding ioctls must return an error and
+<B>LIRC_SET_REC_FILTER</B>
+
+should be used instead.
+<DT><B>LIRC_SET_TRANSMITTER_MASK</B>
+
+<DD>
+Enable the set of transmitters specified in
+<I>val</I>,
+
+which contains a bit mask where each enabled transmitter is a 1.
+The first transmitter is encoded by the least significant bit, and so on.
+When an invalid bit mask is given, for example a bit is set even
+though the device does not have so many transmitters,
+this operation returns the
+number of available transmitters and does nothing otherwise.
+<DT><B>LIRC_SET_WIDEBAND_RECEIVER</B> (<I>int</I>)
+
+<DD>
+Some devices are equipped with a special wide band receiver which is
+intended to be used to learn the output of an existing remote.
+This ioctl can be used to enable
+(<I>val</I>
+
+equals 1) or disable
+(<I>val</I>
+
+equals 0) this functionality.
+This might be useful for devices that otherwise have narrow band
+receivers that prevent them to be used with certain remotes.
+Wide band receivers may also be more precise.
+On the other hand its disadvantage usually is reduced range of
+reception.
+<DT><DD>
+Note: wide band receiver may be implicitly enabled if you enable
+carrier reports.
+In that case, it will be disabled as soon as you disable carrier reports.
+Trying to disable a wide band receiver while carrier reports are active
+will do nothing.
+<DT><B>LIRC_SETUP_START</B> (<I>void</I>), <B>LIRC_SETUP_END</B> (<I>void</I>)
+
+<DD>
+Setting of several driver parameters can be optimized by bracketing
+the actual ioctl calls
+<B>LIRC_SETUP_START</B>
+
+and
+<B>LIRC_SETUP_END</B>.
+
+When a driver receives a
+<B>LIRC_SETUP_START</B>
+
+ioctl, it can choose to not commit further setting changes to the
+hardware until a
+<B>LIRC_SETUP_END</B>
+
+is received.
+But this is open to the driver implementation and every driver
+must also handle parameter changes which are not encapsulated by
+<B>LIRC_SETUP_START</B>
+
+and
+<B>LIRC_SETUP_END</B>.
+
+Drivers can also choose to ignore these ioctls.
+<DT><B>LIRC_NOTIFY_DECODE</B> (<I>void</I>)
+
+<DD>
+This ioctl is called by
+<B><A HREF="../man8/lircd.8.html">lircd</A></B>(8)
+
+whenever a successful decoding of an incoming IR signal is possible.
+This can be used by supporting hardware to give visual user
+feedback, for example by flashing an LED.
+
+</DL>
+<A NAME="lbAJ">&nbsp;</A>
+<H2>FEATURES</H2>
+
+<P>
+
+The features returned by
+The
+<B>LIRC_GET_FEATURES</B>
+
+ioctl returns a bit mask describing features of the driver.
+The following bits may be returned in the mask:
+<DL COMPACT>
+<DT><B>LIRC_CAN_REC_RAW</B>
+
+<DD>
+The driver is capable of receiving using
+<B>LIRC_MODE_RAW</B>.
+
+<DT><B>LIRC_CAN_REC_PULSE</B>
+
+<DD>
+The driver is capable of receiving using
+<B>LIRC_MODE_PULSE</B>.
+
+<DT><B>LIRC_CAN_REC_MODE2</B>
+
+<DD>
+The driver is capable of receiving using
+<B>LIRC_MODE_MODE2</B>.
+
+<DT><B>LIRC_CAN_REC_LIRCCODE</B>
+
+<DD>
+The driver is capable of receiving using
+<B>LIRC_MODE_LIRCCODE</B>.
+
+<DT><B>LIRC_CAN_SET_SEND_CARRIER</B>
+
+<DD>
+The driver supports changing the modulation frequency using
+<B>LIRC_SET_SEND_CARRIER</B>.
+
+<DT><B>LIRC_CAN_SET_SEND_DUTY_CYCLE</B>
+
+<DD>
+The driver supports changing the duty cycle using
+<B>LIRC_SET_SEND_DUTY_CYCLE</B>.
+
+<DT><B>LIRC_CAN_SET_TRANSMITTER_MASK</B>
+
+<DD>
+The driver supports changing the active transmitter(s) using
+<B>LIRC_SET_TRANSMITTER_MASK</B>.
+
+<DT><B>LIRC_CAN_SET_REC_CARRIER</B>
+
+<DD>
+The driver supports setting the receive carrier frequency using
+<B>LIRC_SET_REC_CARRIER</B>.
+
+<DT><B>LIRC_CAN_SET_REC_DUTY_CYCLE_RANGE</B>
+
+<DD>
+The driver supports
+<B>LIRC_SET_REC_DUTY_CYCLE_RANGE</B>.
+
+<DT><B>LIRC_CAN_SET_REC_CARRIER_RANGE</B>
+
+<DD>
+The driver supports
+<B>LIRC_SET_REC_CARRIER_RANGE</B>.
+
+<DT><B>LIRC_CAN_GET_REC_RESOLUTION</B>
+
+<DD>
+The driver supports
+<B>LIRC_GET_REC_RESOLUTION</B>.
+
+<DT><B>LIRC_CAN_SET_REC_TIMEOUT</B>
+
+<DD>
+The driver supports
+<B>LIRC_SET_REC_TIMEOUT</B>.
+
+<DT><B>LIRC_CAN_SET_REC_FILTER</B>
+
+<DD>
+The driver supports
+<B>LIRC_SET_REC_FILTER</B>.
+
+<DT><B>LIRC_CAN_MEASURE_CARRIER</B>
+
+<DD>
+The driver supports measuring of the modulation frequency using
+<B>LIRC_SET_MEASURE_CARRIER_MODE</B>.
+
+<DT><B>LIRC_CAN_USE_WIDEBAND_RECEIVER</B>
+
+<DD>
+The driver supports learning mode using
+<B>LIRC_SET_WIDEBAND_RECEIVER</B>.
+
+<DT><B>LIRC_CAN_NOTIFY_DECODE</B>
+
+<DD>
+The driver supports
+<B>LIRC_NOTIFY_DECODE</B>.
+
+<DT><B>LIRC_CAN_SEND_RAW</B>
+
+<DD>
+The driver supports sending using
+<B>LIRC_MODE_RAW</B>.
+
+<DT><B>LIRC_CAN_SEND_PULSE</B>
+
+<DD>
+The driver supports sending using
+<B>LIRC_MODE_PULSE</B>.
+
+<DT><B>LIRC_CAN_SEND_MODE2</B>
+
+<DD>
+The driver supports sending using
+<B>LIRC_MODE_MODE2</B>.
+
+<DT><B>LIRC_CAN_SEND_LIRCCODE</B>
+
+<DD>
+The driver supports sending.
+(This is uncommon, since
+<B>LIRCCODE</B>
+
+drivers reflect hardware like TV-cards which usually dos not support
+sending.)
+
+</DL>
+<A NAME="lbAK">&nbsp;</A>
+<H2>BUGS</H2>
+
+Using these devices requires the kernel source header file
+<I>lirc.h</I>.
+
+This file is not available before kernel release 4.6.
+Users of older kernels could use the file bundled in
+
+
+
+<A NAME="lbAL">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+<B><A HREF="../man8/lircd.8.html">lircd</A></B>(8)
+
+<P>
+
+<A HREF="https://www.kernel.org/doc/htmldocs/media_api/lirc_dev.html">https://www.kernel.org/doc/htmldocs/media_api/lirc_dev.html</A>
+<A NAME="lbAM">&nbsp;</A>
+<H2>COLOPHON</H2>
+
+This page is part of release 4.09 of the Linux
+<I>man-pages</I>
+
+project.
+A description of the project,
+information about reporting bugs,
+and the latest version of this page,
+can be found at
+<A HREF="https://www.kernel.org/doc/man-pages/.">https://www.kernel.org/doc/man-pages/.</A>
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">DESCRIPTION</A><DD>
+<DL>
+<DT><A HREF="#lbAD">Reading input with the LIRC_MODE_MODE2 drivers</A><DD>
+<DT><A HREF="#lbAE">Reading input with the</A><DD>
+<DT><A HREF="#lbAF">Sending data</A><DD>
+</DL>
+<DT><A HREF="#lbAG">IOCTL COMMANDS</A><DD>
+<DL>
+<DT><A HREF="#lbAH">Always Supported Commands</A><DD>
+<DT><A HREF="#lbAI">Optional Commands</A><DD>
+</DL>
+<DT><A HREF="#lbAJ">FEATURES</A><DD>
+<DT><A HREF="#lbAK">BUGS</A><DD>
+<DT><A HREF="#lbAL">SEE ALSO</A><DD>
+<DT><A HREF="#lbAM">COLOPHON</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 14:28:39 GMT, February 25, 2017
+</BODY>
+</HTML>

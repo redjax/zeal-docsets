@@ -1,0 +1,136 @@
+<html><!-- Mirrored from mdn.mozillademos.org/fr/docs/Apprendre/HTML/Introduction_à_HTML/formatage-avance-texte$samples/Playable_code_2?revision=1382383 by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 01 May 2019 11:30:39 GMT --><!-- Added by HTTrack --><head><meta http-equiv="content-type" content="text/html;charset=utf-8"><!-- /Added by HTTrack -->
+
+        <meta charset="utf-8">
+        <link href="../../../../../../../developer.mozilla.org/static/build/styles/samples.37902ba3b7fe.css" rel="stylesheet" type="text/css">
+        
+        <style type="text/css">
+            html {
+  font-family: sans-serif;
+}
+
+h2 {
+  font-size: 16px;
+}
+
+.a11y-label {
+  margin: 0;
+  text-align: right;
+  font-size: 0.7rem;
+  width: 98%;
+}
+
+body {
+  margin: 10px;
+  background: #f5f9fa;
+}
+        </style>
+        
+        <title>Formatage avancé du texte</title>
+    </head>
+    <body>
+        
+            <h2>Zone de rendu</h2>
+
+<div class="output" style="min-height: 50px;"><p>Salut et bienvenue sur ma page de motivation. Comme Confucius a dit en son temps :</p>
+<p>La lenteur avec laquelle vous allez n'a pas d'importance tant que vous ne vous arrêtez pas.</p>
+<p>J'aime aussi ce concept de pensée positive « Il est nécessaire d'éliminer le discours négatif sur soi-même » (comme dit dans « Affirmations for Positive Thinking ».)</p>
+</div>
+
+<h2>Code modifiable</h2>
+<p class="a11y-label">Pressez Esc pour sortir le focus de la Zone de saisie (Tab insère une tabulation).</p>
+
+<textarea id="code" class="input" style="min-height: 150px; width: 95%" spellcheck="false">&lt;p&gt;Salut et bienvenue sur ma page de motivation. Comme Confucius a dit en son temps :&lt;/p&gt;
+&lt;p&gt;La lenteur avec laquelle vous allez n'a pas d'importance tant que vous ne vous arrêtez pas.&lt;/p&gt;
+&lt;p&gt;J'aime aussi ce concept de pensée positive « Il est nécessaire d'éliminer le discours négatif sur soi-même » (comme dit dans « Affirmations for Positive Thinking ».)&lt;/p&gt;
+</textarea>
+
+<div class="playable-buttons">
+  <input id="reset" type="button" value="Réinitialiser" spellcheck="false">
+  <input id="solution" type="button" value="Voir la solution" spellcheck="false">
+</div>
+        
+        
+            <script>
+                var textarea = document.getElementById('code');
+var reset = document.getElementById('reset');
+var solution = document.getElementById('solution');
+var output = document.querySelector('.output');
+var code = textarea.value;
+var userEntry = textarea.value;
+
+function updateCode() {
+  output.innerHTML = textarea.value;
+}
+
+reset.addEventListener('click', function() {
+  textarea.value = code;
+  userEntry = textarea.value;
+  solutionEntry = htmlSolution;
+  solution.value = 'Show solution';
+  updateCode();
+});
+
+solution.addEventListener('click', function() {
+  if(solution.value === 'Voir la solution') {
+    textarea.value = solutionEntry;
+    solution.value = 'Cacher la solution';
+  } else {
+    textarea.value = userEntry;
+    solution.value = 'Voir la solution';
+  }
+  updateCode();
+});
+
+var htmlSolution = '<p>Salut et bienvenue sur ma page de motivation. Comme <a href="http://www.brainyquote.com/quotes/authors/c/confucius.html"><cite>Confucius</cite></a> a dit en son temps :</p>\n\n<blockquote cite="http://www.brainyquote.com/quotes/authors/c/confucius.html">\n <p>La lenteur avec laquelle vous allez n\'a pas d\'importance tant que vous ne vous arrêtez pas.</p>\n</blockquote>\n\n<p>J\'aime aussi le concept de pensée positive <q cite="http://www.affirmationsforpositivethinking.com/index.htm"> Il est nécessaire d\'éliminer le discours négatif sur soi-même </q> (comme dit dans <a href="http://www.affirmationsforpositivethinking.com/index.htm"><cite>Affirmations for Positive Thinking</cite></a>.)</p>';
+var solutionEntry = htmlSolution;
+
+textarea.addEventListener('input', updateCode);
+window.addEventListener('load', updateCode);
+
+// stop tab key tabbing out of textarea and
+// make it write a tab at the caret position instead
+
+textarea.onkeydown = function(e){
+  if (e.keyCode === 9) {
+    e.preventDefault();
+    insertAtCaret('\t');
+  }
+
+  if (e.keyCode === 27) {
+    textarea.blur();
+  }
+};
+
+function insertAtCaret(text) {
+  var scrollPos = textarea.scrollTop;
+  var caretPos = textarea.selectionStart;
+
+  var front = (textarea.value).substring(0, caretPos);
+  var back = (textarea.value).substring(textarea.selectionEnd, textarea.value.length);
+  textarea.value = front + text + back;
+  caretPos = caretPos + text.length;
+  textarea.selectionStart = caretPos;
+  textarea.selectionEnd = caretPos;
+  textarea.focus();
+  textarea.scrollTop = scrollPos;
+}
+
+// Update the saved userCode every time the user updates the text area code
+
+textarea.onkeyup = function(){
+  // We only want to save the state when the user code is being shown,
+  // not the solution, so that solution is not saved over the user code
+  if(solution.value === 'Voir la solution') {
+    userEntry = textarea.value;
+  } else {
+    solutionEntry = textarea.value;
+  }
+
+  updateCode();
+};
+            </script>
+        
+    
+
+<!-- Mirrored from mdn.mozillademos.org/fr/docs/Apprendre/HTML/Introduction_à_HTML/formatage-avance-texte$samples/Playable_code_2?revision=1382383 by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 01 May 2019 11:30:39 GMT -->
+</body></html>

@@ -1,0 +1,241 @@
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML><HEAD><TITLE>Man page of sys_select.h</TITLE>
+</HEAD><BODY>
+<H1>sys_select.h</H1>
+Section: POSIX Programmer's Manual (0P)<BR>Updated: 2013<BR><A HREF="#index">Index</A>
+<A HREF="../index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>PROLOG</H2>
+
+This manual page is part of the POSIX Programmer's Manual.
+The Linux implementation of this interface may differ (consult
+the corresponding Linux manual page for details of Linux behavior),
+or the interface may not be implemented on Linux.
+<P>
+<A NAME="lbAC">&nbsp;</A>
+<H2>NAME</H2>
+
+sys/select.h
+--- select types
+<A NAME="lbAD">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<P>
+
+<PRE>
+#include &lt;<A HREF="file:///usr/include/sys/select.h">sys/select.h</A>&gt;
+</PRE>
+
+<A NAME="lbAE">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+The
+<I>&lt;<A HREF="file:///usr/include/sys/select.h">sys/select.h</A>&gt;</I>
+
+header shall define the
+<B>timeval</B>
+
+structure, which shall include at least the following members:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+time_t         tv_sec      </B>Seconds.
+suseconds_t    tv_usec     Microseconds.
+</PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/sys/select.h">sys/select.h</A>&gt;</I>
+
+header shall define the
+<B>time_t</B>
+
+and
+<B>suseconds_t</B>
+
+types as described in
+<I>&lt;<A HREF="file:///usr/include/sys/types.h">sys/types.h</A>&gt;</I>.
+
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/sys/select.h">sys/select.h</A>&gt;</I>
+
+header shall define the
+<B>sigset_t</B>
+
+type as described in
+<I>&lt;<A HREF="file:///usr/include/signal.h">signal.h</A>&gt;</I>.
+
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/sys/select.h">sys/select.h</A>&gt;</I>
+
+header shall define the
+<B>timespec</B>
+
+structure as described in
+<I>&lt;<A HREF="file:///usr/include/time.h">time.h</A>&gt;</I>.
+
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/sys/select.h">sys/select.h</A>&gt;</I>
+
+header shall define the
+<B>fd_set</B>
+
+type as a structure.
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/sys/select.h">sys/select.h</A>&gt;</I>
+
+header shall define the following symbolic constant, which shall have
+a value suitable for use in
+<B>#if</B>
+
+preprocessing directives:
+<DL COMPACT>
+<DT>FD_SETSIZE<DD>
+Maximum number of file descriptors in an
+<B>fd_set</B>
+
+structure.
+</DL>
+<P>
+
+The following shall be declared as functions, defined as macros, or
+both. If functions are declared, function prototypes shall be
+provided.
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+void FD_CLR(int, fd_set *);
+int  FD_ISSET(int, fd_set *);
+void FD_SET(int, fd_set *);
+void FD_ZERO(fd_set *);
+</B></PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+If implemented as macros, these may evaluate their arguments more than
+once, so applications should ensure that the arguments they supply are
+never expressions with side-effects.
+<P>
+
+The following shall be declared as functions and may also be defined as
+macros. Function prototypes shall be provided.
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+int  pselect(int, fd_set *restrict, fd_set *restrict, fd_set *restrict,
+         const struct timespec *restrict, const sigset_t *restrict);
+int  select(int, fd_set *restrict, fd_set *restrict, fd_set *restrict,
+         struct timeval *restrict);
+</B></PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+Inclusion of the
+<I>&lt;<A HREF="file:///usr/include/sys/select.h">sys/select.h</A>&gt;</I>
+
+header may make visible all symbols from the headers
+<I>&lt;<A HREF="file:///usr/include/signal.h">signal.h</A>&gt;</I>
+
+and
+<I>&lt;<A HREF="file:///usr/include/time.h">time.h</A>&gt;</I>.
+
+<P>
+
+<I>The following sections are informative.</I>
+
+<A NAME="lbAF">&nbsp;</A>
+<H2>APPLICATION USAGE</H2>
+
+None.
+<A NAME="lbAG">&nbsp;</A>
+<H2>RATIONALE</H2>
+
+None.
+<A NAME="lbAH">&nbsp;</A>
+<H2>FUTURE DIRECTIONS</H2>
+
+None.
+<A NAME="lbAI">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+<I></I><B>&lt;<A HREF="file:///usr/include/signal.h">signal.h</A>&gt;</B>,
+
+<I></I><B>&lt;<A HREF="file:///usr/include/sys_time.h">sys_time.h</A>&gt;</B>,
+
+<I></I><B>&lt;<A HREF="file:///usr/include/sys_types.h">sys_types.h</A>&gt;</B>,
+
+<I></I><B>&lt;<A HREF="file:///usr/include/time.h">time.h</A>&gt;</B>
+
+<P>
+
+The System Interfaces volume of POSIX.1-2008,
+<I>pselect</I>()
+
+<A NAME="lbAJ">&nbsp;</A>
+<H2>COPYRIGHT</H2>
+
+Portions of this text are reprinted and reproduced in electronic form
+from IEEE Std 1003.1, 2013 Edition, Standard for Information Technology
+-- Portable Operating System Interface (POSIX), The Open Group Base
+Specifications Issue 7, Copyright (C) 2013 by the Institute of
+Electrical and Electronics Engineers, Inc and The Open Group.
+(This is POSIX.1-2008 with the 2013 Technical Corrigendum 1 applied.) In the
+event of any discrepancy between this version and the original IEEE and
+The Open Group Standard, the original IEEE and The Open Group Standard
+is the referee document. The original Standard can be obtained online at
+<A HREF="http://www.unix.org/online.html">http://www.unix.org/online.html</A> .
+<P>
+Any typographical or formatting errors that appear
+in this page are most likely
+to have been introduced during the conversion of the source files to
+man page format. To report such errors, see
+<A HREF="https://www.kernel.org/doc/man-pages/reporting_bugs.html">https://www.kernel.org/doc/man-pages/reporting_bugs.html</A> .
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">PROLOG</A><DD>
+<DT><A HREF="#lbAC">NAME</A><DD>
+<DT><A HREF="#lbAD">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAE">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAF">APPLICATION USAGE</A><DD>
+<DT><A HREF="#lbAG">RATIONALE</A><DD>
+<DT><A HREF="#lbAH">FUTURE DIRECTIONS</A><DD>
+<DT><A HREF="#lbAI">SEE ALSO</A><DD>
+<DT><A HREF="#lbAJ">COPYRIGHT</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 14:28:43 GMT, February 25, 2017
+</BODY>
+</HTML>

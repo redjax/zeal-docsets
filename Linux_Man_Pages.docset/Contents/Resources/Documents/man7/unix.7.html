@@ -1,0 +1,1223 @@
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML><HEAD><TITLE>Man page of UNIX</TITLE>
+</HEAD><BODY>
+<H1>UNIX</H1>
+Section: Linux Programmer's Manual (7)<BR>Updated: 2016-07-17<BR><A HREF="#index">Index</A>
+<A HREF="../index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+unix - sockets for local interprocess communication
+<A NAME="lbAC">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<B>#include &lt;<A HREF="file:///usr/include/sys/socket.h">sys/socket.h</A>&gt;</B>
+
+<BR>
+
+<B>#include &lt;<A HREF="file:///usr/include/sys/un.h">sys/un.h</A>&gt;</B>
+
+<P>
+<I>unix_socket</I><B> = socket(AF_UNIX, type, 0);</B>
+
+<BR>
+
+<I>error</I><B> = socketpair(AF_UNIX, type, 0, int *</B><I>sv</I><B>);</B>
+
+<A NAME="lbAD">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+The
+<B>AF_UNIX</B>
+
+(also known as
+<B>AF_LOCAL</B>)
+
+socket family is used to communicate between processes on the same machine
+efficiently.
+Traditionally, UNIX domain sockets can be either unnamed,
+or bound to a filesystem pathname (marked as being of type socket).
+Linux also supports an abstract namespace which is independent of the
+filesystem.
+<P>
+Valid socket types in the UNIX domain are:
+<B>SOCK_STREAM</B>,
+
+for a stream-oriented socket;
+<B>SOCK_DGRAM</B>,
+
+for a datagram-oriented socket that preserves message boundaries
+(as on most UNIX implementations, UNIX domain datagram
+sockets are always reliable and don't reorder datagrams);
+and (since Linux 2.6.4)
+<B>SOCK_SEQPACKET</B>,
+
+for a sequenced-packet socket that is connection-oriented,
+preserves message boundaries,
+and delivers messages in the order that they were sent.
+<P>
+UNIX domain sockets support passing file descriptors or process credentials
+to other processes using ancillary data.
+<A NAME="lbAE">&nbsp;</A>
+<H3>Address format</H3>
+
+A UNIX domain socket address is represented in the following structure:
+
+<PRE>
+
+struct sockaddr_un {
+    sa_family_t sun_family;               /* AF_UNIX */
+    char        sun_path[108];            /* pathname */
+};
+</PRE>
+
+
+<P>
+
+The
+<I>sun_family</I>
+
+field always contains
+<B>AF_UNIX</B>.
+
+On Linux
+<I>sun_path</I>
+
+is 108 bytes in size; see also NOTES, below.
+<P>
+Various systems calls (for example,
+<B><A HREF="../man2/bind.2.html">bind</A></B>(2),
+
+<B><A HREF="../man2/connect.2.html">connect</A></B>(2),
+
+and
+<B><A HREF="../man2/sendto.2.html">sendto</A></B>(2))
+
+take a
+<I>sockaddr_un</I>
+
+argument as input.
+Some other system calls (for example,
+<B><A HREF="../man2/getsockname.2.html">getsockname</A></B>(2),
+
+<B><A HREF="../man2/getpeername.2.html">getpeername</A></B>(2),
+
+<B><A HREF="../man2/recvfrom.2.html">recvfrom</A></B>(2),
+
+and
+<B><A HREF="../man2/accept.2.html">accept</A></B>(2))
+
+return an argument of this type.
+<P>
+Three types of address are distinguished in the
+<I>sockaddr_un</I>
+
+structure:
+<DL COMPACT>
+<DT>*<DD>
+<I>pathname</I>:
+
+a UNIX domain socket can be bound to a null-terminated
+filesystem pathname using
+<B><A HREF="../man2/bind.2.html">bind</A></B>(2).
+
+When the address of a pathname socket is returned
+(by one of the system calls noted above),
+its length is
+<P>
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;offsetof(struct&nbsp;sockaddr_un,&nbsp;sun_path)&nbsp;+&nbsp;strlen(sun_path)&nbsp;+&nbsp;1
+<P>
+and
+<I>sun_path</I>
+
+contains the null-terminated pathname.
+(On Linux, the above
+<B>offsetof</B>()
+
+expression equates to the same value as
+<I>sizeof(sa_family_t)</I>,
+
+but some other implementations include other fields before
+<I>sun_path</I>,
+
+so the
+<B>offsetof</B>()
+
+expression more portably describes the size of the address structure.)
+<DT><DD>
+For further details of pathname sockets, see below.
+<DT>*<DD>
+<I>unnamed</I>:
+
+A stream socket that has not been bound to a pathname using
+<B><A HREF="../man2/bind.2.html">bind</A></B>(2)
+
+has no name.
+Likewise, the two sockets created by
+<B><A HREF="../man2/socketpair.2.html">socketpair</A></B>(2)
+
+are unnamed.
+When the address of an unnamed socket is returned,
+its length is
+<I>sizeof(sa_family_t)</I>,
+
+and
+<I>sun_path</I>
+
+should not be inspected.
+
+
+<DT>*<DD>
+<I>abstract</I>:
+
+an abstract socket address is distinguished (from a pathname socket)
+by the fact that
+<I>sun_path[0]</I>
+
+is a null byte ('\0').
+The socket's address in this namespace is given by the additional
+bytes in
+<I>sun_path</I>
+
+that are covered by the specified length of the address structure.
+(Null bytes in the name have no special significance.)
+The name has no connection with filesystem pathnames.
+When the address of an abstract socket is returned,
+the returned
+<I>addrlen</I>
+
+is greater than
+<I>sizeof(sa_family_t)</I>
+
+(i.e., greater than 2), and the name of the socket is contained in
+the first
+<I>(addrlen - sizeof(sa_family_t))</I>
+
+bytes of
+<I>sun_path</I>.
+
+</DL>
+<A NAME="lbAF">&nbsp;</A>
+<H3>Pathname sockets</H3>
+
+When binding a socket to a pathname, a few rules should be observed
+for maximum portability and ease of coding:
+<DL COMPACT>
+<DT>*<DD>
+The pathname in
+<I>sun_path</I>
+
+should be null-terminated.
+<DT>*<DD>
+The length of the pathname, including the terminating null byte,
+should not exceed the size of
+<I>sun_path</I>.
+
+<DT>*<DD>
+The
+<I>addrlen</I>
+
+argument that describes the enclosing
+<I>sockaddr_un</I>
+
+structure should have a value of at least:
+<P>
+<PRE>
+    offsetof(struct sockaddr_un, sun_path)+strlen(addr.sun_path)+1
+</PRE>
+
+<DT><DD>
+or, more simply,
+<I>addrlen</I>
+
+can be specified as
+<I>sizeof(struct sockaddr_un)</I>.
+
+</DL>
+<P>
+
+There is some variation in how implementations handle UNIX domain
+socket addresses that do not follow the above rules.
+For example, some (but not all) implementations
+
+
+append a null terminator if none is present in the supplied
+<I>sun_path</I>.
+
+<P>
+When coding portable applications,
+keep in mind that some implementations
+
+have
+<I>sun_path</I>
+
+as short as 92 bytes.
+
+
+<P>
+Various system calls
+(<B><A HREF="../man2/accept.2.html">accept</A></B>(2),
+
+<B><A HREF="../man2/recvfrom.2.html">recvfrom</A></B>(2),
+
+<B><A HREF="../man2/getsockname.2.html">getsockname</A></B>(2),
+
+<B><A HREF="../man2/getpeername.2.html">getpeername</A></B>(2))
+
+return socket address structures.
+When applied to UNIX domain sockets, the value-result
+<I>addrlen</I>
+
+argument supplied to the call should be initialized as above.
+Upon return, the argument is set to indicate the
+<I>actual</I>
+
+size of the address structure.
+The caller should check the value returned in this argument:
+if the output value exceeds the input value,
+then there is no guarantee that a null terminator is present in
+<I>sun_path</I>.
+
+(See BUGS.)
+
+<A NAME="lbAG">&nbsp;</A>
+<H3>Pathname socket ownership and permissions</H3>
+
+In the Linux implementation,
+pathname sockets honor the permissions of the directory they are in.
+Creation of a new socket will fail if the process does not have write and
+search (execute) permission on the directory in which the socket is created.
+<P>
+On Linux,
+connecting to a stream socket object requires write permission on that socket;
+sending a datagram to a datagram socket likewise
+requires write permission on that socket.
+POSIX does not make any statement about the effect of the permissions
+on a socket file, and on some systems (e.g., older BSDs),
+the socket permissions are ignored.
+Portable programs should not rely on
+this feature for security.
+<P>
+When creating a new socket, the owner and group of the socket file
+are set according to the usual rules.
+The socket file has all permissions enabled,
+other than those that are turned off by the process
+<B><A HREF="../man2/umask.2.html">umask</A></B>(2).
+
+<P>
+The owner, group, and permissions of a pathname socket can be changed (using
+<B><A HREF="../man2/chown.2.html">chown</A></B>(2)
+
+and
+<B><A HREF="../man2/chmod.2.html">chmod</A></B>(2)).
+
+
+
+<A NAME="lbAH">&nbsp;</A>
+<H3>Abstract sockets</H3>
+
+Socket permissions have no meaning for abstract sockets:
+the process
+<B><A HREF="../man2/umask.2.html">umask</A></B>(2)
+
+has no effect when binding an abstract socket,
+and changing the ownership and permissions of the object (via
+<B><A HREF="../man2/fchown.2.html">fchown</A></B>(2)
+
+and
+<B><A HREF="../man2/fchmod.2.html">fchmod</A></B>(2))
+
+has no effect on the accessibility of the socket.
+<P>
+Abstract sockets automatically disappear when all open references
+to the socket are closed.
+<P>
+The abstract socket namespace is a nonportable Linux extension.
+
+<A NAME="lbAI">&nbsp;</A>
+<H3>Socket options</H3>
+
+For historical reasons, these socket options are specified with a
+<B>SOL_SOCKET</B>
+
+type even though they are
+<B>AF_UNIX</B>
+
+specific.
+They can be set with
+<B><A HREF="../man2/setsockopt.2.html">setsockopt</A></B>(2)
+
+and read with
+<B><A HREF="../man2/getsockopt.2.html">getsockopt</A></B>(2)
+
+by specifying
+<B>SOL_SOCKET</B>
+
+as the socket family.
+<DL COMPACT>
+<DT><B>SO_PASSCRED</B>
+
+<DD>
+Enables the receiving of the credentials of the sending process in an
+ancillary message.
+When this option is set and the socket is not yet connected
+a unique name in the abstract namespace will be generated automatically.
+Expects an integer boolean flag.
+</DL>
+<A NAME="lbAJ">&nbsp;</A>
+<H3>Autobind feature</H3>
+
+If a
+<B><A HREF="../man2/bind.2.html">bind</A></B>(2)
+
+call specifies
+<I>addrlen</I>
+
+as
+<I>sizeof(sa_family_t)</I>,
+
+
+or the
+<B>SO_PASSCRED</B>
+
+socket option was specified for a socket that was
+not explicitly bound to an address,
+then the socket is autobound to an abstract address.
+The address consists of a null byte
+followed by 5 bytes in the character set
+<I>[0-9a-f]</I>.
+
+Thus, there is a limit of 2^20 autobind addresses.
+(From Linux 2.1.15, when the autobind feature was added,
+8 bytes were used, and the limit was thus 2^32 autobind addresses.
+The change to 5 bytes came in Linux 2.3.15.)
+<A NAME="lbAK">&nbsp;</A>
+<H3>Sockets API</H3>
+
+The following paragraphs describe domain-specific details and
+unsupported features of the sockets API for UNIX domain sockets on Linux.
+<P>
+UNIX domain sockets do not support the transmission of
+out-of-band data (the
+<B>MSG_OOB</B>
+
+flag for
+<B><A HREF="../man2/send.2.html">send</A></B>(2)
+
+and
+<B><A HREF="../man2/recv.2.html">recv</A></B>(2)).
+
+<P>
+The
+<B><A HREF="../man2/send.2.html">send</A></B>(2)
+
+<B>MSG_MORE</B>
+
+flag is not supported by UNIX domain sockets.
+<P>
+The use of
+<B>MSG_TRUNC</B>
+
+in the
+<I>flags</I>
+
+argument of
+<B><A HREF="../man2/recv.2.html">recv</A></B>(2)
+
+is not supported by UNIX domain sockets.
+<P>
+The
+<B>SO_SNDBUF</B>
+
+socket option does have an effect for UNIX domain sockets, but the
+<B>SO_RCVBUF</B>
+
+option does not.
+For datagram sockets, the
+<B>SO_SNDBUF</B>
+
+value imposes an upper limit on the size of outgoing datagrams.
+This limit is calculated as the doubled (see
+<B><A HREF="../man7/socket.7.html">socket</A></B>(7))
+
+option value less 32 bytes used for overhead.
+<A NAME="lbAL">&nbsp;</A>
+<H3>Ancillary messages</H3>
+
+Ancillary data is sent and received using
+<B><A HREF="../man2/sendmsg.2.html">sendmsg</A></B>(2)
+
+and
+<B><A HREF="../man2/recvmsg.2.html">recvmsg</A></B>(2).
+
+For historical reasons the ancillary message types listed below
+are specified with a
+<B>SOL_SOCKET</B>
+
+type even though they are
+<B>AF_UNIX</B>
+
+specific.
+To send them set the
+<I>cmsg_level</I>
+
+field of the struct
+<I>cmsghdr</I>
+
+to
+<B>SOL_SOCKET</B>
+
+and the
+<I>cmsg_type</I>
+
+field to the type.
+For more information see
+<B><A HREF="../man3/cmsg.3.html">cmsg</A></B>(3).
+
+<DL COMPACT>
+<DT><B>SCM_RIGHTS</B>
+
+<DD>
+Send or receive a set of open file descriptors from another process.
+The data portion contains an integer array of the file descriptors.
+The passed file descriptors behave as though they have been created with
+<B><A HREF="../man2/dup.2.html">dup</A></B>(2).
+
+<DT><B>SCM_CREDENTIALS</B>
+
+<DD>
+Send or receive UNIX credentials.
+This can be used for authentication.
+The credentials are passed as a
+<I>struct ucred</I>
+
+ancillary message.
+Thus structure is defined in
+<I>&lt;<A HREF="file:///usr/include/sys/socket.h">sys/socket.h</A>&gt;</I>
+
+as follows:
+<P>
+
+<PRE>
+struct ucred {
+    pid_t pid;    /* process ID of the sending process */
+    uid_t uid;    /* user ID of the sending process */
+    gid_t gid;    /* group ID of the sending process */
+};
+</PRE>
+
+
+<P>
+Since glibc 2.8, the
+<B>_GNU_SOURCE</B>
+
+feature test macro must be defined (before including
+<I>any</I>
+
+header files) in order to obtain the definition
+of this structure.
+<P>
+The credentials which the sender specifies are checked by the kernel.
+A process with effective user ID 0 is allowed to specify values that do
+not match its own.
+The sender must specify its own process ID (unless it has the capability
+<B>CAP_SYS_ADMIN</B>),
+
+its user ID, effective user ID, or saved set-user-ID (unless it has
+<B>CAP_SETUID</B>),
+
+and its group ID, effective group ID, or saved set-group-ID
+(unless it has
+<B>CAP_SETGID</B>).
+
+To receive a
+<I>struct ucred</I>
+
+message the
+<B>SO_PASSCRED</B>
+
+option must be enabled on the socket.
+</DL>
+<A NAME="lbAM">&nbsp;</A>
+<H3>Ioctls</H3>
+
+The following
+<B><A HREF="../man2/ioctl.2.html">ioctl</A></B>(2)
+
+calls return information in
+<I>value</I>.
+
+The correct syntax is:
+<P>
+
+<DL COMPACT><DT><DD>
+<PRE>
+<B>int</B><I> value;</I>
+<I>error</I><B> = ioctl(</B><I>unix_socket</I><B>, </B><I>ioctl_type</I><B>, &amp;</B><I>value</I><B>);</B>
+</PRE>
+
+</DL>
+
+<P>
+
+<I>ioctl_type</I>
+
+can be:
+<DL COMPACT>
+<DT><B>SIOCINQ</B>
+
+<DD>
+For
+<B>SOCK_STREAM</B>
+
+socket the function returns the amount of queued unread data in the receive buffer.
+The socket must not be in LISTEN state, otherwise an error
+(<B>EINVAL</B>)
+
+is returned.
+<B>SIOCINQ</B>
+
+is defined in
+<I>&lt;<A HREF="file:///usr/include/linux/sockios.h">linux/sockios.h</A>&gt;</I>.
+
+
+
+Alternatively,
+you can use the synonymous
+<B>FIONREAD</B>,
+
+defined in
+<I>&lt;<A HREF="file:///usr/include/sys/ioctl.h">sys/ioctl.h</A>&gt;</I>.
+
+
+
+
+
+
+
+For
+<B>SOCK_DGRAM</B>
+
+socket,
+the returned value is the same as
+for Internet domain datagram socket;
+see
+<B><A HREF="../man7/udp.7.html">udp</A></B>(7).
+
+</DL>
+<A NAME="lbAN">&nbsp;</A>
+<H2>ERRORS</H2>
+
+<DL COMPACT>
+<DT><B>EADDRINUSE</B>
+
+<DD>
+The specified local address is already in use or the filesystem socket
+object already exists.
+<DT><B>ECONNREFUSED</B>
+
+<DD>
+The remote address specified by
+<B><A HREF="../man2/connect.2.html">connect</A></B>(2)
+
+was not a listening socket.
+This error can also occur if the target pathname is not a socket.
+<DT><B>ECONNRESET</B>
+
+<DD>
+Remote socket was unexpectedly closed.
+<DT><B>EFAULT</B>
+
+<DD>
+User memory address was not valid.
+<DT><B>EINVAL</B>
+
+<DD>
+Invalid argument passed.
+A common cause is that the value
+<B>AF_UNIX</B>
+
+was not specified in the
+<I>sun_type</I>
+
+field of passed addresses, or the socket was in an
+invalid state for the applied operation.
+<DT><B>EISCONN</B>
+
+<DD>
+<B><A HREF="../man2/connect.2.html">connect</A></B>(2)
+
+called on an already connected socket or a target address was
+specified on a connected socket.
+<DT><B>ENOENT</B>
+
+<DD>
+The pathname in the remote address specified to
+<B><A HREF="../man2/connect.2.html">connect</A></B>(2)
+
+did not exist.
+<DT><B>ENOMEM</B>
+
+<DD>
+Out of memory.
+<DT><B>ENOTCONN</B>
+
+<DD>
+Socket operation needs a target address, but the socket is not connected.
+<DT><B>EOPNOTSUPP</B>
+
+<DD>
+Stream operation called on non-stream oriented socket or tried to
+use the out-of-band data option.
+<DT><B>EPERM</B>
+
+<DD>
+The sender passed invalid credentials in the
+<I>struct ucred</I>.
+
+<DT><B>EPIPE</B>
+
+<DD>
+Remote socket was closed on a stream socket.
+If enabled, a
+<B>SIGPIPE</B>
+
+is sent as well.
+This can be avoided by passing the
+<B>MSG_NOSIGNAL</B>
+
+flag to
+<B><A HREF="../man2/send.2.html">send</A></B>(2)
+
+or
+<B><A HREF="../man2/sendmsg.2.html">sendmsg</A></B>(2).
+
+<DT><B>EPROTONOSUPPORT</B>
+
+<DD>
+Passed protocol is not
+<B>AF_UNIX</B>.
+
+<DT><B>EPROTOTYPE</B>
+
+<DD>
+Remote socket does not match the local socket type
+(<B>SOCK_DGRAM</B>
+
+versus
+<B>SOCK_STREAM</B>)
+
+<DT><B>ESOCKTNOSUPPORT</B>
+
+<DD>
+Unknown socket type.
+</DL>
+<P>
+
+Other errors can be generated by the generic socket layer or
+by the filesystem while generating a filesystem socket object.
+See the appropriate manual pages for more information.
+<A NAME="lbAO">&nbsp;</A>
+<H2>VERSIONS</H2>
+
+<B>SCM_CREDENTIALS</B>
+
+and the abstract namespace were introduced with Linux 2.2 and should not
+be used in portable programs.
+(Some BSD-derived systems also support credential passing,
+but the implementation details differ.)
+<A NAME="lbAP">&nbsp;</A>
+<H2>NOTES</H2>
+
+Binding to a socket with a filename creates a socket
+in the filesystem that must be deleted by the caller when it is no
+longer needed (using
+<B><A HREF="../man2/unlink.2.html">unlink</A></B>(2)).
+
+The usual UNIX close-behind semantics apply; the socket can be unlinked
+at any time and will be finally removed from the filesystem when the last
+reference to it is closed.
+<P>
+To pass file descriptors or credentials over a
+<B>SOCK_STREAM</B>,
+
+you need
+to send or receive at least one byte of nonancillary data in the same
+<B><A HREF="../man2/sendmsg.2.html">sendmsg</A></B>(2)
+
+or
+<B><A HREF="../man2/recvmsg.2.html">recvmsg</A></B>(2)
+
+call.
+<P>
+UNIX domain stream sockets do not support the notion of out-of-band data.
+
+<A NAME="lbAQ">&nbsp;</A>
+<H2>BUGS</H2>
+
+When binding a socket to an address,
+Linux is one of the implementations that appends a null terminator
+if none is supplied in
+<I>sun_path</I>.
+
+In most cases this is unproblematic:
+when the socket address is retrieved,
+it will be one byte longer than that supplied when the socket was bound.
+However, there is one case where confusing behavior can result:
+if 108 non-null bytes are supplied when a socket is bound,
+then the addition of the null terminator takes the length of
+the pathname beyond
+<I>sizeof(sun_path)</I>.
+
+Consequently, when retrieving the socket address
+(for example, via
+<B><A HREF="../man2/accept.2.html">accept</A></B>(2)),
+
+
+if the input
+<I>addrlen</I>
+
+argument for the retrieving call is specified as
+<I>sizeof(struct sockaddr_un)</I>,
+
+then the returned address structure
+<I>won't</I>
+
+have a null terminator in
+<I>sun_path</I>.
+
+<P>
+In addition, some implementations
+
+don't require a null terminator when binding a socket (the
+<I>addrlen</I>
+
+argument is used to determine the length of
+<I>sun_path</I>)
+
+and when the socket address is retrieved on these implementations,
+there is no null terminator in
+<I>sun_path</I>.
+
+<P>
+Applications that retrieve socket addresses can (portably) code
+to handle the possibility that there is no null terminator in
+<I>sun_path</I>
+
+by respecting the fact that the number of valid bytes in the pathname is:
+<P>
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;strnlen(addr.sun_path,&nbsp;addrlen&nbsp;-&nbsp;offsetof(sockaddr_un,&nbsp;sun_path))
+
+
+
+
+
+
+
+
+
+
+<P>
+Alternatively, an application can retrieve
+the socket address by allocating a buffer of size
+<I>sizeof(struct sockaddr_un)+1</I>
+
+that is zeroed out before the retrieval.
+The retrieving call can specify
+<I>addrlen</I>
+
+as
+<I>sizeof(struct sockaddr_un)</I>,
+
+and the extra zero byte ensures that there will be
+a null terminator for the string returned in
+<I>sun_path</I>:
+
+<P>
+<PRE>
+void *addrp;
+
+addrlen = sizeof(struct sockaddr_un);
+addrp = malloc(addrlen + 1);
+if (addrp == NULL)
+    /* Handle error */ ;
+memset(addrp, 0, addrlen + 1);
+
+if (getsockname(sfd, (struct sockaddr *) addrp, &amp;addrlen)) == -1)
+    /* handle error */ ;
+
+printf(&quot;sun_path = %s\n&quot;, ((struct sockaddr_un *) addrp)-&gt;sun_path);
+</PRE>
+
+<P>
+This sort of messiness can be avoided if it is guaranteed
+that the applications that
+<I>create</I>
+
+pathname sockets follow the rules outlined above under
+<I>Pathname sockets</I>.
+
+<A NAME="lbAR">&nbsp;</A>
+<H2>EXAMPLE</H2>
+
+The following code demonstrates the use of sequenced-packet
+sockets for local interprocess communication.
+It consists of two programs.
+The server program waits for a connection from the client program.
+The client sends each of its command-line arguments in separate messages.
+The server treats the incoming messages as integers and adds them up.
+The client sends the command string &quot;END&quot;.
+The server sends back a message containing the sum of the client's integers.
+The client prints the sum and exits.
+The server waits for the next client to connect.
+To stop the server, the client is called with the command-line argument &quot;DOWN&quot;.
+<P>
+
+The following output was recorded while running the server in the background
+and repeatedly executing the client.
+Execution of the server program ends when it receives the &quot;DOWN&quot; command.
+<A NAME="lbAS">&nbsp;</A>
+<H3>Example output</H3>
+
+
+<PRE>
+$ <B>./server &amp;</B>
+[1] 25887
+$ <B>./client 3 4</B>
+Result = 7
+$ <B>./client 11 -5</B>
+Result = 6
+$ <B>./client DOWN</B>
+Result = 0
+[1]+  Done                    ./server
+$
+</PRE>
+
+
+<A NAME="lbAT">&nbsp;</A>
+<H3>Program source</H3>
+
+<PRE>
+/*
+ * File connection.h
+ */
+
+#define SOCKET_NAME &quot;/tmp/9Lq7BNBnBycd6nxy.socket&quot;
+#define BUFFER_SIZE 12
+
+/*
+ * File server.c
+ */
+
+#include &lt;<A HREF="file:///usr/include/stdio.h">stdio.h</A>&gt;
+#include &lt;<A HREF="file:///usr/include/stdlib.h">stdlib.h</A>&gt;
+#include &lt;<A HREF="file:///usr/include/string.h">string.h</A>&gt;
+#include &lt;<A HREF="file:///usr/include/sys/socket.h">sys/socket.h</A>&gt;
+#include &lt;<A HREF="file:///usr/include/sys/un.h">sys/un.h</A>&gt;
+#include &lt;<A HREF="file:///usr/include/unistd.h">unistd.h</A>&gt;
+#include &quot;connection.h&quot;
+
+int
+main(int argc, char *argv[])
+{
+    struct sockaddr_un name;
+    int down_flag = 0;
+    int ret;
+    int connection_socket;
+    int data_socket;
+    int result;
+    char buffer[BUFFER_SIZE];
+
+    /*
+     * In case the program exited inadvertently on the last run,
+     * remove the socket.
+     */
+
+    unlink(SOCKET_NAME);
+
+    /* Create local socket. */
+
+    connection_socket = socket(AF_UNIX, SOCK_SEQPACKET, 0);
+    if (connection_socket == -1) {
+        perror(&quot;socket&quot;);
+        exit(EXIT_FAILURE);
+    }
+
+    /*
+     * For portability clear the whole structure, since some
+     * implementations have additional (nonstandard) fields in
+     * the structure.
+     */
+
+    memset(&amp;name, 0, sizeof(struct sockaddr_un));
+
+    /* Bind socket to socket name. */
+
+    name.sun_family = AF_UNIX;
+    strncpy(name.sun_path, SOCKET_NAME, sizeof(name.sun_path) - 1);
+
+    ret = bind(connection_socket, (const struct sockaddr *) &amp;name,
+               sizeof(struct sockaddr_un));
+    if (ret == -1) {
+        perror(&quot;bind&quot;);
+        exit(EXIT_FAILURE);
+    }
+
+    /*
+     * Prepare for accepting connections. The backlog size is set
+     * to 20. So while one request is being processed other requests
+     * can be waiting.
+     */
+
+    ret = listen(connection_socket, 20);
+    if (ret == -1) {
+        perror(&quot;listen&quot;);
+        exit(EXIT_FAILURE);
+    }
+
+    /* This is the main loop for handling connections. */
+
+    for (;;) {
+
+        /* Wait for incoming connection. */
+
+        data_socket = accept(connection_socket, NULL, NULL);
+        if (data_socket == -1) {
+            perror(&quot;accept&quot;);
+            exit(EXIT_FAILURE);
+        }
+
+        result = 0;
+        for(;;) {
+
+            /* Wait for next data packet. */
+
+            ret = read(data_socket, buffer, BUFFER_SIZE);
+            if (ret == -1) {
+                perror(&quot;read&quot;);
+                exit(EXIT_FAILURE);
+            }
+
+            /* Ensure buffer is 0-terminated. */
+
+            buffer[BUFFER_SIZE - 1] = 0;
+
+            /* Handle commands. */
+
+            if (!strncmp(buffer, &quot;DOWN&quot;, BUFFER_SIZE)) {
+                down_flag = 1;
+                break;
+            }
+
+            if (!strncmp(buffer, &quot;END&quot;, BUFFER_SIZE)) {
+                break;
+            }
+
+            /* Add received summand. */
+
+            result += atoi(buffer);
+        }
+
+        /* Send result. */
+
+        sprintf(buffer, &quot;%d&quot;, result);
+        ret = write(data_socket, buffer, BUFFER_SIZE);
+
+        if (ret == -1) {
+            perror(&quot;write&quot;);
+            exit(EXIT_FAILURE);
+        }
+
+        /* Close socket. */
+
+        close(data_socket);
+
+        /* Quit on DOWN command. */
+
+        if (down_flag) {
+            break;
+        }
+    }
+
+    close(connection_socket);
+
+    /* Unlink the socket. */
+
+    unlink(SOCKET_NAME);
+
+    exit(EXIT_SUCCESS);
+}
+
+/*
+ * File client.c
+ */
+
+#include &lt;<A HREF="file:///usr/include/errno.h">errno.h</A>&gt;
+#include &lt;<A HREF="file:///usr/include/stdio.h">stdio.h</A>&gt;
+#include &lt;<A HREF="file:///usr/include/stdlib.h">stdlib.h</A>&gt;
+#include &lt;<A HREF="file:///usr/include/string.h">string.h</A>&gt;
+#include &lt;<A HREF="file:///usr/include/sys/socket.h">sys/socket.h</A>&gt;
+#include &lt;<A HREF="file:///usr/include/sys/un.h">sys/un.h</A>&gt;
+#include &lt;<A HREF="file:///usr/include/unistd.h">unistd.h</A>&gt;
+#include &quot;connection.h&quot;
+
+int
+main(int argc, char *argv[])
+{
+    struct sockaddr_un addr;
+    int i;
+    int ret;
+    int data_socket;
+    char buffer[BUFFER_SIZE];
+
+    /* Create local socket. */
+
+    data_socket = socket(AF_UNIX, SOCK_SEQPACKET, 0);
+    if (data_socket == -1) {
+        perror(&quot;socket&quot;);
+        exit(EXIT_FAILURE);
+    }
+
+    /*
+     * For portability clear the whole structure, since some
+     * implementations have additional (nonstandard) fields in
+     * the structure.
+     */
+
+    memset(&amp;addr, 0, sizeof(struct sockaddr_un));
+
+    /* Connect socket to socket address */
+
+    addr.sun_family = AF_UNIX;
+    strncpy(addr.sun_path, SOCKET_NAME, sizeof(addr.sun_path) - 1);
+
+    ret = connect (data_socket, (const struct sockaddr *) &amp;addr,
+                   sizeof(struct sockaddr_un));
+    if (ret == -1) {
+        fprintf(stderr, &quot;The server is down.\n&quot;);
+        exit(EXIT_FAILURE);
+    }
+
+    /* Send arguments. */
+
+    for (i = 1; i &lt; argc; ++i) {
+        ret = write(data_socket, argv[i], strlen(argv[i]) + 1);
+        if (ret == -1) {
+            perror(&quot;write&quot;);
+            break;
+        }
+    }
+
+    /* Request result. */
+
+    strcpy (buffer, &quot;END&quot;);
+    ret = write(data_socket, buffer, strlen(buffer) + 1);
+    if (ret == -1) {
+        perror(&quot;write&quot;);
+        exit(EXIT_FAILURE);
+    }
+
+    /* Receive result. */
+
+    ret = read(data_socket, buffer, BUFFER_SIZE);
+    if (ret == -1) {
+        perror(&quot;read&quot;);
+        exit(EXIT_FAILURE);
+    }
+
+    /* Ensure buffer is 0-terminated. */
+
+    buffer[BUFFER_SIZE - 1] = 0;
+
+    printf(&quot;Result = %s\n&quot;, buffer);
+
+    /* Close socket. */
+
+    close(data_socket);
+
+    exit(EXIT_SUCCESS);
+}
+</PRE>
+
+<P>
+
+For an example of the use of
+<B>SCM_RIGHTS</B>
+
+see
+<B><A HREF="../man3/cmsg.3.html">cmsg</A></B>(3).
+
+<A NAME="lbAU">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+<B><A HREF="../man2/recvmsg.2.html">recvmsg</A></B>(2),
+
+<B><A HREF="../man2/sendmsg.2.html">sendmsg</A></B>(2),
+
+<B><A HREF="../man2/socket.2.html">socket</A></B>(2),
+
+<B><A HREF="../man2/socketpair.2.html">socketpair</A></B>(2),
+
+<B><A HREF="../man3/cmsg.3.html">cmsg</A></B>(3),
+
+<B><A HREF="../man7/capabilities.7.html">capabilities</A></B>(7),
+
+<B><A HREF="../man7/credentials.7.html">credentials</A></B>(7),
+
+<B><A HREF="../man7/socket.7.html">socket</A></B>(7),
+
+<B><A HREF="../man7/udp.7.html">udp</A></B>(7)
+
+<A NAME="lbAV">&nbsp;</A>
+<H2>COLOPHON</H2>
+
+This page is part of release 4.09 of the Linux
+<I>man-pages</I>
+
+project.
+A description of the project,
+information about reporting bugs,
+and the latest version of this page,
+can be found at
+<A HREF="https://www.kernel.org/doc/man-pages/.">https://www.kernel.org/doc/man-pages/.</A>
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAD">DESCRIPTION</A><DD>
+<DL>
+<DT><A HREF="#lbAE">Address format</A><DD>
+<DT><A HREF="#lbAF">Pathname sockets</A><DD>
+<DT><A HREF="#lbAG">Pathname socket ownership and permissions</A><DD>
+<DT><A HREF="#lbAH">Abstract sockets</A><DD>
+<DT><A HREF="#lbAI">Socket options</A><DD>
+<DT><A HREF="#lbAJ">Autobind feature</A><DD>
+<DT><A HREF="#lbAK">Sockets API</A><DD>
+<DT><A HREF="#lbAL">Ancillary messages</A><DD>
+<DT><A HREF="#lbAM">Ioctls</A><DD>
+</DL>
+<DT><A HREF="#lbAN">ERRORS</A><DD>
+<DT><A HREF="#lbAO">VERSIONS</A><DD>
+<DT><A HREF="#lbAP">NOTES</A><DD>
+<DT><A HREF="#lbAQ">BUGS</A><DD>
+<DT><A HREF="#lbAR">EXAMPLE</A><DD>
+<DL>
+<DT><A HREF="#lbAS">Example output</A><DD>
+<DT><A HREF="#lbAT">Program source</A><DD>
+</DL>
+<DT><A HREF="#lbAU">SEE ALSO</A><DD>
+<DT><A HREF="#lbAV">COLOPHON</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 14:28:41 GMT, February 25, 2017
+</BODY>
+</HTML>

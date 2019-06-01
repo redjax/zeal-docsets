@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html class="no-js hasSidebar hasPageActions hasBreadcrumb conceptual" data-authenticated="false" data-render="docs" dir="ltr" lang="en-us">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Get-CimClass (CimCmdlets)" property="og:title"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" property="og:image"/>
+  <meta content="summary" name="twitter:card"/>
+  <meta content="@docsmsft" name="twitter:site"/>
+  <meta content="Get-CimClass (CimCmdlets)" name="twitter:title"/>
+  <meta content="The Get-CimClass cmdlet retrieves a list of CIM classes in a specific namespace. If there is no class name supplied, then the cmdlet returns all the classes in the namespace. Unlike a CIM instance, Câ¦" name="twitter:description"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" name="twitter:image"/>
+  <meta content="Microsoft Logo" name="twitter:image:alt"/>
+  <meta content="The Get-CimClass cmdlet retrieves a list of CIM classes in a specific namespace. If there is no class name supplied, then the cmdlet returns all the classes in the namespace. Unlike a CIM instance, Câ¦" name="description"/>
+  <meta content="Docs" name="search.ms_sitename"/>
+  <meta content="PowerShell_PowerShell-docs_reference" name="search.ms_docsetname"/>
+  <meta content="0" name="version"/>
+  <meta content="en-us" name="locale"/>
+  <meta content="Docs" name="site_name"/>
+  <meta content="PowerShell" name="search.ms_product"/>
+  <meta content="PowerShell.PowerShell_PowerShell-docs_reference" name="depot_name"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/57336f45d3bea4e66469ebf37e9162b32464a8d3/reference/6/CimCmdlets/Get-CimClass.md" name="ref_skeleton_gitcommit"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/live/reference/6/CimCmdlets/Get-CimClass.md" name="original_ref_skeleton_git_url"/>
+  <meta content="2018-05-10 07:01 PM" name="updated_at"/>
+  <meta content="bfca1514-7360-1a52-2689-b1b9553490e5" name="document_id"/>
+  <meta content="b2047cfa-75e3-d193-5270-8702ebeddb30" name="document_version_independent_id"/>
+  <meta content="powershell" name="page_type"/>
+  <meta content="command" name="page_kind"/>
+  <meta content="06/09/2017" name="ms.date"/>
+  <meta content="2.0.0" name="schema"/>
+  <meta content="powershell,cmdlet" name="keywords"/>
+  <meta content="Microsoft.Management.Infrastructure.CimCmdlets.dll-Help.xml" name="external_help_file"/>
+  <meta content="powershell" name="ms.devlang"/>
+  <meta content="INDEX, FOLLOW" name="ROBOTS"/>
+  <meta content="sdwheeler" name="author"/>
+  <meta content="sewhee" name="ms.author"/>
+  <meta content="carmonm" name="manager"/>
+  <meta content="/powershell/bread-pscore/toc.yml?view=powershell-6" name="breadcrumb_path"/>
+  <meta content="powershell" name="apiPlatform"/>
+  <meta content="reference" name="ms.topic"/>
+  <meta content="windows, macos, linux" name="ms.tgt_pltfr"/>
+  <meta content="powershell-scripting" name="ms.technology"/>
+  <meta content="powershell" name="ms.prod"/>
+  <meta content="MSDocsHeader-Powershell" name="uhfHeaderId"/>
+  <meta content="../psdocs/toc.json?view=powershell-6" name="toc_rel"/>
+  <link href="https://docs.microsoft.com/en-us/powershell/module/cimcmdlets/get-cimclass" rel="canonical"/>
+  <title>
+   Get-CimClass (CimCmdlets) | Microsoft Docs
+  </title>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/60aac04b.site.css" rel="stylesheet"/>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/fdb8a38a.conceptual.css" rel="stylesheet"/>
+ </head>
+ <body dir="ltr" lang="en-us">
+  <div class="header-holder">
+   <div data-bi-name="header" id="headerAreaHolder">
+    <div id="uhf-placeholder">
+    </div>
+   </div>
+   <div class="disclaimer-holder" id="disclaimer-holder">
+   </div>
+  </div>
+  <div class="container mainContainer" data-bi-name="body">
+   <div class="content-header" data-bi-name="content-header">
+    <div class="content-header-controls">
+     <button class="contents-button button-border" data-bi-name="contents-expand" type="button">
+      <span class="docon docon-menu">
+      </span>
+      Contents
+     </button>
+    </div>
+    <div class="content-header-controls">
+     <button class="ap-collapse-behavior ap-expanded button-border" data-bi-name="ap-collapse" type="button">
+      <span class="docon docon-exit-mode">
+      </span>
+      Exit focus mode
+     </button>
+    </div>
+   </div>
+   <div class="primary-holder">
+    <main class="content" data-bi-name="content" dir="ltr" id="main" lang="en-us" role="main">
+     <!-- <content> -->
+     <h1>
+      Get-Cim
+      <wbr/>
+      Class
+     </h1>
+     <div class="metadata">
+      <dl class="attributeList">
+       <dt>
+        Module:
+       </dt>
+       <dd>
+        <a data-linktype="relative-path" href="./CimCmdlets.html">
+         CimCmdlets
+        </a>
+       </dd>
+      </dl>
+     </div>
+     <div class="summaryHolder">
+      <div class="summary">
+       Gets a list of CIM classes in a specific namespace.
+      </div>
+     </div>
+     <h2 class="hiddenAnchor" id="syntax">
+      Syntax
+     </h2>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Get-CimClass
+   [[-ClassName] &lt;String&gt;]
+   [[-Namespace] &lt;String&gt;]
+   [-OperationTimeoutSec &lt;UInt32&gt;]
+   [-ComputerName &lt;String[]&gt;]
+   [-MethodName &lt;String&gt;]
+   [-PropertyName &lt;String&gt;]
+   [-QualifierName &lt;String&gt;]
+   [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Get-CimClass
+   [[-ClassName] &lt;String&gt;]
+   [[-Namespace] &lt;String&gt;]
+   [-OperationTimeoutSec &lt;UInt32&gt;]
+   -CimSession &lt;CimSession[]&gt;
+   [-MethodName &lt;String&gt;]
+   [-PropertyName &lt;String&gt;]
+   [-QualifierName &lt;String&gt;]
+   [&lt;CommonParameters&gt;]</code></pre>
+     <h2 id="description">
+      Description
+     </h2>
+     <p>
+      The Get-CimClass cmdlet retrieves a list of CIM classes in a specific namespace.
+     </p>
+     <p>
+      If there is no class name supplied, then the cmdlet returns all the classes in the namespace.
+     </p>
+     <p>
+      Unlike a CIM instance, CIM classes do not contain the CIM session or computer name from which they are retrieved.
+     </p>
+     <h2 id="examples">
+      Examples
+     </h2>
+     <p>
+      <strong>
+       Example 1: Get all the class definitions
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt;Get-CimClass</code></pre>
+     <p>
+      This command gets all the class definitions under the namespace root/cimv2.
+     </p>
+     <p>
+      <strong>
+       Example 2: Get the classes with a specific name
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt;Get-CimClass -ClassName *disk*</code></pre>
+     <p>
+      This command gets the classes that contain the word disk in their names.
+     </p>
+     <p>
+      <strong>
+       Example 3: Get the classes with a specific method name
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt;Get-CimClass -ClassName Win32* -MethodName Term*</code></pre>
+     <p>
+      This command gets the classes that start with the name Win32 and have a method name that starts with Term.
+     </p>
+     <p>
+      <strong>
+       Example 4: Get the classes with a specific property name
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt;Get-CimClass -ClassName Win32* -PropertyName Handle</code></pre>
+     <p>
+      This command gets the classes that start with the name Win32 and have a property named Handle.
+     </p>
+     <p>
+      <strong>
+       Example 5: Get the classes with a specific qualifier name
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt;Get-CimClass -ClassName Win32*Disk* -QualifierName Association</code></pre>
+     <p>
+      This command gets the classes that start with the name Win32, contain the word Disk in their names and have the specified qualifier Association.
+     </p>
+     <p>
+      <strong>
+       Example 6: Get the class definitions from a specific namespace
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt;Get-CimClass -Namespace root/standardCimv2 -ClassName *Net*</code></pre>
+     <p>
+      This command gets the class definitions that contain the word Net in their names from the specified namespace root/standardCimv2.
+     </p>
+     <p>
+      <strong>
+       Example 7: Get the class definitions from a remote server
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt;Get-CimClass -ClassName *disk* -ComputerName Server01, Server02</code></pre>
+     <p>
+      This command gets the class definitions that contain the word disk in their names from the specified remote servers Server01 and Server02.
+     </p>
+     <p>
+      <strong>
+       Example 8: Get the classes by using a CIM session
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt;$s = New-CimSession -ComputerName Server01, Server02
+
+
+
+
+
+
+
+PS C:\&gt;Get-CimClass -ClassName *disk* -CimSession $s</code></pre>
+     <p>
+      This set of commands creates a session with multiple computers and stores it into a variable $s using the New-CimSession cmdlet, and then gets the classes using the Get-CimClass cmdlet.
+     </p>
+     <h2 id="required-parameters">
+      Required Parameters
+     </h2>
+     <div class="parameterName stack">
+      -CimSession
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Runs the cmdlet in a remote session or on a remote computer.
+Enter a computer name or a session object, such as the output of a New-CimSession or Get-CimSession cmdlet.
+The default is the current session on the local computer.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          CimSession[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByValue)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="optional-parameters">
+      Optional Parameters
+     </h2>
+     <div class="parameterName stack">
+      -ClassName
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the name of the CIM class for which to perform the operation. 
+NOTE: You can use tab completion to browse the list of classes, because PowerShell gets a list of classes from the local WMI server to provide a list of class names.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         1
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -ComputerName
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the computer on which you want to run the CIM operation.
+You can specify a fully qualified domain name (FQDN) a NetBIOS name, or an IP address.
+      </p>
+      <p>
+       If you specify this parameter, the cmdlet creates a temporary session to the specified computer using the WsMan protocol.
+      </p>
+      <p>
+       If you do not specify this parameter, the cmdlet performs the operation on the local computer using Component Object Model (COM).
+      </p>
+      <p>
+       If multiple operations are being performed on the same computer, using a CIM session gives better performance.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         CN, ServerName
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -MethodName
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Finds the classes that have a method matching this name.
+      </p>
+      <p>
+       You can use wildcard characters with this parameter.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Namespace
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the namespace for CIM operation.
+      </p>
+      <p>
+       The default namespace is root/cimv2. 
+NOTE: You can use tab completion to browse the list of namespaces, because PowerShell gets a list of namespaces from the local WMI server to provide the list of namespaces.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         2
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -OperationTimeoutSec
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the amount of time that the cmdlet waits for a response from the computer.
+      </p>
+      <p>
+       By default, the value of this parameter is 0, which means that the cmdlet uses the default timeout value for the server.
+      </p>
+      <p>
+       If the OperationTimeoutSec parameter is set to a value less than the robust connection retry timeout of 3 minutes, network failures that last more than the value of the OperationTimeoutSec parameter are not recoverable, because the operation on the server times out before the client can reconnect.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          UInt32
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         OT
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -PropertyName
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Finds the classes which have a property matching this name.
+      </p>
+      <p>
+       You can use wildcard characters with this parameter.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -QualifierName
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Filters the classes by class level qualifier name.
+You can use wildcard characters with this parameter.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="inputs">
+      Inputs
+     </h2>
+     <p>
+      <strong>
+       None
+      </strong>
+     </p>
+     <p>
+      This cmdlet accepts no input objects.
+     </p>
+     <h2 id="outputs">
+      Outputs
+     </h2>
+     <p>
+      <strong>
+       Microsoft.Management.Infrastructure.CimClass
+      </strong>
+     </p>
+     <p>
+      This cmdlet returns a CIM class object.
+     </p>
+     <h2 id="related-links">
+      Related Links
+     </h2>
+     <ul>
+      <li>
+       <a data-linktype="relative-path" href="new-cimsession.html">
+        New-CimSession
+       </a>
+      </li>
+     </ul>
+     <!-- </content> -->
+    </main>
+    <div class="note alert feedback-system-change-alert">
+     <p>
+      Note
+     </p>
+     <p>
+      The feedback system for this content will be changing soon. Old comments will not be carried over. If content within a comment thread is important to you, please save a copy. For more information on the upcoming change,
+      <a href="https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs">
+       we invite you to read our blog post
+      </a>
+      .
+     </p>
+    </div>
+    <div data-bi-name="comments" id="comments-container" role="form">
+    </div>
+   </div>
+  </div>
+  <div class="openfeedback-container" id="openFeedbackContainer">
+  </div>
+  <div class="action-panel">
+  </div>
+ </body>
+</html>

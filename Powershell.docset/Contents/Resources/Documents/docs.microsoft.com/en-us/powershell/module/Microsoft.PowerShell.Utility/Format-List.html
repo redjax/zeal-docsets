@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html class="no-js hasSidebar hasPageActions hasBreadcrumb conceptual" data-authenticated="false" data-render="docs" dir="ltr" lang="en-us">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Format-List (Microsoft.PowerShell.Utility)" property="og:title"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" property="og:image"/>
+  <meta content="summary" name="twitter:card"/>
+  <meta content="@docsmsft" name="twitter:site"/>
+  <meta content="Format-List (Microsoft.PowerShell.Utility)" name="twitter:title"/>
+  <meta content="The Format-List cmdlet formats the output of a command as a list of properties in which each property is displayed on a separate line. You can use Format-List to format and display all or selected prâ¦" name="twitter:description"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" name="twitter:image"/>
+  <meta content="Microsoft Logo" name="twitter:image:alt"/>
+  <meta content="The Format-List cmdlet formats the output of a command as a list of properties in which each property is displayed on a separate line. You can use Format-List to format and display all or selected prâ¦" name="description"/>
+  <meta content="Docs" name="search.ms_sitename"/>
+  <meta content="PowerShell_PowerShell-docs_reference" name="search.ms_docsetname"/>
+  <meta content="0" name="version"/>
+  <meta content="en-us" name="locale"/>
+  <meta content="Docs" name="site_name"/>
+  <meta content="PowerShell" name="search.ms_product"/>
+  <meta content="PowerShell.PowerShell_PowerShell-docs_reference" name="depot_name"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/57cd861e6079bc530a60692b1bbf35cfef1d3f35/reference/6/Microsoft.PowerShell.Utility/Format-List.md" name="ref_skeleton_gitcommit"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/live/reference/6/Microsoft.PowerShell.Utility/Format-List.md" name="original_ref_skeleton_git_url"/>
+  <meta content="2018-03-30 03:35 PM" name="updated_at"/>
+  <meta content="aa52c0b4-2fa5-9d76-8d3d-50913f101c03" name="document_id"/>
+  <meta content="57f7df06-33c4-215a-e61f-f990d5fc8873" name="document_version_independent_id"/>
+  <meta content="powershell" name="page_type"/>
+  <meta content="command" name="page_kind"/>
+  <meta content="06/09/2017" name="ms.date"/>
+  <meta content="2.0.0" name="schema"/>
+  <meta content="powershell,cmdlet" name="keywords"/>
+  <meta content="http://go.microsoft.com/fwlink/?LinkId=821774" name="online_version"/>
+  <meta content="Microsoft.PowerShell.Commands.Utility.dll-Help.xml" name="external_help_file"/>
+  <meta content="powershell" name="ms.devlang"/>
+  <meta content="INDEX, FOLLOW" name="ROBOTS"/>
+  <meta content="sdwheeler" name="author"/>
+  <meta content="sewhee" name="ms.author"/>
+  <meta content="carmonm" name="manager"/>
+  <meta content="/powershell/bread-pscore/toc.yml?view=powershell-6" name="breadcrumb_path"/>
+  <meta content="powershell" name="apiPlatform"/>
+  <meta content="reference" name="ms.topic"/>
+  <meta content="windows, macos, linux" name="ms.tgt_pltfr"/>
+  <meta content="powershell-scripting" name="ms.technology"/>
+  <meta content="powershell" name="ms.prod"/>
+  <meta content="MSDocsHeader-Powershell" name="uhfHeaderId"/>
+  <meta content="../psdocs/toc.json?view=powershell-6" name="toc_rel"/>
+  <link href="https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/format-list" rel="canonical"/>
+  <title>
+   Format-List
+  </title>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/60aac04b.site.css" rel="stylesheet"/>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/fdb8a38a.conceptual.css" rel="stylesheet"/>
+ </head>
+ <body dir="ltr" lang="en-us">
+  <div class="header-holder">
+   <div data-bi-name="header" id="headerAreaHolder">
+    <div id="uhf-placeholder">
+    </div>
+   </div>
+   <div class="disclaimer-holder" id="disclaimer-holder">
+   </div>
+  </div>
+  <div class="container mainContainer" data-bi-name="body">
+   <div class="content-header" data-bi-name="content-header">
+    <div class="content-header-controls">
+     <button class="contents-button button-border" data-bi-name="contents-expand" type="button">
+      <span class="docon docon-menu">
+      </span>
+      Contents
+     </button>
+    </div>
+    <div class="content-header-controls">
+     <button class="ap-collapse-behavior ap-expanded button-border" data-bi-name="ap-collapse" type="button">
+      <span class="docon docon-exit-mode">
+      </span>
+      Exit focus mode
+     </button>
+    </div>
+   </div>
+   <div class="primary-holder">
+    <main class="content" data-bi-name="content" dir="ltr" id="main" lang="en-us" role="main">
+     <!-- <content> -->
+     <h1>
+      Format-List
+     </h1>
+     <div class="metadata">
+      <dl class="attributeList">
+       <dt>
+        Module:
+       </dt>
+       <dd>
+        <a data-linktype="relative-path" href="./Microsoft.PowerShell.Utility.html">
+         Microsoft.PowerShell.Utility
+        </a>
+       </dd>
+      </dl>
+     </div>
+     <div class="summaryHolder">
+      <div class="summary">
+       Formats the output as a list of properties in which each property appears on a new line.
+      </div>
+     </div>
+     <h2 class="hiddenAnchor" id="syntax">
+      Syntax
+     </h2>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Format-List
+      [[-Property] &lt;Object[]&gt;]
+      [-GroupBy &lt;Object&gt;]
+      [-View &lt;String&gt;]
+      [-ShowError]
+      [-DisplayError]
+      [-Force]
+      [-Expand &lt;String&gt;]
+      [-InputObject &lt;PSObject&gt;]
+      [&lt;CommonParameters&gt;]</code></pre>
+     <h2 id="description">
+      Description
+     </h2>
+     <p>
+      The
+      <strong>
+       Format-List
+      </strong>
+      cmdlet formats the output of a command as a list of properties in which each property is displayed on a separate line.
+You can use
+      <strong>
+       Format-List
+      </strong>
+      to format and display all or selected properties of an object as a list (format-list *).
+     </p>
+     <p>
+      Because more space is available for each item in a list than in a table, Windows PowerShell displays more properties of the object in the list, and the property values are less likely to be truncated.
+     </p>
+     <h2 id="examples">
+      Examples
+     </h2>
+     <p>
+      <strong>
+       Example 1: Format computer services
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-Service | Format-List</code></pre>
+     <p>
+      This command formats information about services on the computer as a list.
+By default, the services are formatted as a table.
+The Get-Service cmdlet gets objects representing the services on the computer.
+The pipeline operator (|) passes the results through the pipeline to
+      <strong>
+       Format-List
+      </strong>
+      .
+Then, the
+      <strong>
+       Format-List
+      </strong>
+      command formats the service information in a list and sends it to the default output cmdlet for display.
+     </p>
+     <p>
+      <strong>
+       Example 2: Format PS1XML files
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; $A = Get-ChildItem $pshome\*.ps1xml
+
+PS C:\&gt; Format-List -InputObject $A</code></pre>
+     <p>
+      These commands display information about the PS1XML files in the Windows PowerShell directory as a list.
+     </p>
+     <p>
+      The first command gets the objects representing the files and stores them in the $a variable.
+     </p>
+     <p>
+      The second command uses
+      <strong>
+       Format-List
+      </strong>
+      to format information about objects stored in $A.
+This command uses the
+      <em>
+       InputObject
+      </em>
+      parameter to pass the variable to
+      <strong>
+       Format-List
+      </strong>
+      , which then sends the formatted output to the default output cmdlet for display.
+     </p>
+     <p>
+      <strong>
+       Example 3: Format process properties by name
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-Process | Format-List -Property name, basepriority, priorityclass</code></pre>
+     <p>
+      This command displays the name, base priority, and priority class of each process on the computer.
+It uses the Get-Process cmdlet to get an object representing each process.
+The pipeline operator (|) passes the process objects through the pipeline to
+      <strong>
+       Format-List
+      </strong>
+      .
+      <strong>
+       Format-List
+      </strong>
+      formats the processes as a list of the specified properties.
+The
+      <em>
+       Property
+      </em>
+      parameter name is optional, so you can omit it.
+     </p>
+     <p>
+      <strong>
+       Example 4: Format all properties for a process
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-Process winlogon | Format-List -Property *</code></pre>
+     <p>
+      This command displays all of the properties of the Winlogon process.
+It uses the Get-Process cmdlet to get an object representing the Winlogon process.
+The pipeline operator (|) passes the Winlogon process object through the pipeline to
+      <strong>
+       Format-List
+      </strong>
+      .
+The command uses the
+      <em>
+       Property
+      </em>
+      parameter to specify the properties and the * to indicate all properties.
+Because the name of the
+      <em>
+       Property
+      </em>
+      parameter is optional, you can omit it and type the command as
+      <code>
+       Format-List *
+      </code>
+      .
+      <strong>
+       Format-List
+      </strong>
+      automatically sends the results to the default output cmdlet for display.
+     </p>
+     <h2 id="optional-parameters">
+      Optional Parameters
+     </h2>
+     <div class="parameterName stack">
+      -DisplayError
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that this cmdlet displays errors at the command line.
+This parameter is rarely used, but can be used as a debugging aid when you are formatting expressions in a
+       <code>
+        Format-List
+       </code>
+       command, and the expressions do not appear to be working.
+The following shows an example of the results of adding the
+       <strong>
+        DisplayError
+       </strong>
+       parameter with an expression.
+      </p>
+      <p>
+       PS C:&gt; Get-Date | Format-List DayOfWeek, { $_ / $null } -DisplayError
+      </p>
+      <p>
+       DayOfWeek    : Monday
+ $_ / $null  : #ERR
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Expand
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the formatted collection object, as well as the objects in the collection.
+This parameter is designed to format objects that support the ICollection (System.Collections) interface.
+The default value is EnumOnly.
+The acceptable values for this parameter are:
+      </p>
+      <ul>
+       <li>
+        EnumOnly.
+Displays the properties of the objects in the collection.
+       </li>
+       <li>
+        CoreOnly.
+Displays the properties of the collection object.
+       </li>
+       <li>
+        Both.
+Displays the properties of the collection object and the properties of objects in the collection.
+       </li>
+      </ul>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Parameter Sets:
+        </td>
+        <td>
+         CoreOnly, EnumOnly, Both
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Force
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that this cmdlet displays all of the error information.
+Use with the
+       <em>
+        DisplayError
+       </em>
+       or
+       <em>
+        ShowError
+       </em>
+       parameter.
+By default, when an error object is written to the error or display streams, only some of the error information is displayed.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -GroupBy
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the output in groups based on a shared property or value.
+Enter an expression or a property of the output.
+      </p>
+      <p>
+       The value of the
+       <em>
+        GroupBy
+       </em>
+       parameter can be a new calculated property.
+To create a calculated, property, use a hash table.
+Valid keys are:
+      </p>
+      <ul>
+       <li>
+        Name (or Label) &lt;string&gt;
+       </li>
+       <li>
+        Expression &lt;string&gt; or &lt;script block&gt;
+       </li>
+       <li>
+        FormatString &lt;string&gt;
+       </li>
+      </ul>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Object
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -InputObject
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the objects to be formatted.
+Enter a variable that contains the objects or type a command or expression that gets the objects.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          PSObject
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByValue)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Property
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the object properties that appear in the display and the order in which they appear.
+Wildcards are permitted.
+      </p>
+      <p>
+       If you omit this parameter, the properties that appear in the display depend on the object being displayed.
+The parameter name (
+       <em>
+        Property
+       </em>
+       ) is optional.
+You cannot use the
+       <em>
+        Property
+       </em>
+       and
+       <em>
+        View
+       </em>
+       parameters in the same command.
+      </p>
+      <p>
+       The value of the
+       <em>
+        Property
+       </em>
+       parameter can be a new calculated property.
+To create a calculated property, use a hash table.
+Valid keys are:
+      </p>
+      <ul>
+       <li>
+        Expression &lt;string&gt; or &lt;script block&gt;
+       </li>
+       <li>
+        Depth &lt;int32&gt;
+       </li>
+      </ul>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Object[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         1
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -ShowError
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that the cmdlet sends errors through the pipeline.
+This parameter is rarely used, but can be used as a debugging aid when you are formatting expressions in a Format-List command, and the expressions do not appear to be working.
+The following shows an example of the results of adding the ShowError parameter with an expression.
+      </p>
+      <p>
+       PS &gt; Get-Date | Format-List DayOfWeek,{ $
+       <em>
+        / $null } -ShowError
+DayOfWeek  $
+       </em>
+       / $null
+      </p>
+      <hr/>
+      <p>
+       Wednesday
+      </p>
+      <p>
+       Failed to evaluate expression " $_ / $null ".
+      </p>
+      <ul>
+       <li>
+        CategoryInfo          : InvalidArgument: (10/30/2013 2:28:07 PM:PSObject) [], RuntimeException
+       </li>
+       <li>
+        FullyQualifiedErrorId : mshExpressionError
+       </li>
+      </ul>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -View
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the name of an alternate list format or view.
+You cannot use the
+       <em>
+        Property
+       </em>
+       and
+       <em>
+        View
+       </em>
+       parameters in the same command.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="inputs">
+      Inputs
+     </h2>
+     <p>
+      <strong>
+       System.Management.Automation.PSObject
+      </strong>
+     </p>
+     <p>
+      You can pipe any object to
+      <strong>
+       Format-List
+      </strong>
+      .
+     </p>
+     <h2 id="outputs">
+      Outputs
+     </h2>
+     <p>
+      <strong>
+       Microsoft.PowerShell.Commands.Internal.Format
+      </strong>
+     </p>
+     <p>
+      <strong>
+       Format-List
+      </strong>
+      returns the format objects that represent the list.
+     </p>
+     <h2 id="notes">
+      Notes
+     </h2>
+     <ul>
+      <li>
+       <p>
+        You can also refer to Format-List by its built-in alias, FL. For more information, see about_Aliases.
+       </p>
+       <p>
+        The format cmdlets, such as
+        <strong>
+         Format-List
+        </strong>
+        , arrange the data to be displayed but do not display it.
+The data is displayed by the output features of Windows PowerShell and by the cmdlets that contain the Out verb (the Out cmdlets), such as Out-Host, Out-File, and Out-Printer.
+       </p>
+       <p>
+        If you do not use a format cmdlet, Windows PowerShell applies that default format for each object that it displays.
+       </p>
+       <p>
+        The
+        <em>
+         GroupBy
+        </em>
+        parameter assumes that the objects are sorted.
+Before using Format-Custom to group the objects, use Sort-Object to sort them.
+       </p>
+       <p>
+        The
+        <em>
+         View
+        </em>
+        parameter lets you specify an alternate format for the table.
+You can use the views defined in the *.format.PS1XML files in the Windows PowerShell directory, or you can create your own views in new PS1XML files and use the Update-FormatData cmdlet to include them in Windows PowerShell.
+       </p>
+       <p>
+        The alternate view for the View parameter must use the list format; if not, the command fails.
+If the alternate view is a table, use Format-Table.
+If the alternate view is neither a list nor a table, use Format-Custom.
+       </p>
+      </li>
+     </ul>
+     <p>
+      *
+     </p>
+     <h2 id="related-links">
+      Related Links
+     </h2>
+     <ul>
+      <li>
+       <a data-linktype="relative-path" href="format-custom.html">
+        Format-Custom
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="format-hex.html">
+        Format-Hex
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="format-table.html">
+        Format-Table
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="format-wide.html">
+        Format-Wide
+       </a>
+      </li>
+     </ul>
+     <!-- </content> -->
+    </main>
+    <div class="note alert feedback-system-change-alert">
+     <p>
+      Note
+     </p>
+     <p>
+      The feedback system for this content will be changing soon. Old comments will not be carried over. If content within a comment thread is important to you, please save a copy. For more information on the upcoming change,
+      <a href="https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs">
+       we invite you to read our blog post
+      </a>
+      .
+     </p>
+    </div>
+    <div data-bi-name="comments" id="comments-container" role="form">
+    </div>
+   </div>
+  </div>
+  <div class="openfeedback-container" id="openFeedbackContainer">
+  </div>
+  <div class="action-panel">
+  </div>
+ </body>
+</html>

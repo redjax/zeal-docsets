@@ -1,0 +1,1746 @@
+<!DOCTYPE html>
+<html class="no-js hasSidebar hasPageActions hasBreadcrumb conceptual" data-authenticated="false" data-render="docs" dir="ltr" lang="en-us">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Get-ADObject (addsadministration)" property="og:title"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" property="og:image"/>
+  <meta content="summary" name="twitter:card"/>
+  <meta content="@docsmsft" name="twitter:site"/>
+  <meta content="Get-ADObject (addsadministration)" name="twitter:title"/>
+  <meta content="Use this topic to help manage Windows and Windows Server technologies with Windows PowerShell." name="twitter:description"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" name="twitter:image"/>
+  <meta content="Microsoft Logo" name="twitter:image:alt"/>
+  <meta content="Use this topic to help manage Windows and Windows Server technologies with Windows PowerShell." name="description"/>
+  <meta content="Docs" name="search.ms_sitename"/>
+  <meta content="powershell-windows" name="search.ms_docsetname"/>
+  <meta content="0" name="version"/>
+  <meta content="en-us" name="locale"/>
+  <meta content="Docs" name="site_name"/>
+  <meta content="MSDN" name="search.ms_product"/>
+  <meta content="MSDN.powershell-windows" name="depot_name"/>
+  <meta content="https://cpubwin.visualstudio.com/DefaultCollection/powershell/_git/powershell/commit/ced7757924addcaea0b7a244ae4d240e4d28d93a?path=%2fdocset%2fwindows%2faddsadministration%2fget-adobject.md&amp;_a=contents" name="ref_skeleton_gitcommit"/>
+  <meta content="https://cpubwin.visualstudio.com/DefaultCollection/powershell/_git/powershell?path=%2fdocset%2fwindows%2faddsadministration%2fget-adobject.md&amp;version=GBlive&amp;_a=contents" name="original_ref_skeleton_git_url"/>
+  <meta content="2017-09-15 03:44 AM" name="updated_at"/>
+  <meta content="e92690ad-eac7-fc06-c2db-a42287a17cfd" name="document_id"/>
+  <meta content="bdc682ca-02dd-110a-0570-ad87dfd7f712" name="document_version_independent_id"/>
+  <meta content="powershell" name="page_type"/>
+  <meta content="command" name="page_kind"/>
+  <meta content="manage" name="ms.mktglfcycl"/>
+  <meta content="library" name="ms.sitesec"/>
+  <meta content="brianlic" name="ms.author"/>
+  <meta content="brianlic-msft" name="author"/>
+  <meta content="Microsoft.ActiveDirectory.Management.dll-Help.xml" name="external_help_file"/>
+  <meta content="powershell, cmdlet" name="keywords"/>
+  <meta content="alanth" name="manager"/>
+  <meta content="12/27/2016" name="ms.date"/>
+  <meta content="w10" name="ms.prod"/>
+  <meta content="powershell-windows" name="ms.technology"/>
+  <meta content="reference" name="ms.topic"/>
+  <meta content="" name="online_version"/>
+  <meta content="2.0.0" name="schema"/>
+  <meta content="FBC1D06F-C845-4B26-8AE2-DCA1B8E53107" name="ms.assetid"/>
+  <meta content="powershell" name="ms.devlang"/>
+  <meta content="INDEX, FOLLOW" name="ROBOTS"/>
+  <meta content="/powershell/windows/bread/toc.json?view=win10-ps" name="breadcrumb_path"/>
+  <meta content="powershell" name="apiPlatform"/>
+  <meta content="MSDocsHeader-WindowsIT" name="uhfHeaderId"/>
+  <meta content="../win10-ps/toc.json?view=win10-ps" name="toc_rel"/>
+  <link href="https://docs.microsoft.com/en-us/powershell/module/addsadministration/get-adobject" rel="canonical"/>
+  <title>
+   Get-ADObject
+  </title>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/e4a1f3a3.site.css" rel="stylesheet"/>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/31353636.conceptual.css" rel="stylesheet"/>
+ </head>
+ <body dir="ltr" lang="en-us">
+  <div class="header-holder">
+   <div data-bi-name="header" id="headerAreaHolder">
+    <div id="uhf-placeholder">
+    </div>
+   </div>
+   <div class="disclaimer-holder" id="disclaimer-holder">
+   </div>
+  </div>
+  <div class="container mainContainer" data-bi-name="body">
+   <div class="content-header" data-bi-name="content-header">
+    <div class="content-header-controls">
+     <button class="contents-button button-border" data-bi-name="contents-expand" type="button">
+      <span class="docon docon-menu">
+      </span>
+      Contents
+     </button>
+    </div>
+    <div class="content-header-controls">
+     <button class="ap-collapse-behavior ap-expanded button-border" data-bi-name="ap-collapse" type="button">
+      <span class="docon docon-exit-mode">
+      </span>
+      Exit focus mode
+     </button>
+    </div>
+   </div>
+   <div class="primary-holder">
+    <main class="content" data-bi-name="content" dir="ltr" id="main" lang="en-us" role="main">
+     <!-- <content> -->
+     <h1>
+      Get-ADObject
+     </h1>
+     <div class="metadata">
+      <dl class="attributeList">
+       <dt>
+        Module:
+       </dt>
+       <dd>
+        <a data-linktype="relative-path" href="./.html">
+         addsadministration
+        </a>
+       </dd>
+      </dl>
+     </div>
+     <div class="summaryHolder">
+      <div class="summary">
+       Gets one or more Active Directory objects.
+      </div>
+     </div>
+     <h2 class="hiddenAnchor" id="syntax">
+      Syntax
+     </h2>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Get-ADObject
+   [-AuthType &lt;ADAuthType&gt;]
+   [-Credential &lt;PSCredential&gt;]
+   -Filter &lt;String&gt;
+   [-IncludeDeletedObjects]
+   [-Properties &lt;String[]&gt;]
+   [-ResultPageSize &lt;Int32&gt;]
+   [-ResultSetSize &lt;Int32&gt;]
+   [-SearchBase &lt;String&gt;]
+   [-SearchScope &lt;ADSearchScope&gt;]
+   [-Server &lt;String&gt;]
+   [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Get-ADObject
+   [-AuthType &lt;ADAuthType&gt;]
+   [-Credential &lt;PSCredential&gt;]
+   [-Identity] &lt;ADObject&gt;
+   [-IncludeDeletedObjects]
+   [-Partition &lt;String&gt;]
+   [-Properties &lt;String[]&gt;]
+   [-Server &lt;String&gt;]
+   [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Get-ADObject
+   [-AuthType &lt;ADAuthType&gt;]
+   [-Credential &lt;PSCredential&gt;]
+   [-IncludeDeletedObjects]
+   -LDAPFilter &lt;String&gt;
+   [-Properties &lt;String[]&gt;]
+   [-ResultPageSize &lt;Int32&gt;]
+   [-ResultSetSize &lt;Int32&gt;]
+   [-SearchBase &lt;String&gt;]
+   [-SearchScope &lt;ADSearchScope&gt;]
+   [-Server &lt;String&gt;]
+   [&lt;CommonParameters&gt;]</code></pre>
+     <h2 id="description">
+      Description
+     </h2>
+     <p>
+      The
+      <strong>
+       Get-ADObject
+      </strong>
+      cmdlet gets an Active Directory object or performs a search to get multiple objects.
+     </p>
+     <p>
+      The
+      <em>
+       Identity
+      </em>
+      parameter specifies the Active Directory object to get.
+You can identify the object to get by its distinguished name or GUID.
+You can also set the parameter to an Active Directory object variable, such as
+      <code>
+       $&lt;localADObject&gt;
+      </code>
+      or pass an object through the pipeline to the
+      <em>
+       Identity
+      </em>
+      parameter.
+     </p>
+     <p>
+      To search for and get more than one object, use the
+      <em>
+       Filter
+      </em>
+      or
+      <em>
+       LDAPFilter
+      </em>
+      parameters.
+The
+      <em>
+       Filter
+      </em>
+      parameter uses the PowerShell Expression Language to write query strings for Active Directory.
+PowerShell Expression Language syntax provides rich type conversion support for value types received by the
+      <em>
+       Filter
+      </em>
+      parameter.
+For more information about the
+      <em>
+       Filter
+      </em>
+      parameter syntax, type
+      <code>
+       Get-Help about_ActiveDirectory_Filter
+      </code>
+      .
+If you have existing Lightweight Directory Access Protocol (LDAP) query strings, you can use the
+      <em>
+       LDAPFilter
+      </em>
+      parameter.
+     </p>
+     <p>
+      This cmdlet gets a default set of Active Directory object properties.
+To get additional properties use the
+      <em>
+       Properties
+      </em>
+      parameter.
+For more information about the how to determine the properties for computer objects, see the
+      <em>
+       Properties
+      </em>
+      parameter description.
+     </p>
+     <h2 id="examples">
+      Examples
+     </h2>
+     <p>
+      <strong>
+       Example 1: Get the sites for a domain using LDAP filter syntax
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-ADObject -LDAPFilter "(objectClass=site)" -SearchBase 'CN=Configuration,DC=Fabrikam,DC=Com' -Properties CanonicalName | FT Name,CanonicalName -A
+Name CanonicalName
+---- -------------
+HQ   FABRIKAM.COM/Configuration/Sites/HQ
+BO1  FABRIKAM.COM/Configuration/Sites/BO1
+BO2  FABRIKAM.COM/Configuration/Sites/BO2
+BO3  FABRIKAM.COM/Configuration/Sites/BO3</code></pre>
+     <p>
+      This command displays a list of sites for Fabrikam using the LDAP filter syntax.
+     </p>
+     <p>
+      <strong>
+       Example 2: Get the sites from the configuration naming context
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-ADObject -Filter 'ObjectClass -eq "site"' -SearchBase 'CN=Configuration,DC=Fabrikam,DC=Com' -Properties siteObjectBL | foreach {$_.siteObjectBL}
+CN=192.167.1.0/26,CN=Subnets,CN=Sites,CN=Configuration,DC=FABRIKAM,DC=COM
+CN=192.166.1.0/26,CN=Subnets,CN=Sites,CN=Configuration,DC=FABRIKAM,DC=COM
+CN=192.168.1.0/26,CN=Subnets,CN=Sites,CN=Configuration,DC=FABRIKAM,DC=COM
+CN=192.165.1.0/26,CN=Subnets,CN=Sites,CN=Configuration,DC=FABRIKAM,DC=COM
+CN=192.164.1.0/26,CN=Subnets,CN=Sites,CN=Configuration,DC=FABRIKAM,DC=COM
+CN=192.163.1.0/26,CN=Subnets,CN=Sites,CN=Configuration,DC=FABRIKAM,DC=COM
+CN=192.162.1.0/26,CN=Subnets,CN=Sites,CN=Configuration,DC=FABRIKAM,DC=COM
+CN=192.161.1.0/26,CN=Subnets,CN=Sites,CN=Configuration,DC=FABRIKAM,DC=COM
+CN=192.160.1.0/26,CN=Subnets,CN=Sites,CN=Configuration,DC=FABRIKAM,DC=COM
+CN=192.159.1.0/26,CN=Subnets,CN=Sites,CN=Configuration,DC=FABRIKAM,DC=COM
+CN=192.158.1.0/26,CN=Subnets,CN=Sites,CN=Configuration,DC=FABRIKAM,DC=COM
+CN=192.157.1.0/26,CN=Subnets,CN=Sites,CN=Configuration,DC=FABRIKAM,DC=COM</code></pre>
+     <p>
+      This command gets the
+      <strong>
+       Site
+      </strong>
+      objects from the configuration naming context and displays a list of
+      <strong>
+       siteObjectBL
+      </strong>
+      properties.
+     </p>
+     <p>
+      <strong>
+       Example 3: Get all objects with a specified attribute
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; $ChangeDate = New-Object DateTime(2008, 11, 18, 1, 40, 02) 
+PS C:\&gt; Get-ADObject -Filter 'whenChanged -gt $ChangeDate' -IncludeDeletedObjects</code></pre>
+     <p>
+      This command gets all the objects, including the deleted ones, whose
+      <strong>
+       whenChanged
+      </strong>
+      attribute is greater than the specified date.
+Note that both deleted and non-deleted (and non-recycled) objects matching the filter are returned.
+     </p>
+     <p>
+      <strong>
+       Example 4: Get deleted objects with a specified attribute
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; $ChangeDate = New-Object DateTime(2008, 11, 18, 1, 40, 02)
+PS C:\&gt; Get-ADObject -Filter 'whenChanged -gt $ChangeDate -and isDeleted -eq $True -and -not (isRecycled -eq $True) -and name -ne "Deleted Objects"' -IncludeDeletedObjects
+
+
+ObjectGUID        : 98118958-91c7-437d-8ada-ba0b66db823b
+Deleted           : True
+DistinguishedName : CN=Andrew Ma\0ADEL:98118958-91c7-437d-8ada-ba0b66db823b,CN=Deleted Objects,DC=FABRIKAM,DC=COM
+Name              : Andrew Ma
+DEL:98118958-91c7-437d-8ada-ba0b66db823b
+ObjectClass       : user</code></pre>
+     <p>
+      This example gets all the deleted objects, whose
+      <strong>
+       whenChanged
+      </strong>
+      attribute is greater than the specified date.
+The clause
+      <code>
+       name -ne "Deleted Objects"
+      </code>
+      ensures that the Deleted Objects Container is not returned.
+This example only returns objects that can be restored.
+     </p>
+     <p>
+      <strong>
+       Example 5: Get specified objects that were deleted after a specified date
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; $ChangeDate = New-Object DateTime(2008, 11, 18, 1, 40, 02)
+PS C:\&gt; Get-ADObject -Filter 'whenChanged -gt $ChangeDate -and isDeleted -eq $True -and -not (isRecycled -eq $True) -and lastKnownParent -eq "OU=Accounting,DC=Fabrikam,DC=com"' -IncludeDeletedObjects
+
+
+ObjectGUID        : 12d53e7f-aaf7-4790-b41a-da19044504db
+Deleted           : True
+DistinguishedName : CN=Craig Dewar\0ADEL:12d53e7f-aaf7-4790-b41a-da19044504db,CN=Deleted Objects,DC=Fabrikam,DC=com
+Name              : Craig Dewar
+DEL:12d53e7f-aaf7-4790-b41a-da19044504db
+ObjectClass       : user</code></pre>
+     <p>
+      This example gets all the deleted objects whose
+      <strong>
+       whenChanged
+      </strong>
+      attribute is greater than the specified date and at the time of deletion were the children of the specified organizational unit.
+     </p>
+     <p>
+      <strong>
+       Example 6: Get information for a specified object of an LDS instance
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-ADObject -Identity "DC=AppNC" -Server "FABRIKAM-SRV1:60000"
+ObjectGUID                    DistinguishedName             Name                          ObjectClass
+----------                    -----------------             ----                          -----------
+62b2e185-9322-4980-9c93-cf... DC=AppNC                      AppNC                         domainDNS</code></pre>
+     <p>
+      This command gets the information of the
+      <strong>
+       domainDNS
+      </strong>
+      object of an LDS instance.
+     </p>
+     <h2 id="required-parameters">
+      Required Parameters
+     </h2>
+     <div class="parameterName stack">
+      -Filter
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a query string that retrieves Active Directory objects.
+This string uses the PowerShell Expression Language syntax.
+The PowerShell Expression Language syntax provides rich type-conversion support for value types received by the
+       <em>
+        Filter
+       </em>
+       parameter.
+The syntax uses an in-order representation, which means that the operator is placed between the operand and the value.
+For more information about the
+       <em>
+        Filter
+       </em>
+       parameter, type
+       <code>
+        Get-Help about_ActiveDirectory_Filter
+       </code>
+       .
+      </p>
+      <p>
+       Syntax:
+      </p>
+      <p>
+       The following syntax uses Backus-Naur form to show how to use the PowerShell Expression Language for this parameter.
+      </p>
+      <p>
+       &lt;filter&gt;  ::= "{" &lt;FilterComponentList&gt; "}"
+      </p>
+      <p>
+       &lt;FilterComponentList&gt; ::= &lt;FilterComponent&gt; | &lt;FilterComponent&gt; &lt;JoinOperator&gt; &lt;FilterComponent&gt; | &lt;NotOperator&gt;  &lt;FilterComponent&gt;
+      </p>
+      <p>
+       &lt;FilterComponent&gt; ::= &lt;attr&gt; &lt;FilterOperator&gt; &lt;value&gt; | "(" &lt;FilterComponent&gt; ")"
+      </p>
+      <p>
+       &lt;FilterOperator&gt; ::= "-eq" | "-le" | "-ge" | "-ne" | "-lt" | "-gt"| "-approx" | "-bor" | "-band" | "-recursivematch" | "-like" | "-notlike"
+      </p>
+      <p>
+       &lt;JoinOperator&gt; ::= "-and" | "-or"
+      </p>
+      <p>
+       &lt;NotOperator&gt; ::= "-not"
+      </p>
+      <p>
+       &lt;attr&gt; ::= &lt;PropertyName&gt; | &lt;LDAPDisplayName of the attribute&gt;
+      </p>
+      <p>
+       &lt;value&gt;::= &lt;compare this value with an &lt;attr&gt; by using the specified &lt;FilterOperator&gt;&gt;
+      </p>
+      <p>
+       For a list of supported types for &lt;value&gt;, type
+       <code>
+        Get-Help about_ActiveDirectory_ObjectModel
+       </code>
+       .
+      </p>
+      <p>
+       Note: PowerShell wildcards other than
+       <em>
+        , such as ?, are not supported by the *Filter
+       </em>
+       syntax.
+      </p>
+      <p>
+       Note: To query using LDAP query strings, use the
+       <em>
+        LDAPFilter
+       </em>
+       parameter.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Identity
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies an Active Directory object by providing one of the following property values.
+The identifier in parentheses is the LDAP display name for the attribute.
+The acceptable values for this parameter are:
+      </p>
+      <ul>
+       <li>
+        A distinguished name
+       </li>
+       <li>
+        A GUID (objectGUID)
+       </li>
+      </ul>
+      <p>
+       The cmdlet searches the default naming context or partition to find the object.
+If two or more objects are found, the cmdlet returns a non-terminating error.
+      </p>
+      <p>
+       This parameter can also get this object through the pipeline or you can set this parameter to an object instance.
+      </p>
+      <p>
+       Derived types, such as the following, are also accepted:
+      </p>
+      <ul>
+       <li>
+        <strong>
+         Microsoft.ActiveDirectory.Management.ADGroup
+        </strong>
+       </li>
+       <li>
+        <strong>
+         Microsoft.ActiveDirectory.Management.ADUser
+        </strong>
+       </li>
+       <li>
+        <strong>
+         Microsoft.ActiveDirectory.Management.ADComputer
+        </strong>
+       </li>
+       <li>
+        <strong>
+         Microsoft.ActiveDirectory.Management.ADServiceAccount
+        </strong>
+       </li>
+       <li>
+        <strong>
+         Microsoft.ActiveDirectory.Management.ADFineGrainedPasswordPolicy
+        </strong>
+       </li>
+       <li>
+        <strong>
+         Microsoft.ActiveDirectory.Management.ADDomain
+        </strong>
+       </li>
+      </ul>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          ADObject
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         0
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByValue)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -LDAPFilter
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies an LDAP query string that is used to filter Active Directory objects.
+You can use this parameter to run your existing LDAP queries.
+The
+       <em>
+        Filter
+       </em>
+       parameter syntax supports the same functionality as the LDAP syntax.
+For more information, see the
+       <em>
+        Filter
+       </em>
+       parameter description or type
+       <code>
+        Get-Help about_ActiveDirectory_Filter
+       </code>
+       .
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="optional-parameters">
+      Optional Parameters
+     </h2>
+     <div class="parameterName stack">
+      -AuthType
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the authentication method to use.
+The acceptable values for this parameter are:
+      </p>
+      <ul>
+       <li>
+        Negotiate or 0
+       </li>
+       <li>
+        Basic or 1
+       </li>
+      </ul>
+      <p>
+       The default authentication method is Negotiate.
+      </p>
+      <p>
+       A Secure Sockets Layer (SSL) connection is required for the Basic authentication method.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          ADAuthType
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Parameter Sets:
+        </td>
+        <td>
+         Negotiate, Basic
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Credential
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the user account credentials to use to perform this task.
+The default credentials are the credentials of the currently logged on user unless the cmdlet is run from an Active Directory module for Windows PowerShell provider drive.
+If the cmdlet is run from such a provider drive, the account associated with the drive is the default.
+      </p>
+      <p>
+       To specify this parameter, you can type a user name, such as User1 or Domain01\User01 or you can specify a
+       <strong>
+        PSCredential
+       </strong>
+       object.
+If you specify a user name for this parameter, the cmdlet prompts for a password.
+      </p>
+      <p>
+       You can also create a
+       <strong>
+        PSCredential
+       </strong>
+       object by using a script or by using the
+       <strong>
+        Get-Credential
+       </strong>
+       cmdlet.
+You can then set the
+       <em>
+        Credential
+       </em>
+       parameter to the
+       <strong>
+        PSCredential
+       </strong>
+       object.
+      </p>
+      <p>
+       If the acting credentials do not have directory-level permission to perform the task, Active Directory module for Windows PowerShell returns a terminating error.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          PSCredential
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -IncludeDeletedObjects
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that this cmdlet retrieves deleted objects and the deactivated forward and backward links.
+When this parameter is specified, the cmdlet uses the following LDAP controls:
+      </p>
+      <ul>
+       <li>
+        Show Deleted Objects (1.2.840.113556.1.4.417)
+       </li>
+       <li>
+        Show Deactivated Links (1.2.840.113556.1.4.2065)
+       </li>
+      </ul>
+      <p>
+       Note: If this parameter is not specified, the cmdlet does not return or operate on deleted objects.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Partition
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the distinguished name of an Active Directory partition.
+The distinguished name must be one of the naming contexts on the current directory server.
+The cmdlet searches this partition to find the object defined by the
+       <em>
+        Identity
+       </em>
+       parameter.
+      </p>
+      <p>
+       In many cases, a default value is used for the
+       <em>
+        Partition
+       </em>
+       parameter if no value is specified.
+The rules for determining the default value are given below.
+Note that rules listed first are evaluated first and once a default value can be determined, no further rules are evaluated.
+      </p>
+      <p>
+       In Active Directory Domain Services (AD DS) environments, a default value for
+       <em>
+        Partition
+       </em>
+       is set in the following cases:
+      </p>
+      <ul>
+       <li>
+        If the
+        <em>
+         Identity
+        </em>
+        parameter is set to a distinguished name, the default value of
+        <em>
+         Partition
+        </em>
+        is automatically generated from this distinguished name.
+       </li>
+       <li>
+        If running cmdlets from an Active Directory provider drive, the default value of
+        <em>
+         Partition
+        </em>
+        is automatically generated from the current path in the drive.
+       </li>
+       <li>
+        If none of the previous cases apply, the default value of
+        <em>
+         Partition
+        </em>
+        is set to the default partition or naming context of the target domain.
+       </li>
+      </ul>
+      <p>
+       In Active Directory Lightweight Directory Services (AD LDS) environments, a default value for
+       <em>
+        Partition
+       </em>
+       is set in the following cases:
+      </p>
+      <ul>
+       <li>
+        If the
+        <em>
+         Identity
+        </em>
+        parameter is set to a distinguished name, the default value of
+        <em>
+         Partition
+        </em>
+        is automatically generated from this distinguished name.
+       </li>
+       <li>
+        If running cmdlets from an Active Directory provider drive, the default value of
+        <em>
+         Partition
+        </em>
+        is automatically generated from the current path in the drive.
+       </li>
+       <li>
+        If the target AD LDS instance has a default naming context, the default value of
+        <em>
+         Partition
+        </em>
+        is set to the default naming context.
+To specify a default naming context for an AD LDS environment, set the
+        <strong>
+         msDS-defaultNamingContext
+        </strong>
+        property of the Active Directory directory service agent object (
+        <strong>
+         nTDSDSA
+        </strong>
+        ) for the AD LDS instance.
+       </li>
+       <li>
+        If none of the previous cases apply, the
+        <em>
+         Partition
+        </em>
+        parameter does not take a default value.
+       </li>
+      </ul>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Properties
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the properties of the output object to retrieve from the server.
+Use this parameter to retrieve properties that are not included in the default set.
+      </p>
+      <p>
+       Specify properties for this parameter as a comma-separated list of names.
+To display all of the attributes that are set on the object, specify * (asterisk).
+      </p>
+      <p>
+       To specify an individual extended property, use the name of the property.
+For properties that are not default or extended properties, you must specify the LDAP display name of the attribute.
+      </p>
+      <p>
+       To retrieve properties and display them for an object, you can use the Get-* cmdlet associated with the object and pass the output to the
+       <strong>
+        Get-Member
+       </strong>
+       cmdlet.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         Property
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -ResultPageSize
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the number of objects to include in one page for an AD DS query.
+      </p>
+      <p>
+       The default is 256 objects per page.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Int32
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -ResultSetSize
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the maximum number of objects to return for an AD DS query.
+If you want to receive all of the objects, set this parameter to $Null (null value).
+You can use Ctrl+C to stop the query and return of objects.
+      </p>
+      <p>
+       The default is $Null.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Int32
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -SearchBase
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies an Active Directory path to search.
+      </p>
+      <p>
+       When you run a cmdlet from an Active Directory provider drive, the default value of this parameter is the current path of the drive.
+      </p>
+      <p>
+       When you run a cmdlet outside of an Active Directory provider drive against an AD DS target, the default value of this parameter is the default naming context of the target domain.
+      </p>
+      <p>
+       When you run a cmdlet outside of an Active Directory provider drive against an AD LDS target, the default value is the default naming context of the target AD LDS instance if one has been specified by setting the
+       <strong>
+        msDS-defaultNamingContext
+       </strong>
+       property of the Active Directory directory service agent object (
+       <strong>
+        nTDSDSA
+       </strong>
+       ) for the AD LDS instance.
+If no default naming context has been specified for the target AD LDS instance, then this parameter has no default value.
+      </p>
+      <p>
+       When the value of the
+       <em>
+        SearchBase
+       </em>
+       parameter is set to an empty string and you are connected to a global catalog (GC) port, all partitions are searched.
+If the value of the
+       <em>
+        SearchBase
+       </em>
+       parameter is set to an empty string and you are not connected to a GC port, an error is thrown.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -SearchScope
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the scope of an Active Directory search.
+The acceptable values for this parameter are:
+      </p>
+      <ul>
+       <li>
+        Base or 0
+       </li>
+       <li>
+        OneLevel or 1
+       </li>
+       <li>
+        Subtree or 2
+       </li>
+      </ul>
+      <p>
+       A Base query searches only the current path or object.
+A OneLevel query searches the immediate children of that path or object.
+A Subtree query searches the current path or object and all children of that path or object.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          ADSearchScope
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Parameter Sets:
+        </td>
+        <td>
+         Base, OneLevel, Subtree
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Server
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the AD DS instance to connect to, by providing one of the following values for a corresponding domain name or directory server.
+The service may be any of the following: AD LDS, AD DS, or Active Directory snapshot instance.
+      </p>
+      <p>
+       Specify the AD DS instance in one of the following ways:
+      </p>
+      <p>
+       Domain name values:
+      </p>
+      <ul>
+       <li>
+        Fully qualified domain name
+       </li>
+       <li>
+        NetBIOS name
+       </li>
+      </ul>
+      <p>
+       Directory server values:
+      </p>
+      <ul>
+       <li>
+        Fully qualified directory server name
+       </li>
+       <li>
+        NetBIOS name
+       </li>
+       <li>
+        Fully qualified directory server name and port
+       </li>
+      </ul>
+      <p>
+       The default value for this parameter is determined by one of the following methods in the order that they are listed:
+      </p>
+      <ul>
+       <li>
+        By using the
+        <em>
+         Server
+        </em>
+        value from objects passed through the pipeline
+       </li>
+       <li>
+        By using the server information associated with the AD DS Windows PowerShell provider drive, when the cmdlet runs in that drive
+       </li>
+       <li>
+        By using the domain of the computer running Windows PowerShell
+       </li>
+      </ul>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="inputs">
+      Inputs
+     </h2>
+     <p>
+      <strong>
+       None or Microsoft.ActiveDirectory.Management.ADObject
+      </strong>
+     </p>
+     <p>
+      An Active Directory object is received by the
+      <em>
+       Identity
+      </em>
+      parameter.
+Derived types, such as the following, are also accepted:
+     </p>
+     <ul>
+      <li>
+       <strong>
+        Microsoft.ActiveDirectory.Management.ADGroup
+       </strong>
+      </li>
+      <li>
+       <strong>
+        Microsoft.ActiveDirectory.Management.ADUser
+       </strong>
+      </li>
+      <li>
+       <strong>
+        Microsoft.ActiveDirectory.Management.ADComputer
+       </strong>
+      </li>
+      <li>
+       <strong>
+        Microsoft.ActiveDirectory.Management.ADServiceAccount
+       </strong>
+      </li>
+      <li>
+       <strong>
+        Microsoft.ActiveDirectory.Management.ADOrganizationalUnit
+       </strong>
+      </li>
+      <li>
+       <strong>
+        Microsoft.ActiveDirectory.Management.ADFineGrainedPasswordPolicy
+       </strong>
+      </li>
+      <li>
+       <strong>
+        Microsoft.ActiveDirectory.Management.ADDomain
+       </strong>
+      </li>
+     </ul>
+     <h2 id="outputs">
+      Outputs
+     </h2>
+     <p>
+      <strong>
+       Microsoft.ActiveDirectory.Management.ADObject
+      </strong>
+     </p>
+     <p>
+      Returns one or more Active Directory objects.
+     </p>
+     <p>
+      The
+      <strong>
+       Get-ADObject
+      </strong>
+      cmdlet returns a default set of ADObject property values.
+To retrieve additional
+      <strong>
+       ADObject
+      </strong>
+      properties, use the
+      <em>
+       Properties
+      </em>
+      parameter of the cmdlet.
+     </p>
+     <p>
+      To view the properties for an
+      <strong>
+       ADObject
+      </strong>
+      object, see the following examples.
+To run these examples, replace &lt;object&gt; with an Active Directory object identifier.
+     </p>
+     <p>
+      To get a list of the default set of properties of an ADObject object, use the following command:
+     </p>
+     <p>
+      <code>
+       Get-ADObject
+      </code>
+      &lt;object&gt;
+      <code>
+       | Get-Member
+      </code>
+     </p>
+     <p>
+      To get a list of all the properties of an
+      <strong>
+       ADObject
+      </strong>
+      object, use the following command:
+     </p>
+     <p>
+      <code>
+       Get-ADObject
+      </code>
+      &lt;object&gt;
+      <code>
+       -Properties ALL | Get-Member
+      </code>
+     </p>
+     <h2 id="related-links">
+      Related Links
+     </h2>
+     <ul>
+      <li>
+       <a data-linktype="relative-path" href="./move-adobject.html">
+        Move-ADObject
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="./new-adobject.html">
+        New-ADObject
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="./remove-adobject.html">
+        Remove-ADObject
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="./rename-adobject.html">
+        Rename-ADObject
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="./restore-adobject.html">
+        Restore-ADObject
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="./set-adobject.html">
+        Set-ADObject
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="./sync-adobject.html">
+        Sync-ADObject
+       </a>
+      </li>
+     </ul>
+     <!-- </content> -->
+    </main>
+    <section class="feedback-section" data-bi-name="feedback-section">
+     <h2 id="feedback">
+      Feedback
+     </h2>
+     <div class="alert choose-feedback-type">
+      <p>
+       We'd love to hear your thoughts. Choose the type you'd like to provide:
+      </p>
+      <div class="choose-feedback-buttons">
+       <a class="button-border feedback-type-product" data-bi-name="product-feedback" href="https://windowsserver.uservoice.com/forums/301869-powershell">
+        Product feedback
+        <span aria-hidden="true" class="docon docon-navigate-external">
+        </span>
+       </a>
+       <div class="button-group">
+        <button class="button-border feedback-sign-in-button" data-bi-name="feedback-sign-in">
+         <span aria-hidden="true" class="docon docon-brand-github">
+         </span>
+         Sign in to give documentation feedback
+        </button>
+        <button aria-controls="feedback-form" aria-expanded="false" class="button-border feedback-form-toggle" data-bi-name="documentation-feedback" hidden="">
+         Content feedback
+        </button>
+        <div auto-align="" class="dropdown has-caret">
+         <button aria-controls="fbm0" aria-expanded="false" aria-haspopup="true" aria-label="Expand documentation feedback menu" class="button-border dropdown-trigger" data-bi-name="documentation-feedback-menu">
+          <span aria-hidden="true" class="docon docon-chevron-down-light">
+          </span>
+         </button>
+         <div class="dropdown-menu documentation-feedback-menu" id="fbm0" role="menu">
+          You may also leave feedback
+          <a data-bi-name="create-issue-on-github" href="{0}">
+           directly on GitHub
+           <span aria-hidden="true" class="docon docon-navigate-external">
+           </span>
+          </a>
+          .
+         </div>
+        </div>
+       </div>
+      </div>
+      <p>
+       <small>
+        Our new feedback system is built on GitHub Issues. Read about this change in
+        <a href="https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs">
+         our blog post
+        </a>
+        .
+       </small>
+      </p>
+     </div>
+     <form accept-charset="UTF-8" action="javascript:" autocomplete="off" class="feedback-form" hidden="" id="feedback-form">
+      <h3 class="feedback-form-heading current-user">
+       <img alt="Avatar" aria-hidden="true" class="avatar" height="36" width="36"/>
+       <span aria-hidden="true" class="username">
+       </span>
+       <span class="visually-hidden">
+        Liquid error: Can't find the localized string giveDocumentationFeedback for template Conceptual.
+       </span>
+      </h3>
+      <label>
+       <span class="visually-hidden">
+        Title
+       </span>
+       <input name="title" pattern=".*\w.*" placeholder="Title" required="" type="text"/>
+      </label>
+      <label>
+       <span class="visually-hidden">
+        Leave a comment
+       </span>
+       <textarea name="body" placeholder="Leave a comment" required=""></textarea>
+      </label>
+      <div class="action-container">
+       <button class="primary-action" name="submit" type="submit">
+        Submit feedback
+       </button>
+      </div>
+     </form>
+     <div class="feedback-status alert busy" role="alert">
+      <p>
+       Loading feedback...
+      </p>
+     </div>
+     <div class="feedback-tab-group tabGroup" data-tab-group-independent="" hidden="">
+      <ul role="tablist">
+       <li role="presentation">
+        <a aria-controls="tabpanel-issues-open" aria-label="Open Issues" data-tab="issues-open" href="#tabpanel-issues-open" role="tab">
+        </a>
+       </li>
+       <li role="presentation">
+        <a aria-controls="tabpanel-issues-closed" aria-label="Closed Issues" data-tab="issues-closed" href="#tabpanel-issues-closed" role="tab">
+        </a>
+       </li>
+      </ul>
+      <section data-tab="issues-open" id="tabpanel-issues-open" role="tabpanel">
+       <div class="no-issues-placeholder">
+        There are no open issues
+       </div>
+       <ul aria-label="Open Issues" class="github-issues-list">
+       </ul>
+      </section>
+      <section data-tab="issues-closed" id="tabpanel-issues-closed" role="tabpanel">
+       <div class="no-issues-placeholder">
+        There are no closed issues
+       </div>
+       <ul aria-label="Closed Issues" class="github-issues-list">
+       </ul>
+      </section>
+     </div>
+     <div class="action-container">
+      <a class="view-on-github" data-bi-name="view-on-github" hidden="" href="https://github.com/MicrosoftDocs/windows-powershell-docs/issues">
+       <span aria-hidden="true" class="docon docon-brand-github">
+       </span>
+       <span>
+        View on GitHub
+       </span>
+       <span aria-hidden="true" class="docon docon-navigate-external">
+       </span>
+      </a>
+     </div>
+    </section>
+   </div>
+  </div>
+  <div class="openfeedback-container" id="openFeedbackContainer">
+  </div>
+  <div class="action-panel">
+  </div>
+ </body>
+</html>

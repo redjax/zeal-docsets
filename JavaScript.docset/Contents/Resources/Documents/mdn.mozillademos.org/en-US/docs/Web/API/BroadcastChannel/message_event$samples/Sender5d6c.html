@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    
+<!-- Mirrored from mdn.mozillademos.org/en-US/docs/Web/API/BroadcastChannel/message_event$samples/Sender?revision=1533882 by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 02 May 2019 01:01:51 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+        <meta charset="utf-8">
+        <link href="../../../../../../../developer.mozilla.org/static/build/styles/samples.37902ba3b7fe.css" rel="stylesheet" type="text/css" />
+        
+        <style type="text/css">
+            body {
+     border: 1px solid black;
+     padding: .5rem;
+     height: 150px;
+     font-family: "Fira Sans", sans-serif;
+}
+
+h1 {
+    font: 1.6em "Fira Sans", sans-serif;
+    margin-bottom: 1rem;
+}
+
+textarea {
+    padding: .2rem;
+}
+
+label, br {
+    margin: .5rem 0;
+}
+
+button {
+    vertical-align: top;
+    height: 1.5rem;
+}
+        </style>
+        
+        <title>BroadcastChannel: message event</title>
+    </head>
+    <body>
+        
+            <h1>Sender</h1>
+<label for="message">Type a message to broadcast:</label><br/>
+<textarea id="message" name="message" rows="1" cols="40">Hello</textarea>
+<button id="broadcast-message" type="button">Broadcast message</button>
+        
+        
+            <script>
+                const channel = new BroadcastChannel('example-channel');
+const messageControl = document.querySelector('#message');
+const broadcastMessageButton = document.querySelector('#broadcast-message');
+
+broadcastMessageButton.addEventListener('click', () => {
+    channel.postMessage(messageControl.value);
+})
+
+            </script>
+        
+    </body>
+
+<!-- Mirrored from mdn.mozillademos.org/en-US/docs/Web/API/BroadcastChannel/message_event$samples/Sender?revision=1533882 by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 02 May 2019 01:01:51 GMT -->
+</html>

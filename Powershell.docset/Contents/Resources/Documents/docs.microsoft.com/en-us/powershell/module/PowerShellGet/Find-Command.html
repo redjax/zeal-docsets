@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html class="no-js hasSidebar hasPageActions hasBreadcrumb conceptual" data-authenticated="false" data-render="docs" dir="ltr" lang="en-us">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Find-Command (PowerShellGet)" property="og:title"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" property="og:image"/>
+  <meta content="summary" name="twitter:card"/>
+  <meta content="@docsmsft" name="twitter:site"/>
+  <meta content="Find-Command (PowerShellGet)" name="twitter:title"/>
+  <meta content="The Find-Command cmdlet finds PowerShell commands such as cmdlets, aliases, functions, and workflows. Find-Command searches modules in registered repositories. For each command that this cmdlet findsâ¦" name="twitter:description"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" name="twitter:image"/>
+  <meta content="Microsoft Logo" name="twitter:image:alt"/>
+  <meta content="The Find-Command cmdlet finds PowerShell commands such as cmdlets, aliases, functions, and workflows. Find-Command searches modules in registered repositories. For each command that this cmdlet findsâ¦" name="description"/>
+  <meta content="Docs" name="search.ms_sitename"/>
+  <meta content="PowerShell_PowerShell-docs_reference" name="search.ms_docsetname"/>
+  <meta content="0" name="version"/>
+  <meta content="en-us" name="locale"/>
+  <meta content="Docs" name="site_name"/>
+  <meta content="PowerShell" name="search.ms_product"/>
+  <meta content="PowerShell.PowerShell_PowerShell-docs_reference" name="depot_name"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/32c27c5b78fb8a8af58aaf73da28d5329aba66d1/reference/6/PowerShellGet/Find-Command.md" name="ref_skeleton_gitcommit"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/live/reference/6/PowerShellGet/Find-Command.md" name="original_ref_skeleton_git_url"/>
+  <meta content="2018-03-30 03:35 PM" name="updated_at"/>
+  <meta content="7f150297-e78a-ba85-aec0-089a846c9c67" name="document_id"/>
+  <meta content="499751e2-4798-66a9-b118-9dc7e876999f" name="document_version_independent_id"/>
+  <meta content="powershell" name="page_type"/>
+  <meta content="command" name="page_kind"/>
+  <meta content="06/09/2017" name="ms.date"/>
+  <meta content="2.0.0" name="schema"/>
+  <meta content="powershell,cmdlet" name="keywords"/>
+  <meta content="http://go.microsoft.com/fwlink/?LinkId=822318" name="online_version"/>
+  <meta content="PSModule-help.xml" name="external_help_file"/>
+  <meta content="powershell" name="ms.devlang"/>
+  <meta content="INDEX, FOLLOW" name="ROBOTS"/>
+  <meta content="sdwheeler" name="author"/>
+  <meta content="sewhee" name="ms.author"/>
+  <meta content="carmonm" name="manager"/>
+  <meta content="/powershell/bread-pscore/toc.yml?view=powershell-6" name="breadcrumb_path"/>
+  <meta content="powershell" name="apiPlatform"/>
+  <meta content="reference" name="ms.topic"/>
+  <meta content="windows, macos, linux" name="ms.tgt_pltfr"/>
+  <meta content="powershell-scripting" name="ms.technology"/>
+  <meta content="powershell" name="ms.prod"/>
+  <meta content="MSDocsHeader-Powershell" name="uhfHeaderId"/>
+  <meta content="../psdocs/toc.json?view=powershell-6" name="toc_rel"/>
+  <link href="https://docs.microsoft.com/en-us/powershell/module/powershellget/find-command" rel="canonical"/>
+  <title>
+   Find-Command
+  </title>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/60aac04b.site.css" rel="stylesheet"/>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/fdb8a38a.conceptual.css" rel="stylesheet"/>
+ </head>
+ <body dir="ltr" lang="en-us">
+  <div class="header-holder">
+   <div data-bi-name="header" id="headerAreaHolder">
+    <div id="uhf-placeholder">
+    </div>
+   </div>
+   <div class="disclaimer-holder" id="disclaimer-holder">
+   </div>
+  </div>
+  <div class="container mainContainer" data-bi-name="body">
+   <div class="content-header" data-bi-name="content-header">
+    <div class="content-header-controls">
+     <button class="contents-button button-border" data-bi-name="contents-expand" type="button">
+      <span class="docon docon-menu">
+      </span>
+      Contents
+     </button>
+    </div>
+    <div class="content-header-controls">
+     <button class="ap-collapse-behavior ap-expanded button-border" data-bi-name="ap-collapse" type="button">
+      <span class="docon docon-exit-mode">
+      </span>
+      Exit focus mode
+     </button>
+    </div>
+   </div>
+   <div class="primary-holder">
+    <main class="content" data-bi-name="content" dir="ltr" id="main" lang="en-us" role="main">
+     <!-- <content> -->
+     <h1>
+      Find-Command
+     </h1>
+     <div class="metadata">
+      <dl class="attributeList">
+       <dt>
+        Module:
+       </dt>
+       <dd>
+        <a data-linktype="relative-path" href="./PowerShellGet.html">
+         PowerShellGet
+        </a>
+       </dd>
+      </dl>
+     </div>
+     <div class="summaryHolder">
+      <div class="summary">
+       Finds PowerShell commands in modules.
+      </div>
+     </div>
+     <h2 class="hiddenAnchor" id="syntax">
+      Syntax
+     </h2>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Find-Command
+    [[-Name] &lt;String[]&gt;]
+    [-ModuleName &lt;String&gt;]
+    [-MinimumVersion &lt;Version&gt;]
+    [-MaximumVersion &lt;Version&gt;]
+    [-RequiredVersion &lt;Version&gt;]
+    [-AllVersions]
+    [-Tag &lt;String[]&gt;]
+    [-Filter &lt;String&gt;]
+    [-Proxy &lt;Uri&gt;]
+    [-ProxyCredential &lt;PSCredential&gt;]
+    [-Repository &lt;String[]&gt;]
+    [&lt;CommonParameters&gt;]</code></pre>
+     <h2 id="description">
+      Description
+     </h2>
+     <p>
+      The
+      <strong>
+       Find-Command
+      </strong>
+      cmdlet finds PowerShell commands such as cmdlets, aliases, functions, and workflows.
+      <strong>
+       Find-Command
+      </strong>
+      searches modules in registered repositories.
+     </p>
+     <p>
+      For each command that this cmdlet finds, it returns a
+      <strong>
+       PSGetCommandInfo
+      </strong>
+      object.
+You can pass a
+      <strong>
+       PSGetCommandInfo
+      </strong>
+      object to the Install-Module cmdlet to install the module that contains the command.
+     </p>
+     <h2 id="examples">
+      Examples
+     </h2>
+     <p>
+      <strong>
+       Example 1: Find all commands in a specified repository
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Find-Command -Repository "INT" | Select-Object -First 10
+
+Name                                Version    ModuleName                          Repository
+
+----                                -------    ----------                          ----------
+
+Get-RequiredModule4                 2.5        RequiredModule4                     INT
+
+Get-RequiredModule5                 2.5        RequiredModule5                     INT
+
+Get-NestedRequiredModule4           2.5        NestedRequiredModule4               INT
+
+Get-NestedRequiredModule5           2.5        NestedRequiredModule5               INT
+
+Enable-AzureRmDataCollection        1.0.4      AzureRM.Profile                     INT
+
+Disable-AzureRmDataCollection       1.0.4      AzureRM.Profile                     INT
+
+Remove-AzureRmEnvironment           1.0.4      AzureRM.Profile                     INT
+
+Get-AzureRmEnvironment              1.0.4      AzureRM.Profile                     INT
+
+Set-AzureRmEnvironment              1.0.4      AzureRM.Profile                     INT
+
+Add-AzureRmEnvironment              1.0.4      AzureRM.Profile                     INT</code></pre>
+     <p>
+      This command finds commands in modules in the INT repository, and uses the pipeline operator to pass the results to Select-Object to select the first 10 commands.
+     </p>
+     <p>
+      <strong>
+       Example 2: Find a command by name
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Find-Command -Repository "INT" -Name "Get-ContosoClient"
+
+Name                                Version    ModuleName                          Repository
+
+----                                -------    ----------                          ----------
+
+Get-ContosoClient                   2.5        ContosoClient                       INT</code></pre>
+     <p>
+      This command finds the command named Get-ContosoClient in the INT repository.
+The command is contained in the ContosoClient module.
+     </p>
+     <p>
+      <strong>
+       Example 3: Find commands by name and install them
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Find-Command -Repository "INT" -Name "Get-ContosoClient,Get-ContosoServer" | Install-Module
+
+PS C:\&gt; Get-InstalledModule
+
+Version    Name                                Type       Repository           Description
+
+-------    ----                                ----       ----------           -----------
+
+2.5        ContosoClient                       Module     INT                  ContosoClient module
+
+2.5        ContosoServer                       Module     INT                  ContosoServer module</code></pre>
+     <p>
+      The first command finds the specified commands in the INT repository, and then uses the pipeline operator to pass them to Install-Module to install them.
+     </p>
+     <p>
+      The second command uses Get-InstalledModule to verify the modules from the prior command are installed.
+     </p>
+     <p>
+      <strong>
+       Example 4: Find a command and save its module
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Find-Command -Name "Get-NestedRequiredModule4" -Repository "INT" | Save-Module -Path "C:\temp\" -Verbose</code></pre>
+     <p>
+      This command finds the specified command, and then passes it to Save-Module to save it to the C:\temp folder.
+     </p>
+     <h2 id="optional-parameters">
+      Optional Parameters
+     </h2>
+     <div class="parameterName stack">
+      -AllVersions
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that this cmdlet gets all versions of a module.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Filter
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Finds modules based on the PackageManagement provider-specific search syntax.
+For NuGet, this is the equivalent of using the search bar on the PowerShell Gallery website.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -MaximumVersion
+     </div>
+     <div class="parameterInfo">
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Version
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -MinimumVersion
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the minimum version of the module to include in results.
+The
+       <em>
+        MinimumVersion
+       </em>
+       and the
+       <em>
+        RequiredVersion
+       </em>
+       parameters are mutually exclusive; you cannot use both parameters in the same command.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Version
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -ModuleName
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the name of the module in which to search for commands.
+The default is all modules.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Name
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies an array of names of commands to search for.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         1
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Proxy
+     </div>
+     <div class="parameterInfo">
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Uri
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -ProxyCredential
+     </div>
+     <div class="parameterInfo">
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          PSCredential
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Repository
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies an array of registered repositories in which to search.
+The default is all repositories.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -RequiredVersion
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the version of the module to include in the results.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Version
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Tag
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies an array of tags.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="notes">
+      Notes
+     </h2>
+     <h2 id="related-links">
+      RELATED LINKS
+     </h2>
+     <!-- </content> -->
+    </main>
+    <div class="note alert feedback-system-change-alert">
+     <p>
+      Note
+     </p>
+     <p>
+      The feedback system for this content will be changing soon. Old comments will not be carried over. If content within a comment thread is important to you, please save a copy. For more information on the upcoming change,
+      <a href="https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs">
+       we invite you to read our blog post
+      </a>
+      .
+     </p>
+    </div>
+    <div data-bi-name="comments" id="comments-container" role="form">
+    </div>
+   </div>
+  </div>
+  <div class="openfeedback-container" id="openFeedbackContainer">
+  </div>
+  <div class="action-panel">
+  </div>
+ </body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    
+<!-- Mirrored from mdn.mozillademos.org/en-US/docs/Web/API/Element/copy_event$samples/Live_example?revision=1484832 by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 02 May 2019 00:01:24 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+        <meta charset="utf-8">
+        <link href="../../../../../../../developer.mozilla.org/static/build/styles/samples.37902ba3b7fe.css" rel="stylesheet" type="text/css" />
+        
+        <style type="text/css">
+            div.source, div.target {
+    border: 1px solid gray;
+    margin: .5rem;
+    padding: .5rem;
+    height: 1rem;
+    background-color: #e9eef1;
+}
+        </style>
+        
+        <title>Element: copy event</title>
+    </head>
+    <body>
+        
+            <div class="source" contenteditable="true">Try copying text from this box...</div>
+<div class="target" contenteditable="true">...and pasting it into this one</div>
+
+        
+        
+            <script>
+                const source = document.querySelector('div.source');
+
+source.addEventListener('copy', (event) => {
+    const selection = document.getSelection();
+    event.clipboardData.setData('text/plain', selection.toString().toUpperCase());
+    event.preventDefault();
+});
+
+            </script>
+        
+    </body>
+
+<!-- Mirrored from mdn.mozillademos.org/en-US/docs/Web/API/Element/copy_event$samples/Live_example?revision=1484832 by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 02 May 2019 00:01:24 GMT -->
+</html>

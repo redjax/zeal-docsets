@@ -1,0 +1,1584 @@
+<!DOCTYPE html>
+<html class="no-js hasSidebar hasPageActions hasBreadcrumb conceptual" data-authenticated="false" data-render="docs" dir="ltr" lang="en-us">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Start-SbecLogSession (booteventcollector)" property="og:title"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" property="og:image"/>
+  <meta content="summary" name="twitter:card"/>
+  <meta content="@docsmsft" name="twitter:site"/>
+  <meta content="Start-SbecLogSession (booteventcollector)" name="twitter:title"/>
+  <meta content="Use this topic to help manage Windows and Windows Server technologies with Windows PowerShell." name="twitter:description"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" name="twitter:image"/>
+  <meta content="Microsoft Logo" name="twitter:image:alt"/>
+  <meta content="Use this topic to help manage Windows and Windows Server technologies with Windows PowerShell." name="description"/>
+  <meta content="Docs" name="search.ms_sitename"/>
+  <meta content="powershell-windows" name="search.ms_docsetname"/>
+  <meta content="0" name="version"/>
+  <meta content="en-us" name="locale"/>
+  <meta content="Docs" name="site_name"/>
+  <meta content="MSDN" name="search.ms_product"/>
+  <meta content="MSDN.powershell-windows" name="depot_name"/>
+  <meta content="https://cpubwin.visualstudio.com/DefaultCollection/powershell/_git/powershell/commit/ced7757924addcaea0b7a244ae4d240e4d28d93a?path=%2fdocset%2fwindows%2fbooteventcollector%2fstart-sbeclogsession.md&amp;_a=contents" name="ref_skeleton_gitcommit"/>
+  <meta content="https://cpubwin.visualstudio.com/DefaultCollection/powershell/_git/powershell?path=%2fdocset%2fwindows%2fbooteventcollector%2fstart-sbeclogsession.md&amp;version=GBlive&amp;_a=contents" name="original_ref_skeleton_git_url"/>
+  <meta content="2017-09-15 03:44 AM" name="updated_at"/>
+  <meta content="ae170547-6375-798a-79f3-04506cd89b71" name="document_id"/>
+  <meta content="e30b9ed5-627e-8ae2-8d1b-8a95a748589c" name="document_version_independent_id"/>
+  <meta content="powershell" name="page_type"/>
+  <meta content="command" name="page_kind"/>
+  <meta content="manage" name="ms.mktglfcycl"/>
+  <meta content="library" name="ms.sitesec"/>
+  <meta content="brianlic" name="ms.author"/>
+  <meta content="brianlic-msft" name="author"/>
+  <meta content="BootEventCollector-help.xml" name="external_help_file"/>
+  <meta content="powershell, cmdlet" name="keywords"/>
+  <meta content="alanth" name="manager"/>
+  <meta content="12/20/2016" name="ms.date"/>
+  <meta content="w10" name="ms.prod"/>
+  <meta content="powershell-windows" name="ms.technology"/>
+  <meta content="reference" name="ms.topic"/>
+  <meta content="" name="online_version"/>
+  <meta content="2.0.0" name="schema"/>
+  <meta content="D71B6A7B-6624-4C37-95AA-78B44E828E81" name="ms.assetid"/>
+  <meta content="powershell" name="ms.devlang"/>
+  <meta content="INDEX, FOLLOW" name="ROBOTS"/>
+  <meta content="/powershell/windows/bread/toc.json?view=win10-ps" name="breadcrumb_path"/>
+  <meta content="powershell" name="apiPlatform"/>
+  <meta content="MSDocsHeader-WindowsIT" name="uhfHeaderId"/>
+  <meta content="../win10-ps/toc.json?view=win10-ps" name="toc_rel"/>
+  <link href="https://docs.microsoft.com/en-us/powershell/module/booteventcollector/start-sbeclogsession" rel="canonical"/>
+  <title>
+   Start-SbecLogSession
+  </title>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/e4a1f3a3.site.css" rel="stylesheet"/>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/31353636.conceptual.css" rel="stylesheet"/>
+ </head>
+ <body dir="ltr" lang="en-us">
+  <div class="header-holder">
+   <div data-bi-name="header" id="headerAreaHolder">
+    <div id="uhf-placeholder">
+    </div>
+   </div>
+   <div class="disclaimer-holder" id="disclaimer-holder">
+   </div>
+  </div>
+  <div class="container mainContainer" data-bi-name="body">
+   <div class="content-header" data-bi-name="content-header">
+    <div class="content-header-controls">
+     <button class="contents-button button-border" data-bi-name="contents-expand" type="button">
+      <span class="docon docon-menu">
+      </span>
+      Contents
+     </button>
+    </div>
+    <div class="content-header-controls">
+     <button class="ap-collapse-behavior ap-expanded button-border" data-bi-name="ap-collapse" type="button">
+      <span class="docon docon-exit-mode">
+      </span>
+      Exit focus mode
+     </button>
+    </div>
+   </div>
+   <div class="primary-holder">
+    <main class="content" data-bi-name="content" dir="ltr" id="main" lang="en-us" role="main">
+     <!-- <content> -->
+     <h1>
+      Start-Sbec
+      <wbr/>
+      Log
+      <wbr/>
+      Session
+     </h1>
+     <div class="metadata">
+      <dl class="attributeList">
+       <dt>
+        Module:
+       </dt>
+       <dd>
+        <a data-linktype="relative-path" href="./.html">
+         booteventcollector
+        </a>
+       </dd>
+      </dl>
+     </div>
+     <div class="summaryHolder">
+      <div class="summary">
+       Starts an ETW log session.
+      </div>
+     </div>
+     <h2 class="hiddenAnchor" id="syntax">
+      Syntax
+     </h2>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Start-SbecLogSession
+     [-Name] &lt;String&gt;
+     [[-Path] &lt;String&gt;]
+     [[-SessionGuid] &lt;Guid&gt;]
+     [[-ProviderName] &lt;String[]&gt;]
+     [[-ProviderGuid] &lt;Guid[]&gt;]
+     [[-Level] &lt;SeverityLevel&gt;]
+     [[-ClockType] &lt;ClientContext&gt;]
+     [[-BufferSize] &lt;UInt32&gt;]
+     [[-MinimumBufferCount] &lt;UInt32&gt;]
+     [[-MaximumBufferCount] &lt;UInt32&gt;]
+     [[-MaximumFileSize] &lt;UInt32&gt;]
+     [[-FlushSeconds] &lt;UInt32&gt;]
+     [[-LogFileMode] &lt;LoggingMode&gt;]
+     [[-KernelEnableFlags] &lt;EventTraceFlag&gt;]
+     [-PassThru]
+     [[-SimulateCreationError] &lt;Int32&gt;]
+     [[-SimulateSubscriptionError] &lt;Int32&gt;]
+     [&lt;CommonParameters&gt;]</code></pre>
+     <h2 id="description">
+      Description
+     </h2>
+     <p>
+      The
+      <strong>
+       Start-SbecLogSession
+      </strong>
+      cmdlet starts an Event Tracing for Windows (ETW) log session with full flexibility.
+     </p>
+     <p>
+      To start an ETW session in a simpler way with fewer parameters, use the
+      <strong>
+       Start-SbecSimpleLogSession
+      </strong>
+      cmdlet.
+     </p>
+     <h2 id="required-parameters">
+      Required Parameters
+     </h2>
+     <div class="parameterName stack">
+      -Name
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the name of the session to start.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         0
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="optional-parameters">
+      Optional Parameters
+     </h2>
+     <div class="parameterName stack">
+      -BufferSize
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the buffer size for the session, in kilobytes.
+This is the size of one buffer, with the count of these buffers set by the
+       <em>
+        MinimumBufferCount
+       </em>
+       and
+       <em>
+        MaximumBufferCount
+       </em>
+       parameters.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          UInt32
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         7
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -ClockType
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the type of clock used for the events collected by this session: The acceptable values for this parameter are:
+      </p>
+      <ul>
+       <li>
+        Default
+       </li>
+       <li>
+        QueryPerformanceCounter.
+The high-resolution (period of 100 nanoseconds) clock that is typically used for performance measurement.
+       </li>
+       <li>
+        SystemTime.
+The lower-resolution system time similar to FILETIME (period of 10 milliseconds).
+This value is most typical for the data collection through SBEC.
+       </li>
+       <li>
+        CpuCycleCounter.
+The highest-resolution, with the frequency of the CPU, but may be unreliable depending on the CPU model and the thermal and power modes.
+       </li>
+      </ul>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          ClientContext
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Parameter Sets:
+        </td>
+        <td>
+         Default, QueryPerformanceCounter, SystemTime, CpuCycleCounter
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         6
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -FlushSeconds
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the timeout, in seconds, for the session buffers to automatically flush.
+You can disable the flushing of buffers on timeout by setting this parameter to 0, then the buffers will be written only when full or on an explicit flush.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          UInt32
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         FlushTimer
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         11
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -KernelEnableFlags
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies flags for the NT Kernel Logger that enable the kernel events.
+For the setup and boot monitoring, the only reasonable flag is Process.
+This enumeration type is defined in $PsHome\Modules\BootEventCollector\SbecTraceHelpers.psm1.
+The acceptable values for this parameter are:
+      </p>
+      <ul>
+       <li>
+        Process
+       </li>
+       <li>
+        Thread
+       </li>
+       <li>
+        ImageLoad
+       </li>
+       <li>
+        ProcessCounters
+       </li>
+       <li>
+        ContextSwitch
+       </li>
+       <li>
+        Dpc
+       </li>
+       <li>
+        Interrupt
+       </li>
+       <li>
+        SystemCall
+       </li>
+       <li>
+        DiskIO
+       </li>
+       <li>
+        DiskFileIO
+       </li>
+       <li>
+        DiskIOInit
+       </li>
+       <li>
+        Dispatcher
+       </li>
+       <li>
+        MemoryPageFaults
+       </li>
+       <li>
+        MemoryHardFaults
+       </li>
+       <li>
+        VirtualAlloc
+       </li>
+       <li>
+        NetworkTCPIP
+       </li>
+       <li>
+        Registry
+       </li>
+       <li>
+        Alpc
+       </li>
+       <li>
+        SplitIO
+       </li>
+       <li>
+        Driver
+       </li>
+       <li>
+        FileIO
+       </li>
+       <li>
+        FileIOInit
+       </li>
+       <li>
+        Profile
+       </li>
+      </ul>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          EventTraceFlag
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Parameter Sets:
+        </td>
+        <td>
+         None, Process, Thread, ImageLoad, ProcessCounters, ContextSwitch, Dpc, Interrupt, SystemCall, DiskIO, DiskFileIO, DiskIOInit, Dispatcher, MemoryPageFaults, MemoryHardFaults, VirtualAlloc, NetworkTCPIP, Registry, Alpc, SplitIO, Driver, FileIO, FileIOInit, Profile
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         13
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Level
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the highest detail level value to enable for providers.
+This enumeration type is defined in $PsHome\Modules\BootEventCollector\SbecTraceHelpers.psm1.
+The acceptable values for this parameter are:
+      </p>
+      <ul>
+       <li>
+        Undefined
+       </li>
+       <li>
+        Fatal
+       </li>
+       <li>
+        Error
+       </li>
+       <li>
+        Warning
+       </li>
+       <li>
+        Information
+       </li>
+       <li>
+        Verbose
+       </li>
+       <li>
+        All
+       </li>
+      </ul>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SeverityLevel
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Parameter Sets:
+        </td>
+        <td>
+         Undefined, Fatal, Error, Warning, Information, Verbose, All
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         5
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -LogFileMode
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the new flags for the log file mode.
+The EnableKd and DisableKd values parameters are applied on top of these flags.
+This enumeration type is defined in $PsHome\Modules\BootEventCollector\SbecTraceHelpers.psm1.
+The cmdlet automatically adds the RealTime and KdFilter values to this parameter.
+Commonly used values are:
+      </p>
+      <ul>
+       <li>
+        FileSequential.
+Write events to a log file sequentially; stops when the file reaches its maximum size.
+       </li>
+       <li>
+        FileCircular.
+Write events to a log file.
+After the file reaches the maximum size, replace the oldest events with incoming events.
+       </li>
+       <li>
+        FileAppend.
+Append events to an existing sequential log file.
+       </li>
+       <li>
+        FileNewFile.
+Automatically switch to a new log file when the file reaches the maximum size.
+       </li>
+       <li>
+        FilePreallocate.
+Reserve the
+        <em>
+         MaximumFileSize
+        </em>
+        of disk space for the log files in advance.
+       </li>
+       <li>
+        Secure.
+Restrict who can log events to the session to those with TRACELOG_LOG_EVENT permission.
+       </li>
+       <li>
+        RealTime.
+Deliver the events to consumers in real-time instead of writing them to a file.
+This mode is required for sending the events to the event collector.
+       </li>
+       <li>
+        KdFilter.
+Forward the events though the kernel channel to the event collector or to the debugger.
+       </li>
+       <li>
+        UsePagedMemory.
+Use the paged memory for the buffers.
+       </li>
+       <li>
+        NoPerProcessorBuffering.
+Write the events from all processors to the same buffer.
+This preserves the order of the events, and is recommended for sending the events to the event collector.
+       </li>
+      </ul>
+      <p>
+       The acceptable values for this parameter are:
+      </p>
+      <ul>
+       <li>
+        None
+       </li>
+       <li>
+        FileNone
+       </li>
+       <li>
+        FileSequential
+       </li>
+       <li>
+        FileCircular
+       </li>
+       <li>
+        FileAppend
+       </li>
+       <li>
+        FileNewFile
+       </li>
+       <li>
+        Reserved0x00000010
+       </li>
+       <li>
+        FilePreallocate
+       </li>
+       <li>
+        Nonstoppable
+       </li>
+       <li>
+        Secure
+       </li>
+       <li>
+        RealTime
+       </li>
+       <li>
+        DelayOpenFile
+       </li>
+       <li>
+        Buffering
+       </li>
+       <li>
+        PrivateLogger
+       </li>
+       <li>
+        AddHeader
+       </li>
+       <li>
+        UseKilobytesForSize
+       </li>
+       <li>
+        UseGobalSequence
+       </li>
+       <li>
+        Relog
+       </li>
+       <li>
+        PrivateInProc
+       </li>
+       <li>
+        BufferInterface
+       </li>
+       <li>
+        KdFilter
+       </li>
+       <li>
+        RealtimeRelog
+       </li>
+       <li>
+        LostEventsDebug
+       </li>
+       <li>
+        StopOnHybridShutdown
+       </li>
+       <li>
+        PersistOnHybridShutdown
+       </li>
+       <li>
+        UsePagedMemory
+       </li>
+       <li>
+        SystemLogger
+       </li>
+       <li>
+        Compressed
+       </li>
+       <li>
+        IndependentSession
+       </li>
+       <li>
+        NoPerProcessorBuffering
+       </li>
+       <li>
+        Blocking
+       </li>
+       <li>
+        Reserved0x40000000
+       </li>
+       <li>
+        AddToTriageDump
+       </li>
+      </ul>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          LoggingMode
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Parameter Sets:
+        </td>
+        <td>
+         None, FileNone, FileSequential, FileCircular, FileAppend, FileNewFile, Reserved0x00000010, FilePreallocate, Nonstoppable, Secure, RealTime, DelayOpenFile, Buffering, PrivateLogger, AddHeader, UseKilobytesForSize, UseGobalSequence, UseLocalSequence, Relog, PrivateInProc, BufferInterface, KdFilter, RealtimeRelog, LostEventsDebug, StopOnHybridShutdown, PersistOnHybridShutdown, UsePagedMemory, SystemLogger, Compressed, IndependentSession, NoPerProcessorBuffering, Blocking, Reserved0x40000000, AddToTriageDump
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         12
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -MaximumBufferCount
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the maximum number of buffers to allocate for this session.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          UInt32
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         MaximumBuffers, maxbuf
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         9
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -MaximumFileSize
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the maximum file size after which the session may switch to the next file, in megabytes.
+Specify 0 for no limit.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          UInt32
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         10
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -MinimumBufferCount
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the minimum number of buffers to allocate for this session.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          UInt32
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         MinimumBuffers, minbuf
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         8
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -PassThru
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Returns an object representing the item with which you are working.
+By default, this cmdlet does not generate any output.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Path
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the ETL file where the session will write its log.
+The session must have the file mode enabled to write to a file; a session in real-time mode ignores the file.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         1
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -ProviderGuid
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the provider GUIDs to subscribe this session to.
+The providers are configured to include all events up to the level specified by the
+       <em>
+        Level
+       </em>
+       parameter.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Guid[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         pg
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         4
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -ProviderName
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the provider names to subscribe this session to.
+The providers are configured to include all events up to the level specified by the
+       <em>
+        Level
+       </em>
+       parameter
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         pn
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         3
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -SessionGuid
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the GUID for the session.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Guid
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         2
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -SimulateCreationError
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Simulates a Windows error in session creation, and causes the function to throw an error.
+You can specify this parameter to test error handling.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Int32
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         14
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -SimulateSubscriptionError
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Simulates a Windows error in session subscription, and causes the function to throw an error.
+You can specify this parameter to test error handling.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Int32
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         15
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="outputs">
+      Outputs
+     </h2>
+     <p>
+      <strong>
+       SbecEtwTrace.TraceSessionInfo
+      </strong>
+     </p>
+     <p>
+      The class is defined in $PsHome\Modules\BootEventCollector\SbecTraceHelpers.psm1.
+     </p>
+     <h2 id="related-links">
+      Related Links
+     </h2>
+     <ul>
+      <li>
+       <a data-linktype="relative-path" href="./get-sbeclogsession.html">
+        Get-SbecLogSession
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="./save-sbeclogsession.html">
+        Save-SbecLogSession
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="./set-sbeclogsession.html">
+        Set-SbecLogSession
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="./start-sbecntkernellogsession.html">
+        Start-SbecNtKernelLogSession
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="./start-sbecsimplelogsession.html">
+        Start-SbecSimpleLogSession
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="./stop-sbeclogsession.html">
+        Stop-SbecLogSession
+       </a>
+      </li>
+     </ul>
+     <!-- </content> -->
+    </main>
+    <section class="feedback-section" data-bi-name="feedback-section">
+     <h2 id="feedback">
+      Feedback
+     </h2>
+     <div class="alert choose-feedback-type">
+      <p>
+       We'd love to hear your thoughts. Choose the type you'd like to provide:
+      </p>
+      <div class="choose-feedback-buttons">
+       <a class="button-border feedback-type-product" data-bi-name="product-feedback" href="https://windowsserver.uservoice.com/forums/301869-powershell">
+        Product feedback
+        <span aria-hidden="true" class="docon docon-navigate-external">
+        </span>
+       </a>
+       <div class="button-group">
+        <button class="button-border feedback-sign-in-button" data-bi-name="feedback-sign-in">
+         <span aria-hidden="true" class="docon docon-brand-github">
+         </span>
+         Sign in to give documentation feedback
+        </button>
+        <button aria-controls="feedback-form" aria-expanded="false" class="button-border feedback-form-toggle" data-bi-name="documentation-feedback" hidden="">
+         Content feedback
+        </button>
+        <div auto-align="" class="dropdown has-caret">
+         <button aria-controls="fbm0" aria-expanded="false" aria-haspopup="true" aria-label="Expand documentation feedback menu" class="button-border dropdown-trigger" data-bi-name="documentation-feedback-menu">
+          <span aria-hidden="true" class="docon docon-chevron-down-light">
+          </span>
+         </button>
+         <div class="dropdown-menu documentation-feedback-menu" id="fbm0" role="menu">
+          You may also leave feedback
+          <a data-bi-name="create-issue-on-github" href="{0}">
+           directly on GitHub
+           <span aria-hidden="true" class="docon docon-navigate-external">
+           </span>
+          </a>
+          .
+         </div>
+        </div>
+       </div>
+      </div>
+      <p>
+       <small>
+        Our new feedback system is built on GitHub Issues. Read about this change in
+        <a href="https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs">
+         our blog post
+        </a>
+        .
+       </small>
+      </p>
+     </div>
+     <form accept-charset="UTF-8" action="javascript:" autocomplete="off" class="feedback-form" hidden="" id="feedback-form">
+      <h3 class="feedback-form-heading current-user">
+       <img alt="Avatar" aria-hidden="true" class="avatar" height="36" width="36"/>
+       <span aria-hidden="true" class="username">
+       </span>
+       <span class="visually-hidden">
+        Liquid error: Can't find the localized string giveDocumentationFeedback for template Conceptual.
+       </span>
+      </h3>
+      <label>
+       <span class="visually-hidden">
+        Title
+       </span>
+       <input name="title" pattern=".*\w.*" placeholder="Title" required="" type="text"/>
+      </label>
+      <label>
+       <span class="visually-hidden">
+        Leave a comment
+       </span>
+       <textarea name="body" placeholder="Leave a comment" required=""></textarea>
+      </label>
+      <div class="action-container">
+       <button class="primary-action" name="submit" type="submit">
+        Submit feedback
+       </button>
+      </div>
+     </form>
+     <div class="feedback-status alert busy" role="alert">
+      <p>
+       Loading feedback...
+      </p>
+     </div>
+     <div class="feedback-tab-group tabGroup" data-tab-group-independent="" hidden="">
+      <ul role="tablist">
+       <li role="presentation">
+        <a aria-controls="tabpanel-issues-open" aria-label="Open Issues" data-tab="issues-open" href="#tabpanel-issues-open" role="tab">
+        </a>
+       </li>
+       <li role="presentation">
+        <a aria-controls="tabpanel-issues-closed" aria-label="Closed Issues" data-tab="issues-closed" href="#tabpanel-issues-closed" role="tab">
+        </a>
+       </li>
+      </ul>
+      <section data-tab="issues-open" id="tabpanel-issues-open" role="tabpanel">
+       <div class="no-issues-placeholder">
+        There are no open issues
+       </div>
+       <ul aria-label="Open Issues" class="github-issues-list">
+       </ul>
+      </section>
+      <section data-tab="issues-closed" id="tabpanel-issues-closed" role="tabpanel">
+       <div class="no-issues-placeholder">
+        There are no closed issues
+       </div>
+       <ul aria-label="Closed Issues" class="github-issues-list">
+       </ul>
+      </section>
+     </div>
+     <div class="action-container">
+      <a class="view-on-github" data-bi-name="view-on-github" hidden="" href="https://github.com/MicrosoftDocs/windows-powershell-docs/issues">
+       <span aria-hidden="true" class="docon docon-brand-github">
+       </span>
+       <span>
+        View on GitHub
+       </span>
+       <span aria-hidden="true" class="docon docon-navigate-external">
+       </span>
+      </a>
+     </div>
+    </section>
+   </div>
+  </div>
+  <div class="openfeedback-container" id="openFeedbackContainer">
+  </div>
+  <div class="action-panel">
+  </div>
+ </body>
+</html>

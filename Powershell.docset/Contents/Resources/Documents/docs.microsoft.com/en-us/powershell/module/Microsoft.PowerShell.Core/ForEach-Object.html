@@ -1,0 +1,1164 @@
+<!DOCTYPE html>
+<html class="no-js hasSidebar hasPageActions hasBreadcrumb conceptual" data-authenticated="false" data-render="docs" dir="ltr" lang="en-us">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="ForEach-Object (Microsoft.PowerShell.Core)" property="og:title"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" property="og:image"/>
+  <meta content="summary" name="twitter:card"/>
+  <meta content="@docsmsft" name="twitter:site"/>
+  <meta content="ForEach-Object (Microsoft.PowerShell.Core)" name="twitter:title"/>
+  <meta content="The ForEach-Object cmdlet performs an operation on each item in a collection of input objects. The input objects can be piped to the cmdlet or specified by using the InputObject parameter. Starting iâ¦" name="twitter:description"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" name="twitter:image"/>
+  <meta content="Microsoft Logo" name="twitter:image:alt"/>
+  <meta content="The ForEach-Object cmdlet performs an operation on each item in a collection of input objects. The input objects can be piped to the cmdlet or specified by using the InputObject parameter. Starting iâ¦" name="description"/>
+  <meta content="Docs" name="search.ms_sitename"/>
+  <meta content="PowerShell_PowerShell-docs_reference" name="search.ms_docsetname"/>
+  <meta content="0" name="version"/>
+  <meta content="en-us" name="locale"/>
+  <meta content="Docs" name="site_name"/>
+  <meta content="PowerShell" name="search.ms_product"/>
+  <meta content="PowerShell.PowerShell_PowerShell-docs_reference" name="depot_name"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/6a6d85dfc6556f4605f45163661aeed4e68cf400/reference/6/Microsoft.PowerShell.Core/ForEach-Object.md" name="ref_skeleton_gitcommit"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/live/reference/6/Microsoft.PowerShell.Core/ForEach-Object.md" name="original_ref_skeleton_git_url"/>
+  <meta content="2018-03-30 03:35 PM" name="updated_at"/>
+  <meta content="e1fdd630-074d-95a8-8da5-ae85b67e7793" name="document_id"/>
+  <meta content="7ba53b91-ed64-cc24-0cf0-a5dc3f3dc9d0" name="document_version_independent_id"/>
+  <meta content="powershell" name="page_type"/>
+  <meta content="command" name="page_kind"/>
+  <meta content="06/09/2017" name="ms.date"/>
+  <meta content="2.0.0" name="schema"/>
+  <meta content="powershell,cmdlet" name="keywords"/>
+  <meta content="http://go.microsoft.com/fwlink/?LinkId=821481" name="online_version"/>
+  <meta content="System.Management.Automation.dll-Help.xml" name="external_help_file"/>
+  <meta content="powershell" name="ms.devlang"/>
+  <meta content="INDEX, FOLLOW" name="ROBOTS"/>
+  <meta content="sdwheeler" name="author"/>
+  <meta content="sewhee" name="ms.author"/>
+  <meta content="carmonm" name="manager"/>
+  <meta content="/powershell/bread-pscore/toc.yml?view=powershell-6" name="breadcrumb_path"/>
+  <meta content="powershell" name="apiPlatform"/>
+  <meta content="reference" name="ms.topic"/>
+  <meta content="windows, macos, linux" name="ms.tgt_pltfr"/>
+  <meta content="powershell-scripting" name="ms.technology"/>
+  <meta content="powershell" name="ms.prod"/>
+  <meta content="MSDocsHeader-Powershell" name="uhfHeaderId"/>
+  <meta content="../psdocs/toc.json?view=powershell-6" name="toc_rel"/>
+  <link href="https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/foreach-object" rel="canonical"/>
+  <title>
+   ForEach-Object
+  </title>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/60aac04b.site.css" rel="stylesheet"/>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/fdb8a38a.conceptual.css" rel="stylesheet"/>
+ </head>
+ <body dir="ltr" lang="en-us">
+  <div class="header-holder">
+   <div data-bi-name="header" id="headerAreaHolder">
+    <div id="uhf-placeholder">
+    </div>
+   </div>
+   <div class="disclaimer-holder" id="disclaimer-holder">
+   </div>
+  </div>
+  <div class="container mainContainer" data-bi-name="body">
+   <div class="content-header" data-bi-name="content-header">
+    <div class="content-header-controls">
+     <button class="contents-button button-border" data-bi-name="contents-expand" type="button">
+      <span class="docon docon-menu">
+      </span>
+      Contents
+     </button>
+    </div>
+    <div class="content-header-controls">
+     <button class="ap-collapse-behavior ap-expanded button-border" data-bi-name="ap-collapse" type="button">
+      <span class="docon docon-exit-mode">
+      </span>
+      Exit focus mode
+     </button>
+    </div>
+   </div>
+   <div class="primary-holder">
+    <main class="content" data-bi-name="content" dir="ltr" id="main" lang="en-us" role="main">
+     <!-- <content> -->
+     <h1>
+      For
+      <wbr/>
+      Each-Object
+     </h1>
+     <div class="metadata">
+      <dl class="attributeList">
+       <dt>
+        Module:
+       </dt>
+       <dd>
+        <a data-linktype="relative-path" href="./Microsoft.PowerShell.Core.html">
+         Microsoft.PowerShell.Core
+        </a>
+       </dd>
+      </dl>
+     </div>
+     <div class="summaryHolder">
+      <div class="summary">
+       Performs an operation against each item in a collection of input objects.
+      </div>
+     </div>
+     <h2 class="hiddenAnchor" id="syntax">
+      Syntax
+     </h2>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">ForEach-Object
+       [-InputObject &lt;PSObject&gt;]
+       [-Begin &lt;ScriptBlock&gt;]
+       [-Process] &lt;ScriptBlock[]&gt;
+       [-End &lt;ScriptBlock&gt;]
+       [-RemainingScripts &lt;ScriptBlock[]&gt;]
+       [-WhatIf]
+       [-Confirm]
+       [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">ForEach-Object
+       [-InputObject &lt;PSObject&gt;]
+       [-MemberName] &lt;String&gt;
+       [-ArgumentList &lt;Object[]&gt;]
+       [-WhatIf]
+       [-Confirm]
+       [&lt;CommonParameters&gt;]</code></pre>
+     <h2 id="description">
+      Description
+     </h2>
+     <p>
+      The
+      <strong>
+       ForEach-Object
+      </strong>
+      cmdlet performs an operation on each item in a collection of input objects.
+The input objects can be piped to the cmdlet or specified by using the
+      <em>
+       InputObject
+      </em>
+      parameter.
+     </p>
+     <p>
+      Starting in Windows PowerShell 3.0, there are two different ways to construct a
+      <strong>
+       ForEach-Object
+      </strong>
+      command.
+     </p>
+     <p>
+      <strong>
+       Script block
+      </strong>
+      .
+You can use a script block to specify the operation.
+Within the script block, use the $_ variable to represent the current object.
+The script block is the value of the
+      <em>
+       Process
+      </em>
+      parameter.
+The script block can contain any Windows PowerShell script.
+     </p>
+     <p>
+      For example, the following command gets the value of the
+      <strong>
+       ProcessName
+      </strong>
+      property of each process on the computer.
+     </p>
+     <p>
+      <code>
+       Get-Process | ForEach-Object {$_.ProcessName}
+      </code>
+     </p>
+     <p>
+      <strong>
+       Operation statement
+      </strong>
+      .
+You can also write an operation statement, which is much more like natural language.
+You can use the operation statement to specify a property value or call a method.
+Operation statements were introduced in Windows PowerShell 3.0.
+     </p>
+     <p>
+      For example, the following command also gets the value of the
+      <strong>
+       ProcessName
+      </strong>
+      property of each process on the computer.
+     </p>
+     <p>
+      <code>
+       Get-Process | ForEach-Object ProcessName
+      </code>
+     </p>
+     <p>
+      When using the script block format, in addition to using the script block that describes the operations that are performed on each input object, you can provide two additional script blocks.
+The Begin script block, which is the value of the
+      <em>
+       Begin
+      </em>
+      parameter, runs before this cmdlet processes the first input object.
+The End script block, which is the value of the
+      <em>
+       End
+      </em>
+      parameter, runs after this cmdlet processes the last input object.
+     </p>
+     <h2 id="examples">
+      Examples
+     </h2>
+     <p>
+      <strong>
+       Example 1: Divide integers in an array
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; 30000, 56798, 12432 | ForEach-Object -Process {$_/1024}
+
+29.296875
+
+55.466796875
+
+12.140625</code></pre>
+     <p>
+      This command takes an array of three integers and divides each one of them by 1024.
+     </p>
+     <p>
+      <strong>
+       Example 2: Get the length of all the files in a directory
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-ChildItem $pshome | ForEach-Object -Process {if (!$_.PSIsContainer) {$_.Name; $_.Length / 1024; " " }}</code></pre>
+     <p>
+      This command gets the files and directories in the Windows PowerShell installation directory ($pshome) and passes them to the
+      <strong>
+       ForEach-Object
+      </strong>
+      cmdlet.
+If the object is not a directory, the script block gets the name of the file, divides the value of its
+      <strong>
+       Length
+      </strong>
+      property by 1024, and adds a space (" ") to separate it from the next entry.
+The cmdlet uses the
+      <strong>
+       PSISContainer
+      </strong>
+      property to determine whether an object is a directory.
+     </p>
+     <p>
+      <strong>
+       Example 3: Operate on the most recent System events
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; $Events = Get-EventLog -LogName System -Newest 1000
+
+PS C:\&gt; $events | ForEach-Object -Begin {Get-Date} -Process {Out-File -Filepath Events.txt -Append -InputObject $_.Message} -End {Get-Date}</code></pre>
+     <p>
+      This command gets the 1000 most recent events from the System event log and stores them in the $Events variable.
+It then pipes the events to the
+      <strong>
+       ForEach-Object
+      </strong>
+      cmdlet.
+     </p>
+     <p>
+      The
+      <em>
+       Begin
+      </em>
+      parameter displays the current date and time.
+Next, the
+      <em>
+       Process
+      </em>
+      parameter uses the
+      <strong>
+       Out-File
+      </strong>
+      cmdlet to create a text file that is named events.txt and stores the message property of each of the events in that file.
+Last, the
+      <em>
+       End
+      </em>
+      parameter is used to display the date and time after all of the processing has completed.
+     </p>
+     <p>
+      <strong>
+       Example 4: Change the value of a Registry key
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-ItemProperty -Path HKCU:\Network\* | ForEach-Object {Set-ItemProperty -Path $_.PSPath -Name RemotePath -Value $_.RemotePath.ToUpper();}</code></pre>
+     <p>
+      This command changes the value of the
+      <strong>
+       RemotePath
+      </strong>
+      registry entry in all of the subkeys under the HKCU:\Network key to uppercase text.
+You can use this format to change the form or content of a registry entry value.
+     </p>
+     <p>
+      Each subkey in the
+      <strong>
+       Network
+      </strong>
+      key represents a mapped network drive that will reconnect at logon.
+The
+      <strong>
+       RemotePath
+      </strong>
+      entry contains the UNC path of the connected drive.
+For example, if you map the E: drive to \\Server\Share, there will be an E subkey of HKCU:\Network and the value of the
+      <strong>
+       RemotePath
+      </strong>
+      registry entry in the E subkey will be \\Server\Share.
+     </p>
+     <p>
+      The command uses the Get-ItemProperty cmdlet to get all of the subkeys of the
+      <strong>
+       Network
+      </strong>
+      key and the Set-ItemProperty cmdlet to change the value of the
+      <strong>
+       RemotePath
+      </strong>
+      registry entry in each key.
+In the
+      <strong>
+       Set-ItemProperty
+      </strong>
+      command, the path is the value of the
+      <strong>
+       PSPath
+      </strong>
+      property of the registry key.
+This is a property of the Microsoft .NET Framework object that represents the registry key, not a registry entry.
+The command uses the
+      <strong>
+       ToUpper()
+      </strong>
+      method of the
+      <strong>
+       RemotePath
+      </strong>
+      value, which is a string (REG_SZ).
+     </p>
+     <p>
+      Because
+      <strong>
+       Set-ItemProperty
+      </strong>
+      is changing the property of each key, the
+      <strong>
+       ForEach-Object
+      </strong>
+      cmdlet is required to access the property.
+     </p>
+     <p>
+      <strong>
+       Example 5: Use the $Null automatic variable
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; 1, 2, $null, 4 | ForEach-Object {"Hello"}
+
+Hello
+
+Hello
+
+Hello
+
+Hello</code></pre>
+     <p>
+      This example shows the effect of piping the $Null automatic variable to the
+      <strong>
+       ForEach-Object
+      </strong>
+      cmdlet.
+     </p>
+     <p>
+      Because Windows PowerShell treats null as an explicit placeholder, the
+      <strong>
+       ForEach-Object
+      </strong>
+      cmdlet generates a value for $Null, just as it does for other objects that you pipe to it.
+     </p>
+     <p>
+      For more information about the $Null automatic variable, see about_Automatic_Variables.
+     </p>
+     <p>
+      <strong>
+       Example 6: Get property values
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-Module -List | ForEach-Object -MemberName Path
+
+PS C:\&gt; Get-Module -List | Foreach Path</code></pre>
+     <p>
+      These commands gets the value of the
+      <strong>
+       Path
+      </strong>
+      property of all installed Windows PowerShell modules.
+They use the
+      <em>
+       MemberName
+      </em>
+      parameter to specify the
+      <strong>
+       Path
+      </strong>
+      property of modules.
+     </p>
+     <p>
+      The second command is equivalent to the first.
+It uses the
+      <strong>
+       Foreach
+      </strong>
+      alias of the
+      <strong>
+       ForEach-Object
+      </strong>
+      cmdlet and omits the name of the
+      <em>
+       MemberName
+      </em>
+      parameter, which is optional.
+     </p>
+     <p>
+      The
+      <strong>
+       ForEach-Object
+      </strong>
+      cmdlet is very useful for getting property values, because it gets the value without changing the type, unlike the
+      <strong>
+       Format
+      </strong>
+      cmdlets or the Select-Object cmdlet, which change the property value type.
+     </p>
+     <p>
+      <strong>
+       Example 7: Split module names into component names
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; "Microsoft.PowerShell.Core", "Microsoft.PowerShell.Host" | ForEach-Object {$_.Split(".")}
+
+PS C:\&gt; "Microsoft.PowerShell.Core", "Microsoft.PowerShell.Host" | ForEach-Object -MemberName Split -ArgumentList "."
+
+PS C:\&gt; "Microsoft.PowerShell.Core", "Microsoft.PowerShell.Host" | Foreach Split "."
+
+Microsoft
+
+PowerShell
+
+Core
+
+Microsoft
+
+PowerShell
+
+Host</code></pre>
+     <p>
+      These commands split two dot-separated module names into their component names.
+The commands call the
+      <strong>
+       Split
+      </strong>
+      method of strings.
+The three commands use different syntax, but they are equivalent and interchangeable.
+     </p>
+     <p>
+      The first command uses the traditional syntax, which includes a script block and the current object operator ($_).
+It uses the dot syntax to specify the method and parentheses to enclose the delimiter argument.
+     </p>
+     <p>
+      The second command uses the
+      <em>
+       MemberName
+      </em>
+      parameter to specify the
+      <strong>
+       Split
+      </strong>
+      method and the
+      <em>
+       ArgumentName
+      </em>
+      parameter to identify the dot (".") as the split delimiter.
+     </p>
+     <p>
+      The third command uses the
+      <strong>
+       Foreach
+      </strong>
+      alias of the
+      <strong>
+       Foreach-Object
+      </strong>
+      cmdlet and omits the names of the
+      <em>
+       MemberName
+      </em>
+      and
+      <em>
+       ArgumentList
+      </em>
+      parameters, which are optional.
+     </p>
+     <p>
+      The output of these three commands, shown below, is identical.
+     </p>
+     <p>
+      <strong>
+       Split
+      </strong>
+      is just one of many useful methods of strings.
+To see all of the properties and methods of strings, pipe a string to the Get-Member cmdlet.
+     </p>
+     <h2 id="required-parameters">
+      Required Parameters
+     </h2>
+     <div class="parameterName stack">
+      -MemberName
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the property to get or the method to call.
+      </p>
+      <p>
+       Wildcard characters are permitted, but work only if the resulting string resolves to a unique value.
+If, for example, you run
+       <code>
+        Get-Process | ForEach -MemberName *Name
+       </code>
+       , and more than one member exists with a name that contains the string Name, such as the
+       <strong>
+        ProcessName
+       </strong>
+       and
+       <strong>
+        Name
+       </strong>
+       properties, the command fails.
+      </p>
+      <p>
+       This parameter was introduced in Windows PowerShell 3.0.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         0
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Process
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the operation that is performed on each input object.
+Enter a script block that describes the operation.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          ScriptBlock[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         0
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="optional-parameters">
+      Optional Parameters
+     </h2>
+     <div class="parameterName stack">
+      -ArgumentList
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies an array of arguments to a method call.
+      </p>
+      <p>
+       This parameter was introduced in Windows PowerShell 3.0.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Object[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         Args
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Begin
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a script block that runs before this cmdlet processes any input objects.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          ScriptBlock
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Confirm
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Prompts you for confirmation before running the cmdlet.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         cf
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -End
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a script block that runs after this cmdlet processes all input objects.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          ScriptBlock
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -InputObject
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the input objects.
+       <em>
+        ForEach-Object
+       </em>
+       runs the script block or operation statement on each input object.
+Enter a variable that contains the objects, or type a command or expression that gets the objects.
+      </p>
+      <p>
+       When you use the
+       <em>
+        InputObject
+       </em>
+       parameter with
+       <strong>
+        ForEach-Object
+       </strong>
+       , instead of piping command results to
+       <strong>
+        ForEach-Object
+       </strong>
+       , the
+       <em>
+        InputObject
+       </em>
+       value is treated as a single object.
+This is true even if the value is a collection that is the result of a command, such as
+       <code>
+        -InputObject (Get-Process)
+       </code>
+       .
+Because
+       <em>
+        InputObject
+       </em>
+       cannot return individual properties from an array or collection of objects, we recommend that if you use
+       <strong>
+        ForEach-Object
+       </strong>
+       to perform operations on a collection of objects for those objects that have specific values in defined properties, you use
+       <strong>
+        ForEach-Object
+       </strong>
+       in the pipeline, as shown in the examples in this topic.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          PSObject
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByValue)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -RemainingScripts
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies all script blocks that are not taken by the
+       <em>
+        Process
+       </em>
+       parameter.
+      </p>
+      <p>
+       This parameter was introduced in Windows PowerShell 3.0.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          ScriptBlock[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -WhatIf
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         wi
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="inputs">
+      Inputs
+     </h2>
+     <p>
+      <strong>
+       System.Management.Automation.PSObject
+      </strong>
+     </p>
+     <p>
+      You can pipe any object to this cmdlet.
+     </p>
+     <h2 id="outputs">
+      Outputs
+     </h2>
+     <p>
+      <strong>
+       System.Management.Automation.PSObject
+      </strong>
+     </p>
+     <p>
+      This cmdlet returns objects that are determined by the input.
+     </p>
+     <h2 id="notes">
+      Notes
+     </h2>
+     <ul>
+      <li>
+       The
+       <strong>
+        ForEach-Object
+       </strong>
+       cmdlet works much like the
+       <strong>
+        Foreach
+       </strong>
+       statement, except that you cannot pipe input to a
+       <strong>
+        Foreach
+       </strong>
+       statement. For more information about the
+       <strong>
+        Foreach
+       </strong>
+       statement, see about_Foreach (
+       <a data-linktype="external" href="http://go.microsoft.com/fwlink/?LinkID=113229">
+        http://go.microsoft.com/fwlink/?LinkID=113229
+       </a>
+       ) in the Microsoft TechNet library.
+      </li>
+     </ul>
+     <h2 id="related-links">
+      RELATED LINKS
+     </h2>
+     <!-- </content> -->
+    </main>
+    <div class="note alert feedback-system-change-alert">
+     <p>
+      Note
+     </p>
+     <p>
+      The feedback system for this content will be changing soon. Old comments will not be carried over. If content within a comment thread is important to you, please save a copy. For more information on the upcoming change,
+      <a href="https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs">
+       we invite you to read our blog post
+      </a>
+      .
+     </p>
+    </div>
+    <div data-bi-name="comments" id="comments-container" role="form">
+    </div>
+   </div>
+  </div>
+  <div class="openfeedback-container" id="openFeedbackContainer">
+  </div>
+  <div class="action-panel">
+  </div>
+ </body>
+</html>

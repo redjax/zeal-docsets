@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html class="no-js hasSidebar hasPageActions hasBreadcrumb conceptual" data-authenticated="false" data-render="docs" dir="ltr" lang="en-us">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Sync-ADObject (addsadministration)" property="og:title"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" property="og:image"/>
+  <meta content="summary" name="twitter:card"/>
+  <meta content="@docsmsft" name="twitter:site"/>
+  <meta content="Sync-ADObject (addsadministration)" name="twitter:title"/>
+  <meta content="Use this topic to help manage Windows and Windows Server technologies with Windows PowerShell." name="twitter:description"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" name="twitter:image"/>
+  <meta content="Microsoft Logo" name="twitter:image:alt"/>
+  <meta content="Use this topic to help manage Windows and Windows Server technologies with Windows PowerShell." name="description"/>
+  <meta content="Docs" name="search.ms_sitename"/>
+  <meta content="powershell-windows" name="search.ms_docsetname"/>
+  <meta content="0" name="version"/>
+  <meta content="en-us" name="locale"/>
+  <meta content="Docs" name="site_name"/>
+  <meta content="MSDN" name="search.ms_product"/>
+  <meta content="MSDN.powershell-windows" name="depot_name"/>
+  <meta content="https://cpubwin.visualstudio.com/DefaultCollection/powershell/_git/powershell/commit/ced7757924addcaea0b7a244ae4d240e4d28d93a?path=%2fdocset%2fwindows%2faddsadministration%2fsync-adobject.md&amp;_a=contents" name="ref_skeleton_gitcommit"/>
+  <meta content="https://cpubwin.visualstudio.com/DefaultCollection/powershell/_git/powershell?path=%2fdocset%2fwindows%2faddsadministration%2fsync-adobject.md&amp;version=GBlive&amp;_a=contents" name="original_ref_skeleton_git_url"/>
+  <meta content="2017-09-15 03:44 AM" name="updated_at"/>
+  <meta content="ff37cce9-cbab-6c43-f473-af6261e8aca5" name="document_id"/>
+  <meta content="058ee184-f536-cb05-a55a-9446e77ae893" name="document_version_independent_id"/>
+  <meta content="powershell" name="page_type"/>
+  <meta content="command" name="page_kind"/>
+  <meta content="manage" name="ms.mktglfcycl"/>
+  <meta content="library" name="ms.sitesec"/>
+  <meta content="brianlic" name="ms.author"/>
+  <meta content="brianlic-msft" name="author"/>
+  <meta content="Microsoft.ActiveDirectory.Management.dll-Help.xml" name="external_help_file"/>
+  <meta content="powershell, cmdlet" name="keywords"/>
+  <meta content="alanth" name="manager"/>
+  <meta content="12/27/2016" name="ms.date"/>
+  <meta content="w10" name="ms.prod"/>
+  <meta content="powershell-windows" name="ms.technology"/>
+  <meta content="reference" name="ms.topic"/>
+  <meta content="" name="online_version"/>
+  <meta content="2.0.0" name="schema"/>
+  <meta content="A9F81EF1-BF28-4F63-AF88-9490FB9E9DFA" name="ms.assetid"/>
+  <meta content="powershell" name="ms.devlang"/>
+  <meta content="INDEX, FOLLOW" name="ROBOTS"/>
+  <meta content="/powershell/windows/bread/toc.json?view=win10-ps" name="breadcrumb_path"/>
+  <meta content="powershell" name="apiPlatform"/>
+  <meta content="MSDocsHeader-WindowsIT" name="uhfHeaderId"/>
+  <meta content="../win10-ps/toc.json?view=win10-ps" name="toc_rel"/>
+  <link href="https://docs.microsoft.com/en-us/powershell/module/addsadministration/sync-adobject" rel="canonical"/>
+  <title>
+   Sync-ADObject
+  </title>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/e4a1f3a3.site.css" rel="stylesheet"/>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/31353636.conceptual.css" rel="stylesheet"/>
+ </head>
+ <body dir="ltr" lang="en-us">
+  <div class="header-holder">
+   <div data-bi-name="header" id="headerAreaHolder">
+    <div id="uhf-placeholder">
+    </div>
+   </div>
+   <div class="disclaimer-holder" id="disclaimer-holder">
+   </div>
+  </div>
+  <div class="container mainContainer" data-bi-name="body">
+   <div class="content-header" data-bi-name="content-header">
+    <div class="content-header-controls">
+     <button class="contents-button button-border" data-bi-name="contents-expand" type="button">
+      <span class="docon docon-menu">
+      </span>
+      Contents
+     </button>
+    </div>
+    <div class="content-header-controls">
+     <button class="ap-collapse-behavior ap-expanded button-border" data-bi-name="ap-collapse" type="button">
+      <span class="docon docon-exit-mode">
+      </span>
+      Exit focus mode
+     </button>
+    </div>
+   </div>
+   <div class="primary-holder">
+    <main class="content" data-bi-name="content" dir="ltr" id="main" lang="en-us" role="main">
+     <!-- <content> -->
+     <h1>
+      Sync-ADObject
+     </h1>
+     <div class="metadata">
+      <dl class="attributeList">
+       <dt>
+        Module:
+       </dt>
+       <dd>
+        <a data-linktype="relative-path" href="./.html">
+         addsadministration
+        </a>
+       </dd>
+      </dl>
+     </div>
+     <div class="summaryHolder">
+      <div class="summary">
+       Replicates a single object between any two domain controllers that have partitions in common.
+      </div>
+     </div>
+     <h2 class="hiddenAnchor" id="syntax">
+      Syntax
+     </h2>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Sync-ADObject
+    [-AuthType &lt;ADAuthType&gt;]
+    [-Credential &lt;PSCredential&gt;]
+    [-Destination] &lt;String&gt;
+    [-Object] &lt;ADObject&gt;
+    [-PassThru]
+    [-PasswordOnly]
+    [[-Source] &lt;String&gt;]
+    [&lt;CommonParameters&gt;]</code></pre>
+     <h2 id="description">
+      Description
+     </h2>
+     <p>
+      The
+      <strong>
+       Sync-ADObject
+      </strong>
+      cmdlet replicates a single object between any two domain controllers that have partitions in common.
+The two domain controllers do not need to be direct replication partners.
+You can also use this cmdlet to populate passwords in a read-only domain controller (RODC) cache.
+     </p>
+     <h2 id="examples">
+      Examples
+     </h2>
+     <p>
+      <strong>
+       Example 1: Replicate an object to another location
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Sync-ADObject -Object "CN=AccountManagers,OU=AccountDeptOU,DC=corp,DC=contoso,DC=com" -Source "corp-DC01" -Destination "corp-DC02"</code></pre>
+     <p>
+      This command replicates an object with the distinguished name CN=AccountManagers,OU=AccountDeptOU,DC=corp,DC=contoso,DC=com from corp-DC01 to corp-DC02.
+     </p>
+     <p>
+      <strong>
+       Example 2: Pre-cache a password to a domain controller
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-ADUser -Identity pattifuller | Sync-ADObject -Destination "corp-RODC01" -PasswordOnly</code></pre>
+     <p>
+      This command pre-caches the password of Patti Fuller to the read-only domain controller corp-RODC01 using the SAM account name of the user.
+     </p>
+     <h2 id="required-parameters">
+      Required Parameters
+     </h2>
+     <div class="parameterName stack">
+      -Destination
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the identity of the Active Directory server that acts as the destination for synchronizing this data.
+This parameter works similarly to the
+       <strong>
+        Server
+       </strong>
+       parameter as used on the
+       <strong>
+        Set-ADObject
+       </strong>
+       cmdlet with some restrictions.
+It does not allow domain or forest names to be used.
+Valid formats for specifying the destination server are:
+      </p>
+      <ul>
+       <li>
+        Host name
+       </li>
+       <li>
+        Host name and port
+       </li>
+       <li>
+        Fully qualified directory server name and port
+       </li>
+       <li>
+        IP address
+       </li>
+       <li>
+        IP address and port
+       </li>
+      </ul>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         Server, HostName, IPv4Address
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         2
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Object
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies an Active Directory object by providing one of the following property values.
+The identifier in parentheses is the Lightweight Directory Access Protocol (LDAP) display name for the attribute.
+The acceptable values for this parameter are:
+      </p>
+      <ul>
+       <li>
+        A distinguished name
+       </li>
+       <li>
+        A GUID (objectGUID)
+       </li>
+      </ul>
+      <p>
+       The cmdlet searches the default naming context or partition to find the object.
+If two or more objects are found, the cmdlet returns a non-terminating error.
+      </p>
+      <p>
+       This parameter can also get this object through the pipeline or you can set this parameter to an object instance.
+      </p>
+      <p>
+       Derived types, such as the following, are also accepted:
+      </p>
+      <ul>
+       <li>
+        <strong>
+         Microsoft.ActiveDirectory.Management.ADGroup
+        </strong>
+       </li>
+       <li>
+        <strong>
+         Microsoft.ActiveDirectory.Management.ADUser
+        </strong>
+       </li>
+       <li>
+        <strong>
+         Microsoft.ActiveDirectory.Management.ADComputer
+        </strong>
+       </li>
+       <li>
+        <strong>
+         Microsoft.ActiveDirectory.Management.ADServiceAccount
+        </strong>
+       </li>
+       <li>
+        <strong>
+         Microsoft.ActiveDirectory.Management.ADOrganizationalUnit
+        </strong>
+       </li>
+       <li>
+        <strong>
+         Microsoft.ActiveDirectory.Management.ADFineGrainedPasswordPolicy
+        </strong>
+       </li>
+       <li>
+        <strong>
+         Microsoft.ActiveDirectory.Management.ADDomain
+        </strong>
+       </li>
+      </ul>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          ADObject
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         0
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByValue)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="optional-parameters">
+      Optional Parameters
+     </h2>
+     <div class="parameterName stack">
+      -AuthType
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the authentication method to use.
+The acceptable values for this parameter are:
+      </p>
+      <ul>
+       <li>
+        Negotiate or 0
+       </li>
+       <li>
+        Basic or 1
+       </li>
+      </ul>
+      <p>
+       The default authentication method is Negotiate.
+      </p>
+      <p>
+       A Secure Sockets Layer (SSL) connection is required for the Basic authentication method.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          ADAuthType
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Parameter Sets:
+        </td>
+        <td>
+         Negotiate, Basic
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Credential
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a user account that has permission to perform this action.
+The default is the current user.
+      </p>
+      <p>
+       Type a user name, such as User01 or Domain01\User01, or enter a
+       <strong>
+        PSCredential
+       </strong>
+       object, such as one generated by the
+       <a data-linktype="external" href="http://go.microsoft.com/fwlink/?LinkID=293936">
+        Get-Credential
+       </a>
+       cmdlet.
+If you type a user name, you will be prompted for a password.
+      </p>
+      <p>
+       This parameter is not supported by any providers installed with Windows PowerShell.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          PSCredential
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -PassThru
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Returns an object representing the item with which you are working.
+By default, this cmdlet does not generate any output.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -PasswordOnly
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that this cmdlet populates a read-only domain controller (RODC) password cache with the password of the account specified in the
+       <strong>
+        Object
+       </strong>
+       parameter.
+If specified, no data other than the password is replicated.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Source
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the identity of the Active Directory server that acts as the source for synchronizing this data.
+This parameter works similarly to the
+       <strong>
+        Server
+       </strong>
+       parameter as used on the
+       <strong>
+        Set-ADObject
+       </strong>
+       cmdlet with some restrictions.
+You cannot use domain or forest names.
+      </p>
+      <p>
+       Valid formats for specifying the destination server are the following:
+      </p>
+      <ul>
+       <li>
+        Host name
+       </li>
+       <li>
+        Host name and port
+       </li>
+       <li>
+        Fully qualified directory server name and port
+       </li>
+       <li>
+        IP address
+       </li>
+       <li>
+        IP address and port
+       </li>
+      </ul>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         1
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="inputs">
+      Inputs
+     </h2>
+     <p>
+      <strong>
+       Microsoft.ActiveDirectory.Management.ADObject
+      </strong>
+     </p>
+     <p>
+      Derived types, such as the following are also accepted:
+     </p>
+     <ul>
+      <li>
+       <strong>
+        Microsoft.ActiveDirectory.Management.ADGroup
+       </strong>
+      </li>
+      <li>
+       <strong>
+        Microsoft.ActiveDirectory.Management.ADUser
+       </strong>
+      </li>
+      <li>
+       <strong>
+        Microsoft.ActiveDirectory.Management.ADComputer
+       </strong>
+      </li>
+      <li>
+       <strong>
+        Microsoft.ActiveDirectory.Management.ADServiceAccount
+       </strong>
+      </li>
+      <li>
+       <strong>
+        Microsoft.ActiveDirectory.Management.ADOrganizationalUnit
+       </strong>
+      </li>
+      <li>
+       <strong>
+        Microsoft.ActiveDirectory.Management.ADFineGrainedPasswordPolicy
+       </strong>
+      </li>
+      <li>
+       <strong>
+        Microsoft.ActiveDirectory.Management.ADDomain
+       </strong>
+      </li>
+     </ul>
+     <h2 id="related-links">
+      Related Links
+     </h2>
+     <ul>
+      <li>
+       <a data-linktype="relative-path" href="./get-adobject.html">
+        Get-ADObject
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="./move-adobject.html">
+        Move-ADObject
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="./new-adobject.html">
+        New-ADObject
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="./remove-adobject.html">
+        Remove-ADObject
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="./rename-adobject.html">
+        Rename-ADObject
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="./restore-adobject.html">
+        Restore-ADObject
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="./set-adobject.html">
+        Set-ADObject
+       </a>
+      </li>
+     </ul>
+     <!-- </content> -->
+    </main>
+    <section class="feedback-section" data-bi-name="feedback-section">
+     <h2 id="feedback">
+      Feedback
+     </h2>
+     <div class="alert choose-feedback-type">
+      <p>
+       We'd love to hear your thoughts. Choose the type you'd like to provide:
+      </p>
+      <div class="choose-feedback-buttons">
+       <a class="button-border feedback-type-product" data-bi-name="product-feedback" href="https://windowsserver.uservoice.com/forums/301869-powershell">
+        Product feedback
+        <span aria-hidden="true" class="docon docon-navigate-external">
+        </span>
+       </a>
+       <div class="button-group">
+        <button class="button-border feedback-sign-in-button" data-bi-name="feedback-sign-in">
+         <span aria-hidden="true" class="docon docon-brand-github">
+         </span>
+         Sign in to give documentation feedback
+        </button>
+        <button aria-controls="feedback-form" aria-expanded="false" class="button-border feedback-form-toggle" data-bi-name="documentation-feedback" hidden="">
+         Content feedback
+        </button>
+        <div auto-align="" class="dropdown has-caret">
+         <button aria-controls="fbm0" aria-expanded="false" aria-haspopup="true" aria-label="Expand documentation feedback menu" class="button-border dropdown-trigger" data-bi-name="documentation-feedback-menu">
+          <span aria-hidden="true" class="docon docon-chevron-down-light">
+          </span>
+         </button>
+         <div class="dropdown-menu documentation-feedback-menu" id="fbm0" role="menu">
+          You may also leave feedback
+          <a data-bi-name="create-issue-on-github" href="{0}">
+           directly on GitHub
+           <span aria-hidden="true" class="docon docon-navigate-external">
+           </span>
+          </a>
+          .
+         </div>
+        </div>
+       </div>
+      </div>
+      <p>
+       <small>
+        Our new feedback system is built on GitHub Issues. Read about this change in
+        <a href="https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs">
+         our blog post
+        </a>
+        .
+       </small>
+      </p>
+     </div>
+     <form accept-charset="UTF-8" action="javascript:" autocomplete="off" class="feedback-form" hidden="" id="feedback-form">
+      <h3 class="feedback-form-heading current-user">
+       <img alt="Avatar" aria-hidden="true" class="avatar" height="36" width="36"/>
+       <span aria-hidden="true" class="username">
+       </span>
+       <span class="visually-hidden">
+        Liquid error: Can't find the localized string giveDocumentationFeedback for template Conceptual.
+       </span>
+      </h3>
+      <label>
+       <span class="visually-hidden">
+        Title
+       </span>
+       <input name="title" pattern=".*\w.*" placeholder="Title" required="" type="text"/>
+      </label>
+      <label>
+       <span class="visually-hidden">
+        Leave a comment
+       </span>
+       <textarea name="body" placeholder="Leave a comment" required=""></textarea>
+      </label>
+      <div class="action-container">
+       <button class="primary-action" name="submit" type="submit">
+        Submit feedback
+       </button>
+      </div>
+     </form>
+     <div class="feedback-status alert busy" role="alert">
+      <p>
+       Loading feedback...
+      </p>
+     </div>
+     <div class="feedback-tab-group tabGroup" data-tab-group-independent="" hidden="">
+      <ul role="tablist">
+       <li role="presentation">
+        <a aria-controls="tabpanel-issues-open" aria-label="Open Issues" data-tab="issues-open" href="#tabpanel-issues-open" role="tab">
+        </a>
+       </li>
+       <li role="presentation">
+        <a aria-controls="tabpanel-issues-closed" aria-label="Closed Issues" data-tab="issues-closed" href="#tabpanel-issues-closed" role="tab">
+        </a>
+       </li>
+      </ul>
+      <section data-tab="issues-open" id="tabpanel-issues-open" role="tabpanel">
+       <div class="no-issues-placeholder">
+        There are no open issues
+       </div>
+       <ul aria-label="Open Issues" class="github-issues-list">
+       </ul>
+      </section>
+      <section data-tab="issues-closed" id="tabpanel-issues-closed" role="tabpanel">
+       <div class="no-issues-placeholder">
+        There are no closed issues
+       </div>
+       <ul aria-label="Closed Issues" class="github-issues-list">
+       </ul>
+      </section>
+     </div>
+     <div class="action-container">
+      <a class="view-on-github" data-bi-name="view-on-github" hidden="" href="https://github.com/MicrosoftDocs/windows-powershell-docs/issues">
+       <span aria-hidden="true" class="docon docon-brand-github">
+       </span>
+       <span>
+        View on GitHub
+       </span>
+       <span aria-hidden="true" class="docon docon-navigate-external">
+       </span>
+      </a>
+     </div>
+    </section>
+   </div>
+  </div>
+  <div class="openfeedback-container" id="openFeedbackContainer">
+  </div>
+  <div class="action-panel">
+  </div>
+ </body>
+</html>

@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html class="no-js hasSidebar hasPageActions hasBreadcrumb conceptual" data-authenticated="false" data-render="docs" dir="ltr" lang="en-us">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Export-Clixml (Microsoft.PowerShell.Utility)" property="og:title"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" property="og:image"/>
+  <meta content="summary" name="twitter:card"/>
+  <meta content="@docsmsft" name="twitter:site"/>
+  <meta content="Export-Clixml (Microsoft.PowerShell.Utility)" name="twitter:title"/>
+  <meta content="The Export-CliXml cmdlet creates an XML-based representation of an object or objects and stores it in a file. You can then use the Import-Clixml cmdlet to re-create the saved object based on the contâ¦" name="twitter:description"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" name="twitter:image"/>
+  <meta content="Microsoft Logo" name="twitter:image:alt"/>
+  <meta content="The Export-CliXml cmdlet creates an XML-based representation of an object or objects and stores it in a file. You can then use the Import-Clixml cmdlet to re-create the saved object based on the contâ¦" name="description"/>
+  <meta content="Docs" name="search.ms_sitename"/>
+  <meta content="PowerShell_PowerShell-docs_reference" name="search.ms_docsetname"/>
+  <meta content="0" name="version"/>
+  <meta content="en-us" name="locale"/>
+  <meta content="Docs" name="site_name"/>
+  <meta content="PowerShell" name="search.ms_product"/>
+  <meta content="PowerShell.PowerShell_PowerShell-docs_reference" name="depot_name"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/ae0be46ae95b5950ec3f0dab2e58e05b836ce66a/reference/6/Microsoft.PowerShell.Utility/Export-Clixml.md" name="ref_skeleton_gitcommit"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/live/reference/6/Microsoft.PowerShell.Utility/Export-Clixml.md" name="original_ref_skeleton_git_url"/>
+  <meta content="2018-04-26 09:41 PM" name="updated_at"/>
+  <meta content="10fd5191-d369-2d64-5766-d4910b752593" name="document_id"/>
+  <meta content="cdbc31a6-1fee-22d3-3777-c47666a9aaa8" name="document_version_independent_id"/>
+  <meta content="powershell" name="page_type"/>
+  <meta content="command" name="page_kind"/>
+  <meta content="06/09/2017" name="ms.date"/>
+  <meta content="2.0.0" name="schema"/>
+  <meta content="powershell,cmdlet" name="keywords"/>
+  <meta content="http://go.microsoft.com/fwlink/?LinkId=821767" name="online_version"/>
+  <meta content="Microsoft.PowerShell.Commands.Utility.dll-Help.xml" name="external_help_file"/>
+  <meta content="powershell" name="ms.devlang"/>
+  <meta content="INDEX, FOLLOW" name="ROBOTS"/>
+  <meta content="sdwheeler" name="author"/>
+  <meta content="sewhee" name="ms.author"/>
+  <meta content="carmonm" name="manager"/>
+  <meta content="/powershell/bread-pscore/toc.yml?view=powershell-6" name="breadcrumb_path"/>
+  <meta content="powershell" name="apiPlatform"/>
+  <meta content="reference" name="ms.topic"/>
+  <meta content="windows, macos, linux" name="ms.tgt_pltfr"/>
+  <meta content="powershell-scripting" name="ms.technology"/>
+  <meta content="powershell" name="ms.prod"/>
+  <meta content="MSDocsHeader-Powershell" name="uhfHeaderId"/>
+  <meta content="../psdocs/toc.json?view=powershell-6" name="toc_rel"/>
+  <link href="https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/export-clixml" rel="canonical"/>
+  <title>
+   Export-Clixml
+  </title>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/60aac04b.site.css" rel="stylesheet"/>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/fdb8a38a.conceptual.css" rel="stylesheet"/>
+ </head>
+ <body dir="ltr" lang="en-us">
+  <div class="header-holder">
+   <div data-bi-name="header" id="headerAreaHolder">
+    <div id="uhf-placeholder">
+    </div>
+   </div>
+   <div class="disclaimer-holder" id="disclaimer-holder">
+   </div>
+  </div>
+  <div class="container mainContainer" data-bi-name="body">
+   <div class="content-header" data-bi-name="content-header">
+    <div class="content-header-controls">
+     <button class="contents-button button-border" data-bi-name="contents-expand" type="button">
+      <span class="docon docon-menu">
+      </span>
+      Contents
+     </button>
+    </div>
+    <div class="content-header-controls">
+     <button class="ap-collapse-behavior ap-expanded button-border" data-bi-name="ap-collapse" type="button">
+      <span class="docon docon-exit-mode">
+      </span>
+      Exit focus mode
+     </button>
+    </div>
+   </div>
+   <div class="primary-holder">
+    <main class="content" data-bi-name="content" dir="ltr" id="main" lang="en-us" role="main">
+     <!-- <content> -->
+     <h1>
+      Export-Clixml
+     </h1>
+     <div class="metadata">
+      <dl class="attributeList">
+       <dt>
+        Module:
+       </dt>
+       <dd>
+        <a data-linktype="relative-path" href="./Microsoft.PowerShell.Utility.html">
+         Microsoft.PowerShell.Utility
+        </a>
+       </dd>
+      </dl>
+     </div>
+     <div class="summaryHolder">
+      <div class="summary">
+       Creates an XML-based representation of an object or objects and stores it in a file.
+      </div>
+     </div>
+     <h2 class="hiddenAnchor" id="syntax">
+      Syntax
+     </h2>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Export-Clixml
+      [-Depth &lt;Int32&gt;]
+      [-Path] &lt;String&gt;
+      -InputObject &lt;PSObject&gt;
+      [-Force]
+      [-NoClobber]
+      [-Encoding &lt;String&gt;]
+      [-WhatIf]
+      [-Confirm]
+      [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Export-Clixml
+      [-Depth &lt;Int32&gt;]
+      -LiteralPath &lt;String&gt;
+      -InputObject &lt;PSObject&gt;
+      [-Force]
+      [-NoClobber]
+      [-Encoding &lt;String&gt;]
+      [-WhatIf]
+      [-Confirm]
+      [&lt;CommonParameters&gt;]</code></pre>
+     <h2 id="description">
+      Description
+     </h2>
+     <p>
+      The
+      <strong>
+       Export-CliXml
+      </strong>
+      cmdlet creates an XML-based representation of an object or objects and stores it in a file.
+You can then use the Import-Clixml cmdlet to re-create the saved object based on the contents of that file.
+     </p>
+     <p>
+      This cmdlet is similar to ConvertTo-Xml, except that
+      <strong>
+       Export-CliXml
+      </strong>
+      stores the resulting XML in a file.
+      <strong>
+       ConvertTo-XML
+      </strong>
+      returns the XML, so you can continue to process it in Windows PowerShell.
+     </p>
+     <p>
+      A valuable use of
+      <strong>
+       Export-CliXml
+      </strong>
+      is to export credentials and secure strings securely as XML.
+For an example of how to do this, see Example 3.
+     </p>
+     <h2 id="examples">
+      Examples
+     </h2>
+     <p>
+      <strong>
+       Example 1: Export a string to an XML file
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">"This is a test" | Export-Clixml sample.xml</code></pre>
+     <p>
+      This command creates an XML file that stores a representation of the string, "This is a test".
+     </p>
+     <p>
+      <strong>
+       Example 2: Export an object to an XML file
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">Get-Acl C:\test.txt | Export-Clixml -Path "fileacl.xml"
+
+$Fileacl = Import-Clixml "fileacl.xml"</code></pre>
+     <p>
+      This example shows how to export an object to an XML file and then create an object by importing the XML from the file.
+     </p>
+     <p>
+      The first command uses the Get-Acl cmdlet to get the security descriptor of the Test.txt file.
+It uses a pipeline operator to pass the security descriptor to
+      <strong>
+       Export-Clixml
+      </strong>
+      , which stores an XML-based representation of the object in a file named FileACL.xml.
+     </p>
+     <p>
+      The second command uses the Import-Clixml cmdlet to create an object from the XML in the FileACL.xml file.
+Then, it saves the object in the $FileAcl variable.
+     </p>
+     <p>
+      <strong>
+       Example 3: Encrypt an exported credential object
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">$CredXmlPath = Join-Path (Split-Path $Profile) TestScript.ps1.credential
+
+$credential | Export-CliXml $CredPath
+
+$CredXmlPath = Join-Path (Split-Path $Profile) TestScript.ps1.credential
+
+$Credential = Import-CliXml $CredXmlPath</code></pre>
+     <p>
+      The
+      <strong>
+       Export-CliXml
+      </strong>
+      cmdlet encrypts credential objects by using the
+      <a data-linktype="external" href="http://msdn.microsoft.com/library/windows/apps/xaml/hh464970.aspx">
+       Windows Data Protection API
+      </a>
+      .
+This ensures that only your user account on only that computer can decrypt the contents of the credential object. The exported CliXml file can neither be used on a different computer nor by a different user.
+     </p>
+     <p>
+      In this example, given a credential that you've stored in the $Credential variable by running the Get-Credential cmdlet, you can run the
+      <strong>
+       Export-CliXml
+      </strong>
+      cmdlet to save the credential to disk. In the example, the file in which the credential is stored is represented by TestScript.ps1.credential.
+Replace TestScript with the name of the script with which you are loading the credential.
+     </p>
+     <p>
+      In the second command, pipe the credential object to
+      <strong>
+       Export-CliXml
+      </strong>
+      , and save it to the path, $CredXmlPath, that you specified in the first command.
+     </p>
+     <p>
+      To import the credential automatically into your script, run the final two commands.
+This time, you are running Import-Clixml to import the secured credential object into your script.
+This eliminates the risk of exposing plain-text passwords in your script.
+     </p>
+     <h2 id="required-parameters">
+      Required Parameters
+     </h2>
+     <div class="parameterName stack">
+      -InputObject
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the object to be converted.
+Enter a variable that contains the objects, or type a command or expression that gets the objects.
+You can also pipe objects to
+       <strong>
+        Export-Clixml
+       </strong>
+       .
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          PSObject
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByValue)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -LiteralPath
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the path to the file where the XML representation of the object will be stored.
+Unlike
+       <em>
+        Path
+       </em>
+       , the value of the
+       <em>
+        LiteralPath
+       </em>
+       parameter is used exactly as it is typed.
+No characters are interpreted as wildcards.
+If the path includes escape characters, enclose it in single quotation marks.
+Single quotation marks tell Windows PowerShell not to interpret any characters as escape sequences.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         PSPath
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Path
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the path to the file where the XML representation of the object will be stored.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         1
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="optional-parameters">
+      Optional Parameters
+     </h2>
+     <div class="parameterName stack">
+      -Confirm
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Prompts you for confirmation before running the cmdlet.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         cf
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Depth
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies how many levels of contained objects are included in the XML representation.
+The default value is 2.
+      </p>
+      <p>
+       The default value can be overridden for the object type in the Types.ps1xml files.
+For more information, see about_Types.ps1xml.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Int32
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Encoding
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the type of encoding for the target file.
+The acceptable values for this parameter are:
+      </p>
+      <ul>
+       <li>
+        ASCII
+       </li>
+       <li>
+        UTF8
+       </li>
+       <li>
+        UTF7
+       </li>
+       <li>
+        UTF32
+       </li>
+       <li>
+        Unicode
+       </li>
+       <li>
+        BigEndianUnicode
+       </li>
+       <li>
+        Default
+       </li>
+       <li>
+        OEM
+       </li>
+      </ul>
+      <p>
+       The default value is Unicode.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Parameter Sets:
+        </td>
+        <td>
+         Unicode, UTF7, UTF8, ASCII, UTF32, BigEndianUnicode, Default, OEM
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Force
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Forces the command to run without asking for user confirmation.
+      </p>
+      <p>
+       Causes the cmdlet to clear the read-only attribute of the output file if necessary.
+The cmdlet will attempt to reset the read-only attribute when the command completes.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -NoClobber
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that that the cmdlet does not overwrite the contents of an existing file.
+By default, if a file exists in the specified path,
+       <strong>
+        Export-Clixml
+       </strong>
+       overwrites the file without warning.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         NoOverwrite
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -WhatIf
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         wi
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="inputs">
+      Inputs
+     </h2>
+     <p>
+      <strong>
+       System.Management.Automation.PSObject
+      </strong>
+     </p>
+     <p>
+      You can pipe any object to
+      <strong>
+       Export-Clixml
+      </strong>
+      .
+     </p>
+     <h2 id="outputs">
+      Outputs
+     </h2>
+     <p>
+      <strong>
+       System.IO.FileInfo
+      </strong>
+     </p>
+     <p>
+      <strong>
+       Export-Clixml
+      </strong>
+      creates a file that contains the XML.
+     </p>
+     <h2 id="related-links">
+      Related Links
+     </h2>
+     <ul>
+      <li>
+       <a data-linktype="external" href="http://blogs.technet.com/b/heyscriptingguy/archive/2011/06/05/use-powershell-to-pass-credentials-to-legacy-systems.aspx">
+        Use PowerShell to Pass Credentials to Legacy Systems
+       </a>
+      </li>
+      <li>
+       <a data-linktype="external" href="http://powershellcookbook.com/recipe/PukO/securely-store-credentials-on-disk">
+        Securely Store Credentials on Disk
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="convertto-html.html">
+        ConvertTo-Html
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="convertto-xml.html">
+        ConvertTo-Xml
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="export-csv.html">
+        Export-Csv
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="convertto-clixml.html">
+        ConvertTo-Clixml
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="convertfrom-clixml.html">
+        ConvertFrom-Clixml
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="import-clixml.html">
+        Import-Clixml
+       </a>
+      </li>
+     </ul>
+     <!-- </content> -->
+    </main>
+    <div class="note alert feedback-system-change-alert">
+     <p>
+      Note
+     </p>
+     <p>
+      The feedback system for this content will be changing soon. Old comments will not be carried over. If content within a comment thread is important to you, please save a copy. For more information on the upcoming change,
+      <a href="https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs">
+       we invite you to read our blog post
+      </a>
+      .
+     </p>
+    </div>
+    <div data-bi-name="comments" id="comments-container" role="form">
+    </div>
+   </div>
+  </div>
+  <div class="openfeedback-container" id="openFeedbackContainer">
+  </div>
+  <div class="action-panel">
+  </div>
+ </body>
+</html>

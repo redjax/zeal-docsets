@@ -1,0 +1,1773 @@
+<!DOCTYPE html>
+<html class="no-js hasSidebar hasPageActions hasBreadcrumb conceptual" data-authenticated="false" data-render="docs" dir="ltr" lang="en-us">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Get-Module (Microsoft.PowerShell.Core)" property="og:title"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" property="og:image"/>
+  <meta content="summary" name="twitter:card"/>
+  <meta content="@docsmsft" name="twitter:site"/>
+  <meta content="Get-Module (Microsoft.PowerShell.Core)" name="twitter:title"/>
+  <meta content="The Get-Module cmdlet gets the Windows PowerShell modules that have been imported, or that can be imported, into a Windows PowerShell session. The module object that Get-Module returns contains valuaâ¦" name="twitter:description"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" name="twitter:image"/>
+  <meta content="Microsoft Logo" name="twitter:image:alt"/>
+  <meta content="The Get-Module cmdlet gets the Windows PowerShell modules that have been imported, or that can be imported, into a Windows PowerShell session. The module object that Get-Module returns contains valuaâ¦" name="description"/>
+  <meta content="Docs" name="search.ms_sitename"/>
+  <meta content="PowerShell_PowerShell-docs_reference" name="search.ms_docsetname"/>
+  <meta content="0" name="version"/>
+  <meta content="en-us" name="locale"/>
+  <meta content="Docs" name="site_name"/>
+  <meta content="PowerShell" name="search.ms_product"/>
+  <meta content="PowerShell.PowerShell_PowerShell-docs_reference" name="depot_name"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/40f24ba2547a1351ec9437061c784a28baaf81fe/reference/6/Microsoft.PowerShell.Core/Get-Module.md" name="ref_skeleton_gitcommit"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/live/reference/6/Microsoft.PowerShell.Core/Get-Module.md" name="original_ref_skeleton_git_url"/>
+  <meta content="2018-05-04 01:53 PM" name="updated_at"/>
+  <meta content="9b503c44-81cb-9ba3-6438-254117be8b08" name="document_id"/>
+  <meta content="13881f61-219e-b1c2-8433-57d6b0627849" name="document_version_independent_id"/>
+  <meta content="powershell" name="page_type"/>
+  <meta content="command" name="page_kind"/>
+  <meta content="06/09/2017" name="ms.date"/>
+  <meta content="2.0.0" name="schema"/>
+  <meta content="powershell,cmdlet" name="keywords"/>
+  <meta content="http://go.microsoft.com/fwlink/?LinkId=821486" name="online_version"/>
+  <meta content="System.Management.Automation.dll-Help.xml" name="external_help_file"/>
+  <meta content="powershell" name="ms.devlang"/>
+  <meta content="INDEX, FOLLOW" name="ROBOTS"/>
+  <meta content="sdwheeler" name="author"/>
+  <meta content="sewhee" name="ms.author"/>
+  <meta content="carmonm" name="manager"/>
+  <meta content="/powershell/bread-pscore/toc.yml?view=powershell-6" name="breadcrumb_path"/>
+  <meta content="powershell" name="apiPlatform"/>
+  <meta content="reference" name="ms.topic"/>
+  <meta content="windows, macos, linux" name="ms.tgt_pltfr"/>
+  <meta content="powershell-scripting" name="ms.technology"/>
+  <meta content="powershell" name="ms.prod"/>
+  <meta content="MSDocsHeader-Powershell" name="uhfHeaderId"/>
+  <meta content="../psdocs/toc.json?view=powershell-6" name="toc_rel"/>
+  <link href="https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/get-module" rel="canonical"/>
+  <title>
+   Get-Module
+  </title>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/60aac04b.site.css" rel="stylesheet"/>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/fdb8a38a.conceptual.css" rel="stylesheet"/>
+ </head>
+ <body dir="ltr" lang="en-us">
+  <div class="header-holder">
+   <div data-bi-name="header" id="headerAreaHolder">
+    <div id="uhf-placeholder">
+    </div>
+   </div>
+   <div class="disclaimer-holder" id="disclaimer-holder">
+   </div>
+  </div>
+  <div class="container mainContainer" data-bi-name="body">
+   <div class="content-header" data-bi-name="content-header">
+    <div class="content-header-controls">
+     <button class="contents-button button-border" data-bi-name="contents-expand" type="button">
+      <span class="docon docon-menu">
+      </span>
+      Contents
+     </button>
+    </div>
+    <div class="content-header-controls">
+     <button class="ap-collapse-behavior ap-expanded button-border" data-bi-name="ap-collapse" type="button">
+      <span class="docon docon-exit-mode">
+      </span>
+      Exit focus mode
+     </button>
+    </div>
+   </div>
+   <div class="primary-holder">
+    <main class="content" data-bi-name="content" dir="ltr" id="main" lang="en-us" role="main">
+     <!-- <content> -->
+     <h1>
+      Get-Module
+     </h1>
+     <div class="metadata">
+      <dl class="attributeList">
+       <dt>
+        Module:
+       </dt>
+       <dd>
+        <a data-linktype="relative-path" href="./Microsoft.PowerShell.Core.html">
+         Microsoft.PowerShell.Core
+        </a>
+       </dd>
+      </dl>
+     </div>
+     <div class="summaryHolder">
+      <div class="summary">
+       Gets the modules that have been imported or that can be imported into the current session.
+      </div>
+     </div>
+     <h2 class="hiddenAnchor" id="syntax">
+      Syntax
+     </h2>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Get-Module
+   [[-Name] &lt;String[]&gt;]
+   [-FullyQualifiedName &lt;ModuleSpecification[]&gt;]
+   [-All]
+   [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Get-Module
+   [[-Name] &lt;String[]&gt;]
+   [-FullyQualifiedName &lt;ModuleSpecification[]&gt;]
+   [-All]
+   [-ListAvailable]
+   [-PSEdition &lt;String&gt;]
+   [-Refresh]
+   [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Get-Module
+   [[-Name] &lt;String[]&gt;]
+   [-FullyQualifiedName &lt;ModuleSpecification[]&gt;]
+   [-ListAvailable]
+   [-PSEdition &lt;String&gt;]
+   [-Refresh]
+   -PSSession &lt;PSSession&gt;
+   [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Get-Module
+   [[-Name] &lt;String[]&gt;]
+   [-FullyQualifiedName &lt;ModuleSpecification[]&gt;]
+   [-ListAvailable]
+   [-Refresh]
+   -CimSession &lt;CimSession&gt;
+   [-CimResourceUri &lt;Uri&gt;]
+   [-CimNamespace &lt;String&gt;]
+   [&lt;CommonParameters&gt;]</code></pre>
+     <h2 id="description">
+      Description
+     </h2>
+     <p>
+      The
+      <code>
+       Get-Module
+      </code>
+      cmdlet gets the Windows PowerShell modules that have been imported, or that can be imported, into a Windows PowerShell session.
+The module object that
+      <code>
+       Get-Module
+      </code>
+      returns contains valuable information about the module.
+You can also pipe the module objects to other cmdlets, such as the
+      <code>
+       Import-Module
+      </code>
+      and
+      <code>
+       Remove-Module
+      </code>
+      cmdlets.
+     </p>
+     <p>
+      Without parameters,
+      <code>
+       Get-Module
+      </code>
+      gets modules that have been imported into the current session.
+To get all installed modules, specify the
+      <strong>
+       ListAvailable
+      </strong>
+      parameter.
+     </p>
+     <p>
+      <code>
+       Get-Module
+      </code>
+      gets modules, but it does not import them.
+Starting in Windows PowerShell 3.0, modules are automatically imported when you use a command in the module, but a
+      <code>
+       Get-Module
+      </code>
+      command does not trigger an automatic import.
+You can also import the modules into your session by using the
+      <code>
+       Import-Module
+      </code>
+      cmdlet.
+     </p>
+     <p>
+      Starting in Windows PowerShell 3.0, you can get and then, import modules from remote sessions into the local session.
+This strategy uses the Implicit Remoting feature of Windows PowerShell and is equivalent to using the
+      <code>
+       Import-PSSession
+      </code>
+      cmdlet.
+When you use commands in modules imported from another session, the commands run implicitly in the remote session.
+This feature lets you manage the remote computer from the local session.
+     </p>
+     <p>
+      Also, starting in Windows PowerShell 3.0, you can use
+      <code>
+       Get-Module
+      </code>
+      and
+      <code>
+       Import-Module
+      </code>
+      to get and import Common Information Model (CIM) modules, in which the cmdlets are defined in Cmdlet Definition XML (CDXML) files.
+This feature lets you use cmdlets that are implemented in non-managed code assemblies, such as those written in C++.
+     </p>
+     <p>
+      With these new features, the
+      <code>
+       Get-Module
+      </code>
+      and
+      <code>
+       Import-Module
+      </code>
+      cmdlets become primary tools for managing heterogeneous enterprises that include computers that run the Windows operating system and computers that run other operating systems.
+     </p>
+     <p>
+      To manage remote computers that run the Windows operating system that have Windows PowerShell and Windows PowerShell remoting enabled, create a
+      <strong>
+       PSSession
+      </strong>
+      on the remote computer and then use the
+      <strong>
+       PSSession
+      </strong>
+      parameter of
+      <code>
+       Get-Module
+      </code>
+      to get the Windows PowerShell modules in the
+      <strong>
+       PSSession
+      </strong>
+      .
+When you import the modules, and then use the imported commands in the current session, the commands run implicitly in the
+      <strong>
+       PSSession
+      </strong>
+      on the remote computer.
+You can use this strategy to manage the remote computer.
+     </p>
+     <p>
+      You can use a similar strategy to manage computers that do not have Windows PowerShell remoting enabled.
+These include computers that are not running the Windows operating system, and computers that have Windows PowerShell but do not have Windows PowerShell remoting enabled.
+     </p>
+     <p>
+      Start by creating a CIM session on the remote computer.
+A CIM session is a connection to Windows Management Instrumentation (WMI) on the remote computer.
+Then use the
+      <strong>
+       CIMSession
+      </strong>
+      parameter of
+      <code>
+       Get-Module
+      </code>
+      to get CIM modules from the CIM session.
+When you import a CIM module by using the
+      <code>
+       Import-Module
+      </code>
+      cmdlet and then run the imported commands, the commands run implicitly on the remote computer.
+You can use this WMI and CIM strategy to manage the remote computer.
+     </p>
+     <h2 id="examples">
+      Examples
+     </h2>
+     <p>
+      <strong>
+       Example 1: Get modules imported into the current session
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS&gt; Get-Module</code></pre>
+     <p>
+      This command gets modules that have been imported into the current session.
+     </p>
+     <p>
+      <strong>
+       Example 2: Get installed modules and available modules
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS&gt; Get-Module -ListAvailable</code></pre>
+     <p>
+      This command gets the modules that are installed on the computer and can be imported into the current session.
+     </p>
+     <p>
+      <code>
+       Get-Module
+      </code>
+      looks for available modules in the path specified by the
+      <strong>
+       $env:PSModulePath
+      </strong>
+      environment variable.
+For more information about
+      <strong>
+       PSModulePath
+      </strong>
+      , see
+      <a data-linktype="relative-path" href="about/about_modules.html">
+       about_Modules
+      </a>
+      and
+      <a data-linktype="relative-path" href="about/about_environment_variables.html">
+       about_Environment_Variables
+      </a>
+      .
+     </p>
+     <p>
+      <strong>
+       Example 3: Get all exported files
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS&gt; Get-Module -ListAvailable -All</code></pre>
+     <p>
+      This command gets all of the exported files for all available modules.
+     </p>
+     <p>
+      <strong>
+       Example 4: Get a module by its fully qualified name
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS&gt; Get-Module -FullyQualifiedName @{ModuleName="Microsoft.PowerShell.Management";ModuleVersion="3.1.0.0"} | Format-Table -Property Name,Version
+
+
+
+Name                                                                                 Version
+
+----                                                                                 -------
+
+Microsoft.PowerShell.Management                                                      3.1.0.0</code></pre>
+     <p>
+      This command gets the
+      <strong>
+       Microsoft.PowerShell.Management
+      </strong>
+      module by specifying the fully qualified name of the module by using the
+      <strong>
+       FullyQualifiedName
+      </strong>
+      parameter.
+The command then pipes the results into the
+      <code>
+       Format-Table
+      </code>
+      cmdlet to format the results as a table with
+      <strong>
+       Name
+      </strong>
+      and
+      <strong>
+       Version
+      </strong>
+      as the column headings.
+     </p>
+     <p>
+      <strong>
+       Example 5: Get properties of a module
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS&gt; Get-Module | Get-Member -MemberType Property | Format-Table Name
+
+
+
+Name
+
+----
+
+AccessMode
+
+Author
+
+ClrVersion
+
+CompanyName
+
+Copyright
+
+Definition
+
+Description
+
+DotNetFrameworkVersion
+
+ExportedAliases
+
+ExportedCmdlets
+
+ExportedCommands
+
+ExportedFormatFiles
+
+ExportedFunctions
+
+ExportedTypeFiles
+
+ExportedVariables
+
+ExportedWorkflows
+
+FileList
+
+Guid
+
+HelpInfoUri
+
+LogPipelineExecutionDetails
+
+ModuleBase
+
+ModuleList
+
+ModuleType
+
+Name
+
+NestedModules
+
+OnRemove
+
+Path
+
+PowerShellHostName
+
+PowerShellHostVersion
+
+PowerShellVersion
+
+PrivateData
+
+ProcessorArchitecture
+
+RequiredAssemblies
+
+RequiredModules
+
+RootModule
+
+Scripts
+
+SessionState
+
+Version</code></pre>
+     <p>
+      This command gets the properties of the
+      <strong>
+       PSModuleInfo
+      </strong>
+      object that
+      <code>
+       Get-Module
+      </code>
+      returns.
+There is one object for each module file.
+     </p>
+     <p>
+      You can use the properties to format and filter the module objects.
+For more information about the properties, see
+      <a data-linktype="external" href="http://go.microsoft.com/fwlink/?LinkId=143624">
+       PSModuleInfo Properties
+      </a>
+      in the MSDN library.
+     </p>
+     <p>
+      The output includes the new properties, such as
+      <strong>
+       Author
+      </strong>
+      and
+      <strong>
+       CompanyName
+      </strong>
+      , that were introduced in Windows PowerShell 3.0.
+     </p>
+     <p>
+      <strong>
+       Example 6: Group all modules by name
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS&gt; Get-Module -ListAvailable -All | Format-Table -Property Name, Moduletype, Path -Groupby Name
+
+
+
+Name: AppLocker
+
+
+
+Name      ModuleType Path
+
+----      ---------- ----
+
+AppLocker   Manifest C:\Windows\system32\WindowsPowerShell\v1.0\Modules\AppLocker\AppLocker.psd1
+
+
+
+
+
+   Name: Appx
+
+
+
+Name ModuleType Path
+
+---- ---------- ----
+
+Appx   Manifest C:\Windows\system32\WindowsPowerShell\v1.0\Modules\Appx\en-US\Appx.psd1
+
+Appx   Manifest C:\Windows\system32\WindowsPowerShell\v1.0\Modules\Appx\Appx.psd1
+
+Appx     Script C:\Windows\system32\WindowsPowerShell\v1.0\Modules\Appx\Appx.psm1
+
+
+
+
+
+   Name: BestPractices
+
+
+
+Name          ModuleType Path
+
+----          ---------- ----
+
+BestPractices   Manifest C:\Windows\system32\WindowsPowerShell\v1.0\Modules\BestPractices\BestPractices.psd1
+
+
+
+
+
+   Name: BitsTransfer
+
+
+
+Name         ModuleType Path
+
+----         ---------- ----
+
+BitsTransfer   Manifest C:\Windows\system32\WindowsPowerShell\v1.0\Modules\BitsTransfer\BitsTransfer.psd1</code></pre>
+     <p>
+      This command gets all module files, both imported and available, and then groups them by module name.
+This lets you see the module files that each script is exporting.
+     </p>
+     <p>
+      <strong>
+       Example 7: Display the contents of a module manifest
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">The first command gets the PSModuleInfo object that represents BitsTransfer module. It saves the object in the $m variable.
+
+
+
+PS&gt; $m = Get-Module -list -Name BitsTransfer
+
+
+
+The second command uses the Get-Content cmdlet to get the content of the manifest file in the specified path. It uses dot notation to get the path to the manifest file, which is stored in the Path property of the object. The output shows the contents of the module manifest.
+
+
+
+PS&gt; Get-Content $m.Path
+
+
+
+@{
+
+GUID="{8FA5064B-8479-4c5c-86EA-0D311FE48875}"
+
+Author="Microsoft Corporation"
+
+CompanyName="Microsoft Corporation"
+
+Copyright="Â© Microsoft Corporation. All rights reserved."
+
+ModuleVersion="1.0.0.0"
+
+Description="Windows Powershell File Transfer Module"
+
+PowerShellVersion="2.0"
+
+CLRVersion="2.0"
+
+NestedModules="Microsoft.BackgroundIntelligentTransfer.Management"
+
+FormatsToProcess="FileTransfer.Format.ps1xml"
+
+RequiredAssemblies=Join-Path $psScriptRoot "Microsoft.BackgroundIntelligentTransfer.Management.Interop.dll"
+
+}</code></pre>
+     <p>
+      These commands display the contents of the module manifest for the Windows PowerShell
+      <strong>
+       BitsTransfer
+      </strong>
+      module.
+     </p>
+     <p>
+      Modules are not required to have manifest files.
+When they do have a manifest file, the manifest file is required only to include a version number.
+However, manifest files often provide useful information about a module, its requirements, and its contents.
+     </p>
+     <p>
+      <strong>
+       Example 8: List files in module directory
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS&gt; dir (Get-Module -ListAvailable FileTransfer).ModuleBase
+
+
+
+Directory: C:\Windows\system32\WindowsPowerShell\v1.0\Modules\FileTransfer
+
+Mode                LastWriteTime     Length Name
+
+----                -------------     ------ ----
+
+d----        12/16/2008  12:36 PM            en-US
+
+-a---        11/19/2008  11:30 PM      16184 FileTransfer.Format.ps1xml
+
+-a---        11/20/2008  11:30 PM       1044 FileTransfer.psd1
+
+-a---        12/16/2008  12:20 AM     108544 Microsoft.BackgroundIntelligentTransfer.Management.Interop.dll</code></pre>
+     <p>
+      This command lists the files in the directory of the module.
+This is another way to determine what is in a module before you import it.
+Some modules might have help files or ReadMe files that describe the module.
+     </p>
+     <p>
+      <strong>
+       Example 9: Get modules installed on a computer
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS&gt; $s = New-PSSession -ComputerName Server01
+
+
+
+PS&gt; Get-Module -PSSession $s -ListAvailable</code></pre>
+     <p>
+      These commands get the modules that are installed on the Server01 computer.
+     </p>
+     <p>
+      The first command uses the
+      <code>
+       New-PSSession
+      </code>
+      cmdlet to create a
+      <strong>
+       PSSession
+      </strong>
+      on the Server01 computer.
+The command saves the
+      <strong>
+       PSSession
+      </strong>
+      in the $s variable.
+     </p>
+     <p>
+      The second command uses the
+      <strong>
+       PSSession
+      </strong>
+      and
+      <strong>
+       ListAvailable
+      </strong>
+      parameters of
+      <code>
+       Get-Module
+      </code>
+      to get the modules in the
+      <strong>
+       PSSession
+      </strong>
+      in the $s variable.
+     </p>
+     <p>
+      If you pipe modules from other sessions to the
+      <code>
+       Import-Module
+      </code>
+      cmdlet,
+      <code>
+       Import-Module
+      </code>
+      imports the module into the current session by using the implicit remoting feature.
+This is equivalent to using the
+      <code>
+       Import-PSSession
+      </code>
+      cmdlet.
+You can use the cmdlets from the module in the current session, but commands that use these cmdlets actually run the remote session.
+For more information, see
+      <a data-linktype="relative-path" href="import-module.html">
+       <code>
+        Import-Module
+       </code>
+      </a>
+      and
+      <a data-linktype="relative-path" href="../microsoft.powershell.utility/import-pssession.html">
+       <code>
+        Import-PSSession
+       </code>
+      </a>
+      .
+     </p>
+     <p>
+      <strong>
+       Example 10: Manage a computer that does not run the Windows operating system
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">The first command uses the New-CimSession cmdlet to create a session on the RSDGF03 remote computer. The session connects to WMI on the remote computer. The command saves the CIM session in the $cs variable.
+
+
+
+PS&gt; $cs = New-CimSession -ComputerName RSDGF03
+
+
+
+The second command uses the CIM session in the $cs variable to run a Get-Module command on the RSDGF03 computer. The command uses the Name parameter to specify the Storage module. The command uses a pipeline operator (|) to send the Storage module to the Import-Module cmdlet, which imports it into the local session.
+
+
+
+PS&gt; Get-Module -CimSession $cs -Name Storage | Import-Module
+
+
+
+The third command runs the Get-Command cmdlet on the Get-Disk command in the Storage module. When you import a CIM module into the local session, Windows PowerShell converts the CDXML files that represent the CIM module into Windows PowerShell scripts, which appear as functions in the local session.
+
+
+
+PS&gt; Get-Command Get-Disk
+
+
+
+CommandType     Name                  ModuleName
+
+-----------     ----                  ----------
+
+Function        Get-Disk              Storage
+
+
+
+The fourth command runs the Get-Disk command. Although the command is typed in the local session, it runs implicitly on the remote computer from which it was imported. The command gets objects from the remote computer and returns them to the local session.
+
+
+
+PS&gt; Get-Disk
+
+
+
+Number Friendly Name              OperationalStatus          Total Size Partition Style
+
+------ -------------              -----------------          ---------- ---------------
+
+0      Virtual HD ATA Device      Online                          40 GB MBR</code></pre>
+     <p>
+      The commands in this example enable you to manage the storage systems of a remote computer that is not running the Windows operating system.
+In this example, because the administrator of the computer has installed the Module Discovery WMI provider, the CIM commands can use the default values, which are designed for the provider.
+     </p>
+     <h2 id="required-parameters">
+      Required Parameters
+     </h2>
+     <div class="parameterName stack">
+      -CimSession
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a CIM session on the remote computer.
+Enter a variable that contains the CIM session or a command that gets the CIM session, such as a
+       <a data-linktype="external" href="https://docs.microsoft.com/en-us/powershell/module/cimcmdlets/get-cimsession">
+        Get-CimSession
+       </a>
+       command.
+      </p>
+      <p>
+       <code>
+        Get-Module
+       </code>
+       uses the CIM session connection to get modules from the remote computer.
+When you import the module by using the
+       <code>
+        Import-Module
+       </code>
+       cmdlet and use the commands from the imported module in the current session, the commands actually run on the remote computer.
+      </p>
+      <p>
+       You can use this parameter to get modules from computers and devices that are not running the Windows operating system, and computers that have Windows PowerShell, but do not have Windows PowerShell remoting enabled.
+      </p>
+      <p>
+       The
+       <strong>
+        CimSession
+       </strong>
+       parameter gets all modules in the
+       <strong>
+        CIMSession
+       </strong>
+       .
+However, you can import only CIM-based and Cmdlet Definition XML (CDXML)-based modules.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          CimSession
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -ListAvailable
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that this cmdlet gets all installed modules.
+       <code>
+        Get-Module
+       </code>
+       gets modules in paths listed in the
+       <strong>
+        PSModulePath
+       </strong>
+       environment variable.
+Without this parameter,
+       <code>
+        Get-Module
+       </code>
+       gets only the modules that are both listed in the
+       <strong>
+        PSModulePath
+       </strong>
+       environment variable, and that are loaded in the current session.
+       <strong>
+        ListAvailable
+       </strong>
+       does not return information about modules that are not found in the
+       <strong>
+        PSModulePath
+       </strong>
+       environment variable, even if those modules are loaded in the current session.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -PSSession
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Gets the modules in the specified user-managed Windows PowerShell session (
+       <strong>
+        PSSession
+       </strong>
+       ).
+Enter a variable that contains the session, a command that gets the session, such as a
+       <code>
+        Get-PSSession
+       </code>
+       command, or a command that creates the session, such as a
+       <code>
+        New-PSSession
+       </code>
+       command.
+      </p>
+      <p>
+       When the session is connected to a remote computer, you must specify the
+       <strong>
+        ListAvailable
+       </strong>
+       parameter.
+      </p>
+      <p>
+       A
+       <code>
+        Get-Module
+       </code>
+       command that uses the
+       <strong>
+        PSSession
+       </strong>
+       parameter is equivalent to using the
+       <code>
+        Invoke-Command
+       </code>
+       cmdlet to run a
+       <code>
+        Get-Module -ListAvailable
+       </code>
+       command in a
+       <strong>
+        PSSession
+       </strong>
+       .
+      </p>
+      <p>
+       This parameter was introduced in Windows PowerShell 3.0.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          PSSession
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="optional-parameters">
+      Optional Parameters
+     </h2>
+     <div class="parameterName stack">
+      -All
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that this cmdlet gets all modules in each module folder, including nested modules, manifest (.psd1) files, script module (.psm1) files, and binary module (.dll) files.
+Without this parameter,
+       <code>
+        Get-Module
+       </code>
+       gets only the default module in each module folder.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -CimNamespace
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the namespace of an alternate CIM provider that exposes CIM modules.
+The default value is the namespace of the Module Discovery WMI provider.
+      </p>
+      <p>
+       Use this parameter to get CIM modules from computers and devices that are not running the Windows operating system.
+      </p>
+      <p>
+       This parameter was introduced in Windows PowerShell 3.0.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -CimResourceUri
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies an alternate location for CIM modules.
+The default value is the resource URI of the Module Discovery WMI provider on the remote computer.
+      </p>
+      <p>
+       Use this parameter to get CIM modules from computers and devices that are not running the Windows operating system.
+      </p>
+      <p>
+       This parameter was introduced in Windows PowerShell 3.0.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Uri
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -FullyQualifiedName
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies names of modules in the form of
+       <strong>
+        ModuleSpecification
+       </strong>
+       objects.
+These objects are described in the Remarks section of
+       <a data-linktype="external" href="https://msdn.microsoft.com/library/jj136290">
+        ModuleSpecification Constructor (Hashtable)
+       </a>
+       in the MSDN library.
+For example, the
+       <strong>
+        FullyQualifiedName
+       </strong>
+       parameter accepts a module name that is specified in the following formats:
+      </p>
+      <ul>
+       <li>
+        @{ModuleName = "modulename"; ModuleVersion = "version_number"}
+       </li>
+       <li>
+        @{ModuleName = "modulename"; ModuleVersion = "version_number"; Guid = "GUID"}
+       </li>
+      </ul>
+      <p>
+       <strong>
+        ModuleName
+       </strong>
+       and
+       <strong>
+        ModuleVersion
+       </strong>
+       are required, but
+       <strong>
+        Guid
+       </strong>
+       is optional.
+      </p>
+      <p>
+       You cannot specify the
+       <strong>
+        FullyQualifiedName
+       </strong>
+       parameter in the same command as a
+       <strong>
+        Name
+       </strong>
+       parameter.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          ModuleSpecification[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Name
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies names or name patterns of modules that this cmdlet gets.
+Wildcard characters are permitted.
+You can also pipe the names to
+       <code>
+        Get-Module
+       </code>
+       .
+You cannot specify the
+       <strong>
+        FullyQualifiedName
+       </strong>
+       parameter in the same command as a
+       <strong>
+        Name
+       </strong>
+       parameter.
+      </p>
+      <p>
+       <strong>
+        Name
+       </strong>
+       cannot accept a module GUID as a value.
+To return modules by specifying a GUID, use
+       <strong>
+        FullyQualifiedName
+       </strong>
+       instead.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         0
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByValue)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -PSEdition
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Gets the modules that support specified edition of PowerShell.
+      </p>
+      <p>
+       The acceptable values for this parameter are:
+      </p>
+      <ul>
+       <li>
+        Desktop
+       </li>
+       <li>
+        Core
+       </li>
+      </ul>
+      <p>
+       The Get-Module cmdlet checks
+       <strong>
+        CompatiblePSEditions
+       </strong>
+       property of
+       <strong>
+        PSModuleInfo
+       </strong>
+       object for the specified value and returns only those modules that have it set.
+      </p>
+      <div class="NOTE">
+       <p>
+        Note
+       </p>
+       <ul>
+        <li>
+         <strong>
+          Desktop Edition:
+         </strong>
+         Built on .NET Framework and provides compatibility with scripts and modules targeting versions of PowerShell running on full footprint editions of Windows such as Server Core and Windows Desktop.
+        </li>
+        <li>
+         <strong>
+          Core Edition:
+         </strong>
+         Built on .NET Core and provides compatibility with scripts and modules targeting versions of PowerShell running on reduced footprint editions of Windows such as Nano Server and Windows IoT.
+        </li>
+       </ul>
+      </div>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Refresh
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that this cmdlet refreshes the cache of installed commands.
+The command cache is created when the session starts.
+It enables the
+       <code>
+        Get-Command
+       </code>
+       cmdlet to get commands from modules that are not imported into the session.
+      </p>
+      <p>
+       This parameter is designed for development and testing scenarios in which the contents of modules have changed since the session started.
+      </p>
+      <p>
+       When you specify the
+       <strong>
+        Refresh
+       </strong>
+       parameter in a command, you must specify
+       <strong>
+        ListAvailable
+       </strong>
+       .
+      </p>
+      <p>
+       This parameter was introduced in Windows PowerShell 3.0.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="inputs">
+      Inputs
+     </h2>
+     <p>
+      <strong>
+       System.String
+      </strong>
+     </p>
+     <p>
+      You can pipe module names to this cmdlet.
+     </p>
+     <h2 id="outputs">
+      Outputs
+     </h2>
+     <p>
+      <strong>
+       System.Management.Automation.PSModuleInfo
+      </strong>
+     </p>
+     <p>
+      This cmdlet returns objects that represent modules.
+When you specify the
+      <strong>
+       ListAvailable
+      </strong>
+      parameter,
+      <code>
+       Get-Module
+      </code>
+      returns a
+      <strong>
+       ModuleInfoGrouping
+      </strong>
+      object, which is a type of
+      <strong>
+       PSModuleInfo
+      </strong>
+      object that has the same properties and methods.
+     </p>
+     <h2 id="notes">
+      Notes
+     </h2>
+     <ul>
+      <li>
+       Beginning in Windows PowerShell 3.0, the core commands that are included in Windows PowerShell are packaged in modules. The exception is
+       <strong>
+        Microsoft.PowerShell.Core
+       </strong>
+       , which is a snap-in (
+       <strong>
+        PSSnapin
+       </strong>
+       ). By default, only the
+       <strong>
+        Microsoft.PowerShell.Core
+       </strong>
+       snap-in is added to the session. Modules are imported automatically on first use and you can use the
+       <code>
+        Import-Module
+       </code>
+       cmdlet to import them.
+      </li>
+      <li>
+       <p>
+        Starting in Windows PowerShell 3.0, the core commands that are installed with Windows PowerShell are packaged in modules. In Windows PowerShell 2.0, and in host programs that create older-style sessions in later versions of Windows PowerShell, the core commands are packaged in snap-ins (
+        <strong>
+         PSSnapins
+        </strong>
+        ). The exception is
+        <strong>
+         Microsoft.PowerShell.Core
+        </strong>
+        , which is always a snap-in. Also, remote sessions, such as those started by the
+        <code>
+         New-PSSession
+        </code>
+        cmdlet, are older-style sessions that include core snap-ins.
+       </p>
+       <p>
+        For information about the
+        <strong>
+         CreateDefault2
+        </strong>
+        method that creates newer-style sessions with core modules, see
+        <a data-linktype="external" href="https://msdn.microsoft.com/library/system.management.automation.runspaces.initialsessionstate.createdefault2">
+         CreateDefault2 Method
+        </a>
+        in the MSDN library.
+       </p>
+      </li>
+      <li>
+       <p>
+        <code>
+         Get-Module
+        </code>
+        gets only modules in locations that are stored in the value of the
+        <strong>
+         PSModulePath
+        </strong>
+        environment variable ($env:PSModulePath). You can use the
+        <strong>
+         Path
+        </strong>
+        parameter of the
+        <code>
+         Import-Module
+        </code>
+        cmdlet to import modules in other locations, but you cannot use the
+        <code>
+         Get-Module
+        </code>
+        cmdlet to get them.
+       </p>
+      </li>
+      <li>
+       Also, starting in Windows PowerShell 3.0, new properties have been added to the object that
+       <code>
+        Get-Module
+       </code>
+       returns that make it easier to learn about modules even before they are imported. All properties are populated before importing. These include the
+       <strong>
+        ExportedCommands
+       </strong>
+       ,
+       <strong>
+        ExportedCmdlets
+       </strong>
+       and
+       <strong>
+        ExportedFunctions
+       </strong>
+       properties that list the commands that the module exports.
+      </li>
+      <li>
+       <p>
+        The
+        <strong>
+         ListAvailable
+        </strong>
+        parameter gets only well-formed modules, that is, folders that contain at least one file whose base name is the same as the name of the module folder. The base name is the name without the file name extension. Folders that contain files that have different names are considered to be containers, but not modules.
+       </p>
+       <p>
+        To get modules that are implemented as .dll files, but are not enclosed in a module folder, specify both the
+        <strong>
+         ListAvailable
+        </strong>
+        and
+        <strong>
+         All
+        </strong>
+        parameters.
+       </p>
+      </li>
+      <li>
+       <p>
+        To use the CIM session feature, the remote computer must have WS-Management remoting and Windows Management Instrumentation (WMI), which is the Microsoft implementation of the Common Information Model (CIM) standard. The computer must also have the Module Discovery WMI provider or an alternate WMI provider that has the same basic features.
+       </p>
+       <p>
+        You can use the CIM session feature on computers that are not running the Windows operating system and on Windows computers that have Windows PowerShell, but do not have Windows PowerShell remoting enabled.
+       </p>
+       <p>
+        You can also use the CIM parameters to get CIM modules from computers that have Windows PowerShell remoting enabled.
+This includes the local computer.
+When you create a CIM session on the local computer, Windows PowerShell uses DCOM, instead of WMI, to create the session.
+       </p>
+      </li>
+     </ul>
+     <h2 id="related-links">
+      Related Links
+     </h2>
+     <ul>
+      <li>
+       <a data-linktype="relative-path" href="../cimcmdlets/get-cimsession.html">
+        Get-CimSession
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="../cimcmdlets/new-cimsession.html">
+        New-CimSession
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="get-pssession.html">
+        Get-PSSession
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="import-module.html">
+        Import-Module
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="new-pssession.html">
+        New-PSSession
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="remove-module.html">
+        Remove-Module
+       </a>
+      </li>
+     </ul>
+     <!-- </content> -->
+    </main>
+    <div class="note alert feedback-system-change-alert">
+     <p>
+      Note
+     </p>
+     <p>
+      The feedback system for this content will be changing soon. Old comments will not be carried over. If content within a comment thread is important to you, please save a copy. For more information on the upcoming change,
+      <a href="https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs">
+       we invite you to read our blog post
+      </a>
+      .
+     </p>
+    </div>
+    <div data-bi-name="comments" id="comments-container" role="form">
+    </div>
+   </div>
+  </div>
+  <div class="openfeedback-container" id="openFeedbackContainer">
+  </div>
+  <div class="action-panel">
+  </div>
+ </body>
+</html>

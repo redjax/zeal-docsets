@@ -1,0 +1,1655 @@
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML><HEAD><TITLE>Man page of limits.h</TITLE>
+</HEAD><BODY>
+<H1>limits.h</H1>
+Section: POSIX Programmer's Manual (0P)<BR>Updated: 2013<BR><A HREF="#index">Index</A>
+<A HREF="../index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>PROLOG</H2>
+
+This manual page is part of the POSIX Programmer's Manual.
+The Linux implementation of this interface may differ (consult
+the corresponding Linux manual page for details of Linux behavior),
+or the interface may not be implemented on Linux.
+<P>
+<A NAME="lbAC">&nbsp;</A>
+<H2>NAME</H2>
+
+limits.h
+--- implementation-defined constants
+<A NAME="lbAD">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<P>
+
+<PRE>
+#include &lt;<A HREF="file:///usr/include/limits.h">limits.h</A>&gt;
+</PRE>
+
+<A NAME="lbAE">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+Some of the functionality described on this reference page extends the
+ISO&nbsp;C standard. Applications shall define the appropriate feature test macro
+(see the System Interfaces volume of POSIX.1-2008,
+<I>Section 2.2</I>, <I>The Compilation Environment)</I>
+
+to enable the visibility of these symbols in this header.
+<P>
+
+Many of the symbols listed here are not defined by the ISO/IEC&nbsp;9899:1999 standard. Such symbols
+are not shown as CX shaded, except under the heading ``Numerical Limits''.
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/limits.h">limits.h</A>&gt;</I>
+
+header shall define macros and symbolic constants for various limits.
+Different categories of limits are described below, representing various
+limits on resources that the implementation imposes on applications.
+All macros and symbolic constants defined in this header shall be
+suitable for use in
+<B>#if</B>
+
+preprocessing directives.
+<P>
+
+Implementations may choose any appropriate value for each limit,
+provided it is not more restrictive than the Minimum Acceptable Values
+listed below. Symbolic constant names beginning with _POSIX may be
+found in
+<I>&lt;<A HREF="file:///usr/include/unistd.h">unistd.h</A>&gt;</I>.
+
+<P>
+
+Applications should not assume any particular value for a limit. To
+achieve maximum portability, an application should not require more
+resource than the Minimum Acceptable Value quantity. However, an
+application wishing to avail itself of the full amount of a resource
+available on an implementation may make use of the value given in
+<I>&lt;<A HREF="file:///usr/include/limits.h">limits.h</A>&gt;</I>
+
+on that particular implementation, by using the macros and symbolic
+constants listed below. It should be noted, however, that many of the
+listed limits are not invariant, and at runtime, the value of the limit
+may differ from those given in this header, for the following reasons:
+<DL COMPACT>
+<DT> *<DD>
+The limit is pathname-dependent.
+<DT> *<DD>
+The limit differs between the compile and runtime machines.
+</DL>
+<P>
+
+For these reasons, an application may use the
+<I>fpathconf</I>(),
+<I>pathconf</I>(),
+and
+<I>sysconf</I>()
+functions to determine the actual value of a limit at runtime.
+<P>
+
+The items in the list ending in _MIN give the most negative values that
+the mathematical types are guaranteed to be capable of representing.
+Numbers of a more negative value may be supported on some
+implementations, as indicated by the
+<I>&lt;<A HREF="file:///usr/include/limits.h">limits.h</A>&gt;</I>
+
+header on the implementation, but applications requiring such numbers
+are not guaranteed to be portable to all implementations. For positive
+constants ending in _MIN, this indicates the minimum acceptable value.
+<A NAME="lbAF">&nbsp;</A>
+<H3>Runtime Invariant Values (Possibly Indeterminate)</H3>
+
+<P>
+
+A definition of one of the symbolic constants in the following list
+shall be omitted from
+<I>&lt;<A HREF="file:///usr/include/limits.h">limits.h</A>&gt;</I>
+
+on specific implementations where the corresponding value is equal to
+or greater than the stated minimum, but is unspecified.
+<P>
+
+This indetermination might depend on the amount of available memory
+space on a specific instance of a specific implementation. The actual
+value supported by a specific instance shall be provided by the
+<I>sysconf</I>()
+function.
+<DL COMPACT>
+<DT>{AIO_LISTIO_MAX}<DD>
+<BR>
+
+Maximum number of I/O operations in a single list I/O call supported by
+the implementation.
+<BR>
+
+Minimum Acceptable Value:
+{_POSIX_AIO_LISTIO_MAX}
+<DT>{AIO_MAX}<DD>
+<BR>
+
+Maximum number of outstanding asynchronous I/O operations supported by
+the implementation.
+<BR>
+
+Minimum Acceptable Value:
+{_POSIX_AIO_MAX}
+<DT>{AIO_PRIO_DELTA_MAX}<DD>
+<BR>
+
+The maximum amount by which a process can decrease its asynchronous I/O
+priority level from its own scheduling priority.
+<BR>
+
+Minimum Acceptable Value: 0
+<DT>{ARG_MAX}<DD>
+<BR>
+
+Maximum length of argument to the
+<I>exec</I>
+
+functions including environment data.
+<BR>
+
+Minimum Acceptable Value:
+{_POSIX_ARG_MAX}
+<DT>{ATEXIT_MAX}<DD>
+<BR>
+
+Maximum number of functions that may be registered with
+<I>atexit</I>().
+<BR>
+
+Minimum Acceptable Value: 32
+<DT>{CHILD_MAX}<DD>
+<BR>
+
+Maximum number of simultaneous processes per real user ID.
+<BR>
+
+Minimum Acceptable Value:
+{_POSIX_CHILD_MAX}
+<DT>{DELAYTIMER_MAX}<DD>
+<BR>
+
+Maximum number of timer expiration overruns.
+<BR>
+
+Minimum Acceptable Value:
+{_POSIX_DELAYTIMER_MAX}
+<DT>{HOST_NAME_MAX}<DD>
+<BR>
+
+Maximum length of a host name (not including the terminating null)
+as returned from the
+<I>gethostname</I>()
+function.
+<BR>
+
+Minimum Acceptable Value:
+{_POSIX_HOST_NAME_MAX}
+<DT>{IOV_MAX}<DD>
+<BR>
+
+Maximum number of
+<B>iovec</B>
+
+structures that one process has available for use with
+<I>readv</I>()
+or
+<I>writev</I>().
+<BR>
+
+Minimum Acceptable Value:
+{_XOPEN_IOV_MAX}
+<DT>{LOGIN_NAME_MAX}<DD>
+<BR>
+
+Maximum length of a login name.
+<BR>
+
+Minimum Acceptable Value:
+{_POSIX_LOGIN_NAME_MAX}
+<DT>{MQ_OPEN_MAX}<DD>
+<BR>
+
+The maximum number of open message queue descriptors a process may
+hold.
+<BR>
+
+Minimum Acceptable Value:
+{_POSIX_MQ_OPEN_MAX}
+<DT>{MQ_PRIO_MAX}<DD>
+<BR>
+
+The maximum number of message priorities supported by the implementation.
+<BR>
+
+Minimum Acceptable Value:
+{_POSIX_MQ_PRIO_MAX}
+<DT>{OPEN_MAX}<DD>
+<BR>
+
+A value one greater than the maximum value that the system may
+assign to a newly-created file descriptor.
+<BR>
+
+Minimum Acceptable Value:
+{_POSIX_OPEN_MAX}
+<DT>{PAGESIZE}<DD>
+<BR>
+
+Size in bytes of a page.
+<BR>
+
+Minimum Acceptable Value: 1
+<DT>{PAGE_SIZE}<DD>
+<BR>
+
+Equivalent to
+{PAGESIZE}.
+If either
+{PAGESIZE}
+or
+{PAGE_SIZE}
+is defined, the other is defined with the same value.
+<DT>{PTHREAD_DESTRUCTOR_ITERATIONS}<DD>
+<BR>
+
+Maximum number of attempts made to destroy a thread's thread-specific
+data values on thread exit.
+<BR>
+
+Minimum Acceptable Value:
+{_POSIX_THREAD_DESTRUCTOR_ITERATIONS}
+<DT>{PTHREAD_KEYS_MAX}<DD>
+<BR>
+
+Maximum number of data keys that can be created by a process.
+<BR>
+
+Minimum Acceptable Value:
+{_POSIX_THREAD_KEYS_MAX}
+<DT>{PTHREAD_STACK_MIN}<DD>
+<BR>
+
+Minimum size in bytes of thread stack storage.
+<BR>
+
+Minimum Acceptable Value: 0
+<DT>{PTHREAD_THREADS_MAX}<DD>
+<BR>
+
+Maximum number of threads that can be created per process.
+<BR>
+
+Minimum Acceptable Value:
+{_POSIX_THREAD_THREADS_MAX}
+<DT>{RE_DUP_MAX}<DD>
+<BR>
+
+Maximum number of repeated occurrences of a BRE or ERE interval
+expression; see
+<I>Section 9.3.6</I>, <I>BREs Matching Multiple Characters</I>
+
+and
+<I>Section 9.4.6</I>, <I>EREs Matching Multiple Characters.</I>
+
+<BR>
+
+Minimum Acceptable Value:
+{_POSIX2_RE_DUP_MAX}
+<DT>{RTSIG_MAX}<DD>
+<BR>
+
+Maximum number of realtime signals reserved for application use in this
+implementation.
+<BR>
+
+Minimum Acceptable Value:
+{_POSIX_RTSIG_MAX}
+<DT>{SEM_NSEMS_MAX}<DD>
+<BR>
+
+Maximum number of semaphores that a process may have.
+<BR>
+
+Minimum Acceptable Value:
+{_POSIX_SEM_NSEMS_MAX}
+<DT>{SEM_VALUE_MAX}<DD>
+<BR>
+
+The maximum value a semaphore may have.
+<BR>
+
+Minimum Acceptable Value:
+{_POSIX_SEM_VALUE_MAX}
+<DT>{SIGQUEUE_MAX}<DD>
+<BR>
+
+Maximum number of queued signals that a process may send and have
+pending at the receiver(s) at any time.
+<BR>
+
+Minimum Acceptable Value:
+{_POSIX_SIGQUEUE_MAX}
+<DT>{SS_REPL_MAX}<DD>
+<BR>
+
+The maximum number of replenishment operations that may be simultaneously
+pending for a particular sporadic server scheduler.
+<BR>
+
+Minimum Acceptable Value:
+{_POSIX_SS_REPL_MAX}
+<DT>{STREAM_MAX}<DD>
+<BR>
+
+Maximum number of streams that one process can have open at one time.
+If defined, it has the same value as
+{FOPEN_MAX}
+(see
+<I>&lt;<A HREF="file:///usr/include/stdio.h">stdio.h</A>&gt;</I>).
+
+<BR>
+
+Minimum Acceptable Value:
+{_POSIX_STREAM_MAX}
+<DT>{SYMLOOP_MAX}<DD>
+<BR>
+
+Maximum number of symbolic links that can be reliably traversed in the
+resolution of a pathname in the absence of a loop.
+<BR>
+
+Minimum Acceptable Value:
+{_POSIX_SYMLOOP_MAX}
+<DT>{TIMER_MAX}<DD>
+<BR>
+
+Maximum number of timers per process supported by the implementation.
+<BR>
+
+Minimum Acceptable Value:
+{_POSIX_TIMER_MAX}
+<DT>{TRACE_EVENT_NAME_MAX}<DD>
+<BR>
+
+Maximum length of the trace event name (not including the terminating null).
+<BR>
+
+Minimum Acceptable Value:
+{_POSIX_TRACE_EVENT_NAME_MAX}
+<DT>{TRACE_NAME_MAX}<DD>
+<BR>
+
+Maximum length of the trace generation version string or of the
+trace stream name (not including the terminating null).
+<BR>
+
+Minimum Acceptable Value:
+{_POSIX_TRACE_NAME_MAX}
+<DT>{TRACE_SYS_MAX}<DD>
+<BR>
+
+Maximum number of trace streams that may simultaneously exist in
+the system.
+<BR>
+
+Minimum Acceptable Value:
+{_POSIX_TRACE_SYS_MAX}
+<DT>{TRACE_USER_EVENT_MAX}<DD>
+<BR>
+
+Maximum number of user trace event type identifiers that may
+simultaneously exist in a traced process, including the predefined
+user trace event POSIX_TRACE_UNNAMED_USER_EVENT.
+<BR>
+
+Minimum Acceptable Value:
+{_POSIX_TRACE_USER_EVENT_MAX}
+<DT>{TTY_NAME_MAX}<DD>
+<BR>
+
+Maximum length of terminal device name.
+<BR>
+
+Minimum Acceptable Value:
+{_POSIX_TTY_NAME_MAX}
+<DT>{TZNAME_MAX}<DD>
+<BR>
+
+Maximum number of bytes supported for the name of a timezone (not of
+the
+<I>TZ</I>
+
+variable).
+<BR>
+
+Minimum Acceptable Value:
+{_POSIX_TZNAME_MAX}
+<DT><B>Note:</B>
+
+<DD>
+The length given by
+{TZNAME_MAX}
+does not include the quoting characters mentioned in
+<I>Section 8.3</I>, <I>Other Environment Variables.</I>
+
+</DL>
+<P>
+
+<A NAME="lbAG">&nbsp;</A>
+<H3>Pathname Variable Values</H3>
+
+<P>
+
+The values in the following list may be constants within an
+implementation or may vary from one pathname to another. For example,
+file systems or directories may have different characteristics.
+<P>
+
+A definition of one of the symbolic constants in the following list
+shall be omitted from the
+<I>&lt;<A HREF="file:///usr/include/limits.h">limits.h</A>&gt;</I>
+
+header on specific implementations where the corresponding value is
+equal to or greater than the stated minimum, but where the value can
+vary depending on the file to which it is applied. The actual value
+supported for a specific pathname shall be provided by the
+<I>pathconf</I>()
+function.
+<DL COMPACT>
+<DT>{FILESIZEBITS}<DD>
+<BR>
+
+Minimum number of bits needed to represent, as a signed integer value,
+the maximum size of a regular file allowed in the specified directory.
+<BR>
+
+Minimum Acceptable Value: 32
+<DT>{LINK_MAX}<DD>
+<BR>
+
+Maximum number of links to a single file.
+<BR>
+
+Minimum Acceptable Value:
+{_POSIX_LINK_MAX}
+<DT>{MAX_CANON}<DD>
+<BR>
+
+Maximum number of bytes in a terminal canonical input line.
+<BR>
+
+Minimum Acceptable Value:
+{_POSIX_MAX_CANON}
+<DT>{MAX_INPUT}<DD>
+<BR>
+
+Minimum number of bytes for which space is available in a terminal
+input queue; therefore, the maximum number of bytes a conforming
+application may require to be typed as input before reading them.
+<BR>
+
+Minimum Acceptable Value:
+{_POSIX_MAX_INPUT}
+<DT>{NAME_MAX}<DD>
+<BR>
+
+Maximum number of bytes in a filename (not including the terminating
+null of a filename string).
+<BR>
+
+Minimum Acceptable Value:
+{_POSIX_NAME_MAX}
+<BR>
+
+Minimum Acceptable Value:
+{_XOPEN_NAME_MAX}
+<DT>{PATH_MAX}<DD>
+<BR>
+
+Maximum number of bytes the implementation will store as a pathname in
+a user-supplied buffer of unspecified size, including the terminating
+null character. Minimum number the implementation will accept as the
+maximum number of bytes in a pathname.
+<BR>
+
+Minimum Acceptable Value:
+{_POSIX_PATH_MAX}
+<BR>
+
+Minimum Acceptable Value:
+{_XOPEN_PATH_MAX}
+<DT>{PIPE_BUF}<DD>
+<BR>
+
+Maximum number of bytes that is guaranteed to be atomic when writing to
+a pipe.
+<BR>
+
+Minimum Acceptable Value:
+{_POSIX_PIPE_BUF}
+<DT>{POSIX_ALLOC_SIZE_MIN}<DD>
+<BR>
+
+Minimum number of bytes of storage actually allocated for any portion
+of a file.
+<BR>
+
+Minimum Acceptable Value: Not specified.
+<DT>{POSIX_REC_INCR_XFER_SIZE}<DD>
+<BR>
+
+Recommended increment for file transfer sizes between the
+{POSIX_REC_MIN_XFER_SIZE}
+and
+{POSIX_REC_MAX_XFER_SIZE}
+values.
+<BR>
+
+Minimum Acceptable Value: Not specified.
+<DT>{POSIX_REC_MAX_XFER_SIZE}<DD>
+<BR>
+
+Maximum recommended file transfer size.
+<BR>
+
+Minimum Acceptable Value: Not specified.
+<DT>{POSIX_REC_MIN_XFER_SIZE}<DD>
+<BR>
+
+Minimum recommended file transfer size.
+<BR>
+
+Minimum Acceptable Value: Not specified.
+<DT>{POSIX_REC_XFER_ALIGN}<DD>
+<BR>
+
+Recommended file transfer buffer alignment.
+<BR>
+
+Minimum Acceptable Value: Not specified.
+<DT>{SYMLINK_MAX}<DD>
+<BR>
+
+Maximum number of bytes in a symbolic link.
+<BR>
+
+Minimum Acceptable Value:
+{_POSIX_SYMLINK_MAX}
+</DL>
+<A NAME="lbAH">&nbsp;</A>
+<H3>Runtime Increasable Values</H3>
+
+<P>
+
+The magnitude limitations in the following list shall be fixed by
+specific implementations. An application should assume that the value
+of the symbolic constant defined by
+<I>&lt;<A HREF="file:///usr/include/limits.h">limits.h</A>&gt;</I>
+
+in a specific implementation is the minimum that pertains whenever the
+application is run under that implementation. A specific instance of a
+specific implementation may increase the value relative to that
+supplied by
+<I>&lt;<A HREF="file:///usr/include/limits.h">limits.h</A>&gt;</I>
+
+for that implementation. The actual value supported by a specific
+instance shall be provided by the
+<I>sysconf</I>()
+function.
+<DL COMPACT>
+<DT>{BC_BASE_MAX}<DD>
+<BR>
+
+Maximum
+<I>obase</I>
+
+values allowed by the
+<I>bc</I>
+
+utility.
+<BR>
+
+Minimum Acceptable Value:
+{_POSIX2_BC_BASE_MAX}
+<DT>{BC_DIM_MAX}<DD>
+<BR>
+
+Maximum number of elements permitted in an array by the
+<I>bc</I>
+
+utility.
+<BR>
+
+Minimum Acceptable Value:
+{_POSIX2_BC_DIM_MAX}
+<DT>{BC_SCALE_MAX}<DD>
+<BR>
+
+Maximum
+<I>scale</I>
+
+value allowed by the
+<I>bc</I>
+
+utility.
+<BR>
+
+Minimum Acceptable Value:
+{_POSIX2_BC_SCALE_MAX}
+<DT>{BC_STRING_MAX}<DD>
+<BR>
+
+Maximum length of a string constant accepted by the
+<I>bc</I>
+
+utility.
+<BR>
+
+Minimum Acceptable Value:
+{_POSIX2_BC_STRING_MAX}
+<DT>{CHARCLASS_NAME_MAX}<DD>
+<BR>
+
+Maximum number of bytes in a character class name.
+<BR>
+
+Minimum Acceptable Value:
+{_POSIX2_CHARCLASS_NAME_MAX}
+<DT>{COLL_WEIGHTS_MAX}<DD>
+<BR>
+
+Maximum number of weights that can be assigned to an entry of the
+<I>LC_COLLATE</I>
+
+<B>order</B>
+
+keyword in the locale definition file; see
+<I>Chapter 7</I>, <I>Locale.</I>
+
+<BR>
+
+Minimum Acceptable Value:
+{_POSIX2_COLL_WEIGHTS_MAX}
+<DT>{EXPR_NEST_MAX}<DD>
+<BR>
+
+Maximum number of expressions that can be nested within parentheses by
+the
+<I>expr</I>
+
+utility.
+<BR>
+
+Minimum Acceptable Value:
+{_POSIX2_EXPR_NEST_MAX}
+<DT>{LINE_MAX}<DD>
+<BR>
+
+Unless otherwise noted, the maximum length, in bytes, of a utility's
+input line (either standard input or another file), when the utility is
+described as processing text files. The length includes room for the
+trailing
+&lt;newline&gt;.
+<BR>
+
+Minimum Acceptable Value:
+{_POSIX2_LINE_MAX}
+<DT>{NGROUPS_MAX}<DD>
+<BR>
+
+Maximum number of simultaneous supplementary group IDs per process.
+<BR>
+
+Minimum Acceptable Value:
+{_POSIX_NGROUPS_MAX}
+<DT>{RE_DUP_MAX}<DD>
+<BR>
+
+Maximum number of repeated occurrences of a regular expression
+permitted when using the interval notation \{<I>m</I>,<I>n</I>\}; see
+<I>Chapter 9</I>, <I>Regular Expressions.</I>
+
+<BR>
+
+Minimum Acceptable Value:
+{_POSIX2_RE_DUP_MAX}
+</DL>
+<A NAME="lbAI">&nbsp;</A>
+<H3>Maximum Values</H3>
+
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/limits.h">limits.h</A>&gt;</I>
+
+header shall define the following symbolic constants with the values
+shown. These are the most restrictive values for certain features on
+an implementation. A conforming implementation shall provide values no
+larger than these values. A conforming application must not require a
+smaller value for correct operation.
+<DL COMPACT>
+<DT>{_POSIX_CLOCKRES_MIN}<DD>
+<BR>
+
+The resolution of the CLOCK_REALTIME clock, in nanoseconds.
+<BR>
+
+Value: 20 000 000
+<DL COMPACT><DT><DD>
+<P>
+<P>
+
+If the Monotonic Clock option is supported, the resolution of the
+CLOCK_MONOTONIC clock, in nanoseconds, is represented by
+{_POSIX_CLOCKRES_MIN}.
+</DL>
+
+</DL>
+<A NAME="lbAJ">&nbsp;</A>
+<H3>Minimum Values</H3>
+
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/limits.h">limits.h</A>&gt;</I>
+
+header shall define the following symbolic constants with the values
+shown. These are the most restrictive values for certain features on
+an implementation conforming to this volume of POSIX.1-2008. Related symbolic constants are
+defined elsewhere in this volume of POSIX.1-2008 which reflect the actual implementation and
+which need not be as restrictive. For each of these limits, a conforming
+implementation shall provide a value at least this large or shall have
+no limit. A strictly conforming application must not require a larger
+value for correct operation.
+<DL COMPACT>
+<DT>{_POSIX_AIO_LISTIO_MAX}<DD>
+<BR>
+
+The number of I/O operations that can be specified in a list I/O call.
+<BR>
+
+Value: 2
+<DT>{_POSIX_AIO_MAX}<DD>
+<BR>
+
+The number of outstanding asynchronous I/O operations.
+<BR>
+
+Value: 1
+<DT>{_POSIX_ARG_MAX}<DD>
+<BR>
+
+Maximum length of argument to the
+<I>exec</I>
+
+functions including environment data.
+<BR>
+
+Value: 4 096
+<DT>{_POSIX_CHILD_MAX}<DD>
+<BR>
+
+Maximum number of simultaneous processes per real user ID.
+<BR>
+
+Value: 25
+<DT>{_POSIX_DELAYTIMER_MAX}<DD>
+<BR>
+
+The number of timer expiration overruns.
+<BR>
+
+Value: 32
+<DT>{_POSIX_HOST_NAME_MAX}<DD>
+<BR>
+
+Maximum length of a host name (not including the terminating null)
+as returned from the
+<I>gethostname</I>()
+function.
+<BR>
+
+Value: 255
+<DT>{_POSIX_LINK_MAX}<DD>
+<BR>
+
+Maximum number of links to a single file.
+<BR>
+
+Value: 8
+<DT>{_POSIX_LOGIN_NAME_MAX}<DD>
+<BR>
+
+The size of the storage required for a login name, in bytes
+(including the terminating null).
+<BR>
+
+Value: 9
+<DT>{_POSIX_MAX_CANON}<DD>
+<BR>
+
+Maximum number of bytes in a terminal canonical input queue.
+<BR>
+
+Value: 255
+<DT>{_POSIX_MAX_INPUT}<DD>
+<BR>
+
+Maximum number of bytes allowed in a terminal input queue.
+<BR>
+
+Value: 255
+<DT>{_POSIX_MQ_OPEN_MAX}<DD>
+<BR>
+
+The number of message queues that can be open for a single process.
+<BR>
+
+Value: 8
+<DT>{_POSIX_MQ_PRIO_MAX}<DD>
+<BR>
+
+The maximum number of message priorities supported by the implementation.
+<BR>
+
+Value: 32
+<DT>{_POSIX_NAME_MAX}<DD>
+<BR>
+
+Maximum number of bytes in a filename (not including the terminating
+null of a filename string).
+<BR>
+
+Value: 14
+<DT>{_POSIX_NGROUPS_MAX}<DD>
+<BR>
+
+Maximum number of simultaneous supplementary group IDs per process.
+<BR>
+
+Value: 8
+<DT>{_POSIX_OPEN_MAX}<DD>
+<BR>
+
+A value one greater than the maximum value that the system may assign
+to a newly-created file descriptor.
+<BR>
+
+Value: 20
+<DT>{_POSIX_PATH_MAX}<DD>
+<BR>
+
+Minimum number the implementation will accept as the maximum number of
+bytes in a pathname.
+<BR>
+
+Value: 256
+<DT>{_POSIX_PIPE_BUF}<DD>
+<BR>
+
+Maximum number of bytes that is guaranteed to be atomic when writing to
+a pipe.
+<BR>
+
+Value: 512
+<DT>{_POSIX_RE_DUP_MAX}<DD>
+<BR>
+
+The number of repeated occurrences of a BRE permitted by the
+<I>regexec</I>()
+and
+<I>regcomp</I>()
+functions when using the interval notation {\(<I>m</I>,<I>n</I>\}; see
+<I>Section 9.3.6</I>, <I>BREs Matching Multiple Characters.</I>
+
+<BR>
+
+Value: 255
+<DT>{_POSIX_RTSIG_MAX}<DD>
+<BR>
+
+The number of realtime signal numbers reserved for application use.
+<BR>
+
+Value: 8
+<DT>{_POSIX_SEM_NSEMS_MAX}<DD>
+<BR>
+
+The number of semaphores that a process may have.
+<BR>
+
+Value: 256
+<DT>{_POSIX_SEM_VALUE_MAX}<DD>
+<BR>
+
+The maximum value a semaphore may have.
+<BR>
+
+Value: 32 767
+<DT>{_POSIX_SIGQUEUE_MAX}<DD>
+<BR>
+
+The number of queued signals that a process may send and have pending
+at the receiver(s) at any time.
+<BR>
+
+Value: 32
+<DT>{_POSIX_SSIZE_MAX}<DD>
+<BR>
+
+The value that can be stored in an object of type
+<B>ssize_t</B>.
+
+<BR>
+
+Value: 32 767
+<DT>{_POSIX_SS_REPL_MAX}<DD>
+<BR>
+
+The number of replenishment operations that may be simultaneously
+pending for a particular sporadic server scheduler.
+<BR>
+
+Value: 4
+<DT>{_POSIX_STREAM_MAX}<DD>
+<BR>
+
+The number of streams that one process can have open at one time.
+<BR>
+
+Value: 8
+<DT>{_POSIX_SYMLINK_MAX}<DD>
+<BR>
+
+The number of bytes in a symbolic link.
+<BR>
+
+Value: 255
+<DT>{_POSIX_SYMLOOP_MAX}<DD>
+<BR>
+
+The number of symbolic links that can be traversed in the resolution of
+a pathname in the absence of a loop.
+<BR>
+
+Value: 8
+<DT>{_POSIX_THREAD_DESTRUCTOR_ITERATIONS}<DD>
+<BR>
+
+The number of attempts made to destroy a thread's thread-specific data
+values on thread exit.
+<BR>
+
+Value: 4
+<DT>{_POSIX_THREAD_KEYS_MAX}<DD>
+<BR>
+
+The number of data keys per process.
+<BR>
+
+Value: 128
+<DT>{_POSIX_THREAD_THREADS_MAX}<DD>
+<BR>
+
+The number of threads per process.
+<BR>
+
+Value: 64
+<DT>{_POSIX_TIMER_MAX}<DD>
+<BR>
+
+The per-process number of timers.
+<BR>
+
+Value: 32
+<DT>{_POSIX_TRACE_EVENT_NAME_MAX}<DD>
+<BR>
+
+The length in bytes of a trace event name (not including the terminating null).
+<BR>
+
+Value: 30
+<DT>{_POSIX_TRACE_NAME_MAX}<DD>
+<BR>
+
+The length in bytes of a trace generation version string or a trace
+stream name (not including the terminating null).
+<BR>
+
+Value: 8
+<DT>{_POSIX_TRACE_SYS_MAX}<DD>
+<BR>
+
+The number of trace streams that may simultaneously exist in the system.
+<BR>
+
+Value: 8
+<DT>{_POSIX_TRACE_USER_EVENT_MAX}<DD>
+<BR>
+
+The number of user trace event type identifiers that may simultaneously
+exist in a traced process, including the predefined user trace event
+POSIX_TRACE_UNNAMED_USER_EVENT.
+<BR>
+
+Value: 32
+<DT>{_POSIX_TTY_NAME_MAX}<DD>
+<BR>
+
+The size of the storage required for a terminal device name, in bytes
+(including the terminating null).
+<BR>
+
+Value: 9
+<DT>{_POSIX_TZNAME_MAX}<DD>
+<BR>
+
+Maximum number of bytes supported for the name of a timezone (not of
+the
+<I>TZ</I>
+
+variable).
+<BR>
+
+Value: 6
+<DL COMPACT><DT><DD>
+<P>
+<DL COMPACT>
+<DT><B>Note:</B>
+
+<DD>
+The length given by
+{_POSIX_TZNAME_MAX}
+does not include the quoting characters mentioned in
+<I>Section 8.3</I>, <I>Other Environment Variables.</I>
+
+</DL>
+<P>
+
+</DL>
+
+<DT>{_POSIX2_BC_BASE_MAX}<DD>
+<BR>
+
+Maximum
+<I>obase</I>
+
+values allowed by the
+<I>bc</I>
+
+utility.
+<BR>
+
+Value: 99
+<DT>{_POSIX2_BC_DIM_MAX}<DD>
+<BR>
+
+Maximum number of elements permitted in an array by the
+<I>bc</I>
+
+utility.
+<BR>
+
+Value: 2 048
+<DT>{_POSIX2_BC_SCALE_MAX}<DD>
+<BR>
+
+Maximum
+<I>scale</I>
+
+value allowed by the
+<I>bc</I>
+
+utility.
+<BR>
+
+Value: 99
+<DT>{_POSIX2_BC_STRING_MAX}<DD>
+<BR>
+
+Maximum length of a string constant accepted by the
+<I>bc</I>
+
+utility.
+<BR>
+
+Value: 1 000
+<DT>{_POSIX2_CHARCLASS_NAME_MAX}<DD>
+<BR>
+
+Maximum number of bytes in a character class name.
+<BR>
+
+Value: 14
+<DT>{_POSIX2_COLL_WEIGHTS_MAX}<DD>
+<BR>
+
+Maximum number of weights that can be assigned to an entry of the
+<I>LC_COLLATE</I>
+
+<B>order</B>
+
+keyword in the locale definition file; see
+<I>Chapter 7</I>, <I>Locale.</I>
+
+<BR>
+
+Value: 2
+<DT>{_POSIX2_EXPR_NEST_MAX}<DD>
+<BR>
+
+Maximum number of expressions that can be nested within parentheses by
+the
+<I>expr</I>
+
+utility.
+<BR>
+
+Value: 32
+<DT>{_POSIX2_LINE_MAX}<DD>
+<BR>
+
+Unless otherwise noted, the maximum length, in bytes, of a utility's
+input line (either standard input or another file), when the utility is
+described as processing text files. The length includes room for the
+trailing
+&lt;newline&gt;.
+<BR>
+
+Value: 2 048
+<DT>{_POSIX2_RE_DUP_MAX}<DD>
+<BR>
+
+Maximum number of repeated occurrences of a regular expression
+permitted when using the interval notation \{<I>m</I>,<I>n</I>\}; see
+<I>Chapter 9</I>, <I>Regular Expressions.</I>
+
+<BR>
+
+Value: 255
+<DT>{_XOPEN_IOV_MAX}<DD>
+<BR>
+
+Maximum number of
+<B>iovec</B>
+
+structures that one process has available for use with
+<I>readv</I>()
+or
+<I>writev</I>().
+<BR>
+
+Value: 16
+<DT>{_XOPEN_NAME_MAX}<DD>
+<BR>
+
+Maximum number of bytes in a filename (not including the terminating
+null of a filename string).
+<BR>
+
+Value: 255
+<DT>{_XOPEN_PATH_MAX}<DD>
+<BR>
+
+Minimum number the implementation will accept as the maximum number of
+bytes in a pathname.
+<BR>
+
+Value: 1024
+</DL>
+<A NAME="lbAK">&nbsp;</A>
+<H3>Numerical Limits</H3>
+
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/limits.h">limits.h</A>&gt;</I>
+
+header shall define the following macros and, except for
+{CHAR_BIT},
+{LONG_BIT},
+{MB_LEN_MAX},
+and
+{WORD_BIT},
+they shall be replaced by expressions that have the same type as
+would an expression that is an object of the corresponding type
+converted according to the integer promotions.
+<P>
+
+If the value of an object of type
+<B>char</B>
+
+is treated as a signed integer when used in an expression, the value of
+{CHAR_MIN}
+is the same as that of
+{SCHAR_MIN}
+and the value of
+{CHAR_MAX}
+is the same as that of
+{SCHAR_MAX}.
+Otherwise, the value of
+{CHAR_MIN}
+is 0 and the value of
+{CHAR_MAX}
+is the same as that of
+{UCHAR_MAX}.
+<DL COMPACT>
+<DT>{CHAR_BIT}<DD>
+<BR>
+
+Number of bits in a type
+<B>char</B>.
+
+<BR>
+
+Value: 8
+<DT>{CHAR_MAX}<DD>
+<BR>
+
+Maximum value for an object of type
+<B>char</B>.
+
+<BR>
+
+Value:
+{UCHAR_MAX}
+or
+{SCHAR_MAX}
+<DT>{CHAR_MIN}<DD>
+<BR>
+
+Minimum value for an object of type
+<B>char</B>.
+
+<BR>
+
+Value:
+{SCHAR_MIN}
+or 0
+<DT>{INT_MAX}<DD>
+<BR>
+
+Maximum value for an object of type
+<B>int</B>.
+
+<BR>
+
+Minimum Acceptable Value: 2 147 483 647
+<DT>{INT_MIN}<DD>
+<BR>
+
+Minimum value for an object of type
+<B>int</B>.
+
+<BR>
+
+Maximum Acceptable Value: -2 147 483 647
+<DT>{LLONG_MAX}<DD>
+<BR>
+
+Maximum value for an object of type
+<B>long long</B>.
+
+<BR>
+
+Minimum Acceptable Value: +9223372036854775807
+<DT>{LLONG_MIN}<DD>
+<BR>
+
+Minimum value for an object of type
+<B>long long</B>.
+
+<BR>
+
+Maximum Acceptable Value: -9223372036854775807
+<DT>{LONG_BIT}<DD>
+<BR>
+
+Number of bits in an object of type
+<B>long</B>.
+
+<BR>
+
+Minimum Acceptable Value: 32
+<DT>{LONG_MAX}<DD>
+<BR>
+
+Maximum value for an object of type
+<B>long</B>.
+
+<BR>
+
+Minimum Acceptable Value: +2 147 483 647
+<DT>{LONG_MIN}<DD>
+<BR>
+
+Minimum value for an object of type
+<B>long</B>.
+
+<BR>
+
+Maximum Acceptable Value: -2 147 483 647
+<DT>{MB_LEN_MAX}<DD>
+<BR>
+
+Maximum number of bytes in a character, for any supported locale.
+<BR>
+
+Minimum Acceptable Value: 1
+<DT>{SCHAR_MAX}<DD>
+<BR>
+
+Maximum value for an object of type
+<B>signed char</B>.
+
+<BR>
+
+Value: +127
+<DT>{SCHAR_MIN}<DD>
+<BR>
+
+Minimum value for an object of type
+<B>signed char</B>.
+
+<BR>
+
+Value: -128
+<DT>{SHRT_MAX}<DD>
+<BR>
+
+Maximum value for an object of type
+<B>short</B>.
+
+<BR>
+
+Minimum Acceptable Value: +32 767
+<DT>{SHRT_MIN}<DD>
+<BR>
+
+Minimum value for an object of type
+<B>short</B>.
+
+<BR>
+
+Maximum Acceptable Value: -32 767
+<DT>{SSIZE_MAX}<DD>
+<BR>
+
+Maximum value for an object of type
+<B>ssize_t</B>.
+
+<BR>
+
+Minimum Acceptable Value:
+{_POSIX_SSIZE_MAX}
+<DT>{UCHAR_MAX}<DD>
+<BR>
+
+Maximum value for an object of type
+<B>unsigned char</B>.
+
+<BR>
+
+Value: 255
+<DT>{UINT_MAX}<DD>
+<BR>
+
+Maximum value for an object of type
+<B>unsigned</B>.
+
+<BR>
+
+Minimum Acceptable Value: 4 294 967 295
+<DT>{ULLONG_MAX}<DD>
+<BR>
+
+Maximum value for an object of type
+<B>unsigned long long</B>.
+
+<BR>
+
+Minimum Acceptable Value: 18446744073709551615
+<DT>{ULONG_MAX}<DD>
+<BR>
+
+Maximum value for an object of type
+<B>unsigned long</B>.
+
+<BR>
+
+Minimum Acceptable Value: 4 294 967 295
+<DT>{USHRT_MAX}<DD>
+<BR>
+
+Maximum value for an object of type
+<B>unsigned short</B>.
+
+<BR>
+
+Minimum Acceptable Value: 65 535
+<DT>{WORD_BIT}<DD>
+<BR>
+
+Number of bits in an object of type
+<B>int</B>.
+
+<BR>
+
+Minimum Acceptable Value: 32
+</DL>
+<A NAME="lbAL">&nbsp;</A>
+<H3>Other Invariant Values</H3>
+
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/limits.h">limits.h</A>&gt;</I>
+
+header shall define the following symbolic constants:
+<DL COMPACT>
+<DT>{NL_ARGMAX}<DD>
+<BR>
+
+Maximum value of
+<I>n</I>
+
+in conversion specifications using the &quot;%<I>n</I>$&quot;
+sequence in calls to the
+<I>printf</I>()
+and
+<I>scanf</I>()
+families of functions.
+<BR>
+
+Minimum Acceptable Value: 9
+<DT>{NL_LANGMAX}<DD>
+<BR>
+
+Maximum number of bytes in a
+<I>LANG</I>
+
+name.
+<BR>
+
+Minimum Acceptable Value: 14
+<DT>{NL_MSGMAX}<DD>
+<BR>
+
+Maximum message number.
+<BR>
+
+Minimum Acceptable Value: 32 767
+<DT>{NL_SETMAX}<DD>
+<BR>
+
+Maximum set number.
+<BR>
+
+Minimum Acceptable Value: 255
+<DT>{NL_TEXTMAX}<DD>
+<BR>
+
+Maximum number of bytes in a message string.
+<BR>
+
+Minimum Acceptable Value:
+{_POSIX2_LINE_MAX}
+<DT>{NZERO}<DD>
+<BR>
+
+Default process priority.
+<BR>
+
+Minimum Acceptable Value: 20
+</DL>
+<P>
+
+<I>The following sections are informative.</I>
+
+<A NAME="lbAM">&nbsp;</A>
+<H2>APPLICATION USAGE</H2>
+
+None.
+<A NAME="lbAN">&nbsp;</A>
+<H2>RATIONALE</H2>
+
+A request was made to reduce the value of
+{_POSIX_LINK_MAX}
+from the value of 8 specified for it in the POSIX.1-1990 standard to 2. The
+standard developers decided to deny this request for several reasons:
+<DL COMPACT>
+<DT> *<DD>
+They wanted to avoid making any changes to the standard that could
+break conforming applications, and the requested change could have that
+effect.
+<DT> *<DD>
+The use of multiple hard links to a file cannot always be replaced with
+use of symbolic links. Symbolic links are semantically different from
+hard links in that they associate a pathname with another pathname
+rather than a pathname with a file. This has implications for access
+control, file permanence, and transparency.
+<DT> *<DD>
+The original standard developers had considered the issue of allowing
+for implementations that did not in general support hard links, and
+decided that this would reduce consensus on the standard.
+</DL>
+<P>
+
+Systems that support historical versions of the development option of
+the ISO&nbsp;POSIX-2 standard retain the name
+{_POSIX2_RE_DUP_MAX}
+as an alias for
+{_POSIX_RE_DUP_MAX}.
+<DL COMPACT>
+<DT>{PATH_MAX}<DD>
+<BR>
+
+IEEE PASC Interpretation 1003.1 #15 addressed the inconsistency in the
+standard with the definition of pathname and the description of
+{PATH_MAX},
+allowing application developers to allocate either
+{PATH_MAX}
+or
+{PATH_MAX}+1
+bytes. The inconsistency has been removed by correction to the
+{PATH_MAX}
+definition to include the null character. With this change,
+applications that previously allocated
+{PATH_MAX}
+bytes will continue to succeed.
+<DT>{SYMLINK_MAX}<DD>
+<BR>
+
+This symbol refers to space for data that is stored in the file system,
+as opposed to
+{PATH_MAX}
+which is the length of a name that can be passed to a function. In some
+existing implementations, the pathnames pointed to by symbolic links
+are stored in the
+<I>inode</I>s
+
+of the links, so it is important that
+{SYMLINK_MAX}
+not be constrained to be as large as
+{PATH_MAX}.
+</DL>
+<A NAME="lbAO">&nbsp;</A>
+<H2>FUTURE DIRECTIONS</H2>
+
+None.
+<A NAME="lbAP">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+<I>Chapter 7</I>, <I>Locale,</I>
+
+<I></I><B>&lt;<A HREF="file:///usr/include/stdio.h">stdio.h</A>&gt;</B>,
+
+<I></I><B>&lt;<A HREF="file:///usr/include/unistd.h">unistd.h</A>&gt;</B>
+
+<P>
+
+The System Interfaces volume of POSIX.1-2008,
+<I>Section 2.2</I>, <I>The Compilation Environment,</I>
+
+<I>fpathconf</I>(),
+
+<I>sysconf</I>()
+
+<A NAME="lbAQ">&nbsp;</A>
+<H2>COPYRIGHT</H2>
+
+Portions of this text are reprinted and reproduced in electronic form
+from IEEE Std 1003.1, 2013 Edition, Standard for Information Technology
+-- Portable Operating System Interface (POSIX), The Open Group Base
+Specifications Issue 7, Copyright (C) 2013 by the Institute of
+Electrical and Electronics Engineers, Inc and The Open Group.
+(This is POSIX.1-2008 with the 2013 Technical Corrigendum 1 applied.) In the
+event of any discrepancy between this version and the original IEEE and
+The Open Group Standard, the original IEEE and The Open Group Standard
+is the referee document. The original Standard can be obtained online at
+<A HREF="http://www.unix.org/online.html">http://www.unix.org/online.html</A> .
+<P>
+Any typographical or formatting errors that appear
+in this page are most likely
+to have been introduced during the conversion of the source files to
+man page format. To report such errors, see
+<A HREF="https://www.kernel.org/doc/man-pages/reporting_bugs.html">https://www.kernel.org/doc/man-pages/reporting_bugs.html</A> .
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">PROLOG</A><DD>
+<DT><A HREF="#lbAC">NAME</A><DD>
+<DT><A HREF="#lbAD">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAE">DESCRIPTION</A><DD>
+<DL>
+<DT><A HREF="#lbAF">Runtime Invariant Values (Possibly Indeterminate)</A><DD>
+<DT><A HREF="#lbAG">Pathname Variable Values</A><DD>
+<DT><A HREF="#lbAH">Runtime Increasable Values</A><DD>
+<DT><A HREF="#lbAI">Maximum Values</A><DD>
+<DT><A HREF="#lbAJ">Minimum Values</A><DD>
+<DT><A HREF="#lbAK">Numerical Limits</A><DD>
+<DT><A HREF="#lbAL">Other Invariant Values</A><DD>
+</DL>
+<DT><A HREF="#lbAM">APPLICATION USAGE</A><DD>
+<DT><A HREF="#lbAN">RATIONALE</A><DD>
+<DT><A HREF="#lbAO">FUTURE DIRECTIONS</A><DD>
+<DT><A HREF="#lbAP">SEE ALSO</A><DD>
+<DT><A HREF="#lbAQ">COPYRIGHT</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 14:28:43 GMT, February 25, 2017
+</BODY>
+</HTML>

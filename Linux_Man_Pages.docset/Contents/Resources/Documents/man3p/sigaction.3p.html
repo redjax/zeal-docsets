@@ -1,0 +1,921 @@
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML><HEAD><TITLE>Man page of SIGACTION</TITLE>
+</HEAD><BODY>
+<H1>SIGACTION</H1>
+Section: POSIX Programmer's Manual (3P)<BR>Updated: 2013<BR><A HREF="#index">Index</A>
+<A HREF="../index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>PROLOG</H2>
+
+This manual page is part of the POSIX Programmer's Manual.
+The Linux implementation of this interface may differ (consult
+the corresponding Linux manual page for details of Linux behavior),
+or the interface may not be implemented on Linux.
+<P>
+<A NAME="lbAC">&nbsp;</A>
+<H2>NAME</H2>
+
+sigaction
+--- examine and change a signal action
+<A NAME="lbAD">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<P>
+
+<PRE>
+#include &lt;<A HREF="file:///usr/include/signal.h">signal.h</A>&gt;
+
+int sigaction(int <I>sig</I>, const struct sigaction *restrict <I>act</I>,
+    struct sigaction *restrict <I>oact</I>);
+</PRE>
+
+<A NAME="lbAE">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+The
+<I>sigaction</I>()
+function allows the calling process to examine and/or specify the
+action to be associated with a specific signal. The argument
+<I>sig</I>
+
+specifies the signal; acceptable values are defined in
+<I>&lt;<A HREF="file:///usr/include/signal.h">signal.h</A>&gt;</I>.
+
+<P>
+
+The structure
+<B>sigaction</B>,
+
+used to describe an action to be taken, is defined in the
+<I>&lt;<A HREF="file:///usr/include/signal.h">signal.h</A>&gt;</I>
+
+header to include at least the following members:
+
+<CENTER><TABLE BORDER><TR><TD><TABLE>
+<TR VALIGN=top><TD ALIGN=center><B>Member Type</B></TD><TD ALIGN=center><B>Member Name</B></TD><TD ALIGN=center><B>Description</B><BR></TD></TR>
+<TR VALIGN=top><TD COLSPAN=3><HR></TD></TR>
+<TR VALIGN=top><TD><B>void(*) (int)</B></TD><TD><I>sa_handler</I></TD><TD>
+Pointer to a signal-catching function or one of the macros
+SIG_IGN or SIG_DFL.
+<BR></TD></TR>
+<TR VALIGN=top><TD><B>sigset_t</B></TD><TD><I>sa_mask</I></TD><TD>
+Additional set of signals to be blocked during execution of
+signal-catching function.
+<BR></TD></TR>
+<TR VALIGN=top><TD><B>int</B></TD><TD><I>sa_flags</I></TD><TD>
+Special flags to affect behavior of signal.
+<BR></TD></TR>
+<TR VALIGN=top><TD><B>
+void(*) (int,
+<BR>
+
+&nbsp;&nbsp;siginfo_t *, void *)
+</B></TD><TD><I>sa_sigaction</I></TD><TD>Pointer to a signal-catching function.<BR></TD></TR>
+</TABLE></TABLE></CENTER>
+
+
+<P>
+
+The storage occupied by
+<I>sa_handler</I>
+
+and
+<I>sa_sigaction</I>
+
+may overlap, and a conforming application shall not use both
+simultaneously.
+<P>
+
+If the argument
+<I>act</I>
+
+is not a null pointer, it points to a structure specifying the action
+to be associated with the specified signal. If the argument
+<I>oact</I>
+
+is not a null pointer, the action previously associated with the signal
+is stored in the location pointed to by the argument
+<I>oact</I>.
+
+If the argument
+<I>act</I>
+
+is a null pointer, signal handling is unchanged; thus, the call can be
+used to enquire about the current handling of a given signal. The
+SIGKILL and SIGSTOP signals shall not be added to the signal
+mask using this mechanism; this restriction shall be enforced by the
+system without causing an error to be indicated.
+<P>
+
+If the SA_SIGINFO flag (see below) is cleared in the
+<I>sa_flags</I>
+
+field of the
+<B>sigaction</B>
+
+structure, the
+<I>sa_handler</I>
+
+field identifies the action to be associated with the specified signal.
+If the SA_SIGINFO flag is set in the
+<I>sa_flags</I>
+
+field, the
+<I>sa_sigaction</I>
+
+field specifies a signal-catching function.
+<P>
+
+The
+<I>sa_flags</I>
+
+field can be used to modify the behavior of the specified signal.
+<P>
+
+The following flags, defined in the
+<I>&lt;<A HREF="file:///usr/include/signal.h">signal.h</A>&gt;</I>
+
+header, can be set in
+<I>sa_flags</I>:
+
+<DL COMPACT>
+<DT>SA_NOCLDSTOP<DD>
+Do not generate SIGCHLD when children stop
+or stopped children continue.
+<DL COMPACT><DT><DD>
+<P>
+<P>
+
+If
+<I>sig</I>
+
+is SIGCHLD and the SA_NOCLDSTOP flag is not set in
+<I>sa_flags</I>,
+
+and the implementation supports the SIGCHLD signal, then a SIGCHLD
+signal shall be generated for the calling process whenever any of its
+child processes stop
+and a SIGCHLD signal may be generated for the calling
+process whenever any of its stopped child processes are continued.
+If
+<I>sig</I>
+
+is SIGCHLD and the SA_NOCLDSTOP flag is set in
+<I>sa_flags</I>,
+
+then the implementation shall not generate a SIGCHLD signal in this
+way.
+</DL>
+
+<DT>SA_ONSTACK<DD>
+If set and an alternate signal stack has been declared with
+<I>sigaltstack</I>(),
+the signal shall be delivered to the calling process on that stack.
+Otherwise, the signal shall be delivered on the current stack.
+<DT>SA_RESETHAND<DD>
+If set, the disposition of the signal shall be reset to SIG_DFL and the
+SA_SIGINFO flag shall be cleared on entry to the signal handler.
+<DL COMPACT><DT><DD>
+<P>
+<DL COMPACT>
+<DT><B>Note:</B>
+
+<DD>
+SIGILL and SIGTRAP cannot be automatically reset when delivered; the
+system silently enforces this restriction.
+</DL>
+<P>
+
+Otherwise, the disposition of the signal shall not be modified on entry
+to the signal handler.
+<P>
+
+In addition, if this flag is set,
+<I>sigaction</I>()
+may behave as if the SA_NODEFER flag were also set.
+</DL>
+
+<DT>SA_RESTART<DD>
+This flag affects the behavior of interruptible functions; that is,
+those specified to fail with
+<I>errno</I>
+
+set to
+<B>[EINTR]</B>.
+
+If set, and a function specified as interruptible is interrupted by
+this signal, the function shall restart and shall not fail with
+<B>[EINTR]</B>
+
+unless otherwise specified. If an interruptible function which uses a
+timeout is restarted, the duration of the timeout following the restart
+is set to an unspecified value that does not exceed the original
+timeout value. If the flag is not set, interruptible functions
+interrupted by this signal shall fail with
+<I>errno</I>
+
+set to
+<B>[EINTR]</B>.
+
+<DT>SA_SIGINFO<DD>
+If cleared and the signal is caught, the signal-catching function
+shall be entered as:
+<DL COMPACT><DT><DD>
+<P>
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+void func(int </B><I>signo</I>);
+</PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+where
+<I>signo</I>
+
+is the only argument to the signal-catching function. In this case, the
+application shall use the
+<I>sa_handler</I>
+
+member to describe the signal-catching function and the application
+shall not modify the
+<I>sa_sigaction</I>
+
+member.
+<P>
+
+If SA_SIGINFO is set and the signal is caught, the signal-catching
+function shall be entered as:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+void func(int </B><I>signo</I>, siginfo_t *<I>info</I>, void *<I>context</I>);
+</PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+where two additional arguments are passed to the signal-catching
+function. The second argument shall point to an object of type
+<B>siginfo_t</B>
+
+explaining the reason why the signal was generated; the third argument
+can be cast to a pointer to an object of type
+<B>ucontext_t</B>
+
+to refer to the receiving thread's context that was interrupted when
+the signal was delivered. In this case, the application shall use the
+<I>sa_sigaction</I>
+
+member to describe the signal-catching function and the application
+shall not modify the
+<I>sa_handler</I>
+
+member.
+<P>
+
+The
+<I>si_signo</I>
+
+member contains the system-generated signal number.
+<P>
+
+The
+<I>si_errno</I>
+
+member may contain implementation-defined additional error
+information; if non-zero, it contains an error number identifying the
+condition that caused the signal to be generated.
+<P>
+
+The
+<I>si_code</I>
+
+member contains a code identifying the cause of the signal, as
+described in
+<I>Section 2.4.3</I>, <I>Signal Actions.</I>
+
+</DL>
+
+<DT>SA_NOCLDWAIT<DD>
+If set, and
+<I>sig</I>
+
+equals SIGCHLD, child processes of the calling processes shall not
+be transformed into zombie processes when they terminate. If the calling
+process subsequently waits for its children, and the process has no
+unwaited-for children that were transformed into zombie processes, it
+shall block until all of its children terminate, and
+<I>wait</I>(),
+<I>waitid</I>(),
+and
+<I>waitpid</I>()
+shall fail and set
+<I>errno</I>
+
+to
+<B>[ECHILD]</B>.
+
+Otherwise, terminating child processes shall be transformed into zombie
+processes, unless SIGCHLD is set to SIG_IGN.
+<DT>SA_NODEFER<DD>
+If set and
+<I>sig</I>
+
+is caught,
+<I>sig</I>
+
+shall not be added to the thread's signal mask on entry to the signal
+handler unless it is included in
+<I>sa_mask</I>.
+
+Otherwise,
+<I>sig</I>
+
+shall always be added to the thread's signal mask on entry to the
+signal handler.
+</DL>
+<P>
+
+When a signal is caught by a signal-catching function installed by
+<I>sigaction</I>(),
+a new signal mask is calculated and installed for the duration of the
+signal-catching function (or until a call to either
+<I>sigprocmask</I>()
+or
+<I>sigsuspend</I>()
+is made). This mask is formed by taking the union of the current
+signal mask and the value of the
+<I>sa_mask</I>
+
+for the signal being delivered, and unless SA_NODEFER or
+SA_RESETHAND is set,
+then including the signal being delivered. If and when the user's
+signal handler returns normally, the original signal mask is restored.
+<P>
+
+Once an action is installed for a specific signal, it shall remain
+installed until another action is explicitly requested (by another
+call to
+<I>sigaction</I>()),
+until the SA_RESETHAND flag causes resetting of the handler,
+or until one of the
+<I>exec</I>
+
+functions is called.
+<P>
+
+If the previous action for
+<I>sig</I>
+
+had been established by
+<I>signal</I>(),
+the values of the fields returned in the structure pointed to by
+<I>oact</I>
+
+are unspecified, and in particular
+<I>oact</I>-&gt;<I>sa_handler</I>
+
+is not necessarily the same value passed to
+<I>signal</I>().
+However, if a pointer to the same structure or a copy thereof is passed
+to a subsequent call to
+<I>sigaction</I>()
+via the
+<I>act</I>
+
+argument, handling of the signal shall be as if the original call to
+<I>signal</I>()
+were repeated.
+<P>
+
+If
+<I>sigaction</I>()
+fails, no new signal handler is installed.
+<P>
+
+It is unspecified whether an attempt to set the action for a signal
+that cannot be caught or ignored to SIG_DFL is ignored or causes an
+error to be returned with
+<I>errno</I>
+
+set to
+<B>[EINVAL]</B>.
+
+<P>
+
+If SA_SIGINFO is not set in
+<I>sa_flags</I>,
+
+then the disposition of subsequent occurrences of
+<I>sig</I>
+
+when it is already pending is implementation-defined; the
+signal-catching function shall be invoked with a single argument.
+If SA_SIGINFO is set in
+<I>sa_flags</I>,
+
+then subsequent occurrences of
+<I>sig</I>
+
+generated by
+<I>sigqueue</I>()
+or as a result of any signal-generating function that supports the
+specification of an application-defined value (when
+<I>sig</I>
+
+is already pending) shall be queued in FIFO order until delivered or
+accepted; the signal-catching function shall be invoked with three
+arguments. The application specified value is passed to the
+signal-catching function as the
+<I>si_value</I>
+
+member of the
+<B>siginfo_t</B>
+
+structure.
+<P>
+
+The result of the use of
+<I>sigaction</I>()
+and a
+<I>sigwait</I>()
+function concurrently within a process on the same signal is
+unspecified.
+<A NAME="lbAF">&nbsp;</A>
+<H2>RETURN VALUE</H2>
+
+Upon successful completion,
+<I>sigaction</I>()
+shall return 0; otherwise, -1 shall be returned,
+<I>errno</I>
+
+shall be set to indicate the error, and no new signal-catching function
+shall be installed.
+<BR>
+
+<A NAME="lbAG">&nbsp;</A>
+<H2>ERRORS</H2>
+
+The
+<I>sigaction</I>()
+function shall fail if:
+<DL COMPACT>
+<DT><B>EINVAL</B>
+
+<DD>
+The
+<I>sig</I>
+
+argument is not a valid signal number or an attempt is made to catch a
+signal that cannot be caught or ignore a signal that cannot be ignored.
+<DT><B>ENOTSUP</B>
+
+<DD>
+The SA_SIGINFO bit flag is set in the
+<I>sa_flags</I>
+
+field of the
+<B>sigaction</B>
+
+structure.
+</DL>
+<P>
+
+The
+<I>sigaction</I>()
+function may fail if:
+<DL COMPACT>
+<DT><B>EINVAL</B>
+
+<DD>
+An attempt was made to set the action to SIG_DFL for a signal that
+cannot be caught or ignored (or both).
+</DL>
+<P>
+
+In addition, the
+<I>sigaction</I>()
+function may fail if the SA_SIGINFO flag is set in the
+<I>sa_flags</I>
+
+field of the
+<B>sigaction</B>
+
+structure for a signal not in the range SIGRTMIN to SIGRTMAX.
+<P>
+
+<I>The following sections are informative.</I>
+
+<A NAME="lbAH">&nbsp;</A>
+<H2>EXAMPLES</H2>
+
+<A NAME="lbAI">&nbsp;</A>
+<H3>Establishing a Signal Handler</H3>
+
+<P>
+
+The following example demonstrates the use of
+<I>sigaction</I>()
+to establish a handler for the SIGINT signal.
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+#include &lt;<A HREF="file:///usr/include/signal.h">signal.h</A>&gt;
+
+static void handler(int signum)
+{
+    /* Take appropriate actions for signal delivery */
+}
+
+int main()
+{
+    struct sigaction sa;
+
+    sa.sa_handler = handler;
+    sigemptyset(&amp;sa.sa_mask);
+    sa.sa_flags = SA_RESTART; /* Restart functions if
+                                 interrupted by handler */
+    if (sigaction(SIGINT, &amp;sa, NULL) == -1)
+        /* Handle error */;
+
+    /* Further code */
+}
+</B></PRE>
+
+<P>
+
+</DL>
+
+<A NAME="lbAJ">&nbsp;</A>
+<H2>APPLICATION USAGE</H2>
+
+The
+<I>sigaction</I>()
+function supersedes the
+<I>signal</I>()
+function, and should be used in preference. In particular,
+<I>sigaction</I>()
+and
+<I>signal</I>()
+should not be used in the same process to control the same signal.
+The behavior of async-signal-safe functions, as defined in their
+respective DESCRIPTION sections, is as specified by this volume of POSIX.1-2008, regardless
+of invocation from a signal-catching function. This is the only intended
+meaning of the statement that async-signal-safe functions may be used in
+signal-catching functions without restrictions. Applications must still
+consider all effects of such functions on such things as data structures,
+files, and process state. In particular, application developers need
+to consider the restrictions on interactions when interrupting
+<I>sleep</I>()
+and interactions among multiple handles for a file description. The
+fact that any specific function is listed as async-signal-safe does not
+necessarily mean that invocation of that function from a
+signal-catching function is recommended.
+<P>
+
+In order to prevent errors arising from interrupting non-async-signal-safe
+function calls, applications should protect calls to these functions
+either by blocking the appropriate signals or through the use of some
+programmatic semaphore (see
+<I>semget</I>(),
+
+<I>sem_init</I>(),
+
+<I>sem_open</I>(),
+
+and so on). Note in particular that even the ``safe'' functions may
+modify
+<I>errno</I>;
+
+the signal-catching function, if not executing as an independent
+thread, should save and restore its value in order to avoid the
+possibility that delivery of a signal in between an error return
+from a function that sets
+<I>errno</I>
+
+and the subsequent examination of
+<I>errno</I>
+
+could result in the signal-catching function changing the value of
+<I>errno</I>.
+
+Naturally, the same principles apply to the async-signal-safety of
+application routines and asynchronous data access. Note that
+<I>longjmp</I>()
+and
+<I>siglongjmp</I>()
+are not in the list of async-signal-safe functions. This is because
+the code executing after
+<I>longjmp</I>()
+and
+<I>siglongjmp</I>()
+can call any unsafe functions with the same danger as calling those
+unsafe functions directly from the signal handler. Applications that
+use
+<I>longjmp</I>()
+and
+<I>siglongjmp</I>()
+from within signal handlers require rigorous protection in order to be
+portable. Many of the other functions that are excluded from the list
+are traditionally implemented using either
+<I>malloc</I>()
+or
+<I>free</I>()
+functions or the standard I/O library, both of which traditionally
+use data structures in a non-async-signal-safe manner. Since any
+combination of different functions using a common data structure can
+cause async-signal-safety problems, this volume of POSIX.1-2008 does not define the behavior
+when any unsafe function is called in a signal handler that interrupts
+an unsafe function.
+<P>
+
+Usually, the signal is executed on the stack that was in effect before
+the signal was delivered. An alternate stack may be specified to
+receive a subset of the signals being caught.
+<P>
+
+When the signal handler returns, the receiving thread resumes
+execution at the point it was interrupted unless the signal handler
+makes other arrangements. If
+<I>longjmp</I>()
+or
+<I>_longjmp</I>()
+is used to leave the signal handler, then the signal mask must be
+explicitly restored.
+<P>
+
+This volume of POSIX.1-2008 defines the third argument of a signal handling function when
+SA_SIGINFO is set as a
+<B>void *</B>
+
+instead of a
+<B>ucontext_t *</B>,
+
+but without requiring type checking. New applications should
+explicitly cast the third argument of the signal handling function to
+<B>ucontext_t *</B>.
+
+<P>
+
+The BSD optional four argument signal handling function is not
+supported by this volume of POSIX.1-2008. The BSD declaration would be:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+void handler(int </B><I>sig</I>, int <I>code</I>, struct sigcontext *<I>scp</I>,
+    char *<I>addr</I>);
+</PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+where
+<I>sig</I>
+
+is the signal number,
+<I>code</I>
+
+is additional information on certain signals,
+<I>scp</I>
+
+is a pointer to the
+<B>sigcontext</B>
+
+structure, and
+<I>addr</I>
+
+is additional address information. Much the same information is
+available in the objects pointed to by the second argument of the
+signal handler specified when SA_SIGINFO is set.
+<P>
+
+Since the
+<I>sigaction</I>()
+function is allowed but not required to set SA_NODEFER when the
+application sets the SA_RESETHAND flag, applications which depend on the
+SA_RESETHAND functionality for the newly installed signal handler must
+always explicitly set SA_NODEFER when they set SA_RESETHAND in order to
+be portable.
+<P>
+
+See also the rationale for Realtime Signal Generation and Delivery in
+the Rationale (Informative) volume of POSIX.1-2008,
+<I>Section B.2.4.2</I>, <I>Signal Generation and Delivery.</I>
+
+<A NAME="lbAK">&nbsp;</A>
+<H2>RATIONALE</H2>
+
+Although this volume of POSIX.1-2008 requires that signals that cannot be ignored
+shall not be added to the signal mask when a signal-catching function
+is entered, there is no explicit requirement that subsequent calls to
+<I>sigaction</I>()
+reflect this in the information returned in the
+<I>oact</I>
+
+argument. In other words, if SIGKILL
+is included in the
+<I>sa_mask</I>
+
+field of
+<I>act</I>,
+
+it is unspecified whether or not a subsequent call to
+<I>sigaction</I>()
+returns with SIGKILL included in the
+<I>sa_mask</I>
+
+field of
+<I>oact</I>.
+
+<P>
+
+The SA_NOCLDSTOP
+flag, when supplied in the
+<I>act</I>-&gt;<I>sa_flags</I>
+
+parameter, allows overloading SIGCHLD with the System V
+semantics that each SIGCLD
+signal indicates a single terminated child. Most conforming applications
+that catch SIGCHLD are expected to install signal-catching functions
+that repeatedly call the
+<I>waitpid</I>()
+function with the WNOHANG
+flag set, acting on each child for which status is returned, until
+<I>waitpid</I>()
+returns zero. If stopped children are not of interest, the use of the
+SA_NOCLDSTOP
+flag can prevent the overhead from invoking the signal-catching routine
+when they stop.
+<P>
+
+Some historical implementations also define other mechanisms for
+stopping processes, such as the
+<I>ptrace</I>()
+function. These implementations usually do not generate a SIGCHLD
+signal when processes stop due to this mechanism; however, that is
+beyond the scope of this volume of POSIX.1-2008.
+<P>
+
+This volume of POSIX.1-2008 requires that calls to
+<I>sigaction</I>()
+that supply a NULL
+<I>act</I>
+
+argument succeed, even in the case of signals that cannot be caught or
+ignored (that is, SIGKILL
+or SIGSTOP).
+The System V
+<I>signal</I>()
+and BSD
+<I>sigvec</I>()
+functions return
+<B>[EINVAL]</B>
+
+in these cases and, in this respect, their behavior varies from
+<I>sigaction</I>().
+<P>
+
+This volume of POSIX.1-2008 requires that
+<I>sigaction</I>()
+properly save and restore a signal action set up by the ISO&nbsp;C standard
+<I>signal</I>()
+function. However, there is no guarantee that the reverse is true, nor
+could there be given the greater amount of information conveyed by the
+<B>sigaction</B>
+
+structure. Because of this, applications should avoid using both
+functions for the same signal in the same process. Since this cannot
+always be avoided in case of general-purpose library routines, they
+should always be implemented with
+<I>sigaction</I>().
+<P>
+
+It was intended that the
+<I>signal</I>()
+function should be implementable as a library routine using
+<I>sigaction</I>().
+<P>
+
+The POSIX Realtime Extension extends the
+<I>sigaction</I>()
+function as specified by the POSIX.1-1990 standard to allow the application to request
+on a per-signal basis via an additional signal action flag that the
+extra parameters, including the application-defined signal value, if
+any, be passed to the signal-catching function.
+<A NAME="lbAL">&nbsp;</A>
+<H2>FUTURE DIRECTIONS</H2>
+
+None.
+<A NAME="lbAM">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+<I>Section 2.4</I>, <I>Signal Concepts,</I>
+
+<I>exec</I>,
+
+<I>kill</I>(),
+
+<I>_longjmp</I>(),
+
+<I>longjmp</I>(),
+
+<I>pthread_sigmask</I>(),
+
+<I>raise</I>(),
+
+<I>semget</I>(),
+
+<I>sem_init</I>(),
+
+<I>sem_open</I>(),
+
+<I>sigaddset</I>(),
+
+<I>sigaltstack</I>(),
+
+<I>sigdelset</I>(),
+
+<I>sigemptyset</I>(),
+
+<I>sigfillset</I>(),
+
+<I>sigismember</I>(),
+
+<I>signal</I>(),
+
+<I>sigsuspend</I>(),
+
+<I>wait</I>(),
+
+<I>waitid</I>()
+
+<P>
+
+The Base Definitions volume of POSIX.1-2008,
+<I></I><B>&lt;<A HREF="file:///usr/include/signal.h">signal.h</A>&gt;</B>
+
+<A NAME="lbAN">&nbsp;</A>
+<H2>COPYRIGHT</H2>
+
+Portions of this text are reprinted and reproduced in electronic form
+from IEEE Std 1003.1, 2013 Edition, Standard for Information Technology
+-- Portable Operating System Interface (POSIX), The Open Group Base
+Specifications Issue 7, Copyright (C) 2013 by the Institute of
+Electrical and Electronics Engineers, Inc and The Open Group.
+(This is POSIX.1-2008 with the 2013 Technical Corrigendum 1 applied.) In the
+event of any discrepancy between this version and the original IEEE and
+The Open Group Standard, the original IEEE and The Open Group Standard
+is the referee document. The original Standard can be obtained online at
+<A HREF="http://www.unix.org/online.html">http://www.unix.org/online.html</A> .
+<P>
+Any typographical or formatting errors that appear
+in this page are most likely
+to have been introduced during the conversion of the source files to
+man page format. To report such errors, see
+<A HREF="https://www.kernel.org/doc/man-pages/reporting_bugs.html">https://www.kernel.org/doc/man-pages/reporting_bugs.html</A> .
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">PROLOG</A><DD>
+<DT><A HREF="#lbAC">NAME</A><DD>
+<DT><A HREF="#lbAD">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAE">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAF">RETURN VALUE</A><DD>
+<DT><A HREF="#lbAG">ERRORS</A><DD>
+<DT><A HREF="#lbAH">EXAMPLES</A><DD>
+<DL>
+<DT><A HREF="#lbAI">Establishing a Signal Handler</A><DD>
+</DL>
+<DT><A HREF="#lbAJ">APPLICATION USAGE</A><DD>
+<DT><A HREF="#lbAK">RATIONALE</A><DD>
+<DT><A HREF="#lbAL">FUTURE DIRECTIONS</A><DD>
+<DT><A HREF="#lbAM">SEE ALSO</A><DD>
+<DT><A HREF="#lbAN">COPYRIGHT</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 14:28:55 GMT, February 25, 2017
+</BODY>
+</HTML>

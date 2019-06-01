@@ -1,0 +1,222 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+<title>Maven Project — Jenkins Job Builder 2.0.0.0b3.dev264 documentation</title>
+<link href="_static/classic.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '2.0.0.0b3.dev264',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="index.html" rel="top" title="Jenkins Job Builder 2.0.0.0b3.dev264 documentation"/>
+<link href="definition.html" rel="up" title="Job Definitions"/>
+<link href="project_multijob.html" rel="next" title="MultiJob Project"/>
+<link href="project_matrix.html" rel="prev" title="Matrix Project"/>
+</head>
+<body role="document">
+<div aria-label="related navigation" class="related" role="navigation">
+<h3>Navigation</h3>
+<ul>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="project_multijob.html" title="MultiJob Project">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="project_matrix.html" title="Matrix Project">previous</a> |</li>
+<li class="nav-item nav-item-0"><a href="index.html">Jenkins Job Builder 2.0.0.0b3.dev264 documentation</a> »</li>
+<li class="nav-item nav-item-1"><a accesskey="U" href="definition.html">Job Definitions</a> »</li>
+</ul>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="bodywrapper">
+<div class="body" role="main">
+<div class="section" id="module-project_maven">
+<span id="maven-project"></span><span id="project-maven"></span><h1><a name="//apple_ref/cpp/Module/project_maven"></a>Maven Project<a class="headerlink" href="#module-project_maven" title="Permalink to this headline">¶</a></h1>
+<p>The Maven Project module handles creating Maven Jenkins projects.</p>
+<p>To create a Maven project, specify <code class="docutils literal"><span class="pre">maven</span></code> in the <code class="docutils literal"><span class="pre">project-type</span></code>
+attribute to the <a class="reference internal" href="definition.html#job"><span class="std std-ref">Job</span></a> definition. It also requires a <code class="docutils literal"><span class="pre">maven</span></code> section
+in the <a class="reference internal" href="definition.html#job"><span class="std std-ref">Job</span></a> definition.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Job Parameters:</th><td class="field-body"><ul class="first last">
+<li><dl class="first docutils">
+<dt><strong>root-module</strong>:</dt>
+<dd><ul class="first last simple">
+<li><strong>group-id</strong> (<cite>str</cite>): GroupId.</li>
+<li><strong>artifact-id</strong> (<cite>str</cite>): ArtifactId.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first"><strong>root-pom</strong> (<cite>str</cite>): The path to the pom.xml file. (default ‘pom.xml’)</p>
+</li>
+<li><p class="first"><strong>goals</strong> (<cite>str</cite>): Goals to execute. (required)</p>
+</li>
+<li><p class="first"><strong>maven-opts</strong> (<cite>str</cite>): Java options to pass to maven (aka MAVEN_OPTS)</p>
+</li>
+<li><p class="first"><strong>maven-name</strong> (<cite>str</cite>): Installation of maven which should be used.
+Not setting <code class="docutils literal"><span class="pre">maven-name</span></code> appears to use the first maven install
+defined in the global jenkins config.</p>
+</li>
+<li><p class="first"><strong>private-repository</strong> (‘str’): Whether to use a private maven repository
+Possible values are <cite>default</cite>, <cite>local-to-workspace</cite> and
+<cite>local-to-executor</cite>.</p>
+</li>
+<li><p class="first"><strong>ignore-upstream-changes</strong> (<cite>bool</cite>): Do not start a build whenever
+a SNAPSHOT dependency is built or not. (default true)</p>
+</li>
+<li><p class="first"><strong>incremental-build</strong> (<cite>bool</cite>): Activate incremental build - only build
+changed modules (default false).</p>
+</li>
+<li><p class="first"><strong>automatic-archiving</strong> (<cite>bool</cite>): Activate automatic artifact archiving
+(default true).</p>
+</li>
+<li><p class="first"><strong>automatic-site-archiving</strong> (<cite>bool</cite>): Activate automatic site
+documentation artifact archiving (default true).</p>
+</li>
+<li><p class="first"><strong>automatic-fingerprinting</strong> (<cite>bool</cite>): Activate automatic fingerprinting
+of consumed and produced artifacts (default true).</p>
+</li>
+<li><p class="first"><strong>per-module-email</strong> (<cite>bool</cite>): Send an e-mail for each failed module
+(default true).</p>
+</li>
+<li><p class="first"><strong>parallel-build-modules</strong> (<cite>bool</cite>): Build modules in parallel
+(default false)</p>
+</li>
+<li><p class="first"><strong>resolve-dependencies</strong> (<cite>bool</cite>): Resolve Dependencies during Pom
+parsing (default false).</p>
+</li>
+<li><p class="first"><strong>run-headless</strong> (<cite>bool</cite>): Run headless (default false).</p>
+</li>
+<li><p class="first"><strong>process-plugins</strong> (<cite>bool</cite>): Process Plugins during Pom parsing
+(default false).</p>
+</li>
+<li><p class="first"><strong>custom-workspace</strong> (<cite>str</cite>): Path to the custom workspace. If no path is
+provided, custom workspace is not used. (optional)</p>
+</li>
+<li><p class="first"><strong>settings</strong> (<cite>str</cite>): Path to custom maven settings file. If settings
+type is ‘file’ then this is a Path. Otherwise it is the id for
+ConfigFileProvider. (optional)</p>
+</li>
+<li><p class="first"><strong>settings-type</strong> (<cite>str</cite>): Type of settings file file|cfp.
+(default file)</p>
+</li>
+<li><p class="first"><strong>global-settings</strong> (<cite>str</cite>): Path to custom maven global settings file.
+If settings type is ‘file’ then this is a Path. Otherwise it is the id
+for ConfigFileProvider. (optional)</p>
+</li>
+<li><p class="first"><strong>global-settings-type</strong> (<cite>str</cite>): Type of settings file file|cfp.
+(default file)</p>
+</li>
+<li><p class="first"><strong>post-step-run-condition</strong> (<cite>str</cite>): Run the post-build steps only if the
+build succeeds (‘SUCCESS’), build succeeds or is unstable (‘UNSTABLE’),
+regardless of build result (‘FAILURE’). (default ‘FAILURE’).</p>
+</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Requires the Jenkins <a class="reference external" href="https://wiki.jenkins.io/display/JENKINS/Config+File+Provider+Plugin">Config File Provider Plugin</a>
+for the Config File Provider “settings” and “global-settings” config.</p>
+<p>Example:</p>
+<blockquote>
+<div><div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">project</span><span class="o">-</span><span class="nb">type</span><span class="p">:</span> <span class="n">maven</span>
+<span class="n">maven</span><span class="p">:</span>
+  <span class="n">root</span><span class="o">-</span><span class="n">pom</span><span class="p">:</span> <span class="n">pom</span><span class="o">.</span><span class="n">xml</span>
+  <span class="n">goals</span><span class="p">:</span> <span class="n">deploy</span>
+  <span class="n">root</span><span class="o">-</span><span class="n">module</span><span class="p">:</span>
+    <span class="n">group</span><span class="o">-</span><span class="nb">id</span><span class="p">:</span> <span class="n">gabba</span><span class="o">.</span><span class="n">gabba</span>
+    <span class="n">artifact</span><span class="o">-</span><span class="nb">id</span><span class="p">:</span> <span class="n">hey</span>
+  <span class="n">settings</span><span class="p">:</span> <span class="n">test</span>
+  <span class="k">global</span><span class="o">-</span><span class="n">settings</span><span class="p">:</span> <span class="n">test</span>
+  <span class="n">incremental</span><span class="o">-</span><span class="n">build</span><span class="p">:</span> <span class="n">true</span>
+  <span class="n">automatic</span><span class="o">-</span><span class="n">archiving</span><span class="p">:</span> <span class="n">false</span>
+  <span class="n">automatic</span><span class="o">-</span><span class="n">site</span><span class="o">-</span><span class="n">archiving</span><span class="p">:</span> <span class="n">false</span>
+  <span class="n">parallel</span><span class="o">-</span><span class="n">build</span><span class="o">-</span><span class="n">modules</span><span class="p">:</span> <span class="n">true</span>
+  <span class="n">resolve</span><span class="o">-</span><span class="n">dependencies</span><span class="p">:</span> <span class="n">true</span>
+  <span class="n">process</span><span class="o">-</span><span class="n">plugins</span><span class="p">:</span> <span class="n">true</span>
+  <span class="n">run</span><span class="o">-</span><span class="n">headless</span><span class="p">:</span> <span class="n">true</span>
+  <span class="n">custom</span><span class="o">-</span><span class="n">workspace</span><span class="p">:</span> <span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">some</span><span class="o">/</span><span class="n">repository</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>CFP Example:</p>
+<blockquote>
+<div><div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">project</span><span class="o">-</span><span class="nb">type</span><span class="p">:</span> <span class="n">maven</span>
+<span class="n">maven</span><span class="p">:</span>
+  <span class="n">root</span><span class="o">-</span><span class="n">pom</span><span class="p">:</span> <span class="n">pom</span><span class="o">.</span><span class="n">xml</span>
+  <span class="n">goals</span><span class="p">:</span> <span class="n">deploy</span>
+  <span class="n">settings</span><span class="p">:</span> <span class="n">org</span><span class="o">.</span><span class="n">jenkinsci</span><span class="o">.</span><span class="n">plugins</span><span class="o">.</span><span class="n">configfiles</span><span class="o">.</span><span class="n">maven</span><span class="o">.</span><span class="n">MavenSettingsConfig0123456789012</span>
+  <span class="k">global</span><span class="o">-</span><span class="n">settings</span><span class="p">:</span> <span class="n">org</span><span class="o">.</span><span class="n">jenkinsci</span><span class="o">.</span><span class="n">plugins</span><span class="o">.</span><span class="n">configfiles</span><span class="o">.</span><span class="n">maven</span><span class="o">.</span><span class="n">GlobalMavenSettingsConfig0123456789012</span>
+  <span class="n">post</span><span class="o">-</span><span class="n">step</span><span class="o">-</span><span class="n">run</span><span class="o">-</span><span class="n">condition</span><span class="p">:</span> <span class="n">SUCCESS</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+</div>
+</div>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<h4>Previous topic</h4>
+<p class="topless"><a href="project_matrix.html" title="previous chapter">Matrix Project</a></p>
+<h4>Next topic</h4>
+<p class="topless"><a href="project_multijob.html" title="next chapter">MultiJob Project</a></p>
+<div aria-label="source link" role="note">
+<h3>This Page</h3>
+<ul class="this-page-menu">
+<li><a href="_sources/project_maven.txt" rel="nofollow">Show Source</a></li>
+</ul>
+</div>
+<div id="searchbox" role="search" style="display: none">
+<h3>Quick search</h3>
+<form action="search.html" class="search" method="get">
+<div><input name="q" type="text"/></div>
+<div><input type="submit" value="Go"/></div>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div aria-label="related navigation" class="related" role="navigation">
+<h3>Navigation</h3>
+<ul>
+<li class="right" style="margin-right: 10px">
+<a href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a href="project_multijob.html" title="MultiJob Project">next</a> |</li>
+<li class="right">
+<a href="project_matrix.html" title="Matrix Project">previous</a> |</li>
+<li class="nav-item nav-item-0"><a href="index.html">Jenkins Job Builder 2.0.0.0b3.dev264 documentation</a> »</li>
+<li class="nav-item nav-item-1"><a href="definition.html">Job Definitions</a> »</li>
+</ul>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012, Jenkins Job Builder Maintainers.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.9.
+    </div>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    
+<!-- Mirrored from mdn.mozillademos.org/en-US/docs/Web/API/GlobalEventHandlers/onmouseup$samples/Example?revision=1528686 by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 02 May 2019 00:11:36 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+        <meta charset="utf-8">
+        <link href="../../../../../../../developer.mozilla.org/static/build/styles/samples.37902ba3b7fe.css" rel="stylesheet" type="text/css" />
+        
+        <style type="text/css">
+            .container {
+  position: absolute;
+  left: 50%;
+  bottom: 20px;
+  transform: translate(-50%);
+}
+
+.toaster {
+  width: 160px;
+  height: 110px;
+  background: #bbb;
+  border-radius: 10px 10px 0 0;
+}
+
+.toast {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: -1;
+  width: 100px;
+  height: 50px;
+  padding: 10px;
+  background: #ed9;
+  border-radius: 10px 10px 0 0;
+  transform: translate(-50%, -90px);
+  transition: transform .3s;
+}
+
+.depressed {
+  transform: translate(-50%, -50%);
+}
+        </style>
+        
+        <title>GlobalEventHandlers.onmouseup</title>
+    </head>
+    <body>
+        
+            <div class="container">
+  <div class="toaster"></div>
+  <div class="toast">Hello world!</div>
+</div>
+        
+        
+            <script>
+                function depress() {
+  toast.classList.add('depressed');
+}
+
+function release() {
+  toast.classList.remove('depressed');
+}
+
+const toaster = document.querySelector('.toaster');
+const toast = document.querySelector('.toast');
+
+toaster.onmousedown = depress;
+document.onmouseup = release;
+            </script>
+        
+    </body>
+
+<!-- Mirrored from mdn.mozillademos.org/en-US/docs/Web/API/GlobalEventHandlers/onmouseup$samples/Example?revision=1528686 by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 02 May 2019 00:11:36 GMT -->
+</html>

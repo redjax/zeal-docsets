@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html class="no-js hasSidebar hasPageActions hasBreadcrumb conceptual" data-authenticated="false" data-render="docs" dir="ltr" lang="en-us">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Set-Alias (Microsoft.PowerShell.Utility)" property="og:title"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" property="og:image"/>
+  <meta content="summary" name="twitter:card"/>
+  <meta content="@docsmsft" name="twitter:site"/>
+  <meta content="Set-Alias (Microsoft.PowerShell.Utility)" name="twitter:title"/>
+  <meta content="The Set-Alias cmdlet creates or changes an alias (alternate name) for a cmdlet or for a command element, such as a function, a script, a file, or other executable. You can also use Set-Alias to reassâ¦" name="twitter:description"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" name="twitter:image"/>
+  <meta content="Microsoft Logo" name="twitter:image:alt"/>
+  <meta content="The Set-Alias cmdlet creates or changes an alias (alternate name) for a cmdlet or for a command element, such as a function, a script, a file, or other executable. You can also use Set-Alias to reassâ¦" name="description"/>
+  <meta content="Docs" name="search.ms_sitename"/>
+  <meta content="PowerShell_PowerShell-docs_reference" name="search.ms_docsetname"/>
+  <meta content="0" name="version"/>
+  <meta content="en-us" name="locale"/>
+  <meta content="Docs" name="site_name"/>
+  <meta content="PowerShell" name="search.ms_product"/>
+  <meta content="PowerShell.PowerShell_PowerShell-docs_reference" name="depot_name"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/45404d4ca212afa615798d3d5cbfea5dc5cc1efb/reference/6/Microsoft.PowerShell.Utility/Set-Alias.md" name="ref_skeleton_gitcommit"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/live/reference/6/Microsoft.PowerShell.Utility/Set-Alias.md" name="original_ref_skeleton_git_url"/>
+  <meta content="2018-03-30 03:35 PM" name="updated_at"/>
+  <meta content="9decba76-2364-382c-3b58-b0ccb6ee4fc0" name="document_id"/>
+  <meta content="8967bae9-b8d8-e579-dab7-ac253f275aca" name="document_version_independent_id"/>
+  <meta content="powershell" name="page_type"/>
+  <meta content="command" name="page_kind"/>
+  <meta content="06/09/2017" name="ms.date"/>
+  <meta content="2.0.0" name="schema"/>
+  <meta content="powershell,cmdlet" name="keywords"/>
+  <meta content="http://go.microsoft.com/fwlink/?LinkId=821857" name="online_version"/>
+  <meta content="Microsoft.PowerShell.Commands.Utility.dll-Help.xml" name="external_help_file"/>
+  <meta content="powershell" name="ms.devlang"/>
+  <meta content="INDEX, FOLLOW" name="ROBOTS"/>
+  <meta content="sdwheeler" name="author"/>
+  <meta content="sewhee" name="ms.author"/>
+  <meta content="carmonm" name="manager"/>
+  <meta content="/powershell/bread-pscore/toc.yml?view=powershell-6" name="breadcrumb_path"/>
+  <meta content="powershell" name="apiPlatform"/>
+  <meta content="reference" name="ms.topic"/>
+  <meta content="windows, macos, linux" name="ms.tgt_pltfr"/>
+  <meta content="powershell-scripting" name="ms.technology"/>
+  <meta content="powershell" name="ms.prod"/>
+  <meta content="MSDocsHeader-Powershell" name="uhfHeaderId"/>
+  <meta content="../psdocs/toc.json?view=powershell-6" name="toc_rel"/>
+  <link href="https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/set-alias" rel="canonical"/>
+  <title>
+   Set-Alias
+  </title>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/60aac04b.site.css" rel="stylesheet"/>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/fdb8a38a.conceptual.css" rel="stylesheet"/>
+ </head>
+ <body dir="ltr" lang="en-us">
+  <div class="header-holder">
+   <div data-bi-name="header" id="headerAreaHolder">
+    <div id="uhf-placeholder">
+    </div>
+   </div>
+   <div class="disclaimer-holder" id="disclaimer-holder">
+   </div>
+  </div>
+  <div class="container mainContainer" data-bi-name="body">
+   <div class="content-header" data-bi-name="content-header">
+    <div class="content-header-controls">
+     <button class="contents-button button-border" data-bi-name="contents-expand" type="button">
+      <span class="docon docon-menu">
+      </span>
+      Contents
+     </button>
+    </div>
+    <div class="content-header-controls">
+     <button class="ap-collapse-behavior ap-expanded button-border" data-bi-name="ap-collapse" type="button">
+      <span class="docon docon-exit-mode">
+      </span>
+      Exit focus mode
+     </button>
+    </div>
+   </div>
+   <div class="primary-holder">
+    <main class="content" data-bi-name="content" dir="ltr" id="main" lang="en-us" role="main">
+     <!-- <content> -->
+     <h1>
+      Set-Alias
+     </h1>
+     <div class="metadata">
+      <dl class="attributeList">
+       <dt>
+        Module:
+       </dt>
+       <dd>
+        <a data-linktype="relative-path" href="./Microsoft.PowerShell.Utility.html">
+         Microsoft.PowerShell.Utility
+        </a>
+       </dd>
+      </dl>
+     </div>
+     <div class="summaryHolder">
+      <div class="summary">
+       Creates or changes an alias for a cmdlet or other command element in the current Windows PowerShell session.
+      </div>
+     </div>
+     <h2 class="hiddenAnchor" id="syntax">
+      Syntax
+     </h2>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Set-Alias
+   [-Name] &lt;String&gt;
+   [-Value] &lt;String&gt;
+   [-Description &lt;String&gt;]
+   [-Option &lt;ScopedItemOptions&gt;]
+   [-PassThru]
+   [-Scope &lt;String&gt;]
+   [-Force]
+   [-WhatIf]
+   [-Confirm]
+   [&lt;CommonParameters&gt;]</code></pre>
+     <h2 id="description">
+      Description
+     </h2>
+     <p>
+      The
+      <strong>
+       Set-Alias
+      </strong>
+      cmdlet creates or changes an alias (alternate name) for a cmdlet or for a command element, such as a function, a script, a file, or other executable.
+You can also use
+      <strong>
+       Set-Alias
+      </strong>
+      to reassign a current alias to a new command, or to change any of the properties of an alias, such as its description.
+Unless you add the alias to the Windows PowerShell profile, the changes to an alias are lost when you exit the session or close Windows PowerShell.
+     </p>
+     <h2 id="examples">
+      Examples
+     </h2>
+     <p>
+      <strong>
+       Example 1: Create an alias for a Get-ChildItem
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Set-Alias -Name list -Value get-childitem</code></pre>
+     <p>
+      This command creates the alias
+      <strong>
+       list
+      </strong>
+      for the Get-ChildItem cmdlet.
+After you create the alias, you can use
+      <strong>
+       list
+      </strong>
+      in place of
+      <strong>
+       Get-ChildItem
+      </strong>
+      at the command line and in scripts.
+     </p>
+     <p>
+      <strong>
+       Example 2: Create an alias and omit parameter names
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Set-Alias list get-location</code></pre>
+     <p>
+      This command associates the alias
+      <strong>
+       list
+      </strong>
+      with the Get-Location cmdlet.
+If
+      <strong>
+       list
+      </strong>
+      is an alias for another cmdlet, this command changes its association so that it now is the alias only for
+      <strong>
+       Get-Location
+      </strong>
+      .
+     </p>
+     <p>
+      This command uses the same format as the command in the previous example, but it omits the optional parameter names,
+      <em>
+       Name
+      </em>
+      and
+      <em>
+       Value
+      </em>
+      .
+When you omit parameter names, the values of those parameters must appear in the specified order in the command.
+In this case, the value of
+      <em>
+       Name
+      </em>
+      (
+      <strong>
+       list
+      </strong>
+      ) must be the first parameter and the value of
+      <em>
+       Value
+      </em>
+      (get-location) must be the second parameter.
+     </p>
+     <p>
+      <strong>
+       Example 3: Make an alias read-only
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Set-Alias scrub Remove-Item -Option ReadOnly -Passthru | Format-List</code></pre>
+     <p>
+      This command associates the alias
+      <strong>
+       scrub
+      </strong>
+      with the
+      <strong>
+       Remove-Item
+      </strong>
+      cmdlet.
+It uses the ReadOnly option to prevent the alias from being deleted or assigned to another cmdlet.
+     </p>
+     <p>
+      The
+      <em>
+       PassThru
+      </em>
+      parameter directs Windows PowerShell to pass an object that represents the new alias through the pipeline to the Format-List cmdlet.
+If the
+      <em>
+       PassThru
+      </em>
+      parameter were omitted, there would be no output from this cmdlet to display (in a list or otherwise).
+     </p>
+     <p>
+      <strong>
+       Example 4: Create an alias for Notepad.exe
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Set-Alias np c:\windows\notepad.exe</code></pre>
+     <p>
+      This command associates the alias,
+      <strong>
+       np
+      </strong>
+      , with the executable file for Notepad.
+After the command completes, to open Notepad from the Windows PowerShell command line, just type
+      <code>
+       np
+      </code>
+      .
+     </p>
+     <p>
+      This example demonstrates that you can create aliases for executable files and elements other than cmdlets.
+     </p>
+     <p>
+      To make the command more generic, you can use the Windir environment variable (${env:windir}) to represent the C\Windows directory.
+The generic version of the command is
+      <code>
+       Set-Alias np ${env:windir}\notepad.exe
+      </code>
+      .
+     </p>
+     <p>
+      <strong>
+       Example 5: Create an alias for a command with parameters
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; function CD32 {set-location c:\windows\system32}
+
+PS C:\&gt; Set-Alias go cd32</code></pre>
+     <p>
+      These commands show how to assign an alias to a command with parameters, or even to a pipeline of many commands.
+     </p>
+     <p>
+      You can create an alias for a cmdlet, but you cannot create an alias for a command that consists of a cmdlet and its parameters.
+However, if you place the command in a function or a script, then you can create a useful function or script name and you can create one or more aliases for the function or script.
+     </p>
+     <p>
+      In this example, the user wants to create an alias for the command
+      <code>
+       Set-Location C:\windows\system32
+      </code>
+      , where
+      <strong>
+       Set-Location
+      </strong>
+      is a cmdlet and C:\Windows\System32 is the value of the
+      <em>
+       Path
+      </em>
+      parameter.
+     </p>
+     <p>
+      To do this, the first command creates a function called CD32 that contains the Set-Location command.
+     </p>
+     <p>
+      The second command creates the alias
+      <strong>
+       go
+      </strong>
+      for the CD32 function.
+Then, to run the
+      <strong>
+       Set-Location
+      </strong>
+      command, the user can type either
+      <code>
+       CD32
+      </code>
+      or
+      <code>
+       go
+      </code>
+      .
+     </p>
+     <h2 id="required-parameters">
+      Required Parameters
+     </h2>
+     <div class="parameterName stack">
+      -Name
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the new alias.
+You can use any alphanumeric characters in an alias, but the first character cannot be a number.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         1
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Value
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the name of the cmdlet or command element that is being aliased.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         2
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="optional-parameters">
+      Optional Parameters
+     </h2>
+     <div class="parameterName stack">
+      -Confirm
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Prompts you for confirmation before running the cmdlet.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         cf
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Description
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a description of the alias.
+You can type any string.
+If the description includes spaces, enclose it quotation marks.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Force
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that the cmdlet will set a read-only alias.
+Use the
+       <em>
+        Option
+       </em>
+       parameter to create a read-only alias.
+The
+       <em>
+        Force
+       </em>
+       parameter cannot set a constant alias.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Option
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Sets the value of the Options property of the alias.
+The acceptable values for this parameter are:
+      </p>
+      <ul>
+       <li>
+        None.
+Sets no options.
+(None is the default.)
+       </li>
+       <li>
+        ReadOnly.
+Can be deleted.
+Cannot be not changed, except by using the Force parameter.
+       </li>
+       <li>
+        Constant.
+Cannot be deleted or changed.
+       </li>
+       <li>
+        Private.
+The alias is available only in the current scope.
+       </li>
+       <li>
+        AllScope.
+The alias is copied to any new scopes that are created.
+       </li>
+       <li>
+        Unspecified.
+       </li>
+      </ul>
+      <p>
+       To see the Options property of all aliases in the session, type
+       <code>
+        get-alias | format-table -property name, options -autosize
+       </code>
+       .
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          ScopedItemOptions
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Parameter Sets:
+        </td>
+        <td>
+         None, ReadOnly, Constant, Private, AllScope, Unspecified
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -PassThru
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Returns an object representing the item with which you are working.
+By default, this cmdlet does not generate any output.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Scope
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the scope in which this alias is valid.
+The acceptable values for this parameter are:
+      </p>
+      <ul>
+       <li>
+        Global
+       </li>
+       <li>
+        Local
+       </li>
+       <li>
+        Script
+       </li>
+       <li>
+        A number relative to the current scope (0 through the number of scopes, where 0 is the current scope and 1 is its parent).
+       </li>
+      </ul>
+      <p>
+       Local is the default.
+For more information, see about_Scopes.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -WhatIf
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         wi
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="inputs">
+      Inputs
+     </h2>
+     <p>
+      <strong>
+       None
+      </strong>
+     </p>
+     <p>
+      You cannot pipe input to this cmdlet.
+     </p>
+     <h2 id="outputs">
+      Outputs
+     </h2>
+     <p>
+      <strong>
+       None or System.Management.Automation.AliasInfo
+      </strong>
+     </p>
+     <p>
+      When you use the
+      <em>
+       PassThru
+      </em>
+      parameter,
+      <strong>
+       Set-Alias
+      </strong>
+      generates a
+      <strong>
+       System.Management.Automation.AliasInfo
+      </strong>
+      object representing the alias.
+Otherwise, this cmdlet does not generate any output.
+     </p>
+     <h2 id="notes">
+      Notes
+     </h2>
+     <ul>
+      <li>
+       An alias is an alternate name or nickname for a cmdlet or command element. To run the cmdlet, you can use its full name or any valid alias. For more information, see about_Aliases.
+      </li>
+      <li>
+       To create a new alias, use
+       <strong>
+        Set-Alias
+       </strong>
+       or New-Alias. To delete an alias, use Remove-Item.
+      </li>
+      <li>
+       A cmdlet can have multiple aliases, but an alias can only be associated with one cmdlet at a time. If you use
+       <strong>
+        Set-Alias
+       </strong>
+       to associate the alias with a different cmdlet, it is no longer associated with the original cmdlet.
+      </li>
+      <li>
+       You can create an alias for a cmdlet, but you cannot create an alias for a command with parameters and values. For example, you can create an alias for
+       <strong>
+        Set-Location
+       </strong>
+       , but you cannot create an alias for
+       <code>
+        Set-Location C:\Windows\System32
+       </code>
+       . To create an alias for a command, create a function that includes the command, and then create an alias to the function.
+      </li>
+      <li>
+       To save the aliases from a session and use them in a different session, add the
+       <strong>
+        Set-Alias
+       </strong>
+       command to your Windows PowerShell profile. Profiles do not exist by default. To create a profile in the path stored in the $profile variable, type
+       <code>
+        New-Item -Type file -Force $profile
+       </code>
+       . To see the value of the $profile variable, type
+       <code>
+        $profile
+       </code>
+       .
+      </li>
+      <li>
+       You can also save your aliases by using Export-Alias to copy the aliases from the session to a file, and then use Import-Alias to add them to the alias list for a new session.
+      </li>
+      <li>
+       You can also refer to
+       <strong>
+        Set-Alias
+       </strong>
+       by its built-in alias,
+       <strong>
+        sal
+       </strong>
+       . For more information, see about_Aliases.
+      </li>
+     </ul>
+     <h2 id="related-links">
+      Related Links
+     </h2>
+     <ul>
+      <li>
+       <a data-linktype="relative-path" href="export-alias.html">
+        Export-Alias
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="get-alias.html">
+        Get-Alias
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="import-alias.html">
+        Import-Alias
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="new-alias.html">
+        New-Alias
+       </a>
+      </li>
+     </ul>
+     <!-- </content> -->
+    </main>
+    <div class="note alert feedback-system-change-alert">
+     <p>
+      Note
+     </p>
+     <p>
+      The feedback system for this content will be changing soon. Old comments will not be carried over. If content within a comment thread is important to you, please save a copy. For more information on the upcoming change,
+      <a href="https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs">
+       we invite you to read our blog post
+      </a>
+      .
+     </p>
+    </div>
+    <div data-bi-name="comments" id="comments-container" role="form">
+    </div>
+   </div>
+  </div>
+  <div class="openfeedback-container" id="openFeedbackContainer">
+  </div>
+  <div class="action-panel">
+  </div>
+ </body>
+</html>

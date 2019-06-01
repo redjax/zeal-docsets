@@ -1,0 +1,504 @@
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML><HEAD><TITLE>Man page of time.h</TITLE>
+</HEAD><BODY>
+<H1>time.h</H1>
+Section: POSIX Programmer's Manual (0P)<BR>Updated: 2013<BR><A HREF="#index">Index</A>
+<A HREF="../index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>PROLOG</H2>
+
+This manual page is part of the POSIX Programmer's Manual.
+The Linux implementation of this interface may differ (consult
+the corresponding Linux manual page for details of Linux behavior),
+or the interface may not be implemented on Linux.
+<P>
+<A NAME="lbAC">&nbsp;</A>
+<H2>NAME</H2>
+
+time.h
+--- time types
+<A NAME="lbAD">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<P>
+
+<PRE>
+#include &lt;<A HREF="file:///usr/include/time.h">time.h</A>&gt;
+</PRE>
+
+<A NAME="lbAE">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+Some of the functionality described on this reference page extends the
+ISO&nbsp;C standard. Applications shall define the appropriate feature test macro
+(see the System Interfaces volume of POSIX.1-2008,
+<I>Section 2.2</I>, <I>The Compilation Environment)</I>
+
+to enable the visibility of these symbols in this header.
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/time.h">time.h</A>&gt;</I>
+
+header shall define the
+<B>clock_t</B>,
+
+<B>size_t</B>,
+
+<B>time_t</B>,
+
+types as described in
+<I>&lt;<A HREF="file:///usr/include/sys/types.h">sys/types.h</A>&gt;</I>.
+
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/time.h">time.h</A>&gt;</I>
+
+header shall define the
+<B>clockid_t</B>
+
+and
+<B>timer_t</B>
+
+types as described in
+<I>&lt;<A HREF="file:///usr/include/sys/types.h">sys/types.h</A>&gt;</I>.
+
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/time.h">time.h</A>&gt;</I>
+
+header shall define the
+<B>locale_t</B>
+
+type as described in
+<I>&lt;<A HREF="file:///usr/include/locale.h">locale.h</A>&gt;</I>.
+
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/time.h">time.h</A>&gt;</I>
+
+header shall define the
+<B>pid_t</B>
+
+type as described in
+<I>&lt;<A HREF="file:///usr/include/sys/types.h">sys/types.h</A>&gt;</I>.
+
+<P>
+
+The tag
+<B>sigevent</B>
+
+shall be declared as naming an incomplete structure type, the contents
+of which are described in the
+<I>&lt;<A HREF="file:///usr/include/signal.h">signal.h</A>&gt;</I>
+
+header.
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/time.h">time.h</A>&gt;</I>
+
+header shall declare the
+<B>tm</B>
+
+structure, which shall include at least the following members:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+int    tm_sec   </B>Seconds [0,60].
+int    tm_min   Minutes [0,59].
+int    tm_hour  Hour [0,23].
+int    tm_mday  Day of month [1,31].
+int    tm_mon   Month of year [0,11].
+int    tm_year  Years since 1900.
+int    tm_wday  Day of week [0,6] (Sunday =0).
+int    tm_yday  Day of year [0,365].
+int    tm_isdst Daylight Savings flag.
+</PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+The value of
+<I>tm_isdst</I>
+
+shall be positive if Daylight Savings Time is in effect, 0 if Daylight
+Savings Time is not in effect, and negative if the information is not
+available.
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/time.h">time.h</A>&gt;</I>
+
+header shall declare the
+<B>timespec</B>
+
+structure, which shall include at least the following members:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+time_t  tv_sec    </B>Seconds.
+long    tv_nsec   Nanoseconds.
+</PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/time.h">time.h</A>&gt;</I>
+
+header shall also declare the
+<B>itimerspec</B>
+
+structure, which shall include at least the following members:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+struct timespec  it_interval  </B>Timer period.
+struct timespec  it_value     Timer expiration.
+</PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/time.h">time.h</A>&gt;</I>
+
+header shall define the following macros:
+<DL COMPACT>
+<DT>NULL<DD>
+As described in
+<I>&lt;<A HREF="file:///usr/include/stddef.h">stddef.h</A>&gt;</I>.
+
+<DT>CLOCKS_PER_SEC<DD>
+A number used to convert the value returned by the
+<I>clock</I>()
+function into seconds. The value shall be an expression with type
+<B>clock_t</B>.
+
+The value of CLOCKS_PER_SEC shall be 1 million
+on XSI-conformant systems. However, it may be variable on other systems,
+and it should not be assumed that CLOCKS_PER_SEC is a compile-time
+constant.
+</DL>
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/time.h">time.h</A>&gt;</I>
+
+header shall define the following symbolic constants. The values shall
+have a type that is assignment-compatible with
+<B>clockid_t</B>.
+
+<DL COMPACT>
+<DT>CLOCK_MONOTONIC<DD>
+<BR>
+
+The identifier for the system-wide monotonic clock, which is defined as
+a clock measuring real time, whose value cannot be set via
+<I>clock_settime</I>()
+and which cannot have negative clock jumps. The maximum possible clock
+jump shall be implementation-defined.
+<DT>CLOCK_PROCESS_CPUTIME_ID<DD>
+<BR>
+
+The identifier of the CPU-time clock associated with the process
+making a
+<I>clock</I>()
+or
+<I>timer*</I>()
+
+function call.
+<DT>CLOCK_REALTIME<DD>
+The identifier of the system-wide clock measuring real time.
+<DT>CLOCK_THREAD_CPUTIME_ID<DD>
+<BR>
+
+The identifier of the CPU-time clock associated with the thread making a
+<I>clock</I>()
+or
+<I>timer*</I>()
+
+function call.
+</DL>
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/time.h">time.h</A>&gt;</I>
+
+header shall define the following symbolic constant:
+<DL COMPACT>
+<DT>TIMER_ABSTIME<DD>
+Flag indicating time is absolute. For functions taking timer objects,
+this refers to the clock associated with the timer.
+</DL>
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/time.h">time.h</A>&gt;</I>
+
+header shall provide a declaration or definition for
+<I>getdate_err</I>.
+
+The
+<I>getdate_err</I>
+
+symbol shall expand to an expression of type
+<B>int</B>.
+
+It is unspecified whether
+<I>getdate_err</I>
+
+is a macro or an identifier declared with external linkage, and whether or
+not it is a modifiable lvalue. If a macro definition is suppressed in
+order to access an actual object, or a program defines an identifier
+with the name
+<I>getdate_err</I>,
+
+the behavior is undefined.
+<P>
+
+The following shall be declared as functions and may also be defined
+as macros. Function prototypes shall be provided.
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+char      *asctime(const struct tm *);
+char      *asctime_r(const struct tm *restrict, char *restrict);
+clock_t    clock(void);
+int        clock_getcpuclockid(pid_t, clockid_t *);
+int        clock_getres(clockid_t, struct timespec *);
+int        clock_gettime(clockid_t, struct timespec *);
+int        clock_nanosleep(clockid_t, int, const struct timespec *,
+               struct timespec *);
+int        clock_settime(clockid_t, const struct timespec *);
+char      *ctime(const time_t *);
+char      *ctime_r(const time_t *, char *);
+double     difftime(time_t, time_t);
+struct tm *getdate(const char *);
+struct tm *gmtime(const time_t *);
+struct tm *gmtime_r(const time_t *restrict, struct tm *restrict);
+struct tm *localtime(const time_t *);
+struct tm *localtime_r(const time_t *restrict, struct tm *restrict);
+time_t     mktime(struct tm *);
+int        nanosleep(const struct timespec *, struct timespec *);
+size_t     strftime(char *restrict, size_t, const char *restrict,
+           const struct tm *restrict);
+size_t     strftime_l(char *restrict, size_t, const char *restrict,
+               const struct tm *restrict, locale_t);
+char      *strptime(const char *restrict, const char *restrict,
+               struct tm *restrict);
+time_t     time(time_t *);
+int        timer_create(clockid_t, struct sigevent *restrict,
+               timer_t *restrict);
+int        timer_delete(timer_t);
+int        timer_getoverrun(timer_t);
+int        timer_gettime(timer_t, struct itimerspec *);
+int        timer_settime(timer_t, int, const struct itimerspec *restrict,
+               struct itimerspec *restrict);
+void       tzset(void);
+</B></PRE>
+
+<P>
+
+</DL>
+
+<BR>
+
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/time.h">time.h</A>&gt;</I>
+
+header shall declare the following as variables:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+extern int    daylight;
+extern long   timezone;
+extern char  *tzname[];
+</B></PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+Inclusion of the
+<I>&lt;<A HREF="file:///usr/include/time.h">time.h</A>&gt;</I>
+
+header may make visible all symbols from the
+<I>&lt;<A HREF="file:///usr/include/signal.h">signal.h</A>&gt;</I>
+
+header.
+<P>
+
+<I>The following sections are informative.</I>
+
+<A NAME="lbAF">&nbsp;</A>
+<H2>APPLICATION USAGE</H2>
+
+The range [0,60] for
+<I>tm_sec</I>
+
+allows for the occasional leap second.
+<P>
+
+<I>tm_year</I>
+
+is a signed value; therefore, years before 1900 may be represented.
+<P>
+
+To obtain the number of clock ticks per second returned by the
+<I>times</I>()
+function, applications should call
+<I>sysconf</I>(_SC_CLK_TCK).
+
+<A NAME="lbAG">&nbsp;</A>
+<H2>RATIONALE</H2>
+
+The range [0,60] seconds allows for positive or negative leap seconds.
+The formal definition of UTC does not permit double leap seconds, so
+all mention of double leap seconds has been removed, and the range
+shortened from the former [0,61] seconds seen in earlier versions of
+this standard.
+<A NAME="lbAH">&nbsp;</A>
+<H2>FUTURE DIRECTIONS</H2>
+
+None.
+<A NAME="lbAI">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+<I></I><B>&lt;<A HREF="file:///usr/include/locale.h">locale.h</A>&gt;</B>,
+
+<I></I><B>&lt;<A HREF="file:///usr/include/signal.h">signal.h</A>&gt;</B>,
+
+<I></I><B>&lt;<A HREF="file:///usr/include/stddef.h">stddef.h</A>&gt;</B>,
+
+<I></I><B>&lt;<A HREF="file:///usr/include/sys_types.h">sys_types.h</A>&gt;</B>
+
+<P>
+
+
+The System Interfaces volume of POSIX.1-2008,
+<I>Section 2.2</I>, <I>The Compilation Environment,</I>
+
+<I>asctime</I>(),
+
+<I>clock</I>(),
+
+<I>clock_getcpuclockid</I>(),
+
+<I>clock_getres</I>(),
+
+<I>clock_nanosleep</I>(),
+
+<I>ctime</I>(),
+
+<I>difftime</I>(),
+
+<I>getdate</I>(),
+
+<I>gmtime</I>(),
+
+<I>localtime</I>(),
+
+<I>mktime</I>(),
+
+<I>mq_receive</I>(),
+
+<I>mq_send</I>(),
+
+<I>nanosleep</I>(),
+
+<I>pthread_getcpuclockid</I>(),
+
+<I>pthread_mutex_timedlock</I>(),
+
+<I>pthread_rwlock_timedrdlock</I>(),
+
+<I>pthread_rwlock_timedwrlock</I>(),
+
+<I>sem_timedwait</I>(),
+
+<I>strftime</I>(),
+
+<I>strptime</I>(),
+
+<I>sysconf</I>(),
+
+<I>time</I>(),
+
+<I>timer_create</I>(),
+
+<I>timer_delete</I>(),
+
+<I>timer_getoverrun</I>(),
+
+<I>tzset</I>(),
+
+<I>utime</I>()
+
+
+<A NAME="lbAJ">&nbsp;</A>
+<H2>COPYRIGHT</H2>
+
+Portions of this text are reprinted and reproduced in electronic form
+from IEEE Std 1003.1, 2013 Edition, Standard for Information Technology
+-- Portable Operating System Interface (POSIX), The Open Group Base
+Specifications Issue 7, Copyright (C) 2013 by the Institute of
+Electrical and Electronics Engineers, Inc and The Open Group.
+(This is POSIX.1-2008 with the 2013 Technical Corrigendum 1 applied.) In the
+event of any discrepancy between this version and the original IEEE and
+The Open Group Standard, the original IEEE and The Open Group Standard
+is the referee document. The original Standard can be obtained online at
+<A HREF="http://www.unix.org/online.html">http://www.unix.org/online.html</A> .
+<P>
+Any typographical or formatting errors that appear
+in this page are most likely
+to have been introduced during the conversion of the source files to
+man page format. To report such errors, see
+<A HREF="https://www.kernel.org/doc/man-pages/reporting_bugs.html">https://www.kernel.org/doc/man-pages/reporting_bugs.html</A> .
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">PROLOG</A><DD>
+<DT><A HREF="#lbAC">NAME</A><DD>
+<DT><A HREF="#lbAD">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAE">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAF">APPLICATION USAGE</A><DD>
+<DT><A HREF="#lbAG">RATIONALE</A><DD>
+<DT><A HREF="#lbAH">FUTURE DIRECTIONS</A><DD>
+<DT><A HREF="#lbAI">SEE ALSO</A><DD>
+<DT><A HREF="#lbAJ">COPYRIGHT</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 14:28:43 GMT, February 25, 2017
+</BODY>
+</HTML>

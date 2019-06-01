@@ -1,0 +1,1276 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+<title>Job Definitions — Jenkins Job Builder 2.0.0.0b3.dev264 documentation</title>
+<link href="_static/classic.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '2.0.0.0b3.dev264',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="index.html" rel="top" title="Jenkins Job Builder 2.0.0.0b3.dev264 documentation"/>
+<link href="project_externaljob.html" rel="next" title="ExternalJob Project"/>
+<link href="execution.html" rel="prev" title="Configuration File"/>
+</head>
+<body role="document">
+<div aria-label="related navigation" class="related" role="navigation">
+<h3>Navigation</h3>
+<ul>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="project_externaljob.html" title="ExternalJob Project">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="execution.html" title="Configuration File">previous</a> |</li>
+<li class="nav-item nav-item-0"><a href="index.html">Jenkins Job Builder 2.0.0.0b3.dev264 documentation</a> »</li>
+</ul>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="bodywrapper">
+<div class="body" role="main">
+<div class="section" id="job-definitions"><a name="//apple_ref/cpp/Module/jenkins_jobs.modules.general"></a>
+<h1>Job Definitions<a class="headerlink" href="#job-definitions" title="Permalink to this headline">¶</a></h1>
+<p>The job definitions for Jenkins Job Builder are kept in any number of
+YAML or JSON files, in whatever way you would like to organize them.  When you
+invoke <code class="docutils literal"><span class="pre">jenkins-jobs</span></code> you may specify either the path of a single
+YAML file, or a directory.  If you choose a directory, all of
+the .yaml/.yml or .json files in that directory will be read, and all the
+jobs they define will be created or updated.</p>
+<div class="section" id="definitions">
+<h2>Definitions<a class="headerlink" href="#definitions" title="Permalink to this headline">¶</a></h2>
+<p>Jenkins Job Builder understands a few basic object types which are
+described in the next sections.</p>
+<div class="section" id="job">
+<span id="id1"></span><h3>Job<a class="headerlink" href="#job" title="Permalink to this headline">¶</a></h3>
+<p>The most straightforward way to create a job is simply to define a
+Job in YAML.  It looks like this:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">job</span><span class="p">:</span>
+    <span class="n">name</span><span class="p">:</span> <span class="n">job</span><span class="o">-</span><span class="n">name</span>
+</pre></div>
+</div>
+<p>That’s not very useful, so you’ll want to add some actions such as
+<a class="reference internal" href="builders.html#builders"><span class="std std-ref">Builders</span></a>, and perhaps <a class="reference internal" href="publishers.html#publishers"><span class="std std-ref">Publishers</span></a>.  Those are described
+later.</p>
+<span class="target" id="module-jenkins_jobs.modules.general"></span><p>These are job parameters that are common to every type of Jenkins job.</p>
+<p>Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">job</span><span class="p">:</span>
+    <span class="n">name</span><span class="p">:</span> <span class="n">job</span><span class="o">-</span><span class="n">name</span>
+    <span class="n">project</span><span class="o">-</span><span class="nb">type</span><span class="p">:</span> <span class="n">freestyle</span>
+    <span class="n">defaults</span><span class="p">:</span> <span class="k">global</span>
+    <span class="n">description</span><span class="p">:</span> <span class="s1">'Do not edit this job through the web!'</span>
+    <span class="n">disabled</span><span class="p">:</span> <span class="n">false</span>
+    <span class="n">display</span><span class="o">-</span><span class="n">name</span><span class="p">:</span> <span class="s1">'Fancy job name'</span>
+    <span class="n">concurrent</span><span class="p">:</span> <span class="n">true</span>
+    <span class="n">workspace</span><span class="p">:</span> <span class="o">/</span><span class="n">srv</span><span class="o">/</span><span class="n">build</span><span class="o">-</span><span class="n">area</span><span class="o">/</span><span class="n">job</span><span class="o">-</span><span class="n">name</span>
+    <span class="n">quiet</span><span class="o">-</span><span class="n">period</span><span class="p">:</span> <span class="mi">5</span>
+    <span class="n">block</span><span class="o">-</span><span class="n">downstream</span><span class="p">:</span> <span class="n">false</span>
+    <span class="n">block</span><span class="o">-</span><span class="n">upstream</span><span class="p">:</span> <span class="n">false</span>
+    <span class="n">retry</span><span class="o">-</span><span class="n">count</span><span class="p">:</span> <span class="mi">3</span>
+    <span class="n">node</span><span class="p">:</span> <span class="n">NodeLabel1</span> <span class="o">||</span> <span class="n">NodeLabel2</span>
+    <span class="n">logrotate</span><span class="p">:</span>
+      <span class="n">daysToKeep</span><span class="p">:</span> <span class="mi">3</span>
+      <span class="n">numToKeep</span><span class="p">:</span> <span class="mi">20</span>
+      <span class="n">artifactDaysToKeep</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span>
+      <span class="n">artifactNumToKeep</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Job Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>project-type</strong>:
+Defaults to “freestyle”, but “maven” as well as “multijob”, “flow”,
+“pipeline” or “externaljob” can also be specified.</li>
+<li><strong>defaults</strong>:
+Specifies a set of <a class="reference internal" href="#defaults"><span class="std std-ref">Defaults</span></a> to use for this job, defaults to
+‘’global’‘.  If you have values that are common to all of your jobs,
+create a <code class="docutils literal"><span class="pre">global</span></code> <a class="reference internal" href="#defaults"><span class="std std-ref">Defaults</span></a> object to hold them, and no further
+configuration of individual jobs is necessary.  If some jobs
+should not use the <code class="docutils literal"><span class="pre">global</span></code> defaults, use this field to specify a
+different set of defaults.</li>
+<li><strong>description</strong>:
+The description for the job.  By default, the description
+”!– Managed by Jenkins Job Builder” is applied.</li>
+<li><strong>disabled</strong>:
+Boolean value to set whether or not this job should be disabled in
+Jenkins. Defaults to <code class="docutils literal"><span class="pre">false</span></code> (job will be enabled).</li>
+<li><strong>display-name</strong>:
+Optional name shown for the project throughout the Jenkins web GUI in
+place of the actual job name.  The jenkins_jobs tool cannot fully remove
+this trait once it is set, so use caution when setting it.  Setting it to
+the same string as the job’s name is an effective un-set workaround.
+Alternately, the field can be cleared manually using the Jenkins web
+interface.</li>
+<li><strong>concurrent</strong>:
+Boolean value to set whether or not Jenkins can run this job
+concurrently. Defaults to <code class="docutils literal"><span class="pre">false</span></code>.</li>
+<li><strong>workspace</strong>:
+Path for a custom workspace. Defaults to Jenkins default
+configuration.</li>
+<li><strong>child-workspace</strong>:
+Path for a child custom workspace. Defaults to Jenkins default
+configuration. This parameter is only valid for matrix type jobs.</li>
+<li><strong>quiet-period</strong>:
+Number of seconds to wait between consecutive runs of this job.
+Defaults to <code class="docutils literal"><span class="pre">0</span></code>.</li>
+<li><strong>block-downstream</strong>:
+Boolean value to set whether or not this job must block while
+downstream jobs are running. Downstream jobs are determined
+transitively. Defaults to <code class="docutils literal"><span class="pre">false</span></code>.</li>
+<li><strong>block-upstream</strong>:
+Boolean value to set whether or not this job must block while
+upstream jobs are running. Upstream jobs are determined
+transitively. Defaults to <code class="docutils literal"><span class="pre">false</span></code>.</li>
+<li><strong>auth-token</strong>:
+Specifies an authentication token that allows new builds to be
+triggered by accessing a special predefined URL. Only those who
+know the token will be able to trigger builds remotely.</li>
+<li><strong>retry-count</strong>:
+If a build fails to checkout from the repository, Jenkins will
+retry the specified number of times before giving up.</li>
+<li><strong>node</strong>:
+Restrict where this job can be run. If there is a group of
+machines that the job can be built on, you can specify that
+label as the node to tie on, which will cause Jenkins to build the job on
+any of the machines with that label. For matrix projects, this parameter
+will only restrict where the parent job will run.</li>
+<li><strong>logrotate</strong>:
+The Logrotate section allows you to automatically remove old build
+history. It adds the <code class="docutils literal"><span class="pre">logrotate</span></code> attribute to the <a class="reference internal" href="#job"><span class="std std-ref">Job</span></a>
+definition. All logrotate attributes default to “-1” (keep forever).
+<strong>Deprecated on jenkins &gt;=1.637</strong>: use the <code class="docutils literal"><span class="pre">build-discarder</span></code>
+property instead</li>
+<li><strong>jdk</strong>:
+The name of the jdk to use</li>
+<li><strong>raw</strong>:
+If present, this section should contain a single <strong>xml</strong> entry. This XML
+will be inserted at the top-level of the <a class="reference internal" href="#job"><span class="std std-ref">Job</span></a> definition.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="job-template">
+<span id="id2"></span><h3>Job Template<a class="headerlink" href="#job-template" title="Permalink to this headline">¶</a></h3>
+<p>If you need several jobs defined that are nearly identical, except
+perhaps in their names, SCP targets, etc., then you may use a Job
+Template to specify the particulars of the job, and then use a
+<a class="reference internal" href="#project">Project</a> to realize the job with appropriate variable substitution.
+Any variables not specified at the project level will be inherited from
+the <a class="reference internal" href="#defaults">Defaults</a>.</p>
+<p>A Job Template has the same syntax as a <a class="reference internal" href="#job">Job</a>, but you may add
+variables anywhere in the definition.  Variables are indicated by
+enclosing them in braces, e.g., <code class="docutils literal"><span class="pre">{name}</span></code> will substitute the
+variable <cite>name</cite>.  When using a variable in a string field, it is good
+practice to wrap the entire string in quotes, even if the rules of
+YAML syntax don’t require it because the value of the variable may
+require quotes after substitution. In the rare situation that you must
+encode braces within literals inside a template (for example a shell
+function definition in a builder), doubling the braces will prevent
+them from being interpreted as a template variable.</p>
+<p>You must include a variable in the <code class="docutils literal"><span class="pre">name</span></code> field of a Job Template
+(otherwise, every instance would have the same name).  For example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">job</span><span class="o">-</span><span class="n">template</span><span class="p">:</span>
+    <span class="n">name</span><span class="p">:</span> <span class="s1">'</span><span class="si">{name}</span><span class="s1">-unit-tests'</span>
+</pre></div>
+</div>
+<p>Will not cause any job to be created in Jenkins, however, it will
+define a template that you can use to create jobs with a <a class="reference internal" href="#project">Project</a>
+definition.  It’s name will depend on what is supplied to the
+<a class="reference internal" href="#project">Project</a>.</p>
+<p>If you use the variable <code class="docutils literal"><span class="pre">{template-name}</span></code>, the name of the template
+itself (e.g. <code class="docutils literal"><span class="pre">{name}-unit-tests</span></code> in the above example) will be
+substituted in. This is useful in cases where you need to trace a job
+back to its template.</p>
+<p>Sometimes it is useful to have the same job name format used even
+where the template contents may vary. <cite>Ids</cite> provide a mechanism to
+support such use cases in addition to simplifying referencing
+templates when the name contains the more complex substitution with
+default values.</p>
+<div class="section" id="default-values-for-template-variables">
+<h4>Default Values for Template Variables<a class="headerlink" href="#default-values-for-template-variables" title="Permalink to this headline">¶</a></h4>
+<p>To facilitate reuse of templates with many variables that can be
+substituted, but where in most cases the same or no value is needed,
+it is possible to specify defaults for the variables within the
+templates themselves.</p>
+<p>This can be used to provide common settings for particular templates.
+For example:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">project</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">template_variable_defaults</span>
+    <span class="l l-Scalar l-Scalar-Plain">jobs</span><span class="p p-Indicator">:</span>
+        <span class="p p-Indicator">-</span> <span class="s">'template-variable-defaults-{num}'</span><span class="p p-Indicator">:</span>
+            <span class="l l-Scalar l-Scalar-Plain">num</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
+            <span class="l l-Scalar l-Scalar-Plain">disabled_var</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+        <span class="p p-Indicator">-</span> <span class="s">'template-variable-defaults-{num}'</span><span class="p p-Indicator">:</span>
+            <span class="l l-Scalar l-Scalar-Plain">test_var</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Goodbye World</span>
+            <span class="l l-Scalar l-Scalar-Plain">num</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">2</span>
+
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">job-template</span><span class="p p-Indicator">:</span>
+    <span class="c1"># template specific defaults</span>
+    <span class="c1"># empty value causes disabled_var to be ignored internally</span>
+    <span class="l l-Scalar l-Scalar-Plain">disabled_var</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">test_var</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Hello World</span>
+    <span class="l l-Scalar l-Scalar-Plain">type</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">periodic</span>
+
+    <span class="c1"># template settings</span>
+    <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">'template-variable-defaults-{num}-{type}'</span>
+    <span class="l l-Scalar l-Scalar-Plain">id</span><span class="p p-Indicator">:</span> <span class="s">'template-variable-defaults-{num}'</span>
+    <span class="l l-Scalar l-Scalar-Plain">disabled</span><span class="p p-Indicator">:</span> <span class="s">'{obj:disabled_var}'</span>
+    <span class="l l-Scalar l-Scalar-Plain">builders</span><span class="p p-Indicator">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">shell</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">|</span>
+         <span class="no">echo "Job Name: template-variable-defaults-{num}-{type}"</span>
+         <span class="no">echo "Variable: {test_var}"</span>
+</pre></div>
+</div>
+<p>To use a default value for a variable used in the name would be
+uncommon unless it was in addition to another variable. However you
+can use <a class="reference internal" href="#ids">Ids</a> simplify such use cases.</p>
+</div>
+</div>
+<div class="section" id="project">
+<span id="id3"></span><h3>Project<a class="headerlink" href="#project" title="Permalink to this headline">¶</a></h3>
+<p>The purpose of a project is to collect related jobs together, and
+provide values for the variables in a <a class="reference internal" href="#id2">Job Template</a>.  It looks like
+this:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">project</span><span class="p">:</span>
+    <span class="n">name</span><span class="p">:</span> <span class="n">project</span><span class="o">-</span><span class="n">name</span>
+    <span class="n">jobs</span><span class="p">:</span>
+      <span class="o">-</span> <span class="s1">'</span><span class="si">{name}</span><span class="s1">-unit-tests'</span>
+</pre></div>
+</div>
+<p>Any number of arbitrarily named additional fields may be specified,
+and they will be available for variable substitution in the job
+template.  Any job templates listed under <code class="docutils literal"><span class="pre">jobs:</span></code> will be realized
+with those values.  The example above would create the job called
+‘project-name-unit-tests’ in Jenkins.</p>
+<p>The <code class="docutils literal"><span class="pre">jobs:</span></code> list can also allow for specifying job-specific
+substitutions as follows:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">project</span><span class="p">:</span>
+    <span class="n">name</span><span class="p">:</span> <span class="n">project</span><span class="o">-</span><span class="n">name</span>
+    <span class="n">jobs</span><span class="p">:</span>
+      <span class="o">-</span> <span class="s1">'</span><span class="si">{name}</span><span class="s1">-unit-tests'</span><span class="p">:</span>
+          <span class="n">mail</span><span class="o">-</span><span class="n">to</span><span class="p">:</span> <span class="n">developer</span><span class="nd">@nowhere</span><span class="o">.</span><span class="n">net</span>
+      <span class="o">-</span> <span class="s1">'</span><span class="si">{name}</span><span class="s1">-perf-tests'</span><span class="p">:</span>
+          <span class="n">mail</span><span class="o">-</span><span class="n">to</span><span class="p">:</span> <span class="n">projmanager</span><span class="nd">@nowhere</span><span class="o">.</span><span class="n">net</span>
+</pre></div>
+</div>
+<p>If a variable is a list, the job template will be realized with the
+variable set to each value in the list.  Multiple lists will lead to
+the template being realized with the cartesian product of those
+values.  Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">project</span><span class="p">:</span>
+    <span class="n">name</span><span class="p">:</span> <span class="n">project</span><span class="o">-</span><span class="n">name</span>
+    <span class="n">pyver</span><span class="p">:</span>
+      <span class="o">-</span> <span class="mi">26</span>
+      <span class="o">-</span> <span class="mi">27</span>
+    <span class="n">jobs</span><span class="p">:</span>
+      <span class="o">-</span> <span class="s1">'</span><span class="si">{name}</span><span class="s1">-</span><span class="si">{pyver}</span><span class="s1">'</span>
+</pre></div>
+</div>
+<p>If there are templates being realized that differ only in the variable
+used for its name (thus not a use case for job-specific substitutions),
+additional variables can be specified for project variables. Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">job</span><span class="o">-</span><span class="n">template</span><span class="p">:</span>
+    <span class="n">name</span><span class="p">:</span> <span class="s1">'</span><span class="si">{name}</span><span class="s1">-</span><span class="si">{pyver}</span><span class="s1">'</span>
+    <span class="n">builders</span><span class="p">:</span>
+      <span class="o">-</span> <span class="n">shell</span><span class="p">:</span> <span class="s1">'git co </span><span class="si">{branch_name}</span><span class="s1">'</span>
+
+<span class="o">-</span> <span class="n">project</span><span class="p">:</span>
+   <span class="n">name</span><span class="p">:</span> <span class="n">project</span><span class="o">-</span><span class="n">name</span>
+   <span class="n">pyver</span><span class="p">:</span>
+    <span class="o">-</span> <span class="mi">26</span><span class="p">:</span>
+       <span class="n">branch_name</span><span class="p">:</span> <span class="n">old_branch</span>
+    <span class="o">-</span> <span class="mi">27</span><span class="p">:</span>
+       <span class="n">branch_name</span><span class="p">:</span> <span class="n">new_branch</span>
+   <span class="n">jobs</span><span class="p">:</span>
+    <span class="o">-</span> <span class="s1">'</span><span class="si">{name}</span><span class="s1">-</span><span class="si">{pyver}</span><span class="s1">'</span>
+</pre></div>
+</div>
+<p>You can also specify some variable combinations to exclude from the matrix with
+the <code class="docutils literal"><span class="pre">exclude</span></code> keyword, to avoid generating jobs for those combinations. You
+can specify all the variables of the combination or only a subset, if you
+specify a subset, any value of the omited variable will match:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">project</span><span class="p">:</span>
+    <span class="n">name</span><span class="p">:</span> <span class="n">project</span><span class="o">-</span><span class="n">name</span>
+    <span class="n">axe1</span><span class="p">:</span>
+      <span class="o">-</span> <span class="n">axe1val1</span>
+      <span class="o">-</span> <span class="n">axe1val2</span>
+    <span class="n">axe2</span><span class="p">:</span>
+      <span class="o">-</span> <span class="n">axe2val1</span>
+      <span class="o">-</span> <span class="n">axe2val2</span>
+    <span class="n">axe3</span><span class="p">:</span>
+      <span class="o">-</span> <span class="n">axe3val1</span>
+      <span class="o">-</span> <span class="n">axe3val2</span>
+    <span class="n">exclude</span><span class="p">:</span>
+      <span class="o">-</span> <span class="n">axe1</span><span class="p">:</span> <span class="n">axe1val1</span>
+        <span class="n">axe2</span><span class="p">:</span> <span class="n">axe2val1</span>
+        <span class="n">axe3</span><span class="p">:</span> <span class="n">axe3val2</span>
+      <span class="o">-</span> <span class="n">axe2</span><span class="p">:</span> <span class="n">axe2val2</span>
+        <span class="n">axe3</span><span class="p">:</span> <span class="n">axe3val1</span>
+    <span class="n">jobs</span><span class="p">:</span>
+      <span class="o">-</span> <span class="n">build</span><span class="o">-</span><span class="p">{</span><span class="n">axe1</span><span class="p">}</span><span class="o">-</span><span class="p">{</span><span class="n">axe2</span><span class="p">}</span><span class="o">-</span><span class="p">{</span><span class="n">axe3</span><span class="p">}</span>
+
+<span class="o">-</span> <span class="n">job</span><span class="o">-</span><span class="n">template</span><span class="p">:</span>
+    <span class="n">name</span><span class="p">:</span> <span class="n">build</span><span class="o">-</span><span class="p">{</span><span class="n">axe1</span><span class="p">}</span><span class="o">-</span><span class="p">{</span><span class="n">axe2</span><span class="p">}</span><span class="o">-</span><span class="p">{</span><span class="n">axe3</span><span class="p">}</span>
+    <span class="n">builders</span><span class="p">:</span>
+      <span class="o">-</span> <span class="n">shell</span><span class="p">:</span> <span class="s2">"echo Combination </span><span class="si">{axe1}</span><span class="s2">:</span><span class="si">{axe2}</span><span class="s2">:</span><span class="si">{axe3}</span><span class="s2">"</span>
+</pre></div>
+</div>
+<p>The above example will omit the jobs:</p>
+<blockquote>
+<div><ul class="simple">
+<li>build-axe1val1-axe2val1-axe3val2</li>
+<li>build-axe1val1-axe2val2-axe3val1</li>
+<li>build-axe1val2-axe2val2-axe3val1</li>
+</ul>
+</div></blockquote>
+<p>To achieve the same without the <code class="docutils literal"><span class="pre">exclude</span></code> tag one would have to do something
+a bit more complicated, that gets more complicated for each dimension in the
+combination, for the previous example, the counterpart would be:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">project</span><span class="p">:</span>
+    <span class="n">name</span><span class="p">:</span> <span class="n">project</span><span class="o">-</span><span class="n">name_comb1</span>
+    <span class="n">axe1</span><span class="p">:</span>
+      <span class="o">-</span> <span class="n">axe1val1</span>
+      <span class="o">-</span> <span class="n">axe1val2</span>
+    <span class="n">axe2</span><span class="p">:</span> <span class="n">axe2val1</span>
+    <span class="n">axe3</span><span class="p">:</span> <span class="n">axe3val1</span>
+    <span class="n">jobs</span><span class="p">:</span>
+      <span class="o">-</span> <span class="n">build</span><span class="o">-</span><span class="p">{</span><span class="n">axe1</span><span class="p">}</span><span class="o">-</span><span class="p">{</span><span class="n">axe2</span><span class="p">}</span><span class="o">-</span><span class="p">{</span><span class="n">axe3</span><span class="p">}</span>
+
+<span class="o">-</span> <span class="n">project</span><span class="p">:</span>
+    <span class="n">name</span><span class="p">:</span> <span class="n">project</span><span class="o">-</span><span class="n">name_comb2</span>
+    <span class="n">axe1</span><span class="p">:</span>
+      <span class="o">-</span> <span class="n">axe1val1</span>
+      <span class="o">-</span> <span class="n">axe1val2</span>
+    <span class="n">axe2</span><span class="p">:</span> <span class="n">axe2val2</span>
+    <span class="n">axe3</span><span class="p">:</span> <span class="n">axe3val2</span>
+    <span class="n">jobs</span><span class="p">:</span>
+      <span class="o">-</span> <span class="n">build</span><span class="o">-</span><span class="p">{</span><span class="n">axe1</span><span class="p">}</span><span class="o">-</span><span class="p">{</span><span class="n">axe2</span><span class="p">}</span><span class="o">-</span><span class="p">{</span><span class="n">axe3</span><span class="p">}</span>
+
+<span class="o">-</span> <span class="n">project</span><span class="p">:</span>
+    <span class="n">name</span><span class="p">:</span> <span class="n">project</span><span class="o">-</span><span class="n">name_comb3</span>
+    <span class="n">axe1</span><span class="p">:</span> <span class="n">axe1val2</span>
+    <span class="n">axe2</span><span class="p">:</span> <span class="n">axe2val1</span>
+    <span class="n">axe3</span><span class="p">:</span> <span class="n">axe3val2</span>
+    <span class="n">jobs</span><span class="p">:</span>
+      <span class="o">-</span> <span class="n">build</span><span class="o">-</span><span class="p">{</span><span class="n">axe1</span><span class="p">}</span><span class="o">-</span><span class="p">{</span><span class="n">axe2</span><span class="p">}</span><span class="o">-</span><span class="p">{</span><span class="n">axe3</span><span class="p">}</span>
+
+<span class="o">-</span> <span class="n">job</span><span class="o">-</span><span class="n">template</span><span class="p">:</span>
+    <span class="n">name</span><span class="p">:</span> <span class="n">build</span><span class="o">-</span><span class="p">{</span><span class="n">axe1</span><span class="p">}</span><span class="o">-</span><span class="p">{</span><span class="n">axe2</span><span class="p">}</span><span class="o">-</span><span class="p">{</span><span class="n">axe3</span><span class="p">}</span>
+    <span class="n">builders</span><span class="p">:</span>
+      <span class="o">-</span> <span class="n">shell</span><span class="p">:</span> <span class="s2">"echo Combination </span><span class="si">{axe1}</span><span class="s2">:</span><span class="si">{axe2}</span><span class="s2">:</span><span class="si">{axe3}</span><span class="s2">"</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="job-group">
+<h3>Job Group<a class="headerlink" href="#job-group" title="Permalink to this headline">¶</a></h3>
+<p>If you have several Job Templates that should all be realized
+together, you can define a Job Group to collect them.  Simply use the
+Job Group where you would normally use a <a class="reference internal" href="#id2">Job Template</a> and all of
+the Job Templates in the Job Group will be realized.  For example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">job</span><span class="o">-</span><span class="n">template</span><span class="p">:</span>
+    <span class="n">name</span><span class="p">:</span> <span class="s1">'</span><span class="si">{name}</span><span class="s1">-unit-tests'</span>
+    <span class="n">builders</span><span class="p">:</span>
+    <span class="o">-</span> <span class="n">shell</span><span class="p">:</span> <span class="n">unittest</span>
+    <span class="n">publishers</span><span class="p">:</span>
+    <span class="o">-</span> <span class="n">email</span><span class="p">:</span>
+        <span class="n">recipients</span><span class="p">:</span> <span class="s1">'{mail-to}'</span>
+
+<span class="o">-</span> <span class="n">job</span><span class="o">-</span><span class="n">template</span><span class="p">:</span>
+    <span class="n">name</span><span class="p">:</span> <span class="s1">'</span><span class="si">{name}</span><span class="s1">-perf-tests'</span>
+    <span class="n">builders</span><span class="p">:</span>
+    <span class="o">-</span> <span class="n">shell</span><span class="p">:</span> <span class="n">perftest</span>
+    <span class="n">publishers</span><span class="p">:</span>
+    <span class="o">-</span> <span class="n">email</span><span class="p">:</span>
+        <span class="n">recipients</span><span class="p">:</span> <span class="s1">'{mail-to}'</span>
+
+<span class="o">-</span> <span class="n">job</span><span class="o">-</span><span class="n">group</span><span class="p">:</span>
+    <span class="n">name</span><span class="p">:</span> <span class="s1">'</span><span class="si">{name}</span><span class="s1">-tests'</span>
+    <span class="n">jobs</span><span class="p">:</span>
+    <span class="o">-</span> <span class="s1">'</span><span class="si">{name}</span><span class="s1">-unit-tests'</span><span class="p">:</span>
+        <span class="n">mail</span><span class="o">-</span><span class="n">to</span><span class="p">:</span> <span class="n">developer</span><span class="nd">@nowhere</span><span class="o">.</span><span class="n">net</span>
+    <span class="o">-</span> <span class="s1">'</span><span class="si">{name}</span><span class="s1">-perf-tests'</span><span class="p">:</span>
+        <span class="n">mail</span><span class="o">-</span><span class="n">to</span><span class="p">:</span> <span class="n">projmanager</span><span class="nd">@nowhere</span><span class="o">.</span><span class="n">net</span>
+
+<span class="o">-</span> <span class="n">project</span><span class="p">:</span>
+    <span class="n">name</span><span class="p">:</span> <span class="n">project</span><span class="o">-</span><span class="n">name</span>
+    <span class="n">jobs</span><span class="p">:</span>
+    <span class="o">-</span> <span class="s1">'</span><span class="si">{name}</span><span class="s1">-tests'</span>
+</pre></div>
+</div>
+<p>Would cause the jobs <cite>project-name-unit-tests</cite> and <cite>project-name-perf-tests</cite> to be created
+in Jenkins.</p>
+</div>
+<div class="section" id="views">
+<span id="id4"></span><h3>Views<a class="headerlink" href="#views" title="Permalink to this headline">¶</a></h3>
+<p>A view is a particular way of displaying a specific set of jobs. To
+create a view, you must define a view in a YAML file and have a variable called view-type with a valid value. It looks like this:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">view</span><span class="p">:</span>
+    <span class="n">name</span><span class="p">:</span> <span class="n">view</span><span class="o">-</span><span class="n">name</span>
+    <span class="n">view</span><span class="o">-</span><span class="nb">type</span><span class="p">:</span> <span class="nb">list</span>
+</pre></div>
+</div>
+<p>Views are processed differently than Jobs and therefore will not work within a <a class="reference internal" href="#project">Project</a> or a <a class="reference internal" href="#id2">Job Template</a>.</p>
+</div>
+<div class="section" id="macro">
+<span id="id5"></span><h3>Macro<a class="headerlink" href="#macro" title="Permalink to this headline">¶</a></h3>
+<p>Many of the actions of a <a class="reference internal" href="#job">Job</a>, such as builders or publishers, can
+be defined as a Macro, and then that Macro used in the <a class="reference internal" href="#job">Job</a>
+description.  Builders are described later, but let’s introduce a
+simple one now to illustrate the Macro functionality.  This snippet
+will instruct Jenkins to execute “make test” as part of the job:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">job</span><span class="p">:</span>
+    <span class="n">name</span><span class="p">:</span> <span class="n">foo</span><span class="o">-</span><span class="n">test</span>
+    <span class="n">builders</span><span class="p">:</span>
+      <span class="o">-</span> <span class="n">shell</span><span class="p">:</span> <span class="s1">'make test'</span>
+</pre></div>
+</div>
+<p>If you wanted to define a macro (which won’t save much typing in this
+case, but could still be useful to centralize the definition of a
+commonly repeated task), the configuration would look like:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">builder</span><span class="p">:</span>
+    <span class="n">name</span><span class="p">:</span> <span class="n">make</span><span class="o">-</span><span class="n">test</span>
+    <span class="n">builders</span><span class="p">:</span>
+      <span class="o">-</span> <span class="n">shell</span><span class="p">:</span> <span class="s1">'make test'</span>
+
+<span class="o">-</span> <span class="n">job</span><span class="p">:</span>
+    <span class="n">name</span><span class="p">:</span> <span class="n">foo</span><span class="o">-</span><span class="n">test</span>
+    <span class="n">builders</span><span class="p">:</span>
+      <span class="o">-</span> <span class="n">make</span><span class="o">-</span><span class="n">test</span>
+</pre></div>
+</div>
+<p>This allows you to create complex actions (and even sequences of
+actions) in YAML that look like first-class Jenkins Job Builder
+actions.  Not every attribute supports Macros, check the documentation
+for the action before you try to use a Macro for it.</p>
+<p>Macros can take parameters, letting you define a generic macro and more
+specific ones without having to duplicate code:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># The 'add' macro takes a 'number' parameter and will creates a</span>
+<span class="c1"># job which prints 'Adding ' followed by the 'number' parameter:</span>
+<span class="o">-</span> <span class="n">builder</span><span class="p">:</span>
+    <span class="n">name</span><span class="p">:</span> <span class="n">add</span>
+    <span class="n">builders</span><span class="p">:</span>
+     <span class="o">-</span> <span class="n">shell</span><span class="p">:</span> <span class="s2">"echo Adding </span><span class="si">{number}</span><span class="s2">"</span>
+
+<span class="c1"># A specialized macro 'addtwo' reusing the 'add' macro but with</span>
+<span class="c1"># a 'number' parameter hardcoded to 'two':</span>
+<span class="o">-</span> <span class="n">builder</span><span class="p">:</span>
+    <span class="n">name</span><span class="p">:</span> <span class="n">addtwo</span>
+    <span class="n">builders</span><span class="p">:</span>
+     <span class="o">-</span> <span class="n">add</span><span class="p">:</span>
+        <span class="n">number</span><span class="p">:</span> <span class="s2">"two"</span>
+
+<span class="c1"># Glue to have Jenkins Job Builder to expand this YAML example:</span>
+<span class="o">-</span> <span class="n">job</span><span class="p">:</span>
+    <span class="n">name</span><span class="p">:</span> <span class="s2">"testingjob"</span>
+    <span class="n">builders</span><span class="p">:</span>
+     <span class="c1"># The specialized macro:</span>
+     <span class="o">-</span> <span class="n">addtwo</span>
+     <span class="c1"># Generic macro call with a parameter</span>
+     <span class="o">-</span> <span class="n">add</span><span class="p">:</span>
+        <span class="n">number</span><span class="p">:</span> <span class="s2">"ZERO"</span>
+     <span class="c1"># Generic macro called without a parameter. Never do this!</span>
+     <span class="c1"># See below for the resulting wrong output :(</span>
+     <span class="o">-</span> <span class="n">add</span>
+</pre></div>
+</div>
+<p>Then <code class="docutils literal"><span class="pre">&lt;builders</span> <span class="pre">/&gt;</span></code> section of the generated job show up as:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">builders</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">hudson</span><span class="o">.</span><span class="n">tasks</span><span class="o">.</span><span class="n">Shell</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">command</span><span class="o">&gt;</span><span class="n">echo</span> <span class="n">Adding</span> <span class="n">two</span><span class="o">&lt;/</span><span class="n">command</span><span class="o">&gt;</span>
+  <span class="o">&lt;/</span><span class="n">hudson</span><span class="o">.</span><span class="n">tasks</span><span class="o">.</span><span class="n">Shell</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">hudson</span><span class="o">.</span><span class="n">tasks</span><span class="o">.</span><span class="n">Shell</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">command</span><span class="o">&gt;</span><span class="n">echo</span> <span class="n">Adding</span> <span class="n">ZERO</span><span class="o">&lt;/</span><span class="n">command</span><span class="o">&gt;</span>
+  <span class="o">&lt;/</span><span class="n">hudson</span><span class="o">.</span><span class="n">tasks</span><span class="o">.</span><span class="n">Shell</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">hudson</span><span class="o">.</span><span class="n">tasks</span><span class="o">.</span><span class="n">Shell</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">command</span><span class="o">&gt;</span><span class="n">echo</span> <span class="n">Adding</span> <span class="p">{</span><span class="n">number</span><span class="p">}</span><span class="o">&lt;/</span><span class="n">command</span><span class="o">&gt;</span>
+  <span class="o">&lt;/</span><span class="n">hudson</span><span class="o">.</span><span class="n">tasks</span><span class="o">.</span><span class="n">Shell</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">builders</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>As you can see, the specialized macro <code class="docutils literal"><span class="pre">addtwo</span></code> reused the definition from
+the generic macro <code class="docutils literal"><span class="pre">add</span></code>.</p>
+<div class="section" id="macro-notes">
+<h4>Macro Notes<a class="headerlink" href="#macro-notes" title="Permalink to this headline">¶</a></h4>
+<p>If a macro is not passed any parameters it will not have any expansion
+performed on it.  Thus if you forget to provide <cite>any</cite> parameters to a
+macro that expects some, the parameter-templates (<code class="docutils literal"><span class="pre">{foo}</span></code>) will be
+left as is in the resulting output; this is almost certainly not what
+you want.  Note if you provide an invalid parameter, the expansion
+will fail; the expansion will only be skipped if you provide <cite>no</cite>
+parameters at all.</p>
+<p>Macros are expanded using Python string substitution rules.  This can
+especially cause confusion with shell snippets that use <code class="docutils literal"><span class="pre">{</span></code> as part
+of their syntax.  As described, if a macro has <cite>no</cite> parameters, no
+expansion will be performed and thus it is correct to write the script
+with no escaping, e.g.:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>- builder:
+  name: a_builder
+  builders:
+    - shell: |
+        VARIABLE=${VARIABLE:-bar}
+        function foo {
+            echo "my shell function"
+        }
+</pre></div>
+</div>
+<p>However, if the macro <cite>has</cite> parameters, you must escape the <code class="docutils literal"><span class="pre">{</span></code> you
+wish to make it through to the output, e.g.:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>- builder:
+  name: a_builder
+  builders:
+     - shell: |
+       PARAMETER={parameter}
+       VARIABLE=${{VARIABLE:-bar}}
+       function foo {{
+            echo "my shell function"
+       }}
+</pre></div>
+</div>
+<p>Note that a <code class="docutils literal"><span class="pre">job-template</span></code> will have parameters by definition (at
+least a <code class="docutils literal"><span class="pre">name</span></code>).  Thus embedded-shell within a <code class="docutils literal"><span class="pre">job-template</span></code> should
+always use <code class="docutils literal"><span class="pre">{{</span></code> to achieve a literal <code class="docutils literal"><span class="pre">{</span></code>.  A generic builder will need
+to consider the correct quoting based on its use of parameters.</p>
+</div>
+</div>
+<div class="section" id="item-id-s">
+<span id="ids"></span><h3>Item ID’s<a class="headerlink" href="#item-id-s" title="Permalink to this headline">¶</a></h3>
+<p>It’s possible to assign an <cite>id</cite> to any of the blocks and then use that
+to reference it instead of the name. This has two primary functions:</p>
+<ul class="simple">
+<li>A unique identifier where you wish to use the same naming format for
+multiple templates. This allows to follow a naming scheme while
+still using multiple templates to handle subtle variables in job
+requirements.</li>
+<li>Provides a simpler name for a <cite>job-template</cite> where you have multiple
+variables including default values in the name and don’t wish to have
+to include this information in every use. This also makes changing
+the template output name without impacting references.</li>
+</ul>
+<p>Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">project</span><span class="p">:</span>
+    <span class="n">name</span><span class="p">:</span> <span class="n">test_template_id</span>
+    <span class="n">jobs</span><span class="p">:</span>
+        <span class="o">-</span> <span class="s1">'simple-template'</span><span class="p">:</span>
+            <span class="n">test_var</span><span class="p">:</span> <span class="n">Hello</span> <span class="n">World</span>
+            <span class="nb">type</span><span class="p">:</span> <span class="n">periodic</span>
+            <span class="n">num</span><span class="p">:</span> <span class="mi">1</span>
+        <span class="o">-</span> <span class="s1">'not-as-simple-template'</span><span class="p">:</span>
+            <span class="n">test_var</span><span class="p">:</span> <span class="n">Goodbye</span> <span class="n">World</span>
+            <span class="nb">type</span><span class="p">:</span> <span class="n">canary</span>
+            <span class="n">num</span><span class="p">:</span> <span class="mi">2</span>
+
+<span class="o">-</span> <span class="n">job</span><span class="o">-</span><span class="n">template</span><span class="p">:</span>
+    <span class="n">name</span><span class="p">:</span> <span class="s1">'template-test-ids-</span><span class="si">{num}</span><span class="s1">-</span><span class="si">{type}</span><span class="s1">'</span>
+    <span class="nb">id</span><span class="p">:</span> <span class="n">simple</span><span class="o">-</span><span class="n">template</span>
+    <span class="n">builders</span><span class="p">:</span>
+      <span class="o">-</span> <span class="n">shell</span><span class="p">:</span> <span class="o">|</span>
+         <span class="n">echo</span> <span class="s2">"Template name: {template-name}"</span>
+         <span class="n">echo</span> <span class="s2">"Job name: template-test-ids-</span><span class="si">{num}</span><span class="s2">-</span><span class="si">{type}</span><span class="s2">"</span>
+         <span class="n">echo</span> <span class="s2">"</span><span class="si">{test_var}</span><span class="s2">"</span>
+
+<span class="o">-</span> <span class="n">job</span><span class="o">-</span><span class="n">template</span><span class="p">:</span>
+    <span class="n">name</span><span class="p">:</span> <span class="s1">'template-test-ids-</span><span class="si">{num}</span><span class="s1">-</span><span class="si">{type}</span><span class="s1">'</span>
+    <span class="nb">id</span><span class="p">:</span> <span class="ow">not</span><span class="o">-</span><span class="k">as</span><span class="o">-</span><span class="n">simple</span><span class="o">-</span><span class="n">template</span>
+    <span class="n">builders</span><span class="p">:</span>
+      <span class="o">-</span> <span class="n">shell</span><span class="p">:</span> <span class="o">|</span>
+         <span class="n">echo</span> <span class="s2">"Template name: {template-name}"</span>
+         <span class="n">echo</span> <span class="s2">"Job name: template-test-ids-</span><span class="si">{num}</span><span class="s2">-</span><span class="si">{type}</span><span class="s2">"</span>
+      <span class="o">-</span> <span class="n">shell</span><span class="p">:</span> <span class="o">|</span>
+         <span class="n">echo</span> <span class="s2">"</span><span class="si">{test_var}</span><span class="s2">"</span>
+
+</pre></div>
+</div>
+</div>
+<div class="section" id="raw-config">
+<span id="raw"></span><h3>Raw config<a class="headerlink" href="#raw-config" title="Permalink to this headline">¶</a></h3>
+<p>It is possible, but not recommended, to use <cite>raw</cite> within a module to
+inject raw xml into the job configs.</p>
+<p>This is relevant in case there is no appropriate module for a
+Jenkins plugin or the module does not behave as you expect it to do.</p>
+<p>For example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">wrappers</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">raw</span><span class="p">:</span>
+      <span class="n">xml</span><span class="p">:</span> <span class="o">|</span>
+        <span class="o">&lt;</span><span class="n">hudson</span><span class="o">.</span><span class="n">plugins</span><span class="o">.</span><span class="n">xvnc</span><span class="o">.</span><span class="n">Xvnc</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="n">takeScreenshot</span><span class="o">&gt;</span><span class="n">true</span><span class="o">&lt;/</span><span class="n">takeScreenshot</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="n">useXauthority</span><span class="o">&gt;</span><span class="n">false</span><span class="o">&lt;/</span><span class="n">useXauthority</span><span class="o">&gt;</span>
+        <span class="o">&lt;/</span><span class="n">hudson</span><span class="o">.</span><span class="n">plugins</span><span class="o">.</span><span class="n">xvnc</span><span class="o">.</span><span class="n">Xvnc</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Is the raw way of adding support for the <cite>xvnc</cite> wrapper.</p>
+<p>To get the appropriate xml to use you would need to create/edit a job
+in Jenkins and grab the relevant raw xml segment from the
+<cite>config.xml</cite>.</p>
+<p>The xml string can refer to variables just like anything else and as
+such can be parameterized like anything else.</p>
+<p>You can use <cite>raw</cite> in most locations, the following example show them
+with arbitrary xml-data:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>- project:
+    name: complete002
+    version:
+        - 1.2
+    jobs:
+        - 'complete001_{version}'
+
+- job-template:
+    name: 'complete001_{version}'
+    project-type: maven
+    scm:
+      - raw:
+          xml: |
+            &lt;!-- &lt;scm&gt; for raw replaces the whole scm section.
+             where as for others the raw part is added to the existing.
+            --&gt;
+            &lt;scm&gt;
+              &lt;scmraw/&gt;
+            &lt;/scm&gt;
+    triggers:
+      - raw:
+          xml: |
+            &lt;triggersraw/&gt;
+    wrappers:
+      - raw:
+          xml: |
+            &lt;wrappersraw/&gt;
+    builders:
+      - raw:
+          xml: |
+            &lt;buildersraw/&gt;
+    publishers:
+      - raw:
+          xml: |
+            &lt;publishersraw/&gt;
+    properties:
+      - raw:
+          xml: |
+            &lt;propertiesraw/&gt;
+    parameters:
+      - raw:
+          xml: |
+            &lt;parametersraw/&gt;
+    notifications:
+      - raw:
+          xml: |
+            &lt;metadataraw/&gt;
+    reporters:
+      - raw:
+          xml:
+            &lt;reportersraw/&gt;
+</pre></div>
+</div>
+<p>Note: If you have a need to use <cite>raw</cite> please consider submitting a patch to
+add or fix the module that will remove your need to use <cite>raw</cite>.</p>
+</div>
+<div class="section" id="defaults">
+<span id="id6"></span><h3>Defaults<a class="headerlink" href="#defaults" title="Permalink to this headline">¶</a></h3>
+<p>Defaults collect job attributes (including actions) and will supply
+those values when the job is created, unless superseded by a value in
+the ‘Job’_ definition.  If a set of Defaults is specified with the
+name <code class="docutils literal"><span class="pre">global</span></code>, that will be used by all <a class="reference internal" href="#job">Job</a> (and <a class="reference internal" href="#id2">Job Template</a>)
+definitions unless they specify a different Default object with the
+<code class="docutils literal"><span class="pre">defaults</span></code> attribute.  For example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">defaults</span><span class="p">:</span>
+    <span class="n">name</span><span class="p">:</span> <span class="k">global</span>
+    <span class="n">description</span><span class="p">:</span> <span class="s1">'Do not edit this job through the web!'</span>
+</pre></div>
+</div>
+<p>Will set the job description for every job created.</p>
+<p>You can define variables that will be realized in a <cite>Job Template</cite>.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">defaults</span><span class="p">:</span>
+    <span class="n">name</span><span class="p">:</span> <span class="k">global</span>
+    <span class="n">arch</span><span class="p">:</span> <span class="s1">'i386'</span>
+
+<span class="o">-</span> <span class="n">project</span><span class="p">:</span>
+    <span class="n">name</span><span class="p">:</span> <span class="n">project</span><span class="o">-</span><span class="n">name</span>
+    <span class="n">jobs</span><span class="p">:</span>
+        <span class="o">-</span> <span class="s1">'build-</span><span class="si">{arch}</span><span class="s1">'</span>
+        <span class="o">-</span> <span class="s1">'build-</span><span class="si">{arch}</span><span class="s1">'</span><span class="p">:</span>
+            <span class="n">arch</span><span class="p">:</span> <span class="s1">'amd64'</span>
+
+<span class="o">-</span> <span class="n">job</span><span class="o">-</span><span class="n">template</span><span class="p">:</span>
+    <span class="n">name</span><span class="p">:</span> <span class="s1">'build-</span><span class="si">{arch}</span><span class="s1">'</span>
+    <span class="n">builders</span><span class="p">:</span>
+        <span class="o">-</span> <span class="n">shell</span><span class="p">:</span> <span class="s2">"echo Build arch </span><span class="si">{arch}</span><span class="s2">."</span>
+</pre></div>
+</div>
+<p>Would create jobs <code class="docutils literal"><span class="pre">build-i386</span></code> and <code class="docutils literal"><span class="pre">build-amd64</span></code>.</p>
+</div>
+<div class="section" id="variable-references">
+<span id="id7"></span><h3>Variable References<a class="headerlink" href="#variable-references" title="Permalink to this headline">¶</a></h3>
+<p>If you want to pass an object (boolean, list or dict) to templates you can
+use an <code class="docutils literal"><span class="pre">{obj:key}</span></code> variable in the job template.  This triggers the use
+of code that retains the original object type.</p>
+<p>For example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>- project:
+    name: test_custom_distri
+    disabled: true
+    distributions: !!python/tuple [precise, jessie]
+    architectures: !!python/tuple &amp;architectures
+      - amd64
+      - i386
+    axis_a:
+        type: user-defined
+        name: architectures
+        values: *architectures
+    jobs:
+      - '{name}-source'
+
+- job-template:
+      name: '{name}-source'
+      project-type: matrix
+      disabled: '{obj:disabled}'
+      axes:
+        - axis:
+            type: user-defined
+            name: distribution
+            values: '{obj:distributions}'
+        - axis: '{obj:axis_a}'
+</pre></div>
+</div>
+<p>JJB also supports interpolation of parameters within parameters. This allows a
+little more flexibility when ordering template jobs as components in different
+projects and job groups.</p>
+<p>For example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">job</span><span class="o">-</span><span class="n">template</span><span class="p">:</span>
+    <span class="n">name</span><span class="p">:</span> <span class="s1">'{value-stream}_{project-id}_foo'</span>
+    <span class="n">display</span><span class="o">-</span><span class="n">name</span><span class="p">:</span> <span class="s1">'{value-stream} {project-id} foo'</span>
+    <span class="n">publishers</span><span class="p">:</span>
+        <span class="o">-</span> <span class="n">trigger</span><span class="o">-</span><span class="n">parameterized</span><span class="o">-</span><span class="n">builds</span><span class="p">:</span>
+            <span class="o">-</span> <span class="n">project</span><span class="p">:</span> <span class="s1">'</span><span class="si">{downstream}</span><span class="s1">'</span>
+              <span class="n">current</span><span class="o">-</span><span class="n">parameters</span><span class="p">:</span> <span class="kc">False</span>
+              <span class="n">condition</span><span class="p">:</span> <span class="n">ALWAYS</span>
+              <span class="n">git</span><span class="o">-</span><span class="n">revision</span><span class="p">:</span> <span class="kc">True</span>
+
+<span class="o">-</span> <span class="n">job</span><span class="o">-</span><span class="n">template</span><span class="p">:</span>
+    <span class="n">name</span><span class="p">:</span> <span class="s1">'{value-stream}_{project-id}_bar'</span>
+    <span class="n">display</span><span class="o">-</span><span class="n">name</span><span class="p">:</span> <span class="s1">'{value-stream} {project-id} bar'</span>
+    <span class="n">publishers</span><span class="p">:</span>
+        <span class="o">-</span> <span class="n">trigger</span><span class="o">-</span><span class="n">parameterized</span><span class="o">-</span><span class="n">builds</span><span class="p">:</span>
+            <span class="o">-</span> <span class="n">project</span><span class="p">:</span> <span class="s1">'</span><span class="si">{downstream}</span><span class="s1">'</span>
+              <span class="n">current</span><span class="o">-</span><span class="n">parameters</span><span class="p">:</span> <span class="kc">False</span>
+              <span class="n">condition</span><span class="p">:</span> <span class="n">ALWAYS</span>
+              <span class="n">git</span><span class="o">-</span><span class="n">revision</span><span class="p">:</span> <span class="kc">True</span>
+
+<span class="o">-</span> <span class="n">job</span><span class="o">-</span><span class="n">group</span><span class="p">:</span>
+    <span class="n">name</span><span class="p">:</span> <span class="s1">'pipeline2'</span>
+    <span class="n">project</span><span class="o">-</span><span class="nb">id</span><span class="p">:</span> <span class="s1">'p2'</span>
+    <span class="n">jobs</span><span class="p">:</span>
+        <span class="o">-</span> <span class="s1">'{value-stream}_{project-id}_foo'</span><span class="p">:</span>
+            <span class="n">downstream</span><span class="p">:</span> <span class="s1">'{value-stream}_{project-id}_bar'</span>
+        <span class="o">-</span> <span class="s1">'{value-stream}_{project-id}_bar'</span><span class="p">:</span>
+
+<span class="o">-</span> <span class="n">job</span><span class="o">-</span><span class="n">group</span><span class="p">:</span>
+    <span class="n">name</span><span class="p">:</span> <span class="s1">'pipeline1'</span>
+    <span class="n">project</span><span class="o">-</span><span class="nb">id</span><span class="p">:</span> <span class="s1">'p1'</span>
+    <span class="n">jobs</span><span class="p">:</span>
+        <span class="o">-</span> <span class="s1">'{value-stream}_{project-id}_bar'</span><span class="p">:</span>
+            <span class="n">downstream</span><span class="p">:</span> <span class="s1">'{value-stream}_{project-id}_foo'</span>
+        <span class="o">-</span> <span class="s1">'{value-stream}_{project-id}_foo'</span><span class="p">:</span>
+
+<span class="o">-</span> <span class="n">project</span><span class="p">:</span>
+    <span class="n">name</span><span class="p">:</span> <span class="n">derp</span>
+    <span class="n">jobs</span><span class="p">:</span>
+        <span class="o">-</span> <span class="s1">'pipeline1'</span><span class="p">:</span>
+            <span class="n">value</span><span class="o">-</span><span class="n">stream</span><span class="p">:</span> <span class="s1">'production'</span>
+        <span class="o">-</span> <span class="s1">'pipeline2'</span><span class="p">:</span>
+            <span class="n">value</span><span class="o">-</span><span class="n">stream</span><span class="p">:</span> <span class="s1">'experimental'</span>
+
+<span class="o">-</span> <span class="n">defaults</span><span class="p">:</span>
+    <span class="n">name</span><span class="p">:</span> <span class="s1">'global'</span>
+    <span class="n">downstream</span><span class="p">:</span> <span class="s1">''</span>
+</pre></div>
+</div>
+<p>By default JJB will fail if it tries to interpolate a variable that was not
+defined, but you can change that behavior and allow empty variables with the
+allow_empty_variables configuration option.</p>
+<p>For example, having a configuration file with that option enabled:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">job_builder</span><span class="p">]</span>
+<span class="n">allow_empty_variables</span> <span class="o">=</span> <span class="kc">True</span>
+</pre></div>
+</div>
+<p>Will prevent JJb from failing if there are any non-initialized variables used
+and replace them with the empty string instead.</p>
+</div>
+<div class="section" id="yaml-anchors-aliases">
+<h3>Yaml Anchors &amp; Aliases<a class="headerlink" href="#yaml-anchors-aliases" title="Permalink to this headline">¶</a></h3>
+<p>The yaml specification supports <a class="reference external" href="http://www.yaml.org/spec/1.2/spec.html#id2765878">anchors and aliases</a> which means
+that JJB definitions allow references to variables in templates.</p>
+<p>For example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">wrapper_defaults</span><span class="p">:</span> <span class="o">&amp;</span><span class="n">wrapper_defaults</span>
+    <span class="n">name</span><span class="p">:</span> <span class="s1">'wrapper_defaults'</span>
+    <span class="n">wrappers</span><span class="p">:</span>
+      <span class="o">-</span> <span class="n">timeout</span><span class="p">:</span>
+          <span class="n">timeout</span><span class="p">:</span> <span class="mi">180</span>
+          <span class="n">fail</span><span class="p">:</span> <span class="n">true</span>
+      <span class="o">-</span> <span class="n">timestamps</span>
+
+<span class="o">-</span> <span class="n">job_defaults</span><span class="p">:</span> <span class="o">&amp;</span><span class="n">job_defaults</span>
+    <span class="n">name</span><span class="p">:</span> <span class="s1">'defaults'</span>
+    <span class="o">&lt;&lt;</span><span class="p">:</span> <span class="o">*</span><span class="n">wrapper_defaults</span>
+
+<span class="o">-</span> <span class="n">job</span><span class="o">-</span><span class="n">template</span><span class="p">:</span>
+    <span class="n">name</span><span class="p">:</span> <span class="s1">'myjob'</span>
+    <span class="o">&lt;&lt;</span><span class="p">:</span> <span class="o">*</span><span class="n">job_defaults</span>
+
+<span class="o">-</span> <span class="n">project</span><span class="p">:</span>
+    <span class="n">name</span><span class="p">:</span> <span class="n">myproject</span>
+    <span class="n">jobs</span><span class="p">:</span>
+      <span class="o">-</span> <span class="n">myjob</span>
+</pre></div>
+</div>
+<p>The <a class="reference external" href="http://www.yaml.org/spec/1.2/spec.html#id2765878">anchors and aliases</a> are expanded internally within JJB’s yaml loading
+calls and are not limited to individual documents. That means you can’t use
+the same anchor name in included files without collisions.</p>
+<p>A simple example can be seen in the specs <a class="reference external" href="http://www.yaml.org/spec/1.2/spec.html#id2761803">full length example</a> with the
+following being more representative of usage within JJB:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">wrapper_defaults</span><span class="p">:</span> <span class="o">&amp;</span><span class="n">wrapper_defaults</span>
+    <span class="n">name</span><span class="p">:</span> <span class="s1">'wrapper_defaults'</span>
+    <span class="n">wrappers</span><span class="p">:</span>
+      <span class="o">-</span> <span class="n">timeout</span><span class="p">:</span>
+          <span class="n">timeout</span><span class="p">:</span> <span class="mi">180</span>
+          <span class="n">fail</span><span class="p">:</span> <span class="n">true</span>
+      <span class="o">-</span> <span class="n">timestamps</span>
+
+<span class="o">-</span> <span class="n">job_defaults</span><span class="p">:</span> <span class="o">&amp;</span><span class="n">job_defaults</span>
+    <span class="n">name</span><span class="p">:</span> <span class="s1">'defaults'</span>
+    <span class="o">&lt;&lt;</span><span class="p">:</span> <span class="o">*</span><span class="n">wrapper_defaults</span>
+
+<span class="o">-</span> <span class="n">job</span><span class="o">-</span><span class="n">template</span><span class="p">:</span>
+    <span class="n">name</span><span class="p">:</span> <span class="s1">'myjob'</span>
+    <span class="o">&lt;&lt;</span><span class="p">:</span> <span class="o">*</span><span class="n">job_defaults</span>
+</pre></div>
+</div>
+<p>Which will be expanded to the following yaml before being processed:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">wrapper_defaults</span><span class="p">:</span>
+    <span class="n">name</span><span class="p">:</span> <span class="n">wrapper_defaults</span>
+    <span class="n">wrappers</span><span class="p">:</span>
+    <span class="o">-</span> <span class="n">timeout</span><span class="p">:</span>
+        <span class="n">fail</span><span class="p">:</span> <span class="n">true</span>
+        <span class="n">timeout</span><span class="p">:</span> <span class="mi">180</span>
+    <span class="o">-</span> <span class="n">timestamps</span>
+<span class="o">-</span> <span class="n">job_defaults</span><span class="p">:</span>
+    <span class="n">name</span><span class="p">:</span> <span class="n">defaults</span>
+    <span class="n">wrappers</span><span class="p">:</span>
+    <span class="o">-</span> <span class="n">timeout</span><span class="p">:</span>
+        <span class="n">fail</span><span class="p">:</span> <span class="n">true</span>
+        <span class="n">timeout</span><span class="p">:</span> <span class="mi">180</span>
+    <span class="o">-</span> <span class="n">timestamps</span>
+<span class="o">-</span> <span class="n">job</span><span class="o">-</span><span class="n">template</span><span class="p">:</span>
+    <span class="n">name</span><span class="p">:</span> <span class="n">myjob</span>
+    <span class="n">wrappers</span><span class="p">:</span>
+    <span class="o">-</span> <span class="n">timeout</span><span class="p">:</span>
+        <span class="n">fail</span><span class="p">:</span> <span class="n">true</span>
+        <span class="n">timeout</span><span class="p">:</span> <span class="mi">180</span>
+    <span class="o">-</span> <span class="n">timestamps</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="module-jenkins_jobs.local_yaml">
+<span id="custom-yaml-tags"></span><h2><a name="//apple_ref/cpp/Module/jenkins_jobs.local_yaml"></a>Custom Yaml Tags<a class="headerlink" href="#module-jenkins_jobs.local_yaml" title="Permalink to this headline">¶</a></h2>
+<p>Custom application specific yamls tags are supported to provide
+enhancements when reading yaml configuration.</p>
+<p>These allow inclusion of arbitrary files as a method of having blocks of data
+managed separately to the yaml job configurations. A specific usage of this is
+inlining scripts contained in separate files, although such tags may also be
+used to simplify usage of macros or job templates.</p>
+<p>The tag <code class="docutils literal"><span class="pre">!include:</span></code> will treat the following string as file which should be
+parsed as yaml configuration data.</p>
+<p>Example:</p>
+<blockquote>
+<div><div class="highlight-default"><div class="highlight"><pre><span></span>- job:
+    name: test-job-1
+    builders:
+      !include: include001.yaml.inc
+</pre></div>
+</div>
+<p>contents of include001.yaml.inc:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">timeout</span><span class="o">-</span><span class="n">wrapper</span>
+<span class="o">-</span> <span class="n">pre</span><span class="o">-</span><span class="n">scm</span><span class="o">-</span><span class="n">shell</span><span class="o">-</span><span class="n">ant</span>
+<span class="o">-</span> <span class="n">copy</span><span class="o">-</span><span class="n">files</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>The tag <code class="docutils literal"><span class="pre">!include-raw:</span></code> will treat the given string or list of strings as
+filenames to be opened as one or more data blob, which should be read into
+the calling yaml construct without any further parsing. Any data in a file
+included through this tag, will be treated as string data.</p>
+<p>Examples:</p>
+<blockquote>
+<div><div class="highlight-default"><div class="highlight"><pre><span></span>- job:
+    name: test-job-include-raw-1
+    builders:
+      - shell:
+          !include-raw: include-raw001-hello-world.sh
+      - shell:
+          !include-raw: include-raw001-vars.sh
+</pre></div>
+</div>
+<p>contents of include-raw001-hello-world.sh:</p>
+<blockquote>
+<div><div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#</span>
+<span class="c1"># Sample script showing how the yaml include-raw tag can be used</span>
+<span class="c1"># to inline scripts that are maintained outside of the jenkins</span>
+<span class="c1"># job yaml configuration.</span>
+
+<span class="n">echo</span> <span class="s2">"hello world"</span>
+
+<span class="n">exit</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>contents of include-raw001-vars.sh:</p>
+<blockquote>
+<div><div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#</span>
+<span class="c1"># sample script to check that brackets aren't escaped</span>
+<span class="c1"># when using the include-raw application yaml tag</span>
+
+<span class="n">VAR1</span><span class="o">=</span><span class="s2">"hello"</span>
+<span class="n">VAR2</span><span class="o">=</span><span class="s2">"world"</span>
+<span class="n">VAR3</span><span class="o">=</span><span class="s2">"$</span><span class="si">{VAR1}</span><span class="s2"> $</span><span class="si">{VAR2}</span><span class="s2">"</span>
+
+<span class="p">[[</span> <span class="o">-</span><span class="n">n</span> <span class="s2">"$</span><span class="si">{VAR3}</span><span class="s2">"</span> <span class="p">]]</span> <span class="o">&amp;&amp;</span> <span class="p">{</span>
+    <span class="c1"># this next section is executed as one</span>
+    <span class="n">echo</span> <span class="s2">"$</span><span class="si">{VAR3}</span><span class="s2">"</span>
+    <span class="n">exit</span> <span class="mi">0</span>
+<span class="p">}</span>
+
+</pre></div>
+</div>
+</div></blockquote>
+<p>using a list of files:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>- job:
+    name: test-job-include-raw-1
+    builders:
+      - shell:
+          !include-raw:
+              - include-raw001-hello-world.sh
+              - include-raw001-vars.sh
+</pre></div>
+</div>
+</div></blockquote>
+<p>The tag <code class="docutils literal"><span class="pre">!include-raw-escape:</span></code> treats the given string or list of strings as
+filenames to be opened as one or more data blobs, which should be escaped
+before being read in as string data. This allows job-templates to use this tag
+to include scripts from files without needing to escape braces in the original
+file.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">When used as a macro <code class="docutils literal"><span class="pre">!include-raw-escape:</span></code> should only be used if
+parameters are passed into the escaped file and you would like to escape
+those parameters. If the file does not have any jjb parameters passed into
+it then <code class="docutils literal"><span class="pre">!include-raw:</span></code> should be used instead otherwise you will run
+into an interesting issue where <code class="docutils literal"><span class="pre">include-raw-escape:</span></code> actually adds
+additional curly braces around existing curly braces. For example
+${PROJECT} becomes ${{PROJECT}} which may break bash scripts.</p>
+</div>
+<p>Examples:</p>
+<blockquote>
+<div><div class="highlight-default"><div class="highlight"><pre><span></span>- job-template:
+    name: test-job-include-raw-{num}
+    builders:
+      - shell:
+          !include-raw-escape: include-raw001-hello-world.sh
+      - shell:
+          !include-raw-escape: include-raw001-vars.sh
+
+- project:
+    name: test-job-template-1
+    num: 1
+    jobs:
+      - 'test-job-include-raw-{num}'
+</pre></div>
+</div>
+<p>contents of include-raw001-hello-world.sh:</p>
+<blockquote>
+<div><div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#</span>
+<span class="c1"># Sample script showing how the yaml include-raw tag can be used</span>
+<span class="c1"># to inline scripts that are maintained outside of the jenkins</span>
+<span class="c1"># job yaml configuration.</span>
+
+<span class="n">echo</span> <span class="s2">"hello world"</span>
+
+<span class="n">exit</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>contents of include-raw001-vars.sh:</p>
+<blockquote>
+<div><div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#</span>
+<span class="c1"># sample script to check that brackets aren't escaped</span>
+<span class="c1"># when using the include-raw application yaml tag</span>
+
+<span class="n">VAR1</span><span class="o">=</span><span class="s2">"hello"</span>
+<span class="n">VAR2</span><span class="o">=</span><span class="s2">"world"</span>
+<span class="n">VAR3</span><span class="o">=</span><span class="s2">"$</span><span class="si">{VAR1}</span><span class="s2"> $</span><span class="si">{VAR2}</span><span class="s2">"</span>
+
+<span class="p">[[</span> <span class="o">-</span><span class="n">n</span> <span class="s2">"$</span><span class="si">{VAR3}</span><span class="s2">"</span> <span class="p">]]</span> <span class="o">&amp;&amp;</span> <span class="p">{</span>
+    <span class="c1"># this next section is executed as one</span>
+    <span class="n">echo</span> <span class="s2">"$</span><span class="si">{VAR3}</span><span class="s2">"</span>
+    <span class="n">exit</span> <span class="mi">0</span>
+<span class="p">}</span>
+
+</pre></div>
+</div>
+</div></blockquote>
+<p>using a list of files:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>- template-job:
+    name: test-job-include-raw-{num}
+    builders:
+      - shell:
+          !include-raw-escape:
+              - include-raw001-hello-world.sh
+              - include-raw001-vars.sh
+
+- project:
+    name: test-job-template-1
+    num: 1
+    jobs:
+      - 'test-job-include-raw-{num}'
+</pre></div>
+</div>
+</div></blockquote>
+<p>For all the multi file includes, the files are simply appended using a newline
+character.</p>
+<p>To allow for job templates to perform substitution on the path names, when a
+filename containing a python format placeholder is encountered, lazy loading
+support is enabled, where instead of returning the contents back during yaml
+parsing, it is delayed until the variable substitution is performed.</p>
+<p>Example:</p>
+<blockquote>
+<div><div class="highlight-default"><div class="highlight"><pre><span></span>- wrapper:
+    !include: lazy-load-jobs-timeout.yaml.inc
+
+- project:
+    name: test
+    version:
+      - 1.1
+    jobs:
+      - 'build_myproject_{version}'
+
+- job-template:
+    name: 'build_myproject_{version}'
+    wrappers:
+      !include: lazy-load-wrappers-{version}.yaml.inc
+    builders:
+      - shell:
+          !include-raw: echo_vars_{version}.sh
+</pre></div>
+</div>
+<p>using a list of files:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>- wrapper:
+    !include: lazy-load-jobs-timeout.yaml.inc
+
+- project:
+    name: test
+    num: "002"
+    version:
+      - 1.1
+    jobs:
+      - 'build_myproject_{version}'
+
+- job-template:
+    name: 'build_myproject_{version}'
+    wrappers:
+      !include: lazy-load-wrappers-{version}.yaml.inc
+    builders:
+      - shell:
+          !include-raw:
+            - lazy-load-scripts/echo_vars_{version}.sh
+            - include-raw{num}-cool.sh
+</pre></div>
+</div>
+</div></blockquote>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>Because lazy-loading involves performing the substitution on the file
+name, it means that jenkins-job-builder can not call the variable
+substitution on the contents of the file. This means that the
+<code class="docutils literal"><span class="pre">!include-raw:</span></code> tag will behave as though <code class="docutils literal"><span class="pre">!include-raw-escape:</span></code> tag
+was used instead whenever name substitution on the filename is to be
+performed.</p>
+<p class="last">Given the behaviour described above, when substitution is to be performed
+on any filename passed via <code class="docutils literal"><span class="pre">!include-raw-escape:</span></code> the tag will be
+automatically converted to <code class="docutils literal"><span class="pre">!include-raw:</span></code> and no escaping will be
+performed.</p>
+</div>
+<p>The tag <code class="docutils literal"><span class="pre">!include-jinja2:</span></code> will treat the given string or list of strings as
+filenames to be opened as Jinja2 templates, which should be rendered to a
+string and included in the calling YAML construct.  (This is analogous to the
+templating that will happen with <code class="docutils literal"><span class="pre">!include-raw</span></code>.)</p>
+<p>Examples:</p>
+<blockquote>
+<div><div class="highlight-default"><div class="highlight"><pre><span></span>- builder:
+    name: test-builder
+    builders:
+        - shell:
+            !include-jinja2: jinja01.yaml.inc
+
+- job:
+    name: test-job
+    builders:
+        - test-builder:
+            var: "test variable"
+            test_list:
+                - a
+                - b
+                - c
+</pre></div>
+</div>
+<p>contents of jinja01.yaml.inc:</p>
+<blockquote>
+<div><div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{{</span> <span class="n">var</span> <span class="p">}}</span>
+<span class="p">{</span><span class="o">%</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">test_list</span> <span class="o">-%</span><span class="p">}</span>
+<span class="p">{{</span> <span class="n">item</span> <span class="p">}}</span>
+<span class="p">{</span><span class="o">%</span> <span class="n">endfor</span> <span class="o">%</span><span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</div>
+<div class="section" id="modules">
+<h2>Modules<a class="headerlink" href="#modules" title="Permalink to this headline">¶</a></h2>
+<p>The bulk of the job definitions come from the following modules.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="project_externaljob.html">ExternalJob Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="project_flow.html">Flow Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="project_freestyle.html">Freestyle Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="project_matrix.html">Matrix Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="project_maven.html">Maven Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="project_multijob.html">MultiJob Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="project_pipeline.html">Pipeline Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="project_workflow.html">Workflow Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="builders.html">Builders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hipchat.html">Hipchat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="metadata.html">Metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notifications.html">Notifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parameters.html">Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="properties.html">Properties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="publishers.html">Publishers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reporters.html">Reporters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scm.html">SCM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="triggers.html">Triggers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wrappers.html">Wrappers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zuul.html">Zuul</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="module-execution">
+<h2>Module Execution<a class="headerlink" href="#module-execution" title="Permalink to this headline">¶</a></h2>
+<p>The jenkins job builder modules are executed in sequence.</p>
+<dl class="docutils">
+<dt>Generally the sequence is:</dt>
+<dd><ol class="first last arabic simple">
+<li>parameters/properties</li>
+<li>scm</li>
+<li>triggers</li>
+<li>wrappers</li>
+<li>prebuilders (maven only, configured like <a class="reference internal" href="builders.html#builders"><span class="std std-ref">Builders</span></a>)</li>
+<li>builders (maven, freestyle, matrix, etc..)</li>
+<li>postbuilders (maven only, configured like <a class="reference internal" href="builders.html#builders"><span class="std std-ref">Builders</span></a>)</li>
+<li>publishers/reporters/notifications</li>
+</ol>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<h3><a href="index.html">Table Of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#">Job Definitions</a><ul>
+<li><a class="reference internal" href="#definitions">Definitions</a><ul>
+<li><a class="reference internal" href="#job">Job</a></li>
+<li><a class="reference internal" href="#job-template">Job Template</a><ul>
+<li><a class="reference internal" href="#default-values-for-template-variables">Default Values for Template Variables</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#project">Project</a></li>
+<li><a class="reference internal" href="#job-group">Job Group</a></li>
+<li><a class="reference internal" href="#views">Views</a></li>
+<li><a class="reference internal" href="#macro">Macro</a><ul>
+<li><a class="reference internal" href="#macro-notes">Macro Notes</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#item-id-s">Item ID’s</a></li>
+<li><a class="reference internal" href="#raw-config">Raw config</a></li>
+<li><a class="reference internal" href="#defaults">Defaults</a></li>
+<li><a class="reference internal" href="#variable-references">Variable References</a></li>
+<li><a class="reference internal" href="#yaml-anchors-aliases">Yaml Anchors &amp; Aliases</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-jenkins_jobs.local_yaml">Custom Yaml Tags</a></li>
+<li><a class="reference internal" href="#modules">Modules</a></li>
+<li><a class="reference internal" href="#module-execution">Module Execution</a></li>
+</ul>
+</li>
+</ul>
+<h4>Previous topic</h4>
+<p class="topless"><a href="execution.html" title="previous chapter">Configuration File</a></p>
+<h4>Next topic</h4>
+<p class="topless"><a href="project_externaljob.html" title="next chapter">ExternalJob Project</a></p>
+<div aria-label="source link" role="note">
+<h3>This Page</h3>
+<ul class="this-page-menu">
+<li><a href="_sources/definition.txt" rel="nofollow">Show Source</a></li>
+</ul>
+</div>
+<div id="searchbox" role="search" style="display: none">
+<h3>Quick search</h3>
+<form action="search.html" class="search" method="get">
+<div><input name="q" type="text"/></div>
+<div><input type="submit" value="Go"/></div>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div aria-label="related navigation" class="related" role="navigation">
+<h3>Navigation</h3>
+<ul>
+<li class="right" style="margin-right: 10px">
+<a href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a href="project_externaljob.html" title="ExternalJob Project">next</a> |</li>
+<li class="right">
+<a href="execution.html" title="Configuration File">previous</a> |</li>
+<li class="nav-item nav-item-0"><a href="index.html">Jenkins Job Builder 2.0.0.0b3.dev264 documentation</a> »</li>
+</ul>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012, Jenkins Job Builder Maintainers.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.9.
+    </div>
+</body>
+</html>

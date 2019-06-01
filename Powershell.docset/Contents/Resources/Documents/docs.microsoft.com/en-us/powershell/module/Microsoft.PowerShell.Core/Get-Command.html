@@ -1,0 +1,1770 @@
+<!DOCTYPE html>
+<html class="no-js hasSidebar hasPageActions hasBreadcrumb conceptual" data-authenticated="false" data-render="docs" dir="ltr" lang="en-us">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Get-Command (Microsoft.PowerShell.Core)" property="og:title"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" property="og:image"/>
+  <meta content="summary" name="twitter:card"/>
+  <meta content="@docsmsft" name="twitter:site"/>
+  <meta content="Get-Command (Microsoft.PowerShell.Core)" name="twitter:title"/>
+  <meta content="The Get-Command cmdlet gets all commands that are installed on the computer, including cmdlets, aliases, functions, filters, scripts, and applications. Get-Command gets the commands from Windows Poweâ¦" name="twitter:description"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" name="twitter:image"/>
+  <meta content="Microsoft Logo" name="twitter:image:alt"/>
+  <meta content="The Get-Command cmdlet gets all commands that are installed on the computer, including cmdlets, aliases, functions, filters, scripts, and applications. Get-Command gets the commands from Windows Poweâ¦" name="description"/>
+  <meta content="Docs" name="search.ms_sitename"/>
+  <meta content="PowerShell_PowerShell-docs_reference" name="search.ms_docsetname"/>
+  <meta content="0" name="version"/>
+  <meta content="en-us" name="locale"/>
+  <meta content="Docs" name="site_name"/>
+  <meta content="PowerShell" name="search.ms_product"/>
+  <meta content="PowerShell.PowerShell_PowerShell-docs_reference" name="depot_name"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/d9e8ecac9bc9304574c892de268b26081ebf16c9/reference/6/Microsoft.PowerShell.Core/Get-Command.md" name="ref_skeleton_gitcommit"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/live/reference/6/Microsoft.PowerShell.Core/Get-Command.md" name="original_ref_skeleton_git_url"/>
+  <meta content="2018-04-26 09:41 PM" name="updated_at"/>
+  <meta content="70e55952-e08e-43ef-facf-86710a2c34b4" name="document_id"/>
+  <meta content="85160148-9b31-ef13-6e27-c12fe1307e1e" name="document_version_independent_id"/>
+  <meta content="powershell" name="page_type"/>
+  <meta content="command" name="page_kind"/>
+  <meta content="06/09/2017" name="ms.date"/>
+  <meta content="2.0.0" name="schema"/>
+  <meta content="powershell,cmdlet" name="keywords"/>
+  <meta content="http://go.microsoft.com/fwlink/?LinkId=821482" name="online_version"/>
+  <meta content="System.Management.Automation.dll-Help.xml" name="external_help_file"/>
+  <meta content="powershell" name="ms.devlang"/>
+  <meta content="INDEX, FOLLOW" name="ROBOTS"/>
+  <meta content="sdwheeler" name="author"/>
+  <meta content="sewhee" name="ms.author"/>
+  <meta content="carmonm" name="manager"/>
+  <meta content="/powershell/bread-pscore/toc.yml?view=powershell-6" name="breadcrumb_path"/>
+  <meta content="powershell" name="apiPlatform"/>
+  <meta content="reference" name="ms.topic"/>
+  <meta content="windows, macos, linux" name="ms.tgt_pltfr"/>
+  <meta content="powershell-scripting" name="ms.technology"/>
+  <meta content="powershell" name="ms.prod"/>
+  <meta content="MSDocsHeader-Powershell" name="uhfHeaderId"/>
+  <meta content="../psdocs/toc.json?view=powershell-6" name="toc_rel"/>
+  <link href="https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/get-command" rel="canonical"/>
+  <title>
+   Get-Command
+  </title>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/60aac04b.site.css" rel="stylesheet"/>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/fdb8a38a.conceptual.css" rel="stylesheet"/>
+ </head>
+ <body dir="ltr" lang="en-us">
+  <div class="header-holder">
+   <div data-bi-name="header" id="headerAreaHolder">
+    <div id="uhf-placeholder">
+    </div>
+   </div>
+   <div class="disclaimer-holder" id="disclaimer-holder">
+   </div>
+  </div>
+  <div class="container mainContainer" data-bi-name="body">
+   <div class="content-header" data-bi-name="content-header">
+    <div class="content-header-controls">
+     <button class="contents-button button-border" data-bi-name="contents-expand" type="button">
+      <span class="docon docon-menu">
+      </span>
+      Contents
+     </button>
+    </div>
+    <div class="content-header-controls">
+     <button class="ap-collapse-behavior ap-expanded button-border" data-bi-name="ap-collapse" type="button">
+      <span class="docon docon-exit-mode">
+      </span>
+      Exit focus mode
+     </button>
+    </div>
+   </div>
+   <div class="primary-holder">
+    <main class="content" data-bi-name="content" dir="ltr" id="main" lang="en-us" role="main">
+     <!-- <content> -->
+     <h1>
+      Get-Command
+     </h1>
+     <div class="metadata">
+      <dl class="attributeList">
+       <dt>
+        Module:
+       </dt>
+       <dd>
+        <a data-linktype="relative-path" href="./Microsoft.PowerShell.Core.html">
+         Microsoft.PowerShell.Core
+        </a>
+       </dd>
+      </dl>
+     </div>
+     <div class="summaryHolder">
+      <div class="summary">
+       Gets all commands.
+      </div>
+     </div>
+     <h2 class="hiddenAnchor" id="syntax">
+      Syntax
+     </h2>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Get-Command
+   [-Verb &lt;String[]&gt;]
+   [-Noun &lt;String[]&gt;]
+   [-Module &lt;String[]&gt;]
+   [-FullyQualifiedModule &lt;ModuleSpecification[]&gt;]
+   [-TotalCount &lt;Int32&gt;]
+   [-Syntax]
+   [-ShowCommandInfo]
+   [[-ArgumentList] &lt;Object[]&gt;]
+   [-All]
+   [-ListImported]
+   [-ParameterName &lt;String[]&gt;]
+   [-ParameterType &lt;PSTypeName[]&gt;]
+   [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Get-Command
+   [[-Name] &lt;String[]&gt;]
+   [-Module &lt;String[]&gt;]
+   [-FullyQualifiedModule &lt;ModuleSpecification[]&gt;]
+   [-CommandType &lt;CommandTypes&gt;]
+   [-TotalCount &lt;Int32&gt;]
+   [-Syntax]
+   [-ShowCommandInfo]
+   [[-ArgumentList] &lt;Object[]&gt;]
+   [-All]
+   [-ListImported]
+   [-ParameterName &lt;String[]&gt;]
+   [-ParameterType &lt;PSTypeName[]&gt;]
+   [&lt;CommonParameters&gt;]</code></pre>
+     <h2 id="description">
+      Description
+     </h2>
+     <p>
+      The
+      <strong>
+       Get-Command
+      </strong>
+      cmdlet gets all commands that are installed on the computer, including cmdlets, aliases, functions, filters, scripts, and applications.
+      <strong>
+       Get-Command
+      </strong>
+      gets the commands from Windows PowerShell modules and snap-ins and commands that were imported from other sessions.
+To get only commands that have been imported into the current session, use the
+      <em>
+       ListImported
+      </em>
+      parameter.
+     </p>
+     <p>
+      Without parameters, a
+      <strong>
+       Get-Command
+      </strong>
+      command gets all of the cmdlets, functions, and aliases installed on the computer.
+A
+      <code>
+       Get-Command *
+      </code>
+      command gets all types of commands, including all of the non-Windows PowerShell files in the Path environment variable ($env:path), which it lists in the Application command type.
+     </p>
+     <p>
+      A
+      <strong>
+       Get-Command
+      </strong>
+      command that uses the exact name of the command, without wildcard characters, automatically imports the module that contains the command so that you can use the command immediately.
+To enable, disable, and configure automatic importing of modules, use the $PSModuleAutoLoadingPreference preference variable.
+For more information, see
+      <a data-linktype="relative-path" href="about/about_preference_variables.html">
+       about_Preference_Variables
+      </a>
+      in the Microsoft TechNet library.
+     </p>
+     <p>
+      <strong>
+       Get-Command
+      </strong>
+      gets its data directly from the command code, unlike Get-Help, which gets its information from help topics.
+     </p>
+     <p>
+      In Windows PowerShell 2.0,
+      <strong>
+       Get-Command
+      </strong>
+      gets only commands in current session.
+It does not get commands from modules that are installed, but not imported.
+To limit
+      <strong>
+       Get-Command
+      </strong>
+      in Windows PowerShell 3.0 and later versions to commands in the current session, use the
+      <em>
+       ListImported
+      </em>
+      parameter.
+     </p>
+     <p>
+      Starting in Windows PowerShell 5.0, results of the
+      <strong>
+       Get-Command
+      </strong>
+      cmdlet display a
+      <strong>
+       Version
+      </strong>
+      column by default.
+A new
+      <strong>
+       Version
+      </strong>
+      property has been added to the
+      <strong>
+       CommandInfo
+      </strong>
+      class.
+     </p>
+     <h2 id="examples">
+      Examples
+     </h2>
+     <p>
+      <strong>
+       Example 1: Get cmdlets, functions, and aliases
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-Command</code></pre>
+     <p>
+      This command gets the Windows PowerShell cmdlets, functions, and aliases that are installed on the computer.
+     </p>
+     <p>
+      <strong>
+       Example 2: Get commands in the current session
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-Command -ListImported</code></pre>
+     <p>
+      This command uses the
+      <em>
+       ListImported
+      </em>
+      parameter to get only the commands in the current session.
+     </p>
+     <p>
+      <strong>
+       Example 3: Get cmdlets and display them in order
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-Command -Type Cmdlet | Sort-Object -Property Noun | Format-Table -GroupBy Noun</code></pre>
+     <p>
+      This command gets all of the cmdlets, sorts them alphabetically by the noun in the cmdlet name, and then displays them in noun-based groups.
+This display can help you find the cmdlets for a task.
+     </p>
+     <p>
+      <strong>
+       Example 4: Get commands in a module
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-Command -Module Microsoft.PowerShell.Security, PSScheduledJob</code></pre>
+     <p>
+      This command uses the
+      <em>
+       Module
+      </em>
+      parameter to get the commands in the Microsoft.PowerShell.Security and PSScheduledJob modules.
+     </p>
+     <p>
+      <strong>
+       Example 5: Get information about a cmdlet
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-Command Get-AppLockerPolicy</code></pre>
+     <p>
+      This command gets information about the
+      <strong>
+       Get-AppLockerPolicy
+      </strong>
+      cmdlet.
+It also imports the
+      <em>
+       AppLocker
+      </em>
+      module, which adds all of the commands in the
+      <em>
+       AppLocker
+      </em>
+      module to the current session.
+     </p>
+     <p>
+      When a module is imported automatically, the effect is the same as using the Import-Module cmdlet.
+The module can add commands, types and formatting files, and run scripts in the session.
+To enable, disable, and configuration automatic importing of modules, use the
+      <strong>
+       $PSModuleAutoLoadingPreference
+      </strong>
+      preference variable.
+For more information, see about_Preference_Variables.
+     </p>
+     <p>
+      <strong>
+       Example 6: Get the syntax of a cmdlet
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-Command Get-Childitem -Args Cert: -Syntax</code></pre>
+     <p>
+      This command uses the
+      <em>
+       ArgumentList
+      </em>
+      and
+      <em>
+       Syntax
+      </em>
+      parameters to get the syntax of the Get-ChildItem cmdlet when it is used in the Cert: drive.
+The Cert: drive is a Windows PowerShell drive that the Certificate Provider adds to the session.
+     </p>
+     <p>
+      When you compare the syntax displayed in the output with the syntax that is displayed when you omit the
+      <em>
+       Args
+      </em>
+      (
+      <em>
+       ArgumentList
+      </em>
+      ) parameter, you'll see that the
+      <strong>
+       Certificate provider
+      </strong>
+      adds a dynamic parameter,
+      <strong>
+       CodeSigningCert
+      </strong>
+      , to the Get-ChildItem cmdlet.
+     </p>
+     <p>
+      For more information about the Certificate provider, see Certificate Provider.
+     </p>
+     <p>
+      <strong>
+       Example 7: Get dynamic parameters
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; function Get-DynamicParameters
+
+{
+
+    param ($Cmdlet, $PSDrive)
+
+    (Get-Command $Cmdlet -ArgumentList $PSDrive).ParameterSets | ForEach-Object {$_.Parameters} | Where-Object { $_.IsDynamic } | Select-Object -Property Name -Unique
+
+}
+
+PS C:\&gt; Get-DynamicParameters -Cmdlet Get-ChildItem -PSDrive Cert:
+
+
+
+Name
+
+----
+
+CodeSigningCert</code></pre>
+     <p>
+      The
+      <strong>
+       Get-DynamicParameters
+      </strong>
+      function in this example gets the dynamic parameters of a cmdlet.
+This is an alternative to the method used in the previous example.
+Dynamic parameter can be added to a cmdlet by another cmdlet or a provider.
+     </p>
+     <p>
+      The command in the example uses the
+      <strong>
+       Get-DynamicParameters
+      </strong>
+      function to get the dynamic parameters that the Certificate provider adds to the Get-ChildItem cmdlet when it is used in the Cert: drive.
+     </p>
+     <p>
+      <strong>
+       Example 8: Get all commands of all types
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-Command *</code></pre>
+     <p>
+      This command gets all commands of all types on the local computer, including executable files in the paths of the
+      <strong>
+       Path
+      </strong>
+      environment variable ($env:path).
+It returns an
+      <strong>
+       ApplicationInfo
+      </strong>
+      object (System.Management.Automation.ApplicationInfo) for each file, not a
+      <strong>
+       FileInfo
+      </strong>
+      object (System.IO.FileInfo).
+     </p>
+     <p>
+      <strong>
+       Example 9: Get cmdlets by using a name
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-Command -ParameterName *Auth* -ParameterType AuthenticationMechanism</code></pre>
+     <p>
+      This command gets cmdlets that have a parameter whose name includes Auth and whose type is
+      <strong>
+       AuthenticationMechanism
+      </strong>
+      .
+You can use a command like this one to find cmdlets that let you specify the method that is used to authenticate the user.
+     </p>
+     <p>
+      The
+      <em>
+       ParameterType
+      </em>
+      parameter distinguishes parameters that take an
+      <strong>
+       AuthenticationMechanism
+      </strong>
+      value from those that take an
+      <em>
+       AuthenticationLevel
+      </em>
+      parameter, even when they have similar names.
+     </p>
+     <p>
+      <strong>
+       Example 10: Get an alias
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-Command dir
+
+CommandType     Name                                               ModuleName
+
+-----------     ----                                               ----------
+
+Alias           dir -&gt; Get-ChildItem</code></pre>
+     <p>
+      This example shows how to use the
+      <strong>
+       Get-Command
+      </strong>
+      cmdlet with an alias.
+Although it is typically used on cmdlets and functions,
+      <strong>
+       Get-Command
+      </strong>
+      also gets scripts, functions, aliases, and executable files.
+     </p>
+     <p>
+      The output of the command shows the special view of the
+      <strong>
+       Name
+      </strong>
+      property value for aliases.
+The view shows the alias and the full command name.
+     </p>
+     <p>
+      <strong>
+       Example 11: Get all instances of the Notepad command
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-Command Notepad -All | Format-Table CommandType, Name, Definition
+
+
+
+CommandType     Name           Definition
+
+-----------     ----           ----------
+
+Application     notepad.exe    C:\WINDOWS\system32\notepad.exe
+
+Application     NOTEPAD.EXE    C:\WINDOWS\NOTEPAD.EXE</code></pre>
+     <p>
+      This example uses the
+      <em>
+       All
+      </em>
+      parameter of the
+      <strong>
+       Get-Command
+      </strong>
+      cmdlet to show all instances of the "Notepad" command on the local computer.
+The
+      <em>
+       All
+      </em>
+      parameter is useful when there is more than one command with the same name in the session.
+     </p>
+     <p>
+      Beginning in Windows PowerShell 3.0, by default, when the session includes multiple commands with the same name,
+      <strong>
+       Get-Command
+      </strong>
+      gets only the command that runs when you type the command name.
+With the
+      <em>
+       All
+      </em>
+      parameter,
+      <strong>
+       Get-Command
+      </strong>
+      gets all commands with the specified name and returns them in execution precedence order.
+To run a command other than the first one in the list, type the fully qualified path to the command.
+     </p>
+     <p>
+      For more information about command precedence, see about_Command_Precedence (
+      <a data-linktype="external" href="http://go.microsoft.com/fwlink/?LinkID=113214">
+       http://go.microsoft.com/fwlink/?LinkID=113214
+      </a>
+      ).
+     </p>
+     <p>
+      <strong>
+       Example 12: Get the name of a snap-in or module that contains a cmdlet
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; (Get-Command Get-Date).ModuleName
+
+Microsoft.PowerShell.Utility</code></pre>
+     <p>
+      This command gets the name of the snap-in or module in which the Get-Date cmdlet originated.
+The command uses the
+      <strong>
+       ModuleName
+      </strong>
+      property of all commands.
+     </p>
+     <p>
+      This command format works on commands in Windows PowerShell modules and snap-ins, even if they are not imported into the session.
+     </p>
+     <p>
+      <strong>
+       Example 13: Get cmdlets and functions that have an output type
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-Command -Type Cmdlet | Where-Object OutputType | Format-List -Property Name, OutputType</code></pre>
+     <p>
+      This command gets the cmdlets and functions that have an output type and the type of objects that they return.
+     </p>
+     <p>
+      The first part of the command gets all cmdlets.
+A pipeline operator (|) sends the cmdlets to the Where-Object cmdlet, which selects only the ones in which the
+      <strong>
+       OutputType
+      </strong>
+      property is populated.
+Another pipeline operator sends the selected cmdlet objects to the Format-List cmdlet, which displays the name and output type of each cmdlet in a list.
+     </p>
+     <p>
+      The
+      <strong>
+       OutputType
+      </strong>
+      property of a
+      <strong>
+       CommandInfo
+      </strong>
+      object has a non-null value only when the cmdlet code defines the
+      <strong>
+       OutputType
+      </strong>
+      attribute for the cmdlet.
+     </p>
+     <p>
+      <strong>
+       Example 14: Get cmdlets that take a specific object type as input
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-Command -ParameterType (((Get-NetAdapter)[0]).PSTypeNames)
+
+CommandType     Name                                               ModuleName
+
+-----------     ----                                               ----------
+
+Function        Disable-NetAdapter                                 NetAdapter
+
+Function        Enable-NetAdapter                                  NetAdapter
+
+Function        Rename-NetAdapter                                  NetAdapter
+
+Function        Restart-NetAdapter                                 NetAdapter
+
+Function        Set-NetAdapter                                     NetAdapter</code></pre>
+     <p>
+      This command finds cmdlets that take net adapter objects as input.
+You can use this command format to find the cmdlets that accept the type of objects that any command returns.
+     </p>
+     <p>
+      The command uses the
+      <strong>
+       PSTypeNames
+      </strong>
+      intrinsic property of all objects, which gets the types that describe the object.
+To get the
+      <strong>
+       PSTypeNames
+      </strong>
+      property of a net adapter, and not the
+      <strong>
+       PSTypeNames
+      </strong>
+      property of a collection of net adapters, the command uses array notation to get the first net adapter that the cmdlet returns.
+     </p>
+     <h2 id="optional-parameters">
+      Optional Parameters
+     </h2>
+     <div class="parameterName stack">
+      -All
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that this cmdlet gets all commands, including commands of the same type that have the same name.
+By default,
+       <strong>
+        Get-Command
+       </strong>
+       gets only the commands that run when you type the command name.
+      </p>
+      <p>
+       For more information about the method that Windows PowerShell uses to select the command to run when multiple commands have the same name, see about_Command_Precedence (
+       <a data-linktype="external" href="http://go.microsoft.com/fwlink/?LinkID=113214">
+        http://go.microsoft.com/fwlink/?LinkID=113214
+       </a>
+       ) in the TechNet library.
+For information about module-qualified command names and running commands that do not run by default because of a name conflict, see about_Modules (
+       <a data-linktype="external" href="http://go.microsoft.com/fwlink/?LinkID=144311">
+        http://go.microsoft.com/fwlink/?LinkID=144311
+       </a>
+       ).
+      </p>
+      <p>
+       This parameter was introduced in Windows PowerShell 3.0.
+      </p>
+      <p>
+       In Windows PowerShell 2.0,
+       <strong>
+        Get-Command
+       </strong>
+       gets all commands by default.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -ArgumentList
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies an array of arguments.
+This cmdlet gets information about a cmdlet or function when it is used with the specified parameters ("arguments").
+The alias for
+       <em>
+        ArgumentList
+       </em>
+       is
+       <em>
+        Args
+       </em>
+       .
+      </p>
+      <p>
+       To detect dynamic parameters that are available only when certain other parameters are used, set the value of
+       <em>
+        ArgumentList
+       </em>
+       to the parameters that trigger the dynamic parameters.
+      </p>
+      <p>
+       To detect the dynamic parameters that a provider adds to a cmdlet, set the value of the
+       <em>
+        ArgumentList
+       </em>
+       parameter to a path in the provider drive, such as WSMan:, HKLM:, or Cert:.
+When the command is a Windows PowerShell provider cmdlet, enter only one path in each command.
+The provider cmdlets return only the dynamic parameters for the first path the value of
+       <em>
+        ArgumentList
+       </em>
+       .
+For information about the provider cmdlets, see
+       <a data-linktype="relative-path" href="about/about_providers.html">
+        about_Providers
+       </a>
+       .
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Object[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         Args
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         1
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -CommandType
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the  types of commands that this cmdlet gets.
+Enter one or more command types.
+Use
+       <em>
+        CommandType
+       </em>
+       or its alias,
+       <em>
+        Type
+       </em>
+       .
+By default,
+       <strong>
+        Get-Command
+       </strong>
+       gets all cmdlets, functions, and aliases.
+      </p>
+      <p>
+       The acceptable values for this parameter are:
+      </p>
+      <ul>
+       <li>
+        Alias. Gets the aliases of all Windows PowerShell commands. For more information, see about_Aliases.
+       </li>
+       <li>
+        All. Gets all command types. This parameter value is the equivalent of
+        <code>
+         Get-Command *
+        </code>
+        .
+       </li>
+       <li>
+        Application. Gets non-Windows-PowerShell files in paths listed in the
+        <strong>
+         Path
+        </strong>
+        environment variable ($env:path), including .txt, .exe, and .dll files. For more information about the
+        <strong>
+         Path
+        </strong>
+        environment variable, see about_Environment_Variables.
+       </li>
+       <li>
+        Cmdlet. Gets all cmdlets.
+       </li>
+       <li>
+        ExternalScript. Gets all .ps1 files in the paths listed in the
+        <strong>
+         Path
+        </strong>
+        environment variable ($env:path).
+       </li>
+       <li>
+        Filter and Function. Gets all Windows PowerShell advanced and simple functions and filters.
+       </li>
+       <li>
+        Script. Gets all script blocks. To get Windows PowerShell scripts (.ps1 files), use the ExternalScript value.
+       </li>
+      </ul>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          CommandTypes
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         Type
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Parameter Sets:
+        </td>
+        <td>
+         Alias, Function, Filter, Cmdlet, ExternalScript, Application, Script, Configuration, All
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -FullyQualifiedModule
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies modules with names that are specified in the form of ModuleSpecification objects, described in the Remarks section of
+       <a data-linktype="external" href="https://msdn.microsoft.com/library/jj136290">
+        ModuleSpecification Constructor (Hashtable)
+       </a>
+       in the MSDN library.
+For example, the FullyQualifiedModule parameter accepts a module name that is specified in the format @{ModuleName = "modulename"; ModuleVersion = "version_number"} or @{ModuleName = "modulename"; ModuleVersion = "version_number"; Guid = "GUID"}.
+       <strong>
+        ModuleName
+       </strong>
+       and
+       <strong>
+        ModuleVersion
+       </strong>
+       are required, but
+       <strong>
+        Guid
+       </strong>
+       is optional.
+      </p>
+      <p>
+       You cannot specify the
+       <em>
+        FullyQualifiedModule
+       </em>
+       parameter in the same command as a
+       <em>
+        Module
+       </em>
+       parameter.
+The two parameters are mutually exclusive.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          ModuleSpecification[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -ListImported
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that this cmdlet gets only commands in the current session.
+      </p>
+      <p>
+       Starting in Windows PowerShell 3.0, by default,
+       <strong>
+        Get-Command
+       </strong>
+       gets all installed commands, including, but not limited to, the commands in the current session.
+In Windows PowerShell 2.0, it gets only commands in the current session.
+      </p>
+      <p>
+       This parameter was introduced in Windows PowerShell 3.0.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Module
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies an array of modules.
+This cmdlet gets the commands that came from the specified modules or snap-ins.
+Enter the names of modules or snap-ins, or enter snap-in or module objects.
+      </p>
+      <p>
+       This parameter takes string values, but the value of this parameter can also be a
+       <strong>
+        PSModuleInfo
+       </strong>
+       or
+       <strong>
+        PSSnapinInfo
+       </strong>
+       object, such as the objects that the Get-Module, Get-PSSnapin, and Import-PSSession cmdlets return.
+      </p>
+      <p>
+       You can refer to this parameter by its name,
+       <em>
+        Module
+       </em>
+       , or by its alias,
+       <em>
+        PSSnapin
+       </em>
+       .
+The parameter name that you choose has no effect on the command output.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         PSSnapin
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Name
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies an array of names.
+This cmdlet gets only commands that have the specified name.
+Enter a name or name pattern.
+Wildcard characters are permitted.
+      </p>
+      <p>
+       To get commands that have the same name, use the
+       <em>
+        All
+       </em>
+       parameter.
+When two commands have the same name, by default,
+       <strong>
+        Get-Command
+       </strong>
+       gets the command that runs when you type the command name.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         0
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName, ByValue)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Noun
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies an array of command nouns.
+This cmdlet gets commands, which include cmdlets, functions, and aliases, that have names that include the specified noun.
+Enter one or more nouns or noun patterns.
+Wildcard characters are permitted.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -ParameterName
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies an array of parameter names.
+This cmdlet gets commands in the session that have the specified parameters.
+Enter parameter names or parameter aliases.
+Wildcard characters are supported.
+      </p>
+      <p>
+       The
+       <em>
+        ParameterName
+       </em>
+       and
+       <em>
+        ParameterType
+       </em>
+       parameters search only commands in the current session.
+      </p>
+      <p>
+       This parameter was introduced in Windows PowerShell 3.0.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -ParameterType
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies an array of parameter names.
+This cmdlet gets commands in the session that have parameters of the specified type.
+Enter the full name or partial name of a parameter type.
+Wildcard characters are supported.
+      </p>
+      <p>
+       The
+       <em>
+        ParameterName
+       </em>
+       and
+       <em>
+        ParameterType
+       </em>
+       parameters search only commands in the current session.
+      </p>
+      <p>
+       This parameter was introduced in Windows PowerShell 3.0.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          PSTypeName[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -ShowCommandInfo
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that this cmdlet displays command information.
+      </p>
+      <p>
+       For more information about the method that Windows PowerShell uses to select the command to run when multiple commands have the same name, see about_Command_Precedence.
+For information about module-qualified command names and running commands that do not run by default because of a name conflict, see about_Modules.
+      </p>
+      <p>
+       This parameter was introduced in Windows PowerShell 3.0.
+      </p>
+      <p>
+       In Windows PowerShell 2.0,
+       <strong>
+        Get-Command
+       </strong>
+       gets all commands by default.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Syntax
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that this cmdlet gets only the following specified data about the command:
+      </p>
+      <ul>
+       <li>
+        Aliases. Gets the standard name.
+       </li>
+       <li>
+        Cmdlets. Gets the syntax.
+       </li>
+       <li>
+        Functions and filters. Gets the function definition.
+       </li>
+       <li>
+        Scripts and applications or files. Gets the path and filename.
+       </li>
+      </ul>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -TotalCount
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the number of commands to get.
+You can use this parameter to limit the output of a command.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Int32
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Verb
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies an array of command verbs.
+This cmdlet gets commands, which include cmdlets, functions, and aliases, that have names that include the specified verb.
+Enter one or more verbs or verb patterns.
+Wildcard characters are permitted.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="inputs">
+      Inputs
+     </h2>
+     <p>
+      <strong>
+       System.String
+      </strong>
+     </p>
+     <p>
+      You can pipe command names to this cmdlet.
+     </p>
+     <h2 id="outputs">
+      Outputs
+     </h2>
+     <p>
+      <strong>
+       System.Management.Automation.CommandInfo
+      </strong>
+     </p>
+     <p>
+      This cmdlet returns objects derived from the
+      <strong>
+       CommandInfo
+      </strong>
+      class.
+The type of object that is returned depends on the type of command that
+      <strong>
+       Get-Command
+      </strong>
+      gets.
+     </p>
+     <h2 id="outputs">
+      Outputs
+     </h2>
+     <p>
+      <strong>
+       System.Management.Automation.AliasInfo
+      </strong>
+     </p>
+     <p>
+      Represents aliases.
+     </p>
+     <h2 id="outputs">
+      Outputs
+     </h2>
+     <p>
+      <strong>
+       System.Management.Automation.ApplicationInfo
+      </strong>
+     </p>
+     <p>
+      Represents or applications and files.
+     </p>
+     <h2 id="outputs">
+      Outputs
+     </h2>
+     <p>
+      <strong>
+       System.Management.Automation.CmdletInfo
+      </strong>
+     </p>
+     <p>
+      Represents cmdlets.
+     </p>
+     <h2 id="outputs">
+      Outputs
+     </h2>
+     <p>
+      <strong>
+       System.Management.Automation.FunctionInfo
+      </strong>
+     </p>
+     <p>
+      Represents functions and filters.
+     </p>
+     <h2 id="notes">
+      Notes
+     </h2>
+     <ul>
+      <li>
+       When more than one command that has the same name is available to the session,
+       <strong>
+        Get-Command
+       </strong>
+       returns the command that runs when you type the command name. To get commands that have the same name, listed in run order, use the
+       <em>
+        All
+       </em>
+       parameter. For more information, see about_Command_Precedence.
+      </li>
+      <li>
+       When a module is imported automatically, the effect is the same as using the Import-Module cmdlet. The module can add commands, types and formatting files, and run scripts in the session. To enable, disable, and configuration automatic importing of modules, use the $PSModuleAutoLoadingPreference preference variable. For more information, see about_Preference_Variables.
+      </li>
+     </ul>
+     <h2 id="related-links">
+      Related Links
+     </h2>
+     <ul>
+      <li>
+       <a data-linktype="relative-path" href="get-help.html">
+        Get-Help
+       </a>
+      </li>
+     </ul>
+     <!-- </content> -->
+    </main>
+    <div class="note alert feedback-system-change-alert">
+     <p>
+      Note
+     </p>
+     <p>
+      The feedback system for this content will be changing soon. Old comments will not be carried over. If content within a comment thread is important to you, please save a copy. For more information on the upcoming change,
+      <a href="https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs">
+       we invite you to read our blog post
+      </a>
+      .
+     </p>
+    </div>
+    <div data-bi-name="comments" id="comments-container" role="form">
+    </div>
+   </div>
+  </div>
+  <div class="openfeedback-container" id="openFeedbackContainer">
+  </div>
+  <div class="action-panel">
+  </div>
+ </body>
+</html>

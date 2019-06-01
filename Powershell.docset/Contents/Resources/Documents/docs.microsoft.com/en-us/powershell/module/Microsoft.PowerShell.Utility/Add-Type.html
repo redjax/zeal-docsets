@@ -1,0 +1,1947 @@
+<!DOCTYPE html>
+<html class="no-js hasSidebar hasPageActions hasBreadcrumb conceptual" data-authenticated="false" data-render="docs" dir="ltr" lang="en-us">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Add-Type (Microsoft.PowerShell.Utility)" property="og:title"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" property="og:image"/>
+  <meta content="summary" name="twitter:card"/>
+  <meta content="@docsmsft" name="twitter:site"/>
+  <meta content="Add-Type (Microsoft.PowerShell.Utility)" name="twitter:title"/>
+  <meta content="The Add-Type cmdlet lets you define a Microsoft .NET Framework class in your Windows PowerShell session. You can then instantiate objects (by using the New-Object cmdlet) and use the objects, just asâ¦" name="twitter:description"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" name="twitter:image"/>
+  <meta content="Microsoft Logo" name="twitter:image:alt"/>
+  <meta content="The Add-Type cmdlet lets you define a Microsoft .NET Framework class in your Windows PowerShell session. You can then instantiate objects (by using the New-Object cmdlet) and use the objects, just asâ¦" name="description"/>
+  <meta content="Docs" name="search.ms_sitename"/>
+  <meta content="PowerShell_PowerShell-docs_reference" name="search.ms_docsetname"/>
+  <meta content="0" name="version"/>
+  <meta content="en-us" name="locale"/>
+  <meta content="Docs" name="site_name"/>
+  <meta content="PowerShell" name="search.ms_product"/>
+  <meta content="PowerShell.PowerShell_PowerShell-docs_reference" name="depot_name"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/617301cc0a194afdca440ba75f5cec2a540ce619/reference/6/Microsoft.PowerShell.Utility/Add-Type.md" name="ref_skeleton_gitcommit"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/live/reference/6/Microsoft.PowerShell.Utility/Add-Type.md" name="original_ref_skeleton_git_url"/>
+  <meta content="2018-03-30 03:35 PM" name="updated_at"/>
+  <meta content="f33c4115-cf84-2571-c7bd-8f1e1f669239" name="document_id"/>
+  <meta content="b550e1f5-2481-7908-1d62-607923d09a2b" name="document_version_independent_id"/>
+  <meta content="powershell" name="page_type"/>
+  <meta content="command" name="page_kind"/>
+  <meta content="06/09/2017" name="ms.date"/>
+  <meta content="2.0.0" name="schema"/>
+  <meta content="powershell,cmdlet" name="keywords"/>
+  <meta content="http://go.microsoft.com/fwlink/?LinkId=821749" name="online_version"/>
+  <meta content="Microsoft.PowerShell.Commands.Utility.dll-Help.xml" name="external_help_file"/>
+  <meta content="powershell" name="ms.devlang"/>
+  <meta content="INDEX, FOLLOW" name="ROBOTS"/>
+  <meta content="sdwheeler" name="author"/>
+  <meta content="sewhee" name="ms.author"/>
+  <meta content="carmonm" name="manager"/>
+  <meta content="/powershell/bread-pscore/toc.yml?view=powershell-6" name="breadcrumb_path"/>
+  <meta content="powershell" name="apiPlatform"/>
+  <meta content="reference" name="ms.topic"/>
+  <meta content="windows, macos, linux" name="ms.tgt_pltfr"/>
+  <meta content="powershell-scripting" name="ms.technology"/>
+  <meta content="powershell" name="ms.prod"/>
+  <meta content="MSDocsHeader-Powershell" name="uhfHeaderId"/>
+  <meta content="../psdocs/toc.json?view=powershell-6" name="toc_rel"/>
+  <link href="https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/add-type" rel="canonical"/>
+  <title>
+   Add-Type
+  </title>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/60aac04b.site.css" rel="stylesheet"/>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/fdb8a38a.conceptual.css" rel="stylesheet"/>
+ </head>
+ <body dir="ltr" lang="en-us">
+  <div class="header-holder">
+   <div data-bi-name="header" id="headerAreaHolder">
+    <div id="uhf-placeholder">
+    </div>
+   </div>
+   <div class="disclaimer-holder" id="disclaimer-holder">
+   </div>
+  </div>
+  <div class="container mainContainer" data-bi-name="body">
+   <div class="content-header" data-bi-name="content-header">
+    <div class="content-header-controls">
+     <button class="contents-button button-border" data-bi-name="contents-expand" type="button">
+      <span class="docon docon-menu">
+      </span>
+      Contents
+     </button>
+    </div>
+    <div class="content-header-controls">
+     <button class="ap-collapse-behavior ap-expanded button-border" data-bi-name="ap-collapse" type="button">
+      <span class="docon docon-exit-mode">
+      </span>
+      Exit focus mode
+     </button>
+    </div>
+   </div>
+   <div class="primary-holder">
+    <main class="content" data-bi-name="content" dir="ltr" id="main" lang="en-us" role="main">
+     <!-- <content> -->
+     <h1>
+      Add-Type
+     </h1>
+     <div class="metadata">
+      <dl class="attributeList">
+       <dt>
+        Module:
+       </dt>
+       <dd>
+        <a data-linktype="relative-path" href="./Microsoft.PowerShell.Utility.html">
+         Microsoft.PowerShell.Utility
+        </a>
+       </dd>
+      </dl>
+     </div>
+     <div class="summaryHolder">
+      <div class="summary">
+       Adds a Microsoft .NET Framework type (a class) to a Windows PowerShell session.
+      </div>
+     </div>
+     <h2 class="hiddenAnchor" id="syntax">
+      Syntax
+     </h2>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Add-Type
+   [-CodeDomProvider &lt;CodeDomProvider&gt;]
+   [-CompilerParameters &lt;CompilerParameters&gt;]
+   [-TypeDefinition] &lt;String&gt;
+   [-Language &lt;Language&gt;]
+   [-ReferencedAssemblies &lt;String[]&gt;]
+   [-OutputAssembly &lt;String&gt;]
+   [-OutputType &lt;OutputAssemblyType&gt;]
+   [-PassThru]
+   [-IgnoreWarnings]
+   [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Add-Type
+   [-CodeDomProvider &lt;CodeDomProvider&gt;]
+   [-CompilerParameters &lt;CompilerParameters&gt;]
+   [-Name] &lt;String&gt;
+   [-MemberDefinition] &lt;String[]&gt;
+   [-Namespace &lt;String&gt;]
+   [-UsingNamespace &lt;String[]&gt;]
+   [-Language &lt;Language&gt;]
+   [-ReferencedAssemblies &lt;String[]&gt;]
+   [-OutputAssembly &lt;String&gt;]
+   [-OutputType &lt;OutputAssemblyType&gt;]
+   [-PassThru]
+   [-IgnoreWarnings]
+   [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Add-Type
+   [-CompilerParameters &lt;CompilerParameters&gt;]
+   -LiteralPath &lt;String[]&gt;
+   [-ReferencedAssemblies &lt;String[]&gt;]
+   [-OutputAssembly &lt;String&gt;]
+   [-OutputType &lt;OutputAssemblyType&gt;]
+   [-PassThru]
+   [-IgnoreWarnings]
+   [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Add-Type
+   [-CompilerParameters &lt;CompilerParameters&gt;]
+   [-Path] &lt;String[]&gt;
+   [-ReferencedAssemblies &lt;String[]&gt;]
+   [-OutputAssembly &lt;String&gt;]
+   [-OutputType &lt;OutputAssemblyType&gt;]
+   [-PassThru]
+   [-IgnoreWarnings]
+   [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Add-Type
+   -AssemblyName &lt;String[]&gt;
+   [-PassThru]
+   [-IgnoreWarnings]
+   [-InformationAction &lt;ActionPreference&gt;]
+   [-InformationVariable &lt;String&gt;]
+   [&lt;CommonParameters&gt;]</code></pre>
+     <h2 id="description">
+      Description
+     </h2>
+     <p>
+      The
+      <strong>
+       Add-Type
+      </strong>
+      cmdlet lets you define a Microsoft .NET Framework class in your Windows PowerShell session.
+You can then instantiate objects (by using the New-Object cmdlet) and use the objects, just as you would use any .NET Framework object.
+If you add an
+      <strong>
+       Add-Type
+      </strong>
+      command to your Windows PowerShell profile, the class is available in all Windows PowerShell sessions.
+     </p>
+     <p>
+      You can specify the type by specifying an existing assembly or source code files, or you can specify the source code inline or saved in a variable.
+You can even specify only a method and
+      <strong>
+       Add-Type
+      </strong>
+      will define and generate the class.
+You can use this feature to make Platform Invoke (P/Invoke) calls to unmanaged functions in Windows PowerShell.
+If you specify source code,
+      <strong>
+       Add-Type
+      </strong>
+      compiles the specified source code and generates an in-memory assembly that contains the new .NET Framework types.
+     </p>
+     <p>
+      You can use the parameters of
+      <strong>
+       Add-Type
+      </strong>
+      to specify an alternate language and compiler (C# is the default), compiler options, assembly dependencies, the class namespace, the names of the type, and the resulting assembly.
+     </p>
+     <h2 id="examples">
+      Examples
+     </h2>
+     <p>
+      <strong>
+       Example 1: Add a .NET type to a session
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; $Source = @"
+
+public class BasicTest
+
+{
+
+  public static int Add(int a, int b)
+
+    {
+
+        return (a + b);
+
+    }
+
+  public int Multiply(int a, int b)
+
+    {
+
+    return (a * b);
+
+    }
+
+}
+
+"@
+
+
+
+PS C:\&gt; Add-Type -TypeDefinition $Source
+
+PS C:\&gt; [BasicTest]::Add(4, 3)
+
+PS C:\&gt; $BasicTestObject = New-Object BasicTest
+
+PS C:\&gt; $BasicTestObject.Multiply(5, 2)</code></pre>
+     <p>
+      These commands add the BasicTest class to the session by specifying source code that is stored in a variable.
+The type has a static method called Add and a non-static method called Multiply.
+     </p>
+     <p>
+      The first command stores the source code for the class in the $Source variable.
+     </p>
+     <p>
+      The second command uses the
+      <strong>
+       Add-Type
+      </strong>
+      cmdlet to add the class to the session.
+Because it is using inline source code, the command uses the
+      <em>
+       TypeDefinition
+      </em>
+      parameter to specify the code in the $Source variable.
+     </p>
+     <p>
+      The remaining commands use the new class.
+     </p>
+     <p>
+      The third command calls the Add static method of the BasicTest class.
+It uses the double-colon characters (::) to specify a static member of the class.
+     </p>
+     <p>
+      The fourth command uses the
+      <strong>
+       New-Object
+      </strong>
+      cmdlet to instantiate an instance of the BasicTest class.
+It saves the new object in the $BasicTestObject variable.
+     </p>
+     <p>
+      The fifth command uses the Multiply method of $BasicTestObject.
+     </p>
+     <p>
+      <strong>
+       Example 2: Examine an added type
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; [BasicTest] | Get-Member
+
+PS C:\&gt; [BasicTest] | Get-Member -Static
+
+PS C:\&gt; $BasicTestObject | Get-Member
+
+PS C:\&gt; [BasicTest] | Get-Member
+
+TypeName: System.RuntimeType
+
+Name                           MemberType Definition
+
+----                           ---------- ----------
+
+Clone                          Method     System.ObjectClone(
+
+Equals                         Method     System.BooleanEquals
+
+FindInterfaces                 Method     System.Type[] FindInt... PS C:\&gt; [BasicTest] | Get-Member -Static
+
+TypeName: BasicTest
+
+Name            MemberType Definition
+
+----            ---------- ----------
+
+Add             Method     static System.Int32 Add(Int32 a, Int32 b)
+
+Equals          Method     static System.Boolean Equals(Object objA,
+
+ReferenceEquals Method     static System.Boolean ReferenceEquals(Obj PS C:\&gt; $basicTestObject | Get-Member
+
+TypeName: BasicTest
+
+Name        MemberType Definition
+
+----        ---------- ----------
+
+Equals      Method     System.Boolean Equals(Object obj)
+
+GetHashCode Method     System.Int32 GetHashCode()
+
+GetType     Method     System.Type GetType()
+
+Multiply    Method     System.Int32 Multiply(Int32 a, Int32 b)
+
+ToString    Method     System.String ToString()</code></pre>
+     <p>
+      These commands use the Get-Member cmdlet to examine the objects that the
+      <strong>
+       Add-Type
+      </strong>
+      and New-Object cmdlets created in the previous example.
+     </p>
+     <p>
+      The first command uses the
+      <strong>
+       Get-Member
+      </strong>
+      cmdlet to get the type and members of the BasicTest class that
+      <strong>
+       Add-Type
+      </strong>
+      added to the session.
+The
+      <strong>
+       Get-Member
+      </strong>
+      command reveals that it is a
+      <strong>
+       System.RuntimeType
+      </strong>
+      object, which is derived from the System.Object class.
+     </p>
+     <p>
+      The second command uses the
+      <em>
+       Static
+      </em>
+      parameter of the
+      <strong>
+       Get-Member
+      </strong>
+      cmdlet to get the static properties and methods of the BasicTest class.
+The output shows that the Add method is included.
+     </p>
+     <p>
+      The third command uses the Get-Member cmdlet to get the members of the object stored in the $BasicTestObject variable.
+This was the object instance that was created by using the New-Object cmdlet with the $BasicType class.
+     </p>
+     <p>
+      The output reveals that the value of the $BasicTestObject variable is an instance of the BasicTest class and that it includes a member called Multiply.
+     </p>
+     <p>
+      <strong>
+       Example 3: Add types from an assembly
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; $AccType = Add-Type -AssemblyName "accessib*" -PassThru</code></pre>
+     <p>
+      This command adds the classes from the Accessibility assembly to the current session.
+The command uses the
+      <strong>
+       AssemblyName
+      </strong>
+      parameter to specify the name of the assembly.
+The wildcard character allows you to get the correct assembly even when you are not sure of the name or its spelling.
+     </p>
+     <p>
+      The command uses the
+      <em>
+       PassThru
+      </em>
+      parameter to generate objects that represent the classes that are added to the session, and it saves the objects in the $AccType variable.
+     </p>
+     <p>
+      <strong>
+       Example 4: Add a type from a Visual Basic file
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Add-Type -Path "c:\ps-test\Hello.vb"
+
+PS C:\&gt; [VBFromFile]::SayHello(", World")
+
+
+
+# From Hello.vb
+
+
+
+Public Class VBFromFile
+
+  Public Shared Function SayHello(sourceName As String) As String
+
+    Dim myValue As String = "Hello"
+
+    return myValue + sourceName
+
+  End Function
+
+End Class
+
+
+
+Hello, World</code></pre>
+     <p>
+      This example uses the
+      <strong>
+       Add-Type
+      </strong>
+      cmdlet to add the VBFromFile class that is defined in the Hello.vb file to the current session.
+The text of the Hello.vb file is shown in the command output.
+     </p>
+     <p>
+      The first command uses the
+      <strong>
+       Add-Type
+      </strong>
+      cmdlet to add the type defined in the Hello.vb file to the current session.
+The command uses the
+      <em>
+       Path
+      </em>
+      parameter to specify the source file.
+     </p>
+     <p>
+      The second command calls the SayHello function as a static method of the VBFromFile class.
+     </p>
+     <p>
+      <strong>
+       Example 5: Call native Windows APIs
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; $Signature = @"
+
+[DllImport("user32.dll")]public static extern bool ShowWindowAsync(IntPtr hWnd, int nCmdShow);
+
+"@
+
+$ShowWindowAsync = Add-Type -MemberDefinition $Signature -Name "Win32ShowWindowAsync" -Namespace Win32Functions -PassThru
+
+
+
+# Minimize the Windows PowerShell console
+
+
+
+$ShowWindowAsync::ShowWindowAsync((Get-Process -Id $pid).MainWindowHandle, 2)
+
+
+
+# Restore it
+
+
+
+$ShowWindowAsync::ShowWindowAsync((Get-Process -Id $Pid).MainWindowHandle, 4)</code></pre>
+     <p>
+      The commands in this example demonstrate how to call native Windows APIs in Windows PowerShell.
+      <strong>
+       Add-Type
+      </strong>
+      uses the Platform Invoke (P/Invoke) mechanism to call a function in User32.dll from Windows PowerShell.
+     </p>
+     <p>
+      The first command stores the C# signature of the
+      <strong>
+       ShowWindowAsync
+      </strong>
+      function in the $Signature variable.
+(For more information, see
+      <a data-linktype="external" href="https://go.microsoft.com/fwlink/?LinkId=143643">
+       ShowWindowAsync function
+      </a>
+      in the MSDN library.)
+To ensure that the resulting method will be visible in a Windows PowerShell session, the "public" keyword has been added to the standard signature.
+     </p>
+     <p>
+      The second command uses the
+      <strong>
+       Add-Type
+      </strong>
+      cmdlet to add the ShowWindowAsync function to the Windows PowerShell session as a static method of a class that
+      <strong>
+       Add-Type
+      </strong>
+      creates.
+The command uses the
+      <em>
+       MemberDefinition
+      </em>
+      parameter to specify the method definition saved in the $Signature variable.
+     </p>
+     <p>
+      The command uses the
+      <em>
+       Name
+      </em>
+      and
+      <em>
+       Namespace
+      </em>
+      parameters to specify a name and namespace for the class.
+It uses the
+      <em>
+       PassThru
+      </em>
+      parameter to generate an object that represents the types, and it saves the object in the $ShowWindowAsync variable.
+     </p>
+     <p>
+      The third and fourth commands use the new ShowWindowAsync static method.
+The method takes two parameters, the window handle, and an integer specifies how the window is to be shown.
+     </p>
+     <p>
+      The third command calls ShowWindowAsync.
+It uses the Get-Process cmdlet with the $Pid automatic variable to get the process that is hosting the current Windows PowerShell session.
+Then it uses the
+      <strong>
+       MainWindowHandle
+      </strong>
+      property of the current process and a value of 2, which represents the SW_MINIMIZE value.
+     </p>
+     <p>
+      To restore the window, the fourth command use a value of 4 for the window position, which represents the SW_RESTORE value.
+(SW_MAXIMIZE is 3.)
+     </p>
+     <p>
+      <strong>
+       Example 6: Add a method from inline JScript
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Add-Type -MemberDefinition $JsMethod -Name "PrintInfo" -Language JScript</code></pre>
+     <p>
+      This command uses the
+      <strong>
+       Add-Type
+      </strong>
+      cmdlet to add a method from inline JScript code to the Windows PowerShell session.
+It uses the
+      <em>
+       MemberDefinition
+      </em>
+      parameter to submit source code stored in the $JsMethod variable.
+It uses the
+      <em>
+       Name
+      </em>
+      parameter to specify a name for the class that
+      <strong>
+       Add-Type
+      </strong>
+      creates for the method and the
+      <em>
+       Language
+      </em>
+      parameter to specify the JScript language.
+     </p>
+     <p>
+      <strong>
+       Example 7: Add an F# compiler
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Add-Type -Path "FSharp.Compiler.CodeDom.dll"
+
+PS C:\&gt; $Provider = New-Object Microsoft.FSharp.Compiler.CodeDom.FSharpCodeProvider
+
+PS C:\&gt; $FSharpCode = @"
+
+let rec loop n =if n &lt;= 0 then () else beginprint_endline (string_of_int n);loop (n-1)end
+
+"@
+
+PS C:\&gt; $FSharpType = Add-Type -TypeDefinition $FSharpCode -CodeDomProvider $Provider -PassThru | where { $_.IsPublic }
+
+PS C:\&gt; $FSharpType::loop(4)4321</code></pre>
+     <p>
+      This example shows how to use the
+      <strong>
+       Add-Type
+      </strong>
+      cmdlet to add an F# code compiler to your Windows PowerShell session.
+To run this example in Windows PowerShell, you must have the FSharp.Compiler.CodeDom.dll that is installed with the F# language.
+     </p>
+     <p>
+      The first command in the example uses the
+      <strong>
+       Add-Type
+      </strong>
+      cmdlet with the
+      <em>
+       Path
+      </em>
+      parameter to specify an assembly.
+      <strong>
+       Add-Type
+      </strong>
+      gets the types in the assembly.
+     </p>
+     <p>
+      The second command uses the New-Object cmdlet to create an instance of the F# code provider and saves the result in the $Provider variable.
+     </p>
+     <p>
+      The third command saves the F# code that defines the Loop method in the $FSharpCode variable.
+     </p>
+     <p>
+      The fourth command uses the
+      <strong>
+       Add-Type
+      </strong>
+      cmdlet to save the public types defined in $FSharpCode in the $FSharpType variable.
+The
+      <em>
+       TypeDefinition
+      </em>
+      parameter specifies the source code that defines the types.
+The
+      <em>
+       CodeDomProvider
+      </em>
+      parameter specifies the source code compiler.
+     </p>
+     <p>
+      The
+      <em>
+       PassThru
+      </em>
+      parameter directs
+      <strong>
+       Add-Type
+      </strong>
+      to return a
+      <strong>
+       Runtime
+      </strong>
+      object that represents the types and a pipeline operator (|) sends the
+      <strong>
+       Runtime
+      </strong>
+      object to the Where-Object cmdlet, which returns only the public types.
+The
+      <strong>
+       Where-Object
+      </strong>
+      cmdlet is used because the F# provider generates non-public types to support the resulting public type.
+     </p>
+     <p>
+      The fifth command calls the Loop method as a static method of the type stored in the $FSharpType variable.
+     </p>
+     <h2 id="required-parameters">
+      Required Parameters
+     </h2>
+     <div class="parameterName stack">
+      -AssemblyName
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the name of an assembly that includes the types.
+       <strong>
+        Add-Type
+       </strong>
+       takes the types from the specified assembly.
+This parameter is required when you are creating types based on an assembly name.
+      </p>
+      <p>
+       Enter the full or simple name (also known as the "partial name") of an assembly.
+Wildcard characters are permitted in the assembly name.
+If you enter a simple or partial name,
+       <strong>
+        Add-Type
+       </strong>
+       resolves it to the full name, and then uses the full name to load the assembly.
+      </p>
+      <p>
+       This parameter does not accept a path or file name.
+To enter the path to the assembly dynamic-link library (DLL) file, use the
+       <em>
+        Path
+       </em>
+       parameter.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         AN
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -LiteralPath
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the path to source code files or assembly DLL files that contain the types.
+Unlike
+       <em>
+        Path
+       </em>
+       , the value of the
+       <em>
+        LiteralPath
+       </em>
+       parameter is used exactly as it is typed.
+No characters are interpreted as wildcards.
+If the path includes escape characters, enclose it in single quotation marks.
+Single quotation marks tell Windows PowerShell not to interpret any characters as escape sequences.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         PSPath
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -MemberDefinition
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies new properties or methods for the class.
+       <strong>
+        Add-Type
+       </strong>
+       generates the template code that is required to support the properties or methods.
+      </p>
+      <p>
+       You can use this feature to make Platform Invoke (P/Invoke) calls to unmanaged functions in Windows PowerShell.
+For more information, see the examples.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         2
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Name
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the name of the class to create.
+This parameter is required when generating a type from a member definition.
+      </p>
+      <p>
+       The type name and namespace must be unique within a session.
+You cannot unload a type or change it.
+If you need to change the code for a type, you must change the name or start a new Windows PowerShell session.
+Otherwise, the command fails.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         1
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Path
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the path to source code files or assembly DLL files that contain the types.
+      </p>
+      <p>
+       If you submit source code files,
+       <strong>
+        Add-Type
+       </strong>
+       compiles the code in the files and creates an in-memory assembly of the types.
+The file name extension specified in the value of Path determines the compiler that
+       <strong>
+        Add-Type
+       </strong>
+       uses.
+      </p>
+      <p>
+       If you submit an assembly file,
+       <strong>
+        Add-Type
+       </strong>
+       takes the types from the assembly.
+To specify an in-memory assembly or the global assembly cache, use the
+       <em>
+        AssemblyName
+       </em>
+       parameter.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         1
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -TypeDefinition
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the source code that contains the type definitions.
+Enter the source code in a string or here-string, or enter a variable that contains the source code.
+For more information about here-strings, see about_Quoting_Rules (
+       <a data-linktype="external" href="http://go.microsoft.com/fwlink/?LinkID=113253">
+        http://go.microsoft.com/fwlink/?LinkID=113253
+       </a>
+       ).
+      </p>
+      <p>
+       Include a namespace declaration in your type definition.
+If you omit the namespace declaration, your type might have the same name as another type or the shortcut for another type, causing an unintentional overwrite.
+For example, if you define a type called Exception, scripts that use Exception as the shortcut for
+       <strong>
+        System.Exception
+       </strong>
+       will fail.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         1
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="optional-parameters">
+      Optional Parameters
+     </h2>
+     <div class="parameterName stack">
+      -CodeDomProvider
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a code generator or compiler.
+       <strong>
+        Add-Type
+       </strong>
+       uses the specified compiler to compile the source code.
+The default is the C# compiler.
+Use this parameter if you are using a language that cannot be specified by using the
+       <em>
+        Language
+       </em>
+       parameter.
+The
+       <em>
+        CodeDomProvider
+       </em>
+       that you specify must be able to generate assemblies from source code.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          CodeDomProvider
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         Provider
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -CompilerParameters
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the options for the source code compiler.
+These options are sent to the compiler without revision.
+      </p>
+      <p>
+       This parameter allows you to direct the compiler to generate an executable file, embed resources, or set command-line options, such as the "/unsafe" option.
+This parameter implements the
+       <strong>
+        CompilerParameters
+       </strong>
+       class (System.CodeDom.Compiler.CompilerParameters).
+      </p>
+      <p>
+       You cannot use the
+       <em>
+        CompilerParameters
+       </em>
+       and
+       <em>
+        ReferencedAssemblies
+       </em>
+       parameters in the same command.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          CompilerParameters
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         CP
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -IgnoreWarnings
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Ignores compiler warnings.
+Use this parameter to prevent
+       <strong>
+        Add-Type
+       </strong>
+       from handling compiler warnings as errors.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Language
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the language that is used in the source code.
+The
+       <strong>
+        Add-Type
+       </strong>
+       cmdlet uses the value of this parameter to select the appropriate
+       <em>
+        CodeDomProvider
+       </em>
+       .
+The acceptable values for this parameter are:
+      </p>
+      <ul>
+       <li>
+        CSharp
+       </li>
+       <li>
+        CSharpVersion3
+       </li>
+       <li>
+        CSharpVersion2
+       </li>
+       <li>
+        VisualBasic
+       </li>
+       <li>
+        JScript
+       </li>
+      </ul>
+      <p>
+       CSharp is the default value.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Language
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Parameter Sets:
+        </td>
+        <td>
+         CSharp, CSharpVersion2, CSharpVersion3, JScript, VisualBasic
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Namespace
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a namespace for the type.
+      </p>
+      <p>
+       If this parameter is not included in the command, the type is created in the
+       <strong>
+        Microsoft.PowerShell.Commands.AddType.AutoGeneratedTypes
+       </strong>
+       namespace.
+If the parameter is included in the command with an empty string value or a value of $Null, the type is generated in the global namespace.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         NS
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -OutputAssembly
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Generates a DLL file for the assembly with the specified name in the location.
+Enter a path (optional) and file name.
+Wildcard characters are permitted.
+By default,
+       <strong>
+        Add-Type
+       </strong>
+       generates the assembly only in memory.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         OA
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -OutputType
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the output type of the output assembly.
+The acceptable values for this parameter are:
+      </p>
+      <ul>
+       <li>
+        Library
+       </li>
+       <li>
+        ConsoleApplication
+       </li>
+       <li>
+        WindowsApplication
+       </li>
+      </ul>
+      <p>
+       For more information about the values, see
+       <a data-linktype="external" href="https://msdn.microsoft.com/library/microsoft.powershell.commands.outputassemblytype">
+        OutputAssemblyType Enumeration
+       </a>
+       in the MSDN library.
+      </p>
+      <p>
+       By default, no output type is specified.
+      </p>
+      <p>
+       This parameter is valid only when an output assembly is specified in the command.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          OutputAssemblyType
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         OT
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Parameter Sets:
+        </td>
+        <td>
+         ConsoleApplication, Library, WindowsApplication
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -PassThru
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Returns a
+       <strong>
+        System.Runtime
+       </strong>
+       object that represents the types that were added.
+By default, this cmdlet does not generate any output.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -ReferencedAssemblies
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the assemblies upon which the type depends.
+By default,
+       <strong>
+        Add-Type
+       </strong>
+       references System.dll and System.Management.Automation.dll.
+The assemblies that you specify by using this parameter are referenced in addition to the default assemblies.
+      </p>
+      <p>
+       You cannot use the
+       <em>
+        CompilerParameters
+       </em>
+       and
+       <em>
+        ReferencedAssemblies
+       </em>
+       parameters in the same command.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         RA
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -UsingNamespace
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies other namespaces that are required for the class.
+This is much like the Using keyword in C#.
+      </p>
+      <p>
+       By default,
+       <strong>
+        Add-Type
+       </strong>
+       references the
+       <strong>
+        System
+       </strong>
+       namespace.
+When the
+       <em>
+        MemberDefinition
+       </em>
+       parameter is used,
+       <strong>
+        Add-Type
+       </strong>
+       also references the
+       <strong>
+        System.Runtime.InteropServices
+       </strong>
+       namespace by default.
+The namespaces that you add by using the
+       <em>
+        UsingNamespace
+       </em>
+       parameter are referenced in addition to the default namespaces.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         Using
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="inputs">
+      Inputs
+     </h2>
+     <p>
+      <strong>
+       None
+      </strong>
+     </p>
+     <p>
+      You cannot pipe objects to
+      <strong>
+       Add-Type
+      </strong>
+      .
+     </p>
+     <h2 id="outputs">
+      Outputs
+     </h2>
+     <p>
+      <strong>
+       None or System.Type
+      </strong>
+     </p>
+     <p>
+      When you use the
+      <em>
+       PassThru
+      </em>
+      parameter,
+      <strong>
+       Add-Type
+      </strong>
+      returns a
+      <strong>
+       System.Type
+      </strong>
+      object that represents the new type.
+Otherwise, this cmdlet does not generate any output.
+     </p>
+     <h2 id="notes">
+      Notes
+     </h2>
+     <ul>
+      <li>
+       The types that you add exist only in the current session. To use the types in all sessions, add them to your Windows PowerShell profile. For more information about the profile, see about_Profiles (
+       <a data-linktype="external" href="http://go.microsoft.com/fwlink/?LinkID=113729">
+        http://go.microsoft.com/fwlink/?LinkID=113729
+       </a>
+       ).
+      </li>
+      <li>
+       Type names (and namespaces) must be unique within a session. You cannot unload a type or change it. If you need to change the code for a type, you must change the name or start a new Windows PowerShell session. Otherwise, the command fails.
+      </li>
+      <li>
+       The CodeDomProvider class for some languages, such as IronPython and J#, does not generate output. As a result, types written in these languages cannot be used with
+       <strong>
+        Add-Type
+       </strong>
+       .
+      </li>
+      <li>
+       This cmdlet is based on the
+       <strong>
+        CodeDomProvider
+       </strong>
+       class. For more information about this class, see the Microsoft .NET Framework SDK.
+      </li>
+     </ul>
+     <h2 id="related-links">
+      Related Links
+     </h2>
+     <ul>
+      <li>
+       <a data-linktype="relative-path" href="add-member.html">
+        Add-Member
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="new-object.html">
+        New-Object
+       </a>
+      </li>
+     </ul>
+     <!-- </content> -->
+    </main>
+    <div class="note alert feedback-system-change-alert">
+     <p>
+      Note
+     </p>
+     <p>
+      The feedback system for this content will be changing soon. Old comments will not be carried over. If content within a comment thread is important to you, please save a copy. For more information on the upcoming change,
+      <a href="https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs">
+       we invite you to read our blog post
+      </a>
+      .
+     </p>
+    </div>
+    <div data-bi-name="comments" id="comments-container" role="form">
+    </div>
+   </div>
+  </div>
+  <div class="openfeedback-container" id="openFeedbackContainer">
+  </div>
+  <div class="action-panel">
+  </div>
+ </body>
+</html>

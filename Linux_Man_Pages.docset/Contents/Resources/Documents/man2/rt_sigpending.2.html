@@ -1,0 +1,199 @@
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML><HEAD><TITLE>Man page of SIGPENDING</TITLE>
+</HEAD><BODY>
+<H1>SIGPENDING</H1>
+Section: Linux Programmer's Manual (2)<BR>Updated: 2016-03-15<BR><A HREF="#index">Index</A>
+<A HREF="../index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+sigpending, rt_sigpending - examine pending signals
+<A NAME="lbAC">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<B>#include &lt;<A HREF="file:///usr/include/signal.h">signal.h</A>&gt;</B>
+
+<P>
+<B>int sigpending(sigset_t *</B><I>set</I><B>);</B>
+
+<P>
+
+Feature Test Macro Requirements for glibc (see
+<B><A HREF="../man7/feature_test_macros.7.html">feature_test_macros</A></B>(7)):
+
+
+<P>
+
+<B>sigpending</B>():
+
+_POSIX_C_SOURCE
+
+<A NAME="lbAD">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+<P>
+
+<B>sigpending</B>()
+
+returns the set of signals that are pending for delivery to the calling
+thread (i.e., the signals which have been raised while blocked).
+The mask of pending signals is returned in
+<I>set</I>.
+
+<A NAME="lbAE">&nbsp;</A>
+<H2>RETURN VALUE</H2>
+
+<B>sigpending</B>()
+
+returns 0 on success and -1 on error.
+In the event of an error,
+<I>errno</I>
+
+is set to indicate the cause.
+<A NAME="lbAF">&nbsp;</A>
+<H2>ERRORS</H2>
+
+<DL COMPACT>
+<DT><B>EFAULT</B>
+
+<DD>
+<I>set</I>
+
+points to memory which is not a valid part of the process address space.
+</DL>
+<A NAME="lbAG">&nbsp;</A>
+<H2>CONFORMING TO</H2>
+
+POSIX.1-2001, POSIX.1-2008.
+<A NAME="lbAH">&nbsp;</A>
+<H2>NOTES</H2>
+
+See
+<B><A HREF="../man3/sigsetops.3.html">sigsetops</A></B>(3)
+
+for details on manipulating signal sets.
+<P>
+If a signal is both blocked and has a disposition of &quot;ignored&quot;, it is
+<I>not</I>
+
+added to the mask of pending signals when generated.
+<P>
+The set of signals that is pending for a thread
+is the union of the set of signals that is pending for that thread
+and the set of signals that is pending for the process as a whole; see
+<B><A HREF="../man7/signal.7.html">signal</A></B>(7).
+
+<P>
+A child created via
+<B><A HREF="../man2/fork.2.html">fork</A></B>(2)
+
+initially has an empty pending signal set;
+the pending signal set is preserved across an
+<B><A HREF="../man2/execve.2.html">execve</A></B>(2).
+
+
+<A NAME="lbAI">&nbsp;</A>
+<H3>C library/kernel differences</H3>
+
+The original Linux system call was named
+<B>sigpending</B>().
+
+However, with the addition of real-time signals in Linux 2.2,
+the fixed-size, 32-bit
+<I>sigset_t</I>
+
+argument supported by that system call was no longer fit for purpose.
+Consequently, a new system call,
+<B>rt_sigpending</B>(),
+
+was added to support an enlarged
+<I>sigset_t</I>
+
+type.
+The new system call takes a second argument,
+<I>size_t sigsetsize</I>,
+
+which specifies the size in bytes of the signal set in
+<I>set</I>.
+
+
+
+
+
+
+The glibc
+<B>sigpending</B>()
+
+wrapper function hides these details from us, transparently calling
+<B>rt_sigpending</B>()
+
+when the kernel provides it.
+
+<A NAME="lbAJ">&nbsp;</A>
+<H2>BUGS</H2>
+
+In versions of glibc up to and including 2.2.1,
+there is a bug in the wrapper function for
+<B>sigpending</B>()
+
+which means that information about pending real-time signals
+is not correctly returned.
+<A NAME="lbAK">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+<B><A HREF="../man2/kill.2.html">kill</A></B>(2),
+
+<B><A HREF="../man2/sigaction.2.html">sigaction</A></B>(2),
+
+<B><A HREF="../man2/signal.2.html">signal</A></B>(2),
+
+<B><A HREF="../man2/sigprocmask.2.html">sigprocmask</A></B>(2),
+
+<B><A HREF="../man2/sigsuspend.2.html">sigsuspend</A></B>(2),
+
+<B><A HREF="../man3/sigsetops.3.html">sigsetops</A></B>(3),
+
+<B><A HREF="../man7/signal.7.html">signal</A></B>(7)
+
+<A NAME="lbAL">&nbsp;</A>
+<H2>COLOPHON</H2>
+
+This page is part of release 4.09 of the Linux
+<I>man-pages</I>
+
+project.
+A description of the project,
+information about reporting bugs,
+and the latest version of this page,
+can be found at
+<A HREF="https://www.kernel.org/doc/man-pages/.">https://www.kernel.org/doc/man-pages/.</A>
+
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAD">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAE">RETURN VALUE</A><DD>
+<DT><A HREF="#lbAF">ERRORS</A><DD>
+<DT><A HREF="#lbAG">CONFORMING TO</A><DD>
+<DT><A HREF="#lbAH">NOTES</A><DD>
+<DL>
+<DT><A HREF="#lbAI">C library/kernel differences</A><DD>
+</DL>
+<DT><A HREF="#lbAJ">BUGS</A><DD>
+<DT><A HREF="#lbAK">SEE ALSO</A><DD>
+<DT><A HREF="#lbAL">COLOPHON</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 14:28:27 GMT, February 25, 2017
+</BODY>
+</HTML>

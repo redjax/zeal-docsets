@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html class="no-js hasSidebar hasPageActions hasBreadcrumb conceptual" data-authenticated="false" data-render="docs" dir="ltr" lang="en-us">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="ConvertTo-Xml (Microsoft.PowerShell.Utility)" property="og:title"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" property="og:image"/>
+  <meta content="summary" name="twitter:card"/>
+  <meta content="@docsmsft" name="twitter:site"/>
+  <meta content="ConvertTo-Xml (Microsoft.PowerShell.Utility)" name="twitter:title"/>
+  <meta content="The ConvertTo-Xml cmdlet creates an XML-based representation of one or more Microsoft .NET Framework objects. To use this cmdlet, pipe one or more objects to the cmdlet, or use the InputObject parameâ¦" name="twitter:description"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" name="twitter:image"/>
+  <meta content="Microsoft Logo" name="twitter:image:alt"/>
+  <meta content="The ConvertTo-Xml cmdlet creates an XML-based representation of one or more Microsoft .NET Framework objects. To use this cmdlet, pipe one or more objects to the cmdlet, or use the InputObject parameâ¦" name="description"/>
+  <meta content="Docs" name="search.ms_sitename"/>
+  <meta content="PowerShell_PowerShell-docs_reference" name="search.ms_docsetname"/>
+  <meta content="0" name="version"/>
+  <meta content="en-us" name="locale"/>
+  <meta content="Docs" name="site_name"/>
+  <meta content="PowerShell" name="search.ms_product"/>
+  <meta content="PowerShell.PowerShell_PowerShell-docs_reference" name="depot_name"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/617301cc0a194afdca440ba75f5cec2a540ce619/reference/6/Microsoft.PowerShell.Utility/ConvertTo-Xml.md" name="ref_skeleton_gitcommit"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/live/reference/6/Microsoft.PowerShell.Utility/ConvertTo-Xml.md" name="original_ref_skeleton_git_url"/>
+  <meta content="2018-03-30 03:35 PM" name="updated_at"/>
+  <meta content="ea9ef357-6c51-8266-afb5-665ab056332c" name="document_id"/>
+  <meta content="df52e589-e043-a0f2-f48d-3f9c2e331030" name="document_version_independent_id"/>
+  <meta content="powershell" name="page_type"/>
+  <meta content="command" name="page_kind"/>
+  <meta content="06/09/2017" name="ms.date"/>
+  <meta content="2.0.0" name="schema"/>
+  <meta content="powershell,cmdlet" name="keywords"/>
+  <meta content="http://go.microsoft.com/fwlink/?LinkId=821760" name="online_version"/>
+  <meta content="Microsoft.PowerShell.Commands.Utility.dll-Help.xml" name="external_help_file"/>
+  <meta content="powershell" name="ms.devlang"/>
+  <meta content="INDEX, FOLLOW" name="ROBOTS"/>
+  <meta content="sdwheeler" name="author"/>
+  <meta content="sewhee" name="ms.author"/>
+  <meta content="carmonm" name="manager"/>
+  <meta content="/powershell/bread-pscore/toc.yml?view=powershell-6" name="breadcrumb_path"/>
+  <meta content="powershell" name="apiPlatform"/>
+  <meta content="reference" name="ms.topic"/>
+  <meta content="windows, macos, linux" name="ms.tgt_pltfr"/>
+  <meta content="powershell-scripting" name="ms.technology"/>
+  <meta content="powershell" name="ms.prod"/>
+  <meta content="MSDocsHeader-Powershell" name="uhfHeaderId"/>
+  <meta content="../psdocs/toc.json?view=powershell-6" name="toc_rel"/>
+  <link href="https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/convertto-xml" rel="canonical"/>
+  <title>
+   ConvertTo-Xml
+  </title>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/60aac04b.site.css" rel="stylesheet"/>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/fdb8a38a.conceptual.css" rel="stylesheet"/>
+ </head>
+ <body dir="ltr" lang="en-us">
+  <div class="header-holder">
+   <div data-bi-name="header" id="headerAreaHolder">
+    <div id="uhf-placeholder">
+    </div>
+   </div>
+   <div class="disclaimer-holder" id="disclaimer-holder">
+   </div>
+  </div>
+  <div class="container mainContainer" data-bi-name="body">
+   <div class="content-header" data-bi-name="content-header">
+    <div class="content-header-controls">
+     <button class="contents-button button-border" data-bi-name="contents-expand" type="button">
+      <span class="docon docon-menu">
+      </span>
+      Contents
+     </button>
+    </div>
+    <div class="content-header-controls">
+     <button class="ap-collapse-behavior ap-expanded button-border" data-bi-name="ap-collapse" type="button">
+      <span class="docon docon-exit-mode">
+      </span>
+      Exit focus mode
+     </button>
+    </div>
+   </div>
+   <div class="primary-holder">
+    <main class="content" data-bi-name="content" dir="ltr" id="main" lang="en-us" role="main">
+     <!-- <content> -->
+     <h1>
+      Convert
+      <wbr/>
+      To-Xml
+     </h1>
+     <div class="metadata">
+      <dl class="attributeList">
+       <dt>
+        Module:
+       </dt>
+       <dd>
+        <a data-linktype="relative-path" href="./Microsoft.PowerShell.Utility.html">
+         Microsoft.PowerShell.Utility
+        </a>
+       </dd>
+      </dl>
+     </div>
+     <div class="summaryHolder">
+      <div class="summary">
+       Creates an XML-based representation of an object.
+      </div>
+     </div>
+     <h2 class="hiddenAnchor" id="syntax">
+      Syntax
+     </h2>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">ConvertTo-Xml
+         [-InputObject] &lt;PSObject&gt;
+         [-Depth &lt;Int32&gt;]
+         [-NoTypeInformation]
+         [-As &lt;String&gt;]
+         [&lt;CommonParameters&gt;]</code></pre>
+     <h2 id="description">
+      Description
+     </h2>
+     <p>
+      The
+      <code>
+       ConvertTo-Xml
+      </code>
+      cmdlet creates an XML-based representation of one or more Microsoft .NET Framework objects.
+To use this cmdlet, pipe one or more objects to the cmdlet, or use the
+      <strong>
+       InputObject
+      </strong>
+      parameter to specify the object.
+     </p>
+     <p>
+      When you pipe multiple objects to
+      <code>
+       ConvertTo-Xml
+      </code>
+      or use the
+      <strong>
+       InputObject
+      </strong>
+      parameter to submit multiple objects,
+      <code>
+       ConvertTo-Xml
+      </code>
+      returns a single XML document that includes representations of all of the objects.
+     </p>
+     <p>
+      This cmdlet is similar to
+      <code>
+       Export-Clixml
+      </code>
+      except that
+      <code>
+       Export-Clixml
+      </code>
+      stores the resulting XML in a file.
+      <code>
+       ConvertTo-Xml
+      </code>
+      returns the XML, so you can continue to process it in PowerShell.
+     </p>
+     <h2 id="examples">
+      Examples
+     </h2>
+     <p>
+      <strong>
+       Example 1: Convert a date to XML
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-Date | ConvertTo-Xml</code></pre>
+     <p>
+      This command converts the current date (a
+      <strong>
+       DateTime
+      </strong>
+      object) to XML.
+     </p>
+     <p>
+      <strong>
+       Example 2: Convert processes to XML
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; ConvertTo-Xml -As "Document" -InputObject (Get-Process) -Depth 3</code></pre>
+     <p>
+      This command converts the process objects that represent all of the processes on the computer into an XML document.
+The objects are expanded to a depth of three levels.
+     </p>
+     <h2 id="required-parameters">
+      Required Parameters
+     </h2>
+     <div class="parameterName stack">
+      -InputObject
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the object to be converted.
+Enter a variable that contains the objects, or type a command or expression that gets the objects.
+You can also pipe objects to
+       <strong>
+        ConvertTo-XML
+       </strong>
+       .
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          PSObject
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         0
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByValue)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="optional-parameters">
+      Optional Parameters
+     </h2>
+     <div class="parameterName stack">
+      -As
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Determines the output format.
+The acceptable values for this parameter are:
+      </p>
+      <ul>
+       <li>
+        String.
+Returns a single string.
+       </li>
+       <li>
+        Stream.
+Returns an array of strings.
+       </li>
+       <li>
+        Document.
+Returns an
+        <strong>
+         XmlDocument
+        </strong>
+        object.
+       </li>
+      </ul>
+      <p>
+       The default value is Document.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Parameter Sets:
+        </td>
+        <td>
+         Stream, String, Document
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Depth
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies how many levels of contained objects are included in the XML representation.
+The default value is 1.
+      </p>
+      <p>
+       For example, if the object's properties also contain objects, to save an XML representation of the properties of the contained objects, you must specify a depth of 2.
+      </p>
+      <p>
+       The default value can be overridden for the object type in the Types.ps1xml files.
+For more information, see about_Types.ps1xml.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Int32
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -NoTypeInformation
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Omits the Type attribute from the object nodes.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="inputs">
+      Inputs
+     </h2>
+     <p>
+      <strong>
+       System.Management.Automation.PSObject
+      </strong>
+     </p>
+     <p>
+      You can pipe any object to
+      <strong>
+       ConvertTo-XML
+      </strong>
+      .
+     </p>
+     <h2 id="outputs">
+      Outputs
+     </h2>
+     <p>
+      <strong>
+       System.String or System.Xml.XmlDocument
+      </strong>
+     </p>
+     <p>
+      The value of the
+      <em>
+       As
+      </em>
+      parameter determines the type of object that
+      <strong>
+       ConvertTo-XML
+      </strong>
+      returns.
+     </p>
+     <h2 id="related-links">
+      Related Links
+     </h2>
+     <ul>
+      <li>
+       <a data-linktype="relative-path" href="convertto-csv.html">
+        ConvertTo-Csv
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="convertto-html.html">
+        ConvertTo-Html
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="export-clixml.html">
+        Export-Clixml
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="get-date.html">
+        Get-Date
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="import-clixml.html">
+        Import-Clixml
+       </a>
+      </li>
+     </ul>
+     <!-- </content> -->
+    </main>
+    <div class="note alert feedback-system-change-alert">
+     <p>
+      Note
+     </p>
+     <p>
+      The feedback system for this content will be changing soon. Old comments will not be carried over. If content within a comment thread is important to you, please save a copy. For more information on the upcoming change,
+      <a href="https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs">
+       we invite you to read our blog post
+      </a>
+      .
+     </p>
+    </div>
+    <div data-bi-name="comments" id="comments-container" role="form">
+    </div>
+   </div>
+  </div>
+  <div class="openfeedback-container" id="openFeedbackContainer">
+  </div>
+  <div class="action-panel">
+  </div>
+ </body>
+</html>

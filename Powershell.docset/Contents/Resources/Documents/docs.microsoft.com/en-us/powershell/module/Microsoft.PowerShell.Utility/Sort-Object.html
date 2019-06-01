@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html class="no-js hasSidebar hasPageActions hasBreadcrumb conceptual" data-authenticated="false" data-render="docs" dir="ltr" lang="en-us">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Sort-Object (Microsoft.PowerShell.Utility)" property="og:title"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" property="og:image"/>
+  <meta content="summary" name="twitter:card"/>
+  <meta content="@docsmsft" name="twitter:site"/>
+  <meta content="Sort-Object (Microsoft.PowerShell.Utility)" name="twitter:title"/>
+  <meta content="The Sort-Object cmdlet sorts objects in ascending or descending order based on the values of properties of the object. You can specify a single property or multiple properties, for a multi-key sort,â¦" name="twitter:description"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" name="twitter:image"/>
+  <meta content="Microsoft Logo" name="twitter:image:alt"/>
+  <meta content="The Sort-Object cmdlet sorts objects in ascending or descending order based on the values of properties of the object. You can specify a single property or multiple properties, for a multi-key sort,â¦" name="description"/>
+  <meta content="Docs" name="search.ms_sitename"/>
+  <meta content="PowerShell_PowerShell-docs_reference" name="search.ms_docsetname"/>
+  <meta content="0" name="version"/>
+  <meta content="en-us" name="locale"/>
+  <meta content="Docs" name="site_name"/>
+  <meta content="PowerShell" name="search.ms_product"/>
+  <meta content="PowerShell.PowerShell_PowerShell-docs_reference" name="depot_name"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/45404d4ca212afa615798d3d5cbfea5dc5cc1efb/reference/6/Microsoft.PowerShell.Utility/Sort-Object.md" name="ref_skeleton_gitcommit"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/live/reference/6/Microsoft.PowerShell.Utility/Sort-Object.md" name="original_ref_skeleton_git_url"/>
+  <meta content="2018-03-30 03:35 PM" name="updated_at"/>
+  <meta content="ef9d9d61-86d7-ecd8-efc1-67c66083e184" name="document_id"/>
+  <meta content="4d53643b-68f8-5bd9-1552-d5cea633f284" name="document_version_independent_id"/>
+  <meta content="powershell" name="page_type"/>
+  <meta content="command" name="page_kind"/>
+  <meta content="06/09/2017" name="ms.date"/>
+  <meta content="2.0.0" name="schema"/>
+  <meta content="powershell,cmdlet" name="keywords"/>
+  <meta content="http://go.microsoft.com/fwlink/?LinkId=821863" name="online_version"/>
+  <meta content="Microsoft.PowerShell.Commands.Utility.dll-Help.xml" name="external_help_file"/>
+  <meta content="powershell" name="ms.devlang"/>
+  <meta content="INDEX, FOLLOW" name="ROBOTS"/>
+  <meta content="sdwheeler" name="author"/>
+  <meta content="sewhee" name="ms.author"/>
+  <meta content="carmonm" name="manager"/>
+  <meta content="/powershell/bread-pscore/toc.yml?view=powershell-6" name="breadcrumb_path"/>
+  <meta content="powershell" name="apiPlatform"/>
+  <meta content="reference" name="ms.topic"/>
+  <meta content="windows, macos, linux" name="ms.tgt_pltfr"/>
+  <meta content="powershell-scripting" name="ms.technology"/>
+  <meta content="powershell" name="ms.prod"/>
+  <meta content="MSDocsHeader-Powershell" name="uhfHeaderId"/>
+  <meta content="../psdocs/toc.json?view=powershell-6" name="toc_rel"/>
+  <link href="https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/sort-object" rel="canonical"/>
+  <title>
+   Sort-Object
+  </title>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/60aac04b.site.css" rel="stylesheet"/>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/fdb8a38a.conceptual.css" rel="stylesheet"/>
+ </head>
+ <body dir="ltr" lang="en-us">
+  <div class="header-holder">
+   <div data-bi-name="header" id="headerAreaHolder">
+    <div id="uhf-placeholder">
+    </div>
+   </div>
+   <div class="disclaimer-holder" id="disclaimer-holder">
+   </div>
+  </div>
+  <div class="container mainContainer" data-bi-name="body">
+   <div class="content-header" data-bi-name="content-header">
+    <div class="content-header-controls">
+     <button class="contents-button button-border" data-bi-name="contents-expand" type="button">
+      <span class="docon docon-menu">
+      </span>
+      Contents
+     </button>
+    </div>
+    <div class="content-header-controls">
+     <button class="ap-collapse-behavior ap-expanded button-border" data-bi-name="ap-collapse" type="button">
+      <span class="docon docon-exit-mode">
+      </span>
+      Exit focus mode
+     </button>
+    </div>
+   </div>
+   <div class="primary-holder">
+    <main class="content" data-bi-name="content" dir="ltr" id="main" lang="en-us" role="main">
+     <!-- <content> -->
+     <h1>
+      Sort-Object
+     </h1>
+     <div class="metadata">
+      <dl class="attributeList">
+       <dt>
+        Module:
+       </dt>
+       <dd>
+        <a data-linktype="relative-path" href="./Microsoft.PowerShell.Utility.html">
+         Microsoft.PowerShell.Utility
+        </a>
+       </dd>
+      </dl>
+     </div>
+     <div class="summaryHolder">
+      <div class="summary">
+       Sorts objects by property values.
+      </div>
+     </div>
+     <h2 class="hiddenAnchor" id="syntax">
+      Syntax
+     </h2>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Sort-Object
+    [[-Property] &lt;Object[]&gt;]
+    [-Descending]
+    [-Unique]
+    [-Top &lt;Int32&gt;]
+    [-InputObject &lt;PSObject&gt;]
+    [-Culture &lt;String&gt;]
+    [-CaseSensitive]
+    [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Sort-Object
+    [[-Property] &lt;Object[]&gt;]
+    -Bottom &lt;Int32&gt;
+    [-Descending]
+    [-Unique]
+    [-InputObject &lt;PSObject&gt;]
+    [-Culture &lt;String&gt;]
+    [-CaseSensitive]
+    [&lt;CommonParameters&gt;]</code></pre>
+     <h2 id="description">
+      Description
+     </h2>
+     <p>
+      The
+      <strong>
+       Sort-Object
+      </strong>
+      cmdlet sorts objects in ascending or descending order based on the values of properties of the object.
+     </p>
+     <p>
+      You can specify a single property or multiple properties, for a multi-key sort, and you can select a case-sensitive or case-insensitive sort.
+You can also direct
+      <strong>
+       Sort-Object
+      </strong>
+      to display only the objects with a unique value for a particular property.
+     </p>
+     <h2 id="examples">
+      Examples
+     </h2>
+     <p>
+      <strong>
+       Example 1: Sort the current directory by name
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-ChildItem | Sort-Object
+
+Mode                LastWriteTime     Length Name
+
+----                -------------     ------ ----
+
+-a---         9/13/2005   4:24 PM          0 0
+
+-a---          9/6/2005   4:19 PM         12 a.csv
+
+-a---         9/21/2005   3:49 PM        529 a.Ps
+
+-a---         8/22/2005   4:14 PM         22 a.pl
+
+-a---         9/27/2005  10:33 AM         24 a.txt
+
+-a---         9/15/2005  10:31 AM        398 a.vbs
+
+-a---         7/21/2005  12:39 PM      37066 a.xml
+
+-a---         8/28/2005  11:30 PM       5412 a.xslt
+
+-a---        10/25/2005   1:59 PM        125 AdamTravel.txt
+
+-a---         7/21/2005   9:49 AM         59 add2Num.Ps
+
+-a---         8/29/2005   5:42 PM       7111 add-content.xml
+
+-a---         9/21/2005  12:46 PM       8771 aliens.Ps
+
+-a---         8/10/2005   2:10 PM        798 array.xml
+
+-a---          8/4/2004   5:00 AM        110 AUTORUN.INF
+
+-a---          9/6/2005   4:20 PM        245 b.csv
+
+...</code></pre>
+     <p>
+      This command sorts the subdirectories and files in the current directory.
+Because no properties are specified, the files and directories are sorted in ascending alphabetical order by their default sort property, Name.
+     </p>
+     <p>
+      <strong>
+       Example 2: Sort the current directory by file length
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-ChildItem | Sort-Object -Property length
+
+Mode                LastWriteTime     Length Name
+
+----                -------------     ------ ----
+
+-a---         12/3/2006   5:35 PM          2 pref.txt
+
+-a---          9/6/2006   3:33 PM         15 count.txt
+
+-a---         7/26/2006  10:01 AM         30 filenoext
+
+-a---         8/18/2006   9:02 AM         52 temp.ps1
+
+-a---         8/18/2006   9:02 AM         52 temp.msh
+
+-a---          9/6/2006   3:33 PM         56 fivewords.txt
+
+-a---         7/26/2006   9:28 AM         80 date.csv
+
+-a---         7/29/2006   7:15 PM         84 test2.txt
+
+-a---         7/29/2006   7:15 PM         84 test.ps1</code></pre>
+     <p>
+      This command displays the files in the current directory in ascending order by file length.
+     </p>
+     <p>
+      <strong>
+       Example 3: Sort processes by memory use
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-Process | Sort-Object -Property WS | Select-Object -Last 5
+
+Handles  NPM(K)    PM(K)      WS(K) VM(M)   CPU(s)     Id ProcessName
+
+-------  ------    -----      ----- -----   ------     -- -----------
+
+1105      25    44236      18932   197    93.81      2032 iexplore
+
+2526      66    37668      36836   221   393.27       868 svchost
+
+974       19    22844      45928   371    88.39      3952 WINWORD
+
+1371      22    42192      61872   323    75.75      1584 INFOPATH
+
+2145      58    93088      70680   619   396.69      3908 OUTLOOK</code></pre>
+     <p>
+      This command displays the five processes on the computer with the greatest memory use based on the size of their working sets.
+     </p>
+     <p>
+      The command uses the Get-Process cmdlet to get a list of processes.
+It uses a pipeline operator (|) to send the results to the
+      <strong>
+       Sort-Object
+      </strong>
+      cmdlet, which sorts the objects in working-set order.
+     </p>
+     <p>
+      Another pipeline operator sends the results to the Select-Object, which displays only the last five items in the list.
+     </p>
+     <p>
+      <strong>
+       Example 4: Sort HistoryInfo objects by ID
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-History | Sort-Object -Descending
+
+Id CommandLine
+
+-- -----------
+
+51 get-history | sort -descending
+
+50 get-history | sort -descending
+
+49 get-history | sort -descending
+
+48 get-history | sort -descending
+
+47 get-history | sort -descending
+
+46 get-history | sort -descending
+
+45 get-history | sort -descending
+
+44 cd $pshome
+
+43 Get-ChildItem | Sort-Object
+
+42 gci *.txt</code></pre>
+     <p>
+      This command sorts
+      <strong>
+       HistoryInfo
+      </strong>
+      objects using the Id property as the default key.
+     </p>
+     <p>
+      <strong>
+       Example 5: Sort services by Status and DisplayName
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-Service | Sort-Object -Property @{Expression = "Status"; Descending = $True}, @{Expression = "DisplayName"; Descending = $False}
+
+Status   Name               DisplayName
+
+------   ----               -----------
+
+Running  ALG                Application Layer Gateway Service
+
+Running  Ati HotKey Poller  Ati HotKey Poller
+
+Running  wuauserv           Automatic Updates
+
+Running  BITS               Background Intelligent Transfer Ser...
+
+Running  Client for NFS     Client for NFS
+
+...
+
+Stopped  clr_optimizatio... .NET Runtime Optimization Service v...
+
+Stopped  Alerter            Alerter
+
+Stopped  AppMgmt            Application Management
+
+Stopped  aspnet_state       ASP.NET State Service
+
+Stopped  ATI Smart          ATI Smart
+
+Stopped  ClipSrv            ClipBook</code></pre>
+     <p>
+      This command displays the services on the computer in descending Status order and ascending DisplayName order.
+     </p>
+     <p>
+      The command uses the Get-Service cmdlet to get the services on the computer.
+It uses a pipeline operator (|) to send services to the
+      <strong>
+       Sort-Object
+      </strong>
+      cmdlet.
+     </p>
+     <p>
+      To sort one property in ascending order and another property in descending order, the command uses a hash table for the value of the
+      <em>
+       Property
+      </em>
+      parameter.
+The hash table uses an Expression key to specify the property name and an Ascending or Descending key to specify the sort order.
+     </p>
+     <p>
+      The resulting display, which sorts the Status values in descending order, lists properties with a Status value of Running before those with a Status value of Stopped.
+When sorted in ascending order, Stopped appears before Running, because Status is an enumerated property in which the value of Stopped (1) is less than the value of Running (4).
+     </p>
+     <p>
+      <strong>
+       Example 6: Sort text files by time span
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-ChildItem *.txt | Sort-Object -Property @{Expression={$_.LastWriteTime - $_.CreationTime}; Ascending = $False} | Format-Table LastWriteTime, CreationTime
+
+LastWriteTime                           CreationTime
+
+-------------                           ------------
+
+2/21/2006 10:22:20 AM                   10/3/2005 4:19:40 PM
+
+2/27/2006 8:14:24 AM                    2/23/2006 10:41:08 PM
+
+2/24/2006 1:26:19 PM                    2/23/2006 11:23:36 PM
+
+1/5/2006 12:01:35 PM                    1/5/2006 11:35:30 AM
+
+2/24/2006 9:25:40 AM                    2/24/2006 9:22:24 AM
+
+2/24/2006 9:40:01 AM                    2/24/2006 9:39:41 AM
+
+2/21/2006 10:21:30 AM                   2/21/2006 10:21:30 AM</code></pre>
+     <p>
+      This command sorts text files in descending order by the time span between CreationTime and LastWriteTime.
+     </p>
+     <p>
+      <strong>
+       Example 7: Sort names in a text file
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-Content servers.txt
+
+localhost
+
+test01
+
+server01
+
+server02
+
+localhost
+
+server01 PS C:\&gt; Get-Content servers.txt | Sort-Object -Unique
+
+localhost
+
+server01
+
+server02
+
+test01</code></pre>
+     <p>
+      These commands sort the names of servers in a text file.
+The second command uses the
+      <strong>
+       Sort-Object
+      </strong>
+      cmdlet with the
+      <em>
+       Unique
+      </em>
+      parameter to return a sorted list without duplicates.
+     </p>
+     <h2 id="optional-parameters">
+      Optional Parameters
+     </h2>
+     <div class="parameterName stack">
+      -Bottom
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the number of objects to get from the end of the sorted object array.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Int32
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -CaseSensitive
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that the sort should be case sensitive.
+By default, sorting is not case sensitive.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Culture
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the cultural configuration to use when sorting.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Descending
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that the cmdlet sorts the objects in descending order.
+The default is ascending order.
+      </p>
+      <p>
+       The
+       <em>
+        Descending
+       </em>
+       parameter applies to all properties.
+To sort by some properties in ascending order and others in descending order, you must specify their property values by using a hash table.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -InputObject
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the objects to sort.
+      </p>
+      <p>
+       When you use the
+       <em>
+        InputObject
+       </em>
+       parameter to submit a collection of items,
+       <strong>
+        Sort-Object
+       </strong>
+       receives one object that represents the collection.
+Because one object cannot be sorted,
+       <strong>
+        Sort-Object
+       </strong>
+       returns the entire collection unchanged.
+      </p>
+      <p>
+       To sort objects, pipe them
+       <strong>
+        to Sort-Object
+       </strong>
+       .
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          PSObject
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByValue)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Property
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the properties to use when sorting.
+Objects are sorted based on the values of these properties.
+Enter the names of the properties.
+Wildcards are permitted.
+      </p>
+      <p>
+       If you specify multiple properties, the objects are first sorted by the first property.
+If more than one object has the same value for the first property, those objects are sorted by the second property.
+This process continues until there are no more specified properties or no groups of objects.
+      </p>
+      <p>
+       If you do not specify properties, the cmdlet sorts based on default properties for the object type.
+      </p>
+      <p>
+       The value of the
+       <em>
+        Property
+       </em>
+       parameter can be a calculated property.
+To create a calculated, property, use a hash table.
+Valid keys are:
+      </p>
+      <ul>
+       <li>
+        Expression &lt;string&gt; or &lt;script block&gt;
+       </li>
+       <li>
+        Ascending &lt;Boolean&gt;
+       </li>
+       <li>
+        Descending &lt;Boolean&gt;
+       </li>
+      </ul>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Object[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         0
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Top
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the number of objects to get from the start of the sorted object array.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Int32
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Unique
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that the cmdlet eliminates duplicates and returns only the unique members of the collection.
+You can use this parameter instead of using the Get-Unique cmdlet.
+      </p>
+      <p>
+       This parameter is case-insensitive.
+As a result, strings that differ only in character casing are considered to be the same.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="inputs">
+      Inputs
+     </h2>
+     <p>
+      <strong>
+       System.Management.Automation.PSObject
+      </strong>
+     </p>
+     <p>
+      You can pipe the objects to be sorted to
+      <strong>
+       Sort-Object
+      </strong>
+      .
+     </p>
+     <h2 id="outputs">
+      Outputs
+     </h2>
+     <p>
+      <strong>
+       System.Management.Automation.PSObject
+      </strong>
+     </p>
+     <p>
+      <strong>
+       Sort-Object
+      </strong>
+      returns the sorted objects.
+     </p>
+     <h2 id="notes">
+      Notes
+     </h2>
+     <ul>
+      <li>
+       <strong>
+        Sort-Object
+       </strong>
+       sorts objects based on the properties that you specify or the default sort properties for objects of that type.
+      </li>
+      <li>
+       If an object does not have one of the specified properties, the property value for that object is interpreted by the cmdlet as Null and is placed at the end of the sort order.
+      </li>
+      <li>
+       When sorting objects,
+       <strong>
+        Sort-Object
+       </strong>
+       uses the Compare method for each property. If a property does not implement IComparable, the cmdlet converts the property value to a string and uses the Compare method for
+       <strong>
+        System.String
+       </strong>
+       .
+      </li>
+      <li>
+       The
+       <strong>
+        Sort-Object
+       </strong>
+       cmdlet sorts objects in ascending or descending order based on the values of properties of the object.
+      </li>
+      <li>
+       If you sort on a property whose value is an enumeration,
+       <strong>
+        Sort-Object
+       </strong>
+       sorts the enumeration values in numeric order; it does not sort the enumeration member names. For example, if you sort services by status, services with a status of Stopped appear before services with a status of Running, because the value of Status is a
+       <a data-linktype="external" href="https://msdn.microsoft.com/library/system.serviceprocess.servicecontrollerstatus">
+        ServiceControllerStatus Enumeration
+       </a>
+       , in which Stopped has a value of 1 and Running has a value of 4.
+      </li>
+     </ul>
+     <h2 id="related-links">
+      Related Links
+     </h2>
+     <ul>
+      <li>
+       <a data-linktype="relative-path" href="compare-object.html">
+        Compare-Object
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="group-object.html">
+        Group-Object
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="measure-object.html">
+        Measure-Object
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="new-object.html">
+        New-Object
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="select-object.html">
+        Select-Object
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="tee-object.html">
+        Tee-Object
+       </a>
+      </li>
+     </ul>
+     <!-- </content> -->
+    </main>
+    <div class="note alert feedback-system-change-alert">
+     <p>
+      Note
+     </p>
+     <p>
+      The feedback system for this content will be changing soon. Old comments will not be carried over. If content within a comment thread is important to you, please save a copy. For more information on the upcoming change,
+      <a href="https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs">
+       we invite you to read our blog post
+      </a>
+      .
+     </p>
+    </div>
+    <div data-bi-name="comments" id="comments-container" role="form">
+    </div>
+   </div>
+  </div>
+  <div class="openfeedback-container" id="openFeedbackContainer">
+  </div>
+  <div class="action-panel">
+  </div>
+ </body>
+</html>

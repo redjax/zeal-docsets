@@ -1,0 +1,190 @@
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML><HEAD><TITLE>Man page of TMPFS</TITLE>
+</HEAD><BODY>
+<H1>TMPFS</H1>
+Section: Linux Programmer's Manual (5)<BR>Updated: 2016-11-07<BR><A HREF="#index">Index</A>
+<A HREF="../index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+tmpfs - a virtual memory filesystem
+<A NAME="lbAC">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+The
+<B>tmpfs</B>
+
+facility allows the creation of filesystems whose contents reside
+in virtual memory.
+Since the files on such filesystems typically reside in RAM,
+file access is extremely fast.
+<P>
+The filesystem is automatically created when mounting
+a filesystem with the type
+<B>tmpfs</B>
+
+via a command such as the following:
+<P>
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;$&nbsp;sudo&nbsp;mount&nbsp;-t&nbsp;tmpfs&nbsp;-o&nbsp;size=10M&nbsp;tmpfs&nbsp;/mnt/mytmpfs
+<P>
+A
+<B>tmpfs</B>
+
+filesystem has the following properties:
+<DL COMPACT>
+<DT>*<DD>
+The filesystem can employ swap space when physical memory pressure
+demands it.
+<DT>*<DD>
+The
+<I>size</I>
+
+option can be used to specify an upper limit on the size of the filesystem.
+(The default size is half of the available RAM size.)
+The filesystem consumes only as much physical memory and swap space
+as is required to store the current contents of the filesystem.
+<DT>*<DD>
+During a remount operation
+(<I>mount&nbsp;-o&nbsp;remount</I>),
+
+the filesystem size can be changed
+(without losing the existing contents of the filesystem).
+</DL>
+<P>
+
+If a
+<B>tmpfs</B>
+
+filesystem is unmounted, its contents are discarded (lost).
+<A NAME="lbAD">&nbsp;</A>
+<H2>VERSIONS</H2>
+
+The
+<B>tmpfs</B>
+
+facility was added in Linux 2.4, as a successor to the older
+<B>ramfs</B>
+
+facility, which did not provide limit checking or
+allow for the use of swap space.
+<A NAME="lbAE">&nbsp;</A>
+<H2>NOTES</H2>
+
+For a description of the mount options that may be employed when mounting a
+<B>tmpfs</B>
+
+filesystem, see
+<B><A HREF="../man8/mount.8.html">mount</A></B>(8).
+
+<P>
+In order to for user-space tools and applications to create
+<B>tmpfs</B>
+
+filesystems, the kernel must be configured with the
+<B>CONFIG_TMPFS</B>
+
+option.
+<P>
+An internal shared memory filesystem is used for
+System V shared memory
+<B>(<A HREF="../man2/shmget.2.html">shmget</A></B>(2))
+
+and shared anonymous mappings
+(<B><A HREF="../man2/mmap.2.html">mmap</A></B>(2)
+
+with the
+<B>MAP_SHARED</B>
+
+and
+<B>MAP_ANONYMOUS</B>
+
+flags).
+This filesystem is available regardless of whether
+the kernel was configured with the
+<B>CONFIG_TMPFS</B>
+
+option.
+<P>
+A
+<B>tmpfs</B>
+
+filesystem mounted at
+<I>/dev/shm</I>
+
+as used for the implementation of POSIX shared memory
+(<B><A HREF="../man7/shm_overview.7.html">shm_overview</A></B>(7))
+
+and POSIX semaphores
+(<B><A HREF="../man7/sem_overview.7.html">sem_overview</A></B>(7)).
+
+<P>
+The amount of memory consumed by all
+<B>tmpfs</B>
+
+filesystems is shown in the
+<I>Shmem</I>
+
+field of
+<I>/proc/meminfo</I>
+
+and in the
+<I>shared</I>
+
+field displayed by
+<B><A HREF="../man1/free.1.html">free</A></B>(1).
+
+<P>
+The
+<B>tmpfs</B>
+
+facility was formerly called
+<B>shmfs</B>.
+
+<A NAME="lbAF">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+<B><A HREF="../man1/df.1.html">df</A></B>(1),
+
+<B><A HREF="../man1/du.1.html">du</A></B>(1),
+
+<B><A HREF="../man8/mount.8.html">mount</A></B>(8)
+
+<P>
+
+The kernel source file
+<I>Documentation/filesystems/tmpfs.txt</I>.
+
+<A NAME="lbAG">&nbsp;</A>
+<H2>COLOPHON</H2>
+
+This page is part of release 4.09 of the Linux
+<I>man-pages</I>
+
+project.
+A description of the project,
+information about reporting bugs,
+and the latest version of this page,
+can be found at
+<A HREF="https://www.kernel.org/doc/man-pages/.">https://www.kernel.org/doc/man-pages/.</A>
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAD">VERSIONS</A><DD>
+<DT><A HREF="#lbAE">NOTES</A><DD>
+<DT><A HREF="#lbAF">SEE ALSO</A><DD>
+<DT><A HREF="#lbAG">COLOPHON</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 14:28:40 GMT, February 25, 2017
+</BODY>
+</HTML>

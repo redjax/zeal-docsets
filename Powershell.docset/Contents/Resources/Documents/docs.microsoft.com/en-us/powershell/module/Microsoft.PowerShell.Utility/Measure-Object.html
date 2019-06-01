@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html class="no-js hasSidebar hasPageActions hasBreadcrumb conceptual" data-authenticated="false" data-render="docs" dir="ltr" lang="en-us">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Measure-Object (Microsoft.PowerShell.Utility)" property="og:title"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" property="og:image"/>
+  <meta content="summary" name="twitter:card"/>
+  <meta content="@docsmsft" name="twitter:site"/>
+  <meta content="Measure-Object (Microsoft.PowerShell.Utility)" name="twitter:title"/>
+  <meta content="The Measure-Object cmdlet calculates the property values of certain types of object. Measure-Object performs three types of measurements, depending on the parameters in the command. The Measure-Objecâ¦" name="twitter:description"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" name="twitter:image"/>
+  <meta content="Microsoft Logo" name="twitter:image:alt"/>
+  <meta content="The Measure-Object cmdlet calculates the property values of certain types of object. Measure-Object performs three types of measurements, depending on the parameters in the command. The Measure-Objecâ¦" name="description"/>
+  <meta content="Docs" name="search.ms_sitename"/>
+  <meta content="PowerShell_PowerShell-docs_reference" name="search.ms_docsetname"/>
+  <meta content="0" name="version"/>
+  <meta content="en-us" name="locale"/>
+  <meta content="Docs" name="site_name"/>
+  <meta content="PowerShell" name="search.ms_product"/>
+  <meta content="PowerShell.PowerShell_PowerShell-docs_reference" name="depot_name"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/57cd861e6079bc530a60692b1bbf35cfef1d3f35/reference/6/Microsoft.PowerShell.Utility/Measure-Object.md" name="ref_skeleton_gitcommit"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/live/reference/6/Microsoft.PowerShell.Utility/Measure-Object.md" name="original_ref_skeleton_git_url"/>
+  <meta content="2018-03-30 03:35 PM" name="updated_at"/>
+  <meta content="e2ca891d-3680-dd96-ed4a-2c5f34e2bc2d" name="document_id"/>
+  <meta content="bbf70122-605e-d627-556f-5f368b34378b" name="document_version_independent_id"/>
+  <meta content="powershell" name="page_type"/>
+  <meta content="command" name="page_kind"/>
+  <meta content="06/09/2017" name="ms.date"/>
+  <meta content="2.0.0" name="schema"/>
+  <meta content="powershell,cmdlet" name="keywords"/>
+  <meta content="http://go.microsoft.com/fwlink/?LinkId=821829" name="online_version"/>
+  <meta content="Microsoft.PowerShell.Commands.Utility.dll-Help.xml" name="external_help_file"/>
+  <meta content="powershell" name="ms.devlang"/>
+  <meta content="INDEX, FOLLOW" name="ROBOTS"/>
+  <meta content="sdwheeler" name="author"/>
+  <meta content="sewhee" name="ms.author"/>
+  <meta content="carmonm" name="manager"/>
+  <meta content="/powershell/bread-pscore/toc.yml?view=powershell-6" name="breadcrumb_path"/>
+  <meta content="powershell" name="apiPlatform"/>
+  <meta content="reference" name="ms.topic"/>
+  <meta content="windows, macos, linux" name="ms.tgt_pltfr"/>
+  <meta content="powershell-scripting" name="ms.technology"/>
+  <meta content="powershell" name="ms.prod"/>
+  <meta content="MSDocsHeader-Powershell" name="uhfHeaderId"/>
+  <meta content="../psdocs/toc.json?view=powershell-6" name="toc_rel"/>
+  <link href="https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/measure-object" rel="canonical"/>
+  <title>
+   Measure-Object
+  </title>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/60aac04b.site.css" rel="stylesheet"/>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/fdb8a38a.conceptual.css" rel="stylesheet"/>
+ </head>
+ <body dir="ltr" lang="en-us">
+  <div class="header-holder">
+   <div data-bi-name="header" id="headerAreaHolder">
+    <div id="uhf-placeholder">
+    </div>
+   </div>
+   <div class="disclaimer-holder" id="disclaimer-holder">
+   </div>
+  </div>
+  <div class="container mainContainer" data-bi-name="body">
+   <div class="content-header" data-bi-name="content-header">
+    <div class="content-header-controls">
+     <button class="contents-button button-border" data-bi-name="contents-expand" type="button">
+      <span class="docon docon-menu">
+      </span>
+      Contents
+     </button>
+    </div>
+    <div class="content-header-controls">
+     <button class="ap-collapse-behavior ap-expanded button-border" data-bi-name="ap-collapse" type="button">
+      <span class="docon docon-exit-mode">
+      </span>
+      Exit focus mode
+     </button>
+    </div>
+   </div>
+   <div class="primary-holder">
+    <main class="content" data-bi-name="content" dir="ltr" id="main" lang="en-us" role="main">
+     <!-- <content> -->
+     <h1>
+      Measure-Object
+     </h1>
+     <div class="metadata">
+      <dl class="attributeList">
+       <dt>
+        Module:
+       </dt>
+       <dd>
+        <a data-linktype="relative-path" href="./Microsoft.PowerShell.Utility.html">
+         Microsoft.PowerShell.Utility
+        </a>
+       </dd>
+      </dl>
+     </div>
+     <div class="summaryHolder">
+      <div class="summary">
+       Calculates the numeric properties of objects, and the characters, words, and lines in string objects, such as files of text.
+      </div>
+     </div>
+     <h2 class="hiddenAnchor" id="syntax">
+      Syntax
+     </h2>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Measure-Object
+       [-InputObject &lt;PSObject&gt;]
+       [[-Property] &lt;String[]&gt;]
+       [-Sum]
+       [-Average]
+       [-Maximum]
+       [-Minimum]
+       [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Measure-Object
+       [-InputObject &lt;PSObject&gt;]
+       [[-Property] &lt;String[]&gt;]
+       [-Line]
+       [-Word]
+       [-Character]
+       [-IgnoreWhiteSpace]
+       [&lt;CommonParameters&gt;]</code></pre>
+     <h2 id="description">
+      Description
+     </h2>
+     <p>
+      The
+      <strong>
+       Measure-Object
+      </strong>
+      cmdlet calculates the property values of certain types of object.
+      <strong>
+       Measure-Object
+      </strong>
+      performs three types of measurements, depending on the parameters in the command.
+     </p>
+     <p>
+      The
+      <strong>
+       Measure-Object
+      </strong>
+      cmdlet performs calculations on the property values of objects.
+It can count objects and calculate the minimum, maximum, sum, and average of the numeric values.
+For text objects, it can count and calculate the number of lines, words, and characters.
+     </p>
+     <h2 id="examples">
+      Examples
+     </h2>
+     <p>
+      <strong>
+       Example 1: Count the files and folders in a directory
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-ChildItem | Measure-Object</code></pre>
+     <p>
+      This command counts the files and folders in the current directory.
+     </p>
+     <p>
+      <strong>
+       Example 2: Measure the files in a directory
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-ChildItem | Measure-Object -Property length -Minimum -Maximum -Average</code></pre>
+     <p>
+      This command displays the minimum, maximum, and sum of the sizes of all files in the current directory, and the average size of a file in the directory.
+     </p>
+     <p>
+      <strong>
+       Example 3: Measure text in a text file
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-Content C:\test.txt | Measure-Object -Character -Line -Word</code></pre>
+     <p>
+      This command displays the number of characters, words, and lines in the Text.txt file.
+     </p>
+     <p>
+      <strong>
+       Example 4: Measure computer processes
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-Process | Measure-Object -Property workingset -Minimum -Maximum -Average</code></pre>
+     <p>
+      This command displays the minimum, maximum, and average sizes of the working sets of the processes on the computer.
+     </p>
+     <p>
+      <strong>
+       Example 5: Measure the contents of a CSV file
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Import-Csv d:\test\serviceyrs.csv | Measure-Object -Property years -Minimum -Maximum -Average</code></pre>
+     <p>
+      This command calculates the average years of service of the employees of a company.
+     </p>
+     <p>
+      The ServiceYrs.csv file is a CSV file that contains the employee number and years of service of each employee.
+The first row in the table is a header row of EmpNo, Years.
+     </p>
+     <p>
+      When you use
+      <strong>
+       Import-Csv
+      </strong>
+      to import the file, the result is a
+      <strong>
+       PSCustomObject
+      </strong>
+      with note properties of EmpNo and Years.
+You can use
+      <strong>
+       Measure-Object
+      </strong>
+      to calculate the values of these properties, just like any other property of an object.
+     </p>
+     <p>
+      <strong>
+       Example 6: Measure Boolean values
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-ChildItem | Measure-Object -Property psiscontainer -Max -Sum -Min -Average
+
+Count    : 126
+
+Average  : 0.0634920634920635
+
+Sum      : 8
+
+Maximum  : 1
+
+Minimum  : 0
+
+Property : PSIsContainer</code></pre>
+     <p>
+      This example demonstrates how the
+      <strong>
+       Measure-Object
+      </strong>
+      can measure Boolean values.
+In this case, it uses the PSIsContainer Boolean property to measure the incidence of folders (vs.
+files) in the current directory.
+     </p>
+     <h2 id="optional-parameters">
+      Optional Parameters
+     </h2>
+     <div class="parameterName stack">
+      -Average
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that the cmdlet displays the average value of the specified properties.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Character
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that the cmdlet counts the number of characters in the input object.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -IgnoreWhiteSpace
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that the cmdlet ignores white space in word counts and character counts.
+By default, white space is not ignored.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -InputObject
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the objects to be measured.
+Enter a variable that contains the objects, or type a command or expression that gets the objects.
+      </p>
+      <p>
+       When you use the
+       <em>
+        InputObject
+       </em>
+       parameter with
+       <strong>
+        Measure-Object
+       </strong>
+       , instead of piping command results to
+       <strong>
+        Measure-Object
+       </strong>
+       , the
+       <em>
+        InputObject
+       </em>
+       value-even if the value is a collection that is the result of a command, such as
+       <code>
+        -InputObject (Get-Process)
+       </code>
+       -is treated as a single object.
+Because
+       <em>
+        InputObject
+       </em>
+       cannot return individual properties from an array or collection of objects, it is recommended that if you use
+       <strong>
+        Measure-Object
+       </strong>
+       to measure a collection of objects for those objects that have specific values in defined properties, you use
+       <strong>
+        Measure-Object
+       </strong>
+       in the pipeline, as shown in the examples in this topic.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          PSObject
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByValue)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Line
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that the cmdlet counts the number of lines in the input object.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Maximum
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that the cmdlet displays the maximum value of the specified properties.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Minimum
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that the cmdlet displays the minimum value of the specified properties.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Property
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies one or more numeric properties to measure.
+The default is the
+       <strong>
+        Count
+       </strong>
+       property of the object.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         1
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Sum
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that the cmdlet displays the sum of the values of the specified properties.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Word
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that the cmdlet counts the number of words in the input object.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="inputs">
+      Inputs
+     </h2>
+     <p>
+      <strong>
+       System.Management.Automation.PSObject
+      </strong>
+     </p>
+     <p>
+      You can pipe objects to
+      <strong>
+       Measure-Object
+      </strong>
+      .
+     </p>
+     <h2 id="outputs">
+      Outputs
+     </h2>
+     <p>
+      <strong>
+       Microsoft.PowerShell.Commands.GenericMeasureInfo, Microsoft.PowerShell.Commands.TextMeasureInfo, Microsoft.PowerShell.Commands.GenericObjectMeasureInfo
+      </strong>
+     </p>
+     <p>
+      If you use the
+      <em>
+       Word
+      </em>
+      parameter,
+      <strong>
+       Measure-Object
+      </strong>
+      returns a
+      <strong>
+       TextMeasureInfo
+      </strong>
+      object.
+Otherwise, it returns a
+      <strong>
+       GenericMeasureInfo
+      </strong>
+      object.
+     </p>
+     <h2 id="related-links">
+      Related Links
+     </h2>
+     <ul>
+      <li>
+       <a data-linktype="relative-path" href="compare-object.html">
+        Compare-Object
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="group-object.html">
+        Group-Object
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="new-object.html">
+        New-Object
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="select-object.html">
+        Select-Object
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="sort-object.html">
+        Sort-Object
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="tee-object.html">
+        Tee-Object
+       </a>
+      </li>
+     </ul>
+     <!-- </content> -->
+    </main>
+    <div class="note alert feedback-system-change-alert">
+     <p>
+      Note
+     </p>
+     <p>
+      The feedback system for this content will be changing soon. Old comments will not be carried over. If content within a comment thread is important to you, please save a copy. For more information on the upcoming change,
+      <a href="https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs">
+       we invite you to read our blog post
+      </a>
+      .
+     </p>
+    </div>
+    <div data-bi-name="comments" id="comments-container" role="form">
+    </div>
+   </div>
+  </div>
+  <div class="openfeedback-container" id="openFeedbackContainer">
+  </div>
+  <div class="action-panel">
+  </div>
+ </body>
+</html>

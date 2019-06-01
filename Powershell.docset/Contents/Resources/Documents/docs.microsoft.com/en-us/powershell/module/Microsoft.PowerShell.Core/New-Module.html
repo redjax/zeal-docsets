@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html class="no-js hasSidebar hasPageActions hasBreadcrumb conceptual" data-authenticated="false" data-render="docs" dir="ltr" lang="en-us">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="New-Module (Microsoft.PowerShell.Core)" property="og:title"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" property="og:image"/>
+  <meta content="summary" name="twitter:card"/>
+  <meta content="@docsmsft" name="twitter:site"/>
+  <meta content="New-Module (Microsoft.PowerShell.Core)" name="twitter:title"/>
+  <meta content="The New-Module cmdlet creates a dynamic module from a script block. The members of the dynamic module, such as functions and variables, are immediately available in the session and remain available uâ¦" name="twitter:description"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" name="twitter:image"/>
+  <meta content="Microsoft Logo" name="twitter:image:alt"/>
+  <meta content="The New-Module cmdlet creates a dynamic module from a script block. The members of the dynamic module, such as functions and variables, are immediately available in the session and remain available uâ¦" name="description"/>
+  <meta content="Docs" name="search.ms_sitename"/>
+  <meta content="PowerShell_PowerShell-docs_reference" name="search.ms_docsetname"/>
+  <meta content="0" name="version"/>
+  <meta content="en-us" name="locale"/>
+  <meta content="Docs" name="site_name"/>
+  <meta content="PowerShell" name="search.ms_product"/>
+  <meta content="PowerShell.PowerShell_PowerShell-docs_reference" name="depot_name"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/6a6d85dfc6556f4605f45163661aeed4e68cf400/reference/6/Microsoft.PowerShell.Core/New-Module.md" name="ref_skeleton_gitcommit"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/live/reference/6/Microsoft.PowerShell.Core/New-Module.md" name="original_ref_skeleton_git_url"/>
+  <meta content="2018-03-30 03:35 PM" name="updated_at"/>
+  <meta content="c4bfae49-fe75-67e2-b189-f5cfe6cf8659" name="document_id"/>
+  <meta content="879356b5-aeef-c87a-cc29-c8d8cc717db9" name="document_version_independent_id"/>
+  <meta content="powershell" name="page_type"/>
+  <meta content="command" name="page_kind"/>
+  <meta content="06/09/2017" name="ms.date"/>
+  <meta content="2.0.0" name="schema"/>
+  <meta content="powershell,cmdlet" name="keywords"/>
+  <meta content="http://go.microsoft.com/fwlink/?LinkId=821495" name="online_version"/>
+  <meta content="System.Management.Automation.dll-Help.xml" name="external_help_file"/>
+  <meta content="powershell" name="ms.devlang"/>
+  <meta content="INDEX, FOLLOW" name="ROBOTS"/>
+  <meta content="sdwheeler" name="author"/>
+  <meta content="sewhee" name="ms.author"/>
+  <meta content="carmonm" name="manager"/>
+  <meta content="/powershell/bread-pscore/toc.yml?view=powershell-6" name="breadcrumb_path"/>
+  <meta content="powershell" name="apiPlatform"/>
+  <meta content="reference" name="ms.topic"/>
+  <meta content="windows, macos, linux" name="ms.tgt_pltfr"/>
+  <meta content="powershell-scripting" name="ms.technology"/>
+  <meta content="powershell" name="ms.prod"/>
+  <meta content="MSDocsHeader-Powershell" name="uhfHeaderId"/>
+  <meta content="../psdocs/toc.json?view=powershell-6" name="toc_rel"/>
+  <link href="https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/new-module" rel="canonical"/>
+  <title>
+   New-Module
+  </title>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/60aac04b.site.css" rel="stylesheet"/>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/fdb8a38a.conceptual.css" rel="stylesheet"/>
+ </head>
+ <body dir="ltr" lang="en-us">
+  <div class="header-holder">
+   <div data-bi-name="header" id="headerAreaHolder">
+    <div id="uhf-placeholder">
+    </div>
+   </div>
+   <div class="disclaimer-holder" id="disclaimer-holder">
+   </div>
+  </div>
+  <div class="container mainContainer" data-bi-name="body">
+   <div class="content-header" data-bi-name="content-header">
+    <div class="content-header-controls">
+     <button class="contents-button button-border" data-bi-name="contents-expand" type="button">
+      <span class="docon docon-menu">
+      </span>
+      Contents
+     </button>
+    </div>
+    <div class="content-header-controls">
+     <button class="ap-collapse-behavior ap-expanded button-border" data-bi-name="ap-collapse" type="button">
+      <span class="docon docon-exit-mode">
+      </span>
+      Exit focus mode
+     </button>
+    </div>
+   </div>
+   <div class="primary-holder">
+    <main class="content" data-bi-name="content" dir="ltr" id="main" lang="en-us" role="main">
+     <!-- <content> -->
+     <h1>
+      New-Module
+     </h1>
+     <div class="metadata">
+      <dl class="attributeList">
+       <dt>
+        Module:
+       </dt>
+       <dd>
+        <a data-linktype="relative-path" href="./Microsoft.PowerShell.Core.html">
+         Microsoft.PowerShell.Core
+        </a>
+       </dd>
+      </dl>
+     </div>
+     <div class="summaryHolder">
+      <div class="summary">
+       Creates a new dynamic module that exists only in memory.
+      </div>
+     </div>
+     <h2 class="hiddenAnchor" id="syntax">
+      Syntax
+     </h2>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">New-Module
+   [-ScriptBlock] &lt;ScriptBlock&gt;
+   [-Function &lt;String[]&gt;]
+   [-Cmdlet &lt;String[]&gt;]
+   [-ReturnResult]
+   [-AsCustomObject]
+   [-ArgumentList &lt;Object[]&gt;]
+   [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">New-Module
+   [-Name] &lt;String&gt;
+   [-ScriptBlock] &lt;ScriptBlock&gt;
+   [-Function &lt;String[]&gt;]
+   [-Cmdlet &lt;String[]&gt;]
+   [-ReturnResult]
+   [-AsCustomObject]
+   [-ArgumentList &lt;Object[]&gt;]
+   [&lt;CommonParameters&gt;]</code></pre>
+     <h2 id="description">
+      Description
+     </h2>
+     <p>
+      The
+      <strong>
+       New-Module
+      </strong>
+      cmdlet creates a dynamic module from a script block.
+The members of the dynamic module, such as functions and variables, are immediately available in the session and remain available until you close the session.
+     </p>
+     <p>
+      Like static modules, by default, the cmdlets and functions in a dynamic module are exported and the variables and aliases are not.
+However, you can use the Export-ModuleMember cmdlet and the parameters of
+      <strong>
+       New-Module
+      </strong>
+      to override the defaults.
+     </p>
+     <p>
+      You can also use the
+      <em>
+       AsCustomObject
+      </em>
+      parameter of
+      <strong>
+       New-Module
+      </strong>
+      to return the dynamic module as a custom object.
+The members of the modules, such as functions, are implemented as script methods of the custom object instead of being imported into the session.
+     </p>
+     <p>
+      Dynamic modules exist only in memory, not on disk.
+Like all modules, the members of dynamic modules run in a private module scope that is a child of the global scope.
+Get-Module cannot get a dynamic module, but Get-Command can get the exported members.
+     </p>
+     <p>
+      To make a dynamic module available to
+      <strong>
+       Get-Module
+      </strong>
+      , pipe a
+      <strong>
+       New-Module
+      </strong>
+      command to Import-Module, or pipe the module object that
+      <strong>
+       New-Module
+      </strong>
+      returns to
+      <strong>
+       Import-Module
+      </strong>
+      .
+This action adds the dynamic module to the
+      <strong>
+       Get-Module
+      </strong>
+      list, but it does not save the module to disk or make it persistent.
+     </p>
+     <h2 id="examples">
+      Examples
+     </h2>
+     <p>
+      <strong>
+       Example 1: Create a dynamic module
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; New-Module -ScriptBlock {function Hello {"Hello!"}}
+
+
+
+Name              : __DynamicModule_2ceb1d0a-990f-45e4-9fe4-89f0f6ead0e5
+
+Path              : 2ceb1d0a-990f-45e4-9fe4-89f0f6ead0e5
+
+Description       :
+
+Guid              : 00000000-0000-0000-0000-000000000000
+
+Version           : 0.0
+
+ModuleBase        :
+
+ModuleType        : Script
+
+PrivateData       :
+
+AccessMode        : ReadWrite
+
+ExportedAliases   : {}
+
+ExportedCmdlets   : {}
+
+ExportedFunctions : {[Hello, Hello]}
+
+ExportedVariables : {}
+
+NestedModules     : {}</code></pre>
+     <p>
+      This command creates a new dynamic module with a function called Hello.
+The command returns a module object that represents the new dynamic module.
+     </p>
+     <p>
+      <strong>
+       Example 2: Working with dynamic modules and Get-Module and Get-Command
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; new-module -scriptblock {function Hello {"Hello!"}}
+
+
+
+Name              : __DynamicModule_2ceb1d0a-990f-45e4-9fe4-89f0f6ead0e5
+
+Path              : 2ceb1d0a-990f-45e4-9fe4-89f0f6ead0e5
+
+Description       :
+
+Guid              : 00000000-0000-0000-0000-000000000000
+
+Version           : 0.0
+
+ModuleBase        :
+
+ModuleType        : Script
+
+PrivateData       :
+
+AccessMode        : ReadWrite
+
+ExportedAliases   : {}
+
+ExportedCmdlets   : {}
+
+ExportedFunctions : {[Hello, Hello]}
+
+ExportedVariables : {}
+
+NestedModules     : {}
+
+PS C:\&gt; Get-Module
+
+PS C:\&gt;
+
+PS C:\&gt; Get-Command Hello
+
+
+
+CommandType     Name   Definition
+
+-----------     ----   ----------
+
+Function        Hello  "Hello!"</code></pre>
+     <p>
+      This example demonstrates that dynamic modules are not returned by the
+      <strong>
+       Get-Module
+      </strong>
+      cmdlet.
+The members that they export are returned by the
+      <strong>
+       Get-Command
+      </strong>
+      cmdlet.
+     </p>
+     <p>
+      <strong>
+       Example 3: Export a variable into the current session
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; New-Module -ScriptBlock {$SayHelloHelp="Type 'SayHello', a space, and a name."; function SayHello ($name) { "Hello, $name" }; Export-ModuleMember -function SayHello -Variable SayHelloHelp}
+
+
+
+PS C:\&gt; $SayHelloHelp
+
+
+
+Type 'SayHello', a space, and a name.
+
+
+
+PS C:\&gt; SayHello Jeffrey
+
+Hello, Jeffrey</code></pre>
+     <p>
+      This command uses the
+      <strong>
+       Export-ModuleMember
+      </strong>
+      cmdlet to export a variable into the current session.
+Without the
+      <strong>
+       Export-ModuleMember
+      </strong>
+      command, only the function is exported.
+     </p>
+     <p>
+      The output shows that both the variable and the function were exported into the session.
+     </p>
+     <p>
+      <strong>
+       Example 4: Make a dynamic module available to Get-Module
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; New-Module -ScriptBlock {function Hello {"Hello!"}} -name GreetingModule | Import-Module
+
+PS C:\&gt; Get-Module
+
+
+
+Name              : GreetingModule
+
+Path              : d54dfdac-4531-4db2-9dec-0b4b9c57a1e5
+
+Description       :
+
+Guid              : 00000000-0000-0000-0000-000000000000
+
+Version           : 0.0
+
+ModuleBase        :
+
+ModuleType        : Script
+
+PrivateData       :
+
+AccessMode        : ReadWrite
+
+ExportedAliases   : {}
+
+ExportedCmdlets   : {}
+
+ExportedFunctions : {[Hello, Hello]}
+
+ExportedVariables : {}
+
+NestedModules     : {}
+
+
+
+PS C:\&gt; Get-Command hello
+
+
+
+CommandType     Name                                                               Definition
+
+-----------     ----                                                               ----------
+
+Function        Hello                                                              "Hello!"</code></pre>
+     <p>
+      This command demonstrates that you can make a dynamic module available to
+      <strong>
+       Get-Module
+      </strong>
+      by piping the dynamic module to
+      <strong>
+       Import-Module
+      </strong>
+      .
+     </p>
+     <p>
+      The first command uses a pipeline operator (|) to send the module object that
+      <strong>
+       New-Module
+      </strong>
+      generates to the
+      <strong>
+       Import-Module
+      </strong>
+      cmdlet.
+The command uses the
+      <em>
+       Name
+      </em>
+      parameter of
+      <strong>
+       New-Module
+      </strong>
+      to assign a friendly name to the module.
+Because
+      <strong>
+       Import-Module
+      </strong>
+      does not return any objects by default, there is no output from this command.
+     </p>
+     <p>
+      The second command uses
+      <strong>
+       Get-Module
+      </strong>
+      to get the modules in the session.
+The result shows that
+      <strong>
+       Get-Module
+      </strong>
+      can get the new dynamic module.
+     </p>
+     <p>
+      The third command uses the
+      <strong>
+       Get-Command
+      </strong>
+      cmdlet to get the Hello function that the dynamic module exports.
+     </p>
+     <p>
+      <strong>
+       Example 5: Generate a custom object that has exported functions
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; $m = New-Module -ScriptBlock {function Hello ($name) {"Hello, $name"}; functionn Goodbye ($name) {"Goodbye, $name"}} -AsCustomObject
+
+PS C:\&gt; $m
+
+PS C:\&gt; $m | Get-Member
+
+TypeName: System.Management.Automation.PSCustomObject
+
+
+
+Name        MemberType   Definition
+
+----        ----------   ----------
+
+Equals      Method       bool Equals(System.Object obj)
+
+GetHashCode Method       int GetHashCode()
+
+GetType     Method       type GetType()
+
+ToString    Method       string ToString()
+
+Goodbye     ScriptMethod System.Object Goodbye();
+
+Hello       ScriptMethod System.Object Hello();
+
+
+
+PS C:\ps-test&gt; $m.goodbye("Jane")
+
+Goodbye, Jane
+
+
+
+PS C:\ps-test&gt; $m.hello("Manoj")
+
+Hello, Manoj</code></pre>
+     <p>
+      This example shows how to use the
+      <em>
+       AsCustomObject
+      </em>
+      parameter of
+      <strong>
+       New-Module
+      </strong>
+      to generate a custom object that has script methods that represent the exported functions.
+     </p>
+     <p>
+      The first command uses the
+      <strong>
+       New-Module
+      </strong>
+      cmdlet to generate a dynamic module with two functions, Hello and Goodbye.
+The command uses the
+      <em>
+       AsCustomObject
+      </em>
+      parameter to generate a custom object instead of the PSModuleInfo object that
+      <strong>
+       New-Module
+      </strong>
+      generates by default.
+The command saves the custom object in the $m variable.
+     </p>
+     <p>
+      The second command attempts to display the value of the $m variable.
+No content appears.
+     </p>
+     <p>
+      The third command uses a pipeline operator to send the custom object to the
+      <strong>
+       Get-Member
+      </strong>
+      cmdlet, which displays the properties and methods of the custom object.
+The output shows that the object has script methods that represent the Hello and Goodbye functions.
+     </p>
+     <p>
+      The fourth and fifth commands use the script method format to call the Hello and Goodbye functions.
+     </p>
+     <p>
+      <strong>
+       Example 6: Get the results of the script block
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; New-Module -ScriptBlock {function SayHello {"Hello, World!"}; SayHello} -ReturnResult
+
+Hello, World!</code></pre>
+     <p>
+      This command uses the
+      <em>
+       ReturnResult
+      </em>
+      parameter to request the results of running the script block instead of requesting a module object.
+     </p>
+     <p>
+      The script block in the new module defines the SayHello function and then calls the function.
+     </p>
+     <h2 id="required-parameters">
+      Required Parameters
+     </h2>
+     <div class="parameterName stack">
+      -Name
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a name for the new module.
+You can also pipe a module name to New-Module.
+      </p>
+      <p>
+       The default value is an autogenerated name that starts with
+       <code>
+        __DynamicModule_
+       </code>
+       and is followed by a GUID that specifies the path of the dynamic module.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         0
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByValue)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -ScriptBlock
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the contents of the dynamic module.
+Enclose the contents in braces ( { } ) to create a script block.
+This parameter is required.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          ScriptBlock
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         0
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="optional-parameters">
+      Optional Parameters
+     </h2>
+     <div class="parameterName stack">
+      -ArgumentList
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies an array of arguments which are parameter values that are passed to the script block.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Object[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         Args
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -AsCustomObject
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that this cmdlet returns a custom object that represents the dynamic module.
+The module members are implemented as script methods of the custom object, but they are not imported into the session.
+You can save the custom object in a variable and use dot notation to invoke the members.
+      </p>
+      <p>
+       If the module has multiple members with the same name, such as a function and a variable that are both named A, only one member with each name can be accessed from the custom object.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Cmdlet
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies an array of cmdlets that this cmdlet exports from the module into the current session.
+Enter a comma-separated list of cmdlets.
+Wildcard characters are permitted.
+By default, all cmdlets in the module are exported.
+      </p>
+      <p>
+       You cannot define cmdlets in a script block, but a dynamic module can include cmdlets if it imports the cmdlets from a binary module.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Function
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies an array of functions that this cmdlet exports from the module into the current session.
+Enter a comma-separated list of functions.
+Wildcard characters are permitted.
+By default, all functions defined in a module are exported.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -ReturnResult
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that this cmdlet runs the script block and returns the script block results instead of returning a module object.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="inputs">
+      Inputs
+     </h2>
+     <p>
+      <strong>
+       System.String
+      </strong>
+     </p>
+     <p>
+      You can pipe a module name to this cmdlet.
+     </p>
+     <h2 id="outputs">
+      Outputs
+     </h2>
+     <p>
+      <strong>
+       System.Management.Automation.PSModuleInfo, System.Management.Automation.PSCustomObject, or None
+      </strong>
+     </p>
+     <p>
+      This cmdlet generates a
+      <strong>
+       PSModuleInfo
+      </strong>
+      object, by default.
+If you use the
+      <em>
+       AsCustomObject
+      </em>
+      parameter, it generates a
+      <strong>
+       PSCustomObject
+      </strong>
+      object.
+If you use the
+      <em>
+       ReturnResult
+      </em>
+      parameter, it returns the result of evaluating the script block in the dynamic module.
+     </p>
+     <h2 id="notes">
+      Notes
+     </h2>
+     <ul>
+      <li>
+       You can also refer to
+       <strong>
+        New-Module
+       </strong>
+       by its alias,
+       <strong>
+        nmo
+       </strong>
+       . For more information, see about_Aliases.
+      </li>
+     </ul>
+     <p>
+      *
+     </p>
+     <h2 id="related-links">
+      Related Links
+     </h2>
+     <ul>
+      <li>
+       <a data-linktype="relative-path" href="export-modulemember.html">
+        Export-ModuleMember
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="get-module.html">
+        Get-Module
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="import-module.html">
+        Import-Module
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="remove-module.html">
+        Remove-Module
+       </a>
+      </li>
+     </ul>
+     <!-- </content> -->
+    </main>
+    <div class="note alert feedback-system-change-alert">
+     <p>
+      Note
+     </p>
+     <p>
+      The feedback system for this content will be changing soon. Old comments will not be carried over. If content within a comment thread is important to you, please save a copy. For more information on the upcoming change,
+      <a href="https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs">
+       we invite you to read our blog post
+      </a>
+      .
+     </p>
+    </div>
+    <div data-bi-name="comments" id="comments-container" role="form">
+    </div>
+   </div>
+  </div>
+  <div class="openfeedback-container" id="openFeedbackContainer">
+  </div>
+  <div class="action-panel">
+  </div>
+ </body>
+</html>

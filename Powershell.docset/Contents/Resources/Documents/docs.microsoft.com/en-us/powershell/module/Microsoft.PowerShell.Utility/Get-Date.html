@@ -1,0 +1,1894 @@
+<!DOCTYPE html>
+<html class="no-js hasSidebar hasPageActions hasBreadcrumb conceptual" data-authenticated="false" data-render="docs" dir="ltr" lang="en-us">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Get-Date (Microsoft.PowerShell.Utility)" property="og:title"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" property="og:image"/>
+  <meta content="summary" name="twitter:card"/>
+  <meta content="@docsmsft" name="twitter:site"/>
+  <meta content="Get-Date (Microsoft.PowerShell.Utility)" name="twitter:title"/>
+  <meta content="The Get-Date cmdlet gets a DateTime object that represents the current date or a date that you specify. It can format the date and time in several Windows and UNIX formats. You can use Get-Date to geâ¦" name="twitter:description"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" name="twitter:image"/>
+  <meta content="Microsoft Logo" name="twitter:image:alt"/>
+  <meta content="The Get-Date cmdlet gets a DateTime object that represents the current date or a date that you specify. It can format the date and time in several Windows and UNIX formats. You can use Get-Date to geâ¦" name="description"/>
+  <meta content="Docs" name="search.ms_sitename"/>
+  <meta content="PowerShell_PowerShell-docs_reference" name="search.ms_docsetname"/>
+  <meta content="0" name="version"/>
+  <meta content="en-us" name="locale"/>
+  <meta content="Docs" name="site_name"/>
+  <meta content="PowerShell" name="search.ms_product"/>
+  <meta content="PowerShell.PowerShell_PowerShell-docs_reference" name="depot_name"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/57cd861e6079bc530a60692b1bbf35cfef1d3f35/reference/6/Microsoft.PowerShell.Utility/Get-Date.md" name="ref_skeleton_gitcommit"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/live/reference/6/Microsoft.PowerShell.Utility/Get-Date.md" name="original_ref_skeleton_git_url"/>
+  <meta content="2018-03-30 03:35 PM" name="updated_at"/>
+  <meta content="3c5a5ea7-858f-5b1e-2c2f-24311876d7ac" name="document_id"/>
+  <meta content="09bab64d-b131-3961-a8c2-10ecf7f3d96b" name="document_version_independent_id"/>
+  <meta content="powershell" name="page_type"/>
+  <meta content="command" name="page_kind"/>
+  <meta content="06/09/2017" name="ms.date"/>
+  <meta content="2.0.0" name="schema"/>
+  <meta content="powershell,cmdlet" name="keywords"/>
+  <meta content="http://go.microsoft.com/fwlink/?LinkId=821781" name="online_version"/>
+  <meta content="Microsoft.PowerShell.Commands.Utility.dll-Help.xml" name="external_help_file"/>
+  <meta content="powershell" name="ms.devlang"/>
+  <meta content="INDEX, FOLLOW" name="ROBOTS"/>
+  <meta content="sdwheeler" name="author"/>
+  <meta content="sewhee" name="ms.author"/>
+  <meta content="carmonm" name="manager"/>
+  <meta content="/powershell/bread-pscore/toc.yml?view=powershell-6" name="breadcrumb_path"/>
+  <meta content="powershell" name="apiPlatform"/>
+  <meta content="reference" name="ms.topic"/>
+  <meta content="windows, macos, linux" name="ms.tgt_pltfr"/>
+  <meta content="powershell-scripting" name="ms.technology"/>
+  <meta content="powershell" name="ms.prod"/>
+  <meta content="MSDocsHeader-Powershell" name="uhfHeaderId"/>
+  <meta content="../psdocs/toc.json?view=powershell-6" name="toc_rel"/>
+  <link href="https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/get-date" rel="canonical"/>
+  <title>
+   Get-Date
+  </title>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/60aac04b.site.css" rel="stylesheet"/>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/fdb8a38a.conceptual.css" rel="stylesheet"/>
+ </head>
+ <body dir="ltr" lang="en-us">
+  <div class="header-holder">
+   <div data-bi-name="header" id="headerAreaHolder">
+    <div id="uhf-placeholder">
+    </div>
+   </div>
+   <div class="disclaimer-holder" id="disclaimer-holder">
+   </div>
+  </div>
+  <div class="container mainContainer" data-bi-name="body">
+   <div class="content-header" data-bi-name="content-header">
+    <div class="content-header-controls">
+     <button class="contents-button button-border" data-bi-name="contents-expand" type="button">
+      <span class="docon docon-menu">
+      </span>
+      Contents
+     </button>
+    </div>
+    <div class="content-header-controls">
+     <button class="ap-collapse-behavior ap-expanded button-border" data-bi-name="ap-collapse" type="button">
+      <span class="docon docon-exit-mode">
+      </span>
+      Exit focus mode
+     </button>
+    </div>
+   </div>
+   <div class="primary-holder">
+    <main class="content" data-bi-name="content" dir="ltr" id="main" lang="en-us" role="main">
+     <!-- <content> -->
+     <h1>
+      Get-Date
+     </h1>
+     <div class="metadata">
+      <dl class="attributeList">
+       <dt>
+        Module:
+       </dt>
+       <dd>
+        <a data-linktype="relative-path" href="./Microsoft.PowerShell.Utility.html">
+         Microsoft.PowerShell.Utility
+        </a>
+       </dd>
+      </dl>
+     </div>
+     <div class="summaryHolder">
+      <div class="summary">
+       Gets the current date and time.
+      </div>
+     </div>
+     <h2 class="hiddenAnchor" id="syntax">
+      Syntax
+     </h2>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Get-Date
+   [[-Date] &lt;DateTime&gt;]
+   [-Year &lt;Int32&gt;]
+   [-Month &lt;Int32&gt;]
+   [-Day &lt;Int32&gt;]
+   [-Hour &lt;Int32&gt;]
+   [-Minute &lt;Int32&gt;]
+   [-Second &lt;Int32&gt;]
+   [-Millisecond &lt;Int32&gt;]
+   [-DisplayHint &lt;DisplayHintType&gt;]
+   [-Format &lt;String&gt;]
+   [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Get-Date
+   [[-Date] &lt;DateTime&gt;]
+   [-Year &lt;Int32&gt;]
+   [-Month &lt;Int32&gt;]
+   [-Day &lt;Int32&gt;]
+   [-Hour &lt;Int32&gt;]
+   [-Minute &lt;Int32&gt;]
+   [-Second &lt;Int32&gt;]
+   [-Millisecond &lt;Int32&gt;]
+   [-DisplayHint &lt;DisplayHintType&gt;]
+   [-UFormat &lt;String&gt;]
+   [&lt;CommonParameters&gt;]</code></pre>
+     <h2 id="description">
+      Description
+     </h2>
+     <p>
+      The
+      <code>
+       Get-Date
+      </code>
+      cmdlet gets a
+      <strong>
+       DateTime
+      </strong>
+      object that represents the current date or a date that you specify.
+It can format the date and time in several Windows and UNIX formats.
+You can use
+      <code>
+       Get-Date
+      </code>
+      to generate a date or time character string, and then send the string to other cmdlets or programs.
+     </p>
+     <h2 id="examples">
+      Examples
+     </h2>
+     <p>
+      <strong>
+       Example 1
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">Get-Date -DisplayHint Date
+
+
+
+Tuesday, June 13, 2006</code></pre>
+     <p>
+      This command gets a
+      <strong>
+       DateTime
+      </strong>
+      object, but it displays only the date.
+It uses the
+      <code>
+       -DisplayHint
+      </code>
+      parameter to indicate that only the date is to be displayed.
+     </p>
+     <p>
+      <strong>
+       Example 2
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">Get-Date -Format g
+
+
+
+6/13/2006 12:43 PM</code></pre>
+     <p>
+      This command gets the current date and time and formats it in short-date and short-time format.
+It uses the .NET Framework "
+      <code>
+       g
+      </code>
+      " format specifier (General [short date and short time]) to specify the format.
+     </p>
+     <p>
+      <strong>
+       Example 3
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">Get-Date -UFormat "%Y / %m / %d / %A / %Z"
+
+
+
+2006 / 06 / 13 / Tuesday / -07</code></pre>
+     <p>
+      This command gets the current date and time and formats it as specified by the command.
+In this case, the format includes the full year (
+      <code>
+       %Y
+      </code>
+      ), the two-digit numeric month (
+      <code>
+       %m
+      </code>
+      ), the date (
+      <code>
+       %d
+      </code>
+      ), the full day of the week (
+      <code>
+       %A
+      </code>
+      ), and the offset from UTC ("Zulu").
+     </p>
+     <p>
+      <strong>
+       Example 4
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">(Get-Date -Year 2000 -Month 12 -Day 31).DayOfYear
+
+
+
+366</code></pre>
+     <p>
+      This command displays the day of the year for the current date.
+For example, December 31 is the 365th day of 2006, but it is the 366th day of 2000.
+     </p>
+     <p>
+      <strong>
+       Example 5
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">$a = Get-Date
+
+$a.IsDaylightSavingTime()
+
+
+
+True</code></pre>
+     <p>
+      These commands tell you whether the current date and time are adjusted for daylight savings time in the current locale.
+     </p>
+     <p>
+      The first command creates a variable named $a and then assigns the object retrieved by
+      <code>
+       Get-Date
+      </code>
+      to the $a variable.
+Then, it uses the
+      <strong>
+       IsDaylightSavingTime
+      </strong>
+      method on the object in
+      <code>
+       $a
+      </code>
+      .
+     </p>
+     <p>
+      To see the properties and methods of the
+      <strong>
+       DateTime
+      </strong>
+      object, type:
+      <code>
+       Get-Date | Get-Member
+      </code>
+     </p>
+     <p>
+      <strong>
+       Example 6
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">$a = Get-Date
+
+$a.ToUniversalTime()
+
+
+
+Tuesday, June 13, 2006 8:09:19 PM</code></pre>
+     <p>
+      These commands convert the current date and time to UTC time.
+     </p>
+     <p>
+      The first command creates a variable named $a and then assigns the object retrieved by
+      <code>
+       Get-Date
+      </code>
+      to the $a variable.
+Then, it uses the
+      <strong>
+       ToUniversalTime
+      </strong>
+      method on the object in $a.
+     </p>
+     <p>
+      <strong>
+       Example 7
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">$a = Get-WmiObject Win32_Bios -Computer Server01
+
+$a | Format-List -Property Name, @{Label="BIOS Age";Expression={(Get-Date) - $_.ConvertToDateTime($_.ReleaseDate)}}
+
+
+
+Name     : Default System BIOS
+
+BIOS Age : 1345.17:31:07.1091047</code></pre>
+     <p>
+      Windows Management Instrumentation (WMI) uses a different date-time object than the .NET Framework date-time object that
+      <code>
+       Get-Date
+      </code>
+      returns.
+To use date-time information from WMI in a command with date-time information from
+      <code>
+       Get-Date
+      </code>
+      , you have to use the
+      <strong>
+       ConvertToDateTime
+      </strong>
+      method to convert WMI
+      <strong>
+       CIM_DATETIME
+      </strong>
+      objects to .NET Framework
+      <strong>
+       DateTime
+      </strong>
+      objects.
+     </p>
+     <p>
+      The commands in this example display the name and age of the BIOS on a remote computer, Server01.
+     </p>
+     <p>
+      The first command uses the
+      <code>
+       Get-WmiObject
+      </code>
+      cmdlet to get an instance of the
+      <strong>
+       Win32_BIOS
+      </strong>
+      class on Server01 and then stores it in the
+      <code>
+       $a
+      </code>
+      variable.
+     </p>
+     <p>
+      The second command uses the pipeline operator (
+      <code>
+       |
+      </code>
+      ) to send the WMI object stored in $a to the Format-List cmdlet.
+The
+      <code>
+       -Property
+      </code>
+      parameter of
+      <code>
+       Format-List
+      </code>
+      specifies two properties to display in the list, "Name" and "BIOS Age".
+The "BIOS Age" property is specified in a hash table.
+The table includes the
+      <strong>
+       Label
+      </strong>
+      key, which specifies the name of the property, and the
+      <strong>
+       Expression
+      </strong>
+      key, which contains the expression that calculates the BIOS age.
+The expression uses the
+      <strong>
+       ConvertToDateTime
+      </strong>
+      method to convert each instance of ReleaseDate to a .NET Framework DateTime object.
+Then, the value is subtracted from the value of the
+      <code>
+       Get-Date
+      </code>
+      cmdlet, which, without parameters, gets the current date.
+     </p>
+     <p>
+      The backtick character (
+      <code>
+       `
+      </code>
+      ) is the line continuation character in Windows PowerShell.
+     </p>
+     <p>
+      <strong>
+       Example 8
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">Get-Date
+
+
+
+Tuesday, June 13, 2006 12:43:42 PM</code></pre>
+     <p>
+      This command gets a
+      <strong>
+       DateTime
+      </strong>
+      object and displays the current date and time in the long date and long time formats for the system locale, as though you typed "
+      <code>
+       Get-Date -Format F
+      </code>
+      ".
+     </p>
+     <p>
+      <strong>
+       Example 9
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">Get-Date
+
+
+
+Tuesday, September 26, 2006 11:25:31 AM
+
+
+
+(Get-Date).ToString()
+
+
+
+9/26/2006 11:25:31 AM
+
+
+
+Get-Date | Add-Content Test.txt
+
+
+
+# Adds 9/26/2006 11:25:31 AM
+
+
+
+Get-Date -Format F | Add-Content Test.txt
+
+
+
+# Adds Tuesday, September 26, 2006 11:25:31 AM</code></pre>
+     <p>
+      These commands demonstrate how to use
+      <code>
+       Get-Date
+      </code>
+      with
+      <code>
+       Add-Content
+      </code>
+      and other cmdlets that convert the
+      <strong>
+       DateTime
+      </strong>
+      object that
+      <code>
+       Get-Date
+      </code>
+      generates to a string.
+     </p>
+     <p>
+      The first command shows that the default display from a "
+      <code>
+       Get-Date
+      </code>
+      " command is in long-date and long-time format.
+     </p>
+     <p>
+      The second command shows that the default display from the
+      <code>
+       ToString()
+      </code>
+      method of the
+      <strong>
+       DateTime
+      </strong>
+      object is in short-date and short-time format.
+     </p>
+     <p>
+      The third command uses a pipeline operator to send the
+      <strong>
+       DateTime
+      </strong>
+      object to the
+      <code>
+       Add-Content
+      </code>
+      cmdlet, which adds the content to the Test.txt file.
+Because
+      <code>
+       Add-Content
+      </code>
+      uses the ToString() method of the
+      <strong>
+       DateTime
+      </strong>
+      object, the date that is added is in short-date and short-time format.
+     </p>
+     <p>
+      The fourth command uses the
+      <code>
+       -Format
+      </code>
+      parameter of
+      <code>
+       Get-Date
+      </code>
+      to specify the format.
+When you use the
+      <code>
+       -Format
+      </code>
+      or
+      <code>
+       -UFormat
+      </code>
+      parameters,
+      <code>
+       Get-Date
+      </code>
+      generates a string, not a
+      <strong>
+       DateTime
+      </strong>
+      object.
+Then, when you send the string to
+      <code>
+       Add-Content
+      </code>
+      , it adds the string to the Test.txt file without changing it.
+     </p>
+     <p>
+      <strong>
+       Example 10
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">Get-Date -Format o
+
+
+
+2012-03-08T10:55:55.6083839-08:00
+
+
+
+$timestamp = Get-Date -Format o | foreach {$_ -replace ":", "."}
+
+
+
+mkdir C:\ps-test\$timestamp
+
+
+
+Directory: C:\ps-test
+
+
+
+Mode                LastWriteTime     Length Name
+
+----                -------------     ------ ----
+
+d----          3/8/2012  11:01 AM            2012-03-08T11.00.24.4192623-08.00</code></pre>
+     <p>
+      The first command uses the
+      <code>
+       -Format
+      </code>
+      parameter with a value of "
+      <code>
+       o
+      </code>
+      " to generate a timestamp string.
+     </p>
+     <p>
+      The second command prepares the timestamp to be used in a directory name. The command replaces the colon characters (
+      <code>
+       :
+      </code>
+      ) in the string with dots (
+      <code>
+       .
+      </code>
+      ) and saves the result in the
+      <code>
+       $timestamp
+      </code>
+      variable. Replacing the colons prevents the characters that precede each colon from being interpreted as a drive name.
+     </p>
+     <p>
+      The third command uses the Mkdir function to create a directory with the name in the
+      <code>
+       $timestamp
+      </code>
+      variable.
+This example shows how to use the
+      <code>
+       Get-Date
+      </code>
+      cmdlet to create a timestamp and how to use the timestamp in or as part of a directory name.
+     </p>
+     <h2 id="optional-parameters">
+      Optional Parameters
+     </h2>
+     <div class="parameterName stack">
+      -Date
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a date and time.
+By default,
+       <code>
+        Get-Date
+       </code>
+       gets the current system date and time.
+      </p>
+      <p>
+       Type the date in a format that is standard for the system locale, such as dd-MM-yyyy (German [Germany]) or MM/dd/yyyy (English [United States]).
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          DateTime
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         LastWriteTime
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         0
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         Current date
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName, ByValue)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Day
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the day of the month that is displayed.
+Enter a value from 1 to 31.
+The default is the current day.
+      </p>
+      <p>
+       If you specify a value that is greater than the number of days in the month, Windows PowerShell adds the number of days to the month and displays the result.
+For example, "
+       <code>
+        Get-Date -Month 2 -Day 31
+       </code>
+       " displays "March 3", not "February 31".
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Int32
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -DisplayHint
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Determines which elements of the date and time are displayed.
+      </p>
+      <p>
+       Valid values are:
+      </p>
+      <ul>
+       <li>
+        <strong>
+         Date
+        </strong>
+        : displays only the date
+       </li>
+       <li>
+        <strong>
+         Time
+        </strong>
+        : displays only the time
+       </li>
+       <li>
+        <strong>
+         DateTime
+        </strong>
+        : displays the date and time
+       </li>
+      </ul>
+      <p>
+       <strong>
+        DateTime
+       </strong>
+       is the default.
+This parameter does not affect the
+       <strong>
+        DateTime
+       </strong>
+       object that
+       <code>
+        Get-Date
+       </code>
+       gets.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          DisplayHintType
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Parameter Sets:
+        </td>
+        <td>
+         Date, Time, DateTime
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Format
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Displays the date and time in the Microsoft .NET Framework format indicated by the format specifier.
+Enter a format specifier.
+For a list of available format specifiers, see
+       <a data-linktype="external" href="http://go.microsoft.com/fwlink/?LinkId=143638">
+        DateTimeFormatInfo Class
+       </a>
+       in the MSDN (Microsoft Developer Network) library.
+      </p>
+      <p>
+       When you use the
+       <code>
+        -Format
+       </code>
+       parameter, Windows PowerShell gets only the properties of the
+       <strong>
+        DateTime
+       </strong>
+       object that it needs to display the date in the format that you specify.
+As a result, some of the properties and methods of
+       <strong>
+        DateTime
+       </strong>
+       objects might not be available.
+      </p>
+      <p>
+       Starting in Windows PowerShell 5.0, you can use the following additional formats as values for the
+       <code>
+        -Format
+       </code>
+       parameter.
+      </p>
+      <ul>
+       <li>
+        <p>
+         FileDate. A file or path-friendly representation of the current date in local time. It is in the form of yyyyMMdd (case-sensitive, using a 4-digit year, 2-digit month, and 2-digit day). An example of results when you use this format is 20150302.
+        </p>
+       </li>
+       <li>
+        <p>
+         FileDateUniversal. A file or path-friendly representation of the current date in universal time (UTC). It is in the form of yyyyMMddZ (case-sensitive, using a 4-digit year, 2-digit month, 2-digit day, and the letter "Z" as the UTC indicator). An example of results when you use this format is 20150302Z.
+        </p>
+       </li>
+       <li>
+        <p>
+         FileDateTime. A file or path-friendly representation of the current date and time in local time, in 24-hour format. It is in the form of yyyyMMddTHHmmssffff (case-sensitive, using a 4-digit year, 2-digit month, 2-digit day, the letter "T" as a time separator, 2-digit hour, 2-digit minute, 2-digit second, and 4-digit millisecond). An example of results when you use this format is 20150302T1240514987.
+        </p>
+       </li>
+       <li>
+        <p>
+         FileDateTimeUniversal. A file or path-friendly representation of the current date and time in universal time (UTC), in 24-hour format. It is in the form of yyyyMMddTHHmmssffffZ (case-sensitive, using a 4-digit year, 2-digit month, 2-digit day, the letter "T" as a time separator, 2-digit hour, 2-digit minute, 2-digit second, 4-digit millisecond, and the letter "Z" as the UTC indicator). An example of results when you use this format is 20150302T0840539947Z.
+        </p>
+       </li>
+      </ul>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Hour
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the hour that is displayed.
+Enter a value from 0 to 23.
+The default is the current hour.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Int32
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -InformationAction
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Type the date in a format that is standard for the system locale, such as dd-MM-yyyy (German [Germany]) or MM/dd/yyyy (English [United States]).
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          ActionPreference
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         infa
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Parameter Sets:
+        </td>
+        <td>
+         SilentlyContinue, Stop, Continue, Inquire, Ignore, Suspend
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -InformationVariable
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Type the date in a format that is standard for the system locale, such as dd-MM-yyyy (German [Germany]) or MM/dd/yyyy (English [United States]).
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         iv
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Millisecond
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the milliseconds in the date.
+Enter a value from 0 to 999.
+The default is the current number of milliseconds.
+      </p>
+      <p>
+       This parameter is introduced in Windows PowerShell 3.0.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Int32
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Minute
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the minute that is displayed.
+Enter a value from 0 to 59.
+The default value is the current minutes.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Int32
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Month
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the month that is displayed.
+Enter a value from 1 to 12.
+The default is the current month.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Int32
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Second
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the second that is displayed.
+Enter a value from 0 to 59.
+The default is the current second.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Int32
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -UFormat
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Displays the date and time in UNIX format.
+For a list of the format specifiers, see the Notes section.
+      </p>
+      <p>
+       When you use the
+       <code>
+        -UFormat
+       </code>
+       parameter, Windows PowerShell gets only the properties of the
+       <strong>
+        DateTime
+       </strong>
+       object that it needs to display the date in the format that you specify.
+As a result, some of the properties and methods of
+       <strong>
+        DateTime
+       </strong>
+       objects might not be available.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Year
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the year that is displayed.
+Enter a value from 1 to 9999.
+The default is the current year.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Int32
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="inputs">
+      Inputs
+     </h2>
+     <p>
+      <strong>
+       None
+      </strong>
+     </p>
+     <p>
+      You cannot pipe input to this cmdlet.
+     </p>
+     <h2 id="outputs">
+      Outputs
+     </h2>
+     <p>
+      <strong>
+       System.DateTime or System.String
+      </strong>
+     </p>
+     <p>
+      When you use the
+      <code>
+       -Format
+      </code>
+      or
+      <code>
+       -UFormat
+      </code>
+      parameters,
+      <code>
+       Get-Date
+      </code>
+      returns a string.
+Otherwise, it returns a
+      <strong>
+       DateTime
+      </strong>
+      object.
+     </p>
+     <h2 id="notes">
+      Notes
+     </h2>
+     <ul>
+      <li>
+       <p>
+        By default, the date-time is displayed in long-date and long-time formats for the system locale.
+       </p>
+       <p>
+        When you pipe a date to cmdlets that expect string input, such as the Add-Content cmdlet, Windows PowerShell converts the
+        <strong>
+         DateTime
+        </strong>
+        object to a string before adding it to the file. The default
+        <code>
+         ToString()
+        </code>
+        format is short date and long time. To specify an alternate format, use the
+        <code>
+         -Format
+        </code>
+        or
+        <code>
+         -UFormat
+        </code>
+        parameters of
+        <code>
+         Get-Date
+        </code>
+        .
+       </p>
+       <ul>
+        <li>
+         <p>
+          Uformat Values:
+         </p>
+         <p>
+          The following are the values of the
+          <code>
+           -UFormat
+          </code>
+          parameter. The format for the command is:
+         </p>
+         <p>
+          <code>
+           Get-Date -UFormat %\&lt;value\&gt;
+          </code>
+         </p>
+         <p>
+          For example,
+         </p>
+         <p>
+          <code>
+           Get-Date -UFormat %d
+          </code>
+         </p>
+         <ul>
+          <li>
+           <p>
+            Date-Time:
+           </p>
+           <p>
+            Date and time - full
+           </p>
+           <p>
+            (default) : (Friday, June 16, 2006 10:31:27 AM)
+           </p>
+           <p>
+            <code>
+             c
+            </code>
+            : Date and time - abbreviated (Fri Jun 16 10:31:27 2006)
+           </p>
+           <ul>
+            <li>
+             <p>
+              Date:
+             </p>
+             <p>
+              <code>
+               D
+              </code>
+              : Date in mm/dd/yy format (06/14/06)
+             </p>
+             <p>
+              <code>
+               x
+              </code>
+              : Date in standard format for locale (09/12/07 for English-US)
+             </p>
+            </li>
+            <li>
+             <p>
+              Year:
+             </p>
+             <p>
+              <code>
+               C
+              </code>
+              : Century (20 for 2006)
+             </p>
+             <p>
+              <code>
+               Y
+              </code>
+              : Year in 4-digit format (2006)
+             </p>
+             <p>
+              <code>
+               y
+              </code>
+              : Year in 2-digit format (06)
+             </p>
+             <p>
+              <code>
+               G
+              </code>
+              : Same as 'Y'
+             </p>
+             <p>
+              <code>
+               g
+              </code>
+              : Same as 'y'
+             </p>
+            </li>
+            <li>
+             <p>
+              Month:
+             </p>
+             <p>
+              <code>
+               b
+              </code>
+              : Month name - abbreviated (Jan)
+             </p>
+             <p>
+              <code>
+               B
+              </code>
+              : Month name - full (January)
+             </p>
+             <p>
+              <code>
+               h
+              </code>
+              : Same as 'b'
+             </p>
+             <p>
+              <code>
+               m
+              </code>
+              : Month number (06)
+             </p>
+            </li>
+            <li>
+             <p>
+              Week:
+             </p>
+             <p>
+              <code>
+               W
+              </code>
+              : Week of the year (00-52)
+             </p>
+             <p>
+              <code>
+               V
+              </code>
+              : Week of the year (01-53)
+             </p>
+             <p>
+              <code>
+               U
+              </code>
+              : Same as 'W'
+             </p>
+            </li>
+            <li>
+             <p>
+              Day:
+             </p>
+             <p>
+              <code>
+               a
+              </code>
+              : Day of the week - abbreviated name (Mon)
+             </p>
+             <p>
+              <code>
+               A
+              </code>
+              : Day of the week - full name (Monday)
+             </p>
+             <p>
+              <code>
+               u
+              </code>
+              : Day of the week - number (Monday = 1)
+             </p>
+             <p>
+              <code>
+               d
+              </code>
+              : Day of the month - 2 digits (05)
+             </p>
+             <p>
+              <code>
+               e
+              </code>
+              : Day of the month - digit preceded by a space ( 5)
+             </p>
+             <p>
+              <code>
+               j
+              </code>
+              : Day of the year - (1-366)
+             </p>
+             <p>
+              <code>
+               w
+              </code>
+              : Same as 'u'
+             </p>
+            </li>
+            <li>
+             <p>
+              Time:
+             </p>
+             <p>
+              <code>
+               p
+              </code>
+              : AM or PM
+             </p>
+             <p>
+              <code>
+               r
+              </code>
+              : Time in 12-hour format (09:15:36 AM)
+             </p>
+             <p>
+              <code>
+               R
+              </code>
+              : Time in 24-hour format - no seconds (17:45)
+             </p>
+             <p>
+              <code>
+               T
+              </code>
+              : Time in 24 hour format (17:45:52)
+             </p>
+             <p>
+              <code>
+               X
+              </code>
+              : Same as 'T'
+             </p>
+             <p>
+              <code>
+               Z
+              </code>
+              : Time zone offset from Universal Time Coordinate (UTC) (-07)
+             </p>
+            </li>
+            <li>
+             <p>
+              Hour:
+             </p>
+             <p>
+              <code>
+               H
+              </code>
+              :  Hour in 24-hour format (17)
+             </p>
+             <p>
+              <code>
+               I
+              </code>
+              :   Hour in 12 hour format (05)
+             </p>
+             <p>
+              <code>
+               k
+              </code>
+              :  Same as 'H'
+             </p>
+             <p>
+              <code>
+               l
+              </code>
+              :   Same as 'I' (Upper-case I = Lower-case L)
+             </p>
+            </li>
+            <li>
+             <p>
+              Minutes &amp; Seconds:
+             </p>
+             <p>
+              <code>
+               M
+              </code>
+              : Minutes (35)
+             </p>
+             <p>
+              <code>
+               S
+              </code>
+              : Seconds (05)
+             </p>
+             <p>
+              <code>
+               s
+              </code>
+              : Seconds elapsed since January 1, 1970 00:00:00 (1150451174.95705)
+             </p>
+            </li>
+            <li>
+             <p>
+              Special Characters:
+             </p>
+             <p>
+              <code>
+               n
+              </code>
+              : newline character (\n)
+             </p>
+             <p>
+              <code>
+               t
+              </code>
+              : Tab character (\t)
+             </p>
+            </li>
+           </ul>
+          </li>
+         </ul>
+        </li>
+       </ul>
+      </li>
+     </ul>
+     <h2 id="related-links">
+      Related Links
+     </h2>
+     <ul>
+      <li>
+       <a data-linktype="relative-path" href="new-timespan.html">
+        New-TimeSpan
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="set-date.html">
+        Set-Date
+       </a>
+      </li>
+     </ul>
+     <!-- </content> -->
+    </main>
+    <div class="note alert feedback-system-change-alert">
+     <p>
+      Note
+     </p>
+     <p>
+      The feedback system for this content will be changing soon. Old comments will not be carried over. If content within a comment thread is important to you, please save a copy. For more information on the upcoming change,
+      <a href="https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs">
+       we invite you to read our blog post
+      </a>
+      .
+     </p>
+    </div>
+    <div data-bi-name="comments" id="comments-container" role="form">
+    </div>
+   </div>
+  </div>
+  <div class="openfeedback-container" id="openFeedbackContainer">
+  </div>
+  <div class="action-panel">
+  </div>
+ </body>
+</html>

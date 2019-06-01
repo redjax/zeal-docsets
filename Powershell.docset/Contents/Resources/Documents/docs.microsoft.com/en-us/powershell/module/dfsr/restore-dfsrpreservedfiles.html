@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html class="no-js hasSidebar hasPageActions hasBreadcrumb conceptual" data-authenticated="false" data-render="docs" dir="ltr" lang="en-us">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Restore-DfsrPreservedFiles (dfsr)" property="og:title"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" property="og:image"/>
+  <meta content="summary" name="twitter:card"/>
+  <meta content="@docsmsft" name="twitter:site"/>
+  <meta content="Restore-DfsrPreservedFiles (dfsr)" name="twitter:title"/>
+  <meta content="Use this topic to help manage Windows and Windows Server technologies with Windows PowerShell." name="twitter:description"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" name="twitter:image"/>
+  <meta content="Microsoft Logo" name="twitter:image:alt"/>
+  <meta content="Use this topic to help manage Windows and Windows Server technologies with Windows PowerShell." name="description"/>
+  <meta content="Docs" name="search.ms_sitename"/>
+  <meta content="powershell-windows" name="search.ms_docsetname"/>
+  <meta content="0" name="version"/>
+  <meta content="en-us" name="locale"/>
+  <meta content="Docs" name="site_name"/>
+  <meta content="MSDN" name="search.ms_product"/>
+  <meta content="MSDN.powershell-windows" name="depot_name"/>
+  <meta content="https://cpubwin.visualstudio.com/DefaultCollection/powershell/_git/powershell/commit/ced7757924addcaea0b7a244ae4d240e4d28d93a?path=%2fdocset%2fwindows%2fdfsr%2frestore-dfsrpreservedfiles.md&amp;_a=contents" name="ref_skeleton_gitcommit"/>
+  <meta content="https://cpubwin.visualstudio.com/DefaultCollection/powershell/_git/powershell?path=%2fdocset%2fwindows%2fdfsr%2frestore-dfsrpreservedfiles.md&amp;version=GBlive&amp;_a=contents" name="original_ref_skeleton_git_url"/>
+  <meta content="2017-09-15 03:44 AM" name="updated_at"/>
+  <meta content="fc0dca08-c070-7745-801e-28a025c11852" name="document_id"/>
+  <meta content="dc8654c1-b6d2-3c0d-03b8-6209eaeda791" name="document_version_independent_id"/>
+  <meta content="powershell" name="page_type"/>
+  <meta content="command" name="page_kind"/>
+  <meta content="manage" name="ms.mktglfcycl"/>
+  <meta content="library" name="ms.sitesec"/>
+  <meta content="brianlic" name="ms.author"/>
+  <meta content="brianlic-msft" name="author"/>
+  <meta content="DfsrPowerShell.dll-Help.xml" name="external_help_file"/>
+  <meta content="powershell, cmdlet" name="keywords"/>
+  <meta content="alanth" name="manager"/>
+  <meta content="12/20/2016" name="ms.date"/>
+  <meta content="w10" name="ms.prod"/>
+  <meta content="powershell-windows" name="ms.technology"/>
+  <meta content="reference" name="ms.topic"/>
+  <meta content="" name="online_version"/>
+  <meta content="2.0.0" name="schema"/>
+  <meta content="8FADA0A8-B3DE-41CB-80FD-184D02753FF4" name="ms.assetid"/>
+  <meta content="powershell" name="ms.devlang"/>
+  <meta content="INDEX, FOLLOW" name="ROBOTS"/>
+  <meta content="/powershell/windows/bread/toc.json?view=win10-ps" name="breadcrumb_path"/>
+  <meta content="powershell" name="apiPlatform"/>
+  <meta content="MSDocsHeader-WindowsIT" name="uhfHeaderId"/>
+  <meta content="../win10-ps/toc.json?view=win10-ps" name="toc_rel"/>
+  <link href="https://docs.microsoft.com/en-us/powershell/module/dfsr/restore-dfsrpreservedfiles" rel="canonical"/>
+  <title>
+   Restore-DfsrPreservedFiles
+  </title>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/e4a1f3a3.site.css" rel="stylesheet"/>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/31353636.conceptual.css" rel="stylesheet"/>
+ </head>
+ <body dir="ltr" lang="en-us">
+  <div class="header-holder">
+   <div data-bi-name="header" id="headerAreaHolder">
+    <div id="uhf-placeholder">
+    </div>
+   </div>
+   <div class="disclaimer-holder" id="disclaimer-holder">
+   </div>
+  </div>
+  <div class="container mainContainer" data-bi-name="body">
+   <div class="content-header" data-bi-name="content-header">
+    <div class="content-header-controls">
+     <button class="contents-button button-border" data-bi-name="contents-expand" type="button">
+      <span class="docon docon-menu">
+      </span>
+      Contents
+     </button>
+    </div>
+    <div class="content-header-controls">
+     <button class="ap-collapse-behavior ap-expanded button-border" data-bi-name="ap-collapse" type="button">
+      <span class="docon docon-exit-mode">
+      </span>
+      Exit focus mode
+     </button>
+    </div>
+   </div>
+   <div class="primary-holder">
+    <main class="content" data-bi-name="content" dir="ltr" id="main" lang="en-us" role="main">
+     <!-- <content> -->
+     <h1>
+      Restore-Dfsr
+      <wbr/>
+      Preserved
+      <wbr/>
+      Files
+     </h1>
+     <div class="metadata">
+      <dl class="attributeList">
+       <dt>
+        Module:
+       </dt>
+       <dd>
+        <a data-linktype="relative-path" href="./.html">
+         dfsr
+        </a>
+       </dd>
+      </dl>
+     </div>
+     <div class="summaryHolder">
+      <div class="summary">
+       Restores files and folders that DFS Replication previously preserved.
+      </div>
+     </div>
+     <h2 class="hiddenAnchor" id="syntax">
+      Syntax
+     </h2>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Restore-DfsrPreservedFiles
+       [-Path] &lt;String&gt;
+       [-RestoreToPath] &lt;String&gt;
+       [-RestoreAllVersions]
+       [-CopyFiles]
+       [-AllowClobber]
+       [-Force]
+       [-WhatIf]
+       [-Confirm]
+       [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Restore-DfsrPreservedFiles
+       [-Path] &lt;String&gt;
+       [-RestoreToOrigin]
+       [-RestoreAllVersions]
+       [-CopyFiles]
+       [-AllowClobber]
+       [-Force]
+       [-WhatIf]
+       [-Confirm]
+       [&lt;CommonParameters&gt;]</code></pre>
+     <h2 id="description">
+      Description
+     </h2>
+     <p>
+      The
+      <strong>
+       Restore-DfsrPreservedFiles
+      </strong>
+      cmdlet restores preserved files and folders.
+The Distributed File System (DFS) Replication service preserves the following kinds of files and folders:
+     </p>
+     <ul>
+      <li>
+       Conflicted.
+If users make changes to the same file on multiple servers before replication converges, a file might conflict with the current version.
+DFS Replication preserves previous conflicting versions of the file.
+      </li>
+      <li>
+       Deleted.
+When a member computer deletes a replicated file, other members also remove that file.
+Depending on membership settings, computers can preserve deleted files.
+To modify whether a member computer preserves deleted files, use the
+       <strong>
+        Set-DfsrMembership
+       </strong>
+       cmdlet.
+      </li>
+      <li>
+       Preexisting.
+If DFS Replication overwrites files during its initial synchronization, DFS Replication preserves those files.
+      </li>
+     </ul>
+     <p>
+      For all three types, DFS Replication moves the files to &lt;replicated folder&gt;\DfsrPrivate\ConflictAndDeleted or &lt;replicated folder&gt;\DfsrPrivate\Preexisting.
+DFS Replication records these files in a manifest, either ConflictAndDeletedManifest.xml or PreExistingManifest.xml, as appropriate.
+Specify the ConflictAndDeletedManifest.xml manifest to restore conflicted and deleted files and folders.
+Specify the PreExistingManifest.xml manifest to restore preexisting files and folders.
+You can use the
+      <strong>
+       Get-DfsrPreservedFiles
+      </strong>
+      cmdlet to view preserved files and folders.
+     </p>
+     <p>
+      CAUTION By default, this cmdlet moves all files and removes any existing preserved files, including older versions of files.
+Consider backing up the ConflictsAndDeleted and Preexisting folder before you use this cmdlet.
+     </p>
+     <h2 id="examples">
+      Examples
+     </h2>
+     <p>
+      <strong>
+       Example 1: Restore preexisting files to their original locations
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Restore-DfsrPreservedFiles -Path "C:\RF01\DfsrPrivate\PreExistingManifest.xml" -RestoreToOrigin</code></pre>
+     <p>
+      This command restores preexisting files and folders in the replicated folder C:\RF01 to their original locations.
+The command does not specify the
+      <em>
+       CopyFiles
+      </em>
+      parameter.
+Therefore, it moves the files and leaves the Preexisting folder empty.
+     </p>
+     <p>
+      <strong>
+       Example 2: Restore copies of preexisting files to a different location
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Restore-DfsrPreservedFiles -Path "C:\RF01\DfsrPrivate\PreExistingManifest.xml" -RestoreToPath "C:\DFSRTest" -CopyFiles -AllowClobber -Verbose
+VERBOSE: Loading Preserved file Manifest C:\rf01\DfsrPrivate\PreExistingManifest.xml
+VERBOSE: Restoring Preserved Files from manifest C:\rf01\DfsrPrivate\PreExistingManifest.xml</code></pre>
+     <p>
+      This command restores copies of preexisting files and folders in the replicated folder C:\RF01 to the location C:\DFSRTest.
+The command specifies the location by using the
+      <em>
+       RestoreToPath
+      </em>
+      parameter.
+The command uses the
+      <em>
+       AllowClobber
+      </em>
+      parameter.
+Therefore, it overwrites existing files that have the same names in the specified location.
+The command uses the
+      <em>
+       Verbose
+      </em>
+      parameter to display information in the console.
+     </p>
+     <p>
+      <strong>
+       Example 3: Restore conflicted and deleted files to a different location
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Restore-DfsrPreservedFiles -Path "C:\RF01\DfsrPrivate\ConflictAndDeletedManifest.xml" -RestoreToPath "C:\DFSRRestore" -RestoreAllVersions -Force
+PS C:\&gt; Get-ChildItem -Path "C:\DFSRRestore"
+    Directory: C:\dfsrrestore
+
+Mode                LastWriteTime     Length Name
+----                -------------     ------ ----
+-a---          4/5/2013   9:58 AM     848294 canary.bmp
+-a---          4/5/2013   9:58 AM     848294 canary2013_04_05_17_00_00Z.bmp
+-a---          4/5/2013   9:58 AM     848294 canary2013_04_05_17_17_37Z.bmp
+-a---          4/5/2013   9:58 AM     848294 canary2013_04_05_17_17_47Z.bmp</code></pre>
+     <p>
+      This example restores multiple versions of conflicted and deleted files to a specified location.
+     </p>
+     <p>
+      The first command restores conflicted and deleted files and folders for the replicated folder C:\FR01 to the location C:\DFSRRestore.
+The command restores all preserved versions of the files.
+The command includes the
+      <em>
+       Force
+      </em>
+      parameter, and therefore, it does not prompt you for confirmation and overwrites any files in the destination.
+     </p>
+     <p>
+      The second command uses the
+      <strong>
+       Get-ChildItem
+      </strong>
+      cmdlet to display information about the restored files.
+For more information, type
+      <code>
+       Get-Help Get-ChildItem
+      </code>
+      .
+In this example, the first command restores multiple versions of the same file.
+     </p>
+     <h2 id="required-parameters">
+      Required Parameters
+     </h2>
+     <div class="parameterName stack">
+      -Path
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the path of a manifest.
+By default, the manifest files exist in the &lt;Replicated Folder&gt;\DfsrPrivate folder.
+Specify ConflictAndDeletedManifest.xml to restore conflicted and deleted files.
+Specify PreExistingManifest.xml to restore preexisting files.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         0
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName, ByValue)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -RestoreToOrigin
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that the cmdlet restores all files and folders recorded in the ConflictAndDeletedManifest.xml manifest or the PreExistingManifest.xml manifest to their original locations.
+To restore to a different location, specify a path by using the
+       <em>
+        RestoreToPath
+       </em>
+       parameter.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         1
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -RestoreToPath
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a location for files and folders recorded in the ConflictAndDeletedManifest.xml manifest or the PreExistingManifest.xml manifest.
+To restore to the original locations, specify the
+       <em>
+        RestoreToOrigin
+       </em>
+       parameter.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         1
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="optional-parameters">
+      Optional Parameters
+     </h2>
+     <div class="parameterName stack">
+      -AllowClobber
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that the cmdlet overwrites files of the same name that currently exist in the destination.
+If you do not specify this parameter, the cmdlet prompts you before overwriting existing files.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Confirm
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Prompts you for confirmation before running the cmdlet.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         cf
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -CopyFiles
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that the cmdlet copies files instead of moving them.
+      </p>
+      <p>
+       If you do not specify this parameter, the cmdlet moves the preserved files but restores only the latest version of a file.
+You will lose previous versions of conflicted or deleted files.
+Preexisting files never have multiple versions.
+To avoid losing previous versions, consider backing up the ConflictsAndDeleted folder.
+As an alternative, specify the
+       <em>
+        RestoreAllVersions
+       </em>
+       parameter.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         3
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Force
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Forces the command to run without asking for user confirmation.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -RestoreAllVersions
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that the cmdlet restores all versions of a file.
+The cmdlet adds a time stamp to the file name.
+This parameter affects only conflicted files or deleted files.
+Preexisting files never have multiple versions.
+      </p>
+      <p>
+       If you do not specify this parameter, the cmdlet restores only the most recent version of the file.
+If you do not specify this parameter and do not specify the
+       <em>
+        CopyFiles
+       </em>
+       parameter, the cmdlet restores the most recent version and removes all versions from the ConflictsAndDeleted folder.
+Consider backing up the ConflictsAndDeleted folder before you use this cmdlet.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         2
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -WhatIf
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         wi
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="inputs">
+      Inputs
+     </h2>
+     <p>
+      <strong>
+       string
+      </strong>
+     </p>
+     <h2 id="outputs">
+      Outputs
+     </h2>
+     <p>
+      <strong>
+       None
+      </strong>
+     </p>
+     <h2 id="related-links">
+      Related Links
+     </h2>
+     <ul>
+      <li>
+       <a data-linktype="relative-path" href="./get-dfsrpreservedfiles.html">
+        Get-DfsrPreservedFiles
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="./set-dfsrmembership.html">
+        Set-DfsrMembership
+       </a>
+      </li>
+     </ul>
+     <!-- </content> -->
+    </main>
+    <section class="feedback-section" data-bi-name="feedback-section">
+     <h2 id="feedback">
+      Feedback
+     </h2>
+     <div class="alert choose-feedback-type">
+      <p>
+       We'd love to hear your thoughts. Choose the type you'd like to provide:
+      </p>
+      <div class="choose-feedback-buttons">
+       <a class="button-border feedback-type-product" data-bi-name="product-feedback" href="https://windowsserver.uservoice.com/forums/301869-powershell">
+        Product feedback
+        <span aria-hidden="true" class="docon docon-navigate-external">
+        </span>
+       </a>
+       <div class="button-group">
+        <button class="button-border feedback-sign-in-button" data-bi-name="feedback-sign-in">
+         <span aria-hidden="true" class="docon docon-brand-github">
+         </span>
+         Sign in to give documentation feedback
+        </button>
+        <button aria-controls="feedback-form" aria-expanded="false" class="button-border feedback-form-toggle" data-bi-name="documentation-feedback" hidden="">
+         Content feedback
+        </button>
+        <div auto-align="" class="dropdown has-caret">
+         <button aria-controls="fbm0" aria-expanded="false" aria-haspopup="true" aria-label="Expand documentation feedback menu" class="button-border dropdown-trigger" data-bi-name="documentation-feedback-menu">
+          <span aria-hidden="true" class="docon docon-chevron-down-light">
+          </span>
+         </button>
+         <div class="dropdown-menu documentation-feedback-menu" id="fbm0" role="menu">
+          You may also leave feedback
+          <a data-bi-name="create-issue-on-github" href="{0}">
+           directly on GitHub
+           <span aria-hidden="true" class="docon docon-navigate-external">
+           </span>
+          </a>
+          .
+         </div>
+        </div>
+       </div>
+      </div>
+      <p>
+       <small>
+        Our new feedback system is built on GitHub Issues. Read about this change in
+        <a href="https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs">
+         our blog post
+        </a>
+        .
+       </small>
+      </p>
+     </div>
+     <form accept-charset="UTF-8" action="javascript:" autocomplete="off" class="feedback-form" hidden="" id="feedback-form">
+      <h3 class="feedback-form-heading current-user">
+       <img alt="Avatar" aria-hidden="true" class="avatar" height="36" width="36"/>
+       <span aria-hidden="true" class="username">
+       </span>
+       <span class="visually-hidden">
+        Liquid error: Can't find the localized string giveDocumentationFeedback for template Conceptual.
+       </span>
+      </h3>
+      <label>
+       <span class="visually-hidden">
+        Title
+       </span>
+       <input name="title" pattern=".*\w.*" placeholder="Title" required="" type="text"/>
+      </label>
+      <label>
+       <span class="visually-hidden">
+        Leave a comment
+       </span>
+       <textarea name="body" placeholder="Leave a comment" required=""></textarea>
+      </label>
+      <div class="action-container">
+       <button class="primary-action" name="submit" type="submit">
+        Submit feedback
+       </button>
+      </div>
+     </form>
+     <div class="feedback-status alert busy" role="alert">
+      <p>
+       Loading feedback...
+      </p>
+     </div>
+     <div class="feedback-tab-group tabGroup" data-tab-group-independent="" hidden="">
+      <ul role="tablist">
+       <li role="presentation">
+        <a aria-controls="tabpanel-issues-open" aria-label="Open Issues" data-tab="issues-open" href="#tabpanel-issues-open" role="tab">
+        </a>
+       </li>
+       <li role="presentation">
+        <a aria-controls="tabpanel-issues-closed" aria-label="Closed Issues" data-tab="issues-closed" href="#tabpanel-issues-closed" role="tab">
+        </a>
+       </li>
+      </ul>
+      <section data-tab="issues-open" id="tabpanel-issues-open" role="tabpanel">
+       <div class="no-issues-placeholder">
+        There are no open issues
+       </div>
+       <ul aria-label="Open Issues" class="github-issues-list">
+       </ul>
+      </section>
+      <section data-tab="issues-closed" id="tabpanel-issues-closed" role="tabpanel">
+       <div class="no-issues-placeholder">
+        There are no closed issues
+       </div>
+       <ul aria-label="Closed Issues" class="github-issues-list">
+       </ul>
+      </section>
+     </div>
+     <div class="action-container">
+      <a class="view-on-github" data-bi-name="view-on-github" hidden="" href="https://github.com/MicrosoftDocs/windows-powershell-docs/issues">
+       <span aria-hidden="true" class="docon docon-brand-github">
+       </span>
+       <span>
+        View on GitHub
+       </span>
+       <span aria-hidden="true" class="docon docon-navigate-external">
+       </span>
+      </a>
+     </div>
+    </section>
+   </div>
+  </div>
+  <div class="openfeedback-container" id="openFeedbackContainer">
+  </div>
+  <div class="action-panel">
+  </div>
+ </body>
+</html>

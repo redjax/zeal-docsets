@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+<html class="no-js hasSidebar hasPageActions hasBreadcrumb conceptual" data-authenticated="false" data-render="docs" dir="ltr" lang="en-us">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Trace-Command (Microsoft.PowerShell.Utility)" property="og:title"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" property="og:image"/>
+  <meta content="summary" name="twitter:card"/>
+  <meta content="@docsmsft" name="twitter:site"/>
+  <meta content="Trace-Command (Microsoft.PowerShell.Utility)" name="twitter:title"/>
+  <meta content="The Trace-Command cmdlet configures and starts a trace of the specified expression or command. It works like Set-TraceSource, except that it applies only to the specified command. " name="twitter:description"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" name="twitter:image"/>
+  <meta content="Microsoft Logo" name="twitter:image:alt"/>
+  <meta content="The Trace-Command cmdlet configures and starts a trace of the specified expression or command. It works like Set-TraceSource, except that it applies only to the specified command. " name="description"/>
+  <meta content="Docs" name="search.ms_sitename"/>
+  <meta content="PowerShell_PowerShell-docs_reference" name="search.ms_docsetname"/>
+  <meta content="0" name="version"/>
+  <meta content="en-us" name="locale"/>
+  <meta content="Docs" name="site_name"/>
+  <meta content="PowerShell" name="search.ms_product"/>
+  <meta content="PowerShell.PowerShell_PowerShell-docs_reference" name="depot_name"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/45404d4ca212afa615798d3d5cbfea5dc5cc1efb/reference/6/Microsoft.PowerShell.Utility/Trace-Command.md" name="ref_skeleton_gitcommit"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/live/reference/6/Microsoft.PowerShell.Utility/Trace-Command.md" name="original_ref_skeleton_git_url"/>
+  <meta content="2018-03-30 03:35 PM" name="updated_at"/>
+  <meta content="dcf4f5eb-e7d2-9348-1865-56066abe6439" name="document_id"/>
+  <meta content="d10abd29-6a5e-2d04-81a7-1d8481cd7b6a" name="document_version_independent_id"/>
+  <meta content="powershell" name="page_type"/>
+  <meta content="command" name="page_kind"/>
+  <meta content="06/09/2017" name="ms.date"/>
+  <meta content="2.0.0" name="schema"/>
+  <meta content="powershell,cmdlet" name="keywords"/>
+  <meta content="http://go.microsoft.com/fwlink/?LinkId=821866" name="online_version"/>
+  <meta content="Microsoft.PowerShell.Commands.Utility.dll-Help.xml" name="external_help_file"/>
+  <meta content="powershell" name="ms.devlang"/>
+  <meta content="INDEX, FOLLOW" name="ROBOTS"/>
+  <meta content="sdwheeler" name="author"/>
+  <meta content="sewhee" name="ms.author"/>
+  <meta content="carmonm" name="manager"/>
+  <meta content="/powershell/bread-pscore/toc.yml?view=powershell-6" name="breadcrumb_path"/>
+  <meta content="powershell" name="apiPlatform"/>
+  <meta content="reference" name="ms.topic"/>
+  <meta content="windows, macos, linux" name="ms.tgt_pltfr"/>
+  <meta content="powershell-scripting" name="ms.technology"/>
+  <meta content="powershell" name="ms.prod"/>
+  <meta content="MSDocsHeader-Powershell" name="uhfHeaderId"/>
+  <meta content="../psdocs/toc.json?view=powershell-6" name="toc_rel"/>
+  <link href="https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/trace-command" rel="canonical"/>
+  <title>
+   Trace-Command
+  </title>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/60aac04b.site.css" rel="stylesheet"/>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/fdb8a38a.conceptual.css" rel="stylesheet"/>
+ </head>
+ <body dir="ltr" lang="en-us">
+  <div class="header-holder">
+   <div data-bi-name="header" id="headerAreaHolder">
+    <div id="uhf-placeholder">
+    </div>
+   </div>
+   <div class="disclaimer-holder" id="disclaimer-holder">
+   </div>
+  </div>
+  <div class="container mainContainer" data-bi-name="body">
+   <div class="content-header" data-bi-name="content-header">
+    <div class="content-header-controls">
+     <button class="contents-button button-border" data-bi-name="contents-expand" type="button">
+      <span class="docon docon-menu">
+      </span>
+      Contents
+     </button>
+    </div>
+    <div class="content-header-controls">
+     <button class="ap-collapse-behavior ap-expanded button-border" data-bi-name="ap-collapse" type="button">
+      <span class="docon docon-exit-mode">
+      </span>
+      Exit focus mode
+     </button>
+    </div>
+   </div>
+   <div class="primary-holder">
+    <main class="content" data-bi-name="content" dir="ltr" id="main" lang="en-us" role="main">
+     <!-- <content> -->
+     <h1>
+      Trace-Command
+     </h1>
+     <div class="metadata">
+      <dl class="attributeList">
+       <dt>
+        Module:
+       </dt>
+       <dd>
+        <a data-linktype="relative-path" href="./Microsoft.PowerShell.Utility.html">
+         Microsoft.PowerShell.Utility
+        </a>
+       </dd>
+      </dl>
+     </div>
+     <div class="summaryHolder">
+      <div class="summary">
+       Configures and starts a trace of the specified expression or command.
+      </div>
+     </div>
+     <h2 class="hiddenAnchor" id="syntax">
+      Syntax
+     </h2>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Trace-Command
+     [-Name] &lt;String[]&gt;
+     [-Expression] &lt;ScriptBlock&gt;
+     [[-Option] &lt;PSTraceSourceOptions&gt;]
+     [-InputObject &lt;PSObject&gt;]
+     [-ListenerOption &lt;TraceOptions&gt;]
+     [-FilePath &lt;String&gt;]
+     [-Force]
+     [-Debugger]
+     [-PSHost]
+     [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Trace-Command
+     [-Name] &lt;String[]&gt;
+     [-Command] &lt;String&gt;
+     [[-Option] &lt;PSTraceSourceOptions&gt;]
+     [-InputObject &lt;PSObject&gt;]
+     [-ArgumentList &lt;Object[]&gt;]
+     [-ListenerOption &lt;TraceOptions&gt;]
+     [-FilePath &lt;String&gt;]
+     [-Force]
+     [-Debugger]
+     [-PSHost]
+     [&lt;CommonParameters&gt;]</code></pre>
+     <h2 id="description">
+      Description
+     </h2>
+     <p>
+      The
+      <strong>
+       Trace-Command
+      </strong>
+      cmdlet configures and starts a trace of the specified expression or command.
+It works like Set-TraceSource, except that it applies only to the specified command.
+     </p>
+     <h2 id="examples">
+      Examples
+     </h2>
+     <p>
+      <strong>
+       Example 1: Trace metadata processing, parameter binding, and an expression
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Trace-Command -Name metadata,parameterbinding,cmdlet -Expression {Get-Process Notepad} -PSHost</code></pre>
+     <p>
+      This command starts a trace of metadata processing, parameter binding, and cmdlet creation and destruction of the
+      <code>
+       Get-Process Notepad
+      </code>
+      expression.
+It uses the
+      <em>
+       Name
+      </em>
+      parameter to specify the trace sources, the
+      <em>
+       Expression
+      </em>
+      parameter to specify the command, and the
+      <em>
+       PSHost
+      </em>
+      parameter to send the output to the console.
+Because it does not specify any tracing options or listener options, the command uses the defaults--All for the tracing options, and None for the listener options.
+     </p>
+     <p>
+      <strong>
+       Example 2: Trace the actions of ParameterBinding operations
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; $A = "i*"
+
+PS C:\&gt; Trace-Command ParameterBinding {Get-Alias $Input} -PSHost -InputObject $A</code></pre>
+     <p>
+      These commands trace the actions of the ParameterBinding operations of Windows PowerShell while it processes a Get-Alias expression that takes input from the pipeline.
+     </p>
+     <p>
+      In
+      <strong>
+       Trace-Command
+      </strong>
+      , the
+      <em>
+       InputObject
+      </em>
+      parameter passes an object to the expression that is being processed during the trace.
+     </p>
+     <p>
+      The first command stores the string "i
+      <em>
+       " in the $A variable.
+The second command uses the **Trace-Command
+      </em>
+      * cmdlet with the ParameterBinding trace source.
+The
+      <em>
+       PSHost
+      </em>
+      parameter sends the output to the console.
+     </p>
+     <p>
+      The expression being processed is
+      <code>
+       Get-Alias $Input
+      </code>
+      , where the $Input variable is associated with the
+      <em>
+       InputObject
+      </em>
+      parameter.
+The
+      <em>
+       InputObject
+      </em>
+      parameter passes the variable $A to the expression.
+In effect, the command being processed during the trace is
+      <code>
+       Get-Alias -InputObject $A" or "$A | Get-Alias
+      </code>
+      .
+     </p>
+     <h2 id="required-parameters">
+      Required Parameters
+     </h2>
+     <div class="parameterName stack">
+      -Command
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a command that is being processed during the trace.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         1
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Expression
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the expression that is being processed during the trace.
+Enclose the expression in braces ({}).
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          ScriptBlock
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         1
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Name
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies an array of Windows PowerShell components that are traced.
+Enter the name of the trace source of each component.
+Wildcards are permitted.
+To find the trace sources on your computer, type
+       <code>
+        Get-TraceSource
+       </code>
+       .
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         0
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="optional-parameters">
+      Optional Parameters
+     </h2>
+     <div class="parameterName stack">
+      -ArgumentList
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the parameters and parameter values for the command being traced.
+The alias for
+       <em>
+        ArgumentList
+       </em>
+       is
+       <em>
+        Args
+       </em>
+       .
+This feature is especially useful for debugging dynamic parameters.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Object[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         Args
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Debugger
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that the cmdlet sends the trace output to the debugger.
+You can view the output in any user-mode or kernel mode debugger or in Visual Studio.
+This parameter also selects the default trace listener.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -FilePath
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a file that the cmdlet sends the trace output to.
+This parameter also selects the file trace listener.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         PSPath
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Force
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Forces the command to run without asking for user confirmation.
+Used with the
+       <em>
+        FilePath
+       </em>
+       parameter.
+Even using the
+       <em>
+        Force
+       </em>
+       parameter, the cmdlet cannot override security restrictions.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -InputObject
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies input to the expression that is being processed during the trace.
+      </p>
+      <p>
+       You can enter a variable that represents the input that the expression accepts, or pass an object through the pipeline.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          PSObject
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByValue)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -ListenerOption
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies optional data to the prefix of each trace message in the output.
+The acceptable values for this parameter are:
+      </p>
+      <ul>
+       <li>
+        None
+       </li>
+       <li>
+        LogicalOperationStack
+       </li>
+       <li>
+        DateTime
+       </li>
+       <li>
+        Timestamp
+       </li>
+       <li>
+        ProcessId
+       </li>
+       <li>
+        ThreadId
+       </li>
+       <li>
+        Callstack
+       </li>
+      </ul>
+      <p>
+       None is the default.
+      </p>
+      <p>
+       To specify multiple options, separate them with commas, but with no spaces, and enclose them in quotation marks, such as "ProcessID,ThreadID".
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          TraceOptions
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Parameter Sets:
+        </td>
+        <td>
+         None, LogicalOperationStack, DateTime, Timestamp, ProcessId, ThreadId, Callstack
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Option
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Determines the type of events that are traced.
+The acceptable values for this parameter are:
+      </p>
+      <ul>
+       <li>
+        None
+       </li>
+       <li>
+        Constructor
+       </li>
+       <li>
+        Dispose
+       </li>
+       <li>
+        Finalizer
+       </li>
+       <li>
+        Method
+       </li>
+       <li>
+        Property
+       </li>
+       <li>
+        Delegates
+       </li>
+       <li>
+        Events
+       </li>
+       <li>
+        Exception
+       </li>
+       <li>
+        Lock
+       </li>
+       <li>
+        Error
+       </li>
+       <li>
+        Errors
+       </li>
+       <li>
+        Warning
+       </li>
+       <li>
+        Verbose
+       </li>
+       <li>
+        WriteLine
+       </li>
+       <li>
+        Data
+       </li>
+       <li>
+        Scope
+       </li>
+       <li>
+        ExecutionFlow
+       </li>
+       <li>
+        Assert
+       </li>
+       <li>
+        All
+       </li>
+      </ul>
+      <p>
+       All is the default.
+      </p>
+      <p>
+       The following values are combinations of other values:
+      </p>
+      <ul>
+       <li>
+        ExecutionFlow: (Constructor, Dispose, Finalizer, Method, Delegates, Events, and Scope)
+       </li>
+       <li>
+        Data: (Constructor, Dispose, Finalizer, Property, Verbose, and WriteLine)
+       </li>
+       <li>
+        Errors: (Error and Exception).
+       </li>
+      </ul>
+      <p>
+       To specify multiple options, separate them with commas, but with no spaces, and enclose them in quotation marks, such as "Constructor,Dispose".
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          PSTraceSourceOptions
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         2
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -PSHost
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that the cmdlet sends the trace output to the Windows PowerShell host.
+This parameter also selects the PSHost trace listener.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="inputs">
+      Inputs
+     </h2>
+     <p>
+      <strong>
+       System.Management.Automation.PSObject
+      </strong>
+     </p>
+     <p>
+      You can pipe objects that represent input to the expression to
+      <strong>
+       Trace-Command
+      </strong>
+      .
+     </p>
+     <h2 id="outputs">
+      Outputs
+     </h2>
+     <p>
+      <strong>
+       System.Management.Automation.PSObject
+      </strong>
+     </p>
+     <p>
+      Returns the command trace in the debug stream.
+     </p>
+     <h2 id="notes">
+      Notes
+     </h2>
+     <ul>
+      <li>
+       Tracing is a method that developers use to debug and refine programs. When tracing, the program generates detailed messages about each step in its internal processing.
+      </li>
+      <li>
+       The Windows PowerShell tracing cmdlets are designed to help Windows PowerShell developers, but they are available to all users. They let you monitor nearly every aspect of the functionality of the shell.
+      </li>
+      <li>
+       <p>
+        To find the Windows PowerShell components that are enabled for tracing, type
+        <code>
+         Get-Help Get-TraceSource
+        </code>
+        .
+       </p>
+       <p>
+        A trace source is the part of each Windows PowerShell component that manages tracing and generates trace messages for the component.
+To trace a component, you identify its trace source.
+       </p>
+       <p>
+        A trace listener receives the output of the trace and displays it to the user.
+You can elect to send the trace data to a user-mode or kernel-mode debugger, to the host or console, to a file, or to a custom listener derived from the
+        <strong>
+         System.Diagnostics.TraceListener
+        </strong>
+        class.
+       </p>
+      </li>
+      <li>
+       <p>
+        When you use the commandSet parameter set, Windows PowerShell processes the command just as it would be processed in a pipeline. For example, command discovery is not repeated for each incoming object.
+       </p>
+      </li>
+      <li>
+       The names of the
+       <em>
+        Name
+       </em>
+       ,
+       <em>
+        Expression
+       </em>
+       ,
+       <em>
+        Option
+       </em>
+       , and
+       <em>
+        Command
+       </em>
+       parameters are optional. If you omit the parameter names, the unnamed parameter values must appear in this order:
+       <em>
+        Name
+       </em>
+       ,
+       <em>
+        Expression
+       </em>
+       ,
+       <em>
+        Option
+       </em>
+       or
+       <em>
+        Name
+       </em>
+       ,
+       <em>
+        Command
+       </em>
+       ,
+       <em>
+        Option
+       </em>
+       . If you include the parameter names, the parameters can appear in any order.
+      </li>
+     </ul>
+     <h2 id="related-links">
+      Related Links
+     </h2>
+     <ul>
+      <li>
+       <a data-linktype="relative-path" href="get-tracesource.html">
+        Get-TraceSource
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="measure-command.html">
+        Measure-Command
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="set-tracesource.html">
+        Set-TraceSource
+       </a>
+      </li>
+      <li>
+       <a data-linktype="external" href="https://msdn.microsoft.com/en-us/powershell/reference/5.1/Microsoft.PowerShell.Utility/Show-Command">
+        Show-Command
+       </a>
+      </li>
+     </ul>
+     <!-- </content> -->
+    </main>
+    <div class="note alert feedback-system-change-alert">
+     <p>
+      Note
+     </p>
+     <p>
+      The feedback system for this content will be changing soon. Old comments will not be carried over. If content within a comment thread is important to you, please save a copy. For more information on the upcoming change,
+      <a href="https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs">
+       we invite you to read our blog post
+      </a>
+      .
+     </p>
+    </div>
+    <div data-bi-name="comments" id="comments-container" role="form">
+    </div>
+   </div>
+  </div>
+  <div class="openfeedback-container" id="openFeedbackContainer">
+  </div>
+  <div class="action-panel">
+  </div>
+ </body>
+</html>

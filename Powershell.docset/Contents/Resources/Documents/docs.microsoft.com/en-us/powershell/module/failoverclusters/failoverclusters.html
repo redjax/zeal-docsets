@@ -1,0 +1,1900 @@
+<!DOCTYPE html>
+<html class="no-js hasSidebar hasPageActions hasBreadcrumb conceptual" data-authenticated="false" data-render="docs" dir="ltr" lang="en-us">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="FailoverClusters" property="og:title"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" property="og:image"/>
+  <meta content="summary" name="twitter:card"/>
+  <meta content="@docsmsft" name="twitter:site"/>
+  <meta content="FailoverClusters" name="twitter:title"/>
+  <meta content="Use this topic to help manage Windows and Windows Server technologies with Windows PowerShell." name="twitter:description"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" name="twitter:image"/>
+  <meta content="Microsoft Logo" name="twitter:image:alt"/>
+  <meta content="Docs" name="search.ms_sitename"/>
+  <meta content="powershell-windows" name="search.ms_docsetname"/>
+  <meta content="0" name="version"/>
+  <meta content="en-us" name="locale"/>
+  <meta content="Docs" name="site_name"/>
+  <meta content="MSDN" name="search.ms_product"/>
+  <meta content="MSDN.powershell-windows" name="depot_name"/>
+  <meta content="https://cpubwin.visualstudio.com/DefaultCollection/powershell/_git/powershell/commit/ced7757924addcaea0b7a244ae4d240e4d28d93a?path=%2fdocset%2fwindows%2ffailoverclusters%2ffailoverclusters.md&amp;_a=contents" name="ref_skeleton_gitcommit"/>
+  <meta content="https://cpubwin.visualstudio.com/DefaultCollection/powershell/_git/powershell?path=%2fdocset%2fwindows%2ffailoverclusters%2ffailoverclusters.md&amp;version=GBlive&amp;_a=contents" name="original_ref_skeleton_git_url"/>
+  <meta content="2017-09-15 03:44 AM" name="updated_at"/>
+  <meta content="0a3e12c0-7173-c914-7807-4baf68994331" name="document_id"/>
+  <meta content="7a47799e-a3ca-e16d-27d8-e288a129632e" name="document_version_independent_id"/>
+  <meta content="powershell" name="page_type"/>
+  <meta content="module" name="page_kind"/>
+  <meta content="../win10-ps/toc.json?view=win10-ps" name="toc_rel"/>
+  <meta content="manage" name="ms.mktglfcycl"/>
+  <meta content="library" name="ms.sitesec"/>
+  <meta content="brianlic" name="ms.author"/>
+  <meta content="FailoverClusters" name="Module_Name"/>
+  <meta content="CC3E946B-9141-48C2-95D8-D9E56594416A" name="Module_Guid"/>
+  <meta content="http://go.microsoft.com/fwlink/?linkid=390770" name="Download_Help_Link"/>
+  <meta content="5.0.3.3" name="Help_Version"/>
+  <meta content="en-US" name="Locale"/>
+  <meta content="Use this topic to help manage Windows and Windows Server technologies with Windows PowerShell." name="description"/>
+  <meta content="powershell, cmdlet" name="keywords"/>
+  <meta content="brianlic-msft" name="author"/>
+  <meta content="alanth" name="manager"/>
+  <meta content="12/20/2016" name="ms.date"/>
+  <meta content="reference" name="ms.topic"/>
+  <meta content="w10" name="ms.prod"/>
+  <meta content="powershell-windows" name="ms.technology"/>
+  <meta content="1149AB0F-CE0C-4F56-8352-15D29814411F" name="ms.assetid"/>
+  <meta content="failoverclusters" name="Add-ClusterCheckpoint"/>
+  <meta content="failoverclusters" name="Add-ClusterDisk"/>
+  <meta content="failoverclusters" name="Add-ClusterFileServerRole"/>
+  <meta content="failoverclusters" name="Add-ClusterGenericApplicationRole"/>
+  <meta content="failoverclusters" name="Add-ClusterGenericScriptRole"/>
+  <meta content="failoverclusters" name="Add-ClusterGenericServiceRole"/>
+  <meta content="failoverclusters" name="Add-ClusterGroup"/>
+  <meta content="failoverclusters" name="Add-ClusterGroupSetDependency"/>
+  <meta content="failoverclusters" name="Add-ClusterGroupToSet"/>
+  <meta content="failoverclusters" name="Add-ClusteriSCSITargetServerRole"/>
+  <meta content="failoverclusters" name="Add-ClusterNode"/>
+  <meta content="failoverclusters" name="Add-ClusterResource"/>
+  <meta content="failoverclusters" name="Add-ClusterResourceDependency"/>
+  <meta content="failoverclusters" name="Add-ClusterResourceType"/>
+  <meta content="failoverclusters" name="Add-ClusterScaleOutFileServerRole"/>
+  <meta content="failoverclusters" name="Add-ClusterSharedVolume"/>
+  <meta content="failoverclusters" name="Add-ClusterVirtualMachineRole"/>
+  <meta content="failoverclusters" name="Add-ClusterVMMonitoredItem"/>
+  <meta content="failoverclusters" name="Block-ClusterAccess"/>
+  <meta content="failoverclusters" name="Clear-ClusterDiskReservation"/>
+  <meta content="failoverclusters" name="Clear-ClusterNode"/>
+  <meta content="failoverclusters" name="Disable-ClusterStorageSpacesDirect"/>
+  <meta content="failoverclusters" name="Enable-ClusterStorageSpacesDirect"/>
+  <meta content="failoverclusters" name="Get-Cluster"/>
+  <meta content="failoverclusters" name="Get-ClusterAccess"/>
+  <meta content="failoverclusters" name="Get-ClusterAvailableDisk"/>
+  <meta content="failoverclusters" name="Get-ClusterCheckpoint"/>
+  <meta content="failoverclusters" name="Get-ClusterDiagnosticInfo"/>
+  <meta content="failoverclusters" name="Get-ClusterFaultDomain"/>
+  <meta content="failoverclusters" name="Get-ClusterFaultDomainXML"/>
+  <meta content="failoverclusters" name="Get-ClusterGroup"/>
+  <meta content="failoverclusters" name="Get-ClusterGroupSet"/>
+  <meta content="failoverclusters" name="Get-ClusterGroupSetDependency"/>
+  <meta content="failoverclusters" name="Get-ClusterLog"/>
+  <meta content="failoverclusters" name="Get-ClusterNetwork"/>
+  <meta content="failoverclusters" name="Get-ClusterNetworkInterface"/>
+  <meta content="failoverclusters" name="Get-ClusterNode"/>
+  <meta content="failoverclusters" name="Get-ClusterOwnerNode"/>
+  <meta content="failoverclusters" name="Get-ClusterParameter"/>
+  <meta content="failoverclusters" name="Get-ClusterQuorum"/>
+  <meta content="failoverclusters" name="Get-ClusterResource"/>
+  <meta content="failoverclusters" name="Get-ClusterResourceDependency"/>
+  <meta content="failoverclusters" name="Get-ClusterResourceDependencyReport"/>
+  <meta content="failoverclusters" name="Get-ClusterResourceType"/>
+  <meta content="failoverclusters" name="Get-ClusterSharedVolume"/>
+  <meta content="failoverclusters" name="Get-ClusterSharedVolumeState"/>
+  <meta content="failoverclusters" name="Get-ClusterStorageSpacesDirect"/>
+  <meta content="failoverclusters" name="Get-ClusterVMMonitoredItem"/>
+  <meta content="failoverclusters" name="Grant-ClusterAccess"/>
+  <meta content="failoverclusters" name="Move-ClusterGroup"/>
+  <meta content="failoverclusters" name="Move-ClusterResource"/>
+  <meta content="failoverclusters" name="Move-ClusterSharedVolume"/>
+  <meta content="failoverclusters" name="Move-ClusterVirtualMachineRole"/>
+  <meta content="failoverclusters" name="New-Cluster"/>
+  <meta content="failoverclusters" name="New-ClusterFaultDomain"/>
+  <meta content="failoverclusters" name="New-ClusterGroupSet"/>
+  <meta content="failoverclusters" name="New-ClusterNameAccount"/>
+  <meta content="failoverclusters" name="Remove-Cluster"/>
+  <meta content="failoverclusters" name="Remove-ClusterAccess"/>
+  <meta content="failoverclusters" name="Remove-ClusterCheckpoint"/>
+  <meta content="failoverclusters" name="Remove-ClusterFaultDomain"/>
+  <meta content="failoverclusters" name="Remove-ClusterGroup"/>
+  <meta content="failoverclusters" name="Remove-ClusterGroupFromSet"/>
+  <meta content="failoverclusters" name="Remove-ClusterGroupSet"/>
+  <meta content="failoverclusters" name="Remove-ClusterGroupSetDependency"/>
+  <meta content="failoverclusters" name="Remove-ClusterNode"/>
+  <meta content="failoverclusters" name="Remove-ClusterResource"/>
+  <meta content="failoverclusters" name="Remove-ClusterResourceDependency"/>
+  <meta content="failoverclusters" name="Remove-ClusterResourceType"/>
+  <meta content="failoverclusters" name="Remove-ClusterSharedVolume"/>
+  <meta content="failoverclusters" name="Remove-ClusterVMMonitoredItem"/>
+  <meta content="failoverclusters" name="Repair-ClusterStorageSpacesDirect"/>
+  <meta content="failoverclusters" name="Reset-ClusterVMMonitoredState"/>
+  <meta content="failoverclusters" name="Resume-ClusterNode"/>
+  <meta content="failoverclusters" name="Resume-ClusterResource"/>
+  <meta content="failoverclusters" name="Set-ClusterFaultDomain"/>
+  <meta content="failoverclusters" name="Set-ClusterFaultDomainXML"/>
+  <meta content="failoverclusters" name="Set-ClusterGroupSet"/>
+  <meta content="failoverclusters" name="Set-ClusterLog"/>
+  <meta content="failoverclusters" name="Set-ClusterOwnerNode"/>
+  <meta content="failoverclusters" name="Set-ClusterParameter"/>
+  <meta content="failoverclusters" name="Set-ClusterQuorum"/>
+  <meta content="failoverclusters" name="Set-ClusterResourceDependency"/>
+  <meta content="failoverclusters" name="Set-ClusterStorageSpacesDirect"/>
+  <meta content="failoverclusters" name="Set-ClusterStorageSpacesDirectDisk"/>
+  <meta content="failoverclusters" name="Start-Cluster"/>
+  <meta content="failoverclusters" name="Start-ClusterGroup"/>
+  <meta content="failoverclusters" name="Start-ClusterNode"/>
+  <meta content="failoverclusters" name="Start-ClusterResource"/>
+  <meta content="failoverclusters" name="Stop-Cluster"/>
+  <meta content="failoverclusters" name="Stop-ClusterGroup"/>
+  <meta content="failoverclusters" name="Stop-ClusterNode"/>
+  <meta content="failoverclusters" name="Stop-ClusterResource"/>
+  <meta content="failoverclusters" name="Suspend-ClusterNode"/>
+  <meta content="failoverclusters" name="Suspend-ClusterResource"/>
+  <meta content="failoverclusters" name="Test-Cluster"/>
+  <meta content="failoverclusters" name="Test-ClusterResourceFailure"/>
+  <meta content="failoverclusters" name="Update-ClusterFunctionalLevel"/>
+  <meta content="failoverclusters" name="Update-ClusterIPResource"/>
+  <meta content="failoverclusters" name="Update-ClusterNetworkNameResource"/>
+  <meta content="failoverclusters" name="Update-ClusterVirtualMachineConfiguration"/>
+  <meta content="powershell" name="ms.devlang"/>
+  <meta content="INDEX, FOLLOW" name="ROBOTS"/>
+  <meta content="/powershell/windows/bread/toc.json?view=win10-ps" name="breadcrumb_path"/>
+  <meta content="powershell" name="apiPlatform"/>
+  <meta content="MSDocsHeader-WindowsIT" name="uhfHeaderId"/>
+  <link href="https://docs.microsoft.com/en-us/powershell/module/failoverclusters/" rel="canonical"/>
+  <title>
+   FailoverClusters
+  </title>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/e4a1f3a3.site.css" rel="stylesheet"/>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/31353636.conceptual.css" rel="stylesheet"/>
+ </head>
+ <body dir="ltr" lang="en-us">
+  <div class="header-holder">
+   <div data-bi-name="header" id="headerAreaHolder">
+    <div id="uhf-placeholder">
+    </div>
+   </div>
+   <div class="disclaimer-holder" id="disclaimer-holder">
+   </div>
+  </div>
+  <div class="container mainContainer" data-bi-name="body">
+   <div class="content-header" data-bi-name="content-header">
+    <div class="content-header-controls">
+     <button class="contents-button button-border" data-bi-name="contents-expand" type="button">
+      <span class="docon docon-menu">
+      </span>
+      Contents
+     </button>
+    </div>
+    <div class="content-header-controls">
+     <button class="ap-collapse-behavior ap-expanded button-border" data-bi-name="ap-collapse" type="button">
+      <span class="docon docon-exit-mode">
+      </span>
+      Exit focus mode
+     </button>
+    </div>
+   </div>
+   <div class="primary-holder">
+    <main class="content" data-bi-name="content" dir="ltr" id="main" lang="en-us" role="main">
+     <!-- <content> -->
+     <h1>
+      Failover
+      <wbr/>
+      Clusters
+     </h1>
+     <div class="summaryHolder">
+      <div class="summary">
+       <p>
+        This reference provides cmdlet descriptions and syntax for all failover cluster-specific cmdlets. It lists the cmdlets in alphabetical order based on the verb at the beginning of the cmdlet.
+       </p>
+      </div>
+     </div>
+     <h2 id="failoverclusters">
+      failoverclusters
+     </h2>
+     <table class="nameValue">
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Add-ClusterCheckpoint.html">
+         Add-Cluster
+         <wbr/>
+         Checkpoint
+        </a>
+       </td>
+       <td>
+        <p>
+         Adds a cryptographic key checkpoint or registry checkpoint for a resource.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Add-ClusterDisk.html">
+         Add-Cluster
+         <wbr/>
+         Disk
+        </a>
+       </td>
+       <td>
+        <p>
+         Makes a new disk available for use in a failover cluster.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Add-ClusterFileServerRole.html">
+         Add-Cluster
+         <wbr/>
+         File
+         <wbr/>
+         Server
+         <wbr/>
+         Role
+        </a>
+       </td>
+       <td>
+        <p>
+         Creates a clustered file server resource group.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Add-ClusterGenericApplicationRole.html">
+         Add-Cluster
+         <wbr/>
+         Generic
+         <wbr/>
+         Application
+         <wbr/>
+         Role
+        </a>
+       </td>
+       <td>
+        <p>
+         Configures high availability for an application that was not originally designed to run in a failover cluster.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Add-ClusterGenericScriptRole.html">
+         Add-Cluster
+         <wbr/>
+         Generic
+         <wbr/>
+         Script
+         <wbr/>
+         Role
+        </a>
+       </td>
+       <td>
+        <p>
+         Configures an application controlled by a script that runs in Windows Script Host, within a failover cluster.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Add-ClusterGenericServiceRole.html">
+         Add-Cluster
+         <wbr/>
+         Generic
+         <wbr/>
+         Service
+         <wbr/>
+         Role
+        </a>
+       </td>
+       <td>
+        <p>
+         Configures high availability for a service that was not originally designed to run in a failover cluster.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Add-ClusterGroup.html">
+         Add-Cluster
+         <wbr/>
+         Group
+        </a>
+       </td>
+       <td>
+        <p>
+         Adds an empty resource group to the failover cluster configuration, in preparation for adding clustered resources to the group.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Add-ClusterGroupSetDependency.html">
+         Add-Cluster
+         <wbr/>
+         Group
+         <wbr/>
+         Set
+         <wbr/>
+         Dependency
+        </a>
+       </td>
+       <td>
+        <p>
+         Adds a dependency to a cluster set.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Add-ClusterGroupToSet.html">
+         Add-Cluster
+         <wbr/>
+         Group
+         <wbr/>
+         ToSet
+        </a>
+       </td>
+       <td>
+        <p>
+         Adds a group to a set.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Add-ClusterNode.html">
+         Add-Cluster
+         <wbr/>
+         Node
+        </a>
+       </td>
+       <td>
+        <p>
+         Adds a node (server) to a failover cluster.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Add-ClusterResource.html">
+         Add-Cluster
+         <wbr/>
+         Resource
+        </a>
+       </td>
+       <td>
+        <p>
+         Adds a resource to a clustered role, or resource group, in a failover cluster.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Add-ClusterResourceDependency.html">
+         Add-Cluster
+         <wbr/>
+         Resource
+         <wbr/>
+         Dependency
+        </a>
+       </td>
+       <td>
+        <p>
+         Adds a resource to the list of resources on which a particular resource depends, using AND as the connector, within a failover cluster.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Add-ClusterResourceType.html">
+         Add-Cluster
+         <wbr/>
+         Resource
+         <wbr/>
+         Type
+        </a>
+       </td>
+       <td>
+        <p>
+         Adds a resource type to a failover cluster, and specifies information such as the dynamic-link library (DLL) to use with that resource type.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Add-ClusterScaleOutFileServerRole.html">
+         Add-Cluster
+         <wbr/>
+         Scale
+         <wbr/>
+         Out
+         <wbr/>
+         File
+         <wbr/>
+         Server
+         <wbr/>
+         Role
+        </a>
+       </td>
+       <td>
+        <p>
+         Creates a clustered file server for scale-out application data.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Add-ClusterSharedVolume.html">
+         Add-Cluster
+         <wbr/>
+         Shared
+         <wbr/>
+         Volume
+        </a>
+       </td>
+       <td>
+        <p>
+         Makes a volume available in Cluster Shared Volumes in a failover cluster.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Add-ClusterVMMonitoredItem.html">
+         Add-Cluster
+         <wbr/>
+         VMMonitored
+         <wbr/>
+         Item
+        </a>
+       </td>
+       <td>
+        <p>
+         Configures monitoring for a service or an Event Tracing for Windows (ETW) event so that it is monitored on a virtual machine.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Add-ClusterVirtualMachineRole.html">
+         Add-Cluster
+         <wbr/>
+         Virtual
+         <wbr/>
+         Machine
+         <wbr/>
+         Role
+        </a>
+       </td>
+       <td>
+        <p>
+         Creates a clustered virtual machine, that is, a virtual machine that can be failed over if necessary to a different server in the failover cluster.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Add-ClusteriSCSITargetServerRole.html">
+         Add-Clusteri
+         <wbr/>
+         SCSITarget
+         <wbr/>
+         Server
+         <wbr/>
+         Role
+        </a>
+       </td>
+       <td>
+        <p>
+         Creates a highly available iSCSI Target server.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Block-ClusterAccess.html">
+         Block-Cluster
+         <wbr/>
+         Access
+        </a>
+       </td>
+       <td>
+        <p>
+         Prevents the specified user or users from accessing a failover cluster.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Clear-ClusterDiskReservation.html">
+         Clear-Cluster
+         <wbr/>
+         Disk
+         <wbr/>
+         Reservation
+        </a>
+       </td>
+       <td>
+        <p>
+         Clears the persistent reservation on a disk in a failover cluster.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Clear-ClusterNode.html">
+         Clear-Cluster
+         <wbr/>
+         Node
+        </a>
+       </td>
+       <td>
+        <p>
+         Clears the cluster configuration from a node that was evicted from a failover cluster.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Disable-ClusterStorageSpacesDirect.html">
+         Disable-Cluster
+         <wbr/>
+         Storage
+         <wbr/>
+         Spaces
+         <wbr/>
+         Direct
+        </a>
+       </td>
+       <td>
+        <p>
+         Disables S2D.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Enable-ClusterStorageSpacesDirect.html">
+         Enable-Cluster
+         <wbr/>
+         Storage
+         <wbr/>
+         Spaces
+         <wbr/>
+         Direct
+        </a>
+       </td>
+       <td>
+        <p>
+         Enables S2D.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-Cluster.html">
+         Get-Cluster
+        </a>
+       </td>
+       <td>
+        <p>
+         Gets information about one or more failover clusters in a given domain.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-ClusterAccess.html">
+         Get-Cluster
+         <wbr/>
+         Access
+        </a>
+       </td>
+       <td>
+        <p>
+         Gets information about permissions that control access to a failover cluster.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-ClusterAvailableDisk.html">
+         Get-Cluster
+         <wbr/>
+         Available
+         <wbr/>
+         Disk
+        </a>
+       </td>
+       <td>
+        <p>
+         Gets information about the disks that can support Failover Clustering and are visible to all nodes, but are not yet part of the set of clustered disks.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-ClusterCheckpoint.html">
+         Get-Cluster
+         <wbr/>
+         Checkpoint
+        </a>
+       </td>
+       <td>
+        <p>
+         Retrieves a cryptographic key checkpoint or registry checkpoint for a resource.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-ClusterDiagnosticInfo.html">
+         Get-Cluster
+         <wbr/>
+         Diagnostic
+         <wbr/>
+         Info
+        </a>
+       </td>
+       <td>
+        <p>
+         Gets diagnostics for a cluster a cluster that contains VMs and produces a zip file containing the data.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-ClusterFaultDomain.html">
+         Get-Cluster
+         <wbr/>
+         Fault
+         <wbr/>
+         Domain
+        </a>
+       </td>
+       <td>
+        <p>
+         Gets the cluster fault domains in a cluster.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-ClusterFaultDomainXML.html">
+         Get-Cluster
+         <wbr/>
+         Fault
+         <wbr/>
+         DomainXML
+        </a>
+       </td>
+       <td>
+        <p>
+         Gets the fault domain as an XML string.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-ClusterGroup.html">
+         Get-Cluster
+         <wbr/>
+         Group
+        </a>
+       </td>
+       <td>
+        <p>
+         Gets information about one or more clustered roles (resource groups) in a failover cluster.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-ClusterGroupSet.html">
+         Get-Cluster
+         <wbr/>
+         Group
+         <wbr/>
+         Set
+        </a>
+       </td>
+       <td>
+        <p>
+         Gets the group sets in the cluster.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-ClusterGroupSetDependency.html">
+         Get-Cluster
+         <wbr/>
+         Group
+         <wbr/>
+         Set
+         <wbr/>
+         Dependency
+        </a>
+       </td>
+       <td>
+        <p>
+         Gets the cluster group sets based on dependency relationships.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-ClusterLog.html">
+         Get-Cluster
+         <wbr/>
+         Log
+        </a>
+       </td>
+       <td>
+        <p>
+         Creates a log file for all nodes, or a specific a node, in a failover cluster.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-ClusterNetwork.html">
+         Get-Cluster
+         <wbr/>
+         Network
+        </a>
+       </td>
+       <td>
+        <p>
+         Gets information about one or more networks in a failover cluster.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-ClusterNetworkInterface.html">
+         Get-Cluster
+         <wbr/>
+         Network
+         <wbr/>
+         Interface
+        </a>
+       </td>
+       <td>
+        <p>
+         Gets information about one or more network adapters in a failover cluster.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-ClusterNode.html">
+         Get-Cluster
+         <wbr/>
+         Node
+        </a>
+       </td>
+       <td>
+        <p>
+         Gets information about one or more nodes, or servers, in a failover cluster.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-ClusterOwnerNode.html">
+         Get-Cluster
+         <wbr/>
+         Owner
+         <wbr/>
+         Node
+        </a>
+       </td>
+       <td>
+        <p>
+         Gets information about which nodes can own a resource in a failover cluster or information about the order of preference among owner nodes for a clustered role.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-ClusterParameter.html">
+         Get-Cluster
+         <wbr/>
+         Parameter
+        </a>
+       </td>
+       <td>
+        <p>
+         Gets detailed information about an object in a failover cluster, such as a cluster resource.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-ClusterQuorum.html">
+         Get-Cluster
+         <wbr/>
+         Quorum
+        </a>
+       </td>
+       <td>
+        <p>
+         Gets information about the quorum configuration of a failover cluster.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-ClusterResource.html">
+         Get-Cluster
+         <wbr/>
+         Resource
+        </a>
+       </td>
+       <td>
+        <p>
+         Gets information about one or more resources in a failover cluster.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-ClusterResourceDependency.html">
+         Get-Cluster
+         <wbr/>
+         Resource
+         <wbr/>
+         Dependency
+        </a>
+       </td>
+       <td>
+        <p>
+         Gets information about the dependencies that have been configured between clustered resources in a failover cluster.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-ClusterResourceDependencyReport.html">
+         Get-Cluster
+         <wbr/>
+         Resource
+         <wbr/>
+         Dependency
+         <wbr/>
+         Report
+        </a>
+       </td>
+       <td>
+        <p>
+         Generates a report that lists the dependencies between resources in a failover cluster.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-ClusterResourceType.html">
+         Get-Cluster
+         <wbr/>
+         Resource
+         <wbr/>
+         Type
+        </a>
+       </td>
+       <td>
+        <p>
+         Gets information about one or more resource types in a failover cluster.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-ClusterSharedVolume.html">
+         Get-Cluster
+         <wbr/>
+         Shared
+         <wbr/>
+         Volume
+        </a>
+       </td>
+       <td>
+        <p>
+         Gets information about Cluster Shared Volumes in a failover cluster.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-ClusterSharedVolumeState.html">
+         Get-Cluster
+         <wbr/>
+         Shared
+         <wbr/>
+         Volume
+         <wbr/>
+         State
+        </a>
+       </td>
+       <td>
+        <p>
+         Gets the state of Cluster Shared Volumes in a cluster.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-ClusterStorageSpacesDirect.html">
+         Get-Cluster
+         <wbr/>
+         Storage
+         <wbr/>
+         Spaces
+         <wbr/>
+         Direct
+        </a>
+       </td>
+       <td>
+        <p>
+         Gets the S2D settings from a cluster.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-ClusterVMMonitoredItem.html">
+         Get-Cluster
+         <wbr/>
+         VMMonitored
+         <wbr/>
+         Item
+        </a>
+       </td>
+       <td>
+        <p>
+         Gets the list of services and events currently being monitored in the virtual machine.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Grant-ClusterAccess.html">
+         Grant-Cluster
+         <wbr/>
+         Access
+        </a>
+       </td>
+       <td>
+        <p>
+         Grants access to a failover cluster, either full access or read-only access.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Move-ClusterGroup.html">
+         Move-Cluster
+         <wbr/>
+         Group
+        </a>
+       </td>
+       <td>
+        <p>
+         Moves a clustered role (a resource group) from one node to another in a failover cluster.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Move-ClusterResource.html">
+         Move-Cluster
+         <wbr/>
+         Resource
+        </a>
+       </td>
+       <td>
+        <p>
+         Moves a clustered resource from one clustered role to another within a failover cluster.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Move-ClusterSharedVolume.html">
+         Move-Cluster
+         <wbr/>
+         Shared
+         <wbr/>
+         Volume
+        </a>
+       </td>
+       <td>
+        <p>
+         Moves a Cluster Shared Volume (CSV) to ownership by a different node in a failover cluster.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Move-ClusterVirtualMachineRole.html">
+         Move-Cluster
+         <wbr/>
+         Virtual
+         <wbr/>
+         Machine
+         <wbr/>
+         Role
+        </a>
+       </td>
+       <td>
+        <p>
+         Moves the ownership of a clustered virtual machine to a different node.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="New-Cluster.html">
+         New-Cluster
+        </a>
+       </td>
+       <td>
+        <p>
+         Creates a new failover cluster.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="New-ClusterFaultDomain.html">
+         New-Cluster
+         <wbr/>
+         Fault
+         <wbr/>
+         Domain
+        </a>
+       </td>
+       <td>
+        <p>
+         Creates a fault domain in the cluster.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="New-ClusterGroupSet.html">
+         New-Cluster
+         <wbr/>
+         Group
+         <wbr/>
+         Set
+        </a>
+       </td>
+       <td>
+        <p>
+         Create a names set of groups in the cluster.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="New-ClusterNameAccount.html">
+         New-Cluster
+         <wbr/>
+         Name
+         <wbr/>
+         Account
+        </a>
+       </td>
+       <td>
+        <p>
+         Creates a cluster name account in Active Directory Domain Services.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Remove-Cluster.html">
+         Remove-Cluster
+        </a>
+       </td>
+       <td>
+        <p>
+         Destroys an existing failover cluster.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Remove-ClusterAccess.html">
+         Remove-Cluster
+         <wbr/>
+         Access
+        </a>
+       </td>
+       <td>
+        <p>
+         Removes a user from the access list on the cluster.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Remove-ClusterCheckpoint.html">
+         Remove-Cluster
+         <wbr/>
+         Checkpoint
+        </a>
+       </td>
+       <td>
+        <p>
+         Removes a cryptographic key checkpoint or registry checkpoint for a resource.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Remove-ClusterFaultDomain.html">
+         Remove-Cluster
+         <wbr/>
+         Fault
+         <wbr/>
+         Domain
+        </a>
+       </td>
+       <td>
+        <p>
+         Removes a fault domain.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Remove-ClusterGroup.html">
+         Remove-Cluster
+         <wbr/>
+         Group
+        </a>
+       </td>
+       <td>
+        <p>
+         Removes a clustered role, also called a resource group, from a failover cluster.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Remove-ClusterGroupFromSet.html">
+         Remove-Cluster
+         <wbr/>
+         Group
+         <wbr/>
+         From
+         <wbr/>
+         Set
+        </a>
+       </td>
+       <td>
+        <p>
+         Removes a group from a set.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Remove-ClusterGroupSet.html">
+         Remove-Cluster
+         <wbr/>
+         Group
+         <wbr/>
+         Set
+        </a>
+       </td>
+       <td>
+        <p>
+         Removes a group set from the cluster.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Remove-ClusterGroupSetDependency.html">
+         Remove-Cluster
+         <wbr/>
+         Group
+         <wbr/>
+         Set
+         <wbr/>
+         Dependency
+        </a>
+       </td>
+       <td>
+        <p>
+         Removes a dependency from a group set.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Remove-ClusterNode.html">
+         Remove-Cluster
+         <wbr/>
+         Node
+        </a>
+       </td>
+       <td>
+        <p>
+         Removes a node from a failover cluster.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Remove-ClusterResource.html">
+         Remove-Cluster
+         <wbr/>
+         Resource
+        </a>
+       </td>
+       <td>
+        <p>
+         Removes a clustered resource from the failover cluster.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Remove-ClusterResourceDependency.html">
+         Remove-Cluster
+         <wbr/>
+         Resource
+         <wbr/>
+         Dependency
+        </a>
+       </td>
+       <td>
+        <p>
+         Removes a dependency between two resources in a clustered role within a failover cluster.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Remove-ClusterResourceType.html">
+         Remove-Cluster
+         <wbr/>
+         Resource
+         <wbr/>
+         Type
+        </a>
+       </td>
+       <td>
+        <p>
+         Removes a resource type from a failover cluster.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Remove-ClusterSharedVolume.html">
+         Remove-Cluster
+         <wbr/>
+         Shared
+         <wbr/>
+         Volume
+        </a>
+       </td>
+       <td>
+        <p>
+         Removes a volume from the Cluster Shared Volumes in a failover cluster, and places it in Available Storage in the cluster.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Remove-ClusterVMMonitoredItem.html">
+         Remove-Cluster
+         <wbr/>
+         VMMonitored
+         <wbr/>
+         Item
+        </a>
+       </td>
+       <td>
+        <p>
+         Removes monitoring of a service or event that is currently being monitored on a virtual machine.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Repair-ClusterStorageSpacesDirect.html">
+         Repair-Cluster
+         <wbr/>
+         Storage
+         <wbr/>
+         Spaces
+         <wbr/>
+         Direct
+        </a>
+       </td>
+       <td>
+        <p>
+         Repairs S2D disks.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Reset-ClusterVMMonitoredState.html">
+         Reset-Cluster
+         <wbr/>
+         VMMonitored
+         <wbr/>
+         State
+        </a>
+       </td>
+       <td>
+        <p>
+         Resets the Application Critical state of a virtual machine, so that the virtual machine is no longer marked as being in a critical state in the cluster.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Resume-ClusterNode.html">
+         Resume-Cluster
+         <wbr/>
+         Node
+        </a>
+       </td>
+       <td>
+        <p>
+         Resumes a node from the paused state or brings back drained workloads to the node or both.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Resume-ClusterResource.html">
+         Resume-Cluster
+         <wbr/>
+         Resource
+        </a>
+       </td>
+       <td>
+        <p>
+         Turns off maintenance for a disk resource or Cluster Shared Volume within a failover cluster.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Set-ClusterFaultDomain.html">
+         Set-Cluster
+         <wbr/>
+         Fault
+         <wbr/>
+         Domain
+        </a>
+       </td>
+       <td>
+        <p>
+         Update an existing cluster fault domain.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Set-ClusterFaultDomainXML.html">
+         Set-Cluster
+         <wbr/>
+         Fault
+         <wbr/>
+         DomainXML
+        </a>
+       </td>
+       <td>
+        <p>
+         Sets the cluster fault domain using XML.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Set-ClusterGroupSet.html">
+         Set-Cluster
+         <wbr/>
+         Group
+         <wbr/>
+         Set
+        </a>
+       </td>
+       <td>
+        <p>
+         Updates a cluster group set.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Set-ClusterLog.html">
+         Set-Cluster
+         <wbr/>
+         Log
+        </a>
+       </td>
+       <td>
+        <p>
+         Sets the size and level of detail for the cluster log.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Set-ClusterOwnerNode.html">
+         Set-Cluster
+         <wbr/>
+         Owner
+         <wbr/>
+         Node
+        </a>
+       </td>
+       <td>
+        <p>
+         Specifies which nodes can own a resource in a failover cluster or specifies the order of preference among owner nodes for a clustered role, or resource group.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Set-ClusterParameter.html">
+         Set-Cluster
+         <wbr/>
+         Parameter
+        </a>
+       </td>
+       <td>
+        <p>
+         Controls specific properties of an object in a failover cluster, such as a resource, a group, or a network.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Set-ClusterQuorum.html">
+         Set-Cluster
+         <wbr/>
+         Quorum
+        </a>
+       </td>
+       <td>
+        <p>
+         Configures quorum options for a failover cluster.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Set-ClusterResourceDependency.html">
+         Set-Cluster
+         <wbr/>
+         Resource
+         <wbr/>
+         Dependency
+        </a>
+       </td>
+       <td>
+        <p>
+         Specifies the resources that a particular resource depends on within a failover cluster.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Set-ClusterStorageSpacesDirect.html">
+         Set-Cluster
+         <wbr/>
+         Storage
+         <wbr/>
+         Spaces
+         <wbr/>
+         Direct
+        </a>
+       </td>
+       <td>
+        <p>
+         Sets S2D cache parameters.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Set-ClusterStorageSpacesDirectDisk.html">
+         Set-Cluster
+         <wbr/>
+         Storage
+         <wbr/>
+         Spaces
+         <wbr/>
+         Direct
+         <wbr/>
+         Disk
+        </a>
+       </td>
+       <td>
+        <p>
+         Configures the system to enable S2D to claim or not claim specific physical disks.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Start-Cluster.html">
+         Start-Cluster
+        </a>
+       </td>
+       <td>
+        <p>
+         Starts the Cluster service on all nodes of the cluster on which it is not yet started.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Start-ClusterGroup.html">
+         Start-Cluster
+         <wbr/>
+         Group
+        </a>
+       </td>
+       <td>
+        <p>
+         Starts one or more clustered roles, also known as resource groups, on a failover cluster.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Start-ClusterNode.html">
+         Start-Cluster
+         <wbr/>
+         Node
+        </a>
+       </td>
+       <td>
+        <p>
+         Starts the Cluster service on a node in a failover cluster.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Start-ClusterResource.html">
+         Start-Cluster
+         <wbr/>
+         Resource
+        </a>
+       </td>
+       <td>
+        <p>
+         Brings a resource online in a failover cluster.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Stop-Cluster.html">
+         Stop-Cluster
+        </a>
+       </td>
+       <td>
+        <p>
+         Stops the Cluster service on all nodes in a failover cluster, which will stop all services and applications configured in the cluster.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Stop-ClusterGroup.html">
+         Stop-Cluster
+         <wbr/>
+         Group
+        </a>
+       </td>
+       <td>
+        <p>
+         Stops one or more clustered roles on a failover cluster.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Stop-ClusterNode.html">
+         Stop-Cluster
+         <wbr/>
+         Node
+        </a>
+       </td>
+       <td>
+        <p>
+         Stops the Cluster service on a node in a failover cluster.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Stop-ClusterResource.html">
+         Stop-Cluster
+         <wbr/>
+         Resource
+        </a>
+       </td>
+       <td>
+        <p>
+         Takes a resource offline in a failover cluster.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Suspend-ClusterNode.html">
+         Suspend-Cluster
+         <wbr/>
+         Node
+        </a>
+       </td>
+       <td>
+        <p>
+         Suspends activity on a failover cluster node, that is, pauses the node.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Suspend-ClusterResource.html">
+         Suspend-Cluster
+         <wbr/>
+         Resource
+        </a>
+       </td>
+       <td>
+        <p>
+         Turns on maintenance for a disk resource or CSV so that you can run a disk maintenance tool without triggering failover.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Test-Cluster.html">
+         Test-Cluster
+        </a>
+       </td>
+       <td>
+        <p>
+         Runs validation tests for failover cluster hardware and settings.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Test-ClusterResourceFailure.html">
+         Test-Cluster
+         <wbr/>
+         Resource
+         <wbr/>
+         Failure
+        </a>
+       </td>
+       <td>
+        <p>
+         Simulates a failure of a cluster resource.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Update-ClusterFunctionalLevel.html">
+         Update-Cluster
+         <wbr/>
+         Functional
+         <wbr/>
+         Level
+        </a>
+       </td>
+       <td>
+        <p>
+         Updates the functional level of a mixed-version cluster.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Update-ClusterIPResource.html">
+         Update-Cluster
+         <wbr/>
+         IPResource
+        </a>
+       </td>
+       <td>
+        <p>
+         Renews or releases the DHCP lease for an IP address resource in a failover cluster.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Update-ClusterNetworkNameResource.html">
+         Update-Cluster
+         <wbr/>
+         Network
+         <wbr/>
+         Name
+         <wbr/>
+         Resource
+        </a>
+       </td>
+       <td>
+        <p>
+         Registers existing Network Name resources with a DNS server in a way that does not interrupt cluster availability.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Update-ClusterVirtualMachineConfiguration.html">
+         Update-Cluster
+         <wbr/>
+         Virtual
+         <wbr/>
+         Machine
+         <wbr/>
+         Configuration
+        </a>
+       </td>
+       <td>
+        <p>
+         Refreshes the configuration of a clustered virtual machine within a failover cluster.
+        </p>
+       </td>
+      </tr>
+     </table>
+     <!-- </content> -->
+    </main>
+    <section class="feedback-section" data-bi-name="feedback-section">
+     <h2 id="feedback">
+      Feedback
+     </h2>
+     <div class="alert choose-feedback-type">
+      <p>
+       We'd love to hear your thoughts. Choose the type you'd like to provide:
+      </p>
+      <div class="choose-feedback-buttons">
+       <a class="button-border feedback-type-product" data-bi-name="product-feedback" href="https://windowsserver.uservoice.com/forums/301869-powershell">
+        Product feedback
+        <span aria-hidden="true" class="docon docon-navigate-external">
+        </span>
+       </a>
+       <div class="button-group">
+        <button class="button-border feedback-sign-in-button" data-bi-name="feedback-sign-in">
+         <span aria-hidden="true" class="docon docon-brand-github">
+         </span>
+         Sign in to give documentation feedback
+        </button>
+        <button aria-controls="feedback-form" aria-expanded="false" class="button-border feedback-form-toggle" data-bi-name="documentation-feedback" hidden="">
+         Content feedback
+        </button>
+        <div auto-align="" class="dropdown has-caret">
+         <button aria-controls="fbm0" aria-expanded="false" aria-haspopup="true" aria-label="Expand documentation feedback menu" class="button-border dropdown-trigger" data-bi-name="documentation-feedback-menu">
+          <span aria-hidden="true" class="docon docon-chevron-down-light">
+          </span>
+         </button>
+         <div class="dropdown-menu documentation-feedback-menu" id="fbm0" role="menu">
+          You may also leave feedback
+          <a data-bi-name="create-issue-on-github" href="{0}">
+           directly on GitHub
+           <span aria-hidden="true" class="docon docon-navigate-external">
+           </span>
+          </a>
+          .
+         </div>
+        </div>
+       </div>
+      </div>
+      <p>
+       <small>
+        Our new feedback system is built on GitHub Issues. Read about this change in
+        <a href="https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs">
+         our blog post
+        </a>
+        .
+       </small>
+      </p>
+     </div>
+     <form accept-charset="UTF-8" action="javascript:" autocomplete="off" class="feedback-form" hidden="" id="feedback-form">
+      <h3 class="feedback-form-heading current-user">
+       <img alt="Avatar" aria-hidden="true" class="avatar" height="36" width="36"/>
+       <span aria-hidden="true" class="username">
+       </span>
+       <span class="visually-hidden">
+        Liquid error: Can't find the localized string giveDocumentationFeedback for template Conceptual.
+       </span>
+      </h3>
+      <label>
+       <span class="visually-hidden">
+        Title
+       </span>
+       <input name="title" pattern=".*\w.*" placeholder="Title" required="" type="text"/>
+      </label>
+      <label>
+       <span class="visually-hidden">
+        Leave a comment
+       </span>
+       <textarea name="body" placeholder="Leave a comment" required=""></textarea>
+      </label>
+      <div class="action-container">
+       <button class="primary-action" name="submit" type="submit">
+        Submit feedback
+       </button>
+      </div>
+     </form>
+     <div class="feedback-status alert busy" role="alert">
+      <p>
+       Loading feedback...
+      </p>
+     </div>
+     <div class="feedback-tab-group tabGroup" data-tab-group-independent="" hidden="">
+      <ul role="tablist">
+       <li role="presentation">
+        <a aria-controls="tabpanel-issues-open" aria-label="Open Issues" data-tab="issues-open" href="#tabpanel-issues-open" role="tab">
+        </a>
+       </li>
+       <li role="presentation">
+        <a aria-controls="tabpanel-issues-closed" aria-label="Closed Issues" data-tab="issues-closed" href="#tabpanel-issues-closed" role="tab">
+        </a>
+       </li>
+      </ul>
+      <section data-tab="issues-open" id="tabpanel-issues-open" role="tabpanel">
+       <div class="no-issues-placeholder">
+        There are no open issues
+       </div>
+       <ul aria-label="Open Issues" class="github-issues-list">
+       </ul>
+      </section>
+      <section data-tab="issues-closed" id="tabpanel-issues-closed" role="tabpanel">
+       <div class="no-issues-placeholder">
+        There are no closed issues
+       </div>
+       <ul aria-label="Closed Issues" class="github-issues-list">
+       </ul>
+      </section>
+     </div>
+     <div class="action-container">
+      <a class="view-on-github" data-bi-name="view-on-github" hidden="" href="https://github.com/MicrosoftDocs/windows-powershell-docs/issues">
+       <span aria-hidden="true" class="docon docon-brand-github">
+       </span>
+       <span>
+        View on GitHub
+       </span>
+       <span aria-hidden="true" class="docon docon-navigate-external">
+       </span>
+      </a>
+     </div>
+    </section>
+   </div>
+  </div>
+  <div class="openfeedback-container" id="openFeedbackContainer">
+  </div>
+  <div class="action-panel">
+  </div>
+ </body>
+</html>

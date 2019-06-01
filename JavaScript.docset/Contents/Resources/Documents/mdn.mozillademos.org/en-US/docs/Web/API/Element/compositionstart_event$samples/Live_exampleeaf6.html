@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    
+<!-- Mirrored from mdn.mozillademos.org/en-US/docs/Web/API/Element/compositionstart_event$samples/Live_example?revision=1468546 by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 02 May 2019 00:41:31 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+        <meta charset="utf-8">
+        <link href="../../../../../../../developer.mozilla.org/static/build/styles/samples.37902ba3b7fe.css" rel="stylesheet" type="text/css" />
+        
+        <style type="text/css">
+            body {
+  padding: .2rem;
+  display: grid;
+  grid-template-areas: "control  log";
+}
+
+.control {
+  grid-area: control;
+}
+
+.event-log {
+  grid-area: log;
+}
+
+.event-log-contents {
+  resize: none;
+}
+
+label, button {
+  display: block;
+}
+
+input[type="text"] {
+  margin: .5rem 0;
+}
+
+kbd {
+  border-radius: 3px;
+  padding: 1px 2px 0;
+  border: 1px solid black;
+}
+
+        </style>
+        
+        <title>Element: compositionstart event</title>
+    </head>
+    <body>
+        
+            <div class="control">
+  <label for="name">On macOS, click in the textbox below,<br> then type <kbd>option</kbd> + <kbd>`</kbd>, then <kbd>a</kbd>:</label>
+  <input type="text" id="example" name="example">
+</div>
+
+<div class="event-log">
+  <label>Event log:</label>
+  <textarea readonly class="event-log-contents" rows="8" cols="25"></textarea>
+  <button class="clear-log">Clear</button>
+</div>
+        
+        
+            <script>
+                const inputElement = document.querySelector('input[type="text"]');
+const log = document.querySelector('.event-log-contents');
+const clearLog = document.querySelector('.clear-log');
+
+clearLog.addEventListener('click', () => {
+    log.textContent = '';
+});
+
+function handleEvent(event) {
+    log.textContent = log.textContent + `${event.type}: ${event.data}\n`;
+}
+
+inputElement.addEventListener('compositionstart', handleEvent);
+inputElement.addEventListener('compositionupdate', handleEvent);
+inputElement.addEventListener('compositionend', handleEvent);
+
+            </script>
+        
+    </body>
+
+<!-- Mirrored from mdn.mozillademos.org/en-US/docs/Web/API/Element/compositionstart_event$samples/Live_example?revision=1468546 by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 02 May 2019 00:41:31 GMT -->
+</html>

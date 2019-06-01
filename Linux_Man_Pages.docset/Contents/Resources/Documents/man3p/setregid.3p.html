@@ -1,0 +1,225 @@
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML><HEAD><TITLE>Man page of SETREGID</TITLE>
+</HEAD><BODY>
+<H1>SETREGID</H1>
+Section: POSIX Programmer's Manual (3P)<BR>Updated: 2013<BR><A HREF="#index">Index</A>
+<A HREF="../index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>PROLOG</H2>
+
+This manual page is part of the POSIX Programmer's Manual.
+The Linux implementation of this interface may differ (consult
+the corresponding Linux manual page for details of Linux behavior),
+or the interface may not be implemented on Linux.
+<P>
+<A NAME="lbAC">&nbsp;</A>
+<H2>NAME</H2>
+
+setregid
+--- set real and effective group IDs
+<A NAME="lbAD">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<P>
+
+<PRE>
+#include &lt;<A HREF="file:///usr/include/unistd.h">unistd.h</A>&gt;
+
+int setregid(gid_t <I>rgid</I>, gid_t <I>egid</I>);
+</PRE>
+
+<A NAME="lbAE">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+The
+<I>setregid</I>()
+function shall set the real and effective group IDs of the calling
+process.
+<P>
+
+If
+<I>rgid</I>
+
+is -1, the real group ID shall not be changed; if
+<I>egid</I>
+
+is -1, the effective group ID shall not be changed.
+<P>
+
+The real and effective group IDs may be set to different values in the
+same call.
+<P>
+
+Only a process with appropriate privileges can set the real group ID
+and the effective group ID to any valid value.
+<P>
+
+A non-privileged process can set either the real group ID to the saved
+set-group-ID from one of the
+<I>exec</I>
+
+family of functions, or the effective group ID to the saved
+set-group-ID or the real group ID.
+<P>
+
+If the real group ID is being set (<I>rgid</I>
+
+is not -1), or the effective group ID is being set to a value not
+equal to the real group ID, then the saved set-group-ID of the current
+process shall be set equal to the new effective group ID.
+<P>
+
+Any supplementary group IDs of the calling process remain unchanged.
+<A NAME="lbAF">&nbsp;</A>
+<H2>RETURN VALUE</H2>
+
+Upon successful completion, 0 shall be returned. Otherwise, -1
+shall be returned and
+<I>errno</I>
+
+set to indicate the error, and neither of the group IDs are changed.
+<A NAME="lbAG">&nbsp;</A>
+<H2>ERRORS</H2>
+
+The
+<I>setregid</I>()
+function shall fail if:
+<DL COMPACT>
+<DT><B>EINVAL</B>
+
+<DD>
+The value of the
+<I>rgid</I>
+
+or
+<I>egid</I>
+
+argument is invalid or out-of-range.
+<DT><B>EPERM</B>
+
+<DD>
+The process does not have appropriate privileges and a change other
+than changing the real group ID to the saved set-group-ID, or changing
+the effective group ID to the real group ID or the saved set-group-ID,
+was requested.
+</DL>
+<P>
+
+<I>The following sections are informative.</I>
+
+<A NAME="lbAH">&nbsp;</A>
+<H2>EXAMPLES</H2>
+
+None.
+<A NAME="lbAI">&nbsp;</A>
+<H2>APPLICATION USAGE</H2>
+
+If a non-privileged set-group-ID process sets its effective group ID to
+its real group ID, it can only set its effective group ID back to the
+previous value if
+<I>rgid</I>
+
+was -1 in the
+<I>setregid</I>()
+call, since the saved-group-ID is not changed in that case. If
+<I>rgid</I>
+
+was equal to the real group ID in the
+<I>setregid</I>()
+call, then the saved set-group-ID will also have been changed to the
+real user ID.
+<A NAME="lbAJ">&nbsp;</A>
+<H2>RATIONALE</H2>
+
+Earlier versions of this standard did not specify whether the saved
+set-group-ID was affected by
+<I>setregid</I>()
+calls. This version specifies common existing practice that constitutes an
+important security feature. The ability to set both the effective group
+ID and saved set-group-ID to be the same as the real group ID means that
+any security weakness in code that is executed after that point cannot
+result in malicious code being executed with the previous effective
+group ID. Privileged applications could already do this using just
+<I>setgid</I>(),
+but for non-privileged applications the only standard method available
+is to use this feature of
+<I>setregid</I>().
+<A NAME="lbAK">&nbsp;</A>
+<H2>FUTURE DIRECTIONS</H2>
+
+None.
+<A NAME="lbAL">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+<I>exec</I>,
+
+<I>getegid</I>(),
+
+<I>geteuid</I>(),
+
+<I>getgid</I>(),
+
+<I>getuid</I>(),
+
+<I>setegid</I>(),
+
+<I>seteuid</I>(),
+
+<I>setgid</I>(),
+
+<I>setreuid</I>(),
+
+<I>setuid</I>()
+
+<P>
+
+The Base Definitions volume of POSIX.1-2008,
+<I></I><B>&lt;<A HREF="file:///usr/include/unistd.h">unistd.h</A>&gt;</B>
+
+<A NAME="lbAM">&nbsp;</A>
+<H2>COPYRIGHT</H2>
+
+Portions of this text are reprinted and reproduced in electronic form
+from IEEE Std 1003.1, 2013 Edition, Standard for Information Technology
+-- Portable Operating System Interface (POSIX), The Open Group Base
+Specifications Issue 7, Copyright (C) 2013 by the Institute of
+Electrical and Electronics Engineers, Inc and The Open Group.
+(This is POSIX.1-2008 with the 2013 Technical Corrigendum 1 applied.) In the
+event of any discrepancy between this version and the original IEEE and
+The Open Group Standard, the original IEEE and The Open Group Standard
+is the referee document. The original Standard can be obtained online at
+<A HREF="http://www.unix.org/online.html">http://www.unix.org/online.html</A> .
+<P>
+Any typographical or formatting errors that appear
+in this page are most likely
+to have been introduced during the conversion of the source files to
+man page format. To report such errors, see
+<A HREF="https://www.kernel.org/doc/man-pages/reporting_bugs.html">https://www.kernel.org/doc/man-pages/reporting_bugs.html</A> .
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">PROLOG</A><DD>
+<DT><A HREF="#lbAC">NAME</A><DD>
+<DT><A HREF="#lbAD">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAE">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAF">RETURN VALUE</A><DD>
+<DT><A HREF="#lbAG">ERRORS</A><DD>
+<DT><A HREF="#lbAH">EXAMPLES</A><DD>
+<DT><A HREF="#lbAI">APPLICATION USAGE</A><DD>
+<DT><A HREF="#lbAJ">RATIONALE</A><DD>
+<DT><A HREF="#lbAK">FUTURE DIRECTIONS</A><DD>
+<DT><A HREF="#lbAL">SEE ALSO</A><DD>
+<DT><A HREF="#lbAM">COPYRIGHT</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 14:28:55 GMT, February 25, 2017
+</BODY>
+</HTML>

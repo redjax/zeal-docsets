@@ -1,0 +1,2090 @@
+<!DOCTYPE html>
+<html class="no-js hasSidebar hasPageActions hasBreadcrumb conceptual" data-authenticated="false" data-render="docs" dir="ltr" lang="en-us">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Set-PSSessionConfiguration (Microsoft.PowerShell.Core)" property="og:title"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" property="og:image"/>
+  <meta content="summary" name="twitter:card"/>
+  <meta content="@docsmsft" name="twitter:site"/>
+  <meta content="Set-PSSessionConfiguration (Microsoft.PowerShell.Core)" name="twitter:title"/>
+  <meta content="The Set-PSSessionConfiguration cmdlet changes the properties of the session configurations on the local computer. Use the Name parameter to identify the session configuration that you want to change.â¦" name="twitter:description"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" name="twitter:image"/>
+  <meta content="Microsoft Logo" name="twitter:image:alt"/>
+  <meta content="The Set-PSSessionConfiguration cmdlet changes the properties of the session configurations on the local computer. Use the Name parameter to identify the session configuration that you want to change.â¦" name="description"/>
+  <meta content="Docs" name="search.ms_sitename"/>
+  <meta content="PowerShell_PowerShell-docs_reference" name="search.ms_docsetname"/>
+  <meta content="0" name="version"/>
+  <meta content="en-us" name="locale"/>
+  <meta content="Docs" name="site_name"/>
+  <meta content="PowerShell" name="search.ms_product"/>
+  <meta content="PowerShell.PowerShell_PowerShell-docs_reference" name="depot_name"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/666c3f64d0eef63804d647e4696478faecb03e9e/reference/6/Microsoft.PowerShell.Core/Set-PSSessionConfiguration.md" name="ref_skeleton_gitcommit"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/live/reference/6/Microsoft.PowerShell.Core/Set-PSSessionConfiguration.md" name="original_ref_skeleton_git_url"/>
+  <meta content="2018-03-30 03:35 PM" name="updated_at"/>
+  <meta content="4898d76c-a332-50d2-63dd-b2036ecd34f2" name="document_id"/>
+  <meta content="83bc4df7-55ba-73b5-33a5-0c678c67a5c8" name="document_version_independent_id"/>
+  <meta content="powershell" name="page_type"/>
+  <meta content="command" name="page_kind"/>
+  <meta content="06/09/2017" name="ms.date"/>
+  <meta content="2.0.0" name="schema"/>
+  <meta content="powershell,cmdlet" name="keywords"/>
+  <meta content="http://go.microsoft.com/fwlink/?LinkId=821516" name="online_version"/>
+  <meta content="System.Management.Automation.dll-Help.xml" name="external_help_file"/>
+  <meta content="powershell" name="ms.devlang"/>
+  <meta content="INDEX, FOLLOW" name="ROBOTS"/>
+  <meta content="sdwheeler" name="author"/>
+  <meta content="sewhee" name="ms.author"/>
+  <meta content="carmonm" name="manager"/>
+  <meta content="/powershell/bread-pscore/toc.yml?view=powershell-6" name="breadcrumb_path"/>
+  <meta content="powershell" name="apiPlatform"/>
+  <meta content="reference" name="ms.topic"/>
+  <meta content="windows, macos, linux" name="ms.tgt_pltfr"/>
+  <meta content="powershell-scripting" name="ms.technology"/>
+  <meta content="powershell" name="ms.prod"/>
+  <meta content="MSDocsHeader-Powershell" name="uhfHeaderId"/>
+  <meta content="../psdocs/toc.json?view=powershell-6" name="toc_rel"/>
+  <link href="https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/set-pssessionconfiguration" rel="canonical"/>
+  <title>
+   Set-PSSessionConfiguration
+  </title>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/60aac04b.site.css" rel="stylesheet"/>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/fdb8a38a.conceptual.css" rel="stylesheet"/>
+ </head>
+ <body dir="ltr" lang="en-us">
+  <div class="header-holder">
+   <div data-bi-name="header" id="headerAreaHolder">
+    <div id="uhf-placeholder">
+    </div>
+   </div>
+   <div class="disclaimer-holder" id="disclaimer-holder">
+   </div>
+  </div>
+  <div class="container mainContainer" data-bi-name="body">
+   <div class="content-header" data-bi-name="content-header">
+    <div class="content-header-controls">
+     <button class="contents-button button-border" data-bi-name="contents-expand" type="button">
+      <span class="docon docon-menu">
+      </span>
+      Contents
+     </button>
+    </div>
+    <div class="content-header-controls">
+     <button class="ap-collapse-behavior ap-expanded button-border" data-bi-name="ap-collapse" type="button">
+      <span class="docon docon-exit-mode">
+      </span>
+      Exit focus mode
+     </button>
+    </div>
+   </div>
+   <div class="primary-holder">
+    <main class="content" data-bi-name="content" dir="ltr" id="main" lang="en-us" role="main">
+     <!-- <content> -->
+     <h1>
+      Set-PSSession
+      <wbr/>
+      Configuration
+     </h1>
+     <div class="metadata">
+      <dl class="attributeList">
+       <dt>
+        Module:
+       </dt>
+       <dd>
+        <a data-linktype="relative-path" href="./Microsoft.PowerShell.Core.html">
+         Microsoft.PowerShell.Core
+        </a>
+       </dd>
+      </dl>
+     </div>
+     <div class="summaryHolder">
+      <div class="summary">
+       Changes the properties of a registered session configuration.
+      </div>
+     </div>
+     <h2 class="hiddenAnchor" id="syntax">
+      Syntax
+     </h2>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Set-PSSessionConfiguration
+   [-Name] &lt;String&gt;
+   [-ApplicationBase &lt;String&gt;]
+   [-RunAsCredential &lt;PSCredential&gt;]
+   [-ThreadApartmentState &lt;ApartmentState&gt;]
+   [-ThreadOptions &lt;PSThreadOptions&gt;]
+   [-AccessMode &lt;PSSessionConfigurationAccessMode&gt;]
+   [-UseSharedProcess]
+   [-StartupScript &lt;String&gt;]
+   [-MaximumReceivedDataSizePerCommandMB &lt;Double&gt;]
+   [-MaximumReceivedObjectSizeMB &lt;Double&gt;]
+   [-SecurityDescriptorSddl &lt;String&gt;]
+   [-ShowSecurityDescriptorUI]
+   [-Force]
+   [-NoServiceRestart]
+   [-PSVersion &lt;Version&gt;]
+   [-SessionTypeOption &lt;PSSessionTypeOption&gt;]
+   [-TransportOption &lt;PSTransportOption&gt;]
+   [-ModulesToImport &lt;Object[]&gt;]
+   [-WhatIf]
+   [-Confirm]
+   [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Set-PSSessionConfiguration
+   [-Name] &lt;String&gt;
+   [-AssemblyName] &lt;String&gt;
+   [-ApplicationBase &lt;String&gt;]
+   [-ConfigurationTypeName] &lt;String&gt;
+   [-RunAsCredential &lt;PSCredential&gt;]
+   [-ThreadApartmentState &lt;ApartmentState&gt;]
+   [-ThreadOptions &lt;PSThreadOptions&gt;]
+   [-AccessMode &lt;PSSessionConfigurationAccessMode&gt;]
+   [-UseSharedProcess]
+   [-StartupScript &lt;String&gt;]
+   [-MaximumReceivedDataSizePerCommandMB &lt;Double&gt;]
+   [-MaximumReceivedObjectSizeMB &lt;Double&gt;]
+   [-SecurityDescriptorSddl &lt;String&gt;]
+   [-ShowSecurityDescriptorUI]
+   [-Force]
+   [-NoServiceRestart]
+   [-PSVersion &lt;Version&gt;]
+   [-SessionTypeOption &lt;PSSessionTypeOption&gt;]
+   [-TransportOption &lt;PSTransportOption&gt;]
+   [-ModulesToImport &lt;Object[]&gt;]
+   [-WhatIf]
+   [-Confirm]
+   [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Set-PSSessionConfiguration
+   [-Name] &lt;String&gt;
+   [-RunAsCredential &lt;PSCredential&gt;]
+   [-ThreadApartmentState &lt;ApartmentState&gt;]
+   [-ThreadOptions &lt;PSThreadOptions&gt;]
+   [-AccessMode &lt;PSSessionConfigurationAccessMode&gt;]
+   [-UseSharedProcess]
+   [-StartupScript &lt;String&gt;]
+   [-MaximumReceivedDataSizePerCommandMB &lt;Double&gt;]
+   [-MaximumReceivedObjectSizeMB &lt;Double&gt;]
+   [-SecurityDescriptorSddl &lt;String&gt;]
+   [-ShowSecurityDescriptorUI]
+   [-Force]
+   [-NoServiceRestart]
+   [-TransportOption &lt;PSTransportOption&gt;]
+   -Path &lt;String&gt;
+   [-WhatIf]
+   [-Confirm]
+   [&lt;CommonParameters&gt;]</code></pre>
+     <h2 id="description">
+      Description
+     </h2>
+     <p>
+      The
+      <strong>
+       Set-PSSessionConfiguration
+      </strong>
+      cmdlet changes the properties of the session configurations on the local computer.
+     </p>
+     <p>
+      Use the
+      <em>
+       Name
+      </em>
+      parameter to identify the session configuration that you want to change.
+Use the other parameters to specify new values for the properties of the session configuration.
+To delete a property value from the configuration, and use the default value, enter an empty string ("") or a value of $Null for the corresponding parameter.
+     </p>
+     <p>
+      Starting in Windows PowerShell 3.0, you can use a session configuration file to define a session configuration.
+This feature provides a simple and discoverable method for setting and changing the properties of sessions that use the session configuration.
+To specify a session configuration file, use the
+      <em>
+       Path
+      </em>
+      parameter of
+      <strong>
+       Set-PSSessionConfiguration
+      </strong>
+      .
+For information about session configuration files, see about_Session_Configuration_Files (
+      <a data-linktype="external" href="http://go.microsoft.com/fwlink/?LinkID=236023">
+       http://go.microsoft.com/fwlink/?LinkID=236023
+      </a>
+      ).
+For information about how to create and modify a session configuration file, see the New-PSSessionConfigurationFile cmdlet.
+     </p>
+     <p>
+      Session configurations define the environment of remote sessions (
+      <strong>
+       PSSessions
+      </strong>
+      ) that connect to the local computer.
+Every
+      <strong>
+       PSSession
+      </strong>
+      uses a session configuration.
+The session configuration determines the features of the
+      <strong>
+       PSSession
+      </strong>
+      , such as the modules that are available in the session, the cmdlets that are permitted to run, the language mode, quotas, and timeouts.
+The security descriptor of the session configuration determines who can use the session configuration to connect to the local computer.
+For more information about session configurations, see about_Session_Configurations.
+     </p>
+     <p>
+      To see the properties of a session configuration, use the Get-PSSessionConfiguration cmdlet or the WSMan Provider.
+For more information about the WSMan Provider, type
+      <code>
+       Get-Help WSMan
+      </code>
+      .
+     </p>
+     <h2 id="examples">
+      Examples
+     </h2>
+     <p>
+      <strong>
+       Example 1: Change the thread apartment state
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Set-PSSessionConfiguration -Name "MaintenanceShell" -ThreadApartmentState STA</code></pre>
+     <p>
+      This command changes the thread apartment state in the MaintenanceShell configuration to STA.
+The change is effective when you restart the
+      <strong>
+       WinRM
+      </strong>
+      service.
+     </p>
+     <p>
+      <strong>
+       Example 2: Create and change a session configuration
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">The first command uses the **Register-PSSessionConfiguration** cmdlet to create the AdminShell configuration.
+
+PS C:\&gt; Register-PSSessionConfiguration -Name "AdminShell" -AssemblyName "C:\Shells\AdminShell.dll" -ConfigurationTypeName "AdminClass"
+
+
+
+The second command uses the **Set-PSSessionConfiguration** cmdlet to add the AdminConfig.ps1 script to the configuration. The change is effective when you restart **WinRM**.
+
+PS C:\&gt; Set-PSSessionConfiguration -Name "AdminShell" -StartupScript "AdminConfig.ps1"
+
+
+
+The third command removes the AdminConfig.ps1 script from the configuration. It uses the **Set-PSSessionConfiguration** cmdlet with a value of $Null for the *StartupScript* parameter.
+
+PS C:\&gt; Set-PSSessionConfiguration -Name "AdminShell" -StartupScript $Null</code></pre>
+     <p>
+      <strong>
+       Example 3: Display results
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Set-PSSessionConfiguration -Name "IncObj" -MaximumReceivedObjectSizeMB 20
+
+WSManConfig: Microsoft.WSMan.Management\WSMan::localhost\Plugin\IncObj\InitializationParameters
+
+ParamName                       ParamValue
+
+---------                       ----------
+
+psmaximumreceivedobjectsizemb   20
+
+"Restart WinRM service"
+
+WinRM service need to be restarted to make the changes effective. Do you want to run the command "restart-service winrm"?
+
+[Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): y</code></pre>
+     <p>
+      The
+      <strong>
+       Set-PSSessionConfiguration
+      </strong>
+      command in this example increases the value of the
+      <strong>
+       MaximumReceivedObjectSizeMB
+      </strong>
+      property to 20.
+     </p>
+     <p>
+      The
+      <strong>
+       Set-PSSessionConfiguration
+      </strong>
+      command returns a
+      <strong>
+       Microsoft.WSMan.Management.WSManConfigLeafElement
+      </strong>
+      object that shows the parameter name and new value.
+     </p>
+     <p>
+      This command also prompts you to restart the
+      <strong>
+       WinRM
+      </strong>
+      service.
+The change is not effective until the
+      <strong>
+       WinRM
+      </strong>
+      service is restarted.
+     </p>
+     <p>
+      <strong>
+       Example 4: Display results in different ways
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">The first command uses the **Set-PSSessionConfiguration** cmdlet to change the startup script in the MaintenanceShell session configuration to Maintenance.ps1. The output of this command shows the change and prompts you to restart the **WinRM** service. The response is "y" (yes).
+
+PS C:\&gt; Set-PSSessionConfiguration -Name "MaintenanceShell" -StartupScript "C:\ps-test\Maintenance.ps1"
+
+WSManConfig: Microsoft.WSMan.Management\WSMan::localhost\Plugin\MaintenanceShell\InitializationParameters
+
+
+
+ParamName            ParamValue
+
+---------            ----------
+
+startupscript        c:\ps-test\Mainte...
+
+
+
+"Restart WinRM service"
+
+WinRM service need to be restarted to make the changes effective. Do you want to run
+
+the command "restart-service winrm"?
+
+[Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): y
+
+
+
+
+
+The second command uses the Get-PSSessionConfiguration cmdlet to get the MaintenanceShell session configuration. The command uses a pipeline operator (|) to send the results of the command to the Format-List cmdlet, which displays all of the properties of the session configuration object in a list.
+
+PS C:\&gt; Get-PSSessionConfiguration MaintenanceShell | Format-List -Property *
+
+xmlns            : http://schemas.microsoft.com/wbem/wsman/1/config/PluginConfiguration
+
+Name             : MaintenanceShell
+
+Filename         : %windir%\system32\pwrshplugin.dll
+
+SDKVersion       : 1
+
+XmlRenderingType : text
+
+lang             : en-US
+
+PSVersion        : 2.0
+
+startupscript    : c:\ps-test\Maintenance.ps1
+
+ResourceUri      : http://schemas.microsoft.com/powershell/MaintenanceShell
+
+SupportsOptions  : true
+
+ExactMatch       : true
+
+Capability       : {Shell}
+
+Permission       :
+
+
+
+The third command uses the WSMan provider to view the initialization parameters for the MaintenanceShell configuration. The command uses the Get-ChildItem cmdlet, also known as dir, to get the child items in the **InitializationParameters** node for the MaintenanceShell plug-in.For more information about the WSMan provider, type [CODE_Snippit]Get-Help wsman[CODE_Snippit].
+
+PS C:\&gt; dir WSMan:\localhost\Plugin\MaintenanceShell\InitializationParameters
+
+ParamName     ParamValue
+
+---------     ----------
+
+PSVersion     2.0
+
+startupscript c:\ps-test\Maintenance.ps1</code></pre>
+     <h2 id="required-parameters">
+      Required Parameters
+     </h2>
+     <div class="parameterName stack">
+      -AssemblyName
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the assembly name.
+This cmdlet creates a session configuration based on a class that is defined in an assembly.
+      </p>
+      <p>
+       Enter the file name or full path of an assembly .dll file that defines a session configuration.
+If you enter only the file name, you can enter the path in the value of the
+       <em>
+        ApplicationBase
+       </em>
+       parameter.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         1
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -ConfigurationTypeName
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the type of the session configuration that is defined in the assembly in the
+       <em>
+        AssemblyName
+       </em>
+       parameter.
+The type that you specify must implement the
+       <strong>
+        System.Management.Automation.Remoting.PSSessionConfiguration
+       </strong>
+       class.
+      </p>
+      <p>
+       This parameter is required when you specify an assembly name.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         2
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Name
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the name of the session configuration that you want to change.
+      </p>
+      <p>
+       You cannot use this parameter to change the name of the session configuration.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         0
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Path
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the path of a session configuration file (.pssc), such as one created by the
+       <strong>
+        New-PSSessionConfigurationFile
+       </strong>
+       cmdlet.
+If you omit the path, the default is the current directory.
+      </p>
+      <p>
+       For information about how to modify a session configuration file, see the help topic for the
+       <strong>
+        New-PSSessionConfigurationFile
+       </strong>
+       cmdlet.
+      </p>
+      <p>
+       This parameter was introduced in Windows PowerShell 3.0.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="optional-parameters">
+      Optional Parameters
+     </h2>
+     <div class="parameterName stack">
+      -AccessMode
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Enables and disables the session configuration and determines whether it can be used for remote or local sessions on the computer.
+The acceptable values for this parameter are:
+      </p>
+      <ul>
+       <li>
+        Disabled.
+Disables the session configuration.
+It cannot be used for remote or local access to the computer.
+This value sets the
+        <strong>
+         Enabled
+        </strong>
+        property of the session configuration (WSMan:\&lt;ComputerName&gt;\PlugIn\&lt;SessionConfigurationName&gt;\Enabled) to False.
+       </li>
+       <li>
+        Local.
+Adds a
+        <strong>
+         Network_Deny_All
+        </strong>
+        entry to security descriptor of the session configuration.
+Users of the local computer can use the session configuration to create a local loopback session on the same computer, but remote users are denied access.
+       </li>
+       <li>
+        Remote.
+Removes
+        <strong>
+         Deny_All
+        </strong>
+        and
+        <strong>
+         Network_Deny_All
+        </strong>
+        entries from the security descriptors of the session configuration.
+Users of local and remote computers can use the session configuration to create sessions and run commands on this computer.
+       </li>
+      </ul>
+      <p>
+       The default value is Remote.
+      </p>
+      <p>
+       Other cmdlets can override the value of this parameter later.
+For example, the Enable-PSRemoting cmdlet enables all session configurations on the computer and permits remote access to them, and the Disable-PSRemoting cmdlet permits only local access to all session configurations on the computer.
+      </p>
+      <p>
+       This parameter was introduced in Windows PowerShell 3.0.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          PSSessionConfigurationAccessMode
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Parameter Sets:
+        </td>
+        <td>
+         Disabled, Local, Remote
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -ApplicationBase
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the path of the assembly file (
+       <em>
+        .dll) that is specified in the value of the *AssemblyName
+       </em>
+       parameter.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Confirm
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Prompts you for confirmation before running the cmdlet.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         cf
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Force
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Suppresses all user prompts, and restarts the
+       <strong>
+        WinRM
+       </strong>
+       service without prompting.
+Restarting the service makes the configuration change effective.
+      </p>
+      <p>
+       To prevent a restart and suppress the restart prompt, use the
+       <em>
+        NoServiceRestart
+       </em>
+       parameter.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -MaximumReceivedDataSizePerCommandMB
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the limit on the amount of data that can be sent to this computer in any single remote command.
+Enter the data size in megabytes (MB).
+The default is 50 MB.
+      </p>
+      <p>
+       If a data size limit is defined in the configuration type that is specified in the
+       <em>
+        ConfigurationTypeName
+       </em>
+       parameter, the limit in the configuration type is used.
+The value of this parameter is ignored.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Double
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -MaximumReceivedObjectSizeMB
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the limits on the amount of data that can be sent to this computer in any single object.
+Enter the data size in megabytes.
+The default is 10 MB.
+      </p>
+      <p>
+       If an object size limit is defined in the configuration type that is specified in the
+       <em>
+        ConfigurationTypeName
+       </em>
+       parameter, the limit in the configuration type is used.
+The value of this parameter is ignored.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Double
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -ModulesToImport
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the modules and snap-ins that are automatically imported into sessions that use the session configuration.
+Enter the module and snap-in names.
+      </p>
+      <p>
+       By default, only the
+       <strong>
+        Microsoft.PowerShell.Core
+       </strong>
+       snap-in is imported into sessions, but unless the cmdlets are excluded, you can use the Import-Module and Add-PSSnapin cmdlets to add modules and snap-ins to the session.
+      </p>
+      <p>
+       The modules specified in this parameter value are imported in additions to modules specified in the session configuration file (
+       <strong>
+        New-PSSessionConfigurationFile
+       </strong>
+       ).
+However, settings in the session configuration file can hide the commands exported by modules or prevent users from using them.
+      </p>
+      <p>
+       The modules specified in this parameter value replace the list of modules specified by using the
+       <em>
+        ModulesToImport
+       </em>
+       parameter of the Register-PSSessionConfiguration cmdlet.
+      </p>
+      <p>
+       This parameter was introduced in Windows PowerShell 3.0.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Object[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -NoServiceRestart
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Does not restart the
+       <strong>
+        WinRM
+       </strong>
+       service, and suppresses the prompt to restart the service.
+      </p>
+      <p>
+       By default, when you run
+       <strong>
+        Set-PSSessionConfiguration
+       </strong>
+       , you are prompted to restart the
+       <strong>
+        WinRM
+       </strong>
+       service to make the new session configuration effective.
+Until the
+       <strong>
+        WinRM
+       </strong>
+       service is restarted, the new session configuration is not effective.
+      </p>
+      <p>
+       To restart the
+       <strong>
+        WinRM
+       </strong>
+       service without prompting, use the
+       <em>
+        Force
+       </em>
+       parameter.
+To restart the
+       <strong>
+        WinRM
+       </strong>
+       service manually, use the Restart-Service cmdlet.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -PSVersion
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the version of Windows PowerShell in sessions that use this session configuration.
+      </p>
+      <p>
+       The value of this parameter takes precedence over the value of the
+       <strong>
+        PowerShellVersion
+       </strong>
+       key in the session configuration file.
+      </p>
+      <p>
+       This parameter was introduced in Windows PowerShell 3.0.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Version
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         PowerShellVersion
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -RunAsCredential
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies credentials for commands in the session.
+By default, commands run with the permissions of the current user.
+      </p>
+      <p>
+       This parameter was introduced in Windows PowerShell 3.0.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          PSCredential
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -SecurityDescriptorSddl
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a different Security Descriptor Definition Language (SDDL) string for the configuration.
+      </p>
+      <p>
+       This string determines the permissions that are required to use the new session configuration.
+To use a session configuration in a session, users must have at least Execute(Invoke) permission for the configuration.
+      </p>
+      <p>
+       To use the default security descriptor for the configuration, enter an empty string ("") or a value of $Null.
+The default is the root SDDL in the WSMan: drive.
+      </p>
+      <p>
+       If the security descriptor is complex, consider using the
+       <em>
+        ShowSecurityDescriptorUI
+       </em>
+       parameter instead of this one.
+You cannot use both parameters in the same command.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -SessionTypeOption
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies type-specific options for the session configuration.
+Enter a session type options object, such as the
+       <strong>
+        PSWorkflowExecutionOption
+       </strong>
+       object that the New-PSWorkflowExecutionOption cmdlet returns.
+      </p>
+      <p>
+       The options of sessions that use the session configuration are determined by the values of session options and the session configuration options.
+Unless specified, options set in the session, such as by using the New-PSSessionOption cmdlet, take precedence over options set in the session configuration.
+However, session option values cannot exceed maximum values set in the session configuration.
+      </p>
+      <p>
+       This parameter was introduced in Windows PowerShell 3.0.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          PSSessionTypeOption
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -ShowSecurityDescriptorUI
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that this cmdlet a property sheet that helps you create a new SDDL for the session configuration.
+The property sheet appears after you run the
+       <strong>
+        Set-PSSessionConfiguration
+       </strong>
+       command and then restart the
+       <strong>
+        WinRM
+       </strong>
+       service.
+      </p>
+      <p>
+       When you set permissions to the configuration, remember that users must have at least Execute(Invoke) permission to use the session configuration in a session.
+      </p>
+      <p>
+       You cannot use the
+       <em>
+        SecurityDescriptorSDDL
+       </em>
+       parameter and this parameter in the same command.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -StartupScript
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the startup script for the configuration.
+Enter the fully qualified path of a Windows PowerShell script.
+The specified script runs in the new session that uses the session configuration.
+      </p>
+      <p>
+       To delete a startup script from a session configuration, enter an empty string ("") or a value of $Null.
+      </p>
+      <p>
+       You can use a startup script to further configure the user session.
+If the script generates an error, even a non-terminating error, the session is not created and the New-PSSession command fails.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -ThreadApartmentState
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the apartment state setting for the threads in the session.
+The acceptable values for this parameter are: STA, MTA, and Unknown.
+The default value is Unknown.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          ApartmentState
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Parameter Sets:
+        </td>
+        <td>
+         STA, MTA, Unknown
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -ThreadOptions
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the thread options setting in the configuration.
+This setting defines how threads are created and used when a command is executed in the session.
+The acceptable values for this parameter are:
+      </p>
+      <ul>
+       <li>
+        Default
+       </li>
+       <li>
+        ReuseThread
+       </li>
+       <li>
+        UseCurrentThread
+       </li>
+       <li>
+        UseNewThread
+       </li>
+      </ul>
+      <p>
+       The default value is UseCurrentThread.
+      </p>
+      <p>
+       For more information, see "PSThreadOptions Enumeration" in the Microsoft Developer Network (MSDN) library.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          PSThreadOptions
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Parameter Sets:
+        </td>
+        <td>
+         Default, UseNewThread, ReuseThread, UseCurrentThread
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -TransportOption
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the transport options for the session configuration.
+Enter a transport options object, such as the
+       <strong>
+        WSManConfigurationOption
+       </strong>
+       object that the New-PSTransportOption cmdlet returns.
+      </p>
+      <p>
+       The options of sessions that use the session configuration are determined by the values of session options and the session configuration options.
+Unless specified, options set in the session, such as by using the
+       <strong>
+        New-PSSessionOption
+       </strong>
+       cmdlet, take precedence over options set in the session configuration.
+However, session option values cannot exceed maximum values set in the session configuration.
+      </p>
+      <p>
+       This parameter was introduced in Windows PowerShell 3.0.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          PSTransportOption
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -UseSharedProcess
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Use only one process to host all sessions that are started by the same user and use the same session configuration.
+By default, each session is hosted in its own process.
+      </p>
+      <p>
+       This parameter was introduced in Windows PowerShell 3.0.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -WhatIf
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         wi
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="inputs">
+      Inputs
+     </h2>
+     <p>
+      <strong>
+       None
+      </strong>
+     </p>
+     <p>
+      You cannot pipe input to this cmdlet.
+     </p>
+     <h2 id="outputs">
+      Outputs
+     </h2>
+     <p>
+      <strong>
+       Microsoft.WSMan.Management.WSManConfigLeafElement
+      </strong>
+     </p>
+     <h2 id="notes">
+      Notes
+     </h2>
+     <ul>
+      <li>
+       To run this cmdlet, start Windows PowerShell by using the Run as administrator option.
+      </li>
+      <li>
+       The
+       <strong>
+        Set-PSSessionConfiguration
+       </strong>
+       cmdlet does not change the configuration name and the
+       <strong>
+        WSMan
+       </strong>
+       provider does not support the Rename-Item cmdlet. To change the name of a session configuration, use the Unregister-PSSessionConfiguration cmdlet to delete the configuration and then use the
+       <strong>
+        Register-PSSessionConfiguration
+       </strong>
+       cmdlet to create and register a new session configuration.
+      </li>
+      <li>
+       You can use the
+       <strong>
+        Set-PSSessionConfiguration
+       </strong>
+       cmdlet to change the default Microsoft.PowerShell and Microsoft.PowerShell32 session configurations. They are not protected. To revert to the original version of a default session configuration, use the
+       <strong>
+        Unregister-PSSessionConfiguration
+       </strong>
+       cmdlet to delete the default session configuration and then use the Enable-PSRemoting cmdlet to restore it.
+      </li>
+      <li>
+       The properties of a session configuration object vary with the options set for the session configuration and the values of those options. Also, session configurations that use a session configuration file have additional properties.
+      </li>
+      <li>
+       You can use commands in the WSMan: drive to change the properties of session configurations. However, you cannot use the WSMan: drive in Windows PowerShell 2.0 to change session configuration properties that are introduced in Windows PowerShell 3.0, such as
+       <strong>
+        OutputBufferingMode
+       </strong>
+       . Windows PowerShell 2.0 commands do not generate an error, but they are ineffective. To change properties introduced in Windows PowerShell 3.0, use the WSMan: drive in Windows PowerShell 3.0.
+      </li>
+     </ul>
+     <h2 id="related-links">
+      Related Links
+     </h2>
+     <ul>
+      <li>
+       <a data-linktype="relative-path" href="disable-pssessionconfiguration.html">
+        Disable-PSSessionConfiguration
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="enable-pssessionconfiguration.html">
+        Enable-PSSessionConfiguration
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="get-pssessionconfiguration.html">
+        Get-PSSessionConfiguration
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="new-pssessionconfigurationfile.html">
+        New-PSSessionConfigurationFile
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="new-pssessionoption.html">
+        New-PSSessionOption
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="new-pstransportoption.html">
+        New-PSTransportOption
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="register-pssessionconfiguration.html">
+        Register-PSSessionConfiguration
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="test-pssessionconfigurationfile.html">
+        Test-PSSessionConfigurationFile
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="unregister-pssessionconfiguration.html">
+        Unregister-PSSessionConfiguration
+       </a>
+      </li>
+     </ul>
+     <!-- </content> -->
+    </main>
+    <div class="note alert feedback-system-change-alert">
+     <p>
+      Note
+     </p>
+     <p>
+      The feedback system for this content will be changing soon. Old comments will not be carried over. If content within a comment thread is important to you, please save a copy. For more information on the upcoming change,
+      <a href="https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs">
+       we invite you to read our blog post
+      </a>
+      .
+     </p>
+    </div>
+    <div data-bi-name="comments" id="comments-container" role="form">
+    </div>
+   </div>
+  </div>
+  <div class="openfeedback-container" id="openFeedbackContainer">
+  </div>
+  <div class="action-panel">
+  </div>
+ </body>
+</html>

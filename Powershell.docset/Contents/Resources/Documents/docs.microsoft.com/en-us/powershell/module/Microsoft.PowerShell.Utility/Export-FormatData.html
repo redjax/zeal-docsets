@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html class="no-js hasSidebar hasPageActions hasBreadcrumb conceptual" data-authenticated="false" data-render="docs" dir="ltr" lang="en-us">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Export-FormatData (Microsoft.PowerShell.Utility)" property="og:title"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" property="og:image"/>
+  <meta content="summary" name="twitter:card"/>
+  <meta content="@docsmsft" name="twitter:site"/>
+  <meta content="Export-FormatData (Microsoft.PowerShell.Utility)" name="twitter:title"/>
+  <meta content="The Export-FormatData cmdlet creates Windows PowerShell formatting files (format.ps1xml) from the formatting objects in the current session. It takes the ExtendedTypeDefinition objects that Get-Formaâ¦" name="twitter:description"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" name="twitter:image"/>
+  <meta content="Microsoft Logo" name="twitter:image:alt"/>
+  <meta content="The Export-FormatData cmdlet creates Windows PowerShell formatting files (format.ps1xml) from the formatting objects in the current session. It takes the ExtendedTypeDefinition objects that Get-Formaâ¦" name="description"/>
+  <meta content="Docs" name="search.ms_sitename"/>
+  <meta content="PowerShell_PowerShell-docs_reference" name="search.ms_docsetname"/>
+  <meta content="0" name="version"/>
+  <meta content="en-us" name="locale"/>
+  <meta content="Docs" name="site_name"/>
+  <meta content="PowerShell" name="search.ms_product"/>
+  <meta content="PowerShell.PowerShell_PowerShell-docs_reference" name="depot_name"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/617301cc0a194afdca440ba75f5cec2a540ce619/reference/6/Microsoft.PowerShell.Utility/Export-FormatData.md" name="ref_skeleton_gitcommit"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/live/reference/6/Microsoft.PowerShell.Utility/Export-FormatData.md" name="original_ref_skeleton_git_url"/>
+  <meta content="2018-03-30 03:35 PM" name="updated_at"/>
+  <meta content="6c4457a6-009b-7674-cb7d-3e58621bf068" name="document_id"/>
+  <meta content="95fc5086-22c8-4c3b-eebe-0cde7ec126f1" name="document_version_independent_id"/>
+  <meta content="powershell" name="page_type"/>
+  <meta content="command" name="page_kind"/>
+  <meta content="06/09/2017" name="ms.date"/>
+  <meta content="2.0.0" name="schema"/>
+  <meta content="powershell,cmdlet" name="keywords"/>
+  <meta content="http://go.microsoft.com/fwlink/?LinkId=821770" name="online_version"/>
+  <meta content="Microsoft.PowerShell.Commands.Utility.dll-Help.xml" name="external_help_file"/>
+  <meta content="powershell" name="ms.devlang"/>
+  <meta content="INDEX, FOLLOW" name="ROBOTS"/>
+  <meta content="sdwheeler" name="author"/>
+  <meta content="sewhee" name="ms.author"/>
+  <meta content="carmonm" name="manager"/>
+  <meta content="/powershell/bread-pscore/toc.yml?view=powershell-6" name="breadcrumb_path"/>
+  <meta content="powershell" name="apiPlatform"/>
+  <meta content="reference" name="ms.topic"/>
+  <meta content="windows, macos, linux" name="ms.tgt_pltfr"/>
+  <meta content="powershell-scripting" name="ms.technology"/>
+  <meta content="powershell" name="ms.prod"/>
+  <meta content="MSDocsHeader-Powershell" name="uhfHeaderId"/>
+  <meta content="../psdocs/toc.json?view=powershell-6" name="toc_rel"/>
+  <link href="https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/export-formatdata" rel="canonical"/>
+  <title>
+   Export-FormatData
+  </title>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/60aac04b.site.css" rel="stylesheet"/>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/fdb8a38a.conceptual.css" rel="stylesheet"/>
+ </head>
+ <body dir="ltr" lang="en-us">
+  <div class="header-holder">
+   <div data-bi-name="header" id="headerAreaHolder">
+    <div id="uhf-placeholder">
+    </div>
+   </div>
+   <div class="disclaimer-holder" id="disclaimer-holder">
+   </div>
+  </div>
+  <div class="container mainContainer" data-bi-name="body">
+   <div class="content-header" data-bi-name="content-header">
+    <div class="content-header-controls">
+     <button class="contents-button button-border" data-bi-name="contents-expand" type="button">
+      <span class="docon docon-menu">
+      </span>
+      Contents
+     </button>
+    </div>
+    <div class="content-header-controls">
+     <button class="ap-collapse-behavior ap-expanded button-border" data-bi-name="ap-collapse" type="button">
+      <span class="docon docon-exit-mode">
+      </span>
+      Exit focus mode
+     </button>
+    </div>
+   </div>
+   <div class="primary-holder">
+    <main class="content" data-bi-name="content" dir="ltr" id="main" lang="en-us" role="main">
+     <!-- <content> -->
+     <h1>
+      Export-Format
+      <wbr/>
+      Data
+     </h1>
+     <div class="metadata">
+      <dl class="attributeList">
+       <dt>
+        Module:
+       </dt>
+       <dd>
+        <a data-linktype="relative-path" href="./Microsoft.PowerShell.Utility.html">
+         Microsoft.PowerShell.Utility
+        </a>
+       </dd>
+      </dl>
+     </div>
+     <div class="summaryHolder">
+      <div class="summary">
+       Saves formatting data from the current session in a formatting file.
+      </div>
+     </div>
+     <h2 class="hiddenAnchor" id="syntax">
+      Syntax
+     </h2>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Export-FormatData
+      -InputObject &lt;ExtendedTypeDefinition[]&gt;
+      -Path &lt;String&gt;
+      [-Force]
+      [-NoClobber]
+      [-IncludeScriptBlock]
+      [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Export-FormatData
+      -InputObject &lt;ExtendedTypeDefinition[]&gt;
+      -LiteralPath &lt;String&gt;
+      [-Force]
+      [-NoClobber]
+      [-IncludeScriptBlock]
+      [&lt;CommonParameters&gt;]</code></pre>
+     <h2 id="description">
+      Description
+     </h2>
+     <p>
+      The
+      <strong>
+       Export-FormatData
+      </strong>
+      cmdlet creates Windows PowerShell formatting files (format.ps1xml) from the formatting objects in the current session.
+It takes the
+      <strong>
+       ExtendedTypeDefinition
+      </strong>
+      objects that Get-FormatData returns and saves them in a file in XML format.
+     </p>
+     <p>
+      Windows PowerShell uses the data in formatting files (format.ps1xml) to generate the default display of Microsoft .NET Framework objects in the session.
+You can view and edit the formatting files and use the Update-FormatData cmdlet to add the formatting data to a session.
+     </p>
+     <p>
+      For more information about formatting files in Windows PowerShell, see about_Format.ps1xml.
+     </p>
+     <h2 id="examples">
+      Examples
+     </h2>
+     <p>
+      <strong>
+       Example 1: Export session format data
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-FormatData -TypeName "*" | Export-FormatData -Path "allformat.ps1xml" -IncludeScriptBlock</code></pre>
+     <p>
+      This command exports all of the format data in the session to the AllFormat.ps1xml file.
+     </p>
+     <p>
+      The command uses the Get-FormatData cmdlet to get the format data in the session.
+A value of * (all) for the
+      <em>
+       TypeName
+      </em>
+      parameter directs the cmdlet to get all of the data in the session.
+     </p>
+     <p>
+      The command uses a pipeline operator (|) to send the format data from the
+      <strong>
+       Get-FormatData
+      </strong>
+      command to the
+      <strong>
+       Export-FormatData
+      </strong>
+      cmdlet, which exports the format data to the AllFormat.ps1 file.
+     </p>
+     <p>
+      The
+      <strong>
+       Export-FormatData
+      </strong>
+      command uses the
+      <em>
+       IncludeScriptBlock
+      </em>
+      parameter to include script blocks in the format data in the file.
+     </p>
+     <p>
+      <strong>
+       Example 2: Export format data for a type
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; $F = Get-FormatData -TypeName "helpinfoshort"
+
+PS C:\&gt; Export-FormatData -InputObject $F -Path "c:\test\help.format.ps1xml" -IncludeScriptBlock</code></pre>
+     <p>
+      These commands export the format data for the HelpInfoShort type to the Help.format.ps1xml file.
+     </p>
+     <p>
+      The first command uses the
+      <strong>
+       Get-FormatData
+      </strong>
+      cmdlet to get the format data for the HelpInfoShort type, and it saves it in the $F variable.
+     </p>
+     <p>
+      The second command uses the
+      <em>
+       InputObject
+      </em>
+      parameter of the
+      <strong>
+       Export-FormatData
+      </strong>
+      cmdlet to enter the format data saved in the $F variable.
+It also uses the
+      <em>
+       IncludeScriptBlock
+      </em>
+      parameter to include script blocks in the output.
+     </p>
+     <p>
+      <strong>
+       Example 3: Export format data without a script block
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-FormatData -TypeName "System.Diagnostics.Process" | Export-FormatData -Path process.format.ps1xml
+
+PS C:\&gt; Update-FormatData -PrependPath ".\process.format.ps1xml"
+
+PS C:\&gt; Get-Process p*
+
+Handles  NPM(K)  PM(K)  WS(K) VM(M)   CPU(s)    Id ProcessName
+
+-------  ------  -----  ----- -----   ------    -- -----------
+
+323                                       5600 powershell
+
+336                                       3900 powershell_ise
+
+138                                       4076 PresentationFontCache</code></pre>
+     <p>
+      This example shows the effect of omitting the
+      <em>
+       IncludeScriptBlock
+      </em>
+      parameter from an
+      <strong>
+       Export-FormatData
+      </strong>
+      command.
+     </p>
+     <p>
+      The first command uses the Get-FormatData cmdlet to get the format data for the
+      <strong>
+       System.Diagnostics.Process
+      </strong>
+      object that the Get-Process cmdlet returns.
+The command uses a pipeline operator (|) to send the formatting data to the
+      <strong>
+       Export-FormatData
+      </strong>
+      cmdlet, which exports it to the Process.format.ps1xml file in the current directory.
+     </p>
+     <p>
+      In this case, the
+      <strong>
+       Export-FormatData
+      </strong>
+      command does not use the
+      <em>
+       IncludeScriptBlock
+      </em>
+      parameter.
+     </p>
+     <p>
+      The second command uses the Update-FormatData cmdlet to add the Process.format.ps1xml file to the current session.
+The command uses the
+      <em>
+       PrependPath
+      </em>
+      parameter to ensure that the formatting data for process objects in the Process.format.ps1xml file is found before the standard formatting data for process objects.
+     </p>
+     <p>
+      The third command shows the effects of this change.
+The command uses the
+      <strong>
+       Get-Process
+      </strong>
+      cmdlet to get processes that have names that begin with P.
+The output shows that property values that are calculated by using script blocks are missing from the display.
+     </p>
+     <h2 id="required-parameters">
+      Required Parameters
+     </h2>
+     <div class="parameterName stack">
+      -InputObject
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the format data objects to be exported.
+Enter a variable that contains the objects or a command that gets the objects, such as a
+       <strong>
+        Get-FormatData
+       </strong>
+       command.
+You can also pipe the objects from
+       <strong>
+        Get-FormatData
+       </strong>
+       to
+       <strong>
+        Export-FormatData
+       </strong>
+       .
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          ExtendedTypeDefinition[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByValue)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -LiteralPath
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a location for the output file.
+Unlike the
+       <em>
+        Path
+       </em>
+       parameter, the value of
+       <em>
+        LiteralPath
+       </em>
+       is used exactly as it is typed.
+No characters are interpreted as wildcards.
+If the path includes escape characters, enclose it in single quotation marks.
+Single quotation marks tell Windows PowerShell not to interpret any characters as escape sequences.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         PSPath
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Path
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a location for the output file.
+Enter a path (optional) and file name with a format.ps1xml file name extension.
+If you omit the path,
+       <strong>
+        Export-FormatData
+       </strong>
+       creates the file in the current directory.
+      </p>
+      <p>
+       If you use a file name extension other than .ps1xml, the
+       <strong>
+        Update-FormatData
+       </strong>
+       cmdlet will not recognize the file.
+      </p>
+      <p>
+       If you specify an existing file,
+       <strong>
+        Export-FormatData
+       </strong>
+       overwrites the file without warning, unless the file has the read-only attribute.
+To overwrite a read-only file, use the
+       <em>
+        Force
+       </em>
+       parameter.
+To prevent files from being overwritten, use the
+       <em>
+        NoClobber
+       </em>
+       parameter.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         FilePath
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="optional-parameters">
+      Optional Parameters
+     </h2>
+     <div class="parameterName stack">
+      -Force
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Forces the command to run without asking for user confirmation.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -IncludeScriptBlock
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates whether script blocks in the format data are exported.
+      </p>
+      <p>
+       Because script blocks contain code and can be used maliciously, they are not exported by default.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -NoClobber
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that the cmdlet does not overwrite existing files.
+By default,
+       <strong>
+        Export-FormatData
+       </strong>
+       overwrites files without warning unless the file has the read-only attribute.
+      </p>
+      <p>
+       To direct
+       <strong>
+        Export-FormatData
+       </strong>
+       to overwrite read-only files, use the
+       <em>
+        Force
+       </em>
+       parameter.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         NoOverwrite
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="inputs">
+      Inputs
+     </h2>
+     <p>
+      <strong>
+       System.Management.Automation.ExtendedTypeDefinition
+      </strong>
+     </p>
+     <p>
+      You can pipe
+      <strong>
+       ExtendedTypeDefinition
+      </strong>
+      objects from
+      <strong>
+       Get-FormatData
+      </strong>
+      to
+      <strong>
+       Export-FormatData
+      </strong>
+      .
+     </p>
+     <h2 id="outputs">
+      Outputs
+     </h2>
+     <p>
+      <strong>
+       None
+      </strong>
+     </p>
+     <p>
+      <strong>
+       Export-FormatData
+      </strong>
+      does not return any objects.
+It generates a file and saves it in the specified path.
+     </p>
+     <h2 id="notes">
+      Notes
+     </h2>
+     <ul>
+      <li>
+       To use any formatting file, including an exported formatting file, the execution policy for the session must allow scripts and configuration files to run. For more information, see about_Execution_Policies.
+      </li>
+     </ul>
+     <p>
+      *
+     </p>
+     <h2 id="related-links">
+      Related Links
+     </h2>
+     <ul>
+      <li>
+       <a data-linktype="relative-path" href="get-formatdata.html">
+        Get-FormatData
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="update-formatdata.html">
+        Update-FormatData
+       </a>
+      </li>
+     </ul>
+     <!-- </content> -->
+    </main>
+    <div class="note alert feedback-system-change-alert">
+     <p>
+      Note
+     </p>
+     <p>
+      The feedback system for this content will be changing soon. Old comments will not be carried over. If content within a comment thread is important to you, please save a copy. For more information on the upcoming change,
+      <a href="https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs">
+       we invite you to read our blog post
+      </a>
+      .
+     </p>
+    </div>
+    <div data-bi-name="comments" id="comments-container" role="form">
+    </div>
+   </div>
+  </div>
+  <div class="openfeedback-container" id="openFeedbackContainer">
+  </div>
+  <div class="action-panel">
+  </div>
+ </body>
+</html>

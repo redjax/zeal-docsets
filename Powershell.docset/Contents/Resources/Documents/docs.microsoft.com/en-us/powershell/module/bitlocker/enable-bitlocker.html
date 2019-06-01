@@ -1,0 +1,2013 @@
+<!DOCTYPE html>
+<html class="no-js hasSidebar hasPageActions hasBreadcrumb conceptual" data-authenticated="false" data-render="docs" dir="ltr" lang="en-us">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Enable-BitLocker (bitlocker)" property="og:title"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" property="og:image"/>
+  <meta content="summary" name="twitter:card"/>
+  <meta content="@docsmsft" name="twitter:site"/>
+  <meta content="Enable-BitLocker (bitlocker)" name="twitter:title"/>
+  <meta content="Use this topic to help manage Windows and Windows Server technologies with Windows PowerShell." name="twitter:description"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" name="twitter:image"/>
+  <meta content="Microsoft Logo" name="twitter:image:alt"/>
+  <meta content="Use this topic to help manage Windows and Windows Server technologies with Windows PowerShell." name="description"/>
+  <meta content="Docs" name="search.ms_sitename"/>
+  <meta content="powershell-windows" name="search.ms_docsetname"/>
+  <meta content="0" name="version"/>
+  <meta content="en-us" name="locale"/>
+  <meta content="Docs" name="site_name"/>
+  <meta content="MSDN" name="search.ms_product"/>
+  <meta content="MSDN.powershell-windows" name="depot_name"/>
+  <meta content="https://cpubwin.visualstudio.com/DefaultCollection/powershell/_git/powershell/commit/ced7757924addcaea0b7a244ae4d240e4d28d93a?path=%2fdocset%2fwindows%2fbitlocker%2fenable-bitlocker.md&amp;_a=contents" name="ref_skeleton_gitcommit"/>
+  <meta content="https://cpubwin.visualstudio.com/DefaultCollection/powershell/_git/powershell?path=%2fdocset%2fwindows%2fbitlocker%2fenable-bitlocker.md&amp;version=GBlive&amp;_a=contents" name="original_ref_skeleton_git_url"/>
+  <meta content="2017-09-15 03:44 AM" name="updated_at"/>
+  <meta content="35517b3c-d00e-c08d-c274-8b606ad87bfa" name="document_id"/>
+  <meta content="3428c627-8703-752e-fbdf-52526f281f57" name="document_version_independent_id"/>
+  <meta content="powershell" name="page_type"/>
+  <meta content="command" name="page_kind"/>
+  <meta content="manage" name="ms.mktglfcycl"/>
+  <meta content="library" name="ms.sitesec"/>
+  <meta content="brianlic" name="ms.author"/>
+  <meta content="brianlic-msft" name="author"/>
+  <meta content="BitLocker-help.xml" name="external_help_file"/>
+  <meta content="powershell, cmdlet" name="keywords"/>
+  <meta content="alanth" name="manager"/>
+  <meta content="12/20/2016" name="ms.date"/>
+  <meta content="w10" name="ms.prod"/>
+  <meta content="powershell-windows" name="ms.technology"/>
+  <meta content="reference" name="ms.topic"/>
+  <meta content="" name="online_version"/>
+  <meta content="2.0.0" name="schema"/>
+  <meta content="736C312A-623F-482E-9B87-340E5B4614BC" name="ms.assetid"/>
+  <meta content="powershell" name="ms.devlang"/>
+  <meta content="INDEX, FOLLOW" name="ROBOTS"/>
+  <meta content="/powershell/windows/bread/toc.json?view=win10-ps" name="breadcrumb_path"/>
+  <meta content="powershell" name="apiPlatform"/>
+  <meta content="MSDocsHeader-WindowsIT" name="uhfHeaderId"/>
+  <meta content="../win10-ps/toc.json?view=win10-ps" name="toc_rel"/>
+  <link href="https://docs.microsoft.com/en-us/powershell/module/bitlocker/enable-bitlocker" rel="canonical"/>
+  <title>
+   Enable-BitLocker
+  </title>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/e4a1f3a3.site.css" rel="stylesheet"/>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/31353636.conceptual.css" rel="stylesheet"/>
+ </head>
+ <body dir="ltr" lang="en-us">
+  <div class="header-holder">
+   <div data-bi-name="header" id="headerAreaHolder">
+    <div id="uhf-placeholder">
+    </div>
+   </div>
+   <div class="disclaimer-holder" id="disclaimer-holder">
+   </div>
+  </div>
+  <div class="container mainContainer" data-bi-name="body">
+   <div class="content-header" data-bi-name="content-header">
+    <div class="content-header-controls">
+     <button class="contents-button button-border" data-bi-name="contents-expand" type="button">
+      <span class="docon docon-menu">
+      </span>
+      Contents
+     </button>
+    </div>
+    <div class="content-header-controls">
+     <button class="ap-collapse-behavior ap-expanded button-border" data-bi-name="ap-collapse" type="button">
+      <span class="docon docon-exit-mode">
+      </span>
+      Exit focus mode
+     </button>
+    </div>
+   </div>
+   <div class="primary-holder">
+    <main class="content" data-bi-name="content" dir="ltr" id="main" lang="en-us" role="main">
+     <!-- <content> -->
+     <h1>
+      Enable-Bit
+      <wbr/>
+      Locker
+     </h1>
+     <div class="metadata">
+      <dl class="attributeList">
+       <dt>
+        Module:
+       </dt>
+       <dd>
+        <a data-linktype="relative-path" href="./.html">
+         bitlocker
+        </a>
+       </dd>
+      </dl>
+     </div>
+     <div class="summaryHolder">
+      <div class="summary">
+       Enables BitLocker Drive Encryption for a volume.
+      </div>
+     </div>
+     <h2 class="hiddenAnchor" id="syntax">
+      Syntax
+     </h2>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Enable-BitLocker
+      [-MountPoint] &lt;String[]&gt;
+      [-EncryptionMethod &lt;BitLockerVolumeEncryptionMethodOnEnable&gt;]
+      [-HardwareEncryption]
+      [-SkipHardwareTest]
+      [-UsedSpaceOnly]
+      [-PasswordProtector]
+      [[-Password] &lt;SecureString&gt;]
+      [-WhatIf]
+      [-Confirm]
+      [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Enable-BitLocker
+      [-MountPoint] &lt;String[]&gt;
+      [-EncryptionMethod &lt;BitLockerVolumeEncryptionMethodOnEnable&gt;]
+      [-HardwareEncryption]
+      [-SkipHardwareTest]
+      [-UsedSpaceOnly]
+      [-RecoveryPasswordProtector]
+      [[-RecoveryPassword] &lt;String&gt;]
+      [-WhatIf]
+      [-Confirm]
+      [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Enable-BitLocker
+      [-MountPoint] &lt;String[]&gt;
+      [-EncryptionMethod &lt;BitLockerVolumeEncryptionMethodOnEnable&gt;]
+      [-HardwareEncryption]
+      [-SkipHardwareTest]
+      [-UsedSpaceOnly]
+      [-StartupKeyProtector]
+      [-StartupKeyPath] &lt;String&gt;
+      [-WhatIf]
+      [-Confirm]
+      [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Enable-BitLocker
+      [-MountPoint] &lt;String[]&gt;
+      [-EncryptionMethod &lt;BitLockerVolumeEncryptionMethodOnEnable&gt;]
+      [-HardwareEncryption]
+      [-SkipHardwareTest]
+      [-UsedSpaceOnly]
+      [-StartupKeyPath] &lt;String&gt;
+      [-TpmAndStartupKeyProtector]
+      [-WhatIf]
+      [-Confirm]
+      [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Enable-BitLocker
+      [-MountPoint] &lt;String[]&gt;
+      [-EncryptionMethod &lt;BitLockerVolumeEncryptionMethodOnEnable&gt;]
+      [-HardwareEncryption]
+      [-SkipHardwareTest]
+      [-UsedSpaceOnly]
+      [-StartupKeyPath] &lt;String&gt;
+      [-TpmAndPinAndStartupKeyProtector]
+      [[-Pin] &lt;SecureString&gt;]
+      [-WhatIf]
+      [-Confirm]
+      [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Enable-BitLocker
+      [-MountPoint] &lt;String[]&gt;
+      [-EncryptionMethod &lt;BitLockerVolumeEncryptionMethodOnEnable&gt;]
+      [-HardwareEncryption]
+      [-SkipHardwareTest]
+      [-UsedSpaceOnly]
+      [-AdAccountOrGroupProtector]
+      [-Service]
+      [-AdAccountOrGroup] &lt;String&gt;
+      [-WhatIf]
+      [-Confirm]
+      [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Enable-BitLocker
+      [-MountPoint] &lt;String[]&gt;
+      [-EncryptionMethod &lt;BitLockerVolumeEncryptionMethodOnEnable&gt;]
+      [-HardwareEncryption]
+      [-SkipHardwareTest]
+      [-UsedSpaceOnly]
+      [[-Pin] &lt;SecureString&gt;]
+      [-TpmAndPinProtector]
+      [-WhatIf]
+      [-Confirm]
+      [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Enable-BitLocker
+      [-MountPoint] &lt;String[]&gt;
+      [-EncryptionMethod &lt;BitLockerVolumeEncryptionMethodOnEnable&gt;]
+      [-HardwareEncryption]
+      [-SkipHardwareTest]
+      [-UsedSpaceOnly]
+      [-TpmProtector]
+      [-WhatIf]
+      [-Confirm]
+      [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Enable-BitLocker
+      [-MountPoint] &lt;String[]&gt;
+      [-EncryptionMethod &lt;BitLockerVolumeEncryptionMethodOnEnable&gt;]
+      [-HardwareEncryption]
+      [-SkipHardwareTest]
+      [-UsedSpaceOnly]
+      [-RecoveryKeyProtector]
+      [-RecoveryKeyPath] &lt;String&gt;
+      [-WhatIf]
+      [-Confirm]
+      [&lt;CommonParameters&gt;]</code></pre>
+     <h2 id="description">
+      Description
+     </h2>
+     <p>
+      The
+      <strong>
+       Enable-BitLocker
+      </strong>
+      cmdlet enables BitLocker Drive Encryption for a volume.
+     </p>
+     <p>
+      When you enable encryption, you must specify a volume and an encryption method for that volume.
+You can specify a volume by drive letter or by specifying a BitLocker volume object.
+For the encryption method, you can choose either Advanced Encryption Standard (AES) algorithms AES-128 or AES-256, or you can use hardware encryption if it is supported by the disk hardware.
+     </p>
+     <p>
+      You must also establish a key protector.
+BitLocker uses a key protector to encrypt the volume encryption key.
+When a user accesses a BitLocker encrypted drive, such as when starting a computer, BitLocker requests the relevant key protector.
+For example, the user can enter a PIN or provide a USB drive that contains a key.
+BitLocker decrypts the encryption key and uses it to read data from the drive.
+You can use one of the following methods or combinations of methods for a key protector:
+     </p>
+     <ul>
+      <li>
+       <p>
+        Trusted Platform Module (TPM).
+BitLocker uses the computer's TPM to protect the encryption key.
+If you select this key protector, users can access the encrypted drive as long as it is connected to the system board that hosts the TPM and system boot integrity is intact.
+In general, TPM-based protectors can only be associated to an operating system volume.
+       </p>
+      </li>
+      <li>
+       <p>
+        TPM and Personal Identification Number (PIN).
+BitLocker uses a combination of the TPM and a user-supplied PIN.
+A PIN is four to twenty digits or, if you allow enhanced PINs, is four to twenty letters, symbols, spaces, or numbers.
+       </p>
+      </li>
+      <li>
+       <p>
+        TPM, PIN, and startup key.
+BitLocker uses a combination of the TPM, a user-supplied PIN, and input from of a USB memory device that contains an external key.
+       </p>
+      </li>
+      <li>
+       <p>
+        TPM and startup key.
+BitLocker uses a combination of the TPM and input from of a USB memory device.
+       </p>
+      </li>
+      <li>
+       <p>
+        Startup key.
+BitLocker uses input from of a USB memory device that contains the external key.
+       </p>
+      </li>
+      <li>
+       <p>
+        Password.
+BitLocker uses a password.
+       </p>
+      </li>
+      <li>
+       <p>
+        Recovery key.
+BitLocker uses a recovery key stored as a specified file.
+       </p>
+      </li>
+      <li>
+       <p>
+        Recovery password.
+BitLocker uses a recovery password.
+       </p>
+      </li>
+      <li>
+       <p>
+        Active Directory Domain Services (AD DS) account.
+BitLocker uses domain authentication.
+       </p>
+      </li>
+     </ul>
+     <p>
+      You can specify only one of these methods or combinations when you enable encryption, but you can use the
+      <strong>
+       Add-BitLockerKeyProtector
+      </strong>
+      cmdlet to add other protectors.
+     </p>
+     <p>
+      For a password or PIN key protector, specify a secure string.
+You can use the
+      <strong>
+       ConvertTo-SecureString
+      </strong>
+      cmdlet to create a secure string.
+You can use secure strings in a script and still maintain confidentiality of passwords.
+     </p>
+     <p>
+      This cmdlet returns a BitLocker volume object.
+If you choose recovery password as your key protector but do not specify a 48-digit recovery password, this cmdlet creates a random 48-bit recovery password.
+The cmdlet stores the password as the
+      <strong>
+       RecoveryPassword
+      </strong>
+      field of the
+      <strong>
+       KeyProtector
+      </strong>
+      attribute of the BitLocker volume object.
+     </p>
+     <p>
+      If you use startup key or recovery key as part of your key protector, provide a path to store the key.
+This cmdlet stores the name of the file that contains the key in the
+      <strong>
+       KeyFileName
+      </strong>
+      field of the
+      <strong>
+       KeyProtector
+      </strong>
+      field in the BitLocker volume object.
+     </p>
+     <p>
+      If you use the
+      <strong>
+       Enable-BitLocker
+      </strong>
+      cmdlet on an encrypted volume or on a volume that with encryption in process, it takes no action.
+If you use the cmdlet on a drive that has encryption paused, it resumes encryption on the volume.
+     </p>
+     <p>
+      By default, this cmdlet encrypts the entire drive.
+If you use the
+      <em>
+       UsedSpaceOnly
+      </em>
+      parameter, it only encrypts the used space in the disk.
+This option can significant reduce encryption time.
+     </p>
+     <p>
+      It is common practice to add a recovery password to an operating system volume by using the
+      <strong>
+       Add-BitLockerKeyProtector
+      </strong>
+      cmdlet, and then save the recovery password by using the
+      <strong>
+       Backup-BitLockerKeyProtector
+      </strong>
+      cmdlet, and then enable BitLocker for the drive.
+This procedure ensures that you have a recovery option.
+     </p>
+     <p>
+      For an overview of BitLocker, see
+      <a data-linktype="external" href="http://technet.microsoft.com/en-us/library/cc732774.aspx">
+       BitLocker Drive Encryption Overview
+      </a>
+      on TechNet.
+     </p>
+     <h2 id="examples">
+      Examples
+     </h2>
+     <p>
+      <strong>
+       Example 1: Enable BitLocker
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; $SecureString = ConvertTo-SecureString "1234" -AsPlainText -Force
+PS C:\&gt; Enable-BitLocker -MountPoint "C:" -EncryptionMethod Aes256 -UsedSpaceOnly -Pin $SecureString -TPMandPinProtector</code></pre>
+     <p>
+      This example enables BitLocker for a specified drive using the TPM and a PIN for key protector.
+     </p>
+     <p>
+      The first command uses the
+      <strong>
+       ConvertTo-SecureString
+      </strong>
+      cmdlet to create a secure string that contains a PIN and saves that string in the $SecureString variable.
+For more information about the
+      <strong>
+       ConvertTo-SecureString
+      </strong>
+      cmdlet, type
+      <code>
+       Get-Help ConvertTo-SecureString
+      </code>
+      .
+     </p>
+     <p>
+      The second command enables BitLocker encryption for the BitLocker volume that has the drive letter C:.
+The cmdlet specifies an encryption algorithm and the PIN saved in the $SecureString variable.
+The command also specifies that this volume uses a combination of the TPM and the PIN as key protector.
+The command also specifies to encrypt the used space data on the disk, instead of the entire volume.
+When the system writes data to the volume in the future, that data is encrypted.
+     </p>
+     <p>
+      <strong>
+       Example 2: Enable BitLocker with a specified recovery key
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-BitLockerVolume | Enable-BitLocker -EncryptionMethod Aes128 -RecoveryKeyPath "E:\Recovery\" -RecoveryKeyProtector</code></pre>
+     <p>
+      This command gets all the BitLocker volumes for the current computer and passes pipes them to the
+      <strong>
+       Enable-BitLocker
+      </strong>
+      cmdlet by using the pipe operator.
+This cmdlet specifies an encryption algorithm for the volume or volumes.
+This command also specifies a path to a recovery key and indicates that these volumes use a recovery key as a key protector.
+     </p>
+     <p>
+      <strong>
+       Example 3: Enable BitLocker with a specified user account
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Enable-BitLocker -MountPoint "C:" -EncryptionMethod Aes128 -AdAccountOrGroup "Western\SarahJones" -AdAccountOrGroupProtector</code></pre>
+     <p>
+      This command encrypts the BitLocker volume specified by the
+      <em>
+       MountPoint
+      </em>
+      parameter, and uses the AES 128 encryption method.
+The command also specifies an account and specifies that BitLocker uses user credentials as a key protector.
+When a user accesses this volume, BitLocker prompts for credentials for the user account Western\SarahJones.
+     </p>
+     <h2 id="required-parameters">
+      Required Parameters
+     </h2>
+     <div class="parameterName stack">
+      -AdAccountOrGroup
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies an account using the format Domain\User.
+This cmdlet adds the account you specify as a key protector for the volume encryption key.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         sid
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         1
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -AdAccountOrGroupProtector
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that BitLocker uses an AD DS account as a protector for the volume encryption key.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         sidp
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -MountPoint
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies an array of drive letters or BitLocker volume objects.
+This cmdlet enables protection for the volumes specified.
+To obtain a BitLocker volume object, use the
+       <strong>
+        Get-BitLockerVolume
+       </strong>
+       cmdlet.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         0
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName, ByValue)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -PasswordProtector
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that BitLocker uses a password as a protector for the volume encryption key.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         pwp
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -RecoveryKeyPath
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a path to a recovery key.
+The key stored in the specified path acts as a protector for the volume encryption key.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         rk
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         1
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -RecoveryKeyProtector
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that BitLocker uses a recovery key as a protector for the volume encryption key.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         rkp
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -RecoveryPasswordProtector
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that BitLocker uses a recovery password as a protector for the volume encryption key.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         rpp
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -StartupKeyPath
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a path to a startup key.
+The key stored in the specified path acts as a protector for the volume encryption key.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         sk
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         1
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -StartupKeyProtector
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that BitLocker uses a startup key as a protector for the volume encryption key.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         skp
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -TpmAndPinAndStartupKeyProtector
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that BitLocker uses a combination of the TPM, a PIN, and a startup key as a protector for the volume encryption key.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         tpskp
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -TpmAndPinProtector
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that BitLocker uses a combination of the TPM and a PIN as a protector for the volume encryption key.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         tpp
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -TpmAndStartupKeyProtector
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that BitLocker uses a combination of the TPM and a startup key as a protector for the volume encryption key.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         tskp
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -TpmProtector
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that BitLocker uses the TPM as a protector for the volume encryption key.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         tpmp
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="optional-parameters">
+      Optional Parameters
+     </h2>
+     <div class="parameterName stack">
+      -Confirm
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Prompts you for confirmation before running the cmdlet.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         cf
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -EncryptionMethod
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies an encryption method for the encrypted drive.
+The acceptable values for this parameter are:
+      </p>
+      <ul>
+       <li>
+        <p>
+         Aes128
+        </p>
+       </li>
+       <li>
+        <p>
+         Aes256
+        </p>
+       </li>
+       <li>
+        Hardware
+       </li>
+      </ul>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          BitLockerVolumeEncryptionMethodOnEnable
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Parameter Sets:
+        </td>
+        <td>
+         Aes128, Aes256, XtsAes128, XtsAes256
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -HardwareEncryption
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that the volume uses hardware encryption.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Password
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a secure string object that contains a password.
+The password specified acts as a protector for the volume encryption key.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SecureString
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         pw
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         1
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Pin
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a secure string object that contains a PIN.
+BitLocker uses the PIN specified, with other data, as a protector for the volume encryption key.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SecureString
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         p
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         1
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -RecoveryPassword
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a recovery password.
+If you do not specify this parameter, but you do include the
+       <em>
+        RecoveryPasswordProtector
+       </em>
+       parameter, the cmdlet creates a random password.
+You can enter a 48-digit password.
+The password specified or created acts as a protector for the volume encryption key.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         rp
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         1
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Service
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that the system account for this computer unlocks the encrypted volume.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -SkipHardwareTest
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that BitLocker does not perform a hardware test before it begins encryption.
+BitLocker uses a hardware test as a dry run to make sure that all the key protectors are correctly set up and that the computer can start without issues.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         s
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -UsedSpaceOnly
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that BitLocker does not encrypt disk space which contains unused data.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         qe
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -WhatIf
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         wi
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="inputs">
+      Inputs
+     </h2>
+     <p>
+      <strong>
+       BitLockerVolume[],String[]
+      </strong>
+     </p>
+     <h2 id="outputs">
+      Outputs
+     </h2>
+     <p>
+      <strong>
+       BitLockerVolume[]
+      </strong>
+     </p>
+     <h2 id="related-links">
+      Related Links
+     </h2>
+     <ul>
+      <li>
+       <a data-linktype="relative-path" href="./disable-bitlocker.html">
+        Disable-BitLocker
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="./get-bitlockervolume.html">
+        Get-BitLockerVolume
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="./lock-bitlocker.html">
+        Lock-BitLocker
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="./resume-bitlocker.html">
+        Resume-BitLocker
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="./suspend-bitlocker.html">
+        Suspend-BitLocker
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="./unlock-bitlocker.html">
+        Unlock-BitLocker
+       </a>
+      </li>
+     </ul>
+     <!-- </content> -->
+    </main>
+    <section class="feedback-section" data-bi-name="feedback-section">
+     <h2 id="feedback">
+      Feedback
+     </h2>
+     <div class="alert choose-feedback-type">
+      <p>
+       We'd love to hear your thoughts. Choose the type you'd like to provide:
+      </p>
+      <div class="choose-feedback-buttons">
+       <a class="button-border feedback-type-product" data-bi-name="product-feedback" href="https://windowsserver.uservoice.com/forums/301869-powershell">
+        Product feedback
+        <span aria-hidden="true" class="docon docon-navigate-external">
+        </span>
+       </a>
+       <div class="button-group">
+        <button class="button-border feedback-sign-in-button" data-bi-name="feedback-sign-in">
+         <span aria-hidden="true" class="docon docon-brand-github">
+         </span>
+         Sign in to give documentation feedback
+        </button>
+        <button aria-controls="feedback-form" aria-expanded="false" class="button-border feedback-form-toggle" data-bi-name="documentation-feedback" hidden="">
+         Content feedback
+        </button>
+        <div auto-align="" class="dropdown has-caret">
+         <button aria-controls="fbm0" aria-expanded="false" aria-haspopup="true" aria-label="Expand documentation feedback menu" class="button-border dropdown-trigger" data-bi-name="documentation-feedback-menu">
+          <span aria-hidden="true" class="docon docon-chevron-down-light">
+          </span>
+         </button>
+         <div class="dropdown-menu documentation-feedback-menu" id="fbm0" role="menu">
+          You may also leave feedback
+          <a data-bi-name="create-issue-on-github" href="{0}">
+           directly on GitHub
+           <span aria-hidden="true" class="docon docon-navigate-external">
+           </span>
+          </a>
+          .
+         </div>
+        </div>
+       </div>
+      </div>
+      <p>
+       <small>
+        Our new feedback system is built on GitHub Issues. Read about this change in
+        <a href="https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs">
+         our blog post
+        </a>
+        .
+       </small>
+      </p>
+     </div>
+     <form accept-charset="UTF-8" action="javascript:" autocomplete="off" class="feedback-form" hidden="" id="feedback-form">
+      <h3 class="feedback-form-heading current-user">
+       <img alt="Avatar" aria-hidden="true" class="avatar" height="36" width="36"/>
+       <span aria-hidden="true" class="username">
+       </span>
+       <span class="visually-hidden">
+        Liquid error: Can't find the localized string giveDocumentationFeedback for template Conceptual.
+       </span>
+      </h3>
+      <label>
+       <span class="visually-hidden">
+        Title
+       </span>
+       <input name="title" pattern=".*\w.*" placeholder="Title" required="" type="text"/>
+      </label>
+      <label>
+       <span class="visually-hidden">
+        Leave a comment
+       </span>
+       <textarea name="body" placeholder="Leave a comment" required=""></textarea>
+      </label>
+      <div class="action-container">
+       <button class="primary-action" name="submit" type="submit">
+        Submit feedback
+       </button>
+      </div>
+     </form>
+     <div class="feedback-status alert busy" role="alert">
+      <p>
+       Loading feedback...
+      </p>
+     </div>
+     <div class="feedback-tab-group tabGroup" data-tab-group-independent="" hidden="">
+      <ul role="tablist">
+       <li role="presentation">
+        <a aria-controls="tabpanel-issues-open" aria-label="Open Issues" data-tab="issues-open" href="#tabpanel-issues-open" role="tab">
+        </a>
+       </li>
+       <li role="presentation">
+        <a aria-controls="tabpanel-issues-closed" aria-label="Closed Issues" data-tab="issues-closed" href="#tabpanel-issues-closed" role="tab">
+        </a>
+       </li>
+      </ul>
+      <section data-tab="issues-open" id="tabpanel-issues-open" role="tabpanel">
+       <div class="no-issues-placeholder">
+        There are no open issues
+       </div>
+       <ul aria-label="Open Issues" class="github-issues-list">
+       </ul>
+      </section>
+      <section data-tab="issues-closed" id="tabpanel-issues-closed" role="tabpanel">
+       <div class="no-issues-placeholder">
+        There are no closed issues
+       </div>
+       <ul aria-label="Closed Issues" class="github-issues-list">
+       </ul>
+      </section>
+     </div>
+     <div class="action-container">
+      <a class="view-on-github" data-bi-name="view-on-github" hidden="" href="https://github.com/MicrosoftDocs/windows-powershell-docs/issues">
+       <span aria-hidden="true" class="docon docon-brand-github">
+       </span>
+       <span>
+        View on GitHub
+       </span>
+       <span aria-hidden="true" class="docon docon-navigate-external">
+       </span>
+      </a>
+     </div>
+    </section>
+   </div>
+  </div>
+  <div class="openfeedback-container" id="openFeedbackContainer">
+  </div>
+  <div class="action-panel">
+  </div>
+ </body>
+</html>

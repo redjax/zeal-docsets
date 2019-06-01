@@ -1,0 +1,126 @@
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML><HEAD><TITLE>Man page of BSWAP</TITLE>
+</HEAD><BODY>
+<H1>BSWAP</H1>
+Section: Linux Programmer's Manual (3)<BR>Updated: 2016-04-21<BR><A HREF="#index">Index</A>
+<A HREF="../index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+bswap_16, bswap_32, bswap_64 - reverse order of bytes
+<A NAME="lbAC">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<PRE>
+<B>#include &lt;<A HREF="file:///usr/include/byteswap.h">byteswap.h</A>&gt;</B>
+
+<B>bswap_16(</B><I>x</I><B>);</B>
+<B>bswap_32(</B><I>x</I><B>);</B>
+<B>bswap_64(</B><I>x</I><B>);</B>
+</PRE>
+
+<A NAME="lbAD">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+These macros return a value in which the order of the bytes
+in their 2-, 4-, or 8-byte arguments is reversed.
+<A NAME="lbAE">&nbsp;</A>
+<H2>RETURN VALUE</H2>
+
+These macros return the value of their argument with the bytes reversed.
+<A NAME="lbAF">&nbsp;</A>
+<H2>ERRORS</H2>
+
+These macros always succeed.
+<A NAME="lbAG">&nbsp;</A>
+<H2>CONFORMING TO</H2>
+
+These macros are GNU extensions.
+<A NAME="lbAH">&nbsp;</A>
+<H2>EXAMPLE</H2>
+
+The program below swaps the bytes of the 8-byte integer supplied as
+its command-line argument.
+The following shell session demonstrates the use of the program:
+<P>
+<PRE>
+$ <B>./a.out 0x0123456789abcdef</B>
+0x123456789abcdef ==&gt; 0xefcdab8967452301
+</PRE>
+
+<A NAME="lbAI">&nbsp;</A>
+<H3>Program source</H3>
+
+
+<PRE>
+#include &lt;<A HREF="file:///usr/include/stdio.h">stdio.h</A>&gt;
+#include &lt;<A HREF="file:///usr/include/stdint.h">stdint.h</A>&gt;
+#include &lt;<A HREF="file:///usr/include/stdlib.h">stdlib.h</A>&gt;
+#include &lt;<A HREF="file:///usr/include/inttypes.h">inttypes.h</A>&gt;
+#include &lt;<A HREF="file:///usr/include/byteswap.h">byteswap.h</A>&gt;
+
+int
+main(int argc, char *argv[])
+{
+    uint64_t x;
+
+    if (argc != 2) {
+        fprintf(stderr, &quot;Usage: %s &lt;num&gt;\n&quot;, argv[0]);
+        exit(EXIT_FAILURE);
+    }
+
+    x = strtoul(argv[1], NULL, 0);
+    printf(&quot;0x%&quot; PRIx64 &quot; ==&gt; 0x%&quot; PRIx64 &quot;\n&quot;, x, bswap_64(x));
+
+    exit(EXIT_SUCCESS);
+}
+</PRE>
+
+<A NAME="lbAJ">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+<B><A HREF="../man3/byteorder.3.html">byteorder</A></B>(3),
+
+<B><A HREF="../man3/endian.3.html">endian</A></B>(3)
+
+<A NAME="lbAK">&nbsp;</A>
+<H2>COLOPHON</H2>
+
+This page is part of release 4.09 of the Linux
+<I>man-pages</I>
+
+project.
+A description of the project,
+information about reporting bugs,
+and the latest version of this page,
+can be found at
+<A HREF="https://www.kernel.org/doc/man-pages/.">https://www.kernel.org/doc/man-pages/.</A>
+
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAD">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAE">RETURN VALUE</A><DD>
+<DT><A HREF="#lbAF">ERRORS</A><DD>
+<DT><A HREF="#lbAG">CONFORMING TO</A><DD>
+<DT><A HREF="#lbAH">EXAMPLE</A><DD>
+<DL>
+<DT><A HREF="#lbAI">Program source</A><DD>
+</DL>
+<DT><A HREF="#lbAJ">SEE ALSO</A><DD>
+<DT><A HREF="#lbAK">COLOPHON</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 14:28:30 GMT, February 25, 2017
+</BODY>
+</HTML>

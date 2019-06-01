@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    
+<!-- Mirrored from mdn.mozillademos.org/en-US/docs/Web/API/Element/releasePointerCapture$samples/Example?revision=1499744 by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 02 May 2019 00:40:24 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+        <meta charset="utf-8">
+        <link href="../../../../../../../developer.mozilla.org/static/build/styles/samples.37902ba3b7fe.css" rel="stylesheet" type="text/css" />
+        
+        <style type="text/css">
+            div {
+  width: 140px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fbe;
+}
+        </style>
+        
+        <title>Element.releasePointerCapture()</title>
+    </head>
+    <body>
+        
+            <div id="slider">SLIDE ME</div>
+        
+        
+            <script>
+                function beginSliding(e) {
+  slider.onpointermove = slide;
+  slider.setPointerCapture(e.pointerId);
+}
+
+function stopSliding(e) {
+  slider.onpointermove = null;
+  slider.releasePointerCapture(e.pointerId);
+}
+
+function slide(e) {
+  slider.style.transform = `translate(${e.clientX - 70}px)`;
+}
+
+const slider = document.getElementById('slider');
+
+slider.onpointerdown = beginSliding;
+slider.onpointerup = stopSliding;
+
+            </script>
+        
+    </body>
+
+<!-- Mirrored from mdn.mozillademos.org/en-US/docs/Web/API/Element/releasePointerCapture$samples/Example?revision=1499744 by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 02 May 2019 00:40:24 GMT -->
+</html>

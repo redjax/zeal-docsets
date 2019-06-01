@@ -1,0 +1,492 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Configuration File &#8212; Jenkins Job Builder 2.0.0.0b3.dev264 documentation</title>
+    
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '2.0.0.0b3.dev264',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="Jenkins Job Builder 2.0.0.0b3.dev264 documentation" href="index.html" />
+    <link rel="next" title="Job Definitions" href="definition.html" />
+    <link rel="prev" title="Installation" href="installation.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="definition.html" title="Job Definitions"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="installation.html" title="Installation"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Jenkins Job Builder 2.0.0.0b3.dev264 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="configuration-file">
+<h1>Configuration File<a class="headerlink" href="#configuration-file" title="Permalink to this headline">¶</a></h1>
+<p>After installation, you will need to create a configuration file.  By
+default, <code class="docutils literal"><span class="pre">jenkins-jobs</span></code> looks for <code class="docutils literal"><span class="pre">~/.config/jenkins_jobs/jenkins_jobs.ini</span></code>,
+<code class="docutils literal"><span class="pre">&lt;script</span> <span class="pre">directory&gt;/jenkins_jobs.ini</span></code> or <code class="docutils literal"><span class="pre">/etc/jenkins_jobs/jenkins_jobs.ini</span></code>
+(in that order), but you may specify an alternative location when running
+<code class="docutils literal"><span class="pre">jenkins-jobs</span></code>.  The file should have the following format:</p>
+<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="k">[job_builder]</span>
+<span class="na">ignore_cache</span><span class="o">=</span><span class="s">True</span>
+<span class="na">keep_descriptions</span><span class="o">=</span><span class="s">False</span>
+<span class="na">include_path</span><span class="o">=</span><span class="s">.:scripts:~/git/</span>
+<span class="na">recursive</span><span class="o">=</span><span class="s">False</span>
+<span class="na">exclude</span><span class="o">=</span><span class="s">.*:manual:./development</span>
+<span class="na">allow_duplicates</span><span class="o">=</span><span class="s">False</span>
+
+<span class="k">[jenkins]</span>
+<span class="na">user</span><span class="o">=</span><span class="s">jenkins</span>
+<span class="na">password</span><span class="o">=</span><span class="s">1234567890abcdef1234567890abcdef</span>
+<span class="na">url</span><span class="o">=</span><span class="s">https://jenkins.example.com</span>
+<span class="na">query_plugins_info</span><span class="o">=</span><span class="s">False</span>
+<span class="c1">##### This is deprecated, use job_builder section instead</span>
+<span class="c1">#ignore_cache=True</span>
+
+<span class="k">[plugin &quot;hipchat&quot;]</span>
+<span class="na">authtoken</span><span class="o">=</span><span class="s">dummy</span>
+
+<span class="k">[plugin &quot;stash&quot;]</span>
+<span class="na">username</span><span class="o">=</span><span class="s">user</span>
+<span class="na">password</span><span class="o">=</span><span class="s">pass</span>
+</pre></div>
+</div>
+<div class="section" id="job-builder-section">
+<h2>job_builder section<a class="headerlink" href="#job-builder-section" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt><strong>ignore_cache</strong></dt>
+<dd>(Optional) If set to True, Jenkins Job Builder won&#8217;t use any cache.</dd>
+<dt><strong>keep_descriptions</strong></dt>
+<dd>By default <cite>jenkins-jobs</cite> will overwrite the jobs descriptions even if no
+description has been defined explicitly.
+When this option is set to True, that behavior changes and it will only
+overwrite the description if you specified it in the yaml. False by default.</dd>
+<dt><strong>include_path</strong></dt>
+<dd>(Optional) Can be set to a &#8216;:&#8217; delimited list of paths, which jenkins
+job builder will search for any files specified by the custom application
+yaml tags &#8216;include&#8217;, &#8216;include-raw&#8217; and &#8216;include-raw-escape&#8217;.</dd>
+<dt><strong>recursive</strong></dt>
+<dd>(Optional) If set to True, jenkins job builder will search for job
+definition files recursively.</dd>
+<dt><strong>exclude</strong></dt>
+<dd>(Optional) If set to a list of values separated by &#8216;:&#8217;, these paths will be
+excluded from the list of paths to be processed when searching recursively.
+Values containing no <code class="docutils literal"><span class="pre">/</span></code> will be matched against directory names at all
+levels, those starting with <code class="docutils literal"><span class="pre">/</span></code> will be considered absolute, while others
+containing a <code class="docutils literal"><span class="pre">/</span></code> somewhere other than the start of the value will be
+considered relative to the starting path.</dd>
+<dt><strong>allow_duplicates</strong></dt>
+<dd>(Optional) By default <cite>jenkins-jobs</cite> will abort when a duplicate macro,
+template, job-group or job name is encountered as it cannot establish the
+correct one to use. When this option is set to True, only a warning is
+emitted.</dd>
+<dt><strong>allow_empty_variables</strong></dt>
+<dd>(Optional) When expanding strings, by default <cite>jenkins-jobs</cite> will raise an
+exception if there&#8217;s a key in the string, that has not been declared in the
+input YAML files. Setting this option to True will replace it with the empty
+string, allowing you to use those strings without having to define all the
+keys it might be using.</dd>
+</dl>
+</div>
+<div class="section" id="jenkins-section">
+<h2>jenkins section<a class="headerlink" href="#jenkins-section" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt><strong>user</strong></dt>
+<dd>This should be the name of a user previously defined in Jenkins.
+Appropriate user permissions must be set under the Jenkins security
+matrix: under the <code class="docutils literal"><span class="pre">Global</span></code> group of permissions, check <code class="docutils literal"><span class="pre">Read</span></code>,
+then under the <code class="docutils literal"><span class="pre">Job</span></code> group of permissions, check <code class="docutils literal"><span class="pre">Create</span></code>,
+<code class="docutils literal"><span class="pre">Delete</span></code>, <code class="docutils literal"><span class="pre">Configure</span></code> and finally <code class="docutils literal"><span class="pre">Read</span></code>.</dd>
+<dt><strong>password</strong></dt>
+<dd>The API token for the user specified.  You can get this through the
+Jenkins management interface under <code class="docutils literal"><span class="pre">People</span></code> -&gt; username -&gt;
+<code class="docutils literal"><span class="pre">Configure</span></code> and then click the <code class="docutils literal"><span class="pre">Show</span> <span class="pre">API</span> <span class="pre">Token</span></code> button.</dd>
+<dt><strong>url</strong></dt>
+<dd>The base URL for your Jenkins installation.</dd>
+<dt><strong>timeout</strong></dt>
+<dd>(Optional) The connection timeout (in seconds) to the Jenkins server.
+By default this is set to the system configured socket timeout.</dd>
+<dt><strong>query_plugins_info</strong></dt>
+<dd>Whether to query the Jenkins instance for plugin info. If no configuration
+files are found (either in the default paths or given through the
+command-line), <cite>jenkins-jobs</cite> will skip querying for plugin information. True
+by default.</dd>
+</dl>
+</div>
+<div class="section" id="hipchat-section">
+<h2>hipchat section<a class="headerlink" href="#hipchat-section" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt><strong>send-as</strong></dt>
+<dd>This is the hipchat user name that will be used when sending notifications.</dd>
+<dt><strong>authtoken</strong></dt>
+<dd>The API token necessary to send messages to hipchat.  This can be generated in
+the hipchat web interface by a user with administrative access for your
+organization. This authtoken is set for each job individually; the
+JJB Hipchat Plugin does not currently support setting different tokens for
+different projects, so the token you use will have to be scoped such that it
+can be used for any room your jobs might be configured to notify. For more
+information on this topic, please see the <a class="reference external" href="https://www.hipchat.com/docs/apiv2/auth">Hipchat API Documentation</a></dd>
+</dl>
+</div>
+<div class="section" id="stash-section">
+<h2>stash section<a class="headerlink" href="#stash-section" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt><strong>username</strong></dt>
+<dd>This is the stash user name that will be used to connect to stash
+when using the stash publisher plugin and not defining it in the
+yaml part.</dd>
+<dt><strong>password</strong></dt>
+<dd>This is the related password that will be used with the stash username
+when using the stash publisher plugin and not defining it in the
+yaml part.</dd>
+</dl>
+</div>
+<div class="section" id="future-section">
+<h2>__future__ section<a class="headerlink" href="#future-section" title="Permalink to this headline">¶</a></h2>
+<p>This section is to control enabling of beta features or behaviour changes that
+deviate from previously released behaviour in ways that may require effort to
+convert existing JJB configs to adopt. This essentially will act as a method
+to share these new behaviours while under active development so they can be
+changed ahead of releases.</p>
+<dl class="docutils">
+<dt><strong>param_order_from_yaml</strong></dt>
+<dd>Used to switch on using the order of the parameters are defined in yaml to
+control the order of corresponding XML elements being written out. This is
+intended as a global flag and can affect multiple modules.</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="running">
+<h1>Running<a class="headerlink" href="#running" title="Permalink to this headline">¶</a></h1>
+<p>After it&#8217;s installed and configured, you can invoke Jenkins Job
+Builder by running <code class="docutils literal"><span class="pre">jenkins-jobs</span></code>.  You won&#8217;t be able to do
+anything useful just yet without a configuration; that is
+discussed in the next section.</p>
+<div class="section" id="test-mode">
+<h2>Test Mode<a class="headerlink" href="#test-mode" title="Permalink to this headline">¶</a></h2>
+<p>Once you have a configuration defined, you can run the job builder in test mode.</p>
+<p>If you want to run a simple test with just a single YAML job definition file
+and see the XML output on stdout:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">jenkins</span><span class="o">-</span><span class="n">jobs</span> <span class="n">test</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">foo</span><span class="o">.</span><span class="n">yaml</span>
+</pre></div>
+</div>
+<p>You can also pass JJB a directory containing multiple job definition files:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">jenkins</span><span class="o">-</span><span class="n">jobs</span> <span class="n">test</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">defs</span> <span class="o">-</span><span class="n">o</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">output</span>
+</pre></div>
+</div>
+<p>which will write XML files to the output directory for all of the jobs
+defined in the defs directory.</p>
+<p>If you run:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">jenkins</span><span class="o">-</span><span class="n">jobs</span> <span class="n">test</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">defs</span> <span class="o">-</span><span class="n">o</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">output</span> <span class="o">--</span><span class="n">config</span><span class="o">-</span><span class="n">xml</span>
+</pre></div>
+</div>
+<p>the output directory will contain config.xml files similar to the
+internal storage format of Jenkins.  This might allow you to more
+easily compare the output to an existing Jenkins installation.</p>
+</div>
+<div class="section" id="updating-jobs">
+<span id="id2"></span><h2>Updating Jobs<a class="headerlink" href="#updating-jobs" title="Permalink to this headline">¶</a></h2>
+<p>When you&#8217;re satisfied with the generated XML from the test, you can run:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">jenkins</span><span class="o">-</span><span class="n">jobs</span> <span class="n">update</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">defs</span>
+</pre></div>
+</div>
+<p>which will upload the job and view definitions to Jenkins if needed.  Jenkins
+Job Builder maintains, for each host, a cache <a class="footnote-reference" href="#f1" id="id3">[1]</a> of previously configured
+jobs and views, so that you can run that command as often as you like, and it
+will only update the jobs configurations in Jenkins if the defined definitions
+has changed since the last time it was run.  Note: if you modify a job
+directly in Jenkins, jenkins-jobs will not know about it and will not
+update it.</p>
+<p>To update a specific list of jobs/views, simply pass the job/view names as
+additional arguments after the job definition path. To update Foo1 and Foo2
+run:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">jenkins</span><span class="o">-</span><span class="n">jobs</span> <span class="n">update</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">defs</span> <span class="n">Foo1</span> <span class="n">Foo2</span>
+</pre></div>
+</div>
+<p>You can also enable the parallel execution of the program passing the workers
+option with a value of 0, 2, or higher. Use 0 to run as many workers as cores
+in the host that runs it, and 2 or higher to specify the number of workers to
+use:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">jenkins</span><span class="o">-</span><span class="n">jobs</span> <span class="n">update</span> <span class="o">--</span><span class="n">workers</span> <span class="mi">0</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">defs</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="passing-multiple-paths">
+<h2>Passing Multiple Paths<a class="headerlink" href="#passing-multiple-paths" title="Permalink to this headline">¶</a></h2>
+<p>It is possible to pass multiple paths to JJB using colons as a path separator on
+*nix systems and semi-colons on Windows systems. For example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">jenkins</span><span class="o">-</span><span class="n">jobs</span> <span class="n">test</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="k">global</span><span class="p">:</span><span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">instance</span><span class="p">:</span><span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">instance</span><span class="o">/</span><span class="n">project</span>
+</pre></div>
+</div>
+<p>This helps when structuring directory layouts as you may selectively include
+directories in different ways to suit different needs. If you maintain multiple
+Jenkins instances suited to various needs you may want to share configuration
+between those instances (global). Furthermore, there may be various ways you
+would like to structure jobs within a given instance.</p>
+</div>
+</div>
+<div class="section" id="recursive-searching-of-paths">
+<h1>Recursive Searching of Paths<a class="headerlink" href="#recursive-searching-of-paths" title="Permalink to this headline">¶</a></h1>
+<p>In addition to passing multiple paths to JJB it is also possible to enable
+recursive searching to process all yaml files in the tree beneath each path.
+For example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">For</span> <span class="n">a</span> <span class="n">tree</span><span class="p">:</span>
+  <span class="o">/</span><span class="n">path</span><span class="o">/</span>
+    <span class="n">to</span><span class="o">/</span>
+      <span class="n">defs</span><span class="o">/</span>
+        <span class="n">ci_jobs</span><span class="o">/</span>
+        <span class="n">release_jobs</span><span class="o">/</span>
+      <span class="nb">globals</span><span class="o">/</span>
+        <span class="n">macros</span><span class="o">/</span>
+        <span class="n">templates</span><span class="o">/</span>
+
+<span class="n">jenkins</span><span class="o">-</span><span class="n">jobs</span> <span class="n">update</span> <span class="o">-</span><span class="n">r</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">defs</span><span class="p">:</span><span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="nb">globals</span>
+</pre></div>
+</div>
+<p>JJB will search defs/ci_jobs, defs/release_jobs, globals/macros and
+globals/templates in addition to the defs and globals trees.</p>
+</div>
+<div class="section" id="excluding-paths">
+<h1>Excluding Paths<a class="headerlink" href="#excluding-paths" title="Permalink to this headline">¶</a></h1>
+<p>To allow a complex tree of jobs where some jobs are managed differently without
+needing to explicitly provide each path, the recursive path processing supports
+excluding paths based on absolute paths, relative paths and patterns. For
+example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">For</span> <span class="n">a</span> <span class="n">tree</span><span class="p">:</span>
+  <span class="o">/</span><span class="n">path</span><span class="o">/</span>
+    <span class="n">to</span><span class="o">/</span>
+      <span class="n">defs</span><span class="o">/</span>
+        <span class="n">ci_jobs</span><span class="o">/</span>
+          <span class="n">manual</span><span class="o">/</span>
+        <span class="n">release_jobs</span><span class="o">/</span>
+          <span class="n">manual</span><span class="o">/</span>
+        <span class="n">qa_jobs</span><span class="o">/</span>
+      <span class="nb">globals</span><span class="o">/</span>
+        <span class="n">macros</span><span class="o">/</span>
+        <span class="n">templates</span><span class="o">/</span>
+        <span class="n">special</span><span class="o">/</span>
+
+<span class="n">jenkins</span><span class="o">-</span><span class="n">jobs</span> <span class="n">update</span> <span class="o">-</span><span class="n">r</span> <span class="o">-</span><span class="n">x</span> <span class="n">man</span><span class="o">*</span><span class="p">:</span><span class="o">./</span><span class="n">qa_jobs</span> <span class="o">-</span><span class="n">x</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">defs</span><span class="o">/</span><span class="nb">globals</span><span class="o">/</span><span class="n">special</span> \
+  <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">defs</span><span class="p">:</span><span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="nb">globals</span>
+</pre></div>
+</div>
+<p>JJB will search the given paths, ignoring the directories qa_jobs,
+ci_jobs/manual, release_jobs/manual, and globals/special when
+building the list of yaml files to be processed. Absolute paths
+are denoted by starting from the root, relative by containing
+the path separator, and patterns by having neither.
+Patterns use simple shell globing to match directories.</p>
+<div class="section" id="deleting-jobs-views">
+<h2>Deleting Jobs/Views<a class="headerlink" href="#deleting-jobs-views" title="Permalink to this headline">¶</a></h2>
+<p>Jenkins Job Builder supports deleting jobs and views from Jenkins.</p>
+<p>To delete a specific job:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">jenkins</span><span class="o">-</span><span class="n">jobs</span> <span class="n">delete</span> <span class="n">Foo1</span>
+</pre></div>
+</div>
+<p>To delete a list of jobs or views, simply pass them as additional
+arguments after the command:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">jenkins</span><span class="o">-</span><span class="n">jobs</span> <span class="n">delete</span> <span class="n">Foo1</span> <span class="n">Foo2</span>
+</pre></div>
+</div>
+<p>To delete only views or only jobs, simply add the argument
+&#8211;views-only or &#8211;jobs-only after the command:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">jenkins</span><span class="o">-</span><span class="n">jobs</span> <span class="n">delete</span> <span class="o">--</span><span class="n">views</span><span class="o">-</span><span class="n">only</span> <span class="n">Foo1</span>
+<span class="n">jenkins</span><span class="o">-</span><span class="n">jobs</span> <span class="n">delete</span> <span class="o">--</span><span class="n">jobs</span><span class="o">-</span><span class="n">only</span> <span class="n">Foo1</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal"><span class="pre">update</span></code> command includes a <code class="docutils literal"><span class="pre">delete-old</span></code> option to remove obsolete
+jobs:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">jenkins</span><span class="o">-</span><span class="n">jobs</span> <span class="n">update</span> <span class="o">--</span><span class="n">delete</span><span class="o">-</span><span class="n">old</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">defs</span>
+</pre></div>
+</div>
+<p>Obsolete jobs are jobs once managed by JJB (as distinguished by a special
+comment that JJB appends to their description), that were not generated in this
+JJB run.</p>
+<p>There is also a command to delete <strong>all</strong> jobs and/or views.
+<strong>WARNING</strong>: Use with caution.</p>
+<p>To delete <strong>all</strong> jobs and views:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">jenkins</span><span class="o">-</span><span class="n">jobs</span> <span class="n">delete</span><span class="o">-</span><span class="nb">all</span>
+</pre></div>
+</div>
+<p>TO delete <strong>all</strong> jobs:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">jenkins</span><span class="o">-</span><span class="n">jobs</span> <span class="n">delete</span><span class="o">-</span><span class="nb">all</span> <span class="o">--</span><span class="n">jobs</span><span class="o">-</span><span class="n">only</span>
+</pre></div>
+</div>
+<p>To delete <strong>all</strong> views:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">jenkins</span><span class="o">-</span><span class="n">jobs</span> <span class="n">delete</span><span class="o">-</span><span class="nb">all</span> <span class="o">--</span><span class="n">views</span><span class="o">-</span><span class="n">only</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="globbed-parameters">
+<h2>Globbed Parameters<a class="headerlink" href="#globbed-parameters" title="Permalink to this headline">¶</a></h2>
+<p>Jenkins job builder supports globbed parameters to identify jobs from a set of
+definition files.  This feature only supports JJB managed jobs.</p>
+<p>To update jobs/views that only have &#8216;foo&#8217; in their name:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">jenkins</span><span class="o">-</span><span class="n">jobs</span> <span class="n">update</span> <span class="o">./</span><span class="n">myjobs</span> \<span class="o">*</span><span class="n">foo</span>\<span class="o">*</span>
+</pre></div>
+</div>
+<p>To delete jobs/views that only have &#8216;foo&#8217; in their name:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">jenkins</span><span class="o">-</span><span class="n">jobs</span> <span class="n">delete</span> <span class="o">--</span><span class="n">path</span> <span class="o">./</span><span class="n">myjobs</span> \<span class="o">*</span><span class="n">foo</span>\<span class="o">*</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="command-reference">
+<span id="id4"></span><h2>Command Reference<a class="headerlink" href="#command-reference" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-text"><div class="highlight"><pre><span></span>Traceback (most recent call last):
+  File &quot;/Users/john.patterson/git/jjb-docset-generator/jenkins-job-builder/.venv/bin/jenkins-jobs&quot;, line 6, in &lt;module&gt;
+    from jenkins_jobs.cli.entry import main
+ImportError: No module named cli.entry
+</pre></div>
+</div>
+<div class="highlight-text"><div class="highlight"><pre><span></span>Traceback (most recent call last):
+  File &quot;/Users/john.patterson/git/jjb-docset-generator/jenkins-job-builder/.venv/bin/jenkins-jobs&quot;, line 6, in &lt;module&gt;
+    from jenkins_jobs.cli.entry import main
+ImportError: No module named cli.entry
+</pre></div>
+</div>
+<div class="highlight-text"><div class="highlight"><pre><span></span>Traceback (most recent call last):
+  File &quot;/Users/john.patterson/git/jjb-docset-generator/jenkins-job-builder/.venv/bin/jenkins-jobs&quot;, line 6, in &lt;module&gt;
+    from jenkins_jobs.cli.entry import main
+ImportError: No module named cli.entry
+</pre></div>
+</div>
+<div class="highlight-text"><div class="highlight"><pre><span></span>Traceback (most recent call last):
+  File &quot;/Users/john.patterson/git/jjb-docset-generator/jenkins-job-builder/.venv/bin/jenkins-jobs&quot;, line 6, in &lt;module&gt;
+    from jenkins_jobs.cli.entry import main
+ImportError: No module named cli.entry
+</pre></div>
+</div>
+<div class="highlight-text"><div class="highlight"><pre><span></span>Traceback (most recent call last):
+  File &quot;/Users/john.patterson/git/jjb-docset-generator/jenkins-job-builder/.venv/bin/jenkins-jobs&quot;, line 6, in &lt;module&gt;
+    from jenkins_jobs.cli.entry import main
+ImportError: No module named cli.entry
+</pre></div>
+</div>
+<p class="rubric">Footnotes</p>
+<table class="docutils footnote" frame="void" id="f1" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id3">[1]</a></td><td>The cache default location is at <code class="docutils literal"><span class="pre">~/.cache/jenkins_jobs</span></code>, which
+can be overridden by setting the <code class="docutils literal"><span class="pre">XDG_CACHE_HOME</span></code> environment
+variable.</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Configuration File</a><ul>
+<li><a class="reference internal" href="#job-builder-section">job_builder section</a></li>
+<li><a class="reference internal" href="#jenkins-section">jenkins section</a></li>
+<li><a class="reference internal" href="#hipchat-section">hipchat section</a></li>
+<li><a class="reference internal" href="#stash-section">stash section</a></li>
+<li><a class="reference internal" href="#future-section">__future__ section</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#running">Running</a><ul>
+<li><a class="reference internal" href="#test-mode">Test Mode</a></li>
+<li><a class="reference internal" href="#updating-jobs">Updating Jobs</a></li>
+<li><a class="reference internal" href="#passing-multiple-paths">Passing Multiple Paths</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#recursive-searching-of-paths">Recursive Searching of Paths</a></li>
+<li><a class="reference internal" href="#excluding-paths">Excluding Paths</a><ul>
+<li><a class="reference internal" href="#deleting-jobs-views">Deleting Jobs/Views</a></li>
+<li><a class="reference internal" href="#globbed-parameters">Globbed Parameters</a></li>
+<li><a class="reference internal" href="#command-reference">Command Reference</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="installation.html"
+                        title="previous chapter">Installation</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="definition.html"
+                        title="next chapter">Job Definitions</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/execution.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="definition.html" title="Job Definitions"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="installation.html" title="Installation"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Jenkins Job Builder 2.0.0.0b3.dev264 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2012, Jenkins Job Builder Maintainers.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.9.
+    </div>
+  </body>
+</html>

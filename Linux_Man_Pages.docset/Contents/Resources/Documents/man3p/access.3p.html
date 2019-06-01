@@ -1,0 +1,436 @@
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML><HEAD><TITLE>Man page of ACCESS</TITLE>
+</HEAD><BODY>
+<H1>ACCESS</H1>
+Section: POSIX Programmer's Manual (3P)<BR>Updated: 2013<BR><A HREF="#index">Index</A>
+<A HREF="../index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>PROLOG</H2>
+
+This manual page is part of the POSIX Programmer's Manual.
+The Linux implementation of this interface may differ (consult
+the corresponding Linux manual page for details of Linux behavior),
+or the interface may not be implemented on Linux.
+<P>
+<A NAME="lbAC">&nbsp;</A>
+<H2>NAME</H2>
+
+access, faccessat
+--- determine accessibility of a file relative to directory file
+descriptor
+<A NAME="lbAD">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<P>
+
+<PRE>
+#include &lt;<A HREF="file:///usr/include/unistd.h">unistd.h</A>&gt;
+
+int access(const char *<I>path</I>, int <I>amode</I>);
+int faccessat(int <I>fd</I>, const char *<I>path</I>, int <I>amode</I>, int <I>flag</I>);
+</PRE>
+
+<A NAME="lbAE">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+The
+<I>access</I>()
+function shall check the file named by the pathname pointed to by the
+<I>path</I>
+
+argument for accessibility according to the bit pattern contained in
+<I>amode</I>,
+
+using the real user ID in place of the effective user ID and the real
+group ID in place of the effective group ID.
+<P>
+
+The value of
+<I>amode</I>
+
+is either the bitwise-inclusive OR of the access permissions to be
+checked (R_OK, W_OK, X_OK) or the existence test (F_OK).
+<P>
+
+If any access permissions are checked, each shall be checked
+individually, as described in the Base Definitions volume of POSIX.1-2008,
+<I>Section 4.4</I>, <I>File Access Permissions,</I>
+
+except that where that description refers to execute permission for
+a process with appropriate privileges, an implementation may indicate
+success for X_OK even if execute permission is not granted to any user.
+<P>
+
+The
+<I>faccessat</I>()
+function shall be equivalent to the
+<I>access</I>()
+function, except in the case where
+<I>path</I>
+
+specifies a relative path. In this case the file whose accessibility is
+to be determined shall be located relative to the directory associated
+with the file descriptor
+<I>fd</I>
+
+instead of the current working directory. If the file descriptor was
+opened without O_SEARCH, the function shall check whether directory
+searches are permitted using the current permissions of the directory
+underlying the file descriptor. If the file descriptor was opened with
+O_SEARCH, the function shall not perform the check.
+<P>
+
+If
+<I>faccessat</I>()
+is passed the special value AT_FDCWD in the
+<I>fd</I>
+
+parameter, the current working directory shall be used and the behavior
+shall be identical to a call to
+<I>access</I>().
+<P>
+
+Values for
+<I>flag</I>
+
+are constructed by a bitwise-inclusive OR of flags from the following
+list, defined in
+<I>&lt;<A HREF="file:///usr/include/fcntl.h">fcntl.h</A>&gt;</I>:
+
+<DL COMPACT>
+<DT>AT_EACCESS<DD>
+The checks for accessibility are performed using the effective user and
+group IDs instead of the real user and group ID as required in a call
+to
+<I>access</I>().
+</DL>
+<A NAME="lbAF">&nbsp;</A>
+<H2>RETURN VALUE</H2>
+
+Upon successful completion, these functions shall return 0. Otherwise,
+these functions shall return -1 and set
+<I>errno</I>
+
+to indicate the error.
+<A NAME="lbAG">&nbsp;</A>
+<H2>ERRORS</H2>
+
+These functions shall fail if:
+<DL COMPACT>
+<DT><B>EACCES</B>
+
+<DD>
+Permission bits of the file mode do not permit the requested access, or
+search permission is denied on a component of the path prefix.
+<DT><B>ELOOP</B>
+
+<DD>
+A loop exists in symbolic links encountered during resolution of the
+<I>path</I>
+
+argument.
+<DT><B>ENAMETOOLONG</B>
+
+<DD>
+<BR>
+
+The length of a component of a pathname is longer than
+{NAME_MAX}.
+<DT><B>ENOENT</B>
+
+<DD>
+A component of
+<I>path</I>
+
+does not name an existing file or
+<I>path</I>
+
+is an empty string.
+<DT><B>ENOTDIR</B>
+
+<DD>
+A component of the path prefix names an existing file that is neither
+a directory nor a symbolic link to a directory, or the
+<I>path</I>
+
+argument contains at least one non-&lt;slash&gt;
+character and ends with one or more trailing
+&lt;slash&gt;
+characters and the last pathname component names an existing file
+that is neither a directory nor a symbolic link to a directory.
+<DT><B>EROFS</B>
+
+<DD>
+Write access is requested for a file on a read-only file system.
+</DL>
+<P>
+
+The
+<I>faccessat</I>()
+function shall fail if:
+<DL COMPACT>
+<DT><B>EACCES</B>
+
+<DD>
+<I>fd</I>
+
+was not opened with O_SEARCH and the permissions of the directory
+underlying
+<I>fd</I>
+
+do not permit directory searches.
+<DT><B>EBADF</B>
+
+<DD>
+The
+<I>path</I>
+
+argument does not specify an absolute path and the
+<I>fd</I>
+
+argument is neither AT_FDCWD nor a valid file descriptor open
+for reading or searching.
+<DT><B>ENOTDIR</B>
+
+<DD>
+The
+<I>path</I>
+
+argument is not an absolute path and
+<I>fd</I>
+
+is a file descriptor associated with a non-directory file.
+</DL>
+<P>
+
+These functions may fail if:
+<DL COMPACT>
+<DT><B>EINVAL</B>
+
+<DD>
+The value of the <I>amode</I> argument is invalid.
+<DT><B>ELOOP</B>
+
+<DD>
+More than
+{SYMLOOP_MAX}
+symbolic links were encountered during resolution of the
+<I>path</I>
+
+argument.
+<DT><B>ENAMETOOLONG</B>
+
+<DD>
+<BR>
+
+The length of a pathname exceeds
+{PATH_MAX},
+or pathname resolution of a symbolic link produced an intermediate
+result with a length that exceeds
+{PATH_MAX}.
+<DT><B>ETXTBSY</B>
+
+<DD>
+Write access is requested for a pure procedure (shared text) file that
+is being executed.
+</DL>
+<P>
+
+The
+<I>faccessat</I>()
+function may fail if:
+<DL COMPACT>
+<DT><B>EINVAL</B>
+
+<DD>
+The value of the
+<I>flag</I>
+
+argument is not valid.
+</DL>
+<P>
+
+<I>The following sections are informative.</I>
+
+<A NAME="lbAH">&nbsp;</A>
+<H2>EXAMPLES</H2>
+
+<A NAME="lbAI">&nbsp;</A>
+<H3>Testing for the Existence of a File</H3>
+
+<P>
+
+The following example tests whether a file named
+<B>myfile</B>
+
+exists in the
+<B>/tmp</B>
+
+directory.
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+#include &lt;<A HREF="file:///usr/include/unistd.h">unistd.h</A>&gt;
+...
+int result;
+const char *pathname = &quot;/tmp/myfile&quot;;
+
+result = access (pathname, F_OK);
+</B></PRE>
+
+<P>
+
+</DL>
+
+<A NAME="lbAJ">&nbsp;</A>
+<H2>APPLICATION USAGE</H2>
+
+Additional values of
+<I>amode</I>
+
+other than the set defined in the description may be valid; for
+example, if a system has extended access controls.
+<P>
+
+The use of the AT_EACCESS value for
+<I>flag</I>
+
+enables functionality not available in
+<I>access</I>().
+<A NAME="lbAK">&nbsp;</A>
+<H2>RATIONALE</H2>
+
+In early proposals, some inadequacies in the
+<I>access</I>()
+function led to the creation of an
+<I>eaccess</I>()
+function because:
+<DL COMPACT>
+<DT> 1.<DD>
+Historical implementations of
+<I>access</I>()
+do not test file access correctly when the process'
+real user ID is
+superuser. In particular, they always return zero when testing execute
+permissions without regard to whether the file is executable.
+<DT> 2.<DD>
+The superuser has complete access to all files on a system. As a
+consequence, programs started by the superuser and switched to the
+effective user ID
+with lesser privileges cannot use
+<I>access</I>()
+to test their file access permissions.
+</DL>
+<P>
+
+However, the historical model of
+<I>eaccess</I>()
+does not resolve problem (1), so this volume of POSIX.1-2008 now allows
+<I>access</I>()
+to behave in the desired way because several implementations have
+corrected the problem. It was also argued that problem (2) is more
+easily solved by using
+<I>open</I>(),
+<I>chdir</I>(),
+or one of the
+<I>exec</I>
+
+functions as appropriate and responding to the error, rather than
+creating a new function that would not be as reliable. Therefore,
+<I>eaccess</I>()
+is not included in this volume of POSIX.1-2008.
+<P>
+
+The sentence concerning appropriate privileges and execute permission
+bits
+reflects the two possibilities implemented by historical
+implementations when checking superuser access for X_OK.
+<P>
+
+New implementations are discouraged from returning X_OK unless at least
+one execution permission bit is set.
+<P>
+
+The purpose of the
+<I>faccessat</I>()
+function is to enable the checking of the accessibility of files in
+directories other than the current working directory without exposure
+to race conditions. Any part of the path of a file could be changed in
+parallel to a call to
+<I>access</I>(),
+resulting in unspecified behavior. By opening a file descriptor for
+the target directory and using the
+<I>faccessat</I>()
+function it can be guaranteed that the file tested for accessibility is
+located relative to the desired directory.
+<A NAME="lbAL">&nbsp;</A>
+<H2>FUTURE DIRECTIONS</H2>
+
+None.
+<A NAME="lbAM">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+<I>chmod</I>(),
+
+<I>fstatat</I>()
+
+<P>
+
+The Base Definitions volume of POSIX.1-2008,
+<I>Section 4.4</I>, <I>File Access Permissions,</I>
+
+<I></I><B>&lt;<A HREF="file:///usr/include/fcntl.h">fcntl.h</A>&gt;</B>,
+
+<I></I><B>&lt;<A HREF="file:///usr/include/unistd.h">unistd.h</A>&gt;</B>
+
+<A NAME="lbAN">&nbsp;</A>
+<H2>COPYRIGHT</H2>
+
+Portions of this text are reprinted and reproduced in electronic form
+from IEEE Std 1003.1, 2013 Edition, Standard for Information Technology
+-- Portable Operating System Interface (POSIX), The Open Group Base
+Specifications Issue 7, Copyright (C) 2013 by the Institute of
+Electrical and Electronics Engineers, Inc and The Open Group.
+(This is POSIX.1-2008 with the 2013 Technical Corrigendum 1 applied.) In the
+event of any discrepancy between this version and the original IEEE and
+The Open Group Standard, the original IEEE and The Open Group Standard
+is the referee document. The original Standard can be obtained online at
+<A HREF="http://www.unix.org/online.html">http://www.unix.org/online.html</A> .
+<P>
+Any typographical or formatting errors that appear
+in this page are most likely
+to have been introduced during the conversion of the source files to
+man page format. To report such errors, see
+<A HREF="https://www.kernel.org/doc/man-pages/reporting_bugs.html">https://www.kernel.org/doc/man-pages/reporting_bugs.html</A> .
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">PROLOG</A><DD>
+<DT><A HREF="#lbAC">NAME</A><DD>
+<DT><A HREF="#lbAD">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAE">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAF">RETURN VALUE</A><DD>
+<DT><A HREF="#lbAG">ERRORS</A><DD>
+<DT><A HREF="#lbAH">EXAMPLES</A><DD>
+<DL>
+<DT><A HREF="#lbAI">Testing for the Existence of a File</A><DD>
+</DL>
+<DT><A HREF="#lbAJ">APPLICATION USAGE</A><DD>
+<DT><A HREF="#lbAK">RATIONALE</A><DD>
+<DT><A HREF="#lbAL">FUTURE DIRECTIONS</A><DD>
+<DT><A HREF="#lbAM">SEE ALSO</A><DD>
+<DT><A HREF="#lbAN">COPYRIGHT</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 14:28:45 GMT, February 25, 2017
+</BODY>
+</HTML>

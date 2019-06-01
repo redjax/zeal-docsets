@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html class="no-js hasSidebar hasPageActions hasBreadcrumb conceptual" data-authenticated="false" data-render="docs" dir="ltr" lang="en-us">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Get-CimSession (CimCmdlets)" property="og:title"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" property="og:image"/>
+  <meta content="summary" name="twitter:card"/>
+  <meta content="@docsmsft" name="twitter:site"/>
+  <meta content="Get-CimSession (CimCmdlets)" name="twitter:title"/>
+  <meta content="The Get-CimSession cmdlet gets the CIM session objects created in the current PowerShell session. If used without any parameters, the cmdlet gets all of the CIM sessions created in the current PowerSâ¦" name="twitter:description"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" name="twitter:image"/>
+  <meta content="Microsoft Logo" name="twitter:image:alt"/>
+  <meta content="The Get-CimSession cmdlet gets the CIM session objects created in the current PowerShell session. If used without any parameters, the cmdlet gets all of the CIM sessions created in the current PowerSâ¦" name="description"/>
+  <meta content="Docs" name="search.ms_sitename"/>
+  <meta content="PowerShell_PowerShell-docs_reference" name="search.ms_docsetname"/>
+  <meta content="0" name="version"/>
+  <meta content="en-us" name="locale"/>
+  <meta content="Docs" name="site_name"/>
+  <meta content="PowerShell" name="search.ms_product"/>
+  <meta content="PowerShell.PowerShell_PowerShell-docs_reference" name="depot_name"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/57336f45d3bea4e66469ebf37e9162b32464a8d3/reference/6/CimCmdlets/Get-CimSession.md" name="ref_skeleton_gitcommit"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/live/reference/6/CimCmdlets/Get-CimSession.md" name="original_ref_skeleton_git_url"/>
+  <meta content="2018-05-10 07:01 PM" name="updated_at"/>
+  <meta content="3f981221-f95e-e462-1bf9-63a900bec40c" name="document_id"/>
+  <meta content="ba990e2b-a6a0-e199-e1a7-ad51810fd717" name="document_version_independent_id"/>
+  <meta content="powershell" name="page_type"/>
+  <meta content="command" name="page_kind"/>
+  <meta content="06/09/2017" name="ms.date"/>
+  <meta content="2.0.0" name="schema"/>
+  <meta content="powershell,cmdlet" name="keywords"/>
+  <meta content="Microsoft.Management.Infrastructure.CimCmdlets.dll-Help.xml" name="external_help_file"/>
+  <meta content="powershell" name="ms.devlang"/>
+  <meta content="INDEX, FOLLOW" name="ROBOTS"/>
+  <meta content="sdwheeler" name="author"/>
+  <meta content="sewhee" name="ms.author"/>
+  <meta content="carmonm" name="manager"/>
+  <meta content="/powershell/bread-pscore/toc.yml?view=powershell-6" name="breadcrumb_path"/>
+  <meta content="powershell" name="apiPlatform"/>
+  <meta content="reference" name="ms.topic"/>
+  <meta content="windows, macos, linux" name="ms.tgt_pltfr"/>
+  <meta content="powershell-scripting" name="ms.technology"/>
+  <meta content="powershell" name="ms.prod"/>
+  <meta content="MSDocsHeader-Powershell" name="uhfHeaderId"/>
+  <meta content="../psdocs/toc.json?view=powershell-6" name="toc_rel"/>
+  <link href="https://docs.microsoft.com/en-us/powershell/module/cimcmdlets/get-cimsession" rel="canonical"/>
+  <title>
+   Get-CimSession (CimCmdlets) | Microsoft Docs
+  </title>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/60aac04b.site.css" rel="stylesheet"/>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/fdb8a38a.conceptual.css" rel="stylesheet"/>
+ </head>
+ <body dir="ltr" lang="en-us">
+  <div class="header-holder">
+   <div data-bi-name="header" id="headerAreaHolder">
+    <div id="uhf-placeholder">
+    </div>
+   </div>
+   <div class="disclaimer-holder" id="disclaimer-holder">
+   </div>
+  </div>
+  <div class="container mainContainer" data-bi-name="body">
+   <div class="content-header" data-bi-name="content-header">
+    <div class="content-header-controls">
+     <button class="contents-button button-border" data-bi-name="contents-expand" type="button">
+      <span class="docon docon-menu">
+      </span>
+      Contents
+     </button>
+    </div>
+    <div class="content-header-controls">
+     <button class="ap-collapse-behavior ap-expanded button-border" data-bi-name="ap-collapse" type="button">
+      <span class="docon docon-exit-mode">
+      </span>
+      Exit focus mode
+     </button>
+    </div>
+   </div>
+   <div class="primary-holder">
+    <main class="content" data-bi-name="content" dir="ltr" id="main" lang="en-us" role="main">
+     <!-- <content> -->
+     <h1>
+      Get-Cim
+      <wbr/>
+      Session
+     </h1>
+     <div class="metadata">
+      <dl class="attributeList">
+       <dt>
+        Module:
+       </dt>
+       <dd>
+        <a data-linktype="relative-path" href="./CimCmdlets.html">
+         CimCmdlets
+        </a>
+       </dd>
+      </dl>
+     </div>
+     <div class="summaryHolder">
+      <div class="summary">
+       Gets the CIM session objects from the current session.
+      </div>
+     </div>
+     <h2 class="hiddenAnchor" id="syntax">
+      Syntax
+     </h2>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Get-CimSession
+   [[-ComputerName] &lt;String[]&gt;]
+   [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Get-CimSession
+   [-Id] &lt;UInt32[]&gt;
+   [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Get-CimSession
+   -InstanceId &lt;Guid[]&gt;
+   [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Get-CimSession
+   -Name &lt;String[]&gt;
+   [&lt;CommonParameters&gt;]</code></pre>
+     <h2 id="description">
+      Description
+     </h2>
+     <p>
+      The Get-CimSession cmdlet gets the CIM session objects created in the current PowerShell session.
+     </p>
+     <p>
+      If used without any parameters, the cmdlet gets all of the CIM sessions created in the current PowerShell session.
+You can use the parameters of
+      <code>
+       Get-CimSession
+      </code>
+      to get the sessions that are for particular computers, or you can identify sessions by their names, IDs, or instance IDs.
+     </p>
+     <p>
+      For more information about PowerShell sessions, see
+      <a data-linktype="relative-path" href="../microsoft.powershell.core/about/about_cimsession.html">
+       about_CimSession
+      </a>
+      .
+     </p>
+     <h2 id="examples">
+      Examples
+     </h2>
+     <p>
+      <strong>
+       Example 1: Get CIM sessions from the current PowerShell session
+      </strong>
+     </p>
+     <p>
+      By default,
+      <code>
+       Get-CimSession
+      </code>
+      only gets information about the CIM sessions that exist in the current PowerShell session.
+Get-CimSession does not get CIM sessions that were created in other PowerShell sessions or that were created on other computers.
+     </p>
+     <pre><code class="lang-powershell">New-CimSession -ComputerName Server01,Server02
+
+
+
+Get-CimSession
+
+
+
+Id           : 1
+
+Name         : CimSession1
+
+InstanceId   : d1413bc3-162a-4cb8-9aec-4d2c61253d59
+
+ComputerName : Server01
+
+Protocol     : WSMAN
+
+
+
+Id           : 2
+
+Name         : CimSession2
+
+InstanceId   : c0095981-52c5-4e7f-a5bb-c4c680541710
+
+ComputerName : Server02
+
+Protocol     : WSMAN</code></pre>
+     <p>
+      This command first creates CIM sessions by using
+      <a data-linktype="relative-path" href="new-cimsession.html">
+       <code>
+        New-CimSession
+       </code>
+      </a>
+      , and then gets the CIM sessions by using
+      <code>
+       Get-CimSession
+      </code>
+      .
+     </p>
+     <p>
+      <strong>
+       Example 2: Get the CIM sessions to a specific computer
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">Get-CimSession -ComputerName Server02
+
+
+
+Id           : 2
+
+Name         : CimSession2
+
+InstanceId   : c0095981-52c5-4e7f-a5bb-c4c680541710
+
+ComputerName : Server02
+
+Protocol     : WSMAN</code></pre>
+     <p>
+      This command gets the CIM sessions that are connected to the computer named Server02.
+     </p>
+     <p>
+      <strong>
+       Example 3: Get a list of CIM sessions and then format the list
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">Get-CimSession | Format-Table -Property ComputerName,InstanceId
+
+
+
+ComputerName InstanceId
+
+------------ ----------
+
+Server01     d1413bc3-162a-4cb8-9aec-4d2c61253d59
+
+Server02     c0095981-52c5-4e7f-a5bb-c4c680541710</code></pre>
+     <p>
+      This command gets all of the CIM sessions in the current PowerShell session, and then formats the list in a table containing only the
+      <strong>
+       ComputerName
+      </strong>
+      and
+      <strong>
+       InstanceID
+      </strong>
+      properties.
+     </p>
+     <p>
+      <strong>
+       Example 4: Get all the CIM sessions that have specific names
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">Get-CimSession -ComputerName Serv*
+
+
+
+Id           : 1
+
+Name         : CimSession1
+
+InstanceId   : d1413bc-162a-4cb8-9aec-4d2c61253d59
+
+ComputerName : Server01
+
+Protocol     : WSMAN
+
+
+
+Id           : 2
+
+Name         : CimSession2
+
+InstanceId   : c0095981-52c5-4e7f-a5bb-c4c680541710
+
+ComputerName : Server02
+
+Protocol     : WSMAN</code></pre>
+     <p>
+      This command gets all of the CIM sessions that have names that begin with the characters serv.
+     </p>
+     <p>
+      <strong>
+       Example 5: Get a specific CIM session
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">Get-CimSession -ID 2
+
+
+
+Id           : 2
+
+Name         : CimSession2
+
+InstanceId   : c0095981-52c5-4e7f-a5bb-c4c680541710
+
+ComputerName : Server02
+
+Protocol     : WSMAN</code></pre>
+     <p>
+      This command gets the CIM session that has an ID of 2.
+     </p>
+     <h2 id="required-parameters">
+      Required Parameters
+     </h2>
+     <div class="parameterName stack">
+      -Id
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the identifier (ID) of the CIM session to get.
+For one or more IDs, use commas to separate the IDs, or use the range operator (..) to specify a range of IDs.
+      </p>
+      <p>
+       An ID is an integer that uniquely identifies the CIM session in the current PowerShell session.
+It is easier to remember and type than InstanceId, but it is unique only within the current PowerShell session.
+      </p>
+      <p>
+       For more information about the range operator, see
+       <a data-linktype="relative-path" href="../microsoft.powershell.core/about/about_operators.html">
+        about_Operators
+       </a>
+       .
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          UInt32[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         1
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -InstanceId
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the instance IDs of the CIM session to get.
+      </p>
+      <p>
+       InstanceId is a GUID that uniquely identifies a CIM session.
+The InstanceId is unique, even when you have multiple sessions running in PowerShell.
+      </p>
+      <p>
+       The InstanceId is stored in the InstanceId property of the object that represents a CIM session.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Guid[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Name
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Gets one or more CIM sessions which contain the specified friendly names.
+Wildcard characters are permitted.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         True
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="optional-parameters">
+      Optional Parameters
+     </h2>
+     <div class="parameterName stack">
+      -ComputerName
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies an array of names of computers.
+Gets the CIM sessions that connect to the specified computers.
+      </p>
+      <p>
+       You can specify a fully qualified domain name (FQDN) or a NetBIOS name.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         CN, ServerName
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         1
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         True
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="inputs">
+      Inputs
+     </h2>
+     <p>
+      <strong>
+       None
+      </strong>
+     </p>
+     <h2 id="outputs">
+      Outputs
+     </h2>
+     <p>
+      <strong>
+       Microsoft.Management.Infrastructure.CimSession
+      </strong>
+     </p>
+     <h2 id="related-links">
+      Related Links
+     </h2>
+     <ul>
+      <li>
+       <a data-linktype="relative-path" href="../microsoft.powershell.utility/format-table.html">
+        Format-Table
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="new-cimsession.html">
+        New-CimSession
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="remove-cimsession.html">
+        Remove-CimSession
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="../microsoft.powershell.core/about/about_cimsession.html">
+        about_CimSession
+       </a>
+      </li>
+     </ul>
+     <!-- </content> -->
+    </main>
+    <div class="note alert feedback-system-change-alert">
+     <p>
+      Note
+     </p>
+     <p>
+      The feedback system for this content will be changing soon. Old comments will not be carried over. If content within a comment thread is important to you, please save a copy. For more information on the upcoming change,
+      <a href="https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs">
+       we invite you to read our blog post
+      </a>
+      .
+     </p>
+    </div>
+    <div data-bi-name="comments" id="comments-container" role="form">
+    </div>
+   </div>
+  </div>
+  <div class="openfeedback-container" id="openFeedbackContainer">
+  </div>
+  <div class="action-panel">
+  </div>
+ </body>
+</html>

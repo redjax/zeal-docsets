@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html class="no-js hasSidebar hasPageActions hasBreadcrumb conceptual" data-authenticated="false" data-render="docs" dir="ltr" lang="en-us">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Get-Unique (Microsoft.PowerShell.Utility)" property="og:title"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" property="og:image"/>
+  <meta content="summary" name="twitter:card"/>
+  <meta content="@docsmsft" name="twitter:site"/>
+  <meta content="Get-Unique (Microsoft.PowerShell.Utility)" name="twitter:title"/>
+  <meta content="The Get-Unique cmdlet compares each item in a sorted list to the next item, eliminates duplicates, and returns only one instance of each item. The list must be sorted for the cmdlet to work properly.â¦" name="twitter:description"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" name="twitter:image"/>
+  <meta content="Microsoft Logo" name="twitter:image:alt"/>
+  <meta content="The Get-Unique cmdlet compares each item in a sorted list to the next item, eliminates duplicates, and returns only one instance of each item. The list must be sorted for the cmdlet to work properly.â¦" name="description"/>
+  <meta content="Docs" name="search.ms_sitename"/>
+  <meta content="PowerShell_PowerShell-docs_reference" name="search.ms_docsetname"/>
+  <meta content="0" name="version"/>
+  <meta content="en-us" name="locale"/>
+  <meta content="Docs" name="site_name"/>
+  <meta content="PowerShell" name="search.ms_product"/>
+  <meta content="PowerShell.PowerShell_PowerShell-docs_reference" name="depot_name"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/57cd861e6079bc530a60692b1bbf35cfef1d3f35/reference/6/Microsoft.PowerShell.Utility/Get-Unique.md" name="ref_skeleton_gitcommit"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/live/reference/6/Microsoft.PowerShell.Utility/Get-Unique.md" name="original_ref_skeleton_git_url"/>
+  <meta content="2018-03-30 03:35 PM" name="updated_at"/>
+  <meta content="d3e5869d-c821-64a8-5ecf-da826a147c73" name="document_id"/>
+  <meta content="cefb6817-7934-3725-732f-e92b074e2d2c" name="document_version_independent_id"/>
+  <meta content="powershell" name="page_type"/>
+  <meta content="command" name="page_kind"/>
+  <meta content="06/09/2017" name="ms.date"/>
+  <meta content="2.0.0" name="schema"/>
+  <meta content="powershell,cmdlet" name="keywords"/>
+  <meta content="http://go.microsoft.com/fwlink/?LinkId=821807" name="online_version"/>
+  <meta content="Microsoft.PowerShell.Commands.Utility.dll-Help.xml" name="external_help_file"/>
+  <meta content="powershell" name="ms.devlang"/>
+  <meta content="INDEX, FOLLOW" name="ROBOTS"/>
+  <meta content="sdwheeler" name="author"/>
+  <meta content="sewhee" name="ms.author"/>
+  <meta content="carmonm" name="manager"/>
+  <meta content="/powershell/bread-pscore/toc.yml?view=powershell-6" name="breadcrumb_path"/>
+  <meta content="powershell" name="apiPlatform"/>
+  <meta content="reference" name="ms.topic"/>
+  <meta content="windows, macos, linux" name="ms.tgt_pltfr"/>
+  <meta content="powershell-scripting" name="ms.technology"/>
+  <meta content="powershell" name="ms.prod"/>
+  <meta content="MSDocsHeader-Powershell" name="uhfHeaderId"/>
+  <meta content="../psdocs/toc.json?view=powershell-6" name="toc_rel"/>
+  <link href="https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/get-unique" rel="canonical"/>
+  <title>
+   Get-Unique
+  </title>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/60aac04b.site.css" rel="stylesheet"/>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/fdb8a38a.conceptual.css" rel="stylesheet"/>
+ </head>
+ <body dir="ltr" lang="en-us">
+  <div class="header-holder">
+   <div data-bi-name="header" id="headerAreaHolder">
+    <div id="uhf-placeholder">
+    </div>
+   </div>
+   <div class="disclaimer-holder" id="disclaimer-holder">
+   </div>
+  </div>
+  <div class="container mainContainer" data-bi-name="body">
+   <div class="content-header" data-bi-name="content-header">
+    <div class="content-header-controls">
+     <button class="contents-button button-border" data-bi-name="contents-expand" type="button">
+      <span class="docon docon-menu">
+      </span>
+      Contents
+     </button>
+    </div>
+    <div class="content-header-controls">
+     <button class="ap-collapse-behavior ap-expanded button-border" data-bi-name="ap-collapse" type="button">
+      <span class="docon docon-exit-mode">
+      </span>
+      Exit focus mode
+     </button>
+    </div>
+   </div>
+   <div class="primary-holder">
+    <main class="content" data-bi-name="content" dir="ltr" id="main" lang="en-us" role="main">
+     <!-- <content> -->
+     <h1>
+      Get-Unique
+     </h1>
+     <div class="metadata">
+      <dl class="attributeList">
+       <dt>
+        Module:
+       </dt>
+       <dd>
+        <a data-linktype="relative-path" href="./Microsoft.PowerShell.Utility.html">
+         Microsoft.PowerShell.Utility
+        </a>
+       </dd>
+      </dl>
+     </div>
+     <div class="summaryHolder">
+      <div class="summary">
+       Returns unique items from a sorted list.
+      </div>
+     </div>
+     <h2 class="hiddenAnchor" id="syntax">
+      Syntax
+     </h2>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Get-Unique
+   [-InputObject &lt;PSObject&gt;]
+   [-AsString]
+   [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Get-Unique
+   [-InputObject &lt;PSObject&gt;]
+   [-OnType]
+   [&lt;CommonParameters&gt;]</code></pre>
+     <h2 id="description">
+      Description
+     </h2>
+     <p>
+      The
+      <strong>
+       Get-Unique
+      </strong>
+      cmdlet compares each item in a sorted list to the next item, eliminates duplicates, and returns only one instance of each item.
+The list must be sorted for the cmdlet to work properly.
+     </p>
+     <p>
+      <strong>
+       Get-Unique
+      </strong>
+      is case-sensitive.
+As a result, strings that differ only in character casing are considered to be unique.
+     </p>
+     <h2 id="examples">
+      Examples
+     </h2>
+     <p>
+      <strong>
+       Example 1: Get unique words in a text file
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; $A = $(foreach ($line in Get-Content C:\Test1\File1.txt) {$line.tolower().split(" ")}) | sort | Get-Unique
+
+PS C:\&gt; $A.count</code></pre>
+     <p>
+      These commands find the number of unique words in a text file.
+     </p>
+     <p>
+      The first command gets the content of the File.txt file.
+It converts each line of text to lowercase letters and then splits each word onto a separate line at the space (" ").
+Then, it sorts the resulting list alphabetically (the default) and uses the
+      <strong>
+       Get-Unique
+      </strong>
+      cmdlet to eliminate any duplicate words.
+The results are stored in the $A variable.
+     </p>
+     <p>
+      The second command uses the Count property of the collection of strings in $A to determine how many items are in $A.
+     </p>
+     <p>
+      <strong>
+       Example 2: Get unique integers in an array
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; 1,1,1,1,12,23,4,5,4643,5,3,3,3,3,3,3,3 | Sort-Object | Get-Unique</code></pre>
+     <p>
+      This command finds the unique members of the set of integers.
+The first command takes an array of integers typed at the command line, pipes them to the Sort-Object cmdlet to be sorted, and then pipes them to
+      <strong>
+       Get-Unique
+      </strong>
+      , which eliminates duplicate entries.
+     </p>
+     <p>
+      <strong>
+       Example 3: Get unique object types in a directory
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-ChildItem | Sort-Object {$_.GetType()} | Get-Unique -OnType</code></pre>
+     <p>
+      This command uses the Get-ChildItem cmdlet to retrieve the contents of the local directory, which includes files and directories.
+The pipeline operator (|) sends the results to the
+      <strong>
+       Sort-Object
+      </strong>
+      cmdlet.
+The "$_.GetType()" statement applies the GetType method to each file or directory.
+Then,
+      <strong>
+       Sort-Object
+      </strong>
+      sorts the items by type.
+Another pipeline operator sends the results to
+      <strong>
+       Get-Unique
+      </strong>
+      .
+The
+      <em>
+       OnType
+      </em>
+      parameter directs
+      <strong>
+       Get-Unique
+      </strong>
+      to return only one object of each type.
+     </p>
+     <p>
+      <strong>
+       Example 4: Get unique processes
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-Process | Sort-Object | Select-Object processname | Get-Unique -AsString</code></pre>
+     <p>
+      This command gets the names of processes running on the computer with duplicates eliminated.
+     </p>
+     <p>
+      The Get-Process command gets all of the processes on the computer.
+The pipeline operator (|) passes the result to Sort-Object, which, by default, sorts the processes alphabetically by ProcessName.
+The results are piped to the Select-Object cmdlet, which selects only the values of the ProcessName property of each object.
+The results are then piped to
+      <strong>
+       Get-Unique
+      </strong>
+      to eliminate duplicates.
+     </p>
+     <p>
+      The
+      <em>
+       AsString
+      </em>
+      parameter tells
+      <strong>
+       Get-Unique
+      </strong>
+      to treat the ProcessName values as strings.
+Without this parameter,
+      <strong>
+       Get-Unique
+      </strong>
+      treats the ProcessName values as objects and returns only one instance of the object, that is, the first process name in the list.
+     </p>
+     <h2 id="optional-parameters">
+      Optional Parameters
+     </h2>
+     <div class="parameterName stack">
+      -AsString
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that this cmdlet uses the data as a string.
+Without this parameter, data is treated as an object, so when you submit a collection of objects of the same type to
+       <strong>
+        Get-Unique
+       </strong>
+       , such as a collection of files, it returns just one (the first).
+You can use this parameter to find the unique values of object properties, such as the file names.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -InputObject
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies input for
+       <strong>
+        Get-Unique
+       </strong>
+       .
+Enter a variable that contains the objects or type a command or expression that gets the objects.
+      </p>
+      <p>
+       This cmdlet treats the input submitted by using
+       <em>
+        InputObject
+       </em>
+       as a collection; it does not enumerate individual items in the collection.
+Because the collection is a single item, input submitted by using
+       <em>
+        InputObject
+       </em>
+       is always returned unchanged.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          PSObject
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByValue)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -OnType
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that this cmdlet returns only one object of each type.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="inputs">
+      Inputs
+     </h2>
+     <p>
+      <strong>
+       System.Management.Automation.PSObject
+      </strong>
+     </p>
+     <p>
+      You can pipe any type of object to
+      <strong>
+       Get-Unique
+      </strong>
+      .
+     </p>
+     <h2 id="outputs">
+      Outputs
+     </h2>
+     <p>
+      <strong>
+       System.Management.Automation.PSObject
+      </strong>
+     </p>
+     <p>
+      The type of object that
+      <strong>
+       Get-Unique
+      </strong>
+      returns is determined by the input.
+     </p>
+     <h2 id="notes">
+      Notes
+     </h2>
+     <ul>
+      <li>
+       <p>
+        You can also refer to
+        <strong>
+         Get-Unique
+        </strong>
+        by its built-in alias, gu. For more information, see about_Aliases.
+       </p>
+       <p>
+        To sort a list, use Sort-Object.
+You can also use the
+        <em>
+         Unique
+        </em>
+        parameter of
+        <strong>
+         Sort-Object
+        </strong>
+        to find the unique items in a list.
+       </p>
+      </li>
+     </ul>
+     <p>
+      *
+     </p>
+     <h2 id="related-links">
+      Related Links
+     </h2>
+     <ul>
+      <li>
+       <a data-linktype="relative-path" href="select-object.html">
+        Select-Object
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="sort-object.html">
+        Sort-Object
+       </a>
+      </li>
+     </ul>
+     <!-- </content> -->
+    </main>
+    <div class="note alert feedback-system-change-alert">
+     <p>
+      Note
+     </p>
+     <p>
+      The feedback system for this content will be changing soon. Old comments will not be carried over. If content within a comment thread is important to you, please save a copy. For more information on the upcoming change,
+      <a href="https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs">
+       we invite you to read our blog post
+      </a>
+      .
+     </p>
+    </div>
+    <div data-bi-name="comments" id="comments-container" role="form">
+    </div>
+   </div>
+  </div>
+  <div class="openfeedback-container" id="openFeedbackContainer">
+  </div>
+  <div class="action-panel">
+  </div>
+ </body>
+</html>

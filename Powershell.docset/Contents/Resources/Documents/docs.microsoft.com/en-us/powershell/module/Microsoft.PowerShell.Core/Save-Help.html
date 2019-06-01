@@ -1,0 +1,1239 @@
+<!DOCTYPE html>
+<html class="no-js hasSidebar hasPageActions hasBreadcrumb conceptual" data-authenticated="false" data-render="docs" dir="ltr" lang="en-us">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Save-Help (Microsoft.PowerShell.Core)" property="og:title"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" property="og:image"/>
+  <meta content="summary" name="twitter:card"/>
+  <meta content="@docsmsft" name="twitter:site"/>
+  <meta content="Save-Help (Microsoft.PowerShell.Core)" name="twitter:title"/>
+  <meta content="The Save-Help cmdlet downloads the newest help files for Windows PowerShell modules and saves them to a directory that you specify. This feature lets you update the help files on computers that do noâ¦" name="twitter:description"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" name="twitter:image"/>
+  <meta content="Microsoft Logo" name="twitter:image:alt"/>
+  <meta content="The Save-Help cmdlet downloads the newest help files for Windows PowerShell modules and saves them to a directory that you specify. This feature lets you update the help files on computers that do noâ¦" name="description"/>
+  <meta content="Docs" name="search.ms_sitename"/>
+  <meta content="PowerShell_PowerShell-docs_reference" name="search.ms_docsetname"/>
+  <meta content="0" name="version"/>
+  <meta content="en-us" name="locale"/>
+  <meta content="Docs" name="site_name"/>
+  <meta content="PowerShell" name="search.ms_product"/>
+  <meta content="PowerShell.PowerShell_PowerShell-docs_reference" name="depot_name"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/666c3f64d0eef63804d647e4696478faecb03e9e/reference/6/Microsoft.PowerShell.Core/Save-Help.md" name="ref_skeleton_gitcommit"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/live/reference/6/Microsoft.PowerShell.Core/Save-Help.md" name="original_ref_skeleton_git_url"/>
+  <meta content="2018-03-30 03:35 PM" name="updated_at"/>
+  <meta content="7db6dc51-2f5c-4821-dafc-9a35bef1d305" name="document_id"/>
+  <meta content="5e49ef98-bf11-2958-0d7f-2183cc77ef7a" name="document_version_independent_id"/>
+  <meta content="powershell" name="page_type"/>
+  <meta content="command" name="page_kind"/>
+  <meta content="06/09/2017" name="ms.date"/>
+  <meta content="2.0.0" name="schema"/>
+  <meta content="powershell,cmdlet" name="keywords"/>
+  <meta content="http://go.microsoft.com/fwlink/?LinkId=821514" name="online_version"/>
+  <meta content="System.Management.Automation.dll-Help.xml" name="external_help_file"/>
+  <meta content="powershell" name="ms.devlang"/>
+  <meta content="INDEX, FOLLOW" name="ROBOTS"/>
+  <meta content="sdwheeler" name="author"/>
+  <meta content="sewhee" name="ms.author"/>
+  <meta content="carmonm" name="manager"/>
+  <meta content="/powershell/bread-pscore/toc.yml?view=powershell-6" name="breadcrumb_path"/>
+  <meta content="powershell" name="apiPlatform"/>
+  <meta content="reference" name="ms.topic"/>
+  <meta content="windows, macos, linux" name="ms.tgt_pltfr"/>
+  <meta content="powershell-scripting" name="ms.technology"/>
+  <meta content="powershell" name="ms.prod"/>
+  <meta content="MSDocsHeader-Powershell" name="uhfHeaderId"/>
+  <meta content="../psdocs/toc.json?view=powershell-6" name="toc_rel"/>
+  <link href="https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/save-help" rel="canonical"/>
+  <title>
+   Save-Help
+  </title>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/60aac04b.site.css" rel="stylesheet"/>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/fdb8a38a.conceptual.css" rel="stylesheet"/>
+ </head>
+ <body dir="ltr" lang="en-us">
+  <div class="header-holder">
+   <div data-bi-name="header" id="headerAreaHolder">
+    <div id="uhf-placeholder">
+    </div>
+   </div>
+   <div class="disclaimer-holder" id="disclaimer-holder">
+   </div>
+  </div>
+  <div class="container mainContainer" data-bi-name="body">
+   <div class="content-header" data-bi-name="content-header">
+    <div class="content-header-controls">
+     <button class="contents-button button-border" data-bi-name="contents-expand" type="button">
+      <span class="docon docon-menu">
+      </span>
+      Contents
+     </button>
+    </div>
+    <div class="content-header-controls">
+     <button class="ap-collapse-behavior ap-expanded button-border" data-bi-name="ap-collapse" type="button">
+      <span class="docon docon-exit-mode">
+      </span>
+      Exit focus mode
+     </button>
+    </div>
+   </div>
+   <div class="primary-holder">
+    <main class="content" data-bi-name="content" dir="ltr" id="main" lang="en-us" role="main">
+     <!-- <content> -->
+     <h1>
+      Save-Help
+     </h1>
+     <div class="metadata">
+      <dl class="attributeList">
+       <dt>
+        Module:
+       </dt>
+       <dd>
+        <a data-linktype="relative-path" href="./Microsoft.PowerShell.Core.html">
+         Microsoft.PowerShell.Core
+        </a>
+       </dd>
+      </dl>
+     </div>
+     <div class="summaryHolder">
+      <div class="summary">
+       Downloads and saves the newest help files to a file system directory.
+      </div>
+     </div>
+     <h2 class="hiddenAnchor" id="syntax">
+      Syntax
+     </h2>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Save-Help
+    [-DestinationPath] &lt;String[]&gt;
+    [[-Module] &lt;PSModuleInfo[]&gt;]
+    [-FullyQualifiedModule &lt;ModuleSpecification[]&gt;]
+    [[-UICulture] &lt;CultureInfo[]&gt;]
+    [-Credential &lt;PSCredential&gt;]
+    [-UseDefaultCredentials]
+    [-Force]
+    [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Save-Help
+    -LiteralPath &lt;String[]&gt;
+    [[-Module] &lt;PSModuleInfo[]&gt;]
+    [-FullyQualifiedModule &lt;ModuleSpecification[]&gt;]
+    [[-UICulture] &lt;CultureInfo[]&gt;]
+    [-Credential &lt;PSCredential&gt;]
+    [-UseDefaultCredentials]
+    [-Force]
+    [&lt;CommonParameters&gt;]</code></pre>
+     <h2 id="description">
+      Description
+     </h2>
+     <p>
+      The
+      <strong>
+       Save-Help
+      </strong>
+      cmdlet downloads the newest help files for Windows PowerShell modules and saves them to a directory that you specify.
+This feature lets you update the help files on computers that do not have access to the Internet, and makes it easier to update the help files on multiple computers.
+     </p>
+     <p>
+      In Windows PowerShell 3.0,
+      <strong>
+       Save-Help
+      </strong>
+      worked only for modules that are installed on the local computer.
+Although it was possible to import a module from a remote computer, or obtain a reference to a
+      <strong>
+       PSModuleInfo
+      </strong>
+      object from a remote computer by using Windows PowerShell remoting, the
+      <strong>
+       HelpInfoUri
+      </strong>
+      property was not preserved, and
+      <strong>
+       Save-Help
+      </strong>
+      would not work for remote module Help.
+     </p>
+     <p>
+      In Windows PowerShell 4.0, the
+      <strong>
+       HelpInfoUri
+      </strong>
+      property is preserved over Windows PowerShell remoting, which enables
+      <strong>
+       Save-Help
+      </strong>
+      to work for modules that are installed on remote computers.
+It is also possible to save a
+      <strong>
+       PSModuleInfo
+      </strong>
+      object to disk or removable media by running Export-Clixml on a computer that does not have Internet access, import the object on a computer that does have Internet access, and then run
+      <strong>
+       Save-Help
+      </strong>
+      on the
+      <strong>
+       PSModuleInfo
+      </strong>
+      object.
+The saved help can be transported to the remote computer by using removable storage media, such as a USB drive.
+The help can be installed on the remote computer by running
+      <strong>
+       Update-Help
+      </strong>
+      .
+This process can be used to install help on computers that do not have any kind of network access.
+     </p>
+     <p>
+      To install saved help files, run the Update-Help cmdlet.
+Add its
+      <em>
+       SourcePath
+      </em>
+      parameter to specify the folder in which you saved the Help files.
+     </p>
+     <p>
+      Without parameters, a
+      <strong>
+       Save-Help
+      </strong>
+      command downloads the newest help for all modules in the session and for modules that are installed on the computer in a location listed in the
+      <strong>
+       PSModulePath
+      </strong>
+      environment variable.
+This action skips modules that do not support Updatable Help without warning.
+     </p>
+     <p>
+      The
+      <strong>
+       Save-Help
+      </strong>
+      cmdlet checks the version of any help files in the destination folder.
+If newer help files are available, this cmldet downloads the newest help files from the Internet, and then saves them in the folder.
+The
+      <strong>
+       Save-Help
+      </strong>
+      cmdlet works just like the Update-Help cmdlet, except that it saves the downloaded cabinet (.cab) files, instead of extracting the help files from the cabinet files and installing them on the computer.
+     </p>
+     <p>
+      The saved help for each module consists of one help information (HelpInfo XML) file and one cabinet (.cab) file for the help files each UI culture.
+You do not have to extract the help files from the cabinet file.
+The
+      <strong>
+       Update-Help
+      </strong>
+      cmdlet extracts the help files, validates the XML for safety, and then installs the help files and the help information file in a language-specific subfolder of the module folder.
+     </p>
+     <p>
+      To save the help files for modules in the Windows PowerShell installation folder ($pshome\Modules), start Windows PowerShell by using the Run as administrator option.
+You must be a member of the Administrators group on the computer to download the help files for these modules.
+     </p>
+     <p>
+      This cmdlet was introduced in Windows PowerShell 3.0.
+     </p>
+     <h2 id="examples">
+      Examples
+     </h2>
+     <p>
+      <strong>
+       Example 1: Save the help for the DhcpServer module
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; # Option 1: Run Invoke-Command to get the PSModuleInfo object for the remote DHCP Server module, save the PSModuleInfo object in the variable $m, and then run Save-Help.
+
+
+
+PS C:\&gt; $m = Invoke-Command -ComputerName RemoteServer -ScriptBlock { Get-Module -Name DhcpServer -ListAvailable }
+
+PS C:\&gt; Save-Help -Module $m -DestinationPath "C:\SavedHelp"
+
+
+
+
+
+# Option 2: Open a PSSession--targeted at the remote computer that is running the DhcpServer module--to get the PSModuleInfo object for the remote module, and then run Save-Help.
+
+
+
+PS C:\&gt; $s = New-PSSession -ComputerName "RemoteServer"
+
+PS C:\&gt; $m = Get-Module -PSSession $s -Name "DhcpServer" -ListAvailable
+
+PS C:\&gt; Save-Help -Module $m -DestinationPath "C:\SavedHelp"
+
+
+
+
+
+# Option 3: Open a CIM session--targeted at the remote computer that is running the DhcpServer module--to get the PSModuleInfo object for the remote module, and then run Save-Help.
+
+
+
+PS C:\&gt; $c = New-CimSession -ComputerName "RemoteServer"
+
+PS C:\&gt; $m = Get-Module -CimSession $c -Name "DhcpServer" -ListAvailable
+
+PS C:\&gt; Save-Help -Module $m -DestinationPath "C:\SavedHelp"</code></pre>
+     <p>
+      This example shows three different ways to use
+      <strong>
+       Save-Help
+      </strong>
+      to save the help for the
+      <strong>
+       DhcpServer
+      </strong>
+      module from an Internet-connected client computer, without installing the
+      <strong>
+       DhcpServer
+      </strong>
+      module or the DHCP Server role on the local computer.
+     </p>
+     <p>
+      <strong>
+       Example 2: Install help for the DhcpServer module
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; # First, run Export-CliXml to export the PSModuleInfo object to a shared folder or to removable media.
+
+
+
+PS C:\&gt; $m = Get-Module -Name "DhcpServer" -ListAvailable
+
+PS C:\&gt; Export-CliXml -Path "E:\UsbFlashDrive\DhcpModule.xml" -InputObject $m
+
+
+
+# Next, transport the removable media to a computer that has Internet access, and then import the PSModuleInfo object with Import-CliXml. Run Save-Help to save the Help for the imported DhcpServer module PSModuleInfo object.
+
+
+
+PS C:\&gt; $deserialized_m = Import-CliXml "E:\UsbFlashDrive\DhcpModule.xml"
+
+PS C:\&gt; Save-Help -Module $deserialized_m -DestinationPath "E:\UsbFlashDrive\SavedHelp"
+
+
+
+# Finally, transport the removable media back to the computer that does not have network access, and then install the help by running Update-Help.
+
+
+
+PS C:\&gt; Update-Help -Module DhcpServer -SourcePath "E:\UsbFlashDrive\SavedHelp"</code></pre>
+     <p>
+      This example shows how to install help that you saved in Example 1 for the
+      <strong>
+       DhcpServer
+      </strong>
+      module on a computer that does not have Internet access.
+     </p>
+     <p>
+      <strong>
+       Example 3: Save help for all modules
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Save-Help -DestinationPath "\\Server01\FileShare01"</code></pre>
+     <p>
+      This command downloads the newest help files for all modules in the UI culture set for Windows on the local computer.
+It saves the help files in the \\Server01\Fileshare01 folder.
+     </p>
+     <p>
+      <strong>
+       Example 4: Save help for a module on the computer
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Save-Help -Module ServerManager -DestinationPath "\\Server01\FileShare01" -Credential Domain01/Admin01</code></pre>
+     <p>
+      This command downloads the newest help files for the
+      <strong>
+       ServerManager
+      </strong>
+      module, and then saves them in the \\Server01\Fileshare01 folder.
+     </p>
+     <p>
+      When a module is installed on the computer, you can type the module name as the value of the
+      <em>
+       Module
+      </em>
+      parameter, even if the module is not imported into the current session.
+     </p>
+     <p>
+      The command uses the
+      <em>
+       Credential
+      </em>
+      parameter to supply the credentials of a user who has permission to write to the file share.
+     </p>
+     <p>
+      <strong>
+       Example 5: Save help for a module on a different computer
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Invoke-Command -ComputerName Server02 {Get-Module -Name CustomSQL -ListAvailable} | Save-Help -DestinationPath \\Server01\FileShare01 -Credential Domain01\Admin01</code></pre>
+     <p>
+      These commands download the newest help files for the
+      <strong>
+       CustomSQL
+      </strong>
+      module and save them in the \\Server01\Fileshare01 folder.
+     </p>
+     <p>
+      Because the
+      <strong>
+       CustomSQL
+      </strong>
+      module is not installed on the computer, the sequence includes an Invoke-Command command that gets the module object for the CustomSQL module from the Server02 computer and then pipes the module object to the
+      <strong>
+       Save-Help
+      </strong>
+      cmdlet.
+     </p>
+     <p>
+      When a module is not installed on the computer,
+      <strong>
+       Save-Help
+      </strong>
+      needs the module object, which includes information about the location of the newest help files.
+     </p>
+     <p>
+      <strong>
+       Example 6: Save help for a module in multiple languages
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Save-Help -Module Microsoft.PowerShell* -UICulture de-DE, en-US, fr-FR, ja-JP -DestinationPath "D:\Help"</code></pre>
+     <p>
+      This command saves help for the Windows PowerShell Core modules in four different UI cultures.
+The language packs for these locales do not have to be installed on the computer.
+     </p>
+     <p>
+      <strong>
+       Save-Help
+      </strong>
+      can download help files for modules in different UI cultures only when the module owner makes the translated files available on the Internet.
+     </p>
+     <p>
+      <strong>
+       Example 7: Save help more than one time each day
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Save-Help -Force -DestinationPath "\\Server3\AdminShare\Help"</code></pre>
+     <p>
+      This command saves help for all modules that are installed on the computer.
+The command specifies the
+      <em>
+       Force
+      </em>
+      parameter to override the rule that prevents the
+      <strong>
+       Save-Help
+      </strong>
+      cmdlet from downloading help more than once in each 24-hour period.
+     </p>
+     <p>
+      The
+      <em>
+       Force
+      </em>
+      parameter also overrides the 1 GB restriction and circumvents version checking.
+Therefore, you can download files even if the version is not later than the version in the destination folder.
+     </p>
+     <p>
+      The command uses the
+      <strong>
+       Save-Help
+      </strong>
+      cmdlet to download and save the help files to the specified folder.
+The
+      <em>
+       Force
+      </em>
+      parameter is required when you have to run a
+      <strong>
+       Save-Help
+      </strong>
+      command more than one time each day.
+     </p>
+     <h2 id="required-parameters">
+      Required Parameters
+     </h2>
+     <div class="parameterName stack">
+      -DestinationPath
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the path of the folder in which the help files are saved.
+Do not specify a file name or file name extension.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         0
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -LiteralPath
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a path of the destination folder.
+Unlike the value of the
+       <em>
+        DestinationPath
+       </em>
+       parameter, the value of the
+       <em>
+        LiteralPath
+       </em>
+       parameter is used exactly as it is typed.
+No characters are interpreted as wildcard characters.
+If the path includes escape characters, enclose it in single quotation marks.
+Single quotation marks tell Windows PowerShell not to interpret any characters as escape sequences.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         PSPath
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="optional-parameters">
+      Optional Parameters
+     </h2>
+     <div class="parameterName stack">
+      -Credential
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a user credential.
+This cmdlet runs the command by using credentials of a user who has permission to access the file system location specified by the
+       <em>
+        DestinationPath
+       </em>
+       parameter.
+This parameter is valid only when the
+       <em>
+        DestinationPath
+       </em>
+       or
+       <em>
+        LiteralPath
+       </em>
+       parameter is used in the command.
+      </p>
+      <p>
+       This parameter enables you to run
+       <strong>
+        Save-Help
+       </strong>
+       commands that use the
+       <em>
+        DestinationPath
+       </em>
+       parameter on remote computers.
+By providing explicit credentials, you can run the command on a remote computer and access a file share on a third computer without encountering an access denied error or using CredSSP authentication to delegate credentials.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          PSCredential
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Force
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that this cmdlet does not follow the once-per-day limitation, skips version checking, and downloads files that exceed the 1 GB limit.
+      </p>
+      <p>
+       Without this parameter, only one
+       <strong>
+        Save-Help
+       </strong>
+       command for each module is permitted in each 24-hour period, downloads are limited to 1 GB of uncompressed content per module, and help files for a module are installed only when they are newer than the files on the computer.
+      </p>
+      <p>
+       The once-per-day limit protects the servers that host the help files, and makes it practical for you to add a
+       <strong>
+        Save-Help
+       </strong>
+       command to your Windows PowerShell profile.
+      </p>
+      <p>
+       To save help for a module in multiple UI cultures without the
+       <em>
+        Force
+       </em>
+       parameter, include all UI cultures in the same command, such as:
+       <code>
+        Save-Help -Module PSScheduledJobs -UICulture en-US, fr-FR, pt-BR
+       </code>
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -FullyQualifiedModule
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies modules with names that are specified in the form of ModuleSpecification objects.
+This is described in the Remarks section of
+       <a data-linktype="external" href="https://msdn.microsoft.com/library/jj136290">
+        ModuleSpecification Constructor (Hashtable)
+       </a>
+       in the MSDN library.
+For example, the
+       <em>
+        FullyQualifiedModule
+       </em>
+       parameter accepts a module name that is specified in the format @{ModuleName = "modulename"; ModuleVersion = "version_number"} or @{ModuleName = "modulename"; ModuleVersion = "version_number"; Guid = "GUID"}.
+       <strong>
+        ModuleName
+       </strong>
+       and
+       <strong>
+        ModuleVersion
+       </strong>
+       are required, but
+       <strong>
+        Guid
+       </strong>
+       is optional.
+      </p>
+      <p>
+       You cannot specify the
+       <em>
+        FullyQualifiedModule
+       </em>
+       parameter in the same command as a
+       <em>
+        Module
+       </em>
+       parameter.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          ModuleSpecification[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Module
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies modules for which this cmdlet downloads help.
+Enter one or more module names or name patters in a comma-separated list or in a file that has one module name on each line.
+Wildcard characters are permitted.
+You can also pipe module objects from the Get-Module cmdlet to
+       <strong>
+        Save-Help
+       </strong>
+       .
+      </p>
+      <p>
+       By default,
+       <strong>
+        Save-Help
+       </strong>
+       downloads help for all modules that support Updatable Help and are installed on the local computer in a location listed in the
+       <strong>
+        PSModulePath
+       </strong>
+       environment variable.
+      </p>
+      <p>
+       To save help for modules that are not installed on the computer, run a
+       <strong>
+        Get-Module
+       </strong>
+       command on a remote computer.
+Then pipe the resulting module objects to the
+       <strong>
+        Save-Help
+       </strong>
+       cmdlet or submit the module objects as the value of the
+       <em>
+        Module
+       </em>
+       or
+       <em>
+        InputObject
+       </em>
+       parameters.
+      </p>
+      <p>
+       If the module that you specify is installed on the computer, you can enter the module name or a module object.
+If the module is not installed on the computer, you must enter a module object, such as one returned by the
+       <strong>
+        Get-Module
+       </strong>
+       cmdlet.
+      </p>
+      <p>
+       The
+       <em>
+        Module
+       </em>
+       parameter of the
+       <strong>
+        Save-Help
+       </strong>
+       cmdlet does not accept the full path of a module file or module manifest file.
+To save help for a module that is not in a
+       <strong>
+        PSModulePath
+       </strong>
+       location, import the module into the current session before you run the
+       <strong>
+        Save-Help
+       </strong>
+       command.
+      </p>
+      <p>
+       A value of "*" (all) attempts to update help for all modules that are installed on the computer.
+This includes modules that do not support Updatable Help.
+This value might generate errors when the command encounters modules that do not support Updatable Help.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          PSModuleInfo[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         Name
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         1
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName, ByValue)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -UICulture
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies UI culture values for which this cmdlet gets updated help files.
+Enter one or more language codes, such as es-ES, a variable that contains culture objects, or a command that gets culture objects, such as a Get-Culture or Get-UICulture command.
+      </p>
+      <p>
+       Wildcard characters are not permitted.
+Do not specify a partial language code, such as "de".
+      </p>
+      <p>
+       By default,
+       <strong>
+        Save-Help
+       </strong>
+       gets help files in the UI culture set for Windows or its fallback culture.
+If you specify the
+       <em>
+        UICulture
+       </em>
+       parameter,
+       <strong>
+        Save-Help
+       </strong>
+       looks for help only for the specified UI culture, not in any fallback culture.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          CultureInfo[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         2
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -UseDefaultCredentials
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that this cmdlet runs the command, including the web download, with the credentials of the current user.
+By default, the command runs without explicit credentials.
+      </p>
+      <p>
+       This parameter is effective only when the web download uses NTLM, negotiate, or Kerberos-based authentication.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="inputs">
+      Inputs
+     </h2>
+     <p>
+      <strong>
+       System.Management.Automation.PSModuleInfo
+      </strong>
+     </p>
+     <p>
+      You can pipe a module object from the
+      <strong>
+       Get-Module
+      </strong>
+      cmdlet to the
+      <em>
+       Module
+      </em>
+      parameter of
+      <strong>
+       Save-Help
+      </strong>
+      .
+     </p>
+     <h2 id="outputs">
+      Outputs
+     </h2>
+     <p>
+      <strong>
+       None
+      </strong>
+     </p>
+     <p>
+      This cmdlet does not generate any output.
+     </p>
+     <h2 id="notes">
+      Notes
+     </h2>
+     <ul>
+      <li>
+       To save help for modules in the $pshome\Modules folder, start Windows PowerShell by using the Run as administrator option. Only members of the Administrators group on the computer can download help for modules in the $pshome\Modules folder.
+      </li>
+      <li>
+       The saved help for each module consists of one help information (HelpInfo XML) file and one cabinet (.cab) file for the help files each UI culture. You do not have to extract the help files from the cabinet file. The Update-Help cmdlet extracts the help files, validates the XML, and then installs the help files and the help information file in a language-specific subfolder of the module folder.
+      </li>
+      <li>
+       The
+       <strong>
+        Save-Help
+       </strong>
+       cmdlet can save help for modules that are not installed on the computer. However, because help files are installed in the module folder, the
+       <strong>
+        Update-Help
+       </strong>
+       cmdlet can install updated help file only for modules that are installed on the computer.
+      </li>
+      <li>
+       If
+       <strong>
+        Save-Help
+       </strong>
+       cannot find updated help files for a module, or cannot find updated help files in the specified language, it continues silently without displaying an error message. To see which files were saved by the command, specify the
+       <em>
+        Verbose
+       </em>
+       parameter.
+      </li>
+      <li>
+       Modules are the smallest unit of updatable help. You cannot save help for a particular cmdlet, only for all cmdlets in module. To find the module that contains a particular cmdlet, use the
+       <strong>
+        ModuleName
+       </strong>
+       property together with the Get-Command cmdlet, for example,
+       <code>
+        (Get-Command \&lt;cmdlet-name\&gt;).ModuleName
+       </code>
+      </li>
+      <li>
+       <strong>
+        Save-Help
+       </strong>
+       supports all modules and the Windows PowerShell Core snap-ins. It does not support any other snap-ins.
+      </li>
+      <li>
+       The
+       <strong>
+        Update-Help
+       </strong>
+       and
+       <strong>
+        Save-Help
+       </strong>
+       cmdlets use the following ports to download help files: Port 80 for HTTP and port 443 for HTTPS.
+      </li>
+      <li>
+       The
+       <strong>
+        Update-Help
+       </strong>
+       and
+       <strong>
+        Save-Help
+       </strong>
+       cmdlets are not supported on Windows Preinstallation Environment (Windows PE).
+      </li>
+     </ul>
+     <h2 id="related-links">
+      Related Links
+     </h2>
+     <ul>
+      <li>
+       <a data-linktype="external" href="http://go.microsoft.com/fwlink/?LinkID=270007">
+        Updatable Help Status Table (http://go.microsoft.com/fwlink/?LinkID=270007)
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="get-help.html">
+        Get-Help
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="get-module.html">
+        Get-Module
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="update-help.html">
+        Update-Help
+       </a>
+      </li>
+     </ul>
+     <!-- </content> -->
+    </main>
+    <div class="note alert feedback-system-change-alert">
+     <p>
+      Note
+     </p>
+     <p>
+      The feedback system for this content will be changing soon. Old comments will not be carried over. If content within a comment thread is important to you, please save a copy. For more information on the upcoming change,
+      <a href="https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs">
+       we invite you to read our blog post
+      </a>
+      .
+     </p>
+    </div>
+    <div data-bi-name="comments" id="comments-container" role="form">
+    </div>
+   </div>
+  </div>
+  <div class="openfeedback-container" id="openFeedbackContainer">
+  </div>
+  <div class="action-panel">
+  </div>
+ </body>
+</html>

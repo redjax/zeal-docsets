@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html class="no-js hasSidebar hasPageActions hasBreadcrumb conceptual" data-authenticated="false" data-render="docs" dir="ltr" lang="en-us">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Tee-Object (Microsoft.PowerShell.Utility)" property="og:title"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" property="og:image"/>
+  <meta content="summary" name="twitter:card"/>
+  <meta content="@docsmsft" name="twitter:site"/>
+  <meta content="Tee-Object (Microsoft.PowerShell.Utility)" name="twitter:title"/>
+  <meta content="The Tee-Object cmdlet redirects output, that is, it sends the output of a command in two directions (like the letter T). It stores the output in a file or variable and also sends it down the pipelineâ¦" name="twitter:description"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" name="twitter:image"/>
+  <meta content="Microsoft Logo" name="twitter:image:alt"/>
+  <meta content="The Tee-Object cmdlet redirects output, that is, it sends the output of a command in two directions (like the letter T). It stores the output in a file or variable and also sends it down the pipelineâ¦" name="description"/>
+  <meta content="Docs" name="search.ms_sitename"/>
+  <meta content="PowerShell_PowerShell-docs_reference" name="search.ms_docsetname"/>
+  <meta content="0" name="version"/>
+  <meta content="en-us" name="locale"/>
+  <meta content="Docs" name="site_name"/>
+  <meta content="PowerShell" name="search.ms_product"/>
+  <meta content="PowerShell.PowerShell_PowerShell-docs_reference" name="depot_name"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/45404d4ca212afa615798d3d5cbfea5dc5cc1efb/reference/6/Microsoft.PowerShell.Utility/Tee-Object.md" name="ref_skeleton_gitcommit"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/live/reference/6/Microsoft.PowerShell.Utility/Tee-Object.md" name="original_ref_skeleton_git_url"/>
+  <meta content="2018-03-30 03:35 PM" name="updated_at"/>
+  <meta content="2a06cd24-f477-8c61-b424-13466cc0211c" name="document_id"/>
+  <meta content="60d5de83-3523-dea7-3c67-bd7f1e805343" name="document_version_independent_id"/>
+  <meta content="powershell" name="page_type"/>
+  <meta content="command" name="page_kind"/>
+  <meta content="06/09/2017" name="ms.date"/>
+  <meta content="2.0.0" name="schema"/>
+  <meta content="powershell,cmdlet" name="keywords"/>
+  <meta content="http://go.microsoft.com/fwlink/?LinkId=821865" name="online_version"/>
+  <meta content="Microsoft.PowerShell.Commands.Utility.dll-Help.xml" name="external_help_file"/>
+  <meta content="powershell" name="ms.devlang"/>
+  <meta content="INDEX, FOLLOW" name="ROBOTS"/>
+  <meta content="sdwheeler" name="author"/>
+  <meta content="sewhee" name="ms.author"/>
+  <meta content="carmonm" name="manager"/>
+  <meta content="/powershell/bread-pscore/toc.yml?view=powershell-6" name="breadcrumb_path"/>
+  <meta content="powershell" name="apiPlatform"/>
+  <meta content="reference" name="ms.topic"/>
+  <meta content="windows, macos, linux" name="ms.tgt_pltfr"/>
+  <meta content="powershell-scripting" name="ms.technology"/>
+  <meta content="powershell" name="ms.prod"/>
+  <meta content="MSDocsHeader-Powershell" name="uhfHeaderId"/>
+  <meta content="../psdocs/toc.json?view=powershell-6" name="toc_rel"/>
+  <link href="https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/tee-object" rel="canonical"/>
+  <title>
+   Tee-Object
+  </title>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/60aac04b.site.css" rel="stylesheet"/>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/fdb8a38a.conceptual.css" rel="stylesheet"/>
+ </head>
+ <body dir="ltr" lang="en-us">
+  <div class="header-holder">
+   <div data-bi-name="header" id="headerAreaHolder">
+    <div id="uhf-placeholder">
+    </div>
+   </div>
+   <div class="disclaimer-holder" id="disclaimer-holder">
+   </div>
+  </div>
+  <div class="container mainContainer" data-bi-name="body">
+   <div class="content-header" data-bi-name="content-header">
+    <div class="content-header-controls">
+     <button class="contents-button button-border" data-bi-name="contents-expand" type="button">
+      <span class="docon docon-menu">
+      </span>
+      Contents
+     </button>
+    </div>
+    <div class="content-header-controls">
+     <button class="ap-collapse-behavior ap-expanded button-border" data-bi-name="ap-collapse" type="button">
+      <span class="docon docon-exit-mode">
+      </span>
+      Exit focus mode
+     </button>
+    </div>
+   </div>
+   <div class="primary-holder">
+    <main class="content" data-bi-name="content" dir="ltr" id="main" lang="en-us" role="main">
+     <!-- <content> -->
+     <h1>
+      Tee-Object
+     </h1>
+     <div class="metadata">
+      <dl class="attributeList">
+       <dt>
+        Module:
+       </dt>
+       <dd>
+        <a data-linktype="relative-path" href="./Microsoft.PowerShell.Utility.html">
+         Microsoft.PowerShell.Utility
+        </a>
+       </dd>
+      </dl>
+     </div>
+     <div class="summaryHolder">
+      <div class="summary">
+       Saves command output in a file or variable and also sends it down the pipeline.
+      </div>
+     </div>
+     <h2 class="hiddenAnchor" id="syntax">
+      Syntax
+     </h2>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Tee-Object
+   [-FilePath] &lt;String&gt;
+   [-InputObject &lt;PSObject&gt;]
+   [-Append]
+   [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Tee-Object
+   -LiteralPath &lt;String&gt;
+   [-InputObject &lt;PSObject&gt;]
+   [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Tee-Object
+   -Variable &lt;String&gt;
+   [-InputObject &lt;PSObject&gt;]
+   [&lt;CommonParameters&gt;]</code></pre>
+     <h2 id="description">
+      Description
+     </h2>
+     <p>
+      The
+      <strong>
+       Tee-Object
+      </strong>
+      cmdlet redirects output, that is, it sends the output of a command in two directions (like the letter T).
+It stores the output in a file or variable and also sends it down the pipeline.
+If
+      <strong>
+       Tee-Object
+      </strong>
+      is the last command in the pipeline, the command output is displayed at the prompt.
+     </p>
+     <h2 id="examples">
+      Examples
+     </h2>
+     <p>
+      <strong>
+       Example 1: Output processes to a file and to the console
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-Process | Tee-Object -FilePath "C:\Test1\testfile2.txt"
+
+Handles  NPM(K)    PM(K)      WS(K) VM(M)   CPU(s)    Id ProcessName
+
+-------  ------    -----      ----- -----   ------    -- -----------
+
+83       4     2300       4520    39     0.30    4032 00THotkey
+
+272      6     1400       3944    34     0.06    3088 alg
+
+81       3      804       3284    21     2.45     148 ApntEx
+
+81       4     2008       5808    38     0.75    3684 Apoint
+
+...</code></pre>
+     <p>
+      This command gets a list of the processes running on the computer and sends the result to a file.
+Because a second path is not specified, the processes are also displayed in the console.
+     </p>
+     <p>
+      <strong>
+       Example 2: Output processes to a variable and Select-Object
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-Process notepad | Tee-Object -Variable proc | Select-Object processname,handles
+
+ProcessName                              Handles
+
+-----------                              -------
+
+notepad                                  43
+
+notepad                                  37
+
+notepad                                  38
+
+notepad                                  38</code></pre>
+     <p>
+      This command gets a list of the processes running on the computer and sends the result to a variable named proc.
+It then pipes the resulting objects along to Select-Object, which selects the ProcessName and Handles property.
+Note that the $proc variable includes the default information returned by Get-Process.
+     </p>
+     <p>
+      <strong>
+       Example 3: Output system files to two log files
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-ChildItem -Path D: -File -System -Recurse | Tee-Object -FilePath "c:\test\AllSystemFiles.txt" -Append | Out-File c:\test\NewSystemFiles.txt</code></pre>
+     <p>
+      This command saves a list of system files in a two log files, a cumulative file and a current file.
+     </p>
+     <p>
+      The command uses the Get-ChildItem cmdlet to do a recursive search for system files on the D: drive.
+A pipeline operator (|) sends the list to
+      <strong>
+       Tee-Object
+      </strong>
+      , which appends the list to the AllSystemFiles.txt file and passes the list down the pipeline to the Out-File cmdlet, which saves the list in the NewSystemFiles.txt file.
+     </p>
+     <h2 id="required-parameters">
+      Required Parameters
+     </h2>
+     <div class="parameterName stack">
+      -FilePath
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a file that this cmdlet saves the object to Wildcard characters are permitted, but must resolve to a single file.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         0
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -LiteralPath
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a file that this cmdlet saves the object to.
+Unlike
+       <em>
+        FilePath
+       </em>
+       , the value of the
+       <em>
+        LiteralPath
+       </em>
+       parameter is used exactly as it is typed.
+No characters are interpreted as wildcards.
+If the path includes escape characters, enclose it in single quotation marks.
+Single quotation marks tell Windows PowerShell not to interpret any characters as escape sequences.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         PSPath
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Variable
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a variable that the cmdlet saves the object to.
+Enter a variable name without the preceding dollar sign ($).
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="optional-parameters">
+      Optional Parameters
+     </h2>
+     <div class="parameterName stack">
+      -Append
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that the cmdlet appends the output to the specified file.
+Without this parameter, the new content replaces any existing content in the file without warning.
+      </p>
+      <p>
+       This parameter was introduced in Windows PowerShell 3.0.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -InputObject
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the object to be saved and displayed.
+Enter a variable that contains the objects or type a command or expression that gets the objects.
+You can also pipe an object to
+       <strong>
+        Tee-Object
+       </strong>
+       .
+      </p>
+      <p>
+       When you use the
+       <em>
+        InputObject
+       </em>
+       parameter with
+       <strong>
+        Tee-Object
+       </strong>
+       , instead of piping command results to
+       <strong>
+        Tee-Object
+       </strong>
+       , the
+       <em>
+        InputObject
+       </em>
+       value-even if the value is a collection that is the result of a command, such as
+       <code>
+        InputObject (Get-Process)
+       </code>
+       -is treated as a single object.
+Because
+       <em>
+        InputObject
+       </em>
+       cannot return individual properties from an array or collection of objects, it is recommended that if you use
+       <strong>
+        Tee-Object
+       </strong>
+       to perform operations on a collection of objects for those objects that have specific values in defined properties, you use
+       <strong>
+        Tee-Object
+       </strong>
+       in the pipeline, as shown in the examples in this topic.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          PSObject
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByValue)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="inputs">
+      Inputs
+     </h2>
+     <p>
+      <strong>
+       System.Management.Automation.PSObject
+      </strong>
+     </p>
+     <p>
+      You can pipe objects to
+      <strong>
+       Tee-Object
+      </strong>
+      .
+     </p>
+     <h2 id="outputs">
+      Outputs
+     </h2>
+     <p>
+      <strong>
+       System.Management.Automation.PSObject
+      </strong>
+     </p>
+     <p>
+      <strong>
+       Tee-Object
+      </strong>
+      returns the object that it redirects.
+     </p>
+     <h2 id="notes">
+      Notes
+     </h2>
+     <ul>
+      <li>
+       You can also use the Out-File cmdlet or the redirection operator, both of which save the output in a file but do not send it down the pipeline.
+      </li>
+      <li>
+       <strong>
+        Tee-Object
+       </strong>
+       uses Unicode encoding when it writes to files. As a result, the output might not be formatted properly in files with a different encoding. To specify the encoding, use the Out-File cmdlet.
+      </li>
+     </ul>
+     <h2 id="related-links">
+      Related Links
+     </h2>
+     <ul>
+      <li>
+       <a data-linktype="relative-path" href="compare-object.html">
+        Compare-Object
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="group-object.html">
+        Group-Object
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="measure-object.html">
+        Measure-Object
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="new-object.html">
+        New-Object
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="select-object.html">
+        Select-Object
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="sort-object.html">
+        Sort-Object
+       </a>
+      </li>
+     </ul>
+     <!-- </content> -->
+    </main>
+    <div class="note alert feedback-system-change-alert">
+     <p>
+      Note
+     </p>
+     <p>
+      The feedback system for this content will be changing soon. Old comments will not be carried over. If content within a comment thread is important to you, please save a copy. For more information on the upcoming change,
+      <a href="https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs">
+       we invite you to read our blog post
+      </a>
+      .
+     </p>
+    </div>
+    <div data-bi-name="comments" id="comments-container" role="form">
+    </div>
+   </div>
+  </div>
+  <div class="openfeedback-container" id="openFeedbackContainer">
+  </div>
+  <div class="action-panel">
+  </div>
+ </body>
+</html>

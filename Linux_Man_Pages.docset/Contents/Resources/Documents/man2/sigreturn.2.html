@@ -1,0 +1,206 @@
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML><HEAD><TITLE>Man page of SIGRETURN</TITLE>
+</HEAD><BODY>
+<H1>SIGRETURN</H1>
+Section: Linux Programmer's Manual (2)<BR>Updated: 2015-12-28<BR><A HREF="#index">Index</A>
+<A HREF="../index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+sigreturn, rt_sigreturn - return from signal handler and cleanup stack frame
+<A NAME="lbAC">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<B>int sigreturn(...);</B>
+
+<A NAME="lbAD">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+If the Linux kernel determines that an unblocked
+signal is pending for a process, then,
+at the next transition back to user mode in that process
+(e.g., upon return from a system call or
+when the process is rescheduled onto the CPU),
+it saves various pieces of process context
+(processor status word, registers, signal mask, and signal stack settings)
+into the user-space stack.
+
+<P>
+The kernel also arranges that, during the transition back to user mode,
+the signal handler is called, and that, upon return from the handler,
+control passes to a piece of user-space code commonly called
+the &quot;signal trampoline&quot;.
+The signal trampoline code in turn calls
+<B>sigreturn</B>().
+
+<P>
+This
+<B>sigreturn</B>()
+
+call undoes everything that was
+done---changing the process's signal mask, switching signal stacks (see
+<B><A HREF="../man2/sigaltstack.2.html">sigaltstack</A></B>(2))---in 
+
+order to invoke the signal handler.
+It restores the process's signal mask, switches stacks,
+and restores the process's context
+(processor flags and registers,
+including the stack pointer and instruction pointer),
+so that the process resumes execution
+at the point where it was interrupted by the signal.
+<A NAME="lbAE">&nbsp;</A>
+<H2>RETURN VALUE</H2>
+
+<B>sigreturn</B>()
+
+never returns.
+<A NAME="lbAF">&nbsp;</A>
+<H2>CONFORMING TO</H2>
+
+Many UNIX-type systems have a
+<B>sigreturn</B>()
+
+system call or near equivalent.
+However, this call is not specified in POSIX,
+and details of its behavior vary across systems.
+<A NAME="lbAG">&nbsp;</A>
+<H2>NOTES</H2>
+
+<B>sigreturn</B>()
+
+exists only to allow the implementation of signal handlers.
+It should
+<B>never</B>
+
+be called directly.
+Details of the arguments (if any) passed to
+<B>sigreturn</B>()
+
+vary depending on the architecture.
+<P>
+Once upon a time, UNIX systems placed the signal trampoline code
+onto the user stack.
+Nowadays, pages of the user stack are protected so as to
+disallow code execution.
+Thus, on contemporary Linux systems, depending on the architecture,
+the signal trampoline code lives either in the
+<B><A HREF="../man7/vdso.7.html">vdso</A></B>(7)
+
+or in the C library.
+In the latter case,
+
+
+the C library supplies the location of the trampoline code using the
+<I>sa_restorer</I>
+
+field of the
+<I>sigaction</I>
+
+structure that is passed to
+<B><A HREF="../man2/sigaction.2.html">sigaction</A></B>(2),
+
+and sets the
+<B>SA_RESTORER</B>
+
+flag in the
+<I>sa_flags</I>
+
+field.
+<P>
+The saved process context information is placed in a
+<I>ucontext_t</I>
+
+structure (see
+<I>&lt;<A HREF="file:///usr/include/sys/ucontext.h">sys/ucontext.h</A>&gt;</I>).
+
+That structure is visible within the signal handler
+as the third argument of a handler established with the
+<B>SA_SIGINFO</B>
+
+flag.
+<P>
+On some other UNIX systems,
+the operation of the signal trampoline differs a little.
+In particular, on some systems, upon transitioning back to user mode,
+the kernel passes control to the trampoline (rather than the signal handler),
+and the trampoline code calls the signal handler (and then calls
+<B>sigreturn</B>()
+
+once the handler returns).
+
+<A NAME="lbAH">&nbsp;</A>
+<H3>C library/kernel differences</H3>
+
+The original Linux system call was named
+<B>sigreturn</B>().
+
+However, with the addition of real-time signals in Linux 2.2,
+a new system call,
+<B>rt_sigreturn</B>()
+
+was added to support an enlarged
+<I>sigset_t</I>
+
+type.
+The GNU C library
+hides these details from us, transparently employing
+<B>rt_sigreturn</B>()
+
+when the kernel provides it.
+
+<A NAME="lbAI">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+<B><A HREF="../man2/kill.2.html">kill</A></B>(2),
+
+<B><A HREF="../man2/restart_syscall.2.html">restart_syscall</A></B>(2),
+
+<B><A HREF="../man2/sigaltstack.2.html">sigaltstack</A></B>(2),
+
+<B><A HREF="../man2/signal.2.html">signal</A></B>(2),
+
+<B><A HREF="../man3/getcontext.3.html">getcontext</A></B>(3),
+
+<B><A HREF="../man7/signal.7.html">signal</A></B>(7),
+
+<B><A HREF="../man7/vdso.7.html">vdso</A></B>(7)
+
+<A NAME="lbAJ">&nbsp;</A>
+<H2>COLOPHON</H2>
+
+This page is part of release 4.09 of the Linux
+<I>man-pages</I>
+
+project.
+A description of the project,
+information about reporting bugs,
+and the latest version of this page,
+can be found at
+<A HREF="https://www.kernel.org/doc/man-pages/.">https://www.kernel.org/doc/man-pages/.</A>
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAD">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAE">RETURN VALUE</A><DD>
+<DT><A HREF="#lbAF">CONFORMING TO</A><DD>
+<DT><A HREF="#lbAG">NOTES</A><DD>
+<DL>
+<DT><A HREF="#lbAH">C library/kernel differences</A><DD>
+</DL>
+<DT><A HREF="#lbAI">SEE ALSO</A><DD>
+<DT><A HREF="#lbAJ">COLOPHON</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 14:28:28 GMT, February 25, 2017
+</BODY>
+</HTML>

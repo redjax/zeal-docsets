@@ -1,0 +1,250 @@
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML><HEAD><TITLE>Man page of PTHREAD_MUTEXATTR_GETROBUST</TITLE>
+</HEAD><BODY>
+<H1>PTHREAD_MUTEXATTR_GETROBUST</H1>
+Section: POSIX Programmer's Manual (3P)<BR>Updated: 2013<BR><A HREF="#index">Index</A>
+<A HREF="../index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>PROLOG</H2>
+
+This manual page is part of the POSIX Programmer's Manual.
+The Linux implementation of this interface may differ (consult
+the corresponding Linux manual page for details of Linux behavior),
+or the interface may not be implemented on Linux.
+<P>
+<A NAME="lbAC">&nbsp;</A>
+<H2>NAME</H2>
+
+pthread_mutexattr_getrobust,
+pthread_mutexattr_setrobust
+--- get and set the mutex robust attribute
+<A NAME="lbAD">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<P>
+
+<PRE>
+#include &lt;<A HREF="file:///usr/include/pthread.h">pthread.h</A>&gt;
+
+int pthread_mutexattr_getrobust(const pthread_mutexattr_t *restrict
+    <I>attr</I>, int *restrict <I>robust</I>);
+int pthread_mutexattr_setrobust(pthread_mutexattr_t *<I>attr</I>,
+    int <I>robust</I>);
+</PRE>
+
+<A NAME="lbAE">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+The
+<I>pthread_mutexattr_getrobust</I>()
+and
+<I>pthread_mutexattr_setrobust</I>()
+functions, respectively, shall get and set the mutex
+<I>robust</I>
+
+attribute. This attribute is set in the
+<I>robust</I>
+
+parameter. Valid values for
+<I>robust</I>
+
+include:
+<DL COMPACT>
+<DT>PTHREAD_MUTEX_STALLED<DD>
+<BR>
+
+No special actions are taken if the owner of the mutex is terminated
+while holding the mutex lock. This can lead to deadlocks if no other
+thread can unlock the mutex.
+<BR>
+
+This is the default value.
+<DT>PTHREAD_MUTEX_ROBUST<DD>
+<BR>
+
+If the process containing the owning thread of a robust mutex
+terminates while holding the mutex lock, the next thread that acquires
+the mutex shall be notified about the termination by the return value
+<B>[EOWNERDEAD]</B>
+
+from the locking function. If the owning thread of a robust mutex
+terminates while holding the mutex lock, the next thread that acquires
+the mutex may be notified about the termination by the return value
+<B>[EOWNERDEAD]</B>.
+
+The notified thread can then attempt to mark the state protected by the
+mutex as consistent again by a call to
+<I>pthread_mutex_consistent</I>().
+After a subsequent successful call to
+<I>pthread_mutex_unlock</I>(),
+the mutex lock shall be released and can be used normally by other
+threads. If the mutex is unlocked without a call to
+<I>pthread_mutex_consistent</I>(),
+it shall be in a permanently unusable state and all attempts to lock
+the mutex shall fail with the error
+<B>[ENOTRECOVERABLE]</B>.
+
+The only permissible operation on such a mutex is
+<I>pthread_mutex_destroy</I>().
+</DL>
+<P>
+
+The behavior is undefined if the value specified by the
+<I>attr</I>
+
+argument to
+<I>pthread_mutexattr_getrobust</I>()
+or
+<I>pthread_mutexattr_setrobust</I>()
+does not refer to an initialized mutex attributes object.
+<A NAME="lbAF">&nbsp;</A>
+<H2>RETURN VALUE</H2>
+
+Upon successful completion, the
+<I>pthread_mutexattr_getrobust</I>()
+function shall return zero and store the value of the
+<I>robust</I>
+
+attribute of
+<I>attr</I>
+
+into the object referenced by the
+<I>robust</I>
+
+parameter. Otherwise, an error value shall be returned to indicate the
+error. If successful, the
+<I>pthread_mutexattr_setrobust</I>()
+function shall return zero; otherwise, an error number shall be
+returned to indicate the error.
+<A NAME="lbAG">&nbsp;</A>
+<H2>ERRORS</H2>
+
+The
+<I>pthread_mutexattr_setrobust</I>()
+function shall fail if:
+<DL COMPACT>
+<DT><B>EINVAL</B>
+
+<DD>
+The value of
+<I>robust</I>
+
+is invalid.
+</DL>
+<P>
+
+These functions shall not return an error code of
+<B>[EINTR]</B>.
+
+<P>
+
+<I>The following sections are informative.</I>
+
+<A NAME="lbAH">&nbsp;</A>
+<H2>EXAMPLES</H2>
+
+None.
+<A NAME="lbAI">&nbsp;</A>
+<H2>APPLICATION USAGE</H2>
+
+The actions required to make the state protected by the mutex
+consistent again are solely dependent on the application. If it is not
+possible to make the state of a mutex consistent, robust mutexes can be
+used to notify this situation by calling
+<I>pthread_mutex_unlock</I>()
+without a prior call to
+<I>pthread_mutex_consistent</I>().
+<P>
+
+If the state is declared inconsistent by calling
+<I>pthread_mutex_unlock</I>()
+without a prior call to
+<I>pthread_mutex_consistent</I>(),
+a possible approach could be to destroy the mutex and then reinitialize
+it. However, it should be noted that this is possible only in certain
+situations where the state protected by the mutex has to be
+reinitialized and coordination achieved with other threads blocked on
+the mutex, because otherwise a call to a locking function with a
+reference to a mutex object invalidated by a call to
+<I>pthread_mutex_destroy</I>()
+results in undefined behavior.
+<A NAME="lbAJ">&nbsp;</A>
+<H2>RATIONALE</H2>
+
+If an implementation detects that the value specified by the
+<I>attr</I>
+
+argument to
+<I>pthread_mutexattr_getrobust</I>()
+or
+<I>pthread_mutexattr_setrobust</I>()
+does not refer to an initialized mutex attributes object, it is
+recommended that the function should fail and report an
+<B>[EINVAL]</B>
+
+error.
+<A NAME="lbAK">&nbsp;</A>
+<H2>FUTURE DIRECTIONS</H2>
+
+None.
+<A NAME="lbAL">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+<I>pthread_mutex_consistent</I>(),
+
+<I>pthread_mutex_destroy</I>(),
+
+<I>pthread_mutex_lock</I>()
+
+<P>
+
+The Base Definitions volume of POSIX.1-2008,
+<I></I><B>&lt;<A HREF="file:///usr/include/pthread.h">pthread.h</A>&gt;</B>
+
+<A NAME="lbAM">&nbsp;</A>
+<H2>COPYRIGHT</H2>
+
+Portions of this text are reprinted and reproduced in electronic form
+from IEEE Std 1003.1, 2013 Edition, Standard for Information Technology
+-- Portable Operating System Interface (POSIX), The Open Group Base
+Specifications Issue 7, Copyright (C) 2013 by the Institute of
+Electrical and Electronics Engineers, Inc and The Open Group.
+(This is POSIX.1-2008 with the 2013 Technical Corrigendum 1 applied.) In the
+event of any discrepancy between this version and the original IEEE and
+The Open Group Standard, the original IEEE and The Open Group Standard
+is the referee document. The original Standard can be obtained online at
+<A HREF="http://www.unix.org/online.html">http://www.unix.org/online.html</A> .
+<P>
+Any typographical or formatting errors that appear
+in this page are most likely
+to have been introduced during the conversion of the source files to
+man page format. To report such errors, see
+<A HREF="https://www.kernel.org/doc/man-pages/reporting_bugs.html">https://www.kernel.org/doc/man-pages/reporting_bugs.html</A> .
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">PROLOG</A><DD>
+<DT><A HREF="#lbAC">NAME</A><DD>
+<DT><A HREF="#lbAD">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAE">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAF">RETURN VALUE</A><DD>
+<DT><A HREF="#lbAG">ERRORS</A><DD>
+<DT><A HREF="#lbAH">EXAMPLES</A><DD>
+<DT><A HREF="#lbAI">APPLICATION USAGE</A><DD>
+<DT><A HREF="#lbAJ">RATIONALE</A><DD>
+<DT><A HREF="#lbAK">FUTURE DIRECTIONS</A><DD>
+<DT><A HREF="#lbAL">SEE ALSO</A><DD>
+<DT><A HREF="#lbAM">COPYRIGHT</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 14:28:55 GMT, February 25, 2017
+</BODY>
+</HTML>

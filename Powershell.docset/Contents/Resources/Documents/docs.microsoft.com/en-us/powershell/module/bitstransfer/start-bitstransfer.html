@@ -1,0 +1,2525 @@
+<!DOCTYPE html>
+<html class="no-js hasSidebar hasPageActions hasBreadcrumb conceptual" data-authenticated="false" data-render="docs" dir="ltr" lang="en-us">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Start-BitsTransfer (bitstransfer)" property="og:title"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" property="og:image"/>
+  <meta content="summary" name="twitter:card"/>
+  <meta content="@docsmsft" name="twitter:site"/>
+  <meta content="Start-BitsTransfer (bitstransfer)" name="twitter:title"/>
+  <meta content="Use this topic to help manage Windows and Windows Server technologies with Windows PowerShell." name="twitter:description"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" name="twitter:image"/>
+  <meta content="Microsoft Logo" name="twitter:image:alt"/>
+  <meta content="Use this topic to help manage Windows and Windows Server technologies with Windows PowerShell." name="description"/>
+  <meta content="Docs" name="search.ms_sitename"/>
+  <meta content="powershell-windows" name="search.ms_docsetname"/>
+  <meta content="0" name="version"/>
+  <meta content="en-us" name="locale"/>
+  <meta content="Docs" name="site_name"/>
+  <meta content="MSDN" name="search.ms_product"/>
+  <meta content="MSDN.powershell-windows" name="depot_name"/>
+  <meta content="https://cpubwin.visualstudio.com/DefaultCollection/powershell/_git/powershell/commit/67351e458fe1f5a197dd9cf089da69cd5819d217?path=%2fdocset%2fwindows%2fbitstransfer%2fstart-bitstransfer.md&amp;_a=contents" name="ref_skeleton_gitcommit"/>
+  <meta content="https://cpubwin.visualstudio.com/DefaultCollection/powershell/_git/powershell?path=%2fdocset%2fwindows%2fbitstransfer%2fstart-bitstransfer.md&amp;version=GBlive&amp;_a=contents" name="original_ref_skeleton_git_url"/>
+  <meta content="2018-02-27 05:03 PM" name="updated_at"/>
+  <meta content="f2562033-cf25-0447-81e1-397a973c5c49" name="document_id"/>
+  <meta content="63016f51-2ccf-fdb0-5e29-16418508ce64" name="document_version_independent_id"/>
+  <meta content="powershell" name="page_type"/>
+  <meta content="command" name="page_kind"/>
+  <meta content="manage" name="ms.mktglfcycl"/>
+  <meta content="library" name="ms.sitesec"/>
+  <meta content="brianlic" name="ms.author"/>
+  <meta content="brianlic-msft" name="author"/>
+  <meta content="Microsoft.BackgroundIntelligentTransfer.Management.dll-Help.xml" name="external_help_file"/>
+  <meta content="powershell, cmdlet" name="keywords"/>
+  <meta content="alanth" name="manager"/>
+  <meta content="12/20/2016" name="ms.date"/>
+  <meta content="w10" name="ms.prod"/>
+  <meta content="powershell-windows" name="ms.technology"/>
+  <meta content="reference" name="ms.topic"/>
+  <meta content="" name="online_version"/>
+  <meta content="2.0.0" name="schema"/>
+  <meta content="D292A19B-5BCB-4E62-8AA4-FE371F3FABCF" name="ms.assetid"/>
+  <meta content="powershell" name="ms.devlang"/>
+  <meta content="INDEX, FOLLOW" name="ROBOTS"/>
+  <meta content="/powershell/windows/bread/toc.json?view=win10-ps" name="breadcrumb_path"/>
+  <meta content="powershell" name="apiPlatform"/>
+  <meta content="MSDocsHeader-WindowsIT" name="uhfHeaderId"/>
+  <meta content="../win10-ps/toc.json?view=win10-ps" name="toc_rel"/>
+  <link href="https://docs.microsoft.com/en-us/powershell/module/bitstransfer/start-bitstransfer" rel="canonical"/>
+  <title>
+   Start-BitsTransfer
+  </title>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/e4a1f3a3.site.css" rel="stylesheet"/>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/31353636.conceptual.css" rel="stylesheet"/>
+ </head>
+ <body dir="ltr" lang="en-us">
+  <div class="header-holder">
+   <div data-bi-name="header" id="headerAreaHolder">
+    <div id="uhf-placeholder">
+    </div>
+   </div>
+   <div class="disclaimer-holder" id="disclaimer-holder">
+   </div>
+  </div>
+  <div class="container mainContainer" data-bi-name="body">
+   <div class="content-header" data-bi-name="content-header">
+    <div class="content-header-controls">
+     <button class="contents-button button-border" data-bi-name="contents-expand" type="button">
+      <span class="docon docon-menu">
+      </span>
+      Contents
+     </button>
+    </div>
+    <div class="content-header-controls">
+     <button class="ap-collapse-behavior ap-expanded button-border" data-bi-name="ap-collapse" type="button">
+      <span class="docon docon-exit-mode">
+      </span>
+      Exit focus mode
+     </button>
+    </div>
+   </div>
+   <div class="primary-holder">
+    <main class="content" data-bi-name="content" dir="ltr" id="main" lang="en-us" role="main">
+     <!-- <content> -->
+     <h1>
+      Start-Bits
+      <wbr/>
+      Transfer
+     </h1>
+     <div class="metadata">
+      <dl class="attributeList">
+       <dt>
+        Module:
+       </dt>
+       <dd>
+        <a data-linktype="relative-path" href="./.html">
+         bitstransfer
+        </a>
+       </dd>
+      </dl>
+     </div>
+     <div class="summaryHolder">
+      <div class="summary">
+       Creates a BITS transfer job.
+      </div>
+     </div>
+     <h2 class="hiddenAnchor" id="syntax">
+      Syntax
+     </h2>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Start-BitsTransfer
+     [-Asynchronous]
+     [-Authentication &lt;String&gt;]
+     [-Credential &lt;PSCredential&gt;]
+     [-Description &lt;String&gt;]
+     [[-Destination] &lt;String[]&gt;]
+     [-DisplayName &lt;String&gt;]
+     [-Priority &lt;String&gt;]
+     [-TransferPolicy &lt;CostStates&gt;]
+     [-UseStoredCredential &lt;AuthenticationTargetValue&gt;]
+     [-ProxyAuthentication &lt;String&gt;]
+     [-ProxyBypass &lt;String[]&gt;]
+     [-ProxyCredential &lt;PSCredential&gt;]
+     [-ProxyList &lt;Uri[]&gt;]
+     [-ProxyUsage &lt;String&gt;]
+     [-RetryInterval &lt;Int32&gt;]
+     [-RetryTimeout &lt;Int32&gt;]
+     [-Source] &lt;String[]&gt;
+     [-Suspended]
+     [-TransferType &lt;String&gt;]
+     [-WhatIf]
+     [-Confirm]
+     [&lt;CommonParameters&gt;]</code></pre>
+     <h2 id="description">
+      Description
+     </h2>
+     <p>
+      The
+      <strong>
+       Start-BitsTransfer
+      </strong>
+      cmdlet creates a Background Intelligent Transfer Service (BITS) transfer job to transfer one or more files between a client computer and a server.
+The
+      <em>
+       TransferType
+      </em>
+      parameter specifies the direction of the transfer.
+By default, after the cmdlet begins the transfer, the command prompt is not available until the transfer is complete or until the transfer enters an error state.
+If the state of the returned
+      <strong>
+       BitsJob
+      </strong>
+      object is Error, the error code and description are contained in the object and can be used for analysis.
+     </p>
+     <p>
+      The
+      <strong>
+       Start-BitsTransfer
+      </strong>
+      cmdlet supports the download of multiple files from a server to a client computer, but it does not generally support the upload of multiple files from a client computer to a server.
+If you need to upload more than one file, you can use the
+      <strong>
+       Import-Csv
+      </strong>
+      cmdlet to pipe the output to the
+      <strong>
+       Add-BitsFile
+      </strong>
+      cmdlet to upload multiple files.
+Or, if you need to upload more than one file, consider a cabinet file (.cab) or a compressed file (.zip).
+     </p>
+     <h2 id="examples">
+      Examples
+     </h2>
+     <p>
+      <strong>
+       Example 1: Create a BITS transfer job that downloads a file
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Start-BitsTransfer -Source "http://server01/servertestdir/testfile1.txt" -Destination "c:\clienttestdir\testfile1.txt"</code></pre>
+     <p>
+      This command creates a BITS transfer job that downloads a file from a server.
+The local and remote names of the file are specified in the
+      <em>
+       Source
+      </em>
+      and
+      <em>
+       Destination
+      </em>
+      parameters.
+Because the default transfer type is Download, the
+      <code>
+       http://Server01/servertestdir/testfile1.txt
+      </code>
+      file is transferred to
+      <code>
+       C:\clienttestdir\testfile1.txt
+      </code>
+      on the client.
+The command prompt returns when the file transfer is complete or when it enters an error state.
+     </p>
+     <p>
+      When you upload files to an HTTP location, the
+      <em>
+       TransferType
+      </em>
+      parameter must be set to
+      <strong>
+       Upload
+      </strong>
+      .
+     </p>
+     <p>
+      Because the
+      <strong>
+       Start-BitsTransfer
+      </strong>
+      cmdlet assumes that the first parameter is the source and that the second parameter is the destination when no value is specified, this command could be simplified as follows:
+     </p>
+     <p>
+      <code>
+       Start-BitsTransfer "http://server01/servertestdir/testfile1.txt" "c:\clienttestdir\testfile1.txt"
+      </code>
+     </p>
+     <p>
+      <strong>
+       Example 2: Create BITS transfer jobs that download multiple files
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Import-CSV filelist.txt | Start-BitsTransfer</code></pre>
+     <p>
+      This command creates BITS transfer jobs that download multiple files from a server.
+     </p>
+     <p>
+      The command imports the source and destination file locations and then pipes the locations to the
+      <strong>
+       Start-BitsTransfer
+      </strong>
+      command.
+The
+      <strong>
+       Start-BitsTransfer
+      </strong>
+      command creates a new BITS transfer job for each of the files in
+      <code>
+       filelist.txt
+      </code>
+      and then transfers them concurrently to the client.
+     </p>
+     <p>
+      The contents of the filelist.txt file resemble the following information:
+     </p>
+     <ul>
+      <li>
+       <strong>
+        Source, Destination
+       </strong>
+      </li>
+      <li>
+       <code>
+        http://server01/servertestdir/testfile1.txt, c:\clienttestdir\testfile1.txt
+       </code>
+      </li>
+      <li>
+       <code>
+        http://server01/servertestdir/testfile2.txt, c:\clienttestdir\testfile2.txt
+       </code>
+      </li>
+      <li>
+       <code>
+        http://server01/servertestdir/testfile3.txt, c:\clienttestdir\testfile3.txt
+       </code>
+      </li>
+      <li>
+       <code>
+        http://server01/servertestdir/testfile4.txt, c:\clienttestdir\testfile4.txt
+       </code>
+      </li>
+     </ul>
+     <p>
+      <strong>
+       Example 3: Create a BITS transfer job that uploads a file
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Start-BitsTransfer -Source "c:\clienttestdir\testfile1.txt" -Destination "http://server01/servertestdir/testfile1.txt" -TransferType Upload</code></pre>
+     <p>
+      This command creates a BITS transfer job that uploads a file to a server.
+The local and remote names of the file are specified in the
+      <strong>
+       Source
+      </strong>
+      and
+      <strong>
+       Destination
+      </strong>
+      parameters.
+Because the default transfer type is Download, the
+      <em>
+       TransferType
+      </em>
+      parameter must be set to
+      <strong>
+       Upload
+      </strong>
+      .
+The
+      <code>
+       C:\clienttestdir\testfile1.txt
+      </code>
+      file on the client is transferred to
+      <code>
+       http://Server01/servertestdir/testfile1.txt
+      </code>
+      .
+The command prompt returns when the file transfer is complete or enters an error state.
+     </p>
+     <p>
+      The
+      <strong>
+       Start-BitsTransfer
+      </strong>
+      cmdlet downloads multiple files from a server to a client computer, but it does not typically upload multiple files from a client computer to a server.
+It is possible to work around this limitation by using the
+      <strong>
+       Import-Csv
+      </strong>
+      cmdlet to pipe the output to the
+      <strong>
+       Start-BitsTransfer
+      </strong>
+      cmdlet.
+If you need to upload more than one file, you can also use a .cab or .zip file.
+     </p>
+     <p>
+      Because the
+      <strong>
+       Start-BitsTransfer
+      </strong>
+      cmdlet assumes that the first parameter is the source and that the second parameter is the destination when no value is specified, this command could be simplified as follows:
+     </p>
+     <p>
+      <code>
+       Start-BitsTransfer "c:\clienttestdir\testfile1.txt" "http://server01/servertestdir/testfile1.txt" -TransferType Upload
+      </code>
+     </p>
+     <p>
+      <strong>
+       Example 4: Create a BITS transfer job that downloads multiple files
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Start-BitsTransfer -Source "http://server01/servertestdir/testfile1.txt", "http://server01/servertestdir/testfile2.txt" -Destination "c:\clienttestdir\testfile1.txt", "c:\clienttestdir\testfile2.txt"</code></pre>
+     <p>
+      This command creates a BITS transfer job that downloads multiple files from a server.
+     </p>
+     <p>
+      The local and remote names of the files are specified in the
+      <em>
+       Source
+      </em>
+      and
+      <em>
+       Destination
+      </em>
+      parameters.
+Because the default of the
+      <em>
+       TransferType
+      </em>
+      parameter is Download, the
+      <code>
+       http://Server01/servertestdir/testfile1.txt
+      </code>
+      and
+      <code>
+       http://Server01/servertestdir/testfile2.txt
+      </code>
+      files are transferred to
+      <code>
+       C:\clienttestdir\testfile1.txt
+      </code>
+      and
+      <code>
+       C:\clienttestdir\testfile2.txt
+      </code>
+      on the client computer.
+The command prompt returns when the file transfer is complete or enters an error state.
+     </p>
+     <p>
+      <strong>
+       Example 5: Create a BITS transfer job that downloads a file using a specific set of credentials
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; $Cred = Get-Credential
+PS C:\&gt; Start-BitsTransfer -DisplayName MyJob -Credential $Cred -Source "http://server01/servertestdir/testfile1.txt" -Destination "c:\clienttestdir\testfile1.txt"</code></pre>
+     <p>
+      This example creates a BITS transfer job that downloads a file from a server by using a specific set of credentials.
+     </p>
+     <p>
+      The first command retrieves a set of credentials from the user by calling the
+      <strong>
+       Get-Credential
+      </strong>
+      cmdlet.
+The returned
+      <strong>
+       PSCredential
+      </strong>
+      object is stored in the $Cred variable.
+     </p>
+     <p>
+      The second command uses the
+      <em>
+       Credential
+      </em>
+      parameter to pass the
+      <strong>
+       PSCredential
+      </strong>
+      object that is stored in the $Cred variable to the
+      <strong>
+       Start-BitsTransfer
+      </strong>
+      cmdlet.
+A new BITS transfer job is created that downloads the
+      <code>
+       http://server01/servertestdir/testfile1.txt
+      </code>
+      file to the client.
+The specified credentials are used to authenticate the user at the server.
+Additionally, the optional
+      <em>
+       DisplayName
+      </em>
+      parameter is used to give the BITS transfer job a unique name.
+     </p>
+     <p>
+      <strong>
+       Example 6: Create BITS transfer jobs that download multiple files
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Import-CSV filelist.txt | Start-BitsTransfer -Asynchronous -Priority Normal</code></pre>
+     <p>
+      This command creates BITS transfer jobs that download multiple files from a server.
+The files are downloaded sequentially, but they are available immediately when the transfer job is complete.
+     </p>
+     <p>
+      The command imports the source and destination file locations and then pipes them to the
+      <strong>
+       Start-BitsTransfer
+      </strong>
+      command.
+The
+      <strong>
+       Start-BitsTransfer
+      </strong>
+      command creates a new BITS transfer job for each of the files in filelist.txt and then transfers them sequentially to the client.
+     </p>
+     <p>
+      The contents of the filelist.txt file resemble the following information:
+     </p>
+     <ul>
+      <li>
+       <strong>
+        Source, Destination
+       </strong>
+      </li>
+      <li>
+       <code>
+        http://server01/servertestdir/testfile1.txt, c:\clienttestdir\testfile1.txt
+       </code>
+      </li>
+      <li>
+       <code>
+        http://server01/servertestdir/testfile2.txt, c:\clienttestdir\testfile2.txt
+       </code>
+      </li>
+      <li>
+       <code>
+        http://server01/servertestdir/testfile3.txt, c:\clienttestdir\testfile3.txt
+       </code>
+      </li>
+      <li>
+       <code>
+        http://server01/servertestdir/testfile4.txt, c:\clienttestdir\testfile4.txt
+       </code>
+      </li>
+     </ul>
+     <p>
+      <strong>
+       Example 7: Create a BITS transfer job that downloads multiple files
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Start-BitsTransfer -Source C:\clientsourcedir\*.txt -Destination c:\clientdir\ -TransferType Download</code></pre>
+     <p>
+      In the preceding example, the
+      <strong>
+       Start-BitsTransfer
+      </strong>
+      command creates a new BITS transfer job. All of the files are added to this job and transferred sequentially to the client.
+     </p>
+     <div class="NOTE">
+      <p>
+       Note
+      </p>
+      <p>
+       The destination path cannot use wildcard characters. The destination path supports relative directories, root paths, or implicit directories (that is, the current directory). Destination files cannot be renamed by using a wildcard character. Additionally, HTTP and HTTPS URLs do not work with wildcards. Wildcards are only valid for UNC paths and local directories.
+      </p>
+     </div>
+     <p>
+      <strong>
+       Example 8: Create BITS transfer jobs that upload multiple files
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Import-CSV filelist.txt | Start-BitsTransfer -TransferType Upload</code></pre>
+     <p>
+      This command creates BITS transfer jobs that upload multiple files to a server.
+     </p>
+     <p>
+      The command imports the source and destination file locations and then pipes them to the
+      <strong>
+       Start-BitsTransfer
+      </strong>
+      command.
+The
+      <strong>
+       Start-BitsTransfer
+      </strong>
+      command creates a new BITS transfer job for each of the files in filelist.txt and then transfers them concurrently to the server.
+     </p>
+     <p>
+      The contents of the filelist.txt file resemble the following information:
+     </p>
+     <ul>
+      <li>
+       <strong>
+        Source, Destination
+       </strong>
+      </li>
+      <li>
+       <code>
+        c:\clienttestdir\testfile1.txt, http://server01/servertestdir/testfile1.txt
+       </code>
+      </li>
+      <li>
+       <code>
+        c:\clienttestdir\testfile2.txt, http://server01/servertestdir/testfile2.txt
+       </code>
+      </li>
+      <li>
+       <code>
+        c:\clienttestdir\testfile3.txt, http://server01/servertestdir/testfile3.txt
+       </code>
+      </li>
+      <li>
+       <code>
+        c:\clienttestdir\testfile4.txt, http://server01/servertestdir/testfile4.txt
+       </code>
+      </li>
+     </ul>
+     <p>
+      <strong>
+       Example 9: Download a file from a server on a network to a client on a different network that are connected by a proxy server
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Start-BitsTransfer -Source .\Patch0416.msu -Destination $env:temp\Patch0416.msu -ProxyUsage Override -ProxyList BitsProxy:8080 -ProxyCredential Server01\Admin01</code></pre>
+     <p>
+      This command uses the
+      <strong>
+       Start-BitsTransfer
+      </strong>
+      cmdlet to copy a patch file from a server on one network to a client on a different network when the networks are connected only by a proxy server.
+     </p>
+     <p>
+      This scenario arises when an Internet-connected server downloads files and then distributes them to computers on disconnected or isolated networks that have no Internet access.
+     </p>
+     <p>
+      BITS can detect proxy server settings automatically.
+However, if the proxy servers are not configured for automatic detection, you can override the automatic detection mechanism and identify the proxy server explicitly, as shown in this example.
+     </p>
+     <p>
+      The command uses the
+      <em>
+       Source
+      </em>
+      parameter to specify the location of the patch on the server computer and the
+      <em>
+       Destination
+      </em>
+      parameter to specify the intended location of patch on the client computer.
+It uses the
+      <em>
+       ProxyUsage
+      </em>
+      parameter with a value of
+      <strong>
+       Override
+      </strong>
+      to override the automatic proxy server detection mechanism.
+To identify the proxy server, it uses the
+      <em>
+       ProxyList
+      </em>
+      parameter.
+The value of the
+      <em>
+       ProxyList
+      </em>
+      parameter is a URI with a
+      <code>
+       &lt;Name:Port&gt;
+      </code>
+      format.
+Finally, it uses the
+      <em>
+       ProxyCredential
+      </em>
+      parameter to specify the credentials of an administrator who has permission to connect to the proxy server.
+     </p>
+     <h2 id="required-parameters">
+      Required Parameters
+     </h2>
+     <div class="parameterName stack">
+      -Source
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the source location and the names of the files that you want to transfer.
+The source file names are paired with the corresponding destination file names.
+For example, the first file name specified in the
+       <em>
+        Source
+       </em>
+       parameter corresponds to the first file name in the
+       <em>
+        Destination
+       </em>
+       parameter, and the second file name in the
+       <em>
+        Source
+       </em>
+       parameter corresponds to the second file name in the
+       <em>
+        Destination
+       </em>
+       parameter.
+The
+       <em>
+        Source
+       </em>
+       and
+       <em>
+        Destination
+       </em>
+       parameters must have the same number of elements; otherwise, the command produces an error.
+You can use standard wildcard characters such as the asterisk (*) and the question mark (?).
+Or, you can use a range operator such as "[a-r]".
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         0
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="optional-parameters">
+      Optional Parameters
+     </h2>
+     <div class="parameterName stack">
+      -Asynchronous
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that the cmdlet creates and processes BITS transfer job in the background.
+The command prompt reappears immediately after the BITS transfer job is created.
+The returned
+       <strong>
+        BitsJob
+       </strong>
+       object can be used to monitor status and progress.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Authentication
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the authentication mechanism to be used at the server.
+The acceptable values for this parameter are:
+      </p>
+      <ul>
+       <li>
+        <p>
+         <strong>
+          Basic
+         </strong>
+         : Basic is a scheme in which the user name and password are sent in clear text to the server or proxy.
+        </p>
+       </li>
+       <li>
+        <p>
+         <strong>
+          Digest
+         </strong>
+         : Digest is a challenge-response scheme that uses a server-specified data string for the challenge.
+        </p>
+       </li>
+       <li>
+        <p>
+         <strong>
+          Ntlm
+         </strong>
+         : NT LAN Manager (NTLM) is a challenge-response scheme that uses the credentials of the user for authentication in a Windows-based network environment.
+        </p>
+       </li>
+       <li>
+        <p>
+         <strong>
+          Negotiate
+         </strong>
+         (the default): Negotiate is a challenge-response scheme that negotiates with the server or proxy to determine which scheme to use for authentication. For example, this parameter value allows negotiation to determine whether the Kerberos protocol or NTLM is used.
+        </p>
+       </li>
+       <li>
+        <p>
+         <strong>
+          Passport
+         </strong>
+         : Passport is a centralized authentication service provided by Microsoft that offers a single logon for member sites.
+        </p>
+       </li>
+      </ul>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Parameter Sets:
+        </td>
+        <td>
+         Basic, Digest, Ntlm, Negotiate, Passport
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Confirm
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Prompts you for confirmation before running the cmdlet.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         cf
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Credential
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the credentials to use to authenticate the user to the server that is specified in the value of the
+       <em>
+        Source
+       </em>
+       parameter.
+The default is the current user.
+      </p>
+      <p>
+       Type a user name, such as "User01", "Domain01\User01", or "User@Contoso.com".
+Or, use the
+       <strong>
+        Get-Credential
+       </strong>
+       cmdlet to create the value for this parameter.
+When you type a user name, you are prompted for a password.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          PSCredential
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Description
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Describes the BITS transfer job.
+The description is limited to 1,024 characters.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Destination
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies an array that contains the destination location and the names of the files that you want to transfer.
+The destination names are paired with the corresponding source file names.
+For example, the first file name specified in the
+       <em>
+        Source
+       </em>
+       parameter corresponds to the first file name in the
+       <em>
+        Destination
+       </em>
+       parameter, and the second file name in the
+       <em>
+        Source
+       </em>
+       parameter corresponds to the second file name in the
+       <em>
+        Destination
+       </em>
+       parameter.
+The
+       <em>
+        Source
+       </em>
+       and
+       <em>
+        Destination
+       </em>
+       parameters must have the same number of elements; otherwise, the command produces an error.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         1
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -DisplayName
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a display name for the BITS transfer job.
+The display name provides a user-friendly way to differentiate BITS transfer jobs.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Priority
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Sets the priority of the BITS transfer job, which affects bandwidth usage.
+The acceptable values for this parameter are:
+      </p>
+      <ul>
+       <li>
+        <p>
+         <strong>
+          Foreground
+         </strong>
+         (default): Transfers the job in the foreground. Foreground transfers compete for network bandwidth with other applications, which can impede the user's overall network experience. However, if the
+         <strong>
+          Start-BitsTransfer
+         </strong>
+         cmdlet is being used interactively, this is likely the best option. This is the highest priority level.
+        </p>
+       </li>
+       <li>
+        <p>
+         <strong>
+          High
+         </strong>
+         : Transfers the job in the background with a high priority. Background transfers use the idle network bandwidth of the client computer to transfer files.
+        </p>
+       </li>
+       <li>
+        <p>
+         <strong>
+          Normal
+         </strong>
+         : Transfers the job in the background with a normal priority. Background transfers use the idle network bandwidth of the client computer to transfer files.
+        </p>
+       </li>
+       <li>
+        <p>
+         <strong>
+          Low
+         </strong>
+         : Transfers the job in the background with a low priority. Background transfers use the idle network bandwidth of the client to transfer files. This is the lowest background priority level.
+        </p>
+       </li>
+      </ul>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Parameter Sets:
+        </td>
+        <td>
+         Foreground, High, Normal, Low
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         Foreground
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -ProxyAuthentication
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the authentication mechanism to use at the Web proxy.
+The acceptable values for this parameter are:
+      </p>
+      <ul>
+       <li>
+        <p>
+         <strong>
+          Basic
+         </strong>
+         : Basic is a scheme in which the user name and password are sent in clear-text to the server or proxy.
+        </p>
+       </li>
+       <li>
+        <p>
+         <strong>
+          Digest
+         </strong>
+         : Digest is a challenge-response scheme that uses a server-specified data string for the challenge.
+        </p>
+       </li>
+       <li>
+        <p>
+         <strong>
+          Ntlm
+         </strong>
+         : NTLM is a challenge-response scheme that uses the credentials of the user for authentication in a Windows-based network environment.
+        </p>
+       </li>
+       <li>
+        <p>
+         <strong>
+          Negotiate
+         </strong>
+         (the default): Negotiate is a challenge-response scheme that negotiates with the server or proxy to determine which scheme to use for authentication. For instance, this parameter value allows negotiation to determine whether the Kerberos protocol or NTLM is used.
+        </p>
+       </li>
+       <li>
+        <p>
+         <strong>
+          Passport
+         </strong>
+         : Passport is a centralized authentication service provided by Microsoft that offers a single logon for member sites.
+        </p>
+       </li>
+      </ul>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Parameter Sets:
+        </td>
+        <td>
+         Basic, Digest, Ntlm, Negotiate, Passport
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -ProxyBypass
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a list of host names to use for a direct connection.
+The hosts in the list are tried in order until a successful connection is achieved.
+If you specify this parameter the cmdlet bypasses the proxy.
+If this parameter is used, the
+       <em>
+        ProxyUsage
+       </em>
+       parameter must be set to
+       <strong>
+        Override
+       </strong>
+       ; otherwise, an error occurs.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -ProxyCredential
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the credentials to use to authenticate the user at the proxy.
+You can use the
+       <strong>
+        Get-Credential
+       </strong>
+       cmdlet to create a value for this parameter.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          PSCredential
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -ProxyList
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a list of proxies to use.
+The proxies in the list are tried in order until a successful connection is achieved.
+If this parameter is specified and
+       <em>
+        ProxyUsage
+       </em>
+       is set to a value other than
+       <strong>
+        Override
+       </strong>
+       , the cmdlet generates an error.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Uri[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -ProxyUsage
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the proxy usage settings.
+The acceptable values for this parameter are:
+      </p>
+      <ul>
+       <li>
+        <p>
+         <strong>
+          SystemDefault
+         </strong>
+         (the default): Use the system default proxy settings.
+        </p>
+       </li>
+       <li>
+        <p>
+         <strong>
+          NoProxy
+         </strong>
+         : Do not use a proxy to transfer files. Use this option when you transfer files within a local area network (LAN).
+        </p>
+       </li>
+       <li>
+        <p>
+         <strong>
+          AutoDetect
+         </strong>
+         : Automatically detect proxy settings. BITS detects proxy settings for each file in the job.
+        </p>
+       </li>
+       <li>
+        <p>
+         <strong>
+          Override
+         </strong>
+         : Specify the proxies or servers to use. If the
+         <em>
+          ProxyList
+         </em>
+         parameter is also specified, the proxies in that list are used. If the
+         <em>
+          ProxyBypass
+         </em>
+         parameter is also specified, the servers in that list are used. In both cases, the first member of the list is used. If the first member is unreachable, the subsequent members are tried until a member is contacted successfully.
+        </p>
+       </li>
+      </ul>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Parameter Sets:
+        </td>
+        <td>
+         SystemDefault, NoProxy, AutoDetect, Override
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -RetryInterval
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the minimum length of time, in seconds, that BITS waits before an attempt to transfer the file after BITS encounters a transient error.
+The minimum allowed value is 60 seconds.
+If this value exceeds the RetryTimeout value from the
+       <strong>
+        BitsJob
+       </strong>
+       object, BITS does not retry the transfer.
+Instead, BITS sets the state of the BITS transfer job to the Error state.
+      </p>
+      <p>
+       The default is 600 seconds (10 minutes).
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Int32
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -RetryTimeout
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the length of time, in seconds, that BITS attempts to transfer the file after the first transient error occurs.
+Setting the retry period to 0 prevents retries and forces the job into the
+       <code>
+        BG_JOB_STATE_ERROR
+       </code>
+       state when an error occurs.
+If the retry period value exceeds the JobInactivityTimeout Group Policy setting (90-day default), BITS cancels the job after the JobInactivityTimeout Group Policy setting is exceeded.
+      </p>
+      <p>
+       The default is 1,209,600 seconds (14 days).
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Int32
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Suspended
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that the cmdlet suspends the BITS transfer job.
+If the
+       <em>
+        Suspended
+       </em>
+       parameter is not specified, the job automatically begins the transfer job.
+If the
+       <em>
+        Suspended
+       </em>
+       parameter is specified, the command prompt returns immediately after the BITS transfer job is created.
+You can use the
+       <strong>
+        Resume-BitsTransfer
+       </strong>
+       cmdlet to start the transfer job.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -TransferPolicy
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the network cost states in which the transfer is allowed to be scheduled.
+The current cost state of the network is a bitmask that indicates the kinds of charges that would be incurred if a transfer was scheduled at this time.
+This cost state represents a bitmask; if the bit corresponding to the current network cost state is set, the transfer can be scheduled.
+If the bit corresponding to the current network cost state is not set, the transfer is ignored for scheduling purposes.
+You can submit any of the named values listed here, or add them together to provide a custom value.
+      </p>
+      <p>
+       The acceptable values for this parameter are:
+      </p>
+      <ul>
+       <li>
+        <p>
+         <strong>
+          Unrestricted
+         </strong>
+         (or unknown) : 0x00000001 : the cost state for this network is not known.
+        </p>
+       </li>
+       <li>
+        <p>
+         <strong>
+          Capped
+         </strong>
+         : 0x00000002 : the cost state for this network is a capped plan, or a plan that has a data usage limit.
+        </p>
+       </li>
+       <li>
+        <p>
+         <strong>
+          BelowCap
+         </strong>
+         : 0x00000004 : the cost state for this network is below the data plan cap.
+        </p>
+       </li>
+       <li>
+        <p>
+         <strong>
+          NearCap
+         </strong>
+         : 0x00000008 : the cost state for this network is near the data plan cap.
+        </p>
+       </li>
+       <li>
+        <p>
+         <strong>
+          OverCapCharged
+         </strong>
+         : 0x00000010 : the cost state for this network is above the data plan cap, and such usage is charged.
+        </p>
+       </li>
+       <li>
+        <p>
+         <strong>
+          OverCapThrottled
+         </strong>
+         : 0x00000020 : the cost state for this network is above the data plan cap, and such usage is throttled.
+        </p>
+       </li>
+       <li>
+        <p>
+         <strong>
+          UsageBased
+         </strong>
+         : 0x00000040 : the cost state for this network is charged based on usage.
+        </p>
+       </li>
+       <li>
+        <p>
+         <strong>
+          Roaming
+         </strong>
+         : 0x00000080 : the cost state for this network incurs roaming charges.
+The cost state also includes one option (IgnoreCongestion) and a set of standard policies (Uncosted, Standard, NoSurcharge, NotRoaming, and Always) which are combinations of the discrete bit values.
+        </p>
+       </li>
+       <li>
+        <p>
+         <strong>
+          IgnoreCongestion
+         </strong>
+         : 0x80000000 : the job can be scheduled even if the network provider reports that the network is congested.
+        </p>
+       </li>
+       <li>
+        <p>
+         <strong>
+          PolicyUnrestricted
+         </strong>
+         : 0x80000021 : the set of cost states that do not consume the quota of a capped plan, or incur extra charges.
+        </p>
+       </li>
+       <li>
+        <p>
+         <strong>
+          Standard
+         </strong>
+         : 0x80000067 : a set of cost states suitable for moderate-priority transfers.
+        </p>
+       </li>
+       <li>
+        <p>
+         <strong>
+          NoSurcharge
+         </strong>
+         : 0x8000006f : the set of cost states that incur no surcharge for use.
+        </p>
+       </li>
+       <li>
+        <p>
+         <strong>
+          NotRoaming
+         </strong>
+         : 0x8000007f : the set of cost states that exclude the roaming state.
+        </p>
+       </li>
+       <li>
+        <p>
+         <strong>
+          Always
+         </strong>
+         : 0x800000ff : the set of all cost states.
+        </p>
+       </li>
+      </ul>
+      <p>
+       The cost state also includes one option (IgnoreCongestion) and a set of standard policies (Always, NotRoaming, NoSurcharge, Standard, and Uncosted) which are combinations of the discrete bit values.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          CostStates
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Parameter Sets:
+        </td>
+        <td>
+         None, Unrestricted, Capped, BelowCap, NearCap, OverCapCharged, OverCapThrottled, UsageBased, Roaming, IgnoreCongestion, PolicyUnrestricted, Standard, NoSurcharge, NotRoaming, Always
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -TransferType
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the BITS transfer job type.
+The acceptable values for this parameter are:
+      </p>
+      <ul>
+       <li>
+        <p>
+         <strong>
+          Download
+         </strong>
+         (the default): Specifies that the transfer job downloads files to the client computer.
+        </p>
+       </li>
+       <li>
+        <p>
+         <strong>
+          Upload
+         </strong>
+         : Specifies that the transfer job uploads a file to the server.
+        </p>
+       </li>
+       <li>
+        <p>
+         <strong>
+          UploadReply
+         </strong>
+         : Specifies that the transfer job uploads a file to the server and receives a reply file from the server.
+        </p>
+       </li>
+      </ul>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Parameter Sets:
+        </td>
+        <td>
+         Download, Upload, UploadReply
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -UseStoredCredential
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies that credentials stored in the Windows Credential Manager should be used for authentication when required for the specified target server type.
+If this parameter is not specified and a server requires authentication, then explicit credentials must be included by using the
+       <em>
+        Credential
+       </em>
+       or
+       <em>
+        ProxyCredential
+       </em>
+       parameters.
+This parameter is a flag parameter whose values can be added together to create the desired behavior.
+      </p>
+      <p>
+       The acceptable values for this parameter are:
+      </p>
+      <ul>
+       <li>
+        <p>
+         <strong>
+          None
+         </strong>
+         : Use only credentials provided by the
+         <em>
+          Credential
+         </em>
+         or
+         <em>
+          ProxyCredential
+         </em>
+         parameters.
+This is the default behavior if the parameter is not specified.
+        </p>
+       </li>
+       <li>
+        <p>
+         <strong>
+          Proxy
+         </strong>
+         : Credentials stored in the Windows Credential Manager are used for authentication for any proxy server that requires authentication.
+If no credentials in the Windows Credential Manager match the proxy server needing authentication, then you must specify credentials by using the
+         <em>
+          ProxyCredential
+         </em>
+         parameter.
+        </p>
+       </li>
+       <li>
+        <p>
+         <strong>
+          Server
+         </strong>
+         : This value is not supported and generates an error if specified.
+        </p>
+       </li>
+      </ul>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          AuthenticationTargetValue
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Parameter Sets:
+        </td>
+        <td>
+         None, Server, Proxy
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -WhatIf
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         wi
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="inputs">
+      Inputs
+     </h2>
+     <p>
+      <strong>
+       None
+      </strong>
+     </p>
+     <p>
+      This cmdlet does not accept an input.
+     </p>
+     <h2 id="outputs">
+      Outputs
+     </h2>
+     <p>
+      <strong>
+       Microsoft.BackgroundIntelligentTransfer.Management.BitsJob
+      </strong>
+     </p>
+     <p>
+      When called with the
+      <em>
+       Asynchronous
+      </em>
+      parameter, this cmdlet passes the
+      <strong>
+       BitsJob
+      </strong>
+      object that is associated with the new BITS transfer job as output.
+Otherwise, no output is generated.
+     </p>
+     <h2 id="notes">
+      Notes
+     </h2>
+     <ul>
+      <li>
+       <p>
+        You can cancel a transfer job that is running in synchronous mode by pressing CTRL+C.
+       </p>
+       <p>
+        If the BITS service is stopped during a synchronous file transfer job, then file transfer job will fail with an error and the file transfer job will not get removed from the BitsTransfer queue.
+You can view the file transfer job that remains in the BitsTransfer queue through the
+        <strong>
+         Get-BitsTransfer
+        </strong>
+        cmdlet.
+The file transfer job that remains in the BitsTransfer queue can be removed using the
+        <strong>
+         Remove-BitsTransfer
+        </strong>
+        cmdlet.
+Once the BITS service is restarted, the file transfer job will recover and resume the file transfer job, unless the file transfer job has been removed in the interim.
+       </p>
+      </li>
+     </ul>
+     <h2 id="related-links">
+      Related Links
+     </h2>
+     <ul>
+      <li>
+       <a data-linktype="relative-path" href="./add-bitsfile.html">
+        Add-BitsFile
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="./complete-bitstransfer.html">
+        Complete-BitsTransfer
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="./get-bitstransfer.html">
+        Get-BitsTransfer
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="./remove-bitstransfer.html">
+        Remove-BitsTransfer
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="./resume-bitstransfer.html">
+        Resume-BitsTransfer
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="./set-bitstransfer.html">
+        Set-BitsTransfer
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="./suspend-bitstransfer.html">
+        Suspend-BitsTransfer
+       </a>
+      </li>
+     </ul>
+     <!-- </content> -->
+    </main>
+    <section class="feedback-section" data-bi-name="feedback-section">
+     <h2 id="feedback">
+      Feedback
+     </h2>
+     <div class="alert choose-feedback-type">
+      <p>
+       We'd love to hear your thoughts. Choose the type you'd like to provide:
+      </p>
+      <div class="choose-feedback-buttons">
+       <a class="button-border feedback-type-product" data-bi-name="product-feedback" href="https://windowsserver.uservoice.com/forums/301869-powershell">
+        Product feedback
+        <span aria-hidden="true" class="docon docon-navigate-external">
+        </span>
+       </a>
+       <div class="button-group">
+        <button class="button-border feedback-sign-in-button" data-bi-name="feedback-sign-in">
+         <span aria-hidden="true" class="docon docon-brand-github">
+         </span>
+         Sign in to give documentation feedback
+        </button>
+        <button aria-controls="feedback-form" aria-expanded="false" class="button-border feedback-form-toggle" data-bi-name="documentation-feedback" hidden="">
+         Content feedback
+        </button>
+        <div auto-align="" class="dropdown has-caret">
+         <button aria-controls="fbm0" aria-expanded="false" aria-haspopup="true" aria-label="Expand documentation feedback menu" class="button-border dropdown-trigger" data-bi-name="documentation-feedback-menu">
+          <span aria-hidden="true" class="docon docon-chevron-down-light">
+          </span>
+         </button>
+         <div class="dropdown-menu documentation-feedback-menu" id="fbm0" role="menu">
+          You may also leave feedback
+          <a data-bi-name="create-issue-on-github" href="{0}">
+           directly on GitHub
+           <span aria-hidden="true" class="docon docon-navigate-external">
+           </span>
+          </a>
+          .
+         </div>
+        </div>
+       </div>
+      </div>
+      <p>
+       <small>
+        Our new feedback system is built on GitHub Issues. Read about this change in
+        <a href="https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs">
+         our blog post
+        </a>
+        .
+       </small>
+      </p>
+     </div>
+     <form accept-charset="UTF-8" action="javascript:" autocomplete="off" class="feedback-form" hidden="" id="feedback-form">
+      <h3 class="feedback-form-heading current-user">
+       <img alt="Avatar" aria-hidden="true" class="avatar" height="36" width="36"/>
+       <span aria-hidden="true" class="username">
+       </span>
+       <span class="visually-hidden">
+        Liquid error: Can't find the localized string giveDocumentationFeedback for template Conceptual.
+       </span>
+      </h3>
+      <label>
+       <span class="visually-hidden">
+        Title
+       </span>
+       <input name="title" pattern=".*\w.*" placeholder="Title" required="" type="text"/>
+      </label>
+      <label>
+       <span class="visually-hidden">
+        Leave a comment
+       </span>
+       <textarea name="body" placeholder="Leave a comment" required=""></textarea>
+      </label>
+      <div class="action-container">
+       <button class="primary-action" name="submit" type="submit">
+        Submit feedback
+       </button>
+      </div>
+     </form>
+     <div class="feedback-status alert busy" role="alert">
+      <p>
+       Loading feedback...
+      </p>
+     </div>
+     <div class="feedback-tab-group tabGroup" data-tab-group-independent="" hidden="">
+      <ul role="tablist">
+       <li role="presentation">
+        <a aria-controls="tabpanel-issues-open" aria-label="Open Issues" data-tab="issues-open" href="#tabpanel-issues-open" role="tab">
+        </a>
+       </li>
+       <li role="presentation">
+        <a aria-controls="tabpanel-issues-closed" aria-label="Closed Issues" data-tab="issues-closed" href="#tabpanel-issues-closed" role="tab">
+        </a>
+       </li>
+      </ul>
+      <section data-tab="issues-open" id="tabpanel-issues-open" role="tabpanel">
+       <div class="no-issues-placeholder">
+        There are no open issues
+       </div>
+       <ul aria-label="Open Issues" class="github-issues-list">
+       </ul>
+      </section>
+      <section data-tab="issues-closed" id="tabpanel-issues-closed" role="tabpanel">
+       <div class="no-issues-placeholder">
+        There are no closed issues
+       </div>
+       <ul aria-label="Closed Issues" class="github-issues-list">
+       </ul>
+      </section>
+     </div>
+     <div class="action-container">
+      <a class="view-on-github" data-bi-name="view-on-github" hidden="" href="https://github.com/MicrosoftDocs/windows-powershell-docs/issues">
+       <span aria-hidden="true" class="docon docon-brand-github">
+       </span>
+       <span>
+        View on GitHub
+       </span>
+       <span aria-hidden="true" class="docon docon-navigate-external">
+       </span>
+      </a>
+     </div>
+    </section>
+   </div>
+  </div>
+  <div class="openfeedback-container" id="openFeedbackContainer">
+  </div>
+  <div class="action-panel">
+  </div>
+ </body>
+</html>

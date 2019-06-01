@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    
+<!-- Mirrored from mdn.mozillademos.org/ja/docs/Web/API/Document_Object_Model/Using_the_W3C_DOM_Level_1_Core$samples/A_simple_example?revision=1435350 by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 02 May 2019 01:17:17 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+        <meta charset="utf-8">
+        <link href="../../../../../../../developer.mozilla.org/static/build/styles/samples.37902ba3b7fe.css" rel="stylesheet" type="text/css" />
+        
+        <title>W3C DOM Level 1 Core の使用</title>
+    </head>
+    <body>
+        
+            <body>
+<input type="button" value="Change this document." onclick="change()">
+<h2>Header</h2>
+<p>Paragraph</p>
+</body>
+
+        
+        
+            <script>
+                  function change() {
+    // document.getElementsByTagName("H2") は、文書内の <h2> 要素の NodeList
+    // であり、最初のものは0番です。
+    
+    var header = document.getElementsByTagName("H2").item(0);
+    // header の firstChild はテキストノードです。
+    header.firstChild.data = "A dynamic document";
+    // ヘッダーが "A dynamic document" になりました。
+    
+    var para = document.getElementsByTagName("P").item(0);
+    para.firstChild.data = "This is the first paragraph.";
+    
+    // 第二の段落のために新しいテキストノードを生成します
+    var newText = document.createTextNode("This is the second paragraph.");
+    // 第二の段落になる新しい Element を生成します
+    var newElement = document.createElement("P");
+    // 段落にテキストを置きます
+    newElement.appendChild(newText);
+    // また、 (段落の親に当たる) BODY に追加することで、文書の最後に
+    // 段落を置きます
+    para.parentNode.appendChild(newElement);
+  }
+            </script>
+        
+    </body>
+
+<!-- Mirrored from mdn.mozillademos.org/ja/docs/Web/API/Document_Object_Model/Using_the_W3C_DOM_Level_1_Core$samples/A_simple_example?revision=1435350 by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 02 May 2019 01:17:17 GMT -->
+</html>

@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html class="no-js hasSidebar hasPageActions hasBreadcrumb conceptual" data-authenticated="false" data-render="docs" dir="ltr" lang="en-us">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Invoke-CauScan (clusterawareupdating)" property="og:title"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" property="og:image"/>
+  <meta content="summary" name="twitter:card"/>
+  <meta content="@docsmsft" name="twitter:site"/>
+  <meta content="Invoke-CauScan (clusterawareupdating)" name="twitter:title"/>
+  <meta content="Use this topic to help manage Windows and Windows Server technologies with Windows PowerShell." name="twitter:description"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" name="twitter:image"/>
+  <meta content="Microsoft Logo" name="twitter:image:alt"/>
+  <meta content="Use this topic to help manage Windows and Windows Server technologies with Windows PowerShell." name="description"/>
+  <meta content="Docs" name="search.ms_sitename"/>
+  <meta content="powershell-windows" name="search.ms_docsetname"/>
+  <meta content="0" name="version"/>
+  <meta content="en-us" name="locale"/>
+  <meta content="Docs" name="site_name"/>
+  <meta content="MSDN" name="search.ms_product"/>
+  <meta content="MSDN.powershell-windows" name="depot_name"/>
+  <meta content="https://cpubwin.visualstudio.com/DefaultCollection/powershell/_git/powershell/commit/ced7757924addcaea0b7a244ae4d240e4d28d93a?path=%2fdocset%2fwindows%2fclusterawareupdating%2finvoke-causcan.md&amp;_a=contents" name="ref_skeleton_gitcommit"/>
+  <meta content="https://cpubwin.visualstudio.com/DefaultCollection/powershell/_git/powershell?path=%2fdocset%2fwindows%2fclusterawareupdating%2finvoke-causcan.md&amp;version=GBlive&amp;_a=contents" name="original_ref_skeleton_git_url"/>
+  <meta content="2017-09-15 03:44 AM" name="updated_at"/>
+  <meta content="02ccad51-37ec-0c77-635f-8324692c3c23" name="document_id"/>
+  <meta content="5dcb9e22-a8b3-c7ab-87a5-a1d162eb3c3c" name="document_version_independent_id"/>
+  <meta content="powershell" name="page_type"/>
+  <meta content="command" name="page_kind"/>
+  <meta content="manage" name="ms.mktglfcycl"/>
+  <meta content="library" name="ms.sitesec"/>
+  <meta content="brianlic" name="ms.author"/>
+  <meta content="brianlic-msft" name="author"/>
+  <meta content="ClusterAwareUpdating.dll-Help.xml" name="external_help_file"/>
+  <meta content="powershell, cmdlet" name="keywords"/>
+  <meta content="alanth" name="manager"/>
+  <meta content="12/20/2016" name="ms.date"/>
+  <meta content="w10" name="ms.prod"/>
+  <meta content="powershell-windows" name="ms.technology"/>
+  <meta content="reference" name="ms.topic"/>
+  <meta content="" name="online_version"/>
+  <meta content="2.0.0" name="schema"/>
+  <meta content="B579FEB7-574E-4039-8F0C-F713BC160B9B" name="ms.assetid"/>
+  <meta content="powershell" name="ms.devlang"/>
+  <meta content="INDEX, FOLLOW" name="ROBOTS"/>
+  <meta content="/powershell/windows/bread/toc.json?view=win10-ps" name="breadcrumb_path"/>
+  <meta content="powershell" name="apiPlatform"/>
+  <meta content="MSDocsHeader-WindowsIT" name="uhfHeaderId"/>
+  <meta content="../win10-ps/toc.json?view=win10-ps" name="toc_rel"/>
+  <link href="https://docs.microsoft.com/en-us/powershell/module/clusterawareupdating/invoke-causcan" rel="canonical"/>
+  <title>
+   Invoke-CauScan
+  </title>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/e4a1f3a3.site.css" rel="stylesheet"/>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/31353636.conceptual.css" rel="stylesheet"/>
+ </head>
+ <body dir="ltr" lang="en-us">
+  <div class="header-holder">
+   <div data-bi-name="header" id="headerAreaHolder">
+    <div id="uhf-placeholder">
+    </div>
+   </div>
+   <div class="disclaimer-holder" id="disclaimer-holder">
+   </div>
+  </div>
+  <div class="container mainContainer" data-bi-name="body">
+   <div class="content-header" data-bi-name="content-header">
+    <div class="content-header-controls">
+     <button class="contents-button button-border" data-bi-name="contents-expand" type="button">
+      <span class="docon docon-menu">
+      </span>
+      Contents
+     </button>
+    </div>
+    <div class="content-header-controls">
+     <button class="ap-collapse-behavior ap-expanded button-border" data-bi-name="ap-collapse" type="button">
+      <span class="docon docon-exit-mode">
+      </span>
+      Exit focus mode
+     </button>
+    </div>
+   </div>
+   <div class="primary-holder">
+    <main class="content" data-bi-name="content" dir="ltr" id="main" lang="en-us" role="main">
+     <!-- <content> -->
+     <h1>
+      Invoke-Cau
+      <wbr/>
+      Scan
+     </h1>
+     <div class="metadata">
+      <dl class="attributeList">
+       <dt>
+        Module:
+       </dt>
+       <dd>
+        <a data-linktype="relative-path" href="./.html">
+         clusterawareupdating
+        </a>
+       </dd>
+      </dl>
+     </div>
+     <div class="summaryHolder">
+      <div class="summary">
+       Performs a scan of cluster nodes for applicable updates and gets a list of the initial set of updates that are applied to each node in a specified cluster.
+      </div>
+     </div>
+     <h2 class="hiddenAnchor" id="syntax">
+      Syntax
+     </h2>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Invoke-CauScan
+      [[-ClusterName] &lt;String&gt;]
+      [[-CauPluginName] &lt;String[]&gt;]
+      [[-Credential] &lt;PSCredential&gt;]
+      [-CauPluginArguments &lt;Hashtable[]&gt;]
+      [-RunPluginsSerially]
+      [-StopOnPluginFailure]
+      [&lt;CommonParameters&gt;]</code></pre>
+     <h2 id="description">
+      Description
+     </h2>
+     <p>
+      The
+      <strong>
+       Invoke-CauScan
+      </strong>
+      cmdlet performs a scan of cluster nodes for applicable updates and gets a list of the initial set of updates that are applied to each node in a specified cluster.
+Generation of the list can take a few minutes to complete.
+     </p>
+     <p>
+      The preview list includes only an initial set of updates.
+The list does not include updates that might become applicable after the initial updates are installed.
+     </p>
+     <p>
+      If the
+      <strong>
+       Microsoft.HotfixPlugin
+      </strong>
+      plug-in is specified, the scan gets only the list of hotfix files that are discovered on the hotfix file share.
+     </p>
+     <h2 id="examples">
+      Examples
+     </h2>
+     <p>
+      <strong>
+       Example 1: Get a detailed list of the initial set of updates on the specified cluster
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Invoke-CauScan -ClusterName "CONTOSO-FC1" -CauPluginName "Microsoft.WindowsUpdatePlugin" -Verbose</code></pre>
+     <p>
+      This command gets a detailed list of the initial set of updates that would currently be applied to each node in the cluster named CONTOSO-FC1.
+The list is based on the updates that would be applied by the
+      <strong>
+       Microsoft.WindowsUpdatePlugin
+      </strong>
+      plug-in, which is the default plug-in.
+The preview list includes only an initial set of updates, and does not include updates that might become applicable only after the initial updates are installed.
+     </p>
+     <p>
+      <strong>
+       Example 2: Get a detailed list of the initial set of updates on the specified cluster using a query string
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt;$SecPasswd = ConvertTo-SecureString "PlainTextPassword" -AsPlainText -Force
+PS C:\&gt; $Cred = New-Object System.Management.Automation.PSCredential ("username", $SecPasswd)
+PS C:\&gt; Invoke-CauScan -ClusterName CONTOSO-FC1 -CauPluginName Microsoft.WindowsUpdatePlugin, Microsoft.HotfixPlugin -CauPluginArguments @{'QueryString'="IsInstalled=0 and Type='Software' and IsHidden=0"},@{'HotfixRootFolderPath' = '\\CauHotfixSrv\shareName'} -Credential $Cred</code></pre>
+     <p>
+      This example gets a detailed list of the initial set of updates that would currently be applied to each node in the cluster named CONTOSO-FC1.
+The list is based on the updates that would be applied by the
+      <strong>
+       Microsoft.WindowsUpdatePlugin
+      </strong>
+      plug-in, using a specified query string, and the
+      <strong>
+       Microsoft.HotfixPlugin
+      </strong>
+      , after the necessary hotfixes and the hotfix configuration file have been downloaded to \\CauHotfixSrv\shareName.
+This example also shows how to pass the administrative credentials for cluster CONTOSO-FC1 to the cmdlet.
+     </p>
+     <h2 id="optional-parameters">
+      Optional Parameters
+     </h2>
+     <div class="parameterName stack">
+      -CauPluginArguments
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a set of name=value pairs for each updating plug-in to use.
+For instance, to specify a
+       <strong>
+        Domain
+       </strong>
+       argument for one plug-in:
+      </p>
+      <ul>
+       <li>
+        <code>
+         @{Domain=Domain.local}
+        </code>
+        You can specify multiple pairs in a set separated with semicolons.
+For instance:
+       </li>
+       <li>
+        <code>
+         @{name1=value1;name2=value2;name3=value3}
+        </code>
+        These name=value pairs must be meaningful to the
+        <em>
+         CauPluginName
+        </em>
+        parameter that you specify. 
+If you specify arguments for more than one plug-in, provide the sets of name=value pairs in the order that you pass values into the
+        <em>
+         CauPluginName
+        </em>
+        parameter, separated by commas.
+For instance:
+       </li>
+       <li>
+        <code>
+         @{name1=value1;name2=value2;name3=value3},@{name4=value4;name5=value5}
+        </code>
+       </li>
+      </ul>
+      <p>
+       For the default
+       <strong>
+        Microsoft.WindowsUpdatePlugin
+       </strong>
+       plug-in, no arguments are needed.
+The following arguments are optional:
+      </p>
+      <ul>
+       <li>
+        <strong>
+         'IncludeRecommendedUpdates'='&lt;Value&gt;'
+        </strong>
+        : Boolean value to indicate that recommended updates will be applied in addition to important updates on each node.
+If not specified, the default value is False.
+       </li>
+       <li>
+        A standard Windows Update Agent query string that specifies criteria used by the Windows Update Agent to filter the updates that will be applied to each node.
+For a name, use
+        <strong>
+         QueryString
+        </strong>
+        and for a value, enclose the full query in quotation marks. 
+If not specified, then the
+        <strong>
+         Microsoft.WindowsUpdatePlugin
+        </strong>
+        plug-in by default uses the following argument:
+       </li>
+       <li>
+        <code>
+         QueryString="IsInstalled=0 and Type='Software' and IsHidden=0 and IsAssigned=1"
+        </code>
+       </li>
+      </ul>
+      <p>
+       For more information about query strings for the default
+       <strong>
+        Microsoft.WindowsUpdatePlugin
+       </strong>
+       plug-in and the criteria such as IsInstalled that can be included in the query strings, see
+       <a data-linktype="external" href="http://go.microsoft.com/fwlink/p/?LinkId=223304">
+        IUpdateSearcher::Search method
+       </a>
+       .
+      </p>
+      <p>
+       For the
+       <strong>
+        Microsoft.HotfixPlugin
+       </strong>
+       plug-in.
+the following argument is required:
+      </p>
+      <ul>
+       <li>
+        <strong>
+         HotfixRootFolderPath=&lt;Path&gt;
+        </strong>
+        : The UNC path to a hotfix root folder in an SMB share with a structure that contains the updates to apply and that contains the hotfix configuration file
+       </li>
+      </ul>
+      <p>
+       The following arguments are optional for the
+       <strong>
+        Microsoft.HotfixPlugin
+       </strong>
+       plug-in:
+      </p>
+      <ul>
+       <li>
+        <strong>
+         RequireSmbEncryption=&lt;Value&gt;
+        </strong>
+        : Boolean value to indicate that SMB Encryption will be enforced for accessing data from the SMB share.
+If not specified, the default value is False.
+To ensure the integrity of the data accessed from the SMB share, the plug-in requires that the share is enabled for either SMB signing or SMB Encryption.
+       </li>
+       <li>
+        <strong>
+         DisableAclChecks=&lt;Value&gt;
+        </strong>
+        : Boolean value to indicate that the plug-in will check for sufficient permissions on the hotfix root folder and the hotfix configuration file.
+If not specified, the default value is False.
+       </li>
+       <li>
+        <strong>
+         HotfixInstallerTimeoutMinutes=&lt;Integer&gt;
+        </strong>
+        : The length of time in minutes that the plug-in allows the hotfix installer process to return.
+If not specified, the default value is 30 minutes.
+       </li>
+       <li>
+        <strong>
+         HotfixConfigFileName=&lt;name&gt;
+        </strong>
+        : Name for the hotfix configuration file.
+If not specified, the default name DefaultHotfixConfig.xml is used.
+       </li>
+      </ul>
+      <p>
+       For more information about required and optional arguments for the
+       <strong>
+        Microsoft.HotfixPlugin
+       </strong>
+       plug-in, see
+       <a data-linktype="external" href="http://go.microsoft.com/fwlink/p/?LinkId=235333">
+        How CAU Plug-ins Work
+       </a>
+       .
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Hashtable[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -CauPluginName
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies one or more plug-ins to use when performing scans.
+You can specify multiple values separated with commas.
+The default is the
+       <strong>
+        Microsoft.WindowsUpdatePlugin
+       </strong>
+       plug-in.
+This plug-in coordinates the Windows Update Agent software resident on each cluster node, the same software that is used when updates are downloaded from Windows Update or Microsoft Update, or from a Windows Server Update Services (WSUS) server.
+For more information about how plug-ins work with Cluster-Aware Updating (CAU), see
+       <a data-linktype="external" href="http://go.microsoft.com/fwlink/p/?LinkId=235333">
+        Cluster-Aware Updating plug-ins
+       </a>
+       .
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         1
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -ClusterName
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the name of the cluster which should be scanned for applicable updates.
+This parameter is only required when this cmdlet is not run on a failover cluster node, or this cmdlet is used to reference a failover cluster different from where the cmdlet is run.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         0
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Credential
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the administrative credentials for the target cluster.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          PSCredential
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         2
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -RunPluginsSerially
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that CAU scans each cluster node for applicable updates and stages the updates for each plug-in in the plug-in order passed into the
+       <em>
+        CauPluginName
+       </em>
+       parameter then multiple plug-ins are used during a scan for updates
+      </p>
+      <p>
+       By default, CAU scans and stages the applicable updates for all plug-ins in parallel.
+This parameter is valid only when multiple plug-ins are specified in
+       <em>
+        CauPluginName
+       </em>
+       parameter.
+If a single plug-in is specified, a warning appears.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -StopOnPluginFailure
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that if a failure occurs during a scan on a node by any plug-in, subsequent scans on the node that are coordinated by the remaining plug-ins are stopped when multiple plug-ins are used during a scan for updates.
+      </p>
+      <p>
+       The parameter is valid only when multiple plug-ins are specified in the
+       <em>
+        CauPluginName
+       </em>
+       parameter.
+If a single plug-in is specified, a warning appears.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="inputs">
+      Inputs
+     </h2>
+     <p>
+      <strong>
+       None
+      </strong>
+     </p>
+     <h2 id="outputs">
+      Outputs
+     </h2>
+     <p>
+      <strong>
+       Microsoft.ClusterAwareUpdating.CauUpdateInfo
+      </strong>
+     </p>
+     <h2 id="related-links">
+      Related Links
+     </h2>
+     <ul>
+      <li>
+       <a data-linktype="relative-path" href="./invoke-caurun.html">
+        Invoke-CauRun
+       </a>
+      </li>
+     </ul>
+     <!-- </content> -->
+    </main>
+    <section class="feedback-section" data-bi-name="feedback-section">
+     <h2 id="feedback">
+      Feedback
+     </h2>
+     <div class="alert choose-feedback-type">
+      <p>
+       We'd love to hear your thoughts. Choose the type you'd like to provide:
+      </p>
+      <div class="choose-feedback-buttons">
+       <a class="button-border feedback-type-product" data-bi-name="product-feedback" href="https://windowsserver.uservoice.com/forums/301869-powershell">
+        Product feedback
+        <span aria-hidden="true" class="docon docon-navigate-external">
+        </span>
+       </a>
+       <div class="button-group">
+        <button class="button-border feedback-sign-in-button" data-bi-name="feedback-sign-in">
+         <span aria-hidden="true" class="docon docon-brand-github">
+         </span>
+         Sign in to give documentation feedback
+        </button>
+        <button aria-controls="feedback-form" aria-expanded="false" class="button-border feedback-form-toggle" data-bi-name="documentation-feedback" hidden="">
+         Content feedback
+        </button>
+        <div auto-align="" class="dropdown has-caret">
+         <button aria-controls="fbm0" aria-expanded="false" aria-haspopup="true" aria-label="Expand documentation feedback menu" class="button-border dropdown-trigger" data-bi-name="documentation-feedback-menu">
+          <span aria-hidden="true" class="docon docon-chevron-down-light">
+          </span>
+         </button>
+         <div class="dropdown-menu documentation-feedback-menu" id="fbm0" role="menu">
+          You may also leave feedback
+          <a data-bi-name="create-issue-on-github" href="{0}">
+           directly on GitHub
+           <span aria-hidden="true" class="docon docon-navigate-external">
+           </span>
+          </a>
+          .
+         </div>
+        </div>
+       </div>
+      </div>
+      <p>
+       <small>
+        Our new feedback system is built on GitHub Issues. Read about this change in
+        <a href="https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs">
+         our blog post
+        </a>
+        .
+       </small>
+      </p>
+     </div>
+     <form accept-charset="UTF-8" action="javascript:" autocomplete="off" class="feedback-form" hidden="" id="feedback-form">
+      <h3 class="feedback-form-heading current-user">
+       <img alt="Avatar" aria-hidden="true" class="avatar" height="36" width="36"/>
+       <span aria-hidden="true" class="username">
+       </span>
+       <span class="visually-hidden">
+        Liquid error: Can't find the localized string giveDocumentationFeedback for template Conceptual.
+       </span>
+      </h3>
+      <label>
+       <span class="visually-hidden">
+        Title
+       </span>
+       <input name="title" pattern=".*\w.*" placeholder="Title" required="" type="text"/>
+      </label>
+      <label>
+       <span class="visually-hidden">
+        Leave a comment
+       </span>
+       <textarea name="body" placeholder="Leave a comment" required=""></textarea>
+      </label>
+      <div class="action-container">
+       <button class="primary-action" name="submit" type="submit">
+        Submit feedback
+       </button>
+      </div>
+     </form>
+     <div class="feedback-status alert busy" role="alert">
+      <p>
+       Loading feedback...
+      </p>
+     </div>
+     <div class="feedback-tab-group tabGroup" data-tab-group-independent="" hidden="">
+      <ul role="tablist">
+       <li role="presentation">
+        <a aria-controls="tabpanel-issues-open" aria-label="Open Issues" data-tab="issues-open" href="#tabpanel-issues-open" role="tab">
+        </a>
+       </li>
+       <li role="presentation">
+        <a aria-controls="tabpanel-issues-closed" aria-label="Closed Issues" data-tab="issues-closed" href="#tabpanel-issues-closed" role="tab">
+        </a>
+       </li>
+      </ul>
+      <section data-tab="issues-open" id="tabpanel-issues-open" role="tabpanel">
+       <div class="no-issues-placeholder">
+        There are no open issues
+       </div>
+       <ul aria-label="Open Issues" class="github-issues-list">
+       </ul>
+      </section>
+      <section data-tab="issues-closed" id="tabpanel-issues-closed" role="tabpanel">
+       <div class="no-issues-placeholder">
+        There are no closed issues
+       </div>
+       <ul aria-label="Closed Issues" class="github-issues-list">
+       </ul>
+      </section>
+     </div>
+     <div class="action-container">
+      <a class="view-on-github" data-bi-name="view-on-github" hidden="" href="https://github.com/MicrosoftDocs/windows-powershell-docs/issues">
+       <span aria-hidden="true" class="docon docon-brand-github">
+       </span>
+       <span>
+        View on GitHub
+       </span>
+       <span aria-hidden="true" class="docon docon-navigate-external">
+       </span>
+      </a>
+     </div>
+    </section>
+   </div>
+  </div>
+  <div class="openfeedback-container" id="openFeedbackContainer">
+  </div>
+  <div class="action-panel">
+  </div>
+ </body>
+</html>

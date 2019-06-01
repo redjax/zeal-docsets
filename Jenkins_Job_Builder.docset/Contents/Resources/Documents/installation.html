@@ -1,0 +1,185 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Installation &#8212; Jenkins Job Builder 2.0.0.0b3.dev264 documentation</title>
+    
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '2.0.0.0b3.dev264',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="Jenkins Job Builder 2.0.0.0b3.dev264 documentation" href="index.html" />
+    <link rel="next" title="Configuration File" href="execution.html" />
+    <link rel="prev" title="Quick Start Guide" href="quick-start.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="execution.html" title="Configuration File"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="quick-start.html" title="Quick Start Guide"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Jenkins Job Builder 2.0.0.0b3.dev264 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="installation">
+<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
+<p>To install Jenkins Job Builder from source, run:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">user</span> <span class="n">jenkins</span><span class="o">-</span><span class="n">job</span><span class="o">-</span><span class="n">builder</span>
+</pre></div>
+</div>
+<p>A virtual environment is recommended for development.  For example, Jenkins
+Job Builder may be installed from the top level directory:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ virtualenv .venv
+$ source .venv/bin/activate
+$ pip install -r test-requirements.txt -e .
+</pre></div>
+</div>
+<p>Alternatively, the current release can be installed from pypi:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">jenkins</span><span class="o">-</span><span class="n">job</span><span class="o">-</span><span class="n">builder</span>
+</pre></div>
+</div>
+<p>The OpenStack project uses Puppet to manage its infrastructure
+systems, including Jenkins.  If you use Puppet, you can use the
+<a class="reference external" href="https://git.openstack.org/cgit/openstack-infra/puppet-jenkins/tree/">OpenStack Jenkins module</a> to install Jenkins Job Builder.</p>
+<div class="section" id="documentation">
+<h2>Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h2>
+<p>Documentation is included in the <code class="docutils literal"><span class="pre">doc</span></code> folder. To generate docs
+locally execute the command:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">tox</span> <span class="o">-</span><span class="n">e</span> <span class="n">docs</span>
+</pre></div>
+</div>
+<p>The generated documentation is then available under
+<code class="docutils literal"><span class="pre">doc/build/html/index.html</span></code>.</p>
+<p>As over time URLs change or become stale there is also a testenv available
+to verify any links added. To run locally execute the command:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">tox</span> <span class="o">-</span><span class="n">e</span> <span class="n">docs</span><span class="o">-</span><span class="n">linkcheck</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>Note: When behind a proxy it is necessary to use <code class="docutils literal"><span class="pre">TOX_TESTENV_PASSENV</span></code>
+to pass any proxy settings for this test to be able to check links are
+valid.</li>
+</ul>
+</div>
+<div class="section" id="unit-tests">
+<h2>Unit Tests<a class="headerlink" href="#unit-tests" title="Permalink to this headline">¶</a></h2>
+<p>Unit tests have been included and are in the <code class="docutils literal"><span class="pre">tests</span></code> folder.  We recently
+started including unit tests as examples in our documentation so to keep the
+examples up to date it is very important that we include unit tests for
+every module.  To run the unit tests, execute the command:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">tox</span> <span class="o">-</span><span class="n">e</span> <span class="n">py27</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>Note: View <code class="docutils literal"><span class="pre">tox.ini</span></code> to run tests on other versions of Python.</li>
+</ul>
+</div>
+<div class="section" id="test-coverage">
+<h2>Test Coverage<a class="headerlink" href="#test-coverage" title="Permalink to this headline">¶</a></h2>
+<p>To measure test coverage, execute the command:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">tox</span> <span class="o">-</span><span class="n">e</span> <span class="n">cover</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Installation</a><ul>
+<li><a class="reference internal" href="#documentation">Documentation</a></li>
+<li><a class="reference internal" href="#unit-tests">Unit Tests</a></li>
+<li><a class="reference internal" href="#test-coverage">Test Coverage</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="quick-start.html"
+                        title="previous chapter">Quick Start Guide</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="execution.html"
+                        title="next chapter">Configuration File</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/installation.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="execution.html" title="Configuration File"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="quick-start.html" title="Quick Start Guide"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Jenkins Job Builder 2.0.0.0b3.dev264 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2012, Jenkins Job Builder Maintainers.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.9.
+    </div>
+  </body>
+</html>

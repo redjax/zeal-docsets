@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html class="no-js hasSidebar hasPageActions hasBreadcrumb conceptual" data-authenticated="false" data-render="docs" dir="ltr" lang="en-us">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Get-ItemProperty (Microsoft.PowerShell.Management)" property="og:title"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" property="og:image"/>
+  <meta content="summary" name="twitter:card"/>
+  <meta content="@docsmsft" name="twitter:site"/>
+  <meta content="Get-ItemProperty (Microsoft.PowerShell.Management)" name="twitter:title"/>
+  <meta content="The Get-ItemProperty cmdlet gets the properties of the specified items. For example, you can use this cmdlet to get the value of the LastAccessTime property of a file object. You can also use this cmâ¦" name="twitter:description"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" name="twitter:image"/>
+  <meta content="Microsoft Logo" name="twitter:image:alt"/>
+  <meta content="The Get-ItemProperty cmdlet gets the properties of the specified items. For example, you can use this cmdlet to get the value of the LastAccessTime property of a file object. You can also use this cmâ¦" name="description"/>
+  <meta content="Docs" name="search.ms_sitename"/>
+  <meta content="PowerShell_PowerShell-docs_reference" name="search.ms_docsetname"/>
+  <meta content="0" name="version"/>
+  <meta content="en-us" name="locale"/>
+  <meta content="Docs" name="site_name"/>
+  <meta content="PowerShell" name="search.ms_product"/>
+  <meta content="PowerShell.PowerShell_PowerShell-docs_reference" name="depot_name"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/446813f2b0922607a6ae1d2df7a11be56edfa4c1/reference/6/Microsoft.PowerShell.Management/Get-ItemProperty.md" name="ref_skeleton_gitcommit"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/live/reference/6/Microsoft.PowerShell.Management/Get-ItemProperty.md" name="original_ref_skeleton_git_url"/>
+  <meta content="2018-03-30 03:35 PM" name="updated_at"/>
+  <meta content="8cdd5e6e-d51d-b43f-2405-3e9c8fb00c69" name="document_id"/>
+  <meta content="167b4239-6292-1407-9b18-d906802ecdb5" name="document_version_independent_id"/>
+  <meta content="powershell" name="page_type"/>
+  <meta content="command" name="page_kind"/>
+  <meta content="06/09/2017" name="ms.date"/>
+  <meta content="2.0.0" name="schema"/>
+  <meta content="powershell,cmdlet" name="keywords"/>
+  <meta content="http://go.microsoft.com/fwlink/?LinkId=821588" name="online_version"/>
+  <meta content="Microsoft.PowerShell.Commands.Management.dll-Help.xml" name="external_help_file"/>
+  <meta content="powershell" name="ms.devlang"/>
+  <meta content="INDEX, FOLLOW" name="ROBOTS"/>
+  <meta content="sdwheeler" name="author"/>
+  <meta content="sewhee" name="ms.author"/>
+  <meta content="carmonm" name="manager"/>
+  <meta content="/powershell/bread-pscore/toc.yml?view=powershell-6" name="breadcrumb_path"/>
+  <meta content="powershell" name="apiPlatform"/>
+  <meta content="reference" name="ms.topic"/>
+  <meta content="windows, macos, linux" name="ms.tgt_pltfr"/>
+  <meta content="powershell-scripting" name="ms.technology"/>
+  <meta content="powershell" name="ms.prod"/>
+  <meta content="MSDocsHeader-Powershell" name="uhfHeaderId"/>
+  <meta content="../psdocs/toc.json?view=powershell-6" name="toc_rel"/>
+  <link href="https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.management/get-itemproperty" rel="canonical"/>
+  <title>
+   Get-ItemProperty
+  </title>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/60aac04b.site.css" rel="stylesheet"/>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/fdb8a38a.conceptual.css" rel="stylesheet"/>
+ </head>
+ <body dir="ltr" lang="en-us">
+  <div class="header-holder">
+   <div data-bi-name="header" id="headerAreaHolder">
+    <div id="uhf-placeholder">
+    </div>
+   </div>
+   <div class="disclaimer-holder" id="disclaimer-holder">
+   </div>
+  </div>
+  <div class="container mainContainer" data-bi-name="body">
+   <div class="content-header" data-bi-name="content-header">
+    <div class="content-header-controls">
+     <button class="contents-button button-border" data-bi-name="contents-expand" type="button">
+      <span class="docon docon-menu">
+      </span>
+      Contents
+     </button>
+    </div>
+    <div class="content-header-controls">
+     <button class="ap-collapse-behavior ap-expanded button-border" data-bi-name="ap-collapse" type="button">
+      <span class="docon docon-exit-mode">
+      </span>
+      Exit focus mode
+     </button>
+    </div>
+   </div>
+   <div class="primary-holder">
+    <main class="content" data-bi-name="content" dir="ltr" id="main" lang="en-us" role="main">
+     <!-- <content> -->
+     <h1>
+      Get-Item
+      <wbr/>
+      Property
+     </h1>
+     <div class="metadata">
+      <dl class="attributeList">
+       <dt>
+        Module:
+       </dt>
+       <dd>
+        <a data-linktype="relative-path" href="./Microsoft.PowerShell.Management.html">
+         Microsoft.PowerShell.Management
+        </a>
+       </dd>
+      </dl>
+     </div>
+     <div class="summaryHolder">
+      <div class="summary">
+       Gets the properties of a specified item.
+      </div>
+     </div>
+     <h2 class="hiddenAnchor" id="syntax">
+      Syntax
+     </h2>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Get-ItemProperty
+   [-Path] &lt;String[]&gt;
+   [[-Name] &lt;String[]&gt;]
+   [-Filter &lt;String&gt;]
+   [-Include &lt;String[]&gt;]
+   [-Exclude &lt;String[]&gt;]
+   [-Credential &lt;PSCredential&gt;]
+   [-UseTransaction]
+   [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Get-ItemProperty
+   -LiteralPath &lt;String[]&gt;
+   [[-Name] &lt;String[]&gt;]
+   [-Filter &lt;String&gt;]
+   [-Include &lt;String[]&gt;]
+   [-Exclude &lt;String[]&gt;]
+   [-Credential &lt;PSCredential&gt;]
+   [-UseTransaction]
+   [&lt;CommonParameters&gt;]</code></pre>
+     <h2 id="description">
+      Description
+     </h2>
+     <p>
+      The
+      <strong>
+       Get-ItemProperty
+      </strong>
+      cmdlet gets the properties of the specified items.
+For example, you can use this cmdlet to get the value of the LastAccessTime property of a file object.
+You can also use this cmdlet to view registry entries and their values.
+     </p>
+     <h2 id="examples">
+      Examples
+     </h2>
+     <p>
+      <strong>
+       Example 1: Get information about a specific directory
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-ItemProperty C:\Windows</code></pre>
+     <p>
+      This command gets information about the C:\Windows directory.
+     </p>
+     <p>
+      <strong>
+       Example 2: Get the properties of a specific file
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-ItemProperty C:\Test\Weather.xls | Format-List</code></pre>
+     <p>
+      This command gets the properties of the C:\Test\Weather.xls file.
+The result is piped to the Format-List cmdlet to display the output as a list.
+     </p>
+     <p>
+      <strong>
+       Example 3: Display the value name and data of registry entries in a registry subkey
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-ItemProperty -Path HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion</code></pre>
+     <p>
+      This command displays the value name and data of each of the registry entries contained in the CurrentVersion registry subkey.
+Note that the command requires that there is a Windows PowerShell drive named HKLM: that is mapped to the HKEY_LOCAL_MACHINE hive of the registry.
+A drive with that name and mapping is available in Windows PowerShell by default.
+Alternatively, the path to this registry subkey can be specified by using the following alternative path that begins with the provider name followed by two colons:
+     </p>
+     <p>
+      Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion.
+     </p>
+     <p>
+      <strong>
+       Example 4: Get the value name and data of a registry entry in a registry subkey
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-ItemProperty -path HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion -name "ProgramFilesDir"</code></pre>
+     <p>
+      This command gets the value name and data of the ProgramFilesDir registry entry in the CurrentVersion registry subkey.
+The command uses the
+      <em>
+       Path
+      </em>
+      parameter to specify the subkey and the Name parameter to specify the value name of the entry.
+     </p>
+     <p>
+      The command uses a back tick or grave accent (`), the Windows PowerShell continuation character, to continue the command on the second line.
+     </p>
+     <p>
+      <strong>
+       Example 5: Get the value names and data of registry entries in a registry key
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-ItemProperty -path HKLM:\SOFTWARE\Microsoft\PowerShell\1\PowerShellEngine
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ApplicationBase         : C:\Windows\system32\WindowsPowerShell\v1.0\
+
+ConsoleHostAssemblyName : Microsoft.PowerShell.ConsoleHost, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, ProcessorArchitecture=msil
+
+PowerShellVersion       : 2.0
+
+RuntimeVersion          : v2.0.50727
+
+CTPVersion              : 5
+
+PSCompatibleVersion     : 1.0,2.0</code></pre>
+     <p>
+      This command gets the value names and data of the registry entries in the PowerShellEngine registry key.
+The results are shown in the following sample output.
+     </p>
+     <p>
+      <strong>
+       Example 6: Get, format, and display the results of registry values and data
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-ItemProperty -path HKLM:\SOFTWARE\Microsoft\PowerShell\1\ShellIds\Microsoft.PowerShell
+
+
+
+Path                                                        ExecutionPolicy
+
+----                                                        ---------------
+
+C:\Windows\system32\WindowsPowerShell\v1.0\powershell.exe   RemoteSigned
+
+
+
+PS C:\&gt; Get-ItemProperty -path HKLM:\SOFTWARE\Microsoft\PowerShell\1\ShellIds\Microsoft.PowerShell | Format-List -property *
+
+
+
+PSPath          : Microsoft.PowerShell.Core\Registry::HKEY_LOCAL_MACHINE\Software\Microsoft\PowerShell\1\ShellIds\Micro
+
+soft.PowerShell
+
+PSParentPath    : Microsoft.PowerShell.Core\Registry::HKEY_LOCAL_MACHINE\Software\Microsoft\PowerShell\1\ShellIds
+
+PSChildName     : Microsoft.PowerShell
+
+PSDrive         : HKLM
+
+PSProvider      : Microsoft.PowerShell.Core\Registry
+
+Path            : C:\Windows\system32\WindowsPowerShell\v1.0\powershell.exe
+
+ExecutionPolicy : RemoteSigned</code></pre>
+     <p>
+      This example shows how to format the output of a
+      <strong>
+       Get-ItemProperty
+      </strong>
+      command in a list to make it easy to see the registry values and data and to make it easy to interpret the results.
+     </p>
+     <p>
+      The first command uses the
+      <strong>
+       Get-ItemProperty
+      </strong>
+      cmdlet to get the registry entries in the Microsoft.PowerShell subkey.
+This subkey stores options for the default shell for Windows PowerShell.
+The results are shown in the following sample output.
+     </p>
+     <p>
+      The output shows that there are two registry entries, Path and ExecutionPolicy.
+When a registry key contains fewer than five entries, by default it is displayed in a table, but it is often easier to view in a list.
+     </p>
+     <p>
+      The second command uses the same
+      <strong>
+       Get-ItemProperty
+      </strong>
+      command.
+However, this time, the command uses a pipeline operator (|) to send the results of the command to the
+      <strong>
+       Format-List
+      </strong>
+      cmdlet.
+The
+      <strong>
+       Format-List
+      </strong>
+      command uses the Property parameter with a value of * (all) to display all of the properties of the objects in a list.
+The results are shown in the following sample output.
+     </p>
+     <p>
+      The resulting display shows the Path and ExecutionPolicy registry entries, along with several less familiar properties of the registry key object.
+The other properties, prefixed with PS, are properties of Windows PowerShell custom objects, such as the objects that represent the registry keys.
+     </p>
+     <h2 id="required-parameters">
+      Required Parameters
+     </h2>
+     <div class="parameterName stack">
+      -LiteralPath
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a path to the item property.
+The value of
+       <em>
+        LiteralPath
+       </em>
+       is used exactly as it is typed.
+No characters are interpreted as wildcards.
+If the path includes escape characters, enclose it in single quotation marks.
+Single quotation marks tell Windows PowerShell not to interpret any characters as escape sequences.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         PSPath
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Path
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the path to the item or items.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         1
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName, ByValue)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="optional-parameters">
+      Optional Parameters
+     </h2>
+     <div class="parameterName stack">
+      -Credential
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a user account that has permission to perform this action.
+The default is the current user.
+      </p>
+      <p>
+       Type a user name, such as User01 or Domain01\User01, or enter a
+       <strong>
+        PSCredential
+       </strong>
+       object, such as one generated by the Get-Credential cmdlet.
+If you type a user name, you will be prompted for a password.
+      </p>
+      <p>
+       This parameter is not supported by any providers installed with Windows PowerShell.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          PSCredential
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Exclude
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies, as a string array, an item or items that this cmdlet excludes from the operation.
+Wildcards are permitted.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Filter
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a filter in the provider's format or language.
+The value of this parameter qualifies the
+       <em>
+        Path
+       </em>
+       parameter.
+The syntax of the filter, including the use of wildcards, depends on the provider.
+Filters are more efficient than other parameters, because the provider applies them when this cmdlet gets the objects rather than having Windows PowerShell filter the objects after they are retrieved.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Include
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies, as a string array, an item or items that this cmdlet includes in the operation.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Name
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the name of the property or properties to retrieve.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         PSProperty
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         2
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -UseTransaction
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Includes the command in the active transaction.
+This parameter is valid only when a transaction is in progress.
+For more information, see Includes the command in the active transaction.
+This parameter is valid only when a transaction is in progress.
+For more information, see
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         usetx
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="inputs">
+      Inputs
+     </h2>
+     <p>
+      <strong>
+       System.String
+      </strong>
+     </p>
+     <p>
+      You can pipe a string that contains a path to Get-ItemProperty.
+     </p>
+     <h2 id="outputs">
+      Outputs
+     </h2>
+     <p>
+      <strong>
+       System.Boolean, System.String, System.DateTime
+      </strong>
+     </p>
+     <p>
+      Get-ItemProperty returns an object for each item property that it gets.
+The object type depends on the object that is retrieved.
+For example, in a file system drive, it might return a file or folder.
+     </p>
+     <h2 id="notes">
+      Notes
+     </h2>
+     <ul>
+      <li>
+       The Get-ItemProperty cmdlet is designed to work with the data exposed by any provider. To list the providers available in your session, type "Get-PSProvider". For more information, see about_Providers.
+      </li>
+     </ul>
+     <p>
+      *
+     </p>
+     <h2 id="related-links">
+      Related Links
+     </h2>
+     <ul>
+      <li>
+       <a data-linktype="relative-path" href="clear-itemproperty.html">
+        Clear-ItemProperty
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="copy-itemproperty.html">
+        Copy-ItemProperty
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="move-itemproperty.html">
+        Move-ItemProperty
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="new-itemproperty.html">
+        New-ItemProperty
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="remove-itemproperty.html">
+        Remove-ItemProperty
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="rename-itemproperty.html">
+        Rename-ItemProperty
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="set-itemproperty.html">
+        Set-ItemProperty
+       </a>
+      </li>
+     </ul>
+     <!-- </content> -->
+    </main>
+    <div class="note alert feedback-system-change-alert">
+     <p>
+      Note
+     </p>
+     <p>
+      The feedback system for this content will be changing soon. Old comments will not be carried over. If content within a comment thread is important to you, please save a copy. For more information on the upcoming change,
+      <a href="https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs">
+       we invite you to read our blog post
+      </a>
+      .
+     </p>
+    </div>
+    <div data-bi-name="comments" id="comments-container" role="form">
+    </div>
+   </div>
+  </div>
+  <div class="openfeedback-container" id="openFeedbackContainer">
+  </div>
+  <div class="action-panel">
+  </div>
+ </body>
+</html>

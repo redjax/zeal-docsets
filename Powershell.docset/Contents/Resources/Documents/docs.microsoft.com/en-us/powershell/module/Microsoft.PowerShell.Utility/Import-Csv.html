@@ -1,0 +1,1184 @@
+<!DOCTYPE html>
+<html class="no-js hasSidebar hasPageActions hasBreadcrumb conceptual" data-authenticated="false" data-render="docs" dir="ltr" lang="en-us">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Import-Csv (Microsoft.PowerShell.Utility)" property="og:title"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" property="og:image"/>
+  <meta content="summary" name="twitter:card"/>
+  <meta content="@docsmsft" name="twitter:site"/>
+  <meta content="Import-Csv (Microsoft.PowerShell.Utility)" name="twitter:title"/>
+  <meta content="The Import-Csv cmdlet creates table-like custom objects from the items in CSV files. Each column in the CSV file becomes a property of the custom object and the items in rows become the property valuâ¦" name="twitter:description"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" name="twitter:image"/>
+  <meta content="Microsoft Logo" name="twitter:image:alt"/>
+  <meta content="The Import-Csv cmdlet creates table-like custom objects from the items in CSV files. Each column in the CSV file becomes a property of the custom object and the items in rows become the property valuâ¦" name="description"/>
+  <meta content="Docs" name="search.ms_sitename"/>
+  <meta content="PowerShell_PowerShell-docs_reference" name="search.ms_docsetname"/>
+  <meta content="0" name="version"/>
+  <meta content="en-us" name="locale"/>
+  <meta content="Docs" name="site_name"/>
+  <meta content="PowerShell" name="search.ms_product"/>
+  <meta content="PowerShell.PowerShell_PowerShell-docs_reference" name="depot_name"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/57cd861e6079bc530a60692b1bbf35cfef1d3f35/reference/6/Microsoft.PowerShell.Utility/Import-Csv.md" name="ref_skeleton_gitcommit"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/live/reference/6/Microsoft.PowerShell.Utility/Import-Csv.md" name="original_ref_skeleton_git_url"/>
+  <meta content="2018-03-30 03:35 PM" name="updated_at"/>
+  <meta content="6c0d80df-43a8-276a-58d4-61ca1db5a827" name="document_id"/>
+  <meta content="ae328ab1-dce0-4810-78e9-bd1076056ba4" name="document_version_independent_id"/>
+  <meta content="powershell" name="page_type"/>
+  <meta content="command" name="page_kind"/>
+  <meta content="06/09/2017" name="ms.date"/>
+  <meta content="2.0.0" name="schema"/>
+  <meta content="powershell,cmdlet" name="keywords"/>
+  <meta content="http://go.microsoft.com/fwlink/?LinkId=821815" name="online_version"/>
+  <meta content="Microsoft.PowerShell.Commands.Utility.dll-Help.xml" name="external_help_file"/>
+  <meta content="powershell" name="ms.devlang"/>
+  <meta content="INDEX, FOLLOW" name="ROBOTS"/>
+  <meta content="sdwheeler" name="author"/>
+  <meta content="sewhee" name="ms.author"/>
+  <meta content="carmonm" name="manager"/>
+  <meta content="/powershell/bread-pscore/toc.yml?view=powershell-6" name="breadcrumb_path"/>
+  <meta content="powershell" name="apiPlatform"/>
+  <meta content="reference" name="ms.topic"/>
+  <meta content="windows, macos, linux" name="ms.tgt_pltfr"/>
+  <meta content="powershell-scripting" name="ms.technology"/>
+  <meta content="powershell" name="ms.prod"/>
+  <meta content="MSDocsHeader-Powershell" name="uhfHeaderId"/>
+  <meta content="../psdocs/toc.json?view=powershell-6" name="toc_rel"/>
+  <link href="https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/import-csv" rel="canonical"/>
+  <title>
+   Import-Csv
+  </title>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/60aac04b.site.css" rel="stylesheet"/>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/fdb8a38a.conceptual.css" rel="stylesheet"/>
+ </head>
+ <body dir="ltr" lang="en-us">
+  <div class="header-holder">
+   <div data-bi-name="header" id="headerAreaHolder">
+    <div id="uhf-placeholder">
+    </div>
+   </div>
+   <div class="disclaimer-holder" id="disclaimer-holder">
+   </div>
+  </div>
+  <div class="container mainContainer" data-bi-name="body">
+   <div class="content-header" data-bi-name="content-header">
+    <div class="content-header-controls">
+     <button class="contents-button button-border" data-bi-name="contents-expand" type="button">
+      <span class="docon docon-menu">
+      </span>
+      Contents
+     </button>
+    </div>
+    <div class="content-header-controls">
+     <button class="ap-collapse-behavior ap-expanded button-border" data-bi-name="ap-collapse" type="button">
+      <span class="docon docon-exit-mode">
+      </span>
+      Exit focus mode
+     </button>
+    </div>
+   </div>
+   <div class="primary-holder">
+    <main class="content" data-bi-name="content" dir="ltr" id="main" lang="en-us" role="main">
+     <!-- <content> -->
+     <h1>
+      Import-Csv
+     </h1>
+     <div class="metadata">
+      <dl class="attributeList">
+       <dt>
+        Module:
+       </dt>
+       <dd>
+        <a data-linktype="relative-path" href="./Microsoft.PowerShell.Utility.html">
+         Microsoft.PowerShell.Utility
+        </a>
+       </dd>
+      </dl>
+     </div>
+     <div class="summaryHolder">
+      <div class="summary">
+       Creates table-like custom objects from the items in a CSV file.
+      </div>
+     </div>
+     <h2 class="hiddenAnchor" id="syntax">
+      Syntax
+     </h2>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Import-Csv
+      [[-Delimiter] &lt;Char&gt;]
+      [[-Path] &lt;String[]&gt;]
+      [-LiteralPath &lt;String[]&gt;]
+      [-Header &lt;String[]&gt;]
+      [-Encoding &lt;String&gt;]
+      [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Import-Csv
+      [[-Path] &lt;String[]&gt;]
+      [-LiteralPath &lt;String[]&gt;]
+      [-UseCulture]
+      [-Header &lt;String[]&gt;]
+      [-Encoding &lt;String&gt;]
+      [&lt;CommonParameters&gt;]</code></pre>
+     <h2 id="description">
+      Description
+     </h2>
+     <p>
+      The
+      <strong>
+       Import-Csv
+      </strong>
+      cmdlet creates table-like custom objects from the items in CSV files. Each column in the CSV file becomes a property of the custom object and the items in rows become the property values.
+      <strong>
+       Import-Csv
+      </strong>
+      works on any CSV file, including files that are generated by the Export-Csv cmdlet.
+     </p>
+     <p>
+      You can use the parameters of the
+      <strong>
+       Import-Csv
+      </strong>
+      cmdlet to specify the column header row and the item delimiter, or direct
+      <strong>
+       Import-Csv
+      </strong>
+      to use the list separator for the current culture as the item delimiter.
+     </p>
+     <p>
+      You can also use the ConvertTo-Csv and ConvertFrom-Csv cmdlets to convert objects to CSV strings (and back). These cmdlets are the same as the
+      <strong>
+       Export-CSV
+      </strong>
+      and
+      <strong>
+       Import-Csv
+      </strong>
+      cmdlets, except that they do not deal with files.
+     </p>
+     <p>
+      If a header row entry in a CSV file contains an empty or null value, PowerShell inserts a default header row name and displays a warning message.
+     </p>
+     <h2 id="examples">
+      Examples
+     </h2>
+     <p>
+      <strong>
+       Example 1: Import process objects
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-Process | Export-Csv Processes.csv
+
+PS C:\&gt; $P = Import-Csv Processes.csv
+
+PS C:\&gt; $P | Get-Member
+
+
+
+
+
+   TypeName: System.Management.Automation.PSCustomObject
+
+
+
+Name                       MemberType   Definition
+
+----                       ----------   ----------
+
+Equals                     Method       bool Equals(System.Object obj)
+
+GetHashCode                Method       int GetHashCode()
+
+GetType                    Method       type GetType()
+
+ToString                   Method       string ToString()
+
+BasePriority               NoteProperty string BasePriority=8
+
+Company                    NoteProperty string Company=Microsoft Corporation
+
+...
+
+PS C:\&gt; $P | Format-Table
+
+Name                   SI Handles VM            WS        PM        NPM    Path
+
+----                   -- ------- --            --        --        ---    ----
+
+ApplicationFrameHost   4  407     2199293489152 15884288  15151104  23792  C:\WINDOWS\system32\ApplicationFrameHost.exe
+
+...
+
+wininit                0  157     2199112204288 4591616   1630208   10376
+
+winlogon               4  233     2199125549056 7659520   2826240   10992  C:\WINDOWS\System32\WinLogon.exe
+
+WinStore.App           4  846     873435136     33652736  26607616  55432  C:\Program Files\WindowsApps\Microsoft.WindowsStore_11712.1001.13.0_x64__8weky...
+
+WmiPrvSE               0  201     2199100219392 8830976   3297280   10632  C:\WINDOWS\system32\wbem\wmiprvse.exe
+
+WmiPrvSE               0  407     2199157727232 18509824  12922880  16624  C:\WINDOWS\system32\wbem\wmiprvse.exe
+
+WUDFHost               0  834     2199310204928 51945472  87441408  24984  C:\Windows\System32\WUDFHost.exe</code></pre>
+     <p>
+      This example shows how to export and then import a CSV file of process objects.
+     </p>
+     <p>
+      The first command uses the Get-Process cmdlet to get the processes on the local computer. It uses a pipeline operator (|) to send the process objects to the Export-Csv cmdlet, which exports the process objects to the Processes.csv file in the current directory.
+     </p>
+     <p>
+      The second command uses the
+      <strong>
+       Import-Csv
+      </strong>
+      cmdlet to import the processes in the Processes.csv file. Then it saves the resulting process objects in the $P variable.
+     </p>
+     <p>
+      The third command uses a pipeline operator to pipe the imported objects to the Get-Member cmdlet. The result shows that they are
+      <strong>
+       System.Management.Automation.PSCustomObject
+      </strong>
+      objects, not the
+      <strong>
+       System.Diagnostic.Process
+      </strong>
+      objects that Get-Process returns.
+     </p>
+     <p>
+      Also, because there is no entry type in the formatting files for the CSV version of the process objects, these objects are not formatted in the same way that standard process objects are formatted.
+     </p>
+     <p>
+      To display the objects, use the formatting cmdlets, such as Format-Table and Format-List, or pipe the objects to Out-GridView.
+     </p>
+     <p>
+      <strong>
+       Example 2: Specify the delimiter
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-Process | Export-Csv Processes.csv -Delimiter :
+
+PS C:\&gt; $P = Import-Csv Processes.csv -Delimiter :</code></pre>
+     <p>
+      This example shows how to use the
+      <em>
+       Delimiter
+      </em>
+      parameter of the
+      <strong>
+       Import-Csv
+      </strong>
+      cmdlet.
+     </p>
+     <p>
+      In this example, the processes are exported to a file that uses a colon (:) as a delimiter.
+     </p>
+     <p>
+      When importing, the
+      <strong>
+       Import-Csv
+      </strong>
+      file uses the
+      <em>
+       Delimiter
+      </em>
+      parameter to indicate the delimiter that is used in the file.
+     </p>
+     <p>
+      <strong>
+       Example 3: Specify the current culture for the delimiter
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-Process | Export-Csv Processes.csv -UseCulture
+
+PS C:\&gt; $P = Import-Csv Processes.csv -UseCulture
+
+PS C:\&gt; (Get-Culture).TextInfo.ListSeparator
+
+,</code></pre>
+     <p>
+      This example shows how to use the
+      <em>
+       UseCulture
+      </em>
+      parameter of the
+      <strong>
+       Import-Csv
+      </strong>
+      cmdlet.
+     </p>
+     <p>
+      In this example the processes are exported to a file that uses the culture as a delimiter. The next command imports the objects in the Processes.csv file into the $P variable. It uses the
+      <em>
+       UseCulture
+      </em>
+      parameter to direct
+      <strong>
+       Import-Csv
+      </strong>
+      to use the list separator defined for the current culture.
+     </p>
+     <p>
+      The second command displays the list separator for the current culture. It uses the Get-Culture cmdlet to get the current culture. It uses the dot (.) method to get the TextInfo property of the current culture and the ListSeparator property of the object in TextInfo.
+     </p>
+     <p>
+      In this example, the command returns a comma.
+     </p>
+     <p>
+      <strong>
+       Example 4: Change property names in an imported object
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Start-Job -ScriptBlock { Get-Process } | Export-Csv Jobs.csv
+
+PS C:\&gt; $Header = "State", "MoreData", "StatusMessage", "Location", "Command", "StateInfo", "Finished", "InstanceId", "Id", "Name", "ChildJobs", "PSBeginTime", "PSEndTime", "PSJobTypeName", "Output", "Error", "Progress", "Verbose", "Debug", "Warning", "Information"
+
+
+
+# Delete header from file
+
+
+
+PS C:\&gt; $A = Get-Content Jobs.csv
+
+PS C:\&gt; $A = $A[1..($A.Count - 1)]
+
+PS C:\&gt; $A &gt; Jobs.csv
+
+PS C:\&gt; $J = Import-Csv Jobs.csv -Header $Header
+
+PS C:\&gt; $J
+
+
+
+
+
+State         : Running
+
+MoreData      : True
+
+StatusMessage :
+
+Location      : localhost
+
+Command       :  Get-Process
+
+StateInfo     : Running
+
+Finished      : System.Threading.ManualResetEvent
+
+InstanceId    : c41e709b-80e4-4f15-ad5f-75d1548c6b7c
+
+Id            : 1
+
+Name          : Jobs
+
+ChildJobs     : System.Collections.Generic.List`1[System.Management.Automation.Job]
+
+PSBeginTime   : 2018-01-27 1:03:00 PM
+
+PSEndTime     :
+
+PSJobTypeName : BackgroundJob
+
+Output        : System.Management.Automation.PSDataCollection`1[System.Management.Automation.PSObject]
+
+Error         : System.Management.Automation.PSDataCollection`1[System.Management.Automation.ErrorRecord]
+
+Progress      : System.Management.Automation.PSDataCollection`1[System.Management.Automation.ProgressRecord]
+
+Verbose       : System.Management.Automation.PSDataCollection`1[System.Management.Automation.VerboseRecord]
+
+Debug         : System.Management.Automation.PSDataCollection`1[System.Management.Automation.DebugRecord]
+
+Warning       : System.Management.Automation.PSDataCollection`1[System.Management.Automation.WarningRecord]
+
+Information   : System.Management.Automation.PSDataCollection`1[System.Management.Automation.InformationRecord]</code></pre>
+     <p>
+      This example shows how to use the
+      <em>
+       Header
+      </em>
+      parameter of
+      <strong>
+       Import-Csv
+      </strong>
+      to change the names of properties in the resulting imported object.
+     </p>
+     <p>
+      The first command uses the Start-Job cmdlet to start a background job that runs a Get-Process command on the local computer. A pipeline operator (|) sends the resulting job object to the Export-Csv cmdlet, which converts the job object to CSV format.
+     </p>
+     <p>
+      The second command saves a header in the $Header variable. Unlike the default header, this header uses "MoreData" instead of "HasMoreData" and "StateInfo" instead of "JobStateInfo".
+     </p>
+     <p>
+      The next three commands delete the original header (the first line) from the Jobs.csv file.
+     </p>
+     <p>
+      The sixth command uses the
+      <strong>
+       Import-Csv
+      </strong>
+      cmdlet to import the Jobs.csv file and convert the CSV strings into a CSV version of the job object. The command uses the
+      <em>
+       Header
+      </em>
+      parameter to submit the alternate header. The results are stored in the $J variable.
+     </p>
+     <p>
+      The seventh command displays the object in the $J variable. The resulting object has "MoreData" and "StateInfo" properties, as shown in the command output.
+     </p>
+     <p>
+      <strong>
+       Example 5: Create a custom object using a CSV file
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-Content .\Links.csv
+
+113207,about_Aliases
+
+113208,about_Arithmetic_Operators
+
+113209,about_Arrays
+
+113210,about_Assignment_Operators
+
+113212,about_Automatic_Variables
+
+113213,about_Break
+
+113214,about_Command_Precedence
+
+113215,about_Command_Syntax
+
+144309,about_Comment_Based_Help
+
+113216,about_CommonParameters
+
+113217,about_Comparison_Operators
+
+113218,about_Continue
+
+113219,about_Core_Commands
+
+113220,about_Data_Section
+
+PS C:\&gt; $A = Import-Csv -Path .\Links.csv -Header LinkID, TopicTitle
+
+PS C:\&gt; $A | Get-Member
+
+
+
+
+
+   TypeName: System.Management.Automation.PSCustomObject
+
+
+
+Name        MemberType   Definition
+
+----        ----------   ----------
+
+Equals      Method       bool Equals(System.Object obj)
+
+GetHashCode Method       int GetHashCode()
+
+GetType     Method       type GetType()
+
+ToString    Method       string ToString()
+
+LinkID      NoteProperty string LinkID=113207
+
+TopicTitle  NoteProperty string TopicTitle=about_Aliases
+
+PS C:\&gt; $A | Where-Object TopicTitle -Like "*alias*"
+
+
+
+LinkID TopicTitle
+
+------ ----------
+
+113207 about_Aliases</code></pre>
+     <p>
+      This example shows how to create a custom object in Windows PowerShell by using a CSV file.
+     </p>
+     <p>
+      The first command uses the Get-Content cmdlet to get the Links.csv file.
+     </p>
+     <p>
+      The second command uses the
+      <strong>
+       Import-Csv
+      </strong>
+      cmdlet to import the Links.csv file. The command uses the
+      <em>
+       Header
+      </em>
+      parameter to specify "LinkId" and "TopicTitle" as property names for the new custom objects. The command saves the imported objects in the $A variable.
+     </p>
+     <p>
+      The third command uses the Get-Member cmdlet to get the type and members of the custom objects in the $A variable.
+     </p>
+     <p>
+      The output shows that
+      <strong>
+       Import-Csv
+      </strong>
+      returns a collection of custom objects (
+      <strong>
+       PSCustomObject
+      </strong>
+      ). In addition to some default properties, the custom objects have "LinkId" and "TopicTitle" note properties.
+     </p>
+     <p>
+      This command shows that you can use the custom object like you would any object in Windows PowerShell.
+     </p>
+     <p>
+      The command pipes the custom objects in the $A variable to the
+      <strong>
+       Where-Object
+      </strong>
+      cmdlet, which gets only objects with a "TopicTitle" property that includes "alias".
+     </p>
+     <p>
+      The Where-Object command uses the new simplified command format that does not require symbols, script blocks, or curly braces.
+     </p>
+     <p>
+      <strong>
+       Example 6: Import a CSV that is missing a value
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-Content "\\Server2\c$\Test\Projects.csv"
+
+ProjectID,ProjectName,,Completed
+
+13,Inventory,Redmond,True
+
+440,,FarEast,True
+
+469,Marketing,Europe,False
+
+PS C:\&gt; Import-Csv "\\Server2\c$\Test\Projects.csv"
+
+WARNING: One or more headers were not specified. Default names starting with "H" have been used in place of any missing headers.
+
+
+
+ProjectID ProjectName H1      Completed
+
+--------- ----------- --      ---------
+
+13        Inventory   Redmond True
+
+440                   FarEast True
+
+469       Marketing   Europe  False
+
+
+
+PS C:\&gt; (Import-Csv "\\Server2\c$\Test\Projects.csv").H1
+
+WARNING: One or more headers were not specified. Default names starting with "H" have been used in place of any missing headers.
+
+Redmond
+
+FarEast
+
+Europe</code></pre>
+     <p>
+      This example shows how the
+      <strong>
+       Import-Csv
+      </strong>
+      cmdlet in PowerShell responds when the header row in a CSV file includes a null or empty value.
+     </p>
+     <p>
+      <strong>
+       Import-Csv
+      </strong>
+      substitutes a default name for the header row. The default name becomes the name of the property of the object that
+      <strong>
+       Import-Csv
+      </strong>
+      returns.
+     </p>
+     <p>
+      The first command uses the Get-Content cmdlet to get the Projects.csv file on the "Server02" remote computer. The output shows that the header row of the file is missing a value between "ProjectName" and "Completed."
+     </p>
+     <p>
+      The second command uses the
+      <strong>
+       Import-Csv
+      </strong>
+      cmdlet to import the Projects.csv file.
+     </p>
+     <p>
+      The output shows that
+      <strong>
+       Import-Csv
+      </strong>
+      generates a warning and substitutes a default name, "H1", for the missing header row value.
+"H1" is also used for the name of the object property.
+     </p>
+     <p>
+      The third command uses the dot method to get the value of the "H1" property of the object that
+      <strong>
+       Import-Csv
+      </strong>
+      creates.
+     </p>
+     <h2 id="required-parameters">
+      Required Parameters
+     </h2>
+     <div class="parameterName stack">
+      -UseCulture
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that this cmdlet uses the list separator for the current culture as the item delimiter.
+      </p>
+      <p>
+       The default is based on the culture settings of the Operating System (e.g. en-US culture will return a comma (,) by default).
+      </p>
+      <p>
+       To find the list separator for a culture, use the following command:
+       <code>
+        (Get-Culture).TextInfo.ListSeparator
+       </code>
+       .
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="optional-parameters">
+      Optional Parameters
+     </h2>
+     <div class="parameterName stack">
+      -Delimiter
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the delimiter that separates the property values in the CSV file.
+      </p>
+      <p>
+       The default is a comma (,).
+      </p>
+      <p>
+       Enter a character, such as a colon (:).
+      </p>
+      <p>
+       To specify a semicolon (;), enclose it in quotation marks.
+      </p>
+      <p>
+       If you specify a character other than the actual string delimiter in the file,
+       <strong>
+        Import-Csv
+       </strong>
+       cannot create objects from the CSV strings.
+Instead, it returns the strings.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Char
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         2
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Encoding
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the type of character encoding that was used in the CSV file.
+      </p>
+      <p>
+       The acceptable values for this parameter are:
+      </p>
+      <ul>
+       <li>
+        Unicode
+       </li>
+       <li>
+        UTF7
+       </li>
+       <li>
+        UTF8
+       </li>
+       <li>
+        ASCII
+       </li>
+       <li>
+        UTF32
+       </li>
+       <li>
+        BigEndianUnicode
+       </li>
+       <li>
+        Default
+       </li>
+       <li>
+        OEM
+       </li>
+      </ul>
+      <p>
+       The default is ASCII.
+      </p>
+      <p>
+       This parameter was introduced in Windows PowerShell 3.0.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Parameter Sets:
+        </td>
+        <td>
+         Unicode, UTF7, UTF8, ASCII, UTF32, BigEndianUnicode, Default, OEM
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Header
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies an alternate column header row for the imported file. The column header determines the names of the properties of the object that
+       <strong>
+        Import-Csv
+       </strong>
+       creates.
+      </p>
+      <p>
+       Enter a comma-separated list of the column headers.
+      </p>
+      <p>
+       Enclose each item in quotation marks (single or double).
+      </p>
+      <p>
+       Do not enclose the header string in quotation marks.
+      </p>
+      <p>
+       If you enter fewer column headers than there are columns, the remaining columns will have no header.
+      </p>
+      <p>
+       If you enter more headers than there are columns, the extra headers are ignored.
+      </p>
+      <p>
+       When using the
+       <em>
+        Header
+       </em>
+       parameter, delete the original header row from the CSV file. Otherwise,
+       <strong>
+        Import-Csv
+       </strong>
+       creates an extra object from the items in the header row.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -LiteralPath
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the path to the CSV file to import.
+      </p>
+      <p>
+       Unlike
+       <em>
+        Path
+       </em>
+       , the value of the
+       <em>
+        LiteralPath
+       </em>
+       parameter is used exactly as it is typed. No characters are interpreted as wildcards.
+      </p>
+      <p>
+       If the path includes escape characters, enclose it in single quotation marks. Single quotation marks tell PowerShell not to interpret any characters as escape sequences.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         PSPath
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Path
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the path to the CSV file to import.
+      </p>
+      <p>
+       You can also pipe a path to
+       <strong>
+        Import-Csv
+       </strong>
+       .
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         1
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByValue)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="inputs">
+      Inputs
+     </h2>
+     <p>
+      <strong>
+       System.String
+      </strong>
+     </p>
+     <p>
+      You can pipe a string that contains a path to
+      <strong>
+       Import-Csv
+      </strong>
+      .
+     </p>
+     <h2 id="outputs">
+      Outputs
+     </h2>
+     <p>
+      <strong>
+       Object
+      </strong>
+     </p>
+     <p>
+      This cmdlet returns the objects described by the content in the CSV file.
+     </p>
+     <h2 id="notes">
+      Notes
+     </h2>
+     <ul>
+      <li>
+       Because the imported objects are CSV versions of the object type, they are not recognized and formatted by the PowerShell type formatting entries that format the non-CSV versions of the object type.
+      </li>
+      <li>
+       The result of an
+       <strong>
+        Import-Csv
+       </strong>
+       command is a collection of strings that form a table-like custom object. Each row is a separate string, so you can use the
+       <em>
+        Count
+       </em>
+       property of the object to count the table rows. The columns are the properties of the object and items in the rows are the property values.
+      </li>
+      <li>
+       The column header row determines the number of columns and the column names. The column names are also the names of the properties of the objects. The first row is interpreted to be the column headers, unless you use the
+       <em>
+        Header
+       </em>
+       parameter to specify column headers. If any row has more values than the header row, the additional values are ignored.
+      </li>
+      <li>
+       If the column header row is missing a value or contains a null or empty value,
+       <strong>
+        Import-Csv
+       </strong>
+       uses "H" followed by a number for the missing column header and property name.
+      </li>
+      <li>
+       In the CSV file, each object is represented by a comma-separated list of the property values of the object. The property values are converted to strings (by using the ToString() method of the object), so they are generally represented by the name of the property value. Export-Csv does not export the methods of the object.
+      </li>
+     </ul>
+     <h2 id="related-links">
+      Related Links
+     </h2>
+     <ul>
+      <li>
+       <a data-linktype="relative-path" href="convertfrom-csv.html">
+        ConvertFrom-Csv
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="convertto-csv.html">
+        ConvertTo-Csv
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="export-csv.html">
+        Export-Csv
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="get-culture.html">
+        Get-Culture
+       </a>
+      </li>
+     </ul>
+     <!-- </content> -->
+    </main>
+    <div class="note alert feedback-system-change-alert">
+     <p>
+      Note
+     </p>
+     <p>
+      The feedback system for this content will be changing soon. Old comments will not be carried over. If content within a comment thread is important to you, please save a copy. For more information on the upcoming change,
+      <a href="https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs">
+       we invite you to read our blog post
+      </a>
+      .
+     </p>
+    </div>
+    <div data-bi-name="comments" id="comments-container" role="form">
+    </div>
+   </div>
+  </div>
+  <div class="openfeedback-container" id="openFeedbackContainer">
+  </div>
+  <div class="action-panel">
+  </div>
+ </body>
+</html>

@@ -1,0 +1,1199 @@
+<!DOCTYPE html>
+<html class="no-js hasSidebar hasPageActions hasBreadcrumb conceptual" data-authenticated="false" data-render="docs" dir="ltr" lang="en-us">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Remove-GPPrefRegistryValue (grouppolicy)" property="og:title"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" property="og:image"/>
+  <meta content="summary" name="twitter:card"/>
+  <meta content="@docsmsft" name="twitter:site"/>
+  <meta content="Remove-GPPrefRegistryValue (grouppolicy)" name="twitter:title"/>
+  <meta content="Use this topic to help manage Windows and Windows Server technologies with Windows PowerShell." name="twitter:description"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" name="twitter:image"/>
+  <meta content="Microsoft Logo" name="twitter:image:alt"/>
+  <meta content="Use this topic to help manage Windows and Windows Server technologies with Windows PowerShell." name="description"/>
+  <meta content="Docs" name="search.ms_sitename"/>
+  <meta content="powershell-windows" name="search.ms_docsetname"/>
+  <meta content="0" name="version"/>
+  <meta content="en-us" name="locale"/>
+  <meta content="Docs" name="site_name"/>
+  <meta content="MSDN" name="search.ms_product"/>
+  <meta content="MSDN.powershell-windows" name="depot_name"/>
+  <meta content="https://cpubwin.visualstudio.com/DefaultCollection/powershell/_git/powershell/commit/ced7757924addcaea0b7a244ae4d240e4d28d93a?path=%2fdocset%2fwindows%2fgrouppolicy%2fremove-gpprefregistryvalue.md&amp;_a=contents" name="ref_skeleton_gitcommit"/>
+  <meta content="https://cpubwin.visualstudio.com/DefaultCollection/powershell/_git/powershell?path=%2fdocset%2fwindows%2fgrouppolicy%2fremove-gpprefregistryvalue.md&amp;version=GBlive&amp;_a=contents" name="original_ref_skeleton_git_url"/>
+  <meta content="2017-09-15 03:44 AM" name="updated_at"/>
+  <meta content="3f58137d-35a4-dedf-2b71-b50bcfdd257d" name="document_id"/>
+  <meta content="d69cf94c-fdab-b47e-102f-96c6ef8ed211" name="document_version_independent_id"/>
+  <meta content="powershell" name="page_type"/>
+  <meta content="command" name="page_kind"/>
+  <meta content="manage" name="ms.mktglfcycl"/>
+  <meta content="library" name="ms.sitesec"/>
+  <meta content="brianlic" name="ms.author"/>
+  <meta content="brianlic-msft" name="author"/>
+  <meta content="Microsoft.GroupPolicy.Commands.dll-Help.xml" name="external_help_file"/>
+  <meta content="powershell, cmdlet" name="keywords"/>
+  <meta content="alanth" name="manager"/>
+  <meta content="12/20/2016" name="ms.date"/>
+  <meta content="w10" name="ms.prod"/>
+  <meta content="powershell-windows" name="ms.technology"/>
+  <meta content="reference" name="ms.topic"/>
+  <meta content="" name="online_version"/>
+  <meta content="2.0.0" name="schema"/>
+  <meta content="DD6541F4-5EAD-4360-A26E-FCADCBB6DADF" name="ms.assetid"/>
+  <meta content="powershell" name="ms.devlang"/>
+  <meta content="INDEX, FOLLOW" name="ROBOTS"/>
+  <meta content="/powershell/windows/bread/toc.json?view=win10-ps" name="breadcrumb_path"/>
+  <meta content="powershell" name="apiPlatform"/>
+  <meta content="MSDocsHeader-WindowsIT" name="uhfHeaderId"/>
+  <meta content="../win10-ps/toc.json?view=win10-ps" name="toc_rel"/>
+  <link href="https://docs.microsoft.com/en-us/powershell/module/grouppolicy/remove-gpprefregistryvalue" rel="canonical"/>
+  <title>
+   Remove-GPPrefRegistryValue
+  </title>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/e4a1f3a3.site.css" rel="stylesheet"/>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/31353636.conceptual.css" rel="stylesheet"/>
+ </head>
+ <body dir="ltr" lang="en-us">
+  <div class="header-holder">
+   <div data-bi-name="header" id="headerAreaHolder">
+    <div id="uhf-placeholder">
+    </div>
+   </div>
+   <div class="disclaimer-holder" id="disclaimer-holder">
+   </div>
+  </div>
+  <div class="container mainContainer" data-bi-name="body">
+   <div class="content-header" data-bi-name="content-header">
+    <div class="content-header-controls">
+     <button class="contents-button button-border" data-bi-name="contents-expand" type="button">
+      <span class="docon docon-menu">
+      </span>
+      Contents
+     </button>
+    </div>
+    <div class="content-header-controls">
+     <button class="ap-collapse-behavior ap-expanded button-border" data-bi-name="ap-collapse" type="button">
+      <span class="docon docon-exit-mode">
+      </span>
+      Exit focus mode
+     </button>
+    </div>
+   </div>
+   <div class="primary-holder">
+    <main class="content" data-bi-name="content" dir="ltr" id="main" lang="en-us" role="main">
+     <!-- <content> -->
+     <h1>
+      Remove-GPPref
+      <wbr/>
+      Registry
+      <wbr/>
+      Value
+     </h1>
+     <div class="metadata">
+      <dl class="attributeList">
+       <dt>
+        Module:
+       </dt>
+       <dd>
+        <a data-linktype="relative-path" href="./.html">
+         grouppolicy
+        </a>
+       </dd>
+      </dl>
+     </div>
+     <div class="summaryHolder">
+      <div class="summary">
+       Removes one or more Registry preference items from either Computer Configuration or User Configuration in a GPO.
+      </div>
+     </div>
+     <h2 class="hiddenAnchor" id="syntax">
+      Syntax
+     </h2>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Remove-GPPrefRegistryValue
+      -Guid &lt;Guid&gt;
+      -Context &lt;GpoConfiguration&gt;
+      -Key &lt;String&gt;
+      [-ValueName &lt;String&gt;]
+      [-Order &lt;Int32&gt;]
+      [-Domain &lt;String&gt;]
+      [[-Server] &lt;String&gt;]
+      [-WhatIf]
+      [-Confirm]
+      [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Remove-GPPrefRegistryValue
+      [-Name] &lt;String&gt;
+      -Context &lt;GpoConfiguration&gt;
+      -Key &lt;String&gt;
+      [-ValueName &lt;String&gt;]
+      [-Order &lt;Int32&gt;]
+      [-Domain &lt;String&gt;]
+      [[-Server] &lt;String&gt;]
+      [-WhatIf]
+      [-Confirm]
+      [&lt;CommonParameters&gt;]</code></pre>
+     <h2 id="description">
+      Description
+     </h2>
+     <p>
+      The
+      <strong>
+       Remove-GPPrefRegistryValue
+      </strong>
+      cmdlet removes one or more Registry preference items from either Computer Configuration or User Configuration in a GPO.
+You must specify the
+      <em>
+       Context
+      </em>
+      parameter for the User or Computer to indicate whether to remove the Registry preference item from Computer Configuration or User Configuration.
+You can specify the GPO by its display name or by its GUID.
+     </p>
+     <p>
+      You can specify either a key or a value:
+     </p>
+     <ul>
+      <li>
+       <p>
+        If you specify a key, all Registry preference items that configure that registry key or any of its first-level values are removed from the specified configuration in the GPO.
+Registry preference items that configure subkeys of that key or their values are not affected.
+For a key, specify the
+        <em>
+         Key
+        </em>
+        parameter without the
+        <em>
+         ValueName
+        </em>
+        parameter.
+       </p>
+      </li>
+      <li>
+       <p>
+        If you specify a value, all Registry preference items that configure that registry value are removed from the specified configuration in the GPO.
+For a value, specify the
+        <em>
+         Key
+        </em>
+        parameter without the
+        <em>
+         ValueName
+        </em>
+        parameter.
+       </p>
+      </li>
+     </ul>
+     <p>
+      This cmdlet can take input from the pipeline:
+     </p>
+     <ul>
+      <li>
+       <p>
+        You can pipe GPO objects to this cmdlet to remove a specified Registry preference item from one or more GPOs.
+       </p>
+      </li>
+      <li>
+       <p>
+        You can pipe
+        <strong>
+         PreferencRegistrySetting
+        </strong>
+        objects to this cmdlet to remove one or more Registry preference items from a specified GPO.
+       </p>
+      </li>
+     </ul>
+     <h2 id="examples">
+      Examples
+     </h2>
+     <p>
+      <strong>
+       Example 1: Remove all registry preference item under the specified registry
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Remove-GPPrefRegistryValue -Name "TestGPO" -Context User -Key "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\ExampleKey" -ValueName "ValueOne" 
+DisplayName      : TestGPO 
+DomainName       : contoso.com 
+Owner            : CONTOSO\Domain Admins 
+Id               : 92f79f6c-61ce-47d9-8dc6-f78c5cea93ac 
+GpoStatus        : AllSettingsEnabled 
+Description      : 
+CreationTime     : 2/28/2009 5:15:04 PM 
+ModificationTime : 2/28/2009 5:15:32 PM 
+UserVersion      : AD Version: 5, SysVol Version: 5 
+ComputerVersion  : AD Version: 0, SysVol Version: 0 
+WmiFilter        :</code></pre>
+     <p>
+      This command removes all Registry preference items that configure the registry value HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\ExampleKey ValueOne from User Configuration in the GPO named TestGPO.
+     </p>
+     <p>
+      <strong>
+       Example 2: Remove registry preference items that configure first-level values
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Remove-GPPrefRegistryValue -Name "TestGPO" -Context "Computer" -Key "HKLM\SOFTWARE\Microsoft\ExampleKey" 
+DisplayName      : TestGPO 
+DomainName       : contoso.com 
+Owner            : CONTOSO\Domain Admins 
+Id               : 92f79f6c-61ce-47d9-8dc6-f78c5cea93ac 
+GpoStatus        : AllSettingsEnabled 
+Description      : 
+CreationTime     : 2/28/2009 5:15:04 PM 
+ModificationTime : 2/28/2009 5:15:32 PM 
+UserVersion      : AD Version: 5, SysVol Version: 5 
+ComputerVersion  : AD Version: 0, SysVol Version: 0 
+WmiFilter        :</code></pre>
+     <p>
+      This command removes Registry preference items that configure any first-level values under the registry key HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\ExampleKey or the key itself from Computer Configuration in the GPO named TestGPO.
+     </p>
+     <p>
+      <strong>
+       Example 3: Remove any registry preference items for all GPOs
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-GPO -All | Remove-GPPrefRegistryValue -Context "User" -Key "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\ExampleKey" -ValueName "ValueOne" -ErrorAction SilentlyContinue 
+DisplayName      : TestGPO 
+DomainName       : contoso.com 
+Owner            : CONTOSO\Domain Admins 
+Id               : a83ad1da-9fd4-4005-96b1-7e98042d04de 
+GpoStatus        : AllSettingsEnabled 
+Description      : 
+CreationTime     : 2/28/2009 5:21:05 PM 
+ModificationTime : 2/28/2009 5:21:17 PM 
+UserVersion      : AD Version: 5, SysVol Version: 5 
+ComputerVersion  : AD Version: 0, SysVol Version: 0 
+WmiFilter        : 
+
+
+DisplayName      : TestGPO-1 
+DomainName       : contoso.com 
+Owner            : CONTOSO\Domain Admins 
+Id               : 277eafe8-5dbf-4e3f-86dc-557eee14d0a4 
+GpoStatus        : AllSettingsEnabled 
+Description      : 
+CreationTime     : 2/28/2009 2:35:24 PM 
+ModificationTime : 2/28/2009 5:21:17 PM 
+UserVersion      : AD Version: 0, SysVol Version: 0 
+ComputerVersion  : AD Version: 0, SysVol Version: 0 
+WmiFilter        :</code></pre>
+     <p>
+      This command removes any Registry preference items that configure the registry value "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\ExampleKey ValueOne" from User Configuration for all GPOs in the domain.
+It returns each GPO from which at least one Registry preference item is removed.
+     </p>
+     <p>
+      This cmdlet returns a non-terminating error for each GPO that does not have a Registry preference item associated with the specified registry value.
+In this command, these error messages are suppressed by setting the
+      <em>
+       ErrorAction
+      </em>
+      parameter to SilentlyContinue.
+For more information about the
+      <em>
+       ErrorAction
+      </em>
+      parameter, see about_CommonParameters.
+     </p>
+     <h2 id="required-parameters">
+      Required Parameters
+     </h2>
+     <div class="parameterName stack">
+      -Context
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies whether the Registry preference item (or items) are removed from Computer Configuration or User Configuration in the specified GPO.
+You must specify either User or Computer.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          GpoConfiguration
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Parameter Sets:
+        </td>
+        <td>
+         User, Computer
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Guid
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the GPO from which to remove the Registry preference item by its globally unique identifier (GUID).
+The GUID uniquely identifies the GPO.
+      </p>
+      <p>
+       You can also refer to the
+       <em>
+        Guid
+       </em>
+       parameter by its built-in alias, id.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Guid
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         Id
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Key
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a registry key for which to remove one or more Registry preference items; for instance, HKCU\Control Panel\Colors.
+      </p>
+      <p>
+       You can specify any of the following registry hives: HKEY_CLASSES_ROOT (HKCR), HKEY_CURRENT_USER (HKCU), HKEY_LOCAL_MACHINE (HKLM), HKEY_USERS (HKU), and HKEY_CURRENT_CONFIG (HKCC).
+Any of these hives can be specified for Registry preference items in both Computer Configuration and User Configuration.
+      </p>
+      <p>
+       The
+       <em>
+        Key
+       </em>
+       parameter can be specified with or without the
+       <em>
+        ValueName
+       </em>
+       parameter:
+      </p>
+      <ul>
+       <li>
+        <p>
+         If the
+         <em>
+          ValueName
+         </em>
+         parameter is specified, all Registry preference items that configure the registry value are removed.
+        </p>
+       </li>
+       <li>
+        <p>
+         If the
+         <em>
+          ValueName
+         </em>
+         parameter is not specified, all Registry preference items that configure the registry key and any of its first-level values are removed.
+        </p>
+       </li>
+      </ul>
+      <p>
+       You can also refer to the
+       <em>
+        Key
+       </em>
+       parameter by its built-in alias, FullKeyPath.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         FullKeyPath
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Name
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the GPO from which to remove the Registry preference item by its display name.
+      </p>
+      <p>
+       The display name is not guaranteed to be unique in the domain.
+If another GPO with the same display name exists in the domain an error occurs.
+You can use the Guid parameter to uniquely identify a GPO.
+      </p>
+      <p>
+       You can also refer to the
+       <em>
+        Name
+       </em>
+       parameter by its built-in alias, displayname.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         DisplayName
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         0
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByValue)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="optional-parameters">
+      Optional Parameters
+     </h2>
+     <div class="parameterName stack">
+      -Confirm
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Prompts you for confirmation before running the cmdlet.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         cf
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Domain
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the domain for which this cmdlet runs the operation.
+You must specify the fully qualified domain name (FQDN) of the domain.
+      </p>
+      <p>
+       For the
+       <strong>
+        Remove-GPPrefRegistryValue
+       </strong>
+       cmdlet, the GPO from which to remove the Registry preference item or items must exist in this domain.
+      </p>
+      <p>
+       If you do not specify the
+       <em>
+        Domain
+       </em>
+       parameter, the domain of the user that is running the current session is used.
+(If the cmdlet is being run from a computer startup or shutdown script, the domain of the computer is used.) For more information, see the Notes section in the full Help.
+      </p>
+      <p>
+       If you specify a domain that is different from the domain of the user that is running the current session, a trust must exist between that domain and the domain of the user or the computer.
+      </p>
+      <p>
+       You can also refer to the Domain parameter by its built-in alias, domainname.
+For more information, see about_Aliases.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         DomainName
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Order
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the order in which a Registry preference item is processed relative to other Registry preference items in the GPO when the GPO is applied on a client computer.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Int32
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Server
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the name of the domain controller that this cmdlet contacts to complete the operation.
+You can specify either the fully qualified domain name (FQDN) or the host name.
+      </p>
+      <p>
+       If you do not specify the name by using the
+       <em>
+        Server
+       </em>
+       parameter, the primary domain controller (PDC) emulator is contacted.
+      </p>
+      <p>
+       You can also refer to the
+       <em>
+        Server
+       </em>
+       parameter by its built-in alias, dc.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         DC
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         6
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -ValueName
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the name of a registry value for which to remove all Registry preference items.
+If you specify the
+       <em>
+        ValueName
+       </em>
+       parameter, you must also specify the
+       <em>
+        Key
+       </em>
+       parameter.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -WhatIf
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         wi
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="inputs">
+      Inputs
+     </h2>
+     <p>
+      <strong>
+       Microsoft.GroupPolicy.Gpo, Microsoft.GroupPolicy.PreferenceRegistrySetting
+      </strong>
+     </p>
+     <p>
+      This cmdlet takes a GPO or a
+      <strong>
+       PreferenceRegistrySetting
+      </strong>
+      object as input.
+You can pipe in one or more
+      <strong>
+       PreferenceRegistrySetting
+      </strong>
+      objects to remove one or more Registry preference items from a specified GPO.
+You can pipe in one or more GPO objects, such as Get-GPO, to remove a specified Registry preference item from each GPO.
+Collections that contain GPOs from different domains are not supported.
+     </p>
+     <h2 id="outputs">
+      Outputs
+     </h2>
+     <p>
+      <strong>
+       Microsoft.GroupPolicy.Gpo
+      </strong>
+     </p>
+     <p>
+      This cmdlet returns the GPO from which the Registry preference item or items that have been removed.
+     </p>
+     <h2 id="notes">
+      Notes
+     </h2>
+     <ul>
+      <li>
+       <p>
+        You can use the
+        <em>
+         Domain
+        </em>
+        parameter to explicitly specify the domain for this cmdlet.
+       </p>
+       <p>
+        If you do not explicitly specify the domain, the cmdlet uses a default domain.
+The default domain is the domain that is used to access network resources by the security context under which the current session is running.
+This domain is typically the domain of the user that is running the session.
+For instance, the domain of the user who started the session by opening Windows PowerShell from the Program Files menu, or the domain of a user that is specified in a runas command.
+However, computer startup and shutdown scripts run under the context of the LocalSystem account.
+The LocalSystem account is a built-in local account, and it accesses network resources under the context of the computer account.
+Therefore, when this cmdlet is run from a startup or shutdown script, the default domain is the domain to which the computer is joined.
+       </p>
+      </li>
+     </ul>
+     <h2 id="related-links">
+      Related Links
+     </h2>
+     <ul>
+      <li>
+       <a data-linktype="relative-path" href="./get-gpo.html">
+        Get-GPO
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="./get-gpprefregistryvalue.html">
+        Get-GPPrefRegistryValue
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="./set-gpprefregistryvalue.html">
+        Set-GPPrefRegistryValue
+       </a>
+      </li>
+     </ul>
+     <!-- </content> -->
+    </main>
+    <section class="feedback-section" data-bi-name="feedback-section">
+     <h2 id="feedback">
+      Feedback
+     </h2>
+     <div class="alert choose-feedback-type">
+      <p>
+       We'd love to hear your thoughts. Choose the type you'd like to provide:
+      </p>
+      <div class="choose-feedback-buttons">
+       <a class="button-border feedback-type-product" data-bi-name="product-feedback" href="https://windowsserver.uservoice.com/forums/301869-powershell">
+        Product feedback
+        <span aria-hidden="true" class="docon docon-navigate-external">
+        </span>
+       </a>
+       <div class="button-group">
+        <button class="button-border feedback-sign-in-button" data-bi-name="feedback-sign-in">
+         <span aria-hidden="true" class="docon docon-brand-github">
+         </span>
+         Sign in to give documentation feedback
+        </button>
+        <button aria-controls="feedback-form" aria-expanded="false" class="button-border feedback-form-toggle" data-bi-name="documentation-feedback" hidden="">
+         Content feedback
+        </button>
+        <div auto-align="" class="dropdown has-caret">
+         <button aria-controls="fbm0" aria-expanded="false" aria-haspopup="true" aria-label="Expand documentation feedback menu" class="button-border dropdown-trigger" data-bi-name="documentation-feedback-menu">
+          <span aria-hidden="true" class="docon docon-chevron-down-light">
+          </span>
+         </button>
+         <div class="dropdown-menu documentation-feedback-menu" id="fbm0" role="menu">
+          You may also leave feedback
+          <a data-bi-name="create-issue-on-github" href="{0}">
+           directly on GitHub
+           <span aria-hidden="true" class="docon docon-navigate-external">
+           </span>
+          </a>
+          .
+         </div>
+        </div>
+       </div>
+      </div>
+      <p>
+       <small>
+        Our new feedback system is built on GitHub Issues. Read about this change in
+        <a href="https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs">
+         our blog post
+        </a>
+        .
+       </small>
+      </p>
+     </div>
+     <form accept-charset="UTF-8" action="javascript:" autocomplete="off" class="feedback-form" hidden="" id="feedback-form">
+      <h3 class="feedback-form-heading current-user">
+       <img alt="Avatar" aria-hidden="true" class="avatar" height="36" width="36"/>
+       <span aria-hidden="true" class="username">
+       </span>
+       <span class="visually-hidden">
+        Liquid error: Can't find the localized string giveDocumentationFeedback for template Conceptual.
+       </span>
+      </h3>
+      <label>
+       <span class="visually-hidden">
+        Title
+       </span>
+       <input name="title" pattern=".*\w.*" placeholder="Title" required="" type="text"/>
+      </label>
+      <label>
+       <span class="visually-hidden">
+        Leave a comment
+       </span>
+       <textarea name="body" placeholder="Leave a comment" required=""></textarea>
+      </label>
+      <div class="action-container">
+       <button class="primary-action" name="submit" type="submit">
+        Submit feedback
+       </button>
+      </div>
+     </form>
+     <div class="feedback-status alert busy" role="alert">
+      <p>
+       Loading feedback...
+      </p>
+     </div>
+     <div class="feedback-tab-group tabGroup" data-tab-group-independent="" hidden="">
+      <ul role="tablist">
+       <li role="presentation">
+        <a aria-controls="tabpanel-issues-open" aria-label="Open Issues" data-tab="issues-open" href="#tabpanel-issues-open" role="tab">
+        </a>
+       </li>
+       <li role="presentation">
+        <a aria-controls="tabpanel-issues-closed" aria-label="Closed Issues" data-tab="issues-closed" href="#tabpanel-issues-closed" role="tab">
+        </a>
+       </li>
+      </ul>
+      <section data-tab="issues-open" id="tabpanel-issues-open" role="tabpanel">
+       <div class="no-issues-placeholder">
+        There are no open issues
+       </div>
+       <ul aria-label="Open Issues" class="github-issues-list">
+       </ul>
+      </section>
+      <section data-tab="issues-closed" id="tabpanel-issues-closed" role="tabpanel">
+       <div class="no-issues-placeholder">
+        There are no closed issues
+       </div>
+       <ul aria-label="Closed Issues" class="github-issues-list">
+       </ul>
+      </section>
+     </div>
+     <div class="action-container">
+      <a class="view-on-github" data-bi-name="view-on-github" hidden="" href="https://github.com/MicrosoftDocs/windows-powershell-docs/issues">
+       <span aria-hidden="true" class="docon docon-brand-github">
+       </span>
+       <span>
+        View on GitHub
+       </span>
+       <span aria-hidden="true" class="docon docon-navigate-external">
+       </span>
+      </a>
+     </div>
+    </section>
+   </div>
+  </div>
+  <div class="openfeedback-container" id="openFeedbackContainer">
+  </div>
+  <div class="action-panel">
+  </div>
+ </body>
+</html>

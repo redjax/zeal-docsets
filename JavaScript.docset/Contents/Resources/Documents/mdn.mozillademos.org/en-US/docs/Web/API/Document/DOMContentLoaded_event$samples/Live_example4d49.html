@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    
+<!-- Mirrored from mdn.mozillademos.org/en-US/docs/Web/API/Document/DOMContentLoaded_event$samples/Live_example?revision=1484697 by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 02 May 2019 00:25:41 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+        <meta charset="utf-8">
+        <link href="../../../../../../../developer.mozilla.org/static/build/styles/samples.37902ba3b7fe.css" rel="stylesheet" type="text/css" />
+        
+        <style type="text/css">
+            body {
+  display: grid;
+  grid-template-areas: "control  log";
+}
+
+.controls {
+  grid-area: control;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.event-log {
+  grid-area: log;
+}
+
+.event-log-contents {
+  resize: none;
+}
+
+label, button {
+  display: block;
+}
+
+#reload {
+  height: 2rem;
+}
+
+
+        </style>
+        
+        <title>Document: DOMContentLoaded event</title>
+    </head>
+    <body>
+        
+            <div class="controls">
+  <button id="reload" type="button">Reload</button>
+</div>
+
+<div class="event-log">
+  <label>Event log:</label>
+  <textarea readonly class="event-log-contents" rows="8" cols="30"></textarea>
+</div>
+        
+        
+            <script>
+                const log = document.querySelector('.event-log-contents');
+const reload = document.querySelector('#reload');
+
+reload.addEventListener('click', () => {
+  log.textContent ='';
+  window.setTimeout(() => {
+      window.location.reload(true);
+  }, 200);
+});
+
+window.addEventListener('load', (event) => {
+    log.textContent = log.textContent + 'load\n';
+});
+
+document.addEventListener('readystatechange', (event) => {
+    log.textContent = log.textContent + `readystate: ${document.readyState}\n`;
+});
+
+document.addEventListener('DOMContentLoaded', (event) => {
+    log.textContent = log.textContent + `DOMContentLoaded\n`;
+});
+
+
+            </script>
+        
+    </body>
+
+<!-- Mirrored from mdn.mozillademos.org/en-US/docs/Web/API/Document/DOMContentLoaded_event$samples/Live_example?revision=1484697 by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 02 May 2019 00:25:41 GMT -->
+</html>

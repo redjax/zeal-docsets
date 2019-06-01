@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  
+<!-- Mirrored from mdn.github.io/learning-area/javascript/asynchronous/async-await/simple-refactored-fetch.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 02 May 2019 03:45:31 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset="utf-8">
+    <title>Simple fetch() with async/await</title>
+  </head>
+  <body>
+    <script>
+      async function myFetch() {
+        let response = await fetch('coffee.jpg');
+        let myBlob = await response.blob();
+        
+        let objectURL = URL.createObjectURL(myBlob);
+        let image = document.createElement('img');
+        image.src = objectURL;
+        document.body.appendChild(image);
+      }
+
+      myFetch();
+    </script>
+  </body>
+
+<!-- Mirrored from mdn.github.io/learning-area/javascript/asynchronous/async-await/simple-refactored-fetch.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 02 May 2019 03:45:31 GMT -->
+</html>

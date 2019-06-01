@@ -1,0 +1,1271 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+<title>SCM — Jenkins Job Builder 2.0.0.0b3.dev264 documentation</title>
+<link href="_static/classic.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '2.0.0.0b3.dev264',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="index.html" rel="top" title="Jenkins Job Builder 2.0.0.0b3.dev264 documentation"/>
+<link href="definition.html" rel="up" title="Job Definitions"/>
+<link href="triggers.html" rel="next" title="Triggers"/>
+<link href="reporters.html" rel="prev" title="Reporters"/>
+</head>
+<body role="document">
+<div aria-label="related navigation" class="related" role="navigation">
+<h3>Navigation</h3>
+<ul>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="triggers.html" title="Triggers">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="reporters.html" title="Reporters">previous</a> |</li>
+<li class="nav-item nav-item-0"><a href="index.html">Jenkins Job Builder 2.0.0.0b3.dev264 documentation</a> »</li>
+<li class="nav-item nav-item-1"><a accesskey="U" href="definition.html">Job Definitions</a> »</li>
+</ul>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="bodywrapper">
+<div class="body" role="main">
+<div class="section" id="scm"><a name="//apple_ref/cpp/Module/scm"></a>
+<span id="id1"></span><h1>SCM<a class="headerlink" href="#scm" title="Permalink to this headline">¶</a></h1>
+<span class="target" id="module-scm"></span><p>The SCM module allows you to specify the source code location for the
+project.  It adds the <code class="docutils literal"><span class="pre">scm</span></code> attribute to the <a class="reference internal" href="definition.html#job"><span class="std std-ref">Job</span></a> definition,
+which accepts any number of scm definitions. It is also possible to pass
+<code class="docutils literal"><span class="pre">[]</span></code> to the <code class="docutils literal"><span class="pre">scm</span></code> attribute. This is useful when a set of configs has a
+global default <code class="docutils literal"><span class="pre">scm</span></code> and you want to a particular job to override that
+default with no SCM.</p>
+<dl class="docutils">
+<dt><strong>Component</strong>: scm</dt>
+<dd><table class="first last docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Macro:</th><td class="field-body">scm</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Entry Point:</th><td class="field-body">jenkins_jobs.scm</td>
+</tr>
+</tbody>
+</table>
+</dd>
+</dl>
+<p>The scm module allows referencing multiple repositories in a Jenkins job.
+Note: Adding more than one scm definition requires the Jenkins
+<a class="reference external" href="https://wiki.jenkins.io/display/JENKINS/Multiple+SCMs+Plugin">Multiple SCMs plugin</a>.</p>
+<dl class="docutils">
+<dt>Example of multiple repositories in a single job:</dt>
+<dd><div class="first last highlight-default"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">scm</span><span class="p">:</span>
+    <span class="n">name</span><span class="p">:</span> <span class="n">first</span><span class="o">-</span><span class="n">scm</span>
+    <span class="n">scm</span><span class="p">:</span>
+      <span class="o">-</span> <span class="n">git</span><span class="p">:</span>
+         <span class="n">url</span><span class="p">:</span> <span class="n">ssh</span><span class="p">:</span><span class="o">//</span><span class="n">jenkins</span><span class="nd">@review</span><span class="o">.</span><span class="n">openstack</span><span class="o">.</span><span class="n">org</span><span class="p">:</span><span class="mi">29418</span><span class="o">/</span><span class="n">first</span><span class="o">.</span><span class="n">git</span>
+         <span class="n">branches</span><span class="p">:</span>
+          <span class="o">-</span> <span class="n">origin</span><span class="o">/</span><span class="n">master</span>
+
+<span class="o">-</span> <span class="n">scm</span><span class="p">:</span>
+    <span class="n">name</span><span class="p">:</span> <span class="n">second</span><span class="o">-</span><span class="n">scm</span>
+    <span class="n">scm</span><span class="p">:</span>
+      <span class="o">-</span> <span class="n">git</span><span class="p">:</span>
+         <span class="n">url</span><span class="p">:</span> <span class="n">ssh</span><span class="p">:</span><span class="o">//</span><span class="n">jenkins</span><span class="nd">@review</span><span class="o">.</span><span class="n">openstack</span><span class="o">.</span><span class="n">org</span><span class="p">:</span><span class="mi">29418</span><span class="o">/</span><span class="n">second</span><span class="o">.</span><span class="n">git</span>
+         <span class="n">branches</span><span class="p">:</span>
+          <span class="o">-</span> <span class="n">origin</span><span class="o">/</span><span class="n">master</span>
+
+<span class="o">-</span> <span class="n">scm</span><span class="p">:</span>
+    <span class="n">name</span><span class="p">:</span> <span class="n">first</span><span class="o">-</span><span class="ow">and</span><span class="o">-</span><span class="n">second</span>
+    <span class="n">scm</span><span class="p">:</span>
+      <span class="o">-</span> <span class="n">first</span><span class="o">-</span><span class="n">scm</span>
+      <span class="o">-</span> <span class="n">second</span><span class="o">-</span><span class="n">scm</span>
+
+<span class="o">-</span> <span class="n">job</span><span class="p">:</span>
+    <span class="n">name</span><span class="p">:</span> <span class="n">my</span><span class="o">-</span><span class="n">job</span>
+    <span class="n">scm</span><span class="p">:</span>
+      <span class="o">-</span> <span class="n">first</span><span class="o">-</span><span class="ow">and</span><span class="o">-</span><span class="n">second</span>
+</pre></div>
+</div>
+</dd>
+<dt>Example of an empty <code class="docutils literal"><span class="pre">scm</span></code>:</dt>
+<dd><div class="first last highlight-default"><div class="highlight"><pre><span></span><span class="n">scm</span><span class="p">:</span> <span class="p">[]</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<dl class="yamlfunction">
+<dt id="scm.bzr">
+<code class="descname">bzr</code><a class="headerlink" href="#scm.bzr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Specifies the bzr SCM repository for this job.
+Requires the Jenkins <a class="reference external" href="https://wiki.jenkins.io/display/JENKINS/Bazaar+Plugin">Bazaar Plugin</a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>url</strong> (<em>str</em>) – URL of the bzr branch (required)</li>
+<li><strong>clean-tree</strong> (<em>bool</em>) – Clean up the workspace (using bzr) before pulling
+the branch (default false)</li>
+<li><strong>lightweight-checkout</strong> (<em>bool</em>) – Use a lightweight checkout instead of a
+full branch (default false)</li>
+<li><strong>browser</strong> (<em>str</em>) – <p>The repository browser to use.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">browsers supported:</th></tr>
+<tr class="field-odd field"><td> </td><td class="field-body"><ul class="first last">
+<li><strong>auto</strong> - (default)</li>
+<li><strong>loggerhead</strong> - as used by Launchpad</li>
+<li><strong>opengrok</strong> - <a class="reference external" href="https://opengrok.github.io/OpenGrok/">https://opengrok.github.io/OpenGrok/</a></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li><strong>browser-url</strong> (<em>str</em>) – URL for the repository browser (required if browser is set).</li>
+<li><strong>opengrok-root-module</strong> (<em>str</em>) – Root module for OpenGrok (required if browser is opengrok).</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">scm</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">bzr</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">url</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">lp:test_project</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="yamlfunction">
+<dt id="scm.cvs">
+<code class="descname">cvs</code><a class="headerlink" href="#scm.cvs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Specifies the CVS SCM repository for this job.
+Requires the Jenkins <a class="reference external" href="https://wiki.jenkins.io/display/JENKINS/CVS+Plugin">CVS Plugin</a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>repos</strong> (<em>list</em>) – <p>List of CVS repositories. (required)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Repos:</th><td class="field-body"><ul class="first last">
+<li><strong>root</strong> (<cite>str</cite>) – The CVS connection string Jenkins uses to
+connect to the server. The format is :protocol:user@host:path
+(required)</li>
+<li><strong>locations</strong> (<cite>list</cite>) – List of locations. (required)<blockquote>
+<div><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Locations:</th><td class="field-body"><ul class="first last">
+<li><strong>type</strong> (<cite>str</cite>) – Type of location.<blockquote>
+<div><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">supported values:</th></tr>
+<tr class="field-odd field"><td> </td><td class="field-body"><ul class="first last">
+<li><strong>HEAD</strong> - (default)</li>
+<li><strong>BRANCH</strong></li>
+<li><strong>TAG</strong></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</li>
+<li><strong>name</strong> (<cite>str</cite>) – Name of location. Only valid in case
+of ‘BRANCH’ or ‘TAG’ location type. (default ‘’)</li>
+<li><strong>use-head</strong> (<cite>bool</cite>) – Use Head if not found. Only
+valid in case of ‘BRANCH’ or ‘TAG’ location type.
+(default false)</li>
+<li><strong>modules</strong> (<cite>list</cite>) – List of modules. (required)<blockquote>
+<div><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Modules:</th><td class="field-body"><ul class="first last">
+<li><strong>remote</strong> – The name of the module in the
+repository at CVSROOT. (required)</li>
+<li><strong>local-name</strong> –  The name to be applied to
+this module in the local workspace. If blank,
+the remote module name will be used.
+(default ‘’)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</li>
+<li><strong>excluded-regions</strong> (<cite>list str</cite>) – Patterns for excluding
+regions. (optional)</li>
+<li><strong>compression-level</strong> (<cite>int</cite>) – Compression level. Must be a
+number between -1 and 9 inclusive. Choose -1 for System Default.
+(default -1)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li><strong>use-update</strong> (<em>bool</em>) – If true, Jenkins will use ‘cvs update’ whenever
+possible for builds. This makes a build faster. But this also causes the
+artifacts from the previous build to remain in the file system when a
+new build starts, making it not a true clean build. (default true)</li>
+<li><strong>prune-empty</strong> (<em>bool</em>) – Remove empty directories after checkout using the
+CVS ‘-P’ option. (default true)</li>
+<li><strong>skip-changelog</strong> (<em>bool</em>) – Prevent the changelog being generated after
+checkout has completed. (default false)</li>
+<li><strong>show-all-output</strong> (<em>bool</em>) – Instructs CVS to show all logging output. CVS
+normally runs in quiet mode but this option disables that.
+(default false)</li>
+<li><strong>clean-checkout</strong> (<em>bool</em>) – Perform clean checkout on failed update.
+(default false)</li>
+<li><strong>clean-copy</strong> (<em>bool</em>) – Force clean copy for locally modified files.
+(default false)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Example</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">scm</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">cvs</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">repos</span><span class="p p-Indicator">:</span>
+          <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">root</span><span class="p p-Indicator">:</span> <span class="s">":protocol:user@host1:path"</span>
+            <span class="l l-Scalar l-Scalar-Plain">locations</span><span class="p p-Indicator">:</span>
+                <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">modules</span><span class="p p-Indicator">:</span>
+                    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">remote</span><span class="p p-Indicator">:</span> <span class="s">"remote1"</span>
+                    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">remote</span><span class="p p-Indicator">:</span> <span class="s">"remote2"</span>
+          <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">root</span><span class="p p-Indicator">:</span> <span class="s">":protocol:user@host2:path"</span>
+            <span class="l l-Scalar l-Scalar-Plain">locations</span><span class="p p-Indicator">:</span>
+                <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">modules</span><span class="p p-Indicator">:</span>
+                    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">remote</span><span class="p p-Indicator">:</span> <span class="s">"remote1"</span>
+</pre></div>
+</div>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">scm</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">cvs</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">repos</span><span class="p p-Indicator">:</span>
+          <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">root</span><span class="p p-Indicator">:</span> <span class="s">":protocol:user@host1:path"</span>
+            <span class="l l-Scalar l-Scalar-Plain">compression-level</span><span class="p p-Indicator">:</span> <span class="s">"1"</span>
+            <span class="l l-Scalar l-Scalar-Plain">locations</span><span class="p p-Indicator">:</span>
+                <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">type</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">TAG</span>
+                  <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">"tag</span><span class="nv"> </span><span class="s">name"</span>
+                  <span class="l l-Scalar l-Scalar-Plain">use-head</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+                  <span class="l l-Scalar l-Scalar-Plain">modules</span><span class="p p-Indicator">:</span>
+                    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">remote</span><span class="p p-Indicator">:</span> <span class="s">"remote1"</span>
+                      <span class="l l-Scalar l-Scalar-Plain">local-name</span><span class="p p-Indicator">:</span> <span class="s">"localName"</span>
+                    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">remote</span><span class="p p-Indicator">:</span> <span class="s">"remote2"</span>
+            <span class="l l-Scalar l-Scalar-Plain">excluded-regions</span><span class="p p-Indicator">:</span>
+                <span class="p p-Indicator">-</span> <span class="s">"pattern1"</span>
+                <span class="p p-Indicator">-</span> <span class="s">"pattern2"</span>
+          <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">root</span><span class="p p-Indicator">:</span> <span class="s">":protocol:user@host2:path"</span>
+            <span class="l l-Scalar l-Scalar-Plain">locations</span><span class="p p-Indicator">:</span>
+                <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">modules</span><span class="p p-Indicator">:</span>
+                    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">remote</span><span class="p p-Indicator">:</span> <span class="s">"remote1"</span>
+      <span class="l l-Scalar l-Scalar-Plain">use-update</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+      <span class="l l-Scalar l-Scalar-Plain">prune-empty</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+      <span class="l l-Scalar l-Scalar-Plain">skip-changelog</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+      <span class="l l-Scalar l-Scalar-Plain">show-all-output</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+      <span class="l l-Scalar l-Scalar-Plain">clean-checkout</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+      <span class="l l-Scalar l-Scalar-Plain">clean-copy</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="yamlfunction">
+<dt id="scm.dimensions">
+<code class="descname">dimensions</code><a class="headerlink" href="#scm.dimensions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Specifies the Dimensions SCM repository for this job.
+Requires Jenkins <a class="reference external" href="https://wiki.jenkins.io/display/JENKINS/Dimensions+Plugin">Dimensions Plugin</a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>project</strong> (<em>str</em>) – Project name of format PRODUCT_ID:PROJECT_NAME (required)</li>
+<li><strong>permissions</strong> (<em>str</em>) – <p>Default Permissions for updated files
+(default: DEFAULT)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Permissions:</th><td class="field-body"><ul class="first last">
+<li><strong>DEFAULT</strong></li>
+<li><strong>READONLY</strong></li>
+<li><strong>WRITABLE</strong></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li><strong>eol</strong> (<em>str</em>) – <p>End of line (default: DEFAULT)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">End of line:</th><td class="field-body"><ul class="first last">
+<li><strong>DEFAULT</strong></li>
+<li><strong>UNIX</strong></li>
+<li><strong>WINDOWS</strong></li>
+<li><strong>UNCHANGED</strong></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li><strong>folders</strong> (<em>list</em>) – Folders to monitor (default /)</li>
+<li><strong>exclude</strong> (<em>list</em>) – Paths to exclude from monitor</li>
+<li><strong>username</strong> (<em>str</em>) – Repository username for this job</li>
+<li><strong>password</strong> (<em>str</em>) – Repository password for this job</li>
+<li><strong>server</strong> (<em>str</em>) – Dimensions server for this job</li>
+<li><strong>database</strong> (<em>str</em>) – Dimensions database for this job.
+Format must be <a class="reference external" href="mailto:database%40dsn">database<span>@</span>dsn</a></li>
+<li><strong>update</strong> (<em>bool</em>) – Use update (default false)</li>
+<li><strong>clear-workspace</strong> (<em>bool</em>) – Clear workspace prior to build (default false)</li>
+<li><strong>force-build</strong> (<em>bool</em>) – Force build even if the repository SCM checkout
+operation fails (default false)</li>
+<li><strong>overwrite-modified</strong> (<em>bool</em>) – Overwrite files in worspace from
+repository files (default false)</li>
+<li><strong>expand-vars</strong> (<em>bool</em>) – Expand substitution variables (default false)</li>
+<li><strong>no-metadata</strong> (<em>bool</em>) – Checkout files with no metadata (default false)</li>
+<li><strong>maintain-timestamp</strong> (<em>bool</em>) – Maintain file timestamp from Dimensions
+(default false)</li>
+<li><strong>slave-checkout</strong> (<em>bool</em>) – Force slave based checkout (default false)</li>
+<li><strong>timezone</strong> (<em>str</em>) – Server timezone</li>
+<li><strong>web-url</strong> (<em>str</em>) – Dimensions Web URL</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Examples:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">scm</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">dimensions</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">project</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">myProduct:myProject</span>
+</pre></div>
+</div>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">scm</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">dimensions</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">project</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">myProduct:myProject</span>
+      <span class="l l-Scalar l-Scalar-Plain">permissions</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">WRITABLE</span>
+      <span class="l l-Scalar l-Scalar-Plain">eol</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">UNIX</span>
+      <span class="l l-Scalar l-Scalar-Plain">folders</span><span class="p p-Indicator">:</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">src</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">test</span>
+      <span class="l l-Scalar l-Scalar-Plain">exclude</span><span class="p p-Indicator">:</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">excluded_dir</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">excluded_other_dir</span>
+      <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">johnd</span>
+      <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">passw0rd</span>
+      <span class="l l-Scalar l-Scalar-Plain">server</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">my.dmscm.server:1234</span>
+      <span class="l l-Scalar l-Scalar-Plain">database</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">myDatabase@myDsn</span>
+      <span class="l l-Scalar l-Scalar-Plain">update</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+      <span class="l l-Scalar l-Scalar-Plain">clear-workspace</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+      <span class="l l-Scalar l-Scalar-Plain">force-build</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+      <span class="l l-Scalar l-Scalar-Plain">overwrite-modified</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+      <span class="l l-Scalar l-Scalar-Plain">expand-vars</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+      <span class="l l-Scalar l-Scalar-Plain">no-metadata</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+      <span class="l l-Scalar l-Scalar-Plain">maintain-timestamp</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+      <span class="l l-Scalar l-Scalar-Plain">slave-checkout</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+      <span class="l l-Scalar l-Scalar-Plain">timezone</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Europe/Berlin</span>
+      <span class="l l-Scalar l-Scalar-Plain">web-url</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">https://my.dmscm.weburl</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="yamlfunction">
+<dt id="scm.git">
+<code class="descname">git</code><a class="headerlink" href="#scm.git" title="Permalink to this definition">¶</a></dt>
+<dd><p>Specifies the git SCM repository for this job.
+Requires the Jenkins <a class="reference external" href="https://wiki.jenkins.io/display/JENKINS/Git+Plugin">Git Plugin</a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>url</strong> (<em>str</em>) – URL of the git repository</li>
+<li><strong>credentials-id</strong> (<em>str</em>) – ID of credential to use to connect, which is the
+last field (a 32-digit hexadecimal code) of the path of URL visible
+after you clicked the credential under Jenkins Global credentials.
+(optional)</li>
+<li><strong>refspec</strong> (<em>str</em>) – refspec to fetch (default
+‘+refs/heads/*:refs/remotes/remoteName/*’)</li>
+<li><strong>name</strong> (<em>str</em>) – name to fetch (default ‘origin’)</li>
+<li><strong>remotes</strong> (<em>list(str)</em>) – <p>list of remotes to set up (optional, only needed if
+multiple remotes need to be set up)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Remote:</th><td class="field-body"><ul class="first last">
+<li><strong>url</strong> (<cite>string</cite>) - url of remote repo</li>
+<li><strong>refspec</strong> (<cite>string</cite>) - refspec to fetch (optional)</li>
+<li><strong>credentials-id</strong> - ID of credential to use to connect, which
+is the last field of the path of URL (a 32-digit hexadecimal
+code) visible after you clicked credential under Jenkins Global
+credentials. (optional)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li><strong>branches</strong> (<em>list(str)</em>) – list of branch specifiers to build (default ‘**’)</li>
+<li><strong>skip-tag</strong> (<em>bool</em>) – <p>Skip tagging (default true)</p>
+<div class="deprecated">
+<p><span class="versionmodified">Deprecated since version 1.6.0.: </span>Please use per-build-tag extension, which has
+the inverse meaning.</p>
+</div>
+</li>
+<li><strong>clean</strong> (<em>bool</em>) – <p>Clean after checkout (default false)</p>
+<div class="deprecated">
+<p><span class="versionmodified">Deprecated since version 1.1.1.: </span>Please use clean extension format.</p>
+</div>
+</li>
+<li><strong>fastpoll</strong> (<em>bool</em>) – Use fast remote polling (default false)</li>
+<li><strong>disable-submodules</strong> (<em>bool</em>) – <p>Disable submodules (default false)</p>
+<div class="deprecated">
+<p><span class="versionmodified">Deprecated since version 1.1.1.: </span>Please use submodule extension.</p>
+</div>
+</li>
+<li><strong>recursive-submodules</strong> (<em>bool</em>) – <p>Recursively update submodules (default
+false)</p>
+<blockquote>
+<div><div class="deprecated">
+<p><span class="versionmodified">Deprecated since version 1.1.1.: </span>Please use submodule extension.</p>
+</div>
+</div></blockquote>
+</li>
+<li><strong>git-tool</strong> (<em>str</em>) – The name of the Git installation to use (default
+‘Default’)</li>
+<li><strong>reference-repo</strong> (<em>str</em>) – Path of the reference repo to use during clone
+(optional)</li>
+<li><strong>browser</strong> (<em>str</em>) – <p>what repository browser to use.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">browsers supported:</th></tr>
+<tr class="field-odd field"><td> </td><td class="field-body"><ul class="first last">
+<li><strong>auto</strong> - (default)</li>
+<li><strong>assemblaweb</strong> - <a class="reference external" href="https://www.assembla.com/home">https://www.assembla.com/home</a></li>
+<li><strong>bitbucketweb</strong> - <a class="reference external" href="https://bitbucket.org/">https://bitbucket.org/</a></li>
+<li><strong>cgit</strong> - <a class="reference external" href="https://git.zx2c4.com/cgit/about/">https://git.zx2c4.com/cgit/about/</a></li>
+<li><strong>fisheye</strong> - <a class="reference external" href="https://www.atlassian.com/software/fisheye">https://www.atlassian.com/software/fisheye</a></li>
+<li><strong>gitblit</strong> - <a class="reference external" href="http://gitblit.com/">http://gitblit.com/</a></li>
+<li><strong>githubweb</strong> - <a class="reference external" href="https://github.com/">https://github.com/</a></li>
+<li><strong>gitiles</strong> - <a class="reference external" href="https://code.google.com/p/gitiles/">https://code.google.com/p/gitiles/</a></li>
+<li><strong>gitlab</strong> - <a class="reference external" href="https://about.gitlab.com/">https://about.gitlab.com/</a></li>
+<li><strong>gitlist</strong> - <a class="reference external" href="http://gitlist.org/">http://gitlist.org/</a></li>
+<li><strong>gitoriousweb</strong> - <a class="reference external" href="https://gitorious.org/">https://gitorious.org/</a></li>
+<li><strong>gitweb</strong> - <a class="reference external" href="https://git-scm.com/docs/gitweb">https://git-scm.com/docs/gitweb</a></li>
+<li><strong>kiln</strong> - <a class="reference external" href="https://www.fogcreek.com/kiln/">https://www.fogcreek.com/kiln/</a></li>
+<li><strong>microsoft-tfs-2013</strong> - <a class="reference external" href="https://www.visualstudio.com/en-us/products/tfs-overview-vs.aspx">https://www.visualstudio.com/en-us/products/tfs-overview-vs.aspx</a></li>
+<li><strong>phabricator</strong> - <a class="reference external" href="http://phabricator.org/">http://phabricator.org/</a></li>
+<li><strong>redmineweb</strong> - <a class="reference external" href="http://www.redmine.org/">http://www.redmine.org/</a></li>
+<li><strong>rhodecode</strong> - <a class="reference external" href="https://rhodecode.com/">https://rhodecode.com/</a></li>
+<li><strong>stash</strong> - <a class="reference external" href="https://www.atlassian.com/software/bitbucket/server">https://www.atlassian.com/software/bitbucket/server</a></li>
+<li><strong>viewgit</strong> - <a class="reference external" href="http://viewgit.fealdia.org/">http://viewgit.fealdia.org/</a></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li><strong>browser-url</strong> (<em>str</em>) – url for the repository browser (required if browser
+is not ‘auto’, no default)</li>
+<li><strong>browser-version</strong> (<em>str</em>) – version of the repository browser (GitLab only,
+default ‘0.0’)</li>
+<li><strong>project-name</strong> (<em>str</em>) – project name in Gitblit and ViewGit repobrowser
+(optional)</li>
+<li><strong>repo-name</strong> (<em>str</em>) – repository name in phabricator repobrowser (optional)</li>
+<li><strong>git-config-name</strong> (<em>str</em>) – Configure name for Git clone (optional)</li>
+<li><strong>git-config-email</strong> (<em>str</em>) – Configure email for Git clone (optional)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Extensions:</th><td class="field-body"><ul class="first last">
+<li><dl class="first docutils">
+<dt><strong>basedir</strong> (<cite>string</cite>) - Location relative to the workspace root to</dt>
+<dd><p class="first last">clone to (default workspace)</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><strong>changelog-against</strong> (<cite>dict</cite>)</dt>
+<dd><ul class="first last simple">
+<li><strong>remote</strong> (<cite>string</cite>) - name of repo that contains branch to
+create changelog against (default ‘origin’)</li>
+<li><strong>branch</strong> (<cite>string</cite>) - name of the branch to create changelog
+against (default ‘master’)</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><strong>choosing-strategy</strong>: (<cite>string</cite>) - Jenkins class for selecting what</dt>
+<dd><p class="first last">to build. Can be one of <cite>default</cite>,`inverse`, or <cite>gerrit</cite>
+(default ‘default’)</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><strong>clean</strong> (<cite>dict</cite>)</dt>
+<dd><ul class="first last simple">
+<li><strong>after</strong> (<cite>bool</cite>) - Clean the workspace after checkout</li>
+<li><strong>before</strong> (<cite>bool</cite>) - Clean the workspace before checkout</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><strong>excluded-users</strong>: (<cite>list(string)</cite>) - list of users to ignore</dt>
+<dd><p class="first last">revisions from when polling for changes.
+(if polling is enabled, optional)</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><strong>included-regions</strong>: (<cite>list(string)</cite>) - list of file/folders to</dt>
+<dd><p class="first last">include (optional)</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><strong>excluded-regions</strong>: (<cite>list(string)</cite>) - list of file/folders to</dt>
+<dd><p class="first last">exclude (optional)</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><strong>ignore-commits-with-messages</strong> (<cite>list(str)</cite>) - Revisions committed</dt>
+<dd><p class="first last">with messages matching these patterns will be ignored. (optional)</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><strong>ignore-notify</strong>: (<cite>bool</cite>) - Ignore notifyCommit URL accesses</dt>
+<dd><p class="first last">(default false)</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><strong>force-polling-using-workspace</strong> (<cite>bool</cite>) - Force polling using</dt>
+<dd><p class="first last">workspace (default false)</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><strong>local-branch</strong> (<cite>string</cite>) - Checkout/merge to local branch</dt>
+<dd><p class="first last">(optional)</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><strong>merge</strong> (<cite>dict</cite>)</dt>
+<dd><ul class="first last simple">
+<li><strong>remote</strong> (<cite>string</cite>) - name of repo that contains branch to
+merge to (default ‘origin’)</li>
+<li><strong>branch</strong> (<cite>string</cite>) - name of the branch to merge to</li>
+<li><strong>strategy</strong> (<cite>string</cite>) - merge strategy. Can be one of
+‘default’, ‘resolve’, ‘recursive’, ‘octopus’, ‘ours’,
+‘subtree’. (default ‘default’)</li>
+<li><strong>fast-forward-mode</strong> (<cite>string</cite>) - merge fast-forward mode.
+Can be one of ‘FF’, ‘FF_ONLY’ or ‘NO_FF’. (default ‘FF’)</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><strong>per-build-tag</strong> (<cite>bool</cite>) - Create a tag in the workspace for every</dt>
+<dd><p class="first last">build. (default is inverse of skip-tag if set, otherwise false)</p>
+</dd>
+</dl>
+</li>
+<li><p class="first"><strong>prune</strong> (<cite>bool</cite>) - Prune remote branches (default false)</p>
+</li>
+<li><dl class="first docutils">
+<dt><strong>scm-name</strong> (<cite>string</cite>) - The unique scm name for this Git SCM</dt>
+<dd><p class="first last">(optional)</p>
+</dd>
+</dl>
+</li>
+<li><p class="first"><strong>shallow-clone</strong> (<cite>bool</cite>) - Perform shallow clone (default false)</p>
+</li>
+<li><dl class="first docutils">
+<dt><strong>do-not-fetch-tags</strong> (<cite>bool</cite>) - Perform a clone without tags</dt>
+<dd><p class="first last">(default false)</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><strong>sparse-checkout</strong> (<cite>dict</cite>)</dt>
+<dd><ul class="first last simple">
+<li><strong>paths</strong> (<cite>list</cite>) - List of paths to sparse checkout. (optional)</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><strong>submodule</strong> (<cite>dict</cite>)</dt>
+<dd><ul class="first last simple">
+<li><strong>disable</strong> (<cite>bool</cite>) - By disabling support for submodules you
+can still keep using basic git plugin functionality and just have
+Jenkins to ignore submodules completely as if they didn’t exist.</li>
+<li><strong>recursive</strong> (<cite>bool</cite>) - Retrieve all submodules recursively
+(uses ‘–recursive’ option which requires git&gt;=1.6.5)</li>
+<li><strong>tracking</strong> (<cite>bool</cite>) - Retrieve the tip of the configured
+branch in .gitmodules (Uses ‘–remote’ option which requires
+git&gt;=1.8.2)</li>
+<li><strong>parent-credentials</strong> (<cite>bool</cite>) - Use credentials from default
+remote of parent repository (default false).</li>
+<li><strong>reference-repo</strong> (<cite>str</cite>) - Path of the reference repo to use
+during clone (optional)</li>
+<li><strong>timeout</strong> (<cite>int</cite>) - Specify a timeout (in minutes) for
+submodules operations (default 10).</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first"><strong>timeout</strong> (<cite>str</cite>) - Timeout for git commands in minutes (optional)</p>
+</li>
+<li><dl class="first docutils">
+<dt><strong>use-author</strong> (<cite>bool</cite>): Use author rather than committer in Jenkin’s</dt>
+<dd><p class="first last">build changeset (default false)</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><strong>wipe-workspace</strong> (<cite>bool</cite>) - Wipe out workspace before build</dt>
+<dd><p class="first last">(default true)</p>
+</dd>
+</dl>
+</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">scm</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">git</span><span class="p">:</span>
+      <span class="n">url</span><span class="p">:</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">project</span><span class="o">.</span><span class="n">git</span>
+      <span class="n">branches</span><span class="p">:</span>
+        <span class="o">-</span> <span class="n">master</span>
+        <span class="o">-</span> <span class="n">stable</span>
+      <span class="n">browser</span><span class="p">:</span> <span class="n">githubweb</span>
+      <span class="n">browser</span><span class="o">-</span><span class="n">url</span><span class="p">:</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">foo</span><span class="o">/</span><span class="n">example</span><span class="o">.</span><span class="n">git</span>
+      <span class="n">timeout</span><span class="p">:</span> <span class="mi">20</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="yamlfunction">
+<dt id="scm.hg">
+<code class="descname">hg</code><a class="headerlink" href="#scm.hg" title="Permalink to this definition">¶</a></dt>
+<dd><p>Specifies the mercurial SCM repository for this job.
+Requires the Jenkins <a class="reference external" href="https://wiki.jenkins.io/display/JENKINS/Mercurial+Plugin">Mercurial Plugin</a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>url</strong> (<em>str</em>) – URL of the hg repository (required)</li>
+<li><strong>credentials-id</strong> (<em>str</em>) – ID of credentials to use to connect (optional)</li>
+<li><strong>revision-type</strong> (<em>str</em>) – revision type to use (default ‘branch’)</li>
+<li><strong>revision</strong> (<em>str</em>) – the branch or tag name you would like to track
+(default ‘default’)</li>
+<li><strong>modules</strong> (<em>list(str)</em>) – reduce unnecessary builds by specifying a list of
+“modules” within the repository. A module is a directory name within
+the repository that this project lives in. (default ‘’)</li>
+<li><strong>clean</strong> (<em>bool</em>) – wipe any local modifications or untracked files in the
+repository checkout (default false)</li>
+<li><strong>subdir</strong> (<em>str</em>) – check out the Mercurial repository into this
+subdirectory of the job’s workspace (optional)</li>
+<li><strong>disable-changelog</strong> (<em>bool</em>) – do not calculate the Mercurial changelog
+for each build (default false)</li>
+<li><strong>browser</strong> (<em>str</em>) – <p>what repository browser to use</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">browsers supported:</th></tr>
+<tr class="field-odd field"><td> </td><td class="field-body"><ul class="first last">
+<li><strong>auto</strong> - (default)</li>
+<li><strong>bitbucketweb</strong> - <a class="reference external" href="https://bitbucket.org/">https://bitbucket.org/</a></li>
+<li><strong>fisheye</strong> - <a class="reference external" href="https://www.atlassian.com/software/fisheye">https://www.atlassian.com/software/fisheye</a></li>
+<li><strong>googlecode</strong> - <a class="reference external" href="https://code.google.com/">https://code.google.com/</a></li>
+<li><strong>hgweb</strong> - <a class="reference external" href="https://www.selenic.com/hg/help/hgweb">https://www.selenic.com/hg/help/hgweb</a></li>
+<li><strong>kilnhg</strong> - <a class="reference external" href="https://www.fogcreek.com/kiln/">https://www.fogcreek.com/kiln/</a></li>
+<li><strong>rhodecode</strong> - <a class="reference external" href="https://rhodecode.com/">https://rhodecode.com/</a> (versions &gt;= 1.2)</li>
+<li><strong>rhodecode-pre-1.2.0</strong> - <a class="reference external" href="https://rhodecode.com/">https://rhodecode.com/</a> (versions &lt; 1.2)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li><strong>browser-url</strong> (<em>str</em>) – url for the repository browser
+(required if browser is set)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">scm</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">hg</span><span class="p">:</span>
+     <span class="n">revision</span><span class="p">:</span> <span class="n">feature</span>
+     <span class="n">url</span><span class="p">:</span> <span class="n">ssh</span><span class="p">:</span><span class="o">//</span><span class="n">hg</span><span class="nd">@hg</span><span class="o">/</span><span class="n">repo</span>
+     <span class="n">credentials</span><span class="o">-</span><span class="nb">id</span><span class="p">:</span> <span class="s2">"abcdef01234567890"</span>
+     <span class="n">modules</span><span class="p">:</span>
+       <span class="o">-</span> <span class="n">module1</span>
+       <span class="o">-</span> <span class="n">module2</span>
+     <span class="n">clean</span><span class="p">:</span> <span class="n">true</span>
+     <span class="n">subdir</span><span class="p">:</span> <span class="n">my</span><span class="o">/</span><span class="n">sources</span>
+     <span class="n">disable</span><span class="o">-</span><span class="n">changelog</span><span class="p">:</span> <span class="n">true</span>
+     <span class="n">browser</span><span class="p">:</span> <span class="n">hgweb</span>
+     <span class="n">browser</span><span class="o">-</span><span class="n">url</span><span class="p">:</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">hg</span><span class="o">/</span><span class="n">repo</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="yamlfunction">
+<dt id="scm.openshift-img-streams">
+<code class="descname">openshift-img-streams</code><a class="headerlink" href="#scm.openshift-img-streams" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rather than a Build step extension plugin, this is an extension of the
+Jenkins SCM plugin, where this baked-in polling mechanism provided by
+Jenkins is leveraged by exposing some of the common semantics between
+OpenShift ImageStreams (which are abstractions of Docker repositories)
+and SCMs - versions / commit IDs of related artifacts
+(images vs. programmatics files)
+Requires the Jenkins <a class="reference external" href="https://wiki.jenkins.io/display/JENKINS/OpenShift+Pipeline+Plugin">OpenShift
+Pipeline Plugin</a>._</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>image-stream-name</strong> (<em>str</em>) – The name of the ImageStream is what shows up
+in the NAME column if you dump all the ImageStream’s with the
+<cite>oc get is</cite> command invocation. (default nodejs-010-centos7)</li>
+<li><strong>tag</strong> (<em>str</em>) – The specific image tag within the ImageStream to monitor.
+(default latest)</li>
+<li><strong>api-url</strong> (<em>str</em>) – This would be the value you specify if you leverage the
+–server option on the OpenShift <cite>oc</cite> command.
+(default https://openshift.default.svc.cluster.local)</li>
+<li><strong>namespace</strong> (<em>str</em>) – The value here should be whatever was the output
+form <cite>oc project</cite> when you created the BuildConfig you want to run
+a Build on. (default test)</li>
+<li><strong>auth-token</strong> (<em>str</em>) – The value here is what you supply with the –token
+option when invoking the OpenShift <cite>oc</cite> command. (default ‘’)</li>
+<li><strong>verbose</strong> (<em>bool</em>) – This flag is the toggle for
+turning on or off detailed logging in this plug-in. (default false)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Full Example:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">scm</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">openshift-img-streams</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">image-stream-name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">nodejs-010-fedora</span>
+      <span class="l l-Scalar l-Scalar-Plain">tag</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">prod</span>
+      <span class="l l-Scalar l-Scalar-Plain">api-url</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">https://openshift.example.local.url/</span>
+      <span class="l l-Scalar l-Scalar-Plain">namespace</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">test-scm</span>
+      <span class="l l-Scalar l-Scalar-Plain">auth-token</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ose-key-img-streams1</span>
+      <span class="l l-Scalar l-Scalar-Plain">verbose</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+</pre></div>
+</div>
+<p>Minimal Example:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">scm</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">openshift-img-streams</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="yamlfunction">
+<dt id="scm.repo">
+<code class="descname">repo</code><a class="headerlink" href="#scm.repo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Specifies the repo SCM repository for this job.
+Requires the Jenkins <a class="reference external" href="https://wiki.jenkins.io/display/JENKINS/Repo+Plugin">Repo Plugin</a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>manifest-url</strong> (<em>str</em>) – URL of the repo manifest (required)</li>
+<li><strong>manifest-branch</strong> (<em>str</em>) – The branch of the manifest to use (optional)</li>
+<li><strong>manifest-file</strong> (<em>str</em>) – Initial manifest file to use when initialising
+(optional)</li>
+<li><strong>manifest-group</strong> (<em>str</em>) – Only retrieve those projects in the manifest
+tagged with the provided group name (optional)</li>
+<li><strong>ignore-projects</strong> (<em>list(str)</em>) – a list of projects in which changes would
+not be considered to trigger a build when pooling (optional)</li>
+<li><strong>destination-dir</strong> (<em>str</em>) – Location relative to the workspace root to clone
+under (optional)</li>
+<li><strong>repo-url</strong> (<em>str</em>) – custom url to retrieve the repo application (optional)</li>
+<li><strong>mirror-dir</strong> (<em>str</em>) – Path to mirror directory to reference when
+initialising (optional)</li>
+<li><strong>jobs</strong> (<em>int</em>) – Number of projects to fetch simultaneously (default 0)</li>
+<li><strong>depth</strong> (<em>int</em>) – Specify the depth in history to sync from the source. The
+default is to sync all of the history. Use 1 to just sync the most
+recent commit (default 0)</li>
+<li><strong>current-branch</strong> (<em>bool</em>) – Fetch only the current branch from the server
+(default true)</li>
+<li><strong>reset-first</strong> (<em>bool</em>) – Remove any commits that are not on the repositories
+by running the following command before anything else (default false):
+<code class="docutils literal"><span class="pre">repo</span> <span class="pre">forall</span> <span class="pre">-c</span> <span class="pre">"git</span> <span class="pre">reset</span> <span class="pre">--hard"</span></code></li>
+<li><strong>quiet</strong> (<em>bool</em>) – Make repo more quiet
+(default true)</li>
+<li><strong>force-sync</strong> (<em>bool</em>) – Continue sync even if a project fails to sync
+(default false)</li>
+<li><strong>no-tags</strong> (<em>bool</em>) – Don’t fetch tags (default false)</li>
+<li><strong>trace</strong> (<em>bool</em>) – Trace git command execution into the build logs. (default
+false)</li>
+<li><strong>show-all-changes</strong> (<em>bool</em>) – When this is checked –first-parent is no
+longer passed to git log when determining changesets (default false)</li>
+<li><strong>local-manifest</strong> (<em>str</em>) – Contents of .repo/local_manifest.xml, written
+prior to calling sync (optional)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>scm:
+  - repo:
+      manifest-url: https://example.com/project/
+      manifest-branch: stable
+      manifest-file: repo.xml
+      manifest-group: drivers
+      ignore-projects:
+        - static-project
+        - unimportant-project
+      destination-dir: build
+      repo-url: https://internal.net/projects/repo
+      mirror-dir: ~/git/project/
+      jobs: 3
+      current-branch: false
+      reset-first: true
+      quiet: false
+      force-sync: true
+      no-tags: true
+      trace: true
+      show-all-changes: true
+      local-manifest: |
+        &lt;?xml version="1.0" encoding="UTF-8"?&gt;
+        &lt;manifest&gt;
+          &lt;project path="external/project" name="org/project"
+            remote="gerrit" revision="master" /&gt;
+        &lt;/manifest&gt;
+</pre></div>
+</div>
+</dd></dl>
+<dl class="yamlfunction">
+<dt id="scm.store">
+<code class="descname">store</code><a class="headerlink" href="#scm.store" title="Permalink to this definition">¶</a></dt>
+<dd><p>Specifies the Visualworks Smalltalk Store repository for this job.
+Requires the Jenkins <a class="reference external" href="https://wiki.jenkins.io/display/JENKINS/Visualworks+Smalltalk+Store+Plugin">Visualworks Smalltalk Store Plugin</a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>script</strong> (<em>str</em>) – name of the Store script to run</li>
+<li><strong>repository</strong> (<em>str</em>) – name of the Store repository</li>
+<li><strong>version-regex</strong> (<em>str</em>) – regular expression that specifies which pundle
+versions should be considered (optional)</li>
+<li><strong>minimum-blessing</strong> (<em>str</em>) – minimum blessing level to consider (optional)</li>
+<li><strong>parcel-builder-file</strong> (<em>str</em>) – name of the file to generate as input to
+a later parcel building step (optional - if not specified, then no
+parcel builder file will be generated)</li>
+<li><strong>pundles</strong> (<em>list</em>) – <table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">(package or bundle):</th></tr>
+<tr class="field-odd field"><td> </td><td class="field-body">(<cite>dict</cite>): A package or bundle to check</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">scm</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">store</span><span class="p">:</span>
+      <span class="n">script</span><span class="p">:</span> <span class="n">someStoreScript</span>
+      <span class="n">repository</span><span class="p">:</span> <span class="n">StoreRepository</span>
+      <span class="n">version</span><span class="o">-</span><span class="n">regex</span><span class="p">:</span> <span class="s2">"[0-9]+"</span>
+      <span class="n">minimum</span><span class="o">-</span><span class="n">blessing</span><span class="p">:</span> <span class="n">Integrated</span>
+      <span class="n">parcel</span><span class="o">-</span><span class="n">builder</span><span class="o">-</span><span class="n">file</span><span class="p">:</span> <span class="n">parcelBuilderInput</span>
+      <span class="n">pundles</span><span class="p">:</span>
+        <span class="o">-</span> <span class="n">package</span><span class="p">:</span> <span class="n">SomePackage</span>
+        <span class="o">-</span> <span class="n">package</span><span class="p">:</span> <span class="n">AnotherPackage</span>
+        <span class="o">-</span> <span class="n">bundle</span><span class="p">:</span> <span class="n">SomeBundle</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="yamlfunction">
+<dt id="scm.svn">
+<code class="descname">svn</code><a class="headerlink" href="#scm.svn" title="Permalink to this definition">¶</a></dt>
+<dd><p>Specifies the svn SCM repository for this job.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>url</strong> (<em>str</em>) – URL of the svn repository</li>
+<li><strong>basedir</strong> (<em>str</em>) – location relative to the workspace root to checkout to
+(default ‘.’)</li>
+<li><strong>credentials-id</strong> (<em>str</em>) – optional argument to specify the ID of credentials
+to use</li>
+<li><strong>repo-depth</strong> (<em>str</em>) – Repository depth. Can be one of ‘infinity’, ‘empty’,
+‘files’, ‘immediates’ or ‘unknown’. (default ‘infinity’)</li>
+<li><strong>ignore-externals</strong> (<em>bool</em>) – Ignore Externals. (default false)</li>
+<li><strong>workspaceupdater</strong> (<em>str</em>) – optional argument to specify</li>
+<li><strong>workspaceupdater</strong> – <p>optional argument to specify how to update the
+workspace (default wipeworkspace)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">supported values:</th></tr>
+<tr class="field-odd field"><td> </td><td class="field-body"><ul class="first last">
+<li><strong>wipeworkspace</strong> - deletes the workspace before checking out</li>
+<li><strong>revertupdate</strong> - do an svn revert then an svn update</li>
+<li><strong>emulateclean</strong> - delete unversioned/ignored files then update</li>
+<li><strong>update</strong> - do an svn update as much as possible</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li><strong>excluded-users</strong> (<em>list(str)</em>) – list of users to ignore revisions from
+when polling for changes (if polling is enabled; parameter is optional)</li>
+<li><strong>included-regions</strong> (<em>list(str)</em>) – list of file/folders to include
+(optional)</li>
+<li><strong>excluded-regions</strong> (<em>list(str)</em>) – list of file/folders to exclude (optional)</li>
+<li><strong>excluded-commit-messages</strong> (<em>list(str)</em>) – list of commit messages to exclude
+(optional)</li>
+<li><strong>exclusion-revprop-name</strong> (<em>str</em>) – revision svn-property to ignore (optional)</li>
+<li><strong>ignore-property-changes-on-directories</strong> (<em>bool</em>) – ignore svn-property only
+changes of directories (default false)</li>
+<li><strong>filter-changelog</strong> (<em>bool</em>) – If set Jenkins will apply the same inclusion
+and exclusion patterns for displaying changelog entries as it does for
+polling for changes (default false)</li>
+<li><strong>repos</strong> (<em>list</em>) – list of repositories to checkout (optional)</li>
+<li><strong>viewvc-url</strong> (<em>str</em>) – <p>URL of the svn web interface (optional)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Repo:</th><td class="field-body"><ul class="first last">
+<li><strong>url</strong> (<cite>str</cite>) – URL for the repository</li>
+<li><strong>basedir</strong> (<cite>str</cite>) – Location relative to the workspace root
+to checkout to (default ‘.’)</li>
+<li><strong>credentials-id</strong> - optional ID of credentials to use</li>
+<li><strong>repo-depth</strong> - Repository depth. Can be one of ‘infinity’,
+‘empty’, ‘files’, ‘immediates’ or ‘unknown’. (default ‘infinity’)</li>
+<li><strong>ignore-externals</strong> - Ignore Externals. (default false)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Multiple repos example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">scm</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">svn</span><span class="p">:</span>
+     <span class="n">workspaceupdater</span><span class="p">:</span> <span class="n">update</span>
+     <span class="n">repos</span><span class="p">:</span>
+       <span class="o">-</span> <span class="n">url</span><span class="p">:</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">svn</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">repo</span>
+         <span class="n">basedir</span><span class="p">:</span> <span class="o">.</span>
+         <span class="n">credentials</span><span class="o">-</span><span class="nb">id</span><span class="p">:</span> <span class="s2">"abcdef01234567890"</span>
+         <span class="n">repo</span><span class="o">-</span><span class="n">depth</span><span class="p">:</span> <span class="n">files</span>
+         <span class="n">ignore</span><span class="o">-</span><span class="n">externals</span><span class="p">:</span> <span class="n">true</span>
+       <span class="o">-</span> <span class="n">url</span><span class="p">:</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">svn</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">repo2</span>
+         <span class="n">basedir</span><span class="p">:</span> <span class="n">repo2</span>
+</pre></div>
+</div>
+<p>Advanced commit filtering example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">scm</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">svn</span><span class="p">:</span>
+      <span class="n">url</span><span class="p">:</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">svn</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">repos</span><span class="o">/</span><span class="n">asf</span><span class="o">/</span><span class="n">spamassassin</span><span class="o">/</span><span class="n">trunk</span>
+      <span class="n">credentials</span><span class="o">-</span><span class="nb">id</span><span class="p">:</span> <span class="s2">"abcdef01234567890"</span>
+      <span class="n">repo</span><span class="o">-</span><span class="n">depth</span><span class="p">:</span> <span class="n">empty</span>
+      <span class="n">ignore</span><span class="o">-</span><span class="n">externals</span><span class="p">:</span> <span class="n">true</span>
+      <span class="n">workspaceupdater</span><span class="p">:</span> <span class="n">wipeworkspace</span>
+      <span class="n">included</span><span class="o">-</span><span class="n">regions</span><span class="p">:</span>
+          <span class="o">-</span> <span class="o">/</span><span class="n">region1</span><span class="o">/.*</span>\<span class="o">.</span><span class="n">cpp</span>
+          <span class="o">-</span> <span class="o">/</span><span class="n">region2</span>
+      <span class="n">excluded</span><span class="o">-</span><span class="n">regions</span><span class="p">:</span>
+          <span class="o">-</span> <span class="o">/</span><span class="n">region3</span><span class="o">/.*</span>\<span class="o">.</span><span class="n">jpg</span>
+          <span class="o">-</span> <span class="o">/</span><span class="n">region4</span>
+      <span class="n">excluded</span><span class="o">-</span><span class="n">users</span><span class="p">:</span>
+          <span class="o">-</span> <span class="n">user1</span>
+          <span class="o">-</span> <span class="n">user2</span>
+      <span class="n">excluded</span><span class="o">-</span><span class="n">commit</span><span class="o">-</span><span class="n">messages</span><span class="p">:</span>
+          <span class="o">-</span> <span class="n">test</span><span class="o">-</span><span class="n">msg</span>
+          <span class="o">-</span> <span class="n">test</span><span class="o">-</span><span class="n">msg2</span>
+      <span class="n">exclusion</span><span class="o">-</span><span class="n">revprop</span><span class="o">-</span><span class="n">name</span><span class="p">:</span> <span class="n">propname</span>
+      <span class="nb">filter</span><span class="o">-</span><span class="n">changelog</span><span class="p">:</span> <span class="n">true</span>
+      <span class="n">ignore</span><span class="o">-</span><span class="nb">property</span><span class="o">-</span><span class="n">changes</span><span class="o">-</span><span class="n">on</span><span class="o">-</span><span class="n">directories</span><span class="p">:</span> <span class="n">true</span>
+      <span class="n">viewvc</span><span class="o">-</span><span class="n">url</span><span class="p">:</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">svn</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">viewvc</span><span class="o">/</span><span class="n">spamassassin</span><span class="o">/</span><span class="n">trunk</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="yamlfunction">
+<dt id="scm.tfs">
+<code class="descname">tfs</code><a class="headerlink" href="#scm.tfs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Specifies the Team Foundation Server repository for this job.
+Requires the Jenkins <a class="reference external" href="https://wiki.jenkins.io/display/JENKINS/Team+Foundation+Server+Plugin">Team Foundation Server Plugin</a>.</p>
+<p><strong>NOTE</strong>: TFS Password must be entered manually on the project if a
+user name is specified. The password will be overwritten with an empty
+value every time the job is rebuilt with Jenkins Job Builder.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>server-url</strong> (<em>str</em>) – The name or URL of the team foundation server.
+If the server has been registered on the machine then it is only
+necessary to enter the name.</li>
+<li><strong>project-path</strong> (<em>str</em>) – The name of the project as it is registered on the
+server.</li>
+<li><strong>login</strong> (<em>str</em>) – The user name that is registered on the server. The user
+name must contain the name and the domain name. Entered as
+domain\user or user@domain (optional).
+<strong>NOTE</strong>: You must enter in at least two slashes for the
+domain\user format in JJB YAML. It will be rendered normally.</li>
+<li><strong>use-update</strong> (<em>str</em>) – If true, Hudson will not delete the workspace at end
+of each build. This causes the artifacts from the previous build to
+remain when a new build starts. (default true)</li>
+<li><strong>local-path</strong> (<em>str</em>) – The folder where all files will be retrieved into.
+The folder name is a relative path, under the workspace of the current
+job. (default .)</li>
+<li><strong>workspace</strong> (<em>str</em>) – <p>The name of the workspace under which the source
+should be retrieved. This workspace is created at the start of a
+download, and deleted at the end. You can normally omit the property
+unless you want to name a workspace to avoid conflicts on the server
+(i.e. when you have multiple projects on one server talking to a
+Team Foundation Server). (default Hudson-${JOB_NAME}-${NODE_NAME})</p>
+<p>The TFS plugin supports the following macros that are replaced in the
+workspace name:</p>
+<ul>
+<li>${JOB_NAME} - The name of the job.</li>
+<li><dl class="first docutils">
+<dt>${USER_NAME} - The user name that the Hudson server or slave is</dt>
+<dd>running as.</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>${NODE_NAME} - The name of the node/slave that the plugin currently</dt>
+<dd>is executed on. Note that this is not the hostname, this value is
+the Hudson configured name of the slave/node.</dd>
+</dl>
+</li>
+<li>${ENV} - The environment variable that is set on the master or slave.</li>
+</ul>
+</li>
+<li><strong>web-access</strong> (<em>dict</em>) – <p>Adds links in “changes” views within Jenkins to an
+external system for browsing the details of those changes. The “Auto”
+selection attempts to infer the repository browser from other jobs,
+if supported by the SCM and a job with matching SCM details can be
+found. (optional, default Auto).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">web-access value:</th></tr>
+<tr class="field-odd field"><td> </td><td class="field-body"><ul class="first last">
+<li><strong>web-url</strong> – Enter the URL to the TSWA server. The plugin will
+strip the last path (if any) of the URL when building URLs for
+change set pages and other pages. (optional, default
+uses server-url)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Examples:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">scm</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">tfs</span><span class="p">:</span>
+      <span class="n">server</span><span class="o">-</span><span class="n">url</span><span class="p">:</span> <span class="s2">"tfs.company.com"</span>
+      <span class="n">project</span><span class="o">-</span><span class="n">path</span><span class="p">:</span> <span class="s2">"$/myproject"</span>
+      <span class="n">login</span><span class="p">:</span> <span class="s2">"mydomain</span><span class="se">\\\\</span><span class="s2">jane"</span>
+      <span class="n">use</span><span class="o">-</span><span class="n">update</span><span class="p">:</span> <span class="n">false</span>
+      <span class="n">local</span><span class="o">-</span><span class="n">path</span><span class="p">:</span> <span class="s2">"../foo/"</span>
+      <span class="n">workspace</span><span class="p">:</span> <span class="s2">"Hudson-$</span><span class="si">{JOB_NAME}</span><span class="s2">"</span>
+      <span class="n">web</span><span class="o">-</span><span class="n">access</span><span class="p">:</span>
+        <span class="o">-</span> <span class="n">web</span><span class="o">-</span><span class="n">url</span><span class="p">:</span> <span class="s2">"http://TFSMachine:8080"</span>
+</pre></div>
+</div>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">scm</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">tfs</span><span class="p">:</span>
+      <span class="n">server</span><span class="o">-</span><span class="n">url</span><span class="p">:</span> <span class="s2">"tfs.company.com"</span>
+      <span class="n">project</span><span class="o">-</span><span class="n">path</span><span class="p">:</span> <span class="s2">"$/myproject"</span>
+      <span class="n">login</span><span class="p">:</span> <span class="s2">"jane@mydomain"</span>
+      <span class="n">use</span><span class="o">-</span><span class="n">update</span><span class="p">:</span> <span class="n">false</span>
+      <span class="n">local</span><span class="o">-</span><span class="n">path</span><span class="p">:</span> <span class="s2">"../foo/"</span>
+      <span class="n">workspace</span><span class="p">:</span> <span class="s2">"Hudson-$</span><span class="si">{JOB_NAME}</span><span class="s2">"</span>
+      <span class="n">web</span><span class="o">-</span><span class="n">access</span><span class="p">:</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="yamlfunction">
+<dt id="scm.url">
+<code class="descname">url</code><a class="headerlink" href="#scm.url" title="Permalink to this definition">¶</a></dt>
+<dd><p>Watch for changes in, and download an artifact from a particular url.
+Requires the Jenkins <a class="reference external" href="https://wiki.jenkins.io/display/JENKINS/URL+SCM">URL SCM</a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>url-list</strong> (<em>list</em>) – List of URLs to watch. (required)</li>
+<li><strong>clear-workspace</strong> (<em>bool</em>) – If set to true, clear the workspace before
+downloading the artifact(s) specified in url-list. (default false)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Examples:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">scm</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">url</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">url-list</span><span class="p p-Indicator">:</span>
+        <span class="p p-Indicator">-</span> <span class="s">'http://jenkins.domain.local/jnlpJars/jenkins-cli.jar'</span>
+</pre></div>
+</div>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">scm</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">url</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">url-list</span><span class="p p-Indicator">:</span>
+        <span class="p p-Indicator">-</span> <span class="s">'http://jenkins.domain.local/jnlpJars/jenkins-cli.jar'</span>
+        <span class="p p-Indicator">-</span> <span class="s">'http://code.jquery.com/jquery-1.11.3.min.js'</span>
+      <span class="l l-Scalar l-Scalar-Plain">clear-workspace</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="yamlfunction">
+<dt id="scm.workspace">
+<code class="descname">workspace</code><a class="headerlink" href="#scm.workspace" title="Permalink to this definition">¶</a></dt>
+<dd><p>Specifies the cloned workspace for this job to use as a SCM source.
+Requires the Jenkins <a class="reference external" href="https://wiki.jenkins.io/display/JENKINS/Clone+Workspace+SCM+Plugin">Clone Workspace SCM Plugin</a>.</p>
+<p>The job the workspace is cloned from must be configured with an
+clone-workspace publisher</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>parent-job</strong> (<em>str</em>) – The name of the parent job to clone the
+workspace from.</li>
+<li><strong>criteria</strong> (<em>str</em>) – Set the criteria to determine what build of the parent
+project to use. Can be one of ‘Any’, ‘Not Failed’ or ‘Successful’.
+(default Any)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">scm</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">workspace</span><span class="p">:</span>
+      <span class="n">parent</span><span class="o">-</span><span class="n">job</span><span class="p">:</span> <span class="n">my</span><span class="o">-</span><span class="n">upstream</span><span class="o">-</span><span class="n">job</span>
+      <span class="n">criteria</span><span class="p">:</span> <span class="n">Any</span>
+</pre></div>
+</div>
+</dd></dl>
+</div>
+</div>
+</div>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<h4>Previous topic</h4>
+<p class="topless"><a href="reporters.html" title="previous chapter">Reporters</a></p>
+<h4>Next topic</h4>
+<p class="topless"><a href="triggers.html" title="next chapter">Triggers</a></p>
+<div aria-label="source link" role="note">
+<h3>This Page</h3>
+<ul class="this-page-menu">
+<li><a href="_sources/scm.txt" rel="nofollow">Show Source</a></li>
+</ul>
+</div>
+<div id="searchbox" role="search" style="display: none">
+<h3>Quick search</h3>
+<form action="search.html" class="search" method="get">
+<div><input name="q" type="text"/></div>
+<div><input type="submit" value="Go"/></div>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div aria-label="related navigation" class="related" role="navigation">
+<h3>Navigation</h3>
+<ul>
+<li class="right" style="margin-right: 10px">
+<a href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a href="triggers.html" title="Triggers">next</a> |</li>
+<li class="right">
+<a href="reporters.html" title="Reporters">previous</a> |</li>
+<li class="nav-item nav-item-0"><a href="index.html">Jenkins Job Builder 2.0.0.0b3.dev264 documentation</a> »</li>
+<li class="nav-item nav-item-1"><a href="definition.html">Job Definitions</a> »</li>
+</ul>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012, Jenkins Job Builder Maintainers.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.9.
+    </div>
+</body>
+</html>

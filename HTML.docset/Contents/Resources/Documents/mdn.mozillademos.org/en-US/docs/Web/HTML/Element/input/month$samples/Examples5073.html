@@ -1,0 +1,118 @@
+<html><!-- Mirrored from mdn.mozillademos.org/en-US/docs/Web/HTML/Element/input/month$samples/Examples?revision=1473860 by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 01 May 2019 11:24:20 GMT --><!-- Added by HTTrack --><head><meta http-equiv="content-type" content="text/html;charset=utf-8"><!-- /Added by HTTrack -->
+
+        <meta charset="utf-8">
+        <link href="../../../../../../../../developer.mozilla.org/static/build/styles/samples.37902ba3b7fe.css" rel="stylesheet" type="text/css">
+        
+        <style type="text/css">
+            div {
+  margin-bottom: 10px;
+  position: relative;
+}
+
+input[type="number"] {
+  width: 100px;
+}
+
+input + span {
+  padding-right: 30px;
+}
+
+input:invalid+span:after {
+  position: absolute;
+  content: '✖';
+  padding-left: 5px;
+}
+
+input:valid+span:after {
+  position: absolute;
+  content: '✓';
+  padding-left: 5px;
+}
+        </style>
+        
+        <title>&lt;input type="month"&gt;</title>
+    </head>
+    <body>
+        
+            <form>
+  <div class="nativeDatePicker" style="display: none;">
+    <label for="month-visit">What month would you like to visit us?</label>
+    <input type="month" id="month-visit" name="month-visit" spellcheck="false">
+    <span class="validity"></span>
+  </div>
+  <p class="fallbackLabel" style="display: block;">What month would you like to visit us?</p>
+  <div class="fallbackDatePicker" style="display: block;">
+    <div>
+      <span>
+        <label for="month">Month:</label>
+        <select id="month" name="month">
+          <option selected="">January</option>
+          <option>February</option>
+          <option>March</option>
+          <option>April</option>
+          <option>May</option>
+          <option>June</option>
+          <option>July</option>
+          <option>August</option>
+          <option>September</option>
+          <option>October</option>
+          <option>November</option>
+          <option>December</option>
+        </select>
+      </span>
+      <span>
+        <label for="year">Year:</label>
+        <select id="year" name="year">
+        <option>2019</option><option>2018</option><option>2017</option><option>2016</option><option>2015</option><option>2014</option><option>2013</option><option>2012</option><option>2011</option><option>2010</option><option>2009</option><option>2008</option><option>2007</option><option>2006</option><option>2005</option><option>2004</option><option>2003</option><option>2002</option><option>2001</option><option>2000</option><option>1999</option><option>1998</option><option>1997</option><option>1996</option><option>1995</option><option>1994</option><option>1993</option><option>1992</option><option>1991</option><option>1990</option><option>1989</option><option>1988</option><option>1987</option><option>1986</option><option>1985</option><option>1984</option><option>1983</option><option>1982</option><option>1981</option><option>1980</option><option>1979</option><option>1978</option><option>1977</option><option>1976</option><option>1975</option><option>1974</option><option>1973</option><option>1972</option><option>1971</option><option>1970</option><option>1969</option><option>1968</option><option>1967</option><option>1966</option><option>1965</option><option>1964</option><option>1963</option><option>1962</option><option>1961</option><option>1960</option><option>1959</option><option>1958</option><option>1957</option><option>1956</option><option>1955</option><option>1954</option><option>1953</option><option>1952</option><option>1951</option><option>1950</option><option>1949</option><option>1948</option><option>1947</option><option>1946</option><option>1945</option><option>1944</option><option>1943</option><option>1942</option><option>1941</option><option>1940</option><option>1939</option><option>1938</option><option>1937</option><option>1936</option><option>1935</option><option>1934</option><option>1933</option><option>1932</option><option>1931</option><option>1930</option><option>1929</option><option>1928</option><option>1927</option><option>1926</option><option>1925</option><option>1924</option><option>1923</option><option>1922</option><option>1921</option><option>1920</option><option>1919</option></select>
+      </span>
+    </div>
+  </div>
+</form>
+        
+        
+            <script>
+                // define variables
+var nativePicker = document.querySelector('.nativeDatePicker');
+var fallbackPicker = document.querySelector('.fallbackDatePicker');
+var fallbackLabel = document.querySelector('.fallbackLabel');
+
+var yearSelect = document.querySelector('#year');
+var monthSelect = document.querySelector('#month');
+
+// hide fallback initially
+fallbackPicker.style.display = 'none';
+fallbackLabel.style.display = 'none';
+
+// test whether a new date input falls back to a text input or not
+var test = document.createElement('input');
+test.type = 'month';
+// if it does, run the code inside the if() {} block
+if(test.type === 'text') {
+  // hide the native picker and show the fallback
+  nativePicker.style.display = 'none';
+  fallbackPicker.style.display = 'block';
+  fallbackLabel.style.display = 'block';
+
+  // populate the years dynamically
+  // (the months are always the same, therefore hardcoded)
+  populateYears();
+}
+
+function populateYears() {
+  // get the current year as a number
+  var date = new Date();
+  var year = date.getFullYear();
+
+  // Make this year, and the 100 years before it available in the year <select>
+  for(var i = 0; i <= 100; i++) {
+    var option = document.createElement('option');
+    option.textContent = year-i;
+    yearSelect.appendChild(option);
+  }
+}
+            </script>
+        
+    
+
+<!-- Mirrored from mdn.mozillademos.org/en-US/docs/Web/HTML/Element/input/month$samples/Examples?revision=1473860 by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 01 May 2019 11:24:20 GMT -->
+</body></html>

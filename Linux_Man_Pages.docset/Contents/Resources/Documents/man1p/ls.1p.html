@@ -1,0 +1,1593 @@
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML><HEAD><TITLE>Man page of LS</TITLE>
+</HEAD><BODY>
+<H1>LS</H1>
+Section: POSIX Programmer's Manual (1P)<BR>Updated: 2013<BR><A HREF="#index">Index</A>
+<A HREF="../index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>PROLOG</H2>
+
+This manual page is part of the POSIX Programmer's Manual.
+The Linux implementation of this interface may differ (consult
+the corresponding Linux manual page for details of Linux behavior),
+or the interface may not be implemented on Linux.
+<P>
+<A NAME="lbAC">&nbsp;</A>
+<H2>NAME</H2>
+
+ls
+--- list directory contents
+<A NAME="lbAD">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<P>
+
+<PRE>
+ls <B>[</B>-ikqrs<B>] [</B>-glno<B>] [</B>-A|-a<B>] [</B>-C|-m|-x|-1<B>]</B> \
+    <B>[</B>-F|-p<B>] [</B>-H|-L<B>] [</B>-R|-d<B>] [</B>-S|-f|-t<B>] [</B>-c|-u<B>] [</B><I>file</I>...<B>]</B>
+</PRE>
+
+<A NAME="lbAE">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+For each operand that names a file of a type other than directory or
+symbolic link to a directory,
+<I>ls</I>
+
+shall write the name of the file as well as any requested, associated
+information. For each operand that names a file of type directory,
+<I>ls</I>
+
+shall write the names of files contained within the directory as well
+as any requested, associated information. Filenames beginning
+with a
+&lt;period&gt;
+(<B>'.'</B>)
+
+and any associated information shall not be written out unless
+explicitly referenced, the
+<B>-A</B>
+
+or
+<B>-a</B>
+
+option is supplied, or an implementation-defined condition causes them
+to be written. If one or more of the
+<B>-d</B>,
+
+<B>-F</B>,
+
+or
+<B>-l</B>
+
+options are specified, and neither the
+<B>-H</B>
+
+nor the
+<B>-L</B>
+
+option is specified, for each operand that names a file of type
+symbolic link to a directory,
+<I>ls</I>
+
+shall write the name of the file as well as any requested, associated
+information. If none of the
+<B>-d</B>,
+
+<B>-F</B>,
+
+or
+<B>-l</B>
+
+options are specified, or the
+<B>-H</B>
+
+or
+<B>-L</B>
+
+options are specified, for each operand that names a file of type
+symbolic link to a directory,
+<I>ls</I>
+
+shall write the names of files contained within the directory as well
+as any requested, associated information. In each case where the names
+of files contained within a directory are written, if the directory
+contains any symbolic links then
+<I>ls</I>
+
+shall evaluate the file information and file type to be those of
+the symbolic link itself, unless the
+<B>-L</B>
+
+option is specified.
+<P>
+
+If no operands are specified,
+<I>ls</I>
+
+shall behave as if a single operand of dot (<B>'.'</B>)
+
+had been specified. If more than one operand is specified,
+<I>ls</I>
+
+shall write non-directory operands first; it shall sort directory and
+non-directory operands separately according to the collating sequence
+in the current locale.
+<P>
+
+The
+<I>ls</I>
+
+utility shall detect infinite loops; that is, entering a previously
+visited directory that is an ancestor of the last file encountered.
+When it detects an infinite loop,
+<I>ls</I>
+
+shall write a diagnostic message to standard error and shall either
+recover its position in the hierarchy or terminate.
+<A NAME="lbAF">&nbsp;</A>
+<H2>OPTIONS</H2>
+
+The
+<I>ls</I>
+
+utility shall conform to the Base Definitions volume of POSIX.1-2008,
+<I>Section 12.2</I>, <I>Utility Syntax Guidelines.</I>
+
+<P>
+
+The following options shall be supported:
+<DL COMPACT>
+<DT><B>-A</B><DD>
+Write out all directory entries, including those whose names begin with a
+&lt;period&gt;
+(<B>'.'</B>)
+
+but excluding the entries dot and dot-dot (if they exist).
+<DT><B>-C</B><DD>
+Write multi-text-column output with entries sorted down the columns,
+according to the collating sequence. The number of text columns and the
+column separator characters are unspecified, but should be adapted to
+the nature of the output device. This option disables long format output.
+<DT><B>-F</B><DD>
+Do not follow symbolic links named as operands unless the
+<B>-H</B>
+
+or
+<B>-L</B>
+
+options are specified. Write a
+&lt;slash&gt;
+(<B>'/'</B>)
+
+immediately after each pathname that is a directory, an
+&lt;asterisk&gt;
+(<B>'*'</B>)
+
+after each that is executable, a
+&lt;vertical-line&gt;
+(<B>'|'</B>)
+
+after each that is a FIFO, and an at-sign (<B>'@'</B>)
+
+after each that is a symbolic link. For other file types, other
+symbols may be written.
+<DT><B>-H</B><DD>
+Evaluate the file information and file type for symbolic links specified
+on the command line to be those of the file referenced by the link,
+and not the link itself; however,
+<I>ls</I>
+
+shall write the name of the link itself and not the file referenced by
+the link.
+<DT><B>-L</B><DD>
+Evaluate the file information and file type for all symbolic links
+(whether named on the command line or encountered in a file hierarchy)
+to be those of the file referenced by the link, and not the link
+itself; however,
+<I>ls</I>
+
+shall write the name of the link itself and not the file referenced by
+the link. When
+<B>-L</B>
+
+is used with
+<B>-l</B>,
+
+write the contents of symbolic links in the long format (see the STDOUT
+section).
+<DT><B>-R</B><DD>
+Recursively list subdirectories encountered. When a symbolic link to a
+directory is encountered, the directory shall not be recursively listed
+unless the
+<B>-L</B>
+
+option is specified.
+The use of
+<B>-R</B>
+
+with
+<B>-d</B>
+
+or
+<B>-f</B>
+
+produces unspecified results.
+<DT><B>-S</B><DD>
+Sort with the primary key being file size (in decreasing order) and the
+secondary key being filename in the collating sequence (in increasing
+order).
+<DT><B>-a</B><DD>
+Write out all directory entries, including those whose names begin with a
+&lt;period&gt;
+(<B>'.'</B>).
+
+<DT><B>-c</B><DD>
+Use time of last modification of the file status information (see the Base Definitions volume of POSIX.1-2008,
+<I></I><B>&lt;<A HREF="file:///usr/include/sys_stat.h">sys_stat.h</A>&gt;</B>)
+
+instead of last modification of the file itself for sorting (<B>-t</B>)
+
+or writing (<B>-l</B>).
+
+<DT><B>-d</B><DD>
+Do not follow symbolic links named as operands unless the
+<B>-H</B>
+
+or
+<B>-L</B>
+
+options are specified. Do not treat directories differently than other
+types of files. The use of
+<B>-d</B>
+
+with
+<B>-R</B>
+
+or
+<B>-f</B>
+
+produces unspecified results.
+<DT><B>-f</B><DD>
+List the entries in directory operands in the order they appear in the
+directory. The behavior for non-directory operands is unspecified. This
+option shall turn on
+<B>-a</B>.
+
+When
+<B>-f</B>
+
+is specified, any occurrences of the
+<B>-r</B>,
+
+<B>-S</B>,
+
+and
+<B>-t</B>
+
+options shall be ignored and any occurrences of the
+<B>-A</B>,
+
+<B>-g</B>,
+
+<B>-l</B>,
+
+<B>-n</B>,
+
+<B>-o</B>,
+
+and
+<B>-s</B>
+
+options may be ignored. The use of
+<B>-f</B>
+
+with
+<B>-R</B>
+
+or
+<B>-d</B>
+
+produces unspecified results.
+<DT><B>-g</B><DD>
+Turn on the
+<B>-l</B>
+
+(ell) option, but disable writing the file's owner name or number.
+Disable the
+<B>-C</B>,
+
+<B>-m</B>,
+
+and
+<B>-x</B>
+
+options.
+<DT><B>-i</B><DD>
+For each file, write the file's file serial number (see
+<I>stat</I>()
+in the System Interfaces volume of POSIX.1-2008).
+<DT><B>-k</B><DD>
+Set the block size for the
+<B>-s</B>
+
+option and the per-directory block count written for the
+<B>-l</B>,
+
+<B>-n</B>,
+
+<B>-s</B>,
+
+<B>-g</B>,
+
+and
+<B>-o</B>
+
+options (see the STDOUT section) to 1024 bytes.
+<DT><B>-l</B><DD>
+(The letter ell.) Do not follow symbolic links named as operands unless
+the
+<B>-H</B>
+
+or
+<B>-L</B>
+
+options are specified. Write out in long format (see the STDOUT
+section). Disable the
+<B>-C</B>,
+
+<B>-m</B>,
+
+and
+<B>-x</B>
+
+options.
+<DT><B>-m</B><DD>
+Stream output format; list pathnames across the page, separated by a
+&lt;comma&gt;
+character followed by a
+&lt;space&gt;
+character. Use a
+&lt;newline&gt;
+character as the list terminator and after the separator sequence when
+there is not room on a line for the next list entry. This option disables
+long format output.
+<DT><B>-n</B><DD>
+Turn on the
+<B>-l</B>
+
+(ell) option, but when writing the file's owner or group, write
+the file's numeric UID or GID rather than the user or group name,
+respectively. Disable the
+<B>-C</B>,
+
+<B>-m</B>,
+
+and
+<B>-x</B>
+
+options.
+<DT><B>-o</B><DD>
+Turn on the
+<B>-l</B>
+
+(ell) option, but disable writing the file's group name or number.
+Disable the
+<B>-C</B>,
+
+<B>-m</B>,
+
+and
+<B>-x</B>
+
+options.
+<DT><B>-p</B><DD>
+Write a
+&lt;slash&gt;
+(<B>'/'</B>)
+
+after each filename if that file is a directory.
+<DT><B>-q</B><DD>
+Force each instance of non-printable filename characters and
+&lt;tab&gt;
+characters to be written as the
+&lt;question-mark&gt;
+(<B>'?'</B>)
+
+character. Implementations may provide this option by default if the
+output is to a terminal device.
+<DT><B>-r</B><DD>
+Reverse the order of the sort to get reverse collating sequence oldest
+first, or smallest file size first depending on the other options
+given.
+<DT><B>-s</B><DD>
+Indicate the total number of file system blocks consumed by each file
+displayed. If the
+<B>-k</B>
+
+option is also specified, the block size shall be 1024 bytes;
+otherwise, the block size is implementation-defined.
+<DT><B>-t</B><DD>
+Sort with the primary key being time modified (most recently modified
+first) and the secondary key being filename in the collating sequence.
+For a symbolic link, the time used as the sort key is that of the
+symbolic link itself, unless
+<I>ls</I>
+
+is evaluating its file information to be that of the file referenced
+by the link (see the
+<B>-H</B>
+
+and
+<B>-L</B>
+
+options).
+<DT><B>-u</B><DD>
+Use time of last access (see the Base Definitions volume of POSIX.1-2008,
+<I></I><B>&lt;<A HREF="file:///usr/include/sys_stat.h">sys_stat.h</A>&gt;</B>)
+
+instead of last modification of the file for sorting (<B>-t</B>)
+
+or writing (<B>-l</B>).
+
+<DT><B>-x</B><DD>
+The same as
+<B>-C</B>,
+
+except that the multi-text-column output is produced with entries sorted
+across, rather than down, the columns. This option disables long format
+output.
+<DT><B>-1</B><DD>
+(The numeric digit one.) Force output to be one entry per line.
+This option does not disable long format output. (Long format output is
+enabled by
+<B>-g</B>,
+
+<B>-l</B>
+
+(ell),
+<B>-n</B>,
+
+and
+<B>-o</B>;
+
+and disabled by
+<B>-C</B>,
+
+<B>-m</B>,
+
+and
+<B>-x</B>.)
+
+</DL>
+<P>
+
+If an option that enables long format output (<B>-g</B>,
+
+<B>-l</B>
+
+(ell),
+<B>-n</B>,
+
+and
+<B>\(mio</B>
+
+is given with an option that disables long format output (<B>-C</B>,
+
+<B>-m</B>,
+
+and
+<B>-x</B>),
+
+this shall not be considered an error. The last of these options
+specified shall determine whether long format output is written.
+<P>
+
+If
+<B>-R</B>,
+
+<B>-d</B>,
+
+or
+<B>-f</B>
+
+are specified, the results of specifying these mutually-exclusive options
+are specified by the descriptions of these options above. If more
+than one of any of the other options shown in the SYNOPSIS section in
+mutually-exclusive sets are given, this shall not be considered an error;
+the last option specified in each set shall determine the output.
+<P>
+
+Note that if
+<B>-t</B>
+
+is specified,
+<B>-c</B>
+
+and
+<B>-u</B>
+
+are not only mutually-exclusive with each other, they are also
+mutually-exclusive with
+<B>-S</B>
+
+when determining sort order. But even if
+<B>-S</B>
+
+is specified after all occurrences of
+<B>-c</B>,
+
+<B>-t</B>,
+
+and
+<B>-u</B>,
+
+the last use of
+<B>-c</B>
+
+or
+<B>-u</B>
+
+determines the timestamp printed when producing long format output.
+<A NAME="lbAG">&nbsp;</A>
+<H2>OPERANDS</H2>
+
+The following operand shall be supported:
+<DL COMPACT>
+<DT><I>file</I><DD>
+A pathname of a file to be written. If the file specified is not
+found, a diagnostic message shall be output on standard error.
+</DL>
+<A NAME="lbAH">&nbsp;</A>
+<H2>STDIN</H2>
+
+Not used.
+<A NAME="lbAI">&nbsp;</A>
+<H2>INPUT FILES</H2>
+
+None.
+<BR>
+
+<A NAME="lbAJ">&nbsp;</A>
+<H2>ENVIRONMENT VARIABLES</H2>
+
+The following environment variables shall affect the execution of
+<I>ls</I>:
+
+<DL COMPACT>
+<DT><I>COLUMNS</I><DD>
+Determine the user's preferred column position width for writing
+multiple text-column output. If this variable contains a string
+representing a decimal integer, the
+<I>ls</I>
+
+utility shall calculate how many pathname text columns to write (see
+<B>-C</B>)
+
+based on the width provided. If
+<I>COLUMNS</I>
+
+is not set or invalid, an implementation-defined number of column
+positions shall be assumed, based on the implementation's knowledge of
+the output device. The column width chosen to write the names of files
+in any given directory shall be constant. Filenames shall not be
+truncated to fit into the multiple text-column output.
+<DT><I>LANG</I><DD>
+Provide a default value for the internationalization variables that are
+unset or null. (See the Base Definitions volume of POSIX.1-2008,
+<I>Section 8.2</I>, <I>Internationalization Variables</I>
+
+for the precedence of internationalization variables used to determine
+the values of locale categories.)
+<DT><I>LC_ALL</I><DD>
+If set to a non-empty string value, override the values of all the
+other internationalization variables.
+<DT><I>LC_COLLATE</I><DD>
+<BR>
+
+Determine the locale for character collation information in determining
+the pathname collation sequence.
+<DT><I>LC_CTYPE</I><DD>
+Determine the locale for the interpretation of sequences of bytes of
+text data as characters (for example, single-byte as opposed to multi-byte
+characters in arguments) and which characters are defined as printable
+(character class
+<B>print</B>).
+
+<DT><I>LC_MESSAGES</I><DD>
+<BR>
+
+Determine the locale that should be used to affect the format and
+contents of diagnostic messages written to standard error.
+<DT><I>LC_TIME</I><DD>
+Determine the format and contents for date and time strings written by
+<I>ls</I>.
+
+<DT><I>NLSPATH</I><DD>
+Determine the location of message catalogs for the processing of
+<I>LC_MESSAGES</I>.
+
+<DT><I>TZ</I><DD>
+Determine the timezone for date and time strings written by
+<I>ls</I>.
+
+If
+<I>TZ</I>
+
+is unset or null, an unspecified default timezone shall be used.
+</DL>
+<A NAME="lbAK">&nbsp;</A>
+<H2>ASYNCHRONOUS EVENTS</H2>
+
+Default.
+<A NAME="lbAL">&nbsp;</A>
+<H2>STDOUT</H2>
+
+The default format shall be to list one entry per line to standard
+output; the exceptions are to terminals or when one of the
+<B>-C</B>,
+
+<B>-m</B>,
+
+or
+<B>-x</B>
+
+options is specified. If the output is to a terminal, the format is
+implementation-defined.
+<P>
+
+When
+<B>-m</B>
+
+is specified, the format used for the last element of the list
+shall be:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+&quot;%s\n&quot;, &lt;</B><I>filename</I>&gt;
+</PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+The format used for each other element of the list shall be:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+&quot;%s,%s&quot;, &lt;</B><I>filename</I>&gt;, &lt;<I>separator</I>&gt;
+</PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+where, if there is not room for the next element of the list to fit
+within the current line length, &lt;<I>separator</I>&gt; is a string containing
+an optional
+&lt;space&gt;
+character and a mandatory
+&lt;newline&gt;
+character; otherwise it is a single
+&lt;space&gt;
+character.
+<P>
+
+If the
+<B>-i</B>
+
+option is specified, the file's file serial number (see the Base Definitions volume of POSIX.1-2008,
+<I></I><B>&lt;<A HREF="file:///usr/include/sys_stat.h">sys_stat.h</A>&gt;</B>)
+
+shall be written in the following format before any other output for
+the corresponding entry:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+%u &quot;, &lt;</B><I>file serial number</I>&gt;
+</PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+If the
+<B>-l</B>
+
+option is specified, the following information shall be written for
+files other than character special and block special files:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+&quot;%s %u %s %s %u %s %s\n&quot;, &lt;</B><I>file mode</I>&gt;, &lt;<I>number of links</I>&gt;,
+    &lt;<I>owner name</I>&gt;, &lt;<I>group name</I>&gt;, &lt;<I>size</I>&gt;, &lt;<I>date and time</I>&gt;,
+    &lt;<I>pathname</I>&gt;
+</PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+If the
+<B>-l</B>
+
+option is specified, the following information shall be written
+for character special and block special files:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+&quot;%s %u %s %s %s %s %s\n&quot;, &lt;</B><I>file mode</I>&gt;, &lt;<I>number of links</I>&gt;,
+    &lt;<I>owner name</I>&gt;, &lt;<I>group name</I>&gt;, &lt;<I>device info</I>&gt;, &lt;<I>date and time</I>&gt;,
+    &lt;<I>pathname</I>&gt;
+</PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+In both cases if the file is a symbolic link and the
+<B>-L</B>
+
+option is also specified, this information shall be for the file
+resolved from the symbolic link, except that the &lt;<I>pathname</I>&gt; field
+shall contain the pathname of the symbolic link itself. If the file is
+a symbolic link and the
+<B>-L</B>
+
+option is not specified, this information shall be about the link itself
+and the &lt;<I>pathname</I>&gt; field shall be of the form:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+&quot;%s -&gt; %s&quot;, &lt;</B><I>pathname of link</I>&gt;, &lt;<I>contents of link</I>&gt;
+</PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+The
+<B>-n</B>,
+
+<B>-g</B>,
+
+and
+<B>-o</B>
+
+options use the same format as
+<B>-l</B>,
+
+but with omitted items and their associated
+&lt;blank&gt;
+characters. See the OPTIONS section.
+<P>
+
+In both the preceding
+<B>-l</B>
+
+forms, if &lt;<I>owner name</I>&gt; or &lt;<I>group name</I>&gt; cannot be
+determined, or if
+<B>-n</B>
+
+is given, they shall be replaced with their associated numeric values
+using the format
+<B>%u</B>.
+
+<P>
+
+The &lt;<I>size</I>&gt; field shall contain the value that would be returned
+for the file in the
+<I>st_size</I>
+
+field of
+<B>struct stat</B>
+
+(see the Base Definitions volume of POSIX.1-2008,
+<I></I><B>&lt;<A HREF="file:///usr/include/sys_stat.h">sys_stat.h</A>&gt;</B>).
+
+Note that for some file types this value is unspecified.
+<P>
+
+The &lt;<I>device&nbsp;info</I>&gt; field shall contain implementation-defined
+information associated with the device in question.
+<P>
+
+The &lt;<I>date&nbsp;and&nbsp;time</I>&gt; field shall contain the appropriate date
+and timestamp of when the file was last modified. In the POSIX locale,
+the field shall be the equivalent of the output of the following
+<I>date</I>
+
+command:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+date &quot;+%b %e %H:%M&quot;
+</B></PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+if the file has been modified in the last six months, or:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+date &quot;+%b %e %Y&quot;
+</B></PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+(where two
+&lt;space&gt;
+characters are used between
+<B>%e</B>
+
+and
+<B>%Y</B>)
+
+if the file has not been modified in the last six months or if the
+modification date is in the future, except that, in both cases, the final
+&lt;newline&gt;
+produced by
+<I>date</I>
+
+shall not be included and the output shall be as if the
+<I>date</I>
+
+command were executed at the time of the last modification date of the
+file rather than the current time. When the
+<I>LC_TIME</I>
+
+locale category is not set to the POSIX locale, a different format and
+order of presentation of this field may be used.
+<P>
+
+If the pathname was specified as a
+<I>file</I>
+
+operand, it shall be written as specified.
+<P>
+
+The file mode written under the
+<B>-l</B>,
+
+<B>-n</B>,
+
+<B>-g</B>,
+
+and
+<B>-o</B>
+
+options shall consist of the following format:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+&quot;%c%s%s%s%s&quot;, &lt;</B><I>entry type</I>&gt;, &lt;<I>owner permissions</I>&gt;,
+    &lt;<I>group permissions</I>&gt;, &lt;<I>other permissions</I>&gt;,
+    &lt;<I>optional alternate access method flag</I>&gt;
+</PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+The &lt;<I>optional&nbsp;alternate&nbsp;access&nbsp;method&nbsp;flag</I>&gt; shall be the
+empty string if there is no alternate or additional access control
+method associated with the file; otherwise, it shall be a string
+containing a single printable character that is not a
+&lt;blank&gt;.
+<P>
+
+The &lt;<I>entry&nbsp;type</I>&gt; character shall describe the type of file, as
+follows:
+<DL COMPACT>
+<DT>d<DD>
+Directory.
+<DT>b<DD>
+Block special file.
+<DT>c<DD>
+Character special file.
+<DT>l&nbsp;(ell)<DD>
+Symbolic link.
+<DT>p<DD>
+FIFO.
+<DT>-<DD>
+Regular file.
+</DL>
+<P>
+
+Implementations may add other characters to this list to represent
+other implementation-defined file types.
+<P>
+
+The next three fields shall be three characters each:
+<DL COMPACT>
+<DT>&lt;<I>owner permissions</I>&gt;<DD>
+<BR>
+
+Permissions for the file owner class (see the Base Definitions volume of POSIX.1-2008,
+<I>Section 4.4</I>, <I>File Access Permissions).</I>
+
+<DT>&lt;<I>group permissions</I>&gt;<DD>
+<BR>
+
+Permissions for the file group class.
+<DT>&lt;<I>other permissions</I>&gt;<DD>
+<BR>
+
+Permissions for the file other class.
+</DL>
+<P>
+
+Each field shall have three character positions:
+<DL COMPACT>
+<DT> 1.<DD>
+If
+<B>'r'</B>,
+
+the file is readable; if
+<B>'-'</B>,
+
+the file is not readable.
+<DT> 2.<DD>
+If
+<B>'w'</B>,
+
+the file is writable; if
+<B>'-'</B>,
+
+the file is not writable.
+<DT> 3.<DD>
+The first of the following that applies:
+<DL COMPACT><DT><DD>
+<P>
+<DL COMPACT>
+<DT>S<DD>
+If in &lt;<I>owner&nbsp;permissions</I>&gt;, the file is not executable and
+set-user-ID mode is set. If in &lt;<I>group&nbsp;permissions</I>&gt;, the file is
+not executable and set-group-ID mode is set.
+<DT>s<DD>
+If in &lt;<I>owner&nbsp;permissions</I>&gt;, the file is executable and
+set-user-ID mode is set. If in &lt;<I>group&nbsp;permissions</I>&gt;, the file is
+executable and set-group-ID mode is set.
+<DT>T<DD>
+If in &lt;<I>other&nbsp;permissions</I>&gt; and the file is a directory, search
+permission is not granted to others, and the restricted deletion flag
+is set.
+<DT>t<DD>
+If in &lt;<I>other&nbsp;permissions</I>&gt; and the file is a directory, search
+permission is granted to others, and the restricted deletion flag
+is set.
+<DT>x<DD>
+The file is executable or the directory is searchable.
+<DT>-<DD>
+None of the attributes of
+<B>'S'</B>,
+
+<B>'s'</B>,
+
+<B>'T'</B>,
+
+<B>'t'</B>,
+
+or
+<B>'x'</B>
+
+applies.
+</DL>
+<P>
+
+Implementations may add other characters to this list for the third
+character position. Such additions shall, however, be written in
+lowercase if the file is executable or searchable, and in uppercase if
+it is not.
+</DL>
+
+</DL>
+<P>
+
+If any of the
+<B>-l</B>,
+
+<B>-n</B>,
+
+<B>-s</B>,
+
+<B>-g</B>,
+
+or
+<B>-o</B>
+
+options is specified, each list of files within the directory shall be
+preceded by a status line indicating the number of file system blocks
+occupied by files in the directory in 512-byte units if the
+<B>-k</B>
+
+option is not specified, or 1024-byte units if the
+<B>-k</B>
+
+option is specified, rounded up to the next integral number of units,
+if necessary. In the POSIX locale, the format shall be:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+&quot;total %u\n&quot;, &lt;</B><I>number of units in the directory</I>&gt;
+</PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+If more than one directory, or a combination of non-directory files and
+directories are written, either as a result of specifying multiple
+operands, or the
+<B>-R</B>
+
+option, each list of files within a directory shall be preceded by:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+&quot;\n%s:\n&quot;, &lt;</B><I>directory name</I>&gt;
+</PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+If this string is the first thing to be written, the first
+&lt;newline&gt;
+shall not be written. This output shall precede the number of units in
+the directory.
+<P>
+
+If the
+<B>-s</B>
+
+option is given, each file shall be written with the number of blocks
+used by the file. Along with
+<B>-C</B>,
+
+<B>-1</B>,
+
+<B>-m</B>,
+
+or
+<B>-x</B>,
+
+the number and a
+&lt;space&gt;
+shall precede the filename; with
+<B>-l</B>,
+
+<B>-n</B>,
+
+<B>-g</B>,
+
+or
+<B>-o</B>,
+
+they shall precede each line describing a file.
+<A NAME="lbAM">&nbsp;</A>
+<H2>STDERR</H2>
+
+The standard error shall be used only for diagnostic messages.
+<A NAME="lbAN">&nbsp;</A>
+<H2>OUTPUT FILES</H2>
+
+None.
+<A NAME="lbAO">&nbsp;</A>
+<H2>EXTENDED DESCRIPTION</H2>
+
+None.
+<A NAME="lbAP">&nbsp;</A>
+<H2>EXIT STATUS</H2>
+
+The following exit values shall be returned:
+<DL COMPACT>
+<DT>&nbsp;0<DD>
+Successful completion.
+<DT>&gt;0<DD>
+An error occurred.
+</DL>
+<A NAME="lbAQ">&nbsp;</A>
+<H2>CONSEQUENCES OF ERRORS</H2>
+
+Default.
+<P>
+
+<I>The following sections are informative.</I>
+
+<A NAME="lbAR">&nbsp;</A>
+<H2>APPLICATION USAGE</H2>
+
+Many implementations use the
+&lt;equals-sign&gt;
+(<B>'='</B>)
+
+to denote sockets bound to the file system for the
+<B>-F</B>
+
+option. Similarly, many historical implementations use the
+<B>'s'</B>
+
+character to denote sockets as the entry type characters for the
+<B>-l</B>
+
+option.
+<P>
+
+It is difficult for an application to use every part of the file modes
+field of
+<I>ls</I>
+
+<B>-l</B>
+
+in a portable manner. Certain file types and executable bits are not
+guaranteed to be exactly as shown, as implementations may have
+extensions. Applications can use this field to pass directly to a user
+printout or prompt, but actions based on its contents should generally
+be deferred, instead, to the
+<I>test</I>
+
+utility.
+<P>
+
+The output of
+<I>ls</I>
+
+(with the
+<B>-l</B>
+
+and related options) contains information that logically could be used
+by utilities such as
+<I>chmod</I>
+
+and
+<I>touch</I>
+
+to restore files to a known state. However, this information is
+presented in a format that cannot be used directly by those utilities
+or be easily translated into a format that can be used. A character
+has been added to the end of the permissions string so that
+applications at least have an indication that they may be working in an
+area they do not understand instead of assuming that they can translate
+the permissions string into something that can be used. Future versions
+or related documents may define one or more specific characters to be
+used based on different standard additional or alternative access
+control mechanisms.
+<P>
+
+As with many of the utilities that deal with filenames, the output of
+<I>ls</I>
+
+for multiple files or in one of the long listing formats must be used
+carefully on systems where filenames can contain embedded white
+space. Systems and system administrators should institute policies and
+user training to limit the use of such filenames.
+<P>
+
+The number of disk blocks occupied by the file that it reports varies
+depending on underlying file system type, block size units reported,
+and the method of calculating the number of blocks. On some file
+system types, the number is the actual number of blocks occupied by the
+file (counting indirect blocks and ignoring holes in the file); on
+others it is calculated based on the file size (usually making an
+allowance for indirect blocks, but ignoring holes).
+<A NAME="lbAS">&nbsp;</A>
+<H2>EXAMPLES</H2>
+
+An example of a small directory tree being fully listed with
+<I>ls</I>
+
+<B>-laRF&nbsp;a</B>
+
+in the POSIX locale:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+total 11
+drwxr-xr-x   3 fox      prog          64 Jul  4 12:07 ./
+drwxrwxrwx   4 fox      prog        3264 Jul  4 12:09 ../
+drwxr-xr-x   2 fox      prog          48 Jul  4 12:07 b/
+-rwxr--r--   1 fox      prog         572 Jul  4 12:07 foo*
+
+a/b:
+total 4
+drwxr-xr-x   2 fox      prog          48 Jul  4 12:07 ./
+drwxr-xr-x   3 fox      prog          64 Jul  4 12:07 ../
+-rw-r--r--   1 fox      prog         700 Jul  4 12:07 bar
+</B></PRE>
+
+<P>
+
+</DL>
+
+<A NAME="lbAT">&nbsp;</A>
+<H2>RATIONALE</H2>
+
+Some historical implementations of the
+<I>ls</I>
+
+utility show all entries in a directory except dot and dot-dot when a
+superuser invokes
+<I>ls</I>
+
+without specifying the
+<B>-a</B>
+
+option. When ``normal'' users invoke
+<I>ls</I>
+
+without specifying
+<B>-a</B>,
+
+they should not see information about any files with names beginning
+with a
+&lt;period&gt;
+unless they were named as
+<I>file</I>
+
+operands.
+<P>
+
+Implementations are expected to traverse arbitrary depths when
+processing the
+<B>-R</B>
+
+option. The only limitation on depth should be based on running out of
+physical storage for keeping track of untraversed directories.
+<P>
+
+The
+<B>-1</B>
+
+(one) option was historically found in BSD and BSD-derived
+implementations only. It is required in this volume of POSIX.1-2008 so that conforming
+applications might ensure that output is one entry per line, even if
+the output is to a terminal.
+<P>
+
+The
+<B>-S</B>
+
+option was added in Issue 7, but had been provided by several
+implementations for many years. The description given in the
+standard documents historic practice, but does not match much of the
+documentation that described its behavior. Historical documentation
+typically described it as something like:
+<DL COMPACT>
+<DT><B>-S</B><DD>
+Sort by size (largest size first) instead of by name. Special character
+devices (listed last) are sorted by name.
+</DL>
+<P>
+
+even though the file type was never considered when sorting the output.
+Character special files do typically sort close to the end of the list
+because their file size on most implementations is zero. But they are
+sorted alphabetically with any other files that happen to have the same
+file size (zero), not sorted separately and added to the end.
+<P>
+
+This volume of POSIX.1-2008 is frequently silent about what happens when mutually-exclusive
+options are specified. Except for
+<B>-R</B>,
+
+<B>-d</B>,
+
+and
+<B>-f</B>,
+
+the
+<I>ls</I>
+
+utility is required to accept multiple options from each
+mutually-exclusive option set without treating them as errors and to use
+the behavior specified by the last option given in each mutually-exclusive
+set. Since
+<I>ls</I>
+
+is one of the most aliased commands, it is important that the
+implementation perform intuitively. For example, if the alias were:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+alias ls=&quot;ls -C&quot;
+</B></PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+and the user typed
+<I>ls</I>
+
+<B>-1</B>
+
+(one), single-text-column output should result, not an error.
+<P>
+
+The
+<B>-g</B>,
+
+<B>-l</B>
+
+(ell),
+<B>-n</B>,
+
+and
+<B>-o</B>
+
+options are not mutually-exclusive options. They all enable long format
+output. They work together to determine whether the file's owner is
+written (no if
+<B>-g</B>
+
+is present), file's group is written (no if
+<B>-o</B>
+
+is present), and if the file's group or owner is written whether it is
+written as the name (default) or a string representation of the UID or
+GID number (if
+<B>-n</B>
+
+is present). The
+<B>-C</B>,
+
+<B>-m</B>,
+
+<B>-x</B>,
+
+and
+<B>-1</B>
+
+(one) are mutually-exclusive options and the first three of these disable
+long format output. The
+<B>-1</B>
+
+(one) option does not directly change whether or not long format output
+is enabled, but by overriding
+<B>-C</B>,
+
+<B>-m</B>,
+
+and
+<B>-x</B>,
+
+it can re-enable long format output that had been disabled by one of
+these options.
+<P>
+
+Earlier versions of this standard did not describe the BSD
+<B>-A</B>
+
+option (like
+<B>-a</B>,
+
+but dot and dot-dot are not written out). It has been added due to
+widespread implementation.
+<P>
+
+Implementations may make
+<B>-q</B>
+
+the default for terminals to prevent trojan horse attacks on terminals
+with special escape sequences.
+This is not required because:
+<DL COMPACT>
+<DT> *<DD>
+Some control characters may be useful on some terminals; for example, a
+system might write them as
+<B>&quot;\001&quot;</B>
+
+or
+<B>&quot;^A&quot;</B>.
+
+<DT> *<DD>
+Special behavior for terminals is not relevant to applications
+portability.
+</DL>
+<P>
+
+An early proposal specified that the
+&lt;<I>optional&nbsp;alternate&nbsp;access&nbsp;method&nbsp;flag</I>&gt; had to be
+<B>'+'</B>
+
+if there was an alternate access method used on the file or
+&lt;space&gt;
+if there was not. This was changed to be
+&lt;space&gt;
+if there is not and a single printable character if there is. This was
+done for three reasons:
+<DL COMPACT>
+<DT> 1.<DD>
+There are historical implementations using characters other than
+<B>'+'</B>.
+
+<DT> 2.<DD>
+There are implementations that vary this character used in that
+position to distinguish between various alternate access methods in
+use.
+<DT> 3.<DD>
+The standard developers did not want to preclude future specifications
+that might need a way to specify more than one alternate access
+method.
+</DL>
+<P>
+
+Nonetheless, implementations providing a single alternate access method
+are encouraged to use
+<B>'+'</B>.
+
+<P>
+
+Earlier versions of this standard did not have the
+<B>-k</B>
+
+option, which meant that the
+<B>-s</B>
+
+option could not be used portably as its block size was
+implementation-defined, and the units used to specify the
+number of blocks occupied by files in a directory in an
+<I>ls</I>
+
+<B>-l</B>
+
+listing were fixed as 512-byte units. The
+<B>-k</B>
+
+option has been added to provide a way for the
+<B>-s</B>
+
+option to be used portably, and for consistency it also changes the
+aforementioned units from 512-byte to 1024-byte.
+<P>
+
+The &lt;<I>date&nbsp;and&nbsp;time</I>&gt; field in the
+<B>-l</B>
+
+format is specified only for the POSIX locale. As noted, the format can
+be different in other locales. No mechanism for defining this is
+present in this volume of POSIX.1-2008, as the appropriate vehicle is a messaging system;
+that is, the format should be specified as a ``message''.
+<A NAME="lbAU">&nbsp;</A>
+<H2>FUTURE DIRECTIONS</H2>
+
+Allowing
+<B>-f</B>
+
+to ignore the
+<B>-A</B>,
+
+<B>-g</B>,
+
+<B>-l</B>,
+
+<B>-n</B>,
+
+<B>-o</B>,
+
+and
+<B>-s</B>
+
+options may be removed in a future version.
+<A NAME="lbAV">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+<I>chmod</I>,
+
+<I>find</I>
+
+<P>
+
+The Base Definitions volume of POSIX.1-2008,
+<I>Section 4.4</I>, <I>File Access Permissions,</I>
+
+<I>Chapter 8</I>, <I>Environment Variables,</I>
+
+<I>Section 12.2</I>, <I>Utility Syntax Guidelines,</I>
+
+<I></I><B>&lt;<A HREF="file:///usr/include/sys_stat.h">sys_stat.h</A>&gt;</B>
+
+<P>
+
+The System Interfaces volume of POSIX.1-2008,
+<I>fstatat</I>()
+
+<A NAME="lbAW">&nbsp;</A>
+<H2>COPYRIGHT</H2>
+
+Portions of this text are reprinted and reproduced in electronic form
+from IEEE Std 1003.1, 2013 Edition, Standard for Information Technology
+-- Portable Operating System Interface (POSIX), The Open Group Base
+Specifications Issue 7, Copyright (C) 2013 by the Institute of
+Electrical and Electronics Engineers, Inc and The Open Group.
+(This is POSIX.1-2008 with the 2013 Technical Corrigendum 1 applied.) In the
+event of any discrepancy between this version and the original IEEE and
+The Open Group Standard, the original IEEE and The Open Group Standard
+is the referee document. The original Standard can be obtained online at
+<A HREF="http://www.unix.org/online.html">http://www.unix.org/online.html</A> .
+<P>
+Any typographical or formatting errors that appear
+in this page are most likely
+to have been introduced during the conversion of the source files to
+man page format. To report such errors, see
+<A HREF="https://www.kernel.org/doc/man-pages/reporting_bugs.html">https://www.kernel.org/doc/man-pages/reporting_bugs.html</A> .
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">PROLOG</A><DD>
+<DT><A HREF="#lbAC">NAME</A><DD>
+<DT><A HREF="#lbAD">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAE">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAF">OPTIONS</A><DD>
+<DT><A HREF="#lbAG">OPERANDS</A><DD>
+<DT><A HREF="#lbAH">STDIN</A><DD>
+<DT><A HREF="#lbAI">INPUT FILES</A><DD>
+<DT><A HREF="#lbAJ">ENVIRONMENT VARIABLES</A><DD>
+<DT><A HREF="#lbAK">ASYNCHRONOUS EVENTS</A><DD>
+<DT><A HREF="#lbAL">STDOUT</A><DD>
+<DT><A HREF="#lbAM">STDERR</A><DD>
+<DT><A HREF="#lbAN">OUTPUT FILES</A><DD>
+<DT><A HREF="#lbAO">EXTENDED DESCRIPTION</A><DD>
+<DT><A HREF="#lbAP">EXIT STATUS</A><DD>
+<DT><A HREF="#lbAQ">CONSEQUENCES OF ERRORS</A><DD>
+<DT><A HREF="#lbAR">APPLICATION USAGE</A><DD>
+<DT><A HREF="#lbAS">EXAMPLES</A><DD>
+<DT><A HREF="#lbAT">RATIONALE</A><DD>
+<DT><A HREF="#lbAU">FUTURE DIRECTIONS</A><DD>
+<DT><A HREF="#lbAV">SEE ALSO</A><DD>
+<DT><A HREF="#lbAW">COPYRIGHT</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 14:28:44 GMT, February 25, 2017
+</BODY>
+</HTML>

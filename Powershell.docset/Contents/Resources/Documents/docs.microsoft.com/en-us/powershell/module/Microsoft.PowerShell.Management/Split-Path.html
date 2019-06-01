@@ -1,0 +1,1210 @@
+<!DOCTYPE html>
+<html class="no-js hasSidebar hasPageActions hasBreadcrumb conceptual" data-authenticated="false" data-render="docs" dir="ltr" lang="en-us">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Split-Path (Microsoft.PowerShell.Management)" property="og:title"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" property="og:image"/>
+  <meta content="summary" name="twitter:card"/>
+  <meta content="@docsmsft" name="twitter:site"/>
+  <meta content="Split-Path (Microsoft.PowerShell.Management)" name="twitter:title"/>
+  <meta content="The Split-Path cmdlet returns only the specified part of a path, such as the parent folder, a subfolder, or a file name. It can also get items that are referenced by the split path and tell whether tâ¦" name="twitter:description"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" name="twitter:image"/>
+  <meta content="Microsoft Logo" name="twitter:image:alt"/>
+  <meta content="The Split-Path cmdlet returns only the specified part of a path, such as the parent folder, a subfolder, or a file name. It can also get items that are referenced by the split path and tell whether tâ¦" name="description"/>
+  <meta content="Docs" name="search.ms_sitename"/>
+  <meta content="PowerShell_PowerShell-docs_reference" name="search.ms_docsetname"/>
+  <meta content="0" name="version"/>
+  <meta content="en-us" name="locale"/>
+  <meta content="Docs" name="site_name"/>
+  <meta content="PowerShell" name="search.ms_product"/>
+  <meta content="PowerShell.PowerShell_PowerShell-docs_reference" name="depot_name"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/446813f2b0922607a6ae1d2df7a11be56edfa4c1/reference/6/Microsoft.PowerShell.Management/Split-Path.md" name="ref_skeleton_gitcommit"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/live/reference/6/Microsoft.PowerShell.Management/Split-Path.md" name="original_ref_skeleton_git_url"/>
+  <meta content="2018-03-30 03:35 PM" name="updated_at"/>
+  <meta content="4fc8b0a5-8130-a6e3-7e95-92495fbcb605" name="document_id"/>
+  <meta content="7871d186-25d2-78eb-9b50-cd04495ad981" name="document_version_independent_id"/>
+  <meta content="powershell" name="page_type"/>
+  <meta content="command" name="page_kind"/>
+  <meta content="06/09/2017" name="ms.date"/>
+  <meta content="2.0.0" name="schema"/>
+  <meta content="powershell,cmdlet" name="keywords"/>
+  <meta content="http://go.microsoft.com/fwlink/?LinkId=821637" name="online_version"/>
+  <meta content="Microsoft.PowerShell.Commands.Management.dll-Help.xml" name="external_help_file"/>
+  <meta content="powershell" name="ms.devlang"/>
+  <meta content="INDEX, FOLLOW" name="ROBOTS"/>
+  <meta content="sdwheeler" name="author"/>
+  <meta content="sewhee" name="ms.author"/>
+  <meta content="carmonm" name="manager"/>
+  <meta content="/powershell/bread-pscore/toc.yml?view=powershell-6" name="breadcrumb_path"/>
+  <meta content="powershell" name="apiPlatform"/>
+  <meta content="reference" name="ms.topic"/>
+  <meta content="windows, macos, linux" name="ms.tgt_pltfr"/>
+  <meta content="powershell-scripting" name="ms.technology"/>
+  <meta content="powershell" name="ms.prod"/>
+  <meta content="MSDocsHeader-Powershell" name="uhfHeaderId"/>
+  <meta content="../psdocs/toc.json?view=powershell-6" name="toc_rel"/>
+  <link href="https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.management/split-path" rel="canonical"/>
+  <title>
+   Split-Path
+  </title>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/60aac04b.site.css" rel="stylesheet"/>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/fdb8a38a.conceptual.css" rel="stylesheet"/>
+ </head>
+ <body dir="ltr" lang="en-us">
+  <div class="header-holder">
+   <div data-bi-name="header" id="headerAreaHolder">
+    <div id="uhf-placeholder">
+    </div>
+   </div>
+   <div class="disclaimer-holder" id="disclaimer-holder">
+   </div>
+  </div>
+  <div class="container mainContainer" data-bi-name="body">
+   <div class="content-header" data-bi-name="content-header">
+    <div class="content-header-controls">
+     <button class="contents-button button-border" data-bi-name="contents-expand" type="button">
+      <span class="docon docon-menu">
+      </span>
+      Contents
+     </button>
+    </div>
+    <div class="content-header-controls">
+     <button class="ap-collapse-behavior ap-expanded button-border" data-bi-name="ap-collapse" type="button">
+      <span class="docon docon-exit-mode">
+      </span>
+      Exit focus mode
+     </button>
+    </div>
+   </div>
+   <div class="primary-holder">
+    <main class="content" data-bi-name="content" dir="ltr" id="main" lang="en-us" role="main">
+     <!-- <content> -->
+     <h1>
+      Split-Path
+     </h1>
+     <div class="metadata">
+      <dl class="attributeList">
+       <dt>
+        Module:
+       </dt>
+       <dd>
+        <a data-linktype="relative-path" href="./Microsoft.PowerShell.Management.html">
+         Microsoft.PowerShell.Management
+        </a>
+       </dd>
+      </dl>
+     </div>
+     <div class="summaryHolder">
+      <div class="summary">
+       Returns the specified part of a path.
+      </div>
+     </div>
+     <h2 class="hiddenAnchor" id="syntax">
+      Syntax
+     </h2>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Split-Path
+     [-Path] &lt;String[]&gt;
+     [-Parent]
+     [-Resolve]
+     [-Credential &lt;PSCredential&gt;]
+     [-UseTransaction]
+     [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Split-Path
+     [-Path] &lt;String[]&gt;
+     [-Extension]
+     [-Resolve]
+     [-Credential &lt;PSCredential&gt;]
+     [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Split-Path
+     [-Path] &lt;String[]&gt;
+     [-LeafBase]
+     [-Resolve]
+     [-Credential &lt;PSCredential&gt;]
+     [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Split-Path
+     [-Path] &lt;String[]&gt;
+     [-Leaf]
+     [-Resolve]
+     [-Credential &lt;PSCredential&gt;]
+     [-UseTransaction]
+     [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Split-Path
+     [-Path] &lt;String[]&gt;
+     [-Qualifier]
+     [-Resolve]
+     [-Credential &lt;PSCredential&gt;]
+     [-UseTransaction]
+     [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Split-Path
+     [-Path] &lt;String[]&gt;
+     [-NoQualifier]
+     [-Resolve]
+     [-Credential &lt;PSCredential&gt;]
+     [-UseTransaction]
+     [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Split-Path
+     [-Path] &lt;String[]&gt;
+     [-Resolve]
+     [-IsAbsolute]
+     [-Credential &lt;PSCredential&gt;]
+     [-UseTransaction]
+     [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Split-Path
+     -LiteralPath &lt;String[]&gt;
+     [-Resolve]
+     [-Credential &lt;PSCredential&gt;]
+     [-UseTransaction]
+     [&lt;CommonParameters&gt;]</code></pre>
+     <h2 id="description">
+      Description
+     </h2>
+     <p>
+      The
+      <strong>
+       Split-Path
+      </strong>
+      cmdlet returns only the specified part of a path, such as the parent folder, a subfolder, or a file name.
+It can also get items that are referenced by the split path and tell whether the path is relative or absolute.
+     </p>
+     <p>
+      You can use this cmdlet to get or submit only a selected part of a path.
+     </p>
+     <h2 id="examples">
+      Examples
+     </h2>
+     <p>
+      <strong>
+       Example 1: Get the qualifier of a path
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Split-Path -Path "HKCU:\Software\Microsoft" -Qualifier
+
+HKCU:</code></pre>
+     <p>
+      This command returns only the qualifier of the path.
+The qualifier is the drive.
+     </p>
+     <p>
+      <strong>
+       Example 2: Display file names
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Split-Path -Path "C:\Test\Logs\*.log" -Leaf -Resolve
+
+Pass1.log
+
+Pass2.log
+
+...</code></pre>
+     <p>
+      This command displays the files that are referenced by the split path.
+Because this path is split to the last item, also known as the leaf, the command displays only the file names.
+     </p>
+     <p>
+      The
+      <em>
+       Resolve
+      </em>
+      parameter tells
+      <strong>
+       Split-Path
+      </strong>
+      to display the items that the split path references, instead of displaying the split path.
+     </p>
+     <p>
+      Like all
+      <strong>
+       Split-Path
+      </strong>
+      commands, this command returns strings.
+It does not return
+      <strong>
+       FileInfo
+      </strong>
+      objects that represent the files.
+     </p>
+     <p>
+      <strong>
+       Example 3: Get the parent container
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Split-Path -Path "C:\WINDOWS\system32\WindowsPowerShell\V1.0\about_*.txt"
+
+C:\WINDOWS\system32\WindowsPowerShell\V1.0</code></pre>
+     <p>
+      This command returns only the parent containers of the path.
+Because it does not include any parameters to specify the split,
+      <strong>
+       Split-Path
+      </strong>
+      uses the split location default, which is
+      <em>
+       Parent
+      </em>
+      .
+     </p>
+     <p>
+      <strong>
+       Example 4: Determines whether a path is absolute
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Split-Path -Path ".\My Pictures\*.jpg" -IsAbsolute
+
+False</code></pre>
+     <p>
+      This command determines whether the path is relative or absolute.
+In this case, because the path is relative to the current folder, which is represented by a dot (.), it returns $False.
+     </p>
+     <p>
+      <strong>
+       Example 5: Change location to a specified path
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Set-Location (Split-Path -Path $profile)
+
+PS C:\Documents and Settings\User01\My Documents\WindowsPowerShell&gt;</code></pre>
+     <p>
+      This command changes your location to the folder that contains the Windows PowerShell profile.
+     </p>
+     <p>
+      The command in parentheses uses
+      <strong>
+       Split-Path
+      </strong>
+      to return only the parent of the path stored in the built-in $Profile variable.
+The
+      <em>
+       Parent
+      </em>
+      parameter is the default split location parameter.
+Therefore, you can omit it from the command.
+The parentheses direct Windows PowerShell to run the command first.
+This is a useful way to move to a folder that has a long path name.
+     </p>
+     <p>
+      <strong>
+       Example 6: Split a path by using the pipeline
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; 'C:\Documents and Settings\User01\My Documents\My Pictures' | Split-Path
+
+C:\Documents and Settings\User01\My Documents</code></pre>
+     <p>
+      This command uses a pipeline operator (|) to send a path to
+      <strong>
+       Split-Path
+      </strong>
+      .
+The path is enclosed in quotation marks to indicate that it is a single token.
+     </p>
+     <h2 id="required-parameters">
+      Required Parameters
+     </h2>
+     <div class="parameterName stack">
+      -LiteralPath
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the paths to be split.
+Unlike
+       <em>
+        Path
+       </em>
+       , the value of
+       <em>
+        LiteralPath
+       </em>
+       is used exactly as it is typed.
+No characters are interpreted as wildcard characters.
+If the path includes escape characters, enclose it in single quotation marks.
+Single quotation marks tell Windows PowerShell not to interpret any characters as escape sequences.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         PSPath
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Path
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the paths to be split.
+Wildcard characters are permitted.
+If the path includes spaces, enclose it in quotation marks.
+You can also pipe a path to this cmdlet.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         1
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName, ByValue)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="optional-parameters">
+      Optional Parameters
+     </h2>
+     <div class="parameterName stack">
+      -Credential
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a user account that has permission to perform this action.
+The default is the current user.
+      </p>
+      <p>
+       Type a user name, such as User01 or Domain01\User01, or enter a
+       <strong>
+        PSCredential
+       </strong>
+       object, such as one generated by the Get-Credential cmdlet.
+If you type a user name, this cmdlet prompts you for a password.
+      </p>
+      <p>
+       This parameter is not supported by any providers installed with parameter is not supported by any providers installed with Windows PowerShell.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          PSCredential
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Extension
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that this cmdlet returns only the extension of the leaf.
+For example, in the path
+       <code>
+        C:\Test\Logs\Pass1.log
+       </code>
+       , it returns only
+       <code>
+        .log
+       </code>
+       .
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -IsAbsolute
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that this cmdlet returns $True if the path is absolute and $False if it is relative.
+An absolute path has a length greater than zero and does not use a dot (.) to indicate the current path.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Leaf
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that this cmdlet returns only the last item or container in the path.
+For example, in the path
+       <code>
+        C:\Test\Logs\Pass1.log
+       </code>
+       , it returns only Pass1.log.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -LeafBase
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that this cmdlet returns only base name of the leaf.
+For example, in the path
+       <code>
+        C:\Test\Logs\Pass1.log
+       </code>
+       , it returns only
+       <code>
+        Pass1
+       </code>
+       .
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -NoQualifier
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that this cmdlet returns the path without the qualifier.
+For the FileSystem or registry providers, the qualifier is the drive of the provider path, such as C: or HKCU:.
+For example, in the path
+       <code>
+        C:\Test\Logs\Pass1.log
+       </code>
+       , it returns only \Test\Logs\Pass1.log.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Parent
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that this cmdlet returns only the parent containers of the item or of the container specified by the path.
+For example, in the path
+       <code>
+        C:\Test\Logs\Pass1.log
+       </code>
+       , it returns C:\Test\Logs.
+The
+       <em>
+        Parent
+       </em>
+       parameter is the default split location parameter.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Qualifier
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that this cmdlet returns only the qualifier of the specified path.
+For the FileSystem or registry providers, the qualifier is the drive of the provider path, such as C: or HKCU:.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         2
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Resolve
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that this cmdlet displays the items that are referenced by the resulting split path instead of displaying the path elements.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -UseTransaction
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Includes the command in the active transaction.
+This parameter is valid only when a transaction is in progress.
+For more information, see Includes the command in the active transaction.
+This parameter is valid only when a transaction is in progress.
+For more information, see
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         usetx
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="inputs">
+      Inputs
+     </h2>
+     <p>
+      <strong>
+       System.String
+      </strong>
+     </p>
+     <p>
+      You can pipe a string that contains a path to this cmdlet.
+     </p>
+     <h2 id="outputs">
+      Outputs
+     </h2>
+     <p>
+      <strong>
+       System.String, System.Boolean
+      </strong>
+     </p>
+     <p>
+      <strong>
+       Split-Path
+      </strong>
+      returns text strings.
+When you specify the
+      <em>
+       Resolve
+      </em>
+      parameter,
+      <strong>
+       Split-Path
+      </strong>
+      returns a string that describes the location of the items; it does not return objects that represent the items, such as a
+      <strong>
+       FileInfo
+      </strong>
+      or
+      <strong>
+       RegistryKey
+      </strong>
+      object.
+     </p>
+     <p>
+      When you specify the
+      <em>
+       IsAbsolute
+      </em>
+      parameter,
+      <strong>
+       Split-Path
+      </strong>
+      returns a
+      <strong>
+       Boolean
+      </strong>
+      value.
+     </p>
+     <h2 id="notes">
+      Notes
+     </h2>
+     <ul>
+      <li>
+       <p>
+        The split location parameters (
+        <em>
+         Qualifier
+        </em>
+        ,
+        <em>
+         Parent
+        </em>
+        ,
+        <em>
+         Extension
+        </em>
+        ,
+        <em>
+         Leaf
+        </em>
+        ,
+        <em>
+         LeafBase
+        </em>
+        , and
+        <em>
+         NoQualifier
+        </em>
+        ) are exclusive. You can use only one in each command.
+       </p>
+       <p>
+        The cmdlets that contain the
+        <strong>
+         Path
+        </strong>
+        noun (the
+        <strong>
+         Path
+        </strong>
+        cmdlets) work with path names and return the names in a concise format that all Windows PowerShell providers can interpret.
+They are designed for use in programs and scripts where you want to display all or part of a path name in a particular format.
+Use them in the way that you would use
+        <strong>
+         Dirname
+        </strong>
+        ,
+        <strong>
+         Normpath
+        </strong>
+        ,
+        <strong>
+         Realpath
+        </strong>
+        ,
+        <strong>
+         Join
+        </strong>
+        , or other path manipulators.
+       </p>
+       <p>
+        You can use the
+        <strong>
+         Path
+        </strong>
+        cmdlets together with several providers.
+These include the FileSystem, Registry, and Certificate providers.
+       </p>
+       <p>
+        <strong>
+         Split-Path
+        </strong>
+        is designed to work with the data exposed by any provider.
+To list the providers available in your session, type
+        <code>
+         Get-PSProvider
+        </code>
+        .
+For more information, see about_Providers.
+       </p>
+      </li>
+     </ul>
+     <p>
+      *
+     </p>
+     <h2 id="related-links">
+      Related Links
+     </h2>
+     <ul>
+      <li>
+       <a data-linktype="relative-path" href="convert-path.html">
+        Convert-Path
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="join-path.html">
+        Join-Path
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="resolve-path.html">
+        Resolve-Path
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="test-path.html">
+        Test-Path
+       </a>
+      </li>
+     </ul>
+     <!-- </content> -->
+    </main>
+    <div class="note alert feedback-system-change-alert">
+     <p>
+      Note
+     </p>
+     <p>
+      The feedback system for this content will be changing soon. Old comments will not be carried over. If content within a comment thread is important to you, please save a copy. For more information on the upcoming change,
+      <a href="https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs">
+       we invite you to read our blog post
+      </a>
+      .
+     </p>
+    </div>
+    <div data-bi-name="comments" id="comments-container" role="form">
+    </div>
+   </div>
+  </div>
+  <div class="openfeedback-container" id="openFeedbackContainer">
+  </div>
+  <div class="action-panel">
+  </div>
+ </body>
+</html>

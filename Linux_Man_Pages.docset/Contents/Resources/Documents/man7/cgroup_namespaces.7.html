@@ -1,0 +1,299 @@
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML><HEAD><TITLE>Man page of CGROUP_NAMESPACES</TITLE>
+</HEAD><BODY>
+<H1>CGROUP_NAMESPACES</H1>
+Section: Linux Programmer's Manual (7)<BR>Updated: 2016-07-17<BR><A HREF="#index">Index</A>
+<A HREF="../index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+cgroup_namespaces - overview of Linux cgroup namespaces
+<A NAME="lbAC">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+For an overview of namespaces, see
+<B><A HREF="../man7/namespaces.7.html">namespaces</A></B>(7).
+
+<P>
+Cgroup namespaces virtualize the view of a process's cgroups (see
+<B><A HREF="../man7/cgroups.7.html">cgroups</A></B>(7))
+
+as seen via
+<I>/proc/[pid]/cgroup</I>
+
+and
+<I>/proc/[pid]/mountinfo</I>.
+
+<P>
+Each cgroup namespace has its own set of cgroup root directories,
+which are the base points for the relative locations displayed in
+<I>/proc/[pid]/cgroup</I>.
+
+When a process creates a new cgroup namespace using
+<B><A HREF="../man2/clone.2.html">clone</A></B>(2)
+
+or
+<B><A HREF="../man2/unshare.2.html">unshare</A></B>(2)
+
+with the
+<B>CLONE_NEWCGROUP</B>
+
+flag, it enters a new cgroup namespace in which its current
+cgroups directories become the cgroup root directories
+of the new namespace.
+(This applies both for the cgroups version 1 hierarchies
+and the cgroups version 2 unified hierarchy.)
+<P>
+When viewing
+<I>/proc/[pid]/cgroup</I>,
+
+the pathname shown in the third field of each record will be
+relative to the reading process's cgroup root directory.
+If the cgroup directory of the target process lies outside
+the root directory of the reading process's cgroup namespace,
+then the pathname will show
+<I>../</I>
+
+entries for each ancestor level in the cgroup hierarchy.
+<P>
+The following shell session demonstrates the effect of creating
+a new cgroup namespace.
+First, (as superuser) we create a child cgroup in the
+<I>freezer</I>
+
+hierarchy, and put the shell into that cgroup:
+<P>
+<PRE>
+# <B>mkdir -p /sys/fs/cgroup/freezer/sub</B>
+# <B>echo $$</B>                      # Show PID of this shell
+30655
+# <B>sh -c 'echo 30655 &gt; /sys/fs/cgroup/sub'</B>
+# <B>cat /proc/self/cgroup | grep freezer</B>
+7:freezer:/sub
+</PRE>
+
+<P>
+Next, we use
+<B><A HREF="../man1/unshare.1.html">unshare</A></B>(1)
+
+to create a process running a new shell in new cgroup and mount namespaces:
+<P>
+<PRE>
+# <B>unshare -Cm bash</B>
+</PRE>
+
+<P>
+We then inspect the
+<I>/proc/[pid]/cgroup</I>
+
+files of, respectively, the new shell process started by the
+<B><A HREF="../man1/unshare.1.html">unshare</A></B>(1)
+
+command, a process that is in the original cgroup namespace
+(<I>init</I>,
+
+with PID 1), and a process in a sibling cgroup:
+<P>
+<PRE>
+$ <B>cat /proc/self/cgroup | grep freezer</B>
+7:freezer:/
+$ <B>cat /proc/1/cgroup | grep freezer</B>
+7:freezer:/..
+$ <B>cat /proc/20124/cgroup | grep freezer</B>
+7:freezer:/../sub2
+</PRE>
+
+<P>
+However, when we look in
+<I>/proc/self/mountinfo</I>
+
+we see the following anomaly:
+<P>
+<PRE>
+# <B>cat /proc/self/mountinfo | grep freezer</B>
+155 145 0:32 /.. /sys/fs/cgroup/freezer ...
+</PRE>
+
+<P>
+The fourth field of this file should show the
+directory in the cgroup filesystem which forms the root of this mount.
+Since by the definition of cgroup namespaces, the process's current
+freezer cgroup directory became its root freezer cgroup directory,
+we should see '/' in this field.
+The problem here is that we are seeing a mount entry for the cgroup
+filesystem corresponding to our initial shell process's cgroup namespace
+(whose cgroup filesystem is indeed rooted in the parent directory of
+<I>sub</I>).
+
+We need to remount the freezer cgroup filesystem
+inside this cgroup namespace, after which we see the expected results:
+<P>
+<PRE>
+# <B>mount --make-rslave /</B>     # Don't propagate mount events
+                            # to other namespaces
+# <B>umount /sys/fs/cgroup/freezer</B>
+# <B>mount -t cgroup -o freezer freezer /sys/fs/cgroup/freezer</B>
+# <B>cat /proc/self/mountinfo | grep freezer</B>
+155 145 0:32 / /sys/fs/cgroup/freezer rw,relatime ...
+</PRE>
+
+<P>
+Use of cgroup namespaces requires a kernel that is configured with the
+<B>CONFIG_CGROUPS</B>
+
+option.
+
+<A NAME="lbAD">&nbsp;</A>
+<H2>CONFORMING TO</H2>
+
+Namespaces are a Linux-specific feature.
+<A NAME="lbAE">&nbsp;</A>
+<H2>NOTES</H2>
+
+Among the purposes served by the
+virtualization provided by cgroup namespaces are the following:
+<DL COMPACT>
+<DT>*<DD>
+It prevents information leaks whereby cgroup directory paths outside of
+a container would otherwise be visible to processes in the container.
+Such leakages could, for example,
+reveal information about the container framework
+to containerized applications.
+<DT>*<DD>
+It eases tasks such as container migration.
+The virtualization provided by cgroup namespaces
+allows containers to be isolated from knowledge of
+the pathnames of ancestor cgroups.
+Without such isolation, the full cgroup pathnames (displayed in
+<I>/proc/self/cgroups</I>)
+
+would need to be replicated on the target system when migrating a container;
+those pathnames would also need to be unique,
+so that they don't conflict with other pathnames on the target system.
+<DT>*<DD>
+It allows better confinement of containerized processes,
+because it is possible to mount the container's cgroup filesystems such that
+the container processes can't gain access to ancestor cgroup directories.
+Consider, for example, the following scenario:
+<DL COMPACT><DT><DD>
+<DL COMPACT>
+<DT>&bull;<DD>
+We have a cgroup directory,
+<I>/cg/1</I>,
+
+that is owned by user ID 9000.
+<DT>&bull;<DD>
+We have a process,
+<I>X</I>,
+
+also owned by user ID 9000,
+that is namespaced under the cgroup
+<I>/cg/1/2</I>
+
+(i.e.,
+<I>X</I>
+
+was placed in a new cgroup namespace via
+<B><A HREF="../man2/clone.2.html">clone</A></B>(2)
+
+or
+<B><A HREF="../man2/unshare.2.html">unshare</A></B>(2)
+
+with the
+<B>CLONE_NEWCGROUP</B>
+
+flag).
+</DL>
+</DL>
+
+<DT><DD>
+In the absence of cgroup namespacing, because the cgroup directory
+<I>/cg/1</I>
+
+is owned (and writable) by UID 9000 and process
+<I>X</I>
+
+is also owned by user ID 9000, then process
+<I>X</I>
+
+would be able to modify the contents of cgroups files
+(i.e., change cgroup settings) not only in
+<I>/cg/1/2</I>
+
+but also in the ancestor cgroup directory
+<I>/cg/1</I>.
+
+Namespacing process
+<I>X</I>
+
+under the cgroup directory
+<I>/cg/1/2</I>,
+
+in combination with suitable mount operations
+for the cgroup filesystem (as shown above),
+prevents it modifying files in
+<I>/cg/1</I>,
+
+since it cannot even see the contents of that directory
+(or of further removed cgroup ancestor directories).
+Combined with correct enforcement of hierarchical limits,
+this prevents process
+<I>X</I>
+
+from escaping the limits imposed by ancestor cgroups.
+</DL>
+<A NAME="lbAF">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+<B><A HREF="../man1/unshare.1.html">unshare</A></B>(1),
+
+<B><A HREF="../man2/clone.2.html">clone</A></B>(2),
+
+<B><A HREF="../man2/setns.2.html">setns</A></B>(2),
+
+<B><A HREF="../man2/unshare.2.html">unshare</A></B>(2),
+
+<B><A HREF="../man5/proc.5.html">proc</A></B>(5),
+
+<B><A HREF="../man7/cgroups.7.html">cgroups</A></B>(7),
+
+<B><A HREF="../man7/credentials.7.html">credentials</A></B>(7),
+
+<B><A HREF="../man7/namespaces.7.html">namespaces</A></B>(7),
+
+<B><A HREF="../man7/user_namespaces.7.html">user_namespaces</A></B>(7)
+
+<A NAME="lbAG">&nbsp;</A>
+<H2>COLOPHON</H2>
+
+This page is part of release 4.09 of the Linux
+<I>man-pages</I>
+
+project.
+A description of the project,
+information about reporting bugs,
+and the latest version of this page,
+can be found at
+<A HREF="https://www.kernel.org/doc/man-pages/.">https://www.kernel.org/doc/man-pages/.</A>
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAD">CONFORMING TO</A><DD>
+<DT><A HREF="#lbAE">NOTES</A><DD>
+<DT><A HREF="#lbAF">SEE ALSO</A><DD>
+<DT><A HREF="#lbAG">COLOPHON</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 14:28:40 GMT, February 25, 2017
+</BODY>
+</HTML>

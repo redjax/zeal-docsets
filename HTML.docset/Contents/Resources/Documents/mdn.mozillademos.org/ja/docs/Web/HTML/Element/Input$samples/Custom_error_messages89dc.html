@@ -1,0 +1,38 @@
+<html><!-- Mirrored from mdn.mozillademos.org/ja/docs/Web/HTML/Element/Input$samples/Custom_error_messages?revision=1468596 by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 01 May 2019 11:31:28 GMT --><!-- Added by HTTrack --><head><meta http-equiv="content-type" content="text/html;charset=utf-8"><!-- /Added by HTTrack -->
+
+        <meta charset="utf-8">
+        <link href="../../../../../../../developer.mozilla.org/static/build/styles/samples.37902ba3b7fe.css" rel="stylesheet" type="text/css">
+        
+        <title>&lt;input&gt;: 入力欄 (フォーム入力) 要素</title>
+    </head>
+    <body>
+        
+            <form>
+  <label for="name">ユーザー名を入力してください (英大文字および小文字): </label>
+  <input type="text" name="name" id="name" required="" pattern="[A-Za-z]+" spellcheck="false">
+  <button>Submit</button>
+</form>
+        
+        
+            <script>
+                const nameInput = document.querySelector('input');
+const form = document.querySelector('form');
+
+nameInput.addEventListener('input', () => {
+  nameInput.setCustomValidity('');
+  nameInput.checkValidity();
+});
+
+nameInput.addEventListener('invalid', () => {
+  if(nameInput.value === '') {
+    nameInput.setCustomValidity('名前を入力してください。');
+  } else {
+    nameInput.setCustomValidity('ユーザー名には英大文字と小文字のみが使えます。入力しなおしてください。');
+  }
+});
+            </script>
+        
+    
+
+<!-- Mirrored from mdn.mozillademos.org/ja/docs/Web/HTML/Element/Input$samples/Custom_error_messages?revision=1468596 by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 01 May 2019 11:31:28 GMT -->
+</body></html>

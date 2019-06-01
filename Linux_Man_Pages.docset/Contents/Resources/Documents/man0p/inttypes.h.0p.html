@@ -1,0 +1,347 @@
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML><HEAD><TITLE>Man page of inttypes.h</TITLE>
+</HEAD><BODY>
+<H1>inttypes.h</H1>
+Section: POSIX Programmer's Manual (0P)<BR>Updated: 2013<BR><A HREF="#index">Index</A>
+<A HREF="../index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>PROLOG</H2>
+
+This manual page is part of the POSIX Programmer's Manual.
+The Linux implementation of this interface may differ (consult
+the corresponding Linux manual page for details of Linux behavior),
+or the interface may not be implemented on Linux.
+<P>
+<A NAME="lbAC">&nbsp;</A>
+<H2>NAME</H2>
+
+inttypes.h
+--- fixed size integer types
+<A NAME="lbAD">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<P>
+
+<PRE>
+#include &lt;<A HREF="file:///usr/include/inttypes.h">inttypes.h</A>&gt;
+</PRE>
+
+<A NAME="lbAE">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+Some of the functionality described on this reference page extends the
+ISO&nbsp;C standard. Applications shall define the appropriate feature test macro
+(see the System Interfaces volume of POSIX.1-2008,
+<I>Section 2.2</I>, <I>The Compilation Environment)</I>
+
+to enable the visibility of these symbols in this header.
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/inttypes.h">inttypes.h</A>&gt;</I>
+
+header shall include the
+<I>&lt;<A HREF="file:///usr/include/stdint.h">stdint.h</A>&gt;</I>
+
+header.
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/inttypes.h">inttypes.h</A>&gt;</I>
+
+header shall define at least the following types:
+<DL COMPACT>
+<DT><B>imaxdiv_t</B><DD>
+Structure type that is the type of the value returned by the
+<I>imaxdiv</I>()
+function.
+<DT><B>wchar_t</B><DD>
+As described in
+<I>&lt;<A HREF="file:///usr/include/stddef.h">stddef.h</A>&gt;</I>.
+
+</DL>
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/inttypes.h">inttypes.h</A>&gt;</I>
+
+header shall define the following macros. Each expands to a
+character string literal containing a conversion specifier, possibly
+modified by a length modifier, suitable for use within the
+<I>format</I>
+
+argument of a formatted input/output function when converting the
+corresponding integer type. These macros have the general form of
+PRI (character string literals for the
+<I>fprintf</I>()
+and
+<I>fwprintf</I>()
+family of functions) or SCN (character string literals for the
+<I>fscanf</I>()
+and
+<I>fwscanf</I>()
+family of functions), followed by the conversion specifier, followed by
+a name corresponding to a similar type name in
+<I>&lt;<A HREF="file:///usr/include/stdint.h">stdint.h</A>&gt;</I>.
+
+In these names,
+<I>N</I>
+
+represents the width of the type as described in
+<I>&lt;<A HREF="file:///usr/include/stdint.h">stdint.h</A>&gt;</I>.
+
+For example,
+<I>PRIdFAST32</I>
+
+can be used in a format string to print the value of an integer of type
+<B>int_fast32_t</B>.
+
+<P>
+
+The
+<I>fprintf</I>()
+macros for signed integers are:
+<P>
+<DL COMPACT><DT><DD>
+<TABLE>
+<TR VALIGN=top><TD>PRId<I>N</I></TD><TD>PRIdLEAST<I>N</I></TD><TD>PRIdFAST<I>N</I></TD><TD>PRIdMAX</TD><TD>PRIdPTR<BR></TD></TR>
+<TR VALIGN=top><TD>PRIi<I>N</I></TD><TD>PRIiLEAST<I>N</I></TD><TD>PRIiFAST<I>N</I></TD><TD>PRIiMAX</TD><TD>PRIiPTR<BR></TD></TR>
+</TABLE>
+
+</DL>
+
+<P>
+
+The
+<I>fprintf</I>()
+macros for unsigned integers are:
+<P>
+<DL COMPACT><DT><DD>
+<TABLE>
+<TR VALIGN=top><TD>PRIo<I>N</I></TD><TD>PRIoLEAST<I>N</I></TD><TD>PRIoFAST<I>N</I></TD><TD>PRIoMAX</TD><TD>PRIoPTR<BR></TD></TR>
+<TR VALIGN=top><TD>PRIu<I>N</I></TD><TD>PRIuLEAST<I>N</I></TD><TD>PRIuFAST<I>N</I></TD><TD>PRIuMAX</TD><TD>PRIuPTR<BR></TD></TR>
+<TR VALIGN=top><TD>PRIx<I>N</I></TD><TD>PRIxLEAST<I>N</I></TD><TD>PRIxFAST<I>N</I></TD><TD>PRIxMAX</TD><TD>PRIxPTR<BR></TD></TR>
+<TR VALIGN=top><TD>PRIX<I>N</I></TD><TD>PRIXLEAST<I>N</I></TD><TD>PRIXFAST<I>N</I></TD><TD>PRIXMAX</TD><TD>PRIXPTR<BR></TD></TR>
+</TABLE>
+
+</DL>
+
+<P>
+
+The
+<I>fscanf</I>()
+macros for signed integers are:
+<P>
+<DL COMPACT><DT><DD>
+<TABLE>
+<TR VALIGN=top><TD>SCNd<I>N</I></TD><TD>SCNdLEAST<I>N</I></TD><TD>SCNdFAST<I>N</I></TD><TD>SCNdMAX</TD><TD>SCNdPTR<BR></TD></TR>
+<TR VALIGN=top><TD>SCNi<I>N</I></TD><TD>SCNiLEAST<I>N</I></TD><TD>SCNiFAST<I>N</I></TD><TD>SCNiMAX</TD><TD>SCNiPTR<BR></TD></TR>
+</TABLE>
+
+</DL>
+
+<P>
+
+The
+<I>fscanf</I>()
+macros for unsigned integers are:
+<P>
+<DL COMPACT><DT><DD>
+<TABLE>
+<TR VALIGN=top><TD>SCNo<I>N</I></TD><TD>SCNoLEAST<I>N</I></TD><TD>SCNoFAST<I>N</I></TD><TD>SCNoMAX</TD><TD>SCNoPTR<BR></TD></TR>
+<TR VALIGN=top><TD>SCNu<I>N</I></TD><TD>SCNuLEAST<I>N</I></TD><TD>SCNuFAST<I>N</I></TD><TD>SCNuMAX</TD><TD>SCNuPTR<BR></TD></TR>
+<TR VALIGN=top><TD>SCNx<I>N</I></TD><TD>SCNxLEAST<I>N</I></TD><TD>SCNxFAST<I>N</I></TD><TD>SCNxMAX</TD><TD>SCNxPTR<BR></TD></TR>
+</TABLE>
+
+</DL>
+
+<P>
+
+For each type that the implementation provides in
+<I>&lt;<A HREF="file:///usr/include/stdint.h">stdint.h</A>&gt;</I>,
+
+the corresponding
+<I>fprintf</I>()
+and
+<I>fwprintf</I>()
+macros shall be defined and the corresponding
+<I>fscanf</I>()
+and
+<I>fwscanf</I>()
+macros shall be defined unless the implementation does not have a
+suitable modifier for the type.
+<P>
+
+The following shall be declared as functions and may also be defined as
+macros. Function prototypes shall be provided.
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+intmax_t  imaxabs(intmax_t);
+imaxdiv_t imaxdiv(intmax_t, intmax_t);
+intmax_t  strtoimax(const char *restrict, char **restrict, int);
+uintmax_t strtoumax(const char *restrict, char **restrict, int);
+intmax_t  wcstoimax(const wchar_t *restrict, wchar_t **restrict, int);
+uintmax_t wcstoumax(const wchar_t *restrict, wchar_t **restrict, int);
+</B></PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+<I>The following sections are informative.</I>
+
+<A NAME="lbAF">&nbsp;</A>
+<H2>EXAMPLES</H2>
+
+<P>
+
+<PRE>
+#include &lt;<A HREF="file:///usr/include/inttypes.h">inttypes.h</A>&gt;
+#include &lt;<A HREF="file:///usr/include/wchar.h">wchar.h</A>&gt;
+int main(void)
+{
+    uintmax_t i = UINTMAX_MAX; // This type always exists.
+    wprintf(L&quot;The largest integer value is %020&quot;
+        PRIxMAX &quot;\n&quot;, i);
+    return 0;
+}
+</PRE>
+
+<A NAME="lbAG">&nbsp;</A>
+<H2>APPLICATION USAGE</H2>
+
+The purpose of
+<I>&lt;<A HREF="file:///usr/include/inttypes.h">inttypes.h</A>&gt;</I>
+
+is to provide a set of integer types whose definitions are consistent
+across machines and independent of operating systems and other
+implementation idiosyncrasies. It defines, through
+<B>typedef</B>,
+
+integer types of various sizes. Implementations are free to
+<B>typedef</B>
+
+them as ISO&nbsp;C standard integer types or extensions that they support. Consistent
+use of this header will greatly increase the portability of applications
+across platforms.
+<A NAME="lbAH">&nbsp;</A>
+<H2>RATIONALE</H2>
+
+The ISO/IEC&nbsp;9899:1990 standard specified that the language should support four signed and
+unsigned integer data types---<B>char</B>,
+
+<B>short</B>,
+
+<B>int</B>,
+
+and
+<B>long</B>---but placed very little requirement on their size other than that
+<B>int</B>
+
+and
+<B>short</B>
+
+be at least 16 bits and
+<B>long</B>
+
+be at least as long as
+<B>int</B>
+
+and not smaller than 32 bits. For 16-bit systems, most implementations
+assigned 8, 16, 16, and 32 bits to
+<B>char</B>,
+
+<B>short</B>,
+
+<B>int</B>,
+
+and
+<B>long</B>,
+
+respectively. For 32-bit systems, the common practice has been to
+assign 8, 16, 32, and 32 bits to these types. This difference in
+<B>int</B>
+
+size can create some problems for users who migrate from one system to
+another which assigns different sizes to integer types, because the
+ISO&nbsp;C standard integer promotion rule can produce silent changes unexpectedly.
+The need for defining an extended integer type increased with the
+introduction of 64-bit systems.
+<A NAME="lbAI">&nbsp;</A>
+<H2>FUTURE DIRECTIONS</H2>
+
+Macro names beginning with PRI or SCN followed by any lowercase letter
+or
+<B>'X'</B>
+
+may be added to the macros defined in the
+<I>&lt;<A HREF="file:///usr/include/inttypes.h">inttypes.h</A>&gt;</I>
+
+header.
+<A NAME="lbAJ">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+<I></I><B>&lt;<A HREF="file:///usr/include/stddef.h">stddef.h</A>&gt;</B>
+
+<P>
+
+The System Interfaces volume of POSIX.1-2008,
+<I>Section 2.2</I>, <I>The Compilation Environment,</I>
+
+<I>imaxabs</I>(),
+
+<I>imaxdiv</I>(),
+
+<I>strtoimax</I>(),
+
+<I>wcstoimax</I>()
+
+<A NAME="lbAK">&nbsp;</A>
+<H2>COPYRIGHT</H2>
+
+Portions of this text are reprinted and reproduced in electronic form
+from IEEE Std 1003.1, 2013 Edition, Standard for Information Technology
+-- Portable Operating System Interface (POSIX), The Open Group Base
+Specifications Issue 7, Copyright (C) 2013 by the Institute of
+Electrical and Electronics Engineers, Inc and The Open Group.
+(This is POSIX.1-2008 with the 2013 Technical Corrigendum 1 applied.) In the
+event of any discrepancy between this version and the original IEEE and
+The Open Group Standard, the original IEEE and The Open Group Standard
+is the referee document. The original Standard can be obtained online at
+<A HREF="http://www.unix.org/online.html">http://www.unix.org/online.html</A> .
+<P>
+Any typographical or formatting errors that appear
+in this page are most likely
+to have been introduced during the conversion of the source files to
+man page format. To report such errors, see
+<A HREF="https://www.kernel.org/doc/man-pages/reporting_bugs.html">https://www.kernel.org/doc/man-pages/reporting_bugs.html</A> .
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">PROLOG</A><DD>
+<DT><A HREF="#lbAC">NAME</A><DD>
+<DT><A HREF="#lbAD">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAE">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAF">EXAMPLES</A><DD>
+<DT><A HREF="#lbAG">APPLICATION USAGE</A><DD>
+<DT><A HREF="#lbAH">RATIONALE</A><DD>
+<DT><A HREF="#lbAI">FUTURE DIRECTIONS</A><DD>
+<DT><A HREF="#lbAJ">SEE ALSO</A><DD>
+<DT><A HREF="#lbAK">COPYRIGHT</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 14:28:43 GMT, February 25, 2017
+</BODY>
+</HTML>

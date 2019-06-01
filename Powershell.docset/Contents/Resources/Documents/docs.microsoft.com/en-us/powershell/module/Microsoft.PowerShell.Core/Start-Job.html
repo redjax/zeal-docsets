@@ -1,0 +1,1512 @@
+<!DOCTYPE html>
+<html class="no-js hasSidebar hasPageActions hasBreadcrumb conceptual" data-authenticated="false" data-render="docs" dir="ltr" lang="en-us">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Start-Job (Microsoft.PowerShell.Core)" property="og:title"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" property="og:image"/>
+  <meta content="summary" name="twitter:card"/>
+  <meta content="@docsmsft" name="twitter:site"/>
+  <meta content="Start-Job (Microsoft.PowerShell.Core)" name="twitter:title"/>
+  <meta content="The Start-Job cmdlet starts a Windows PowerShell background job on the local computer. A Windows PowerShell background job runs a command without interacting with the current session. When you startâ¦" name="twitter:description"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" name="twitter:image"/>
+  <meta content="Microsoft Logo" name="twitter:image:alt"/>
+  <meta content="The Start-Job cmdlet starts a Windows PowerShell background job on the local computer. A Windows PowerShell background job runs a command without interacting with the current session. When you startâ¦" name="description"/>
+  <meta content="Docs" name="search.ms_sitename"/>
+  <meta content="PowerShell_PowerShell-docs_reference" name="search.ms_docsetname"/>
+  <meta content="0" name="version"/>
+  <meta content="en-us" name="locale"/>
+  <meta content="Docs" name="site_name"/>
+  <meta content="PowerShell" name="search.ms_product"/>
+  <meta content="PowerShell.PowerShell_PowerShell-docs_reference" name="depot_name"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/666c3f64d0eef63804d647e4696478faecb03e9e/reference/6/Microsoft.PowerShell.Core/Start-Job.md" name="ref_skeleton_gitcommit"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/live/reference/6/Microsoft.PowerShell.Core/Start-Job.md" name="original_ref_skeleton_git_url"/>
+  <meta content="2018-03-30 03:35 PM" name="updated_at"/>
+  <meta content="1b1a3836-76b5-58af-e342-1da76840bf04" name="document_id"/>
+  <meta content="4cd839bc-6755-c611-5961-3d971255f931" name="document_version_independent_id"/>
+  <meta content="powershell" name="page_type"/>
+  <meta content="command" name="page_kind"/>
+  <meta content="06/09/2017" name="ms.date"/>
+  <meta content="2.0.0" name="schema"/>
+  <meta content="powershell,cmdlet" name="keywords"/>
+  <meta content="http://go.microsoft.com/fwlink/?LinkId=821518" name="online_version"/>
+  <meta content="System.Management.Automation.dll-Help.xml" name="external_help_file"/>
+  <meta content="powershell" name="ms.devlang"/>
+  <meta content="INDEX, FOLLOW" name="ROBOTS"/>
+  <meta content="sdwheeler" name="author"/>
+  <meta content="sewhee" name="ms.author"/>
+  <meta content="carmonm" name="manager"/>
+  <meta content="/powershell/bread-pscore/toc.yml?view=powershell-6" name="breadcrumb_path"/>
+  <meta content="powershell" name="apiPlatform"/>
+  <meta content="reference" name="ms.topic"/>
+  <meta content="windows, macos, linux" name="ms.tgt_pltfr"/>
+  <meta content="powershell-scripting" name="ms.technology"/>
+  <meta content="powershell" name="ms.prod"/>
+  <meta content="MSDocsHeader-Powershell" name="uhfHeaderId"/>
+  <meta content="../psdocs/toc.json?view=powershell-6" name="toc_rel"/>
+  <link href="https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/start-job" rel="canonical"/>
+  <title>
+   Start-Job
+  </title>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/60aac04b.site.css" rel="stylesheet"/>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/fdb8a38a.conceptual.css" rel="stylesheet"/>
+ </head>
+ <body dir="ltr" lang="en-us">
+  <div class="header-holder">
+   <div data-bi-name="header" id="headerAreaHolder">
+    <div id="uhf-placeholder">
+    </div>
+   </div>
+   <div class="disclaimer-holder" id="disclaimer-holder">
+   </div>
+  </div>
+  <div class="container mainContainer" data-bi-name="body">
+   <div class="content-header" data-bi-name="content-header">
+    <div class="content-header-controls">
+     <button class="contents-button button-border" data-bi-name="contents-expand" type="button">
+      <span class="docon docon-menu">
+      </span>
+      Contents
+     </button>
+    </div>
+    <div class="content-header-controls">
+     <button class="ap-collapse-behavior ap-expanded button-border" data-bi-name="ap-collapse" type="button">
+      <span class="docon docon-exit-mode">
+      </span>
+      Exit focus mode
+     </button>
+    </div>
+   </div>
+   <div class="primary-holder">
+    <main class="content" data-bi-name="content" dir="ltr" id="main" lang="en-us" role="main">
+     <!-- <content> -->
+     <h1>
+      Start-Job
+     </h1>
+     <div class="metadata">
+      <dl class="attributeList">
+       <dt>
+        Module:
+       </dt>
+       <dd>
+        <a data-linktype="relative-path" href="./Microsoft.PowerShell.Core.html">
+         Microsoft.PowerShell.Core
+        </a>
+       </dd>
+      </dl>
+     </div>
+     <div class="summaryHolder">
+      <div class="summary">
+       Starts a Windows PowerShell background job.
+      </div>
+     </div>
+     <h2 class="hiddenAnchor" id="syntax">
+      Syntax
+     </h2>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Start-Job
+     [-Name &lt;String&gt;]
+     [-ScriptBlock] &lt;ScriptBlock&gt;
+     [-Credential &lt;PSCredential&gt;]
+     [-Authentication &lt;AuthenticationMechanism&gt;]
+     [[-InitializationScript] &lt;ScriptBlock&gt;]
+     [-RunAs32]
+     [-PSVersion &lt;Version&gt;]
+     [-InputObject &lt;PSObject&gt;]
+     [-ArgumentList &lt;Object[]&gt;]
+     [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Start-Job
+     [-DefinitionName] &lt;String&gt;
+     [[-DefinitionPath] &lt;String&gt;]
+     [[-Type] &lt;String&gt;]
+     [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Start-Job
+     [-Name &lt;String&gt;]
+     [-Credential &lt;PSCredential&gt;]
+     -LiteralPath &lt;String&gt;
+     [-Authentication &lt;AuthenticationMechanism&gt;]
+     [[-InitializationScript] &lt;ScriptBlock&gt;]
+     [-RunAs32]
+     [-PSVersion &lt;Version&gt;]
+     [-InputObject &lt;PSObject&gt;]
+     [-ArgumentList &lt;Object[]&gt;]
+     [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Start-Job
+     [-Name &lt;String&gt;]
+     [-Credential &lt;PSCredential&gt;]
+     [-FilePath] &lt;String&gt;
+     [-Authentication &lt;AuthenticationMechanism&gt;]
+     [[-InitializationScript] &lt;ScriptBlock&gt;]
+     [-RunAs32]
+     [-PSVersion &lt;Version&gt;]
+     [-InputObject &lt;PSObject&gt;]
+     [-ArgumentList &lt;Object[]&gt;]
+     [&lt;CommonParameters&gt;]</code></pre>
+     <h2 id="description">
+      Description
+     </h2>
+     <p>
+      The
+      <strong>
+       Start-Job
+      </strong>
+      cmdlet starts a Windows PowerShell background job on the local computer.
+     </p>
+     <p>
+      A Windows PowerShell background job runs a command without interacting with the current session.
+When you start a background job, a job object returns immediately, even if the job takes an extended time to finish.
+You can continue to work in the session without interruption while the job runs.
+     </p>
+     <p>
+      The job object contains useful information about the job, but it does not contain the job results.
+When the job finishes, use the Receive-Job cmdlet to get the results of the job.
+For more information about background jobs, see about_Jobs.
+     </p>
+     <p>
+      To run a background job on a remote computer, use the
+      <em>
+       AsJob
+      </em>
+      parameter that is available on many cmdlets, or use the Invoke-Command cmdlet to run a
+      <strong>
+       Start-Job
+      </strong>
+      command on the remote computer.
+For more information, see about_Remote_Jobs.
+     </p>
+     <p>
+      Starting in Windows PowerShell 3.0,
+      <strong>
+       Start-Job
+      </strong>
+      can start instances of custom job types, such as scheduled jobs.
+For information about how to use
+      <strong>
+       Start-Job
+      </strong>
+      to start jobs with custom types, see the help topics for the job type feature.
+     </p>
+     <h2 id="examples">
+      Examples
+     </h2>
+     <p>
+      <strong>
+       Example 1: Start a background job
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Start-Job -ScriptBlock {Get-Process}
+
+Id    Name  State    HasMoreData  Location   Command
+
+---   ----  -----    -----------  --------   -------
+
+1     Job1  Running  True         localhost  get-process</code></pre>
+     <p>
+      This command starts a background job that runs a Get-Process command.
+The command returns a job object that has information about the job.
+The command prompt returns immediately so that you can work in the session while the job runs in the background.
+     </p>
+     <p>
+      <strong>
+       Example 2: Start a job by using Invoke-Command
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; $jobWRM = Invoke-Command -ComputerName (Get-Content servers.txt) -ScriptBlock {Get-Service winrm} -JobName "WinRM" -ThrottleLimit 16 -AsJob</code></pre>
+     <p>
+      This command uses the
+      <strong>
+       Invoke-Command
+      </strong>
+      cmdlet and its
+      <em>
+       AsJob
+      </em>
+      parameter to start a background job that runs a command on many computers.
+Because the command is running on a server that has significant network traffic, the command uses the
+      <em>
+       ThrottleLimit
+      </em>
+      parameter of
+      <strong>
+       Invoke-Command
+      </strong>
+      to limit the number of concurrent commands to 16.
+     </p>
+     <p>
+      The command uses the
+      <em>
+       ComputerName
+      </em>
+      parameter to specify the computers on which the job runs.
+The value of the
+      <em>
+       ComputerName
+      </em>
+      parameter is a Get-Content command that gets the text in the Servers.txt file, a file of computer names in a domain.
+     </p>
+     <p>
+      The command uses the
+      <em>
+       ScriptBlock
+      </em>
+      parameter to specify the command and the
+      <em>
+       JobName
+      </em>
+      parameter to specify a friendly name for the job.
+     </p>
+     <p>
+      <strong>
+       Example 3: Get events from the System log on the local computer
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; $j = Start-Job -ScriptBlock {Get-EventLog -Log system} -Credential domain01\user01
+
+PS C:\&gt; $j | Format-List -Property *
+
+
+
+HasMoreData   : True
+
+StatusMessage :
+
+Location      : localhost
+
+Command       : get-eventlog -log system
+
+JobStateInfo  : Running
+
+Finished      : System.Threading.ManualResetEvent
+
+InstanceId    : 2d9d775f-63e0-4d48-b4bc-c05d0e177f34
+
+Id            : 1
+
+Name          : Job1
+
+ChildJobs     : {Job2}
+
+Output        : {}
+
+Error         : {}
+
+Progress      : {}
+
+Verbose       : {}
+
+Debug         : {}
+
+Warning       : {}
+
+StateChanged  :
+
+
+
+PS C:\&gt; $j.JobStateInfo.state
+
+Completed
+
+PS C:\&gt; $results = Receive-Job -Job $j
+
+PS C:\&gt; $results
+
+
+
+Index Time          Type        Source                EventID Message
+
+----- ----          ----        ------                ------- -------
+
+84366 Feb 18 19:20  Information Service Control M...     7036 The description...
+
+84365 Feb 18 19:16  Information Service Control M...     7036 The description...
+
+84364 Feb 18 19:10  Information Service Control M...     7036 The description...
+
+...</code></pre>
+     <p>
+      These commands manage a background job that gets all of the events from the System log in Event Viewer.
+The job runs on the local computer.
+     </p>
+     <p>
+      The first command uses the
+      <strong>
+       Start-Job
+      </strong>
+      cmdlet to start the job.
+It uses the
+      <em>
+       Credential
+      </em>
+      parameter to specify the user account of a user who has permission to run the job on the computer.
+Then it stores the job object that
+      <strong>
+       Start-Job
+      </strong>
+      returns in the $j variable.
+     </p>
+     <p>
+      At this point, you can resume your other work while the job finishes.
+     </p>
+     <p>
+      The second command uses a pipeline operator (|) to pass the job object in $j to the Format-List cmdlet.
+The
+      <strong>
+       Format-List
+      </strong>
+      command uses the
+      <em>
+       Property
+      </em>
+      parameter with a value of all (*) to display all of the properties of the job object in a list.
+     </p>
+     <p>
+      The third command displays the value of the
+      <strong>
+       JobStateInfo
+      </strong>
+      property.
+This contains the status of the job.
+     </p>
+     <p>
+      The fourth command uses the
+      <strong>
+       Receive-Job
+      </strong>
+      cmdlet to get the results of the job.
+It stores the results in the $results variable.
+     </p>
+     <p>
+      The final command displays the contents of the $results variable.
+     </p>
+     <p>
+      <strong>
+       Example 4: Run a script as a background job
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Start-Job -FilePath "c:\scripts\sample.ps1"</code></pre>
+     <p>
+      This command runs the Sample.ps1 script as a background job.
+     </p>
+     <p>
+      <strong>
+       Example 5: Get a process by name by using a background job
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Start-Job -Name "WinRm" -ScriptBlock {Get-Process winrm}</code></pre>
+     <p>
+      This command runs a background job that gets the
+      <strong>
+       WinRM
+      </strong>
+      process on the local computer.
+The command uses the
+      <em>
+       ScriptBlock
+      </em>
+      parameter to specify the command that runs in the background job.
+It uses the
+      <em>
+       Name
+      </em>
+      parameter to specify a friendly name for the new job.
+     </p>
+     <p>
+      <strong>
+       Example 6: Collect and save data by using a background job
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Start-Job -Name GetMappingFiles -InitializationScript {Import-Module MapFunctions} -ScriptBlock {Get-Map -Name * | Set-Content D:\Maps.tif} -RunAs32</code></pre>
+     <p>
+      This command starts a job that collects lots of data, and then saves it in a .tif file.
+The command uses the
+      <em>
+       InitializationScript
+      </em>
+      parameter to run a script block that imports a required module.
+It also uses the
+      <em>
+       RunAs32
+      </em>
+      parameter to run the job in a 32-bit process even if the computer has a 64-bit operating system.
+     </p>
+     <h2 id="required-parameters">
+      Required Parameters
+     </h2>
+     <div class="parameterName stack">
+      -DefinitionName
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the definition name of the job that this cmdlet starts.
+Use this parameter to start custom job types that have a definition name, such as scheduled jobs.
+      </p>
+      <p>
+       When you use
+       <strong>
+        Start-Job
+       </strong>
+       to start an instance of a scheduled job, the job starts immediately, regardless of job triggers or job options.
+The resulting job instance is a scheduled job, but it is not saved to disk like triggered scheduled jobs.
+Also, you cannot use the
+       <em>
+        ArgumentList
+       </em>
+       parameter of
+       <strong>
+        Start-Job
+       </strong>
+       to provide values for parameters of scripts that run in a scheduled job.
+For more information, see about_Scheduled_Jobs.
+      </p>
+      <p>
+       This parameter was introduced in Windows PowerShell 3.0.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         0
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -FilePath
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a local script that this cmdlet runs as a background job.
+Enter the path and file name of the script or pipe a script path to
+       <strong>
+        Start-Job
+       </strong>
+       .
+The script must be on the local computer or in a folder that the local computer can access.
+      </p>
+      <p>
+       When you use this parameter, Windows PowerShell converts the contents of the specified script file to a script block and runs the script block as a background job.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         0
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -LiteralPath
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a local script that this cmdlet runs as a background job.
+Enter the path of a script on the local computer.
+      </p>
+      <p>
+       Unlike the
+       <em>
+        FilePath
+       </em>
+       parameter, this cmdlet uses the value of the
+       <em>
+        LiteralPath
+       </em>
+       parameter exactly as it is typed.
+No characters are interpreted as wildcard characters.
+If the path includes escape characters, enclose it in single quotation marks.
+Single quotation marks tell Windows PowerShell not to interpret any characters as escape sequences.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         PSPath
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -ScriptBlock
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the commands to run in the background job.
+Enclose the commands in braces ( { } ) to create a script block.
+This parameter is required.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          ScriptBlock
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         Command
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         0
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="optional-parameters">
+      Optional Parameters
+     </h2>
+     <div class="parameterName stack">
+      -ArgumentList
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies an array of arguments, or parameter values, for the script that is specified by the
+       <em>
+        FilePath
+       </em>
+       parameter.
+      </p>
+      <p>
+       Because all of the values that follow the
+       <em>
+        ArgumentList
+       </em>
+       parameter name are interpreted as being values of
+       <em>
+        ArgumentList
+       </em>
+       , specify this parameter as the last parameter in the command.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Object[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         Args
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Authentication
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the mechanism that is used to authenticate user credentials.
+The acceptable values for this parameter are:
+      </p>
+      <ul>
+       <li>
+        Default
+       </li>
+       <li>
+        Basic
+       </li>
+       <li>
+        Credssp
+       </li>
+       <li>
+        Digest
+       </li>
+       <li>
+        Kerberos
+       </li>
+       <li>
+        Negotiate
+       </li>
+       <li>
+        NegotiateWithImplicitCredential
+       </li>
+      </ul>
+      <p>
+       The default value is Default.
+      </p>
+      <p>
+       CredSSP authentication is available only in Windows Vista, Windows Server 2008, and later versions of the Windows operating system.
+      </p>
+      <p>
+       For more information about the values of this parameter, see
+       <a data-linktype="external" href="https://msdn.microsoft.com/library/system.management.automation.runspaces.authenticationmechanism">
+        AuthenticationMechanism Enumeration
+       </a>
+       in the MSDN library.
+      </p>
+      <p>
+       Caution: Credential Security Support Provider (CredSSP) authentication, in which the user's credentials are passed to a remote computer to be authenticated, is designed for commands that require authentication on more than one resource, such as accessing a remote network share.
+This mechanism increases the security risk of the remote operation.
+If the remote computer is compromised, the credentials that are passed to it can be used to control the network session.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          AuthenticationMechanism
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Parameter Sets:
+        </td>
+        <td>
+         Default, Basic, Negotiate, NegotiateWithImplicitCredential, Credssp, Digest, Kerberos
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Credential
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a user account that has permission to perform this action.
+The default is the current user.
+      </p>
+      <p>
+       Type a user name, such as User01 or Domain01\User01, or enter a
+       <strong>
+        PSCredential
+       </strong>
+       object, such as one from the Get-Credential cmdlet.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          PSCredential
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -DefinitionPath
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies path of the definition for the job that this cmdlet starts.
+Enter the definition path.
+The concatenation of the values of the
+       <em>
+        DefinitionPath
+       </em>
+       and
+       <em>
+        DefinitionName
+       </em>
+       parameters is the fully qualified path of the job definition.
+Use this parameter to start custom job types that have a definition path, such as scheduled jobs.
+      </p>
+      <p>
+       For scheduled jobs, the value of the
+       <em>
+        DefinitionPath
+       </em>
+       parameter is
+       <code>
+        $home\AppData\Local\Windows\PowerShell\ScheduledJob
+       </code>
+       .
+      </p>
+      <p>
+       This parameter was introduced in Windows PowerShell 3.0.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         1
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -InitializationScript
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies commands that run before the job starts.
+Enclose the commands in braces ( { } ) to create a script block.
+      </p>
+      <p>
+       Use this parameter to prepare the session in which the job runs.
+For example, you can use it to add functions, snap-ins, and modules to the session.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          ScriptBlock
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         1
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -InputObject
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies input to the command.
+Enter a variable that contains the objects, or type a command or expression that generates the objects.
+      </p>
+      <p>
+       In the value of the
+       <em>
+        ScriptBlock
+       </em>
+       parameter, use the $Input automatic variable to represent the input objects.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          PSObject
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByValue)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Name
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a friendly name for the new job.
+You can use the name to identify the job to other job cmdlets, such as the Stop-Job cmdlet.
+      </p>
+      <p>
+       The default friendly name is Job#, where # is an ordinal number that is incremented for each job.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -PSVersion
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a version.
+This cmdlet runs the job with the version of Windows PowerShell.
+The acceptable values for this parameter are: 2.0 and 3.0.
+      </p>
+      <p>
+       This parameter was introduced in Windows PowerShell 3.0.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Version
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -RunAs32
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that this cmdlet runs the job in a 32-bit process.
+Use this parameter to force the job to run in a 32-bit process on a 64-bit operating system.
+      </p>
+      <p>
+       On 64-bit versions of Windows 7 and Windows Server 2008 R2, when the
+       <strong>
+        Start-Job
+       </strong>
+       command includes the
+       <em>
+        RunAs32
+       </em>
+       parameter, you cannot use the
+       <em>
+        Credential
+       </em>
+       parameter to specify the credentials of another user.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Type
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the custom type for jobs that this cmdlet starts.
+Enter a custom job type name, such as PSScheduledJob for scheduled jobs or PSWorkflowJob for workflows jobs.
+This parameter is not valid for standard background jobs.
+      </p>
+      <p>
+       This parameter was introduced in Windows PowerShell 3.0.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         2
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="inputs">
+      Inputs
+     </h2>
+     <p>
+      <strong>
+       System.String
+      </strong>
+     </p>
+     <p>
+      You can pipe an object that has the
+      <strong>
+       Name
+      </strong>
+      property to the
+      <em>
+       Name
+      </em>
+      parameter.
+For example, you can pipe a
+      <strong>
+       FileInfo
+      </strong>
+      object from Get-ChildItem to
+      <strong>
+       Start-Job
+      </strong>
+      .
+     </p>
+     <h2 id="outputs">
+      Outputs
+     </h2>
+     <p>
+      <strong>
+       System.Management.Automation.PSRemotingJob
+      </strong>
+     </p>
+     <p>
+      This cmdlet returns an object that represents the job that it started.
+     </p>
+     <h2 id="notes">
+      Notes
+     </h2>
+     <ul>
+      <li>
+       To run in the background,
+       <strong>
+        Start-Job
+       </strong>
+       runs in its own session in the current session. When you use the
+       <strong>
+        Invoke-Command
+       </strong>
+       cmdlet to run a
+       <strong>
+        Start-Job
+       </strong>
+       command in a session on a remote computer,
+       <strong>
+        Start-Job
+       </strong>
+       runs in a session in the remote session.
+      </li>
+     </ul>
+     <p>
+      *
+     </p>
+     <h2 id="related-links">
+      Related Links
+     </h2>
+     <ul>
+      <li>
+       <a data-linktype="relative-path" href="get-job.html">
+        Get-Job
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="invoke-command.html">
+        Invoke-Command
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="receive-job.html">
+        Receive-Job
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="remove-job.html">
+        Remove-Job
+       </a>
+      </li>
+      <li>
+       <a data-linktype="external" href="https://msdn.microsoft.com/en-us/powershell/reference/5.1/Microsoft.PowerShell.Core/Resume-Job">
+        Resume-Job
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="stop-job.html">
+        Stop-Job
+       </a>
+      </li>
+      <li>
+       <a data-linktype="external" href="https://msdn.microsoft.com/en-us/powershell/reference/5.1/Microsoft.PowerShell.Core/Suspend-Job">
+        Suspend-Job
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="wait-job.html">
+        Wait-Job
+       </a>
+      </li>
+     </ul>
+     <!-- </content> -->
+    </main>
+    <div class="note alert feedback-system-change-alert">
+     <p>
+      Note
+     </p>
+     <p>
+      The feedback system for this content will be changing soon. Old comments will not be carried over. If content within a comment thread is important to you, please save a copy. For more information on the upcoming change,
+      <a href="https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs">
+       we invite you to read our blog post
+      </a>
+      .
+     </p>
+    </div>
+    <div data-bi-name="comments" id="comments-container" role="form">
+    </div>
+   </div>
+  </div>
+  <div class="openfeedback-container" id="openFeedbackContainer">
+  </div>
+  <div class="action-panel">
+  </div>
+ </body>
+</html>

@@ -1,0 +1,2217 @@
+<!DOCTYPE html>
+<html class="no-js hasSidebar hasPageActions hasBreadcrumb conceptual" data-authenticated="false" data-render="docs" dir="ltr" lang="en-us">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Set-ADAuthenticationPolicy (addsadministration)" property="og:title"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" property="og:image"/>
+  <meta content="summary" name="twitter:card"/>
+  <meta content="@docsmsft" name="twitter:site"/>
+  <meta content="Set-ADAuthenticationPolicy (addsadministration)" name="twitter:title"/>
+  <meta content="Use this topic to help manage Windows and Windows Server technologies with Windows PowerShell." name="twitter:description"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" name="twitter:image"/>
+  <meta content="Microsoft Logo" name="twitter:image:alt"/>
+  <meta content="Use this topic to help manage Windows and Windows Server technologies with Windows PowerShell." name="description"/>
+  <meta content="Docs" name="search.ms_sitename"/>
+  <meta content="powershell-windows" name="search.ms_docsetname"/>
+  <meta content="0" name="version"/>
+  <meta content="en-us" name="locale"/>
+  <meta content="Docs" name="site_name"/>
+  <meta content="MSDN" name="search.ms_product"/>
+  <meta content="MSDN.powershell-windows" name="depot_name"/>
+  <meta content="https://cpubwin.visualstudio.com/DefaultCollection/powershell/_git/powershell/commit/ced7757924addcaea0b7a244ae4d240e4d28d93a?path=%2fdocset%2fwindows%2faddsadministration%2fset-adauthenticationpolicy.md&amp;_a=contents" name="ref_skeleton_gitcommit"/>
+  <meta content="https://cpubwin.visualstudio.com/DefaultCollection/powershell/_git/powershell?path=%2fdocset%2fwindows%2faddsadministration%2fset-adauthenticationpolicy.md&amp;version=GBlive&amp;_a=contents" name="original_ref_skeleton_git_url"/>
+  <meta content="2017-09-15 03:44 AM" name="updated_at"/>
+  <meta content="a6008d61-8d72-3c59-22ba-309a68e188d9" name="document_id"/>
+  <meta content="ba7a17e0-e1ff-f0d9-855e-2cbe7d89281b" name="document_version_independent_id"/>
+  <meta content="powershell" name="page_type"/>
+  <meta content="command" name="page_kind"/>
+  <meta content="manage" name="ms.mktglfcycl"/>
+  <meta content="library" name="ms.sitesec"/>
+  <meta content="brianlic" name="ms.author"/>
+  <meta content="brianlic-msft" name="author"/>
+  <meta content="Microsoft.ActiveDirectory.Management.dll-Help.xml" name="external_help_file"/>
+  <meta content="powershell, cmdlet" name="keywords"/>
+  <meta content="alanth" name="manager"/>
+  <meta content="12/27/2016" name="ms.date"/>
+  <meta content="w10" name="ms.prod"/>
+  <meta content="powershell-windows" name="ms.technology"/>
+  <meta content="reference" name="ms.topic"/>
+  <meta content="" name="online_version"/>
+  <meta content="2.0.0" name="schema"/>
+  <meta content="48272079-C4B5-45B0-9ECB-25232ED10D14" name="ms.assetid"/>
+  <meta content="powershell" name="ms.devlang"/>
+  <meta content="INDEX, FOLLOW" name="ROBOTS"/>
+  <meta content="/powershell/windows/bread/toc.json?view=win10-ps" name="breadcrumb_path"/>
+  <meta content="powershell" name="apiPlatform"/>
+  <meta content="MSDocsHeader-WindowsIT" name="uhfHeaderId"/>
+  <meta content="../win10-ps/toc.json?view=win10-ps" name="toc_rel"/>
+  <link href="https://docs.microsoft.com/en-us/powershell/module/addsadministration/set-adauthenticationpolicy" rel="canonical"/>
+  <title>
+   Set-ADAuthenticationPolicy
+  </title>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/e4a1f3a3.site.css" rel="stylesheet"/>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/31353636.conceptual.css" rel="stylesheet"/>
+ </head>
+ <body dir="ltr" lang="en-us">
+  <div class="header-holder">
+   <div data-bi-name="header" id="headerAreaHolder">
+    <div id="uhf-placeholder">
+    </div>
+   </div>
+   <div class="disclaimer-holder" id="disclaimer-holder">
+   </div>
+  </div>
+  <div class="container mainContainer" data-bi-name="body">
+   <div class="content-header" data-bi-name="content-header">
+    <div class="content-header-controls">
+     <button class="contents-button button-border" data-bi-name="contents-expand" type="button">
+      <span class="docon docon-menu">
+      </span>
+      Contents
+     </button>
+    </div>
+    <div class="content-header-controls">
+     <button class="ap-collapse-behavior ap-expanded button-border" data-bi-name="ap-collapse" type="button">
+      <span class="docon docon-exit-mode">
+      </span>
+      Exit focus mode
+     </button>
+    </div>
+   </div>
+   <div class="primary-holder">
+    <main class="content" data-bi-name="content" dir="ltr" id="main" lang="en-us" role="main">
+     <!-- <content> -->
+     <h1>
+      Set-ADAuthentication
+      <wbr/>
+      Policy
+     </h1>
+     <div class="metadata">
+      <dl class="attributeList">
+       <dt>
+        Module:
+       </dt>
+       <dd>
+        <a data-linktype="relative-path" href="./.html">
+         addsadministration
+        </a>
+       </dd>
+      </dl>
+     </div>
+     <div class="summaryHolder">
+      <div class="summary">
+       Modifies an Active Directory Domain Services authentication policy object.
+      </div>
+     </div>
+     <h2 class="hiddenAnchor" id="syntax">
+      Syntax
+     </h2>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Set-ADAuthenticationPolicy
+   [-WhatIf]
+   [-Confirm]
+   [-Add &lt;Hashtable&gt;]
+   [-AuthType &lt;ADAuthType&gt;]
+   [-Clear &lt;String[]&gt;]
+   [-ComputerAllowedToAuthenticateTo &lt;String&gt;]
+   [-ComputerTGTLifetimeMins &lt;Int32&gt;]
+   [-Credential &lt;PSCredential&gt;]
+   [-Description &lt;String&gt;]
+   [-Enforce &lt;Boolean&gt;]
+   [-Identity] &lt;ADAuthenticationPolicy&gt;
+   [-PassThru]
+   [-ProtectedFromAccidentalDeletion &lt;Boolean&gt;]
+   [-Remove &lt;Hashtable&gt;]
+   [-Replace &lt;Hashtable&gt;]
+   [-RollingNTLMSecret &lt;ADStrongNTLMPolicyType&gt;]
+   [-Server &lt;String&gt;]
+   [-ServiceAllowedToAuthenticateFrom &lt;String&gt;]
+   [-ServiceAllowedToAuthenticateTo &lt;String&gt;]
+   [-ServiceAllowedNTLMNetworkAuthentication &lt;Boolean&gt;]
+   [-ServiceTGTLifetimeMins &lt;Int32&gt;]
+   [-UserAllowedToAuthenticateFrom &lt;String&gt;]
+   [-UserAllowedToAuthenticateTo &lt;String&gt;]
+   [-UserAllowedNTLMNetworkAuthentication &lt;Boolean&gt;]
+   [-UserTGTLifetimeMins &lt;Int32&gt;]
+   [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Set-ADAuthenticationPolicy
+   [-WhatIf]
+   [-Confirm]
+   [-AuthType &lt;ADAuthType&gt;]
+   [-Credential &lt;PSCredential&gt;]
+   -Instance &lt;ADAuthenticationPolicy&gt;
+   [-PassThru]
+   [-Server &lt;String&gt;]
+   [&lt;CommonParameters&gt;]</code></pre>
+     <h2 id="description">
+      Description
+     </h2>
+     <p>
+      The
+      <strong>
+       Set-ADAuthenticationPolicy
+      </strong>
+      cmdlet modifies the properties of an Active DirectoryÂ® Domain Services authentication policy.
+Commonly used attributes of the object can be specified by the parameters of this cmdlet.
+Property values that are not associated with cmdlet parameters can be modified by using the
+      <em>
+       Add
+      </em>
+      ,
+      <em>
+       Remove
+      </em>
+      ,
+      <em>
+       Replace
+      </em>
+      , and
+      <em>
+       Clear
+      </em>
+      parameters.
+     </p>
+     <p>
+      The
+      <em>
+       Identity
+      </em>
+      parameter specifies the Active Directory Domain Services authentication policy to modify.
+You can specify an authentication policy object by using a distinguished name, a GUID, or a name.
+You can also use the
+      <em>
+       Identity
+      </em>
+      parameter to specify a variable that contains an authentication policy object, or you can use the pipeline operator to pass an authentication policy object to the
+      <em>
+       Identity
+      </em>
+      parameter.
+To get an authentication policy object, use the
+      <strong>
+       Get-ADAuthenticationPolicy
+      </strong>
+      cmdlet.
+     </p>
+     <p>
+      Use the
+      <em>
+       Instance
+      </em>
+      parameter to specify an authentication policy object to use as a template for the object being modified.
+Do not specify both the
+      <em>
+       Instance
+      </em>
+      parameter and the
+      <em>
+       Identity
+      </em>
+      parameter.
+     </p>
+     <h2 id="examples">
+      Examples
+     </h2>
+     <p>
+      <strong>
+       Example 1: Modify properties of a specified authentication policy
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Set-ADAuthenticationPolicy -Identity AuthenticationPolicy01 -Description "TestDescription" -UserTGTLifetimeMins 45</code></pre>
+     <p>
+      This command modifies the description and the
+      <strong>
+       UserTGTLifetimeMins
+      </strong>
+      properties of the specified authentication policy.
+     </p>
+     <p>
+      <strong>
+       Example 2: Modify properties of an authentication policy by using an Instance.
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; $AuthPolicy = Get-ADAuthenticationPolicy -Identity AuthenticationPolicy02
+PS C:\&gt; $AuthPolicy.Description = 'testDescription'
+PS C:\&gt; $AuthPolicy.UserTGTLifetimeMins = 60
+PS C:\&gt; Set-ADAuthenticationPolicy -Instance $AuthPolicy</code></pre>
+     <p>
+      This example first gets the authentication policy named AuthenticationPolicy02 by using the
+      <strong>
+       Get-ADAuthenticationPolicy
+      </strong>
+      cmdlet.
+The authentication policy object is stored in the variable named $authPolicy.
+     </p>
+     <p>
+      The next commands modify the properties of the object in the variable, and the final command specifies the
+      <em>
+       Instance
+      </em>
+      parameter to commit the changes to the authentication policy stored in the $authPolicy variable.
+     </p>
+     <p>
+      <strong>
+       Example 3: Modify multiple authentication policies
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-ADAuthenticationPolicy -Filter 'UserTGTLifetimeMins -le 50' | Set-ADAuthenticationPolicy -UserTGTLifetimeMins 60</code></pre>
+     <p>
+      This command uses the
+      <strong>
+       Get-ADAuthenticationPolicy
+      </strong>
+      cmdlet with the
+      <em>
+       Filter
+      </em>
+      parameter to get all authentication policies that have the
+      <strong>
+       UserTGTLifetimeMins
+      </strong>
+      value set below 50 minutes.
+The pipeline operator then passes the result of the filter to
+      <strong>
+       Set-AdAuthenticationPolicy
+      </strong>
+      , which sets the new
+      <em>
+       UserTGTLifetimeMins
+      </em>
+      value to 60 minutes.
+     </p>
+     <p>
+      <strong>
+       Example 4: Replace an existing property value
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Set-ADAuthenticationPolicy -Identity AuthenticationPolicy03 -Replace @{description="New Description"}</code></pre>
+     <p>
+      This command replaces the existing description property for
+      <strong>
+       AuthenticationPolicy03
+      </strong>
+      with the new description specified by the
+      <em>
+       Replace
+      </em>
+      parameter.
+     </p>
+     <h2 id="required-parameters">
+      Required Parameters
+     </h2>
+     <div class="parameterName stack">
+      -Identity
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies an Active Directory Domain Services authentication policy object.
+Specify the authentication policy object in one of the following formats:
+      </p>
+      <ul>
+       <li>
+        Distinguished Name
+       </li>
+       <li>
+        GUID
+       </li>
+       <li>
+        Name
+       </li>
+      </ul>
+      <p>
+       This parameter can also get this object through the pipeline or you can set this parameter to an object instance.
+      </p>
+      <p>
+       The cmdlet searches the default naming context or partition to find the object.
+If the cmdlet finds two or more objects, the cmdlet returns a non-terminating error.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          ADAuthenticationPolicy
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         0
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByValue)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Instance
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a modified copy of an
+       <strong>
+        ADAuthenticationPolicy
+       </strong>
+       object to use to update the actual
+       <strong>
+        ADAuthenticationPolicy
+       </strong>
+       object.
+When you specify this parameter, any modifications made to the modified copy of the object are also made to the corresponding
+       <strong>
+        ADAuthenticationPolicy
+       </strong>
+       object.
+The cmdlet only updates the object properties that have changed.
+When you specify the
+       <em>
+        Instance
+       </em>
+       parameter, you cannot specify other parameters that set properties on the object.
+      </p>
+      <p>
+       To get the
+       <strong>
+        ADAuthenticationPolicy
+       </strong>
+       object to use to update the
+       <strong>
+        ADAuthenticationPolicy
+       </strong>
+       on which the cmdlet runs, use the
+       <strong>
+        Get-ADAuthenticationPolicy
+       </strong>
+       cmdlet.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          ADAuthenticationPolicy
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="optional-parameters">
+      Optional Parameters
+     </h2>
+     <div class="parameterName stack">
+      -Add
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a list of values to add to an object property.
+Use this parameter to add one or more values to a property that cannot be modified using a parameter.
+To identify an attribute, specify the Lightweight Directory Access Protocol (LDAP) display name defined for it in the Active Directory Domain Services schema.
+      </p>
+      <p>
+       Specify the attribute and the value of the attribute in the following format: @{'AttributeLDAPDisplayName'=value}.
+      </p>
+      <p>
+       To specify multiple values for an attribute, specify a comma separated list the values for the display name.
+You can specify values for more than one attribute by using semicolons to separate attribute value pairs.
+      </p>
+      <p>
+       When specifying the
+       <em>
+        Add
+       </em>
+       ,
+       <em>
+        Remove
+       </em>
+       ,
+       <em>
+        Replace
+       </em>
+       , and
+       <em>
+        Clear
+       </em>
+       parameters together, the operations are performed in the following order:
+      </p>
+      <ul>
+       <li>
+        <strong>
+         Remove
+        </strong>
+       </li>
+       <li>
+        <strong>
+         Add
+        </strong>
+       </li>
+       <li>
+        <strong>
+         Replace
+        </strong>
+       </li>
+       <li>
+        <strong>
+         Clear
+        </strong>
+       </li>
+      </ul>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Hashtable
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -AuthType
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the authentication method to use.
+The acceptable values for this parameter are:
+      </p>
+      <ul>
+       <li>
+        Negotiate or 0
+       </li>
+       <li>
+        Basic or 1
+       </li>
+      </ul>
+      <p>
+       The default authentication method is Negotiate.
+A Secure Sockets Layer (SSL) connection is required for the Basic authentication method.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          ADAuthType
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Parameter Sets:
+        </td>
+        <td>
+         Negotiate, Basic
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Clear
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies an array of object properties that are cleared in the directory.
+Use this parameter to clear one or more values of a property that cannot be modified using a parameter.
+To modify an object property, you must specify the LDAP display name.
+You can modify more than one property by specifying a comma-separated list.
+      </p>
+      <p>
+       When specifying the
+       <em>
+        Add
+       </em>
+       ,
+       <em>
+        Remove
+       </em>
+       ,
+       <em>
+        Replace
+       </em>
+       , and
+       <em>
+        Clear
+       </em>
+       parameters together, the operations are performed in the following order:
+      </p>
+      <ul>
+       <li>
+        <strong>
+         Remove
+        </strong>
+       </li>
+       <li>
+        <strong>
+         Add
+        </strong>
+       </li>
+       <li>
+        <strong>
+         Replace
+        </strong>
+       </li>
+       <li>
+        <strong>
+         Clear
+        </strong>
+       </li>
+      </ul>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -ComputerAllowedToAuthenticateTo
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the security descriptor definition language (SDDL) string of the security descriptor used to determine if the computer can authenticate to this account.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -ComputerTGTLifetimeMins
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the lifetime in minutes for non-renewable ticket granting tickets (TGTs) for computer accounts.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Int32
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Confirm
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Prompts you for confirmation before running the cmdlet.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         cf
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Credential
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a user account that has permission to perform the task.
+The default is the current user.
+Type a user name, such as "User01" or "Domain01\User01", or enter a
+       <strong>
+        PSCredential
+       </strong>
+       object, such as one generated by the
+       <strong>
+        Get-Credential
+       </strong>
+       cmdlet.
+      </p>
+      <p>
+       By default, the cmdlet uses the credentials of the currently logged on user unless the cmdlet is run from an Active Directory Domain Services Windows PowerShell provider drive.
+If you run the cmdlet in a provider drive, the account associated with the drive is the default.
+      </p>
+      <p>
+       If you specify credentials that do not have permission to perform the task, the cmdlet returns an error.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          PSCredential
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Description
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a description for the object.
+This parameter sets the value of the description property for the object.
+The LDAP display name (
+       <strong>
+        ldapDisplayName
+       </strong>
+       ) for this property is "description".
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Enforce
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates whether the authentication policy is enforced.
+Specify $True to set the authentication policy to enforced.
+Specify $False to set the authentication policy to not enforced.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Boolean
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -PassThru
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Returns an object representing the item with which you are working.
+By default, this cmdlet does not generate any output.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -ProtectedFromAccidentalDeletion
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates whether to prevent the object from being deleted.
+When this property is set to true, you cannot delete the corresponding object without changing the value of the property.
+The acceptable values for this parameter are:
+      </p>
+      <ul>
+       <li>
+        $False or 0
+       </li>
+       <li>
+        $True or 1
+       </li>
+      </ul>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Boolean
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Remove
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies that the cmdlet remove the values of an object property.
+Use this parameter to remove one or more values of a property that cannot be modified using a cmdlet parameter.
+To remove an object property, you must specify the LDAP display name.
+      </p>
+      <p>
+       Specify the attribute and the value of the attribute in the following format: @{'AttributeLDAPDisplayName'=value}.
+      </p>
+      <p>
+       To specify multiple values for an attribute, specify a comma separated list the values for the display name.
+You can specify values for more than one attribute by using semicolons to separate attribute value pairs.
+      </p>
+      <p>
+       When specifying the
+       <em>
+        Add
+       </em>
+       ,
+       <em>
+        Remove
+       </em>
+       ,
+       <em>
+        Replace
+       </em>
+       , and
+       <em>
+        Clear
+       </em>
+       parameters together, the operations are performed in the following order:
+      </p>
+      <ul>
+       <li>
+        <strong>
+         Remove
+        </strong>
+       </li>
+       <li>
+        <strong>
+         Add
+        </strong>
+       </li>
+       <li>
+        <strong>
+         Replace
+        </strong>
+       </li>
+       <li>
+        <strong>
+         Clear
+        </strong>
+       </li>
+      </ul>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Hashtable
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Replace
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a list of values for an object property that replaces the current values.
+Use this parameter to replace one or more values of a property that cannot be modified using a cmdlet parameter.
+To modify an object property, you must specify the LDAP display name.
+      </p>
+      <p>
+       Specify the attribute and the value of the attribute in the following format: @{'AttributeLDAPDisplayName'=value}.
+      </p>
+      <p>
+       To specify multiple values for an attribute, specify a comma separated list the values for the display name.
+You can specify values for more than one attribute by using semicolons to separate attribute value pairs.
+      </p>
+      <p>
+       When specifying the
+       <em>
+        Add
+       </em>
+       ,
+       <em>
+        Remove
+       </em>
+       ,
+       <em>
+        Replace
+       </em>
+       , and
+       <em>
+        Clear
+       </em>
+       parameters together, the operations are performed in the following order:
+      </p>
+      <ul>
+       <li>
+        <strong>
+         Remove
+        </strong>
+       </li>
+       <li>
+        <strong>
+         Add
+        </strong>
+       </li>
+       <li>
+        <strong>
+         Replace
+        </strong>
+       </li>
+       <li>
+        <strong>
+         Clear
+        </strong>
+       </li>
+      </ul>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Hashtable
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -RollingNTLMSecret
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Beginning with Windows 10, version 1703, this feature is deprecated and should not be configured in Active Directory.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          ADStrongNTLMPolicyType
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Parameter Sets:
+        </td>
+        <td>
+         Disabled, Optional, Required
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Server
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the Active Directory Domain Services instance to which to connect, by providing one of the following values for a corresponding domain name or directory server.
+The service may be any of the following:  Active Directory Lightweight Domain Services, Active Directory Domain Services or Active Directory snapshot instance.
+      </p>
+      <p>
+       Specify the Active Directory Domain Services instance in one of the following ways:
+      </p>
+      <p>
+       Domain name values:
+      </p>
+      <ul>
+       <li>
+        Fully qualified domain name
+       </li>
+       <li>
+        NetBIOS name
+       </li>
+      </ul>
+      <p>
+       Directory server values:
+      </p>
+      <ul>
+       <li>
+        Fully qualified directory server name
+       </li>
+       <li>
+        NetBIOS name
+       </li>
+       <li>
+        Fully qualified directory server name and port
+       </li>
+      </ul>
+      <p>
+       The default value for this parameter is determined by one of the following methods in the order that they are listed:
+      </p>
+      <ul>
+       <li>
+        By using the
+        <strong>
+         Server
+        </strong>
+        value from objects passed through the pipeline
+       </li>
+       <li>
+        By using the server information associated with the Active Directory Domain Services Windows PowerShell provider drive, when the cmdlet runs in that drive
+       </li>
+       <li>
+        By using the domain of the computer running Windows PowerShell
+       </li>
+      </ul>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -ServiceAllowedNTLMNetworkAuthentication
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies that the policy allows NTLM network authentication if the service account has an access control expression specified by the
+       <em>
+        ServiceAllowedToAuthenticateFrom
+       </em>
+       parameter.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Boolean
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -ServiceAllowedToAuthenticateFrom
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies an access control expression used to determine from which devices the service can authenticate.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -ServiceAllowedToAuthenticateTo
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the SDDL string of the security descriptor used to determine if the service can authenticate to this account.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -ServiceTGTLifetimeMins
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the lifetime in minutes for non-renewable TGTs for service accounts.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Int32
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -UserAllowedNTLMNetworkAuthentication
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that the policy allows NTLM network authentication if the user account has an access control expression specified by the
+       <em>
+        UserAllowedToAuthenticateFrom
+       </em>
+       parameter.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Boolean
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -UserAllowedToAuthenticateFrom
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies an access control expression used to determine from which devices the users can authenticate.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -UserAllowedToAuthenticateTo
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the SDDL string of the security descriptor used to determine if the users can authenticate to this account.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -UserTGTLifetimeMins
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the lifetime in minutes for non-renewable TGTs for user accounts.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Int32
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -WhatIf
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         wi
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="inputs">
+      Inputs
+     </h2>
+     <p>
+      <strong>
+       None or Microsoft.ActiveDirectory.Management.ADAuthenticationPolicy
+      </strong>
+     </p>
+     <p>
+      This cmdlet accepts an authentication policy object.
+     </p>
+     <h2 id="outputs">
+      Outputs
+     </h2>
+     <p>
+      <strong>
+       System.Object
+      </strong>
+     </p>
+     <p>
+      Returns one or more objects.
+     </p>
+     <h2 id="related-links">
+      Related Links
+     </h2>
+     <ul>
+      <li>
+       <a data-linktype="relative-path" href="./get-adauthenticationpolicy.html">
+        Get-ADAuthenticationPolicy
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="./new-adauthenticationpolicy.html">
+        New-ADAuthenticationPolicy
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="./remove-adauthenticationpolicy.html">
+        Remove-ADAuthenticationPolicy
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="./activedirectory.html">
+        AD DS Administration Cmdlets in Windows PowerShell
+       </a>
+      </li>
+     </ul>
+     <!-- </content> -->
+    </main>
+    <section class="feedback-section" data-bi-name="feedback-section">
+     <h2 id="feedback">
+      Feedback
+     </h2>
+     <div class="alert choose-feedback-type">
+      <p>
+       We'd love to hear your thoughts. Choose the type you'd like to provide:
+      </p>
+      <div class="choose-feedback-buttons">
+       <a class="button-border feedback-type-product" data-bi-name="product-feedback" href="https://windowsserver.uservoice.com/forums/301869-powershell">
+        Product feedback
+        <span aria-hidden="true" class="docon docon-navigate-external">
+        </span>
+       </a>
+       <div class="button-group">
+        <button class="button-border feedback-sign-in-button" data-bi-name="feedback-sign-in">
+         <span aria-hidden="true" class="docon docon-brand-github">
+         </span>
+         Sign in to give documentation feedback
+        </button>
+        <button aria-controls="feedback-form" aria-expanded="false" class="button-border feedback-form-toggle" data-bi-name="documentation-feedback" hidden="">
+         Content feedback
+        </button>
+        <div auto-align="" class="dropdown has-caret">
+         <button aria-controls="fbm0" aria-expanded="false" aria-haspopup="true" aria-label="Expand documentation feedback menu" class="button-border dropdown-trigger" data-bi-name="documentation-feedback-menu">
+          <span aria-hidden="true" class="docon docon-chevron-down-light">
+          </span>
+         </button>
+         <div class="dropdown-menu documentation-feedback-menu" id="fbm0" role="menu">
+          You may also leave feedback
+          <a data-bi-name="create-issue-on-github" href="{0}">
+           directly on GitHub
+           <span aria-hidden="true" class="docon docon-navigate-external">
+           </span>
+          </a>
+          .
+         </div>
+        </div>
+       </div>
+      </div>
+      <p>
+       <small>
+        Our new feedback system is built on GitHub Issues. Read about this change in
+        <a href="https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs">
+         our blog post
+        </a>
+        .
+       </small>
+      </p>
+     </div>
+     <form accept-charset="UTF-8" action="javascript:" autocomplete="off" class="feedback-form" hidden="" id="feedback-form">
+      <h3 class="feedback-form-heading current-user">
+       <img alt="Avatar" aria-hidden="true" class="avatar" height="36" width="36"/>
+       <span aria-hidden="true" class="username">
+       </span>
+       <span class="visually-hidden">
+        Liquid error: Can't find the localized string giveDocumentationFeedback for template Conceptual.
+       </span>
+      </h3>
+      <label>
+       <span class="visually-hidden">
+        Title
+       </span>
+       <input name="title" pattern=".*\w.*" placeholder="Title" required="" type="text"/>
+      </label>
+      <label>
+       <span class="visually-hidden">
+        Leave a comment
+       </span>
+       <textarea name="body" placeholder="Leave a comment" required=""></textarea>
+      </label>
+      <div class="action-container">
+       <button class="primary-action" name="submit" type="submit">
+        Submit feedback
+       </button>
+      </div>
+     </form>
+     <div class="feedback-status alert busy" role="alert">
+      <p>
+       Loading feedback...
+      </p>
+     </div>
+     <div class="feedback-tab-group tabGroup" data-tab-group-independent="" hidden="">
+      <ul role="tablist">
+       <li role="presentation">
+        <a aria-controls="tabpanel-issues-open" aria-label="Open Issues" data-tab="issues-open" href="#tabpanel-issues-open" role="tab">
+        </a>
+       </li>
+       <li role="presentation">
+        <a aria-controls="tabpanel-issues-closed" aria-label="Closed Issues" data-tab="issues-closed" href="#tabpanel-issues-closed" role="tab">
+        </a>
+       </li>
+      </ul>
+      <section data-tab="issues-open" id="tabpanel-issues-open" role="tabpanel">
+       <div class="no-issues-placeholder">
+        There are no open issues
+       </div>
+       <ul aria-label="Open Issues" class="github-issues-list">
+       </ul>
+      </section>
+      <section data-tab="issues-closed" id="tabpanel-issues-closed" role="tabpanel">
+       <div class="no-issues-placeholder">
+        There are no closed issues
+       </div>
+       <ul aria-label="Closed Issues" class="github-issues-list">
+       </ul>
+      </section>
+     </div>
+     <div class="action-container">
+      <a class="view-on-github" data-bi-name="view-on-github" hidden="" href="https://github.com/MicrosoftDocs/windows-powershell-docs/issues">
+       <span aria-hidden="true" class="docon docon-brand-github">
+       </span>
+       <span>
+        View on GitHub
+       </span>
+       <span aria-hidden="true" class="docon docon-navigate-external">
+       </span>
+      </a>
+     </div>
+    </section>
+   </div>
+  </div>
+  <div class="openfeedback-container" id="openFeedbackContainer">
+  </div>
+  <div class="action-panel">
+  </div>
+ </body>
+</html>

@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html class="no-js hasSidebar hasPageActions hasBreadcrumb conceptual" data-authenticated="false" data-render="docs" dir="ltr" lang="en-us">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Get-Item (Microsoft.PowerShell.Management)" property="og:title"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" property="og:image"/>
+  <meta content="summary" name="twitter:card"/>
+  <meta content="@docsmsft" name="twitter:site"/>
+  <meta content="Get-Item (Microsoft.PowerShell.Management)" name="twitter:title"/>
+  <meta content="The Get-Item cmdlet gets the item at the specified location. It does not get the contents of the item at the location unless you use a wildcard character (*) to request all the contents of the item.â¦" name="twitter:description"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" name="twitter:image"/>
+  <meta content="Microsoft Logo" name="twitter:image:alt"/>
+  <meta content="The Get-Item cmdlet gets the item at the specified location. It does not get the contents of the item at the location unless you use a wildcard character (*) to request all the contents of the item.â¦" name="description"/>
+  <meta content="Docs" name="search.ms_sitename"/>
+  <meta content="PowerShell_PowerShell-docs_reference" name="search.ms_docsetname"/>
+  <meta content="0" name="version"/>
+  <meta content="en-us" name="locale"/>
+  <meta content="Docs" name="site_name"/>
+  <meta content="PowerShell" name="search.ms_product"/>
+  <meta content="PowerShell.PowerShell_PowerShell-docs_reference" name="depot_name"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/446813f2b0922607a6ae1d2df7a11be56edfa4c1/reference/6/Microsoft.PowerShell.Management/Get-Item.md" name="ref_skeleton_gitcommit"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/live/reference/6/Microsoft.PowerShell.Management/Get-Item.md" name="original_ref_skeleton_git_url"/>
+  <meta content="2018-03-30 03:35 PM" name="updated_at"/>
+  <meta content="55934d4f-be05-fe96-535a-e2fda48bebd6" name="document_id"/>
+  <meta content="166d361c-0734-7589-2a8f-d60446ce0d9b" name="document_version_independent_id"/>
+  <meta content="powershell" name="page_type"/>
+  <meta content="command" name="page_kind"/>
+  <meta content="06/09/2017" name="ms.date"/>
+  <meta content="2.0.0" name="schema"/>
+  <meta content="powershell,cmdlet" name="keywords"/>
+  <meta content="http://go.microsoft.com/fwlink/?LinkId=821587" name="online_version"/>
+  <meta content="Microsoft.PowerShell.Commands.Management.dll-Help.xml" name="external_help_file"/>
+  <meta content="powershell" name="ms.devlang"/>
+  <meta content="INDEX, FOLLOW" name="ROBOTS"/>
+  <meta content="sdwheeler" name="author"/>
+  <meta content="sewhee" name="ms.author"/>
+  <meta content="carmonm" name="manager"/>
+  <meta content="/powershell/bread-pscore/toc.yml?view=powershell-6" name="breadcrumb_path"/>
+  <meta content="powershell" name="apiPlatform"/>
+  <meta content="reference" name="ms.topic"/>
+  <meta content="windows, macos, linux" name="ms.tgt_pltfr"/>
+  <meta content="powershell-scripting" name="ms.technology"/>
+  <meta content="powershell" name="ms.prod"/>
+  <meta content="MSDocsHeader-Powershell" name="uhfHeaderId"/>
+  <meta content="../psdocs/toc.json?view=powershell-6" name="toc_rel"/>
+  <link href="https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.management/get-item" rel="canonical"/>
+  <title>
+   Get-Item
+  </title>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/60aac04b.site.css" rel="stylesheet"/>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/fdb8a38a.conceptual.css" rel="stylesheet"/>
+ </head>
+ <body dir="ltr" lang="en-us">
+  <div class="header-holder">
+   <div data-bi-name="header" id="headerAreaHolder">
+    <div id="uhf-placeholder">
+    </div>
+   </div>
+   <div class="disclaimer-holder" id="disclaimer-holder">
+   </div>
+  </div>
+  <div class="container mainContainer" data-bi-name="body">
+   <div class="content-header" data-bi-name="content-header">
+    <div class="content-header-controls">
+     <button class="contents-button button-border" data-bi-name="contents-expand" type="button">
+      <span class="docon docon-menu">
+      </span>
+      Contents
+     </button>
+    </div>
+    <div class="content-header-controls">
+     <button class="ap-collapse-behavior ap-expanded button-border" data-bi-name="ap-collapse" type="button">
+      <span class="docon docon-exit-mode">
+      </span>
+      Exit focus mode
+     </button>
+    </div>
+   </div>
+   <div class="primary-holder">
+    <main class="content" data-bi-name="content" dir="ltr" id="main" lang="en-us" role="main">
+     <!-- <content> -->
+     <h1>
+      Get-Item
+     </h1>
+     <div class="metadata">
+      <dl class="attributeList">
+       <dt>
+        Module:
+       </dt>
+       <dd>
+        <a data-linktype="relative-path" href="./Microsoft.PowerShell.Management.html">
+         Microsoft.PowerShell.Management
+        </a>
+       </dd>
+      </dl>
+     </div>
+     <div class="summaryHolder">
+      <div class="summary">
+       Gets the item at the specified location.
+      </div>
+     </div>
+     <h2 class="hiddenAnchor" id="syntax">
+      Syntax
+     </h2>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Get-Item
+   [-Path] &lt;String[]&gt;
+   [-Filter &lt;String&gt;]
+   [-Include &lt;String[]&gt;]
+   [-Exclude &lt;String[]&gt;]
+   [-Force]
+   [-Credential &lt;PSCredential&gt;]
+   [-UseTransaction]
+   [-Stream &lt;String[]&gt;]
+   [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Get-Item
+   -LiteralPath &lt;String[]&gt;
+   [-Filter &lt;String&gt;]
+   [-Include &lt;String[]&gt;]
+   [-Exclude &lt;String[]&gt;]
+   [-Force]
+   [-Credential &lt;PSCredential&gt;]
+   [-UseTransaction]
+   [-Stream &lt;String[]&gt;]
+   [&lt;CommonParameters&gt;]</code></pre>
+     <h2 id="description">
+      Description
+     </h2>
+     <p>
+      The
+      <strong>
+       Get-Item
+      </strong>
+      cmdlet gets the item at the specified location.
+It does not get the contents of the item at the location unless you use a wildcard character (*) to request all the contents of the item.
+     </p>
+     <p>
+      This cmdlet is used by Windows PowerShell providers to navigate through different types of data stores.
+     </p>
+     <h2 id="examples">
+      Examples
+     </h2>
+     <p>
+      <strong>
+       Example 1: Get the current directory
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-Item .
+
+
+
+Directory: C:\
+
+
+
+Mode                LastWriteTime     Length Name
+
+----                -------------     ------ ----
+
+d----         7/26/2006  10:01 AM            ps-test</code></pre>
+     <p>
+      This command gets the current directory.
+The dot (.) represents the item at the current location (not its contents).
+     </p>
+     <p>
+      <strong>
+       Example 2: Get all the items in the current directory
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-Item *
+
+
+
+Directory: C:\ps-test
+
+
+
+Mode                LastWriteTime     Length Name
+
+----                -------------     ------ ----
+
+d----         7/26/2006   9:29 AM            Logs
+
+d----         7/26/2006   9:26 AM            Recs
+
+-a---         7/26/2006   9:28 AM         80 date.csv
+
+-a---         7/26/2006  10:01 AM         30 filenoext
+
+-a---         7/26/2006   9:30 AM      11472 process.doc
+
+-a---         7/14/2006  10:47 AM         30 test.txt</code></pre>
+     <p>
+      This command gets all the items in the current directory.
+The wildcard character (*) represents all the contents of the current item.
+     </p>
+     <p>
+      <strong>
+       Example 3: Get the current directory of a drive
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-Item C:\</code></pre>
+     <p>
+      This command gets the current directory of the C: drive.
+The object that is retrieved represents only the directory, not its contents.
+     </p>
+     <p>
+      <strong>
+       Example 4: Get items in the specified drive
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-Item C:\*</code></pre>
+     <p>
+      This command gets the items in the C: drive.
+The wildcard character (*) represents all the items in the container, not just the container.
+     </p>
+     <p>
+      In Windows PowerShell, use a single asterisk (
+      <em>
+       ) to get contents, instead of the traditional *.
+      </em>
+      .
+The format is interpreted literally, so
+      <em>
+       .
+      </em>
+      would not retrieve directories or file names without a dot.
+     </p>
+     <p>
+      <strong>
+       Example 5: Get a property in the specified directory
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; (Get-Item C:\Windows).LastAccessTime</code></pre>
+     <p>
+      This command gets the LastAccessTime property of the C:\Windows directory.
+LastAccessTime is just one property of file system directories.
+To see all of the properties of a directory, type
+      <code>
+       (Get-Item \&lt;directory-name\&gt;) | Get-Member
+      </code>
+      .
+     </p>
+     <p>
+      <strong>
+       Example 6: Show the contents of a registry key
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-Item hklm:\software\microsoft\powershell\1\shellids\microsoft.powershell\*</code></pre>
+     <p>
+      This command shows the contents of the Microsoft.PowerShell registry key.
+You can use this cmdlet with the Windows PowerShell Registry provider to get registry keys and subkeys, but you must use the
+      <strong>
+       Get-ItemProperty
+      </strong>
+      cmdlet to get the registry values and data.
+     </p>
+     <p>
+      <strong>
+       Example 7: Get items in a directory that have an exclusion
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-Item c:\Windows\*.* -exclude "w*"</code></pre>
+     <p>
+      This command gets items in the Windows directory with names that include a dot (.), but do not begin with w
+      <em>
+       .
+This command works only when the path includes a wildcard character (
+      </em>
+      ) to specify the contents of the item.
+     </p>
+     <h2 id="required-parameters">
+      Required Parameters
+     </h2>
+     <div class="parameterName stack">
+      -LiteralPath
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a path to the item.
+Unlike the
+       <em>
+        Path
+       </em>
+       parameter, the value of
+       <em>
+        LiteralPath
+       </em>
+       is used exactly as it is typed.
+No characters are interpreted as wildcards.
+If the path includes escape characters, enclose it in single quotation marks.
+Single quotation marks tell Windows PowerShell not to interpret any characters as escape sequences.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         PSPath
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Path
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the path to an item.
+This cmdlet gets the item at the specified location.
+Wildcards are permitted.
+This parameter is required, but the parameter name ("Path") is optional.
+      </p>
+      <p>
+       Use a dot (.) to specify the current location.
+Use the wildcard character (*) to specify all the items in the current location.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         1
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName, ByValue)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         True
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="optional-parameters">
+      Optional Parameters
+     </h2>
+     <div class="parameterName stack">
+      -Credential
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a user account that has permission to perform this action.
+The default is the current user.
+      </p>
+      <p>
+       Type a user-name, such as User01 or Domain01\User01, or enter a
+       <strong>
+        PSCredential
+       </strong>
+       object, such as one generated by the Get-Credential cmdlet.
+If you type a user name, you will be prompted for a password.
+      </p>
+      <p>
+       This parameter is not supported by any providers installed with Windows PowerShell.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          PSCredential
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Exclude
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies, as a string array, an item or items that this cmdlet excludes in the operation.
+The value of this parameter qualifies the Path parameter.
+Enter a path element or pattern, such as *.txt.
+Wildcards are permitted.
+      </p>
+      <p>
+       The
+       <em>
+        Exclude
+       </em>
+       parameter is effective only when the command includes the contents of an item, such as C:\Windows*, where the wildcard character specifies the contents of the C:\Windows directory.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Filter
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a filter in the provider's format or language.
+The value of this parameter qualifies the
+       <em>
+        Path
+       </em>
+       parameter.
+The syntax of the filter, including the use of wildcards, depends on the provider.
+Filters are more efficient than other parameters, because the provider applies them when this cmdlet gets the objects, rather than having Windows PowerShell filter the objects after they are retrieved.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Force
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that this cmdlet gets items that cannot otherwise be accessed, such as hidden items.
+Implementation varies from provider to provider.
+For more information, see about_Providers.
+Even using the
+       <em>
+        Force
+       </em>
+       parameter, the cmdlet cannot override security restrictions.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Include
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies, as a string array, an item or items that this cmdlet includes in the operation.
+The value of this parameter qualifies the
+       <em>
+        Path
+       </em>
+       parameter.
+Enter a path element or pattern, such as *.txt.
+Wildcards are permitted.
+      </p>
+      <p>
+       The
+       <em>
+        Include
+       </em>
+       parameter is effective only when the command includes the contents of an item, such as C:\Windows*, where the wildcard character specifies the contents of the C:\Windows directory.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Stream
+     </div>
+     <div class="parameterInfo">
+      <p>
+       This parameter is not supported by any providers installed with Windows PowerShell.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -UseTransaction
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Includes the command in the active transaction.
+This parameter is valid only when a transaction is in progress.
+For more information, see Includes the command in the active transaction.
+This parameter is valid only when a transaction is in progress.
+For more information, see
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         usetx
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="inputs">
+      Inputs
+     </h2>
+     <p>
+      <strong>
+       System.String
+      </strong>
+     </p>
+     <p>
+      You can pipe a string that contains a path to this cmdlet.
+     </p>
+     <h2 id="outputs">
+      Outputs
+     </h2>
+     <p>
+      <strong>
+       System.Object
+      </strong>
+     </p>
+     <p>
+      This cmdlet returns the objects that it gets.
+The type is determined by the type of objects in the path.
+     </p>
+     <h2 id="notes">
+      Notes
+     </h2>
+     <ul>
+      <li>
+       <p>
+        You can also refer to this cmdlet by its built-in alias, "gi". For more information, see about_Aliases.
+       </p>
+       <p>
+        This cmdlet does not have a
+        <em>
+         Recurse
+        </em>
+        parameter, because it gets only an item, not its contents.
+To get the contents of an item recursively, use Get-ChildItem.
+       </p>
+       <p>
+        To navigate through the registry, use this cmdlet to get registry keys and the Get-ItemProperty to get registry values and data.
+The registry values are considered to be properties of the registry key.
+       </p>
+       <p>
+        This cmdlet is designed to work with the data exposed by any provider.
+To list the providers available in your session, type
+        <code>
+         Get-PsProvider
+        </code>
+        .
+For more information, see about_Providers.
+       </p>
+      </li>
+     </ul>
+     <h2 id="related-links">
+      Related Links
+     </h2>
+     <ul>
+      <li>
+       <a data-linktype="relative-path" href="clear-item.html">
+        Clear-Item
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="copy-item.html">
+        Copy-Item
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="invoke-item.html">
+        Invoke-Item
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="move-item.html">
+        Move-Item
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="new-item.html">
+        New-Item
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="remove-item.html">
+        Remove-Item
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="rename-item.html">
+        Rename-Item
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="set-item.html">
+        Set-Item
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="get-childitem.html">
+        Get-ChildItem
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="get-itemproperty.html">
+        Get-ItemProperty
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="get-psprovider.html">
+        Get-PSProvider
+       </a>
+      </li>
+     </ul>
+     <!-- </content> -->
+    </main>
+    <div class="note alert feedback-system-change-alert">
+     <p>
+      Note
+     </p>
+     <p>
+      The feedback system for this content will be changing soon. Old comments will not be carried over. If content within a comment thread is important to you, please save a copy. For more information on the upcoming change,
+      <a href="https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs">
+       we invite you to read our blog post
+      </a>
+      .
+     </p>
+    </div>
+    <div data-bi-name="comments" id="comments-container" role="form">
+    </div>
+   </div>
+  </div>
+  <div class="openfeedback-container" id="openFeedbackContainer">
+  </div>
+  <div class="action-panel">
+  </div>
+ </body>
+</html>

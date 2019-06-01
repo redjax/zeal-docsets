@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html class="no-js hasSidebar hasPageActions hasBreadcrumb conceptual" data-authenticated="false" data-render="docs" dir="ltr" lang="en-us">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Write-Error (Microsoft.PowerShell.Utility)" property="og:title"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" property="og:image"/>
+  <meta content="summary" name="twitter:card"/>
+  <meta content="@docsmsft" name="twitter:site"/>
+  <meta content="Write-Error (Microsoft.PowerShell.Utility)" name="twitter:title"/>
+  <meta content="The Write-Error cmdlet declares a non-terminating error. By default, errors are sent in the error stream to the host program to be displayed, along with output. To write a non-terminating error, enteâ¦" name="twitter:description"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" name="twitter:image"/>
+  <meta content="Microsoft Logo" name="twitter:image:alt"/>
+  <meta content="The Write-Error cmdlet declares a non-terminating error. By default, errors are sent in the error stream to the host program to be displayed, along with output. To write a non-terminating error, enteâ¦" name="description"/>
+  <meta content="Docs" name="search.ms_sitename"/>
+  <meta content="PowerShell_PowerShell-docs_reference" name="search.ms_docsetname"/>
+  <meta content="0" name="version"/>
+  <meta content="en-us" name="locale"/>
+  <meta content="Docs" name="site_name"/>
+  <meta content="PowerShell" name="search.ms_product"/>
+  <meta content="PowerShell.PowerShell_PowerShell-docs_reference" name="depot_name"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/45404d4ca212afa615798d3d5cbfea5dc5cc1efb/reference/6/Microsoft.PowerShell.Utility/Write-Error.md" name="ref_skeleton_gitcommit"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/live/reference/6/Microsoft.PowerShell.Utility/Write-Error.md" name="original_ref_skeleton_git_url"/>
+  <meta content="2018-03-30 03:35 PM" name="updated_at"/>
+  <meta content="d2806729-0fc7-4eeb-575a-3f67e8544bdc" name="document_id"/>
+  <meta content="2983ec97-78ab-9622-b2d6-cace0e879480" name="document_version_independent_id"/>
+  <meta content="powershell" name="page_type"/>
+  <meta content="command" name="page_kind"/>
+  <meta content="06/09/2017" name="ms.date"/>
+  <meta content="2.0.0" name="schema"/>
+  <meta content="powershell,cmdlet" name="keywords"/>
+  <meta content="http://go.microsoft.com/fwlink/?LinkId=821875" name="online_version"/>
+  <meta content="Microsoft.PowerShell.Commands.Utility.dll-Help.xml" name="external_help_file"/>
+  <meta content="powershell" name="ms.devlang"/>
+  <meta content="INDEX, FOLLOW" name="ROBOTS"/>
+  <meta content="sdwheeler" name="author"/>
+  <meta content="sewhee" name="ms.author"/>
+  <meta content="carmonm" name="manager"/>
+  <meta content="/powershell/bread-pscore/toc.yml?view=powershell-6" name="breadcrumb_path"/>
+  <meta content="powershell" name="apiPlatform"/>
+  <meta content="reference" name="ms.topic"/>
+  <meta content="windows, macos, linux" name="ms.tgt_pltfr"/>
+  <meta content="powershell-scripting" name="ms.technology"/>
+  <meta content="powershell" name="ms.prod"/>
+  <meta content="MSDocsHeader-Powershell" name="uhfHeaderId"/>
+  <meta content="../psdocs/toc.json?view=powershell-6" name="toc_rel"/>
+  <link href="https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/write-error" rel="canonical"/>
+  <title>
+   Write-Error
+  </title>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/60aac04b.site.css" rel="stylesheet"/>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/fdb8a38a.conceptual.css" rel="stylesheet"/>
+ </head>
+ <body dir="ltr" lang="en-us">
+  <div class="header-holder">
+   <div data-bi-name="header" id="headerAreaHolder">
+    <div id="uhf-placeholder">
+    </div>
+   </div>
+   <div class="disclaimer-holder" id="disclaimer-holder">
+   </div>
+  </div>
+  <div class="container mainContainer" data-bi-name="body">
+   <div class="content-header" data-bi-name="content-header">
+    <div class="content-header-controls">
+     <button class="contents-button button-border" data-bi-name="contents-expand" type="button">
+      <span class="docon docon-menu">
+      </span>
+      Contents
+     </button>
+    </div>
+    <div class="content-header-controls">
+     <button class="ap-collapse-behavior ap-expanded button-border" data-bi-name="ap-collapse" type="button">
+      <span class="docon docon-exit-mode">
+      </span>
+      Exit focus mode
+     </button>
+    </div>
+   </div>
+   <div class="primary-holder">
+    <main class="content" data-bi-name="content" dir="ltr" id="main" lang="en-us" role="main">
+     <!-- <content> -->
+     <h1>
+      Write-Error
+     </h1>
+     <div class="metadata">
+      <dl class="attributeList">
+       <dt>
+        Module:
+       </dt>
+       <dd>
+        <a data-linktype="relative-path" href="./Microsoft.PowerShell.Utility.html">
+         Microsoft.PowerShell.Utility
+        </a>
+       </dd>
+      </dl>
+     </div>
+     <div class="summaryHolder">
+      <div class="summary">
+       Writes an object to the error stream.
+      </div>
+     </div>
+     <h2 class="hiddenAnchor" id="syntax">
+      Syntax
+     </h2>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Write-Error
+     [-Message] &lt;String&gt;
+     [-Category &lt;ErrorCategory&gt;]
+     [-ErrorId &lt;String&gt;]
+     [-TargetObject &lt;Object&gt;]
+     [-RecommendedAction &lt;String&gt;]
+     [-CategoryActivity &lt;String&gt;]
+     [-CategoryReason &lt;String&gt;]
+     [-CategoryTargetName &lt;String&gt;]
+     [-CategoryTargetType &lt;String&gt;]
+     [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Write-Error
+     -Exception &lt;Exception&gt;
+     [[-Message] &lt;String&gt;]
+     [-Category &lt;ErrorCategory&gt;]
+     [-ErrorId &lt;String&gt;]
+     [-TargetObject &lt;Object&gt;]
+     [-RecommendedAction &lt;String&gt;]
+     [-CategoryActivity &lt;String&gt;]
+     [-CategoryReason &lt;String&gt;]
+     [-CategoryTargetName &lt;String&gt;]
+     [-CategoryTargetType &lt;String&gt;]
+     [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Write-Error
+     -ErrorRecord &lt;ErrorRecord&gt;
+     [-RecommendedAction &lt;String&gt;]
+     [-CategoryActivity &lt;String&gt;]
+     [-CategoryReason &lt;String&gt;]
+     [-CategoryTargetName &lt;String&gt;]
+     [-CategoryTargetType &lt;String&gt;]
+     [&lt;CommonParameters&gt;]</code></pre>
+     <h2 id="description">
+      Description
+     </h2>
+     <p>
+      The
+      <strong>
+       Write-Error
+      </strong>
+      cmdlet declares a non-terminating error.
+By default, errors are sent in the error stream to the host program to be displayed, along with output.
+     </p>
+     <p>
+      To write a non-terminating error, enter an error message string, an
+      <strong>
+       ErrorRecord
+      </strong>
+      object, or an
+      <strong>
+       Exception
+      </strong>
+      object.
+Use the other parameters of
+      <strong>
+       Write-Error
+      </strong>
+      to populate the error record.
+     </p>
+     <p>
+      Non-terminating errors write an error to the error stream, but they do not stop command processing.
+If a non-terminating error is declared on one item in a collection of input items, the command continues to process the other items in the collection.
+     </p>
+     <p>
+      To declare a terminating error, use the
+      <strong>
+       Throw
+      </strong>
+      keyword.
+For more information, see about_Throw (
+      <a data-linktype="external" href="http://go.microsoft.com/fwlink/?LinkID=145153">
+       http://go.microsoft.com/fwlink/?LinkID=145153
+      </a>
+      ).
+     </p>
+     <h2 id="examples">
+      Examples
+     </h2>
+     <p>
+      <strong>
+       Example 1: Write an error for RegistryKey object
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-ChildItem | ForEach-Object { if ($_.GetType().ToString() -eq "Microsoft.Win32.RegistryKey") {Write-Error "Invalid object" -ErrorID B1 -Targetobject $_ } else {$_ } }</code></pre>
+     <p>
+      This command declares a non-terminating error when the Get-ChildItem cmdlet returns a Microsoft.Win32.RegistryKey object, such as the objects in the HKLM: or HKCU: drives of the Windows PowerShell Registry provider.
+     </p>
+     <p>
+      <strong>
+       Example 2: Write an error message to the console
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Write-Error "Access denied."</code></pre>
+     <p>
+      This command declares a non-terminating error and writes an "Access denied" error.
+The command uses the
+      <em>
+       Message
+      </em>
+      parameter to specify the message, but omits the optional
+      <em>
+       Message
+      </em>
+      parameter name.
+     </p>
+     <p>
+      <strong>
+       Example 3: Write an error to the console and specify the category
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Write-Error -Message "Error: Too many input values." -Category InvalidArgument</code></pre>
+     <p>
+      This command declares a non-terminating error and specifies an error category.
+     </p>
+     <p>
+      <strong>
+       Example 4: Write an error using an Exception object
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; $E = [System.Exception]@{Source="Get-ParameterNames.ps1";HelpLink="http://go.microsoft.com/fwlink/?LinkID=113425"}
+
+PS C:\&gt; Write-Error -Exception $E -Message "Files not found. The $Files location does not contain any XML files."</code></pre>
+     <p>
+      This command uses an
+      <strong>
+       Exception
+      </strong>
+      object to declare a non-terminating error.
+     </p>
+     <p>
+      The first command uses a hash table to create the
+      <strong>
+       System.Exception
+      </strong>
+      object.
+It saves the exception object in the $E variable.
+You can use a hash table to create any object of a type that has a null constructor.
+     </p>
+     <p>
+      The second command uses the
+      <strong>
+       Write-Error
+      </strong>
+      cmdlet to declare a non-terminating error.
+The value of the
+      <em>
+       Exception
+      </em>
+      parameter is the
+      <strong>
+       Exception
+      </strong>
+      object in the $E variable.
+     </p>
+     <h2 id="required-parameters">
+      Required Parameters
+     </h2>
+     <div class="parameterName stack">
+      -ErrorRecord
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies an error record object that represents the error.
+Use the properties of the object to describe the error.
+      </p>
+      <p>
+       To create an error record object, use the New-Object cmdlet or get an error record object from the array in the $Error automatic variable.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          ErrorRecord
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Exception
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies an exception object that represents the error.
+Use the properties of the object to describe the error.
+      </p>
+      <p>
+       To create an exception object, use a hash table or use the New-Object cmdlet.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Exception
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Message
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the message text of the error.
+If the text includes spaces or special characters, enclose it in quotation marks.
+You can also pipe a message string to
+       <strong>
+        Write-Error
+       </strong>
+       .
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         Msg
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         1
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByValue)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="optional-parameters">
+      Optional Parameters
+     </h2>
+     <div class="parameterName stack">
+      -Category
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the category of the error.
+The default value is NotSpecified.
+The acceptable values for this parameter are:
+      </p>
+      <ul>
+       <li>
+        NotSpecified
+       </li>
+       <li>
+        OpenError
+       </li>
+       <li>
+        CloseError
+       </li>
+       <li>
+        DeviceError
+       </li>
+       <li>
+        DeadlockDetected
+       </li>
+       <li>
+        InvalidArgument
+       </li>
+       <li>
+        InvalidData
+       </li>
+       <li>
+        InvalidOperation
+       </li>
+       <li>
+        InvalidResult
+       </li>
+       <li>
+        InvalidType
+       </li>
+       <li>
+        MetadataError
+       </li>
+       <li>
+        NotImplemented
+       </li>
+       <li>
+        NotInstalled
+       </li>
+       <li>
+        ObjectNotFound
+       </li>
+       <li>
+        OperationStopped
+       </li>
+       <li>
+        OperationTimeout
+       </li>
+       <li>
+        SyntaxError
+       </li>
+       <li>
+        ParserError
+       </li>
+       <li>
+        PermissionDenied
+       </li>
+       <li>
+        ResourceBusy
+       </li>
+       <li>
+        ResourceExists
+       </li>
+       <li>
+        ResourceUnavailable
+       </li>
+       <li>
+        ReadError
+       </li>
+       <li>
+        WriteError
+       </li>
+       <li>
+        FromStdErr
+       </li>
+       <li>
+        SecurityError
+       </li>
+       <li>
+        ProtocolError
+       </li>
+       <li>
+        ConnectionError
+       </li>
+       <li>
+        AuthenticationError
+       </li>
+       <li>
+        LimitsExceeded
+       </li>
+       <li>
+        QuotaExceeded
+       </li>
+       <li>
+        NotEnabled
+       </li>
+      </ul>
+      <p>
+       For information about the error categories, see
+       <a data-linktype="external" href="http://go.microsoft.com/fwlink/?LinkId=143600">
+        ErrorCategory Enumeration
+       </a>
+       in the MSDN library.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          ErrorCategory
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Parameter Sets:
+        </td>
+        <td>
+         NotSpecified, OpenError, CloseError, DeviceError, DeadlockDetected, InvalidArgument, InvalidData, InvalidOperation, InvalidResult, InvalidType, MetadataError, NotImplemented, NotInstalled, ObjectNotFound, OperationStopped, OperationTimeout, SyntaxError, ParserError, PermissionDenied, ResourceBusy, ResourceExists, ResourceUnavailable, ReadError, WriteError, FromStdErr, SecurityError, ProtocolError, ConnectionError, AuthenticationError, LimitsExceeded, QuotaExceeded, NotEnabled
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -CategoryActivity
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the action that caused the error.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         Activity
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -CategoryReason
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies how or why the activity caused the error.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         Reason
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -CategoryTargetName
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the name of the object that was being processed when the error occurred.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         TargetName
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -CategoryTargetType
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the type of the object that was being processed when the error occurred.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         TargetType
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -ErrorId
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies an ID string to identify the error.
+The string should be unique to the error.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -RecommendedAction
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the action that the user should take to resolve or prevent the error.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -TargetObject
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the object that was being processed when the error occurred.
+Enter the object, a variable that contains the object, or a command that gets the object.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Object
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="inputs">
+      Inputs
+     </h2>
+     <p>
+      <strong>
+       System.String
+      </strong>
+     </p>
+     <p>
+      You can pipe a string that contains an error message to
+      <strong>
+       Write-Error
+      </strong>
+      .
+     </p>
+     <h2 id="outputs">
+      Outputs
+     </h2>
+     <p>
+      <strong>
+       Error object
+      </strong>
+     </p>
+     <p>
+      <strong>
+       Write-Error
+      </strong>
+      writes only to the error stream.
+It does not return any objects.
+     </p>
+     <h2 id="related-links">
+      Related Links
+     </h2>
+     <ul>
+      <li>
+       <a data-linktype="relative-path" href="write-debug.html">
+        Write-Debug
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="write-host.html">
+        Write-Host
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="write-output.html">
+        Write-Output
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="write-progress.html">
+        Write-Progress
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="write-verbose.html">
+        Write-Verbose
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="write-warning.html">
+        Write-Warning
+       </a>
+      </li>
+     </ul>
+     <!-- </content> -->
+    </main>
+    <div class="note alert feedback-system-change-alert">
+     <p>
+      Note
+     </p>
+     <p>
+      The feedback system for this content will be changing soon. Old comments will not be carried over. If content within a comment thread is important to you, please save a copy. For more information on the upcoming change,
+      <a href="https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs">
+       we invite you to read our blog post
+      </a>
+      .
+     </p>
+    </div>
+    <div data-bi-name="comments" id="comments-container" role="form">
+    </div>
+   </div>
+  </div>
+  <div class="openfeedback-container" id="openFeedbackContainer">
+  </div>
+  <div class="action-panel">
+  </div>
+ </body>
+</html>

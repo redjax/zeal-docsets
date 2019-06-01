@@ -1,0 +1,1448 @@
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML><HEAD><TITLE>Man page of DIFF</TITLE>
+</HEAD><BODY>
+<H1>DIFF</H1>
+Section: POSIX Programmer's Manual (1P)<BR>Updated: 2013<BR><A HREF="#index">Index</A>
+<A HREF="../index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>PROLOG</H2>
+
+This manual page is part of the POSIX Programmer's Manual.
+The Linux implementation of this interface may differ (consult
+the corresponding Linux manual page for details of Linux behavior),
+or the interface may not be implemented on Linux.
+<P>
+<A NAME="lbAC">&nbsp;</A>
+<H2>NAME</H2>
+
+diff
+--- compare two files
+<A NAME="lbAD">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<P>
+
+<PRE>
+diff <B>[</B>-c|-e|-f|-u|-C <I>n</I>|-U <I>n</I><B>] [</B>-br<B>] </B><I>file1 file2</I>
+</PRE>
+
+<A NAME="lbAE">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+The
+<I>diff</I>
+
+utility shall compare the contents of
+<I>file1</I>
+
+and
+<I>file2</I>
+
+and write to standard output a list of changes necessary to convert
+<I>file1</I>
+
+into
+<I>file2</I>.
+
+This list should be minimal. No output shall be produced if the files
+are identical.
+<A NAME="lbAF">&nbsp;</A>
+<H2>OPTIONS</H2>
+
+The
+<I>diff</I>
+
+utility shall conform to the Base Definitions volume of POSIX.1-2008,
+<I>Section 12.2</I>, <I>Utility Syntax Guidelines.</I>
+
+<P>
+
+The following options shall be supported:
+<DL COMPACT>
+<DT><B>-b</B><DD>
+Cause any amount of white space at the end of a line to be treated as a
+single
+&lt;newline&gt;
+(that is, the white-space characters preceding the
+&lt;newline&gt;
+are ignored) and other strings of white-space characters, not including
+&lt;newline&gt;
+characters, to compare equal.
+<DT><B>-c</B><DD>
+Produce output in a form that provides three lines of copied context.
+<DT><B>-C&nbsp;</B><I>n</I><DD>
+Produce output in a form that provides
+<I>n</I>
+
+lines of copied context (where
+<I>n</I>
+
+shall be interpreted as a positive decimal integer).
+<DT><B>-e</B><DD>
+Produce output in a form suitable as input for the
+<I>ed</I>
+
+utility, which can then be used to convert
+<I>file1</I>
+
+into
+<I>file2</I>.
+
+<DT><B>-f</B><DD>
+Produce output in an alternative form, similar in format to
+<B>-e</B>,
+
+but not intended to be suitable as input for the
+<I>ed</I>
+
+utility, and in the opposite order.
+<DT><B>-r</B><DD>
+Apply
+<I>diff</I>
+
+recursively to files and directories of the same name when
+<I>file1</I>
+
+and
+<I>file2</I>
+
+are both directories.
+<DL COMPACT><DT><DD>
+<P>
+<P>
+
+The
+<I>diff</I>
+
+utility shall detect infinite loops; that is, entering a previously
+visited directory that is an ancestor of the last file encountered.
+When it detects an infinite loop,
+<I>diff</I>
+
+shall write a diagnostic message to standard error and shall either
+recover its position in the hierarchy or terminate.
+</DL>
+
+<DT><B>-u</B><DD>
+Produce output in a form that provides three lines of unified context.
+<DT><B>-U&nbsp;</B><I>n</I><DD>
+Produce output in a form that provides
+<I>n</I>
+
+lines of unified context (where
+<I>n</I>
+
+shall be interpreted as a non-negative decimal integer).
+</DL>
+<A NAME="lbAG">&nbsp;</A>
+<H2>OPERANDS</H2>
+
+The following operands shall be supported:
+<DL COMPACT>
+<DT><I>file1</I>,&nbsp;<I>file2</I><DD>
+A pathname of a file to be compared. If either the
+<I>file1</I>
+
+or
+<I>file2</I>
+
+operand is
+<B>'-'</B>,
+
+the standard input shall be used in its place.
+</DL>
+<P>
+
+If both
+<I>file1</I>
+
+and
+<I>file2</I>
+
+are directories,
+<I>diff</I>
+
+shall not compare block special files, character special files, or FIFO
+special files to any files and shall not compare regular files to
+directories.
+Further details are as specified in
+<I>Diff Directory Comparison Format.</I>
+
+The behavior of
+<I>diff</I>
+
+on other file types is implementation-defined when found in directories.
+<P>
+
+If only one of
+<I>file1</I>
+
+and
+<I>file2</I>
+
+is a directory,
+<I>diff</I>
+
+shall be applied to the non-directory file and the file contained in
+the directory file with a filename that is the same as the last
+component of the non-directory file.
+<A NAME="lbAH">&nbsp;</A>
+<H2>STDIN</H2>
+
+The standard input shall be used only if one of the
+<I>file1</I>
+
+or
+<I>file2</I>
+
+operands references standard input. See the INPUT FILES section.
+<A NAME="lbAI">&nbsp;</A>
+<H2>INPUT FILES</H2>
+
+The input files may be of any type.
+<A NAME="lbAJ">&nbsp;</A>
+<H2>ENVIRONMENT VARIABLES</H2>
+
+The following environment variables shall affect the execution of
+<I>diff</I>:
+
+<DL COMPACT>
+<DT><I>LANG</I><DD>
+Provide a default value for the internationalization variables that are
+unset or null. (See the Base Definitions volume of POSIX.1-2008,
+<I>Section 8.2</I>, <I>Internationalization Variables</I>
+
+for the precedence of internationalization variables used to determine
+the values of locale categories.)
+<DT><I>LC_ALL</I><DD>
+If set to a non-empty string value, override the values of all the
+other internationalization variables.
+<DT><I>LC_CTYPE</I><DD>
+Determine the locale for the interpretation of sequences of bytes of
+text data as characters (for example, single-byte as opposed to
+multi-byte characters in arguments and input files).
+<DT><I>LC_MESSAGES</I><DD>
+<BR>
+
+Determine the locale that should be used to affect the format and
+contents of diagnostic messages written to standard error and
+informative messages written to standard output.
+<DT><I>LC_TIME</I><DD>
+Determine the locale for affecting the format of file timestamps
+written with the
+<B>-C</B>
+
+and
+<B>-c</B>
+
+options.
+<DT><I>NLSPATH</I><DD>
+Determine the location of message catalogs for the processing of
+<I>LC_MESSAGES</I>.
+
+<DT><I>TZ</I><DD>
+Determine the timezone used for calculating file timestamps written
+with a context format. If
+<I>TZ</I>
+
+is unset or null, an unspecified default timezone shall be used.
+</DL>
+<A NAME="lbAK">&nbsp;</A>
+<H2>ASYNCHRONOUS EVENTS</H2>
+
+Default.
+<A NAME="lbAL">&nbsp;</A>
+<H2>STDOUT</H2>
+
+<A NAME="lbAM">&nbsp;</A>
+<H3>Diff Directory Comparison Format</H3>
+
+<P>
+
+If both
+<I>file1</I>
+
+and
+<I>file2</I>
+
+are directories, the following output formats shall be used.
+<P>
+
+In the POSIX locale, each file that is present in only one directory
+shall be reported using the following format:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+&quot;Only in %s: %s\n&quot;, &lt;</B><I>directory pathname</I>&gt;, &lt;<I>filename</I>&gt;
+</PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+In the POSIX locale, subdirectories that are common to the two
+directories may be reported with the following format:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+&quot;Common subdirectories: %s and %s\n&quot;, &lt;</B><I>directory1 pathname</I>&gt;,
+    &lt;<I>directory2 pathname</I>&gt;
+</PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+For each file common to the two directories, if the two files are not to
+be compared: if the two files have the same device ID and file
+serial number, or are both block special files that refer to the
+same device, or are both character special files that refer to the
+same device, in the POSIX locale the output format is unspecified.
+Otherwise, in the POSIX locale an unspecified format shall be used
+that contains the pathnames of the two files.
+<P>
+
+For each file common to the two directories, if the files are
+compared and are identical, no output shall be written. If the two
+files differ, the following format is written:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+&quot;diff %s %s %s\n&quot;, &lt;</B><I>diff_options</I>&gt;, &lt;<I>filename1</I>&gt;, &lt;<I>filename2</I>&gt;
+</PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+where &lt;<I>diff_options</I>&gt; are the options as specified on the command
+line.
+<P>
+
+All directory pathnames listed in this section shall be relative to the
+original command line arguments. All other names of files listed in
+this section shall be filenames (pathname components).
+<A NAME="lbAN">&nbsp;</A>
+<H3>Diff Binary Output Format</H3>
+
+<P>
+
+In the POSIX locale, if one or both of the files being compared are not
+text files, it is implementation-defined whether
+<I>diff</I>
+
+uses the binary file output format or the other formats as specified
+below. The binary file output format shall contain the pathnames of
+two files being compared and the string
+<B>&quot;differ&quot;</B>.
+
+<P>
+
+If both files being compared are text files, depending on the options
+specified, one of the following formats shall be used to write the
+differences.
+<A NAME="lbAO">&nbsp;</A>
+<H3>Diff Default Output Format</H3>
+
+<P>
+
+The default (without
+<B>-e</B>,
+
+<B>-f</B>,
+
+<B>-c</B>,
+
+<B>-C</B>,
+
+<B>-u</B>,
+
+or
+<B>-U</B>
+
+options)
+<I>diff</I>
+
+utility output shall contain lines of these forms:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+&quot;%da%d\n&quot;, &lt;</B><I>num1</I>&gt;, &lt;<I>num2</I>&gt;
+
+&quot;%da%d,%d\n&quot;, &lt;<I>num1</I>&gt;, &lt;<I>num2</I>&gt;, &lt;<I>num3</I>&gt;
+
+&quot;%dd%d\n&quot;, &lt;<I>num1</I>&gt;, &lt;<I>num2</I>&gt;
+
+&quot;%d,%dd%d\n&quot;, &lt;<I>num1</I>&gt;, &lt;<I>num2</I>&gt;, &lt;<I>num3</I>&gt;
+
+&quot;%dc%d\n&quot;, &lt;<I>num1</I>&gt;, &lt;<I>num2</I>&gt;
+
+&quot;%d,%dc%d\n&quot;, &lt;<I>num1</I>&gt;, &lt;<I>num2</I>&gt;, &lt;<I>num3</I>&gt;
+
+&quot;%dc%d,%d\n&quot;, &lt;<I>num1</I>&gt;, &lt;<I>num2</I>&gt;, &lt;<I>num3</I>&gt;
+
+&quot;%d,%dc%d,%d\n&quot;, &lt;<I>num1</I>&gt;, &lt;<I>num2</I>&gt;, &lt;<I>num3</I>&gt;, &lt;<I>num4</I>&gt;
+</PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+These lines resemble
+<I>ed</I>
+
+subcommands to convert
+<I>file1</I>
+
+into
+<I>file2</I>.
+
+The line numbers before the action letters shall pertain to
+<I>file1</I>;
+
+those after shall pertain to
+<I>file2</I>.
+
+Thus, by exchanging
+<I>a</I>
+
+for
+<I>d</I>
+
+and reading the line in reverse order, one can also determine how to
+convert
+<I>file2</I>
+
+into
+<I>file1</I>.
+
+As in
+<I>ed</I>,
+
+identical pairs (where
+<I>num1</I>=
+
+<I>num2</I>)
+
+are abbreviated as a single number.
+<P>
+
+Following each of these lines,
+<I>diff</I>
+
+shall write to standard output all lines affected in the first
+file using the format:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+&quot;&lt; %s&quot;, &lt;</B><I>line</I>&gt;
+</PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+and all lines affected in the second file using the format:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+&quot;&gt; %s&quot;, &lt;</B><I>line</I>&gt;
+</PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+If there are lines affected in both
+<I>file1</I>
+
+and
+<I>file2</I>
+
+(as with the
+<B>c</B>
+
+subcommand), the changes are separated with a line consisting of three
+&lt;hyphen&gt;
+characters:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+&quot;---\n&quot;
+</B></PRE>
+
+<P>
+
+</DL>
+
+<A NAME="lbAP">&nbsp;</A>
+<H3>Diff -e Output Format</H3>
+
+<P>
+
+With the
+<B>-e</B>
+
+option, a script shall be produced that shall, when provided as input
+to
+<I>ed</I>,
+
+along with an appended
+<B>w</B>
+
+(write) command, convert
+<I>file1</I>
+
+into
+<I>file2</I>.
+
+Only the
+<B>a</B>
+
+(append),
+<B>c</B>
+
+(change),
+<B>d</B>
+
+(delete),
+<B>i</B>
+
+(insert), and
+<B>s</B>
+
+(substitute) commands of
+<I>ed</I>
+
+shall be used in this script. Text lines, except those consisting of
+the single character
+&lt;period&gt;
+(<B>'.'</B>),
+
+shall be output as they appear in the file.
+<A NAME="lbAQ">&nbsp;</A>
+<H3>Diff -f Output Format</H3>
+
+<P>
+
+With the
+<B>-f</B>
+
+option, an alternative format of script shall be produced. It is
+similar to that produced by
+<B>-e</B>,
+
+with the following differences:
+<DL COMPACT>
+<DT> 1.<DD>
+It is expressed in reverse sequence; the output of
+<B>-e</B>
+
+orders changes from the end of the file to the beginning; the
+<B>-f</B>
+
+from beginning to end.
+<DT> 2.<DD>
+The command form &lt;<I>lines</I>&gt; &lt;<I>command-letter</I>&gt; used by
+<B>-e</B>
+
+is reversed. For example, 10<I>c</I> with
+<B>-e</B>
+
+would be
+<I>c</I>10
+
+with
+<B>-f</B>.
+
+<DT> 3.<DD>
+The form used for ranges of line numbers is
+&lt;space&gt;-separated,
+rather than
+&lt;comma&gt;-separated.
+</DL>
+<A NAME="lbAR">&nbsp;</A>
+<H3>Diff -c or -C Output Format</H3>
+
+<P>
+
+With the
+<B>-c</B>
+
+or
+<B>-C</B>
+
+option, the output format shall consist of affected lines along with
+surrounding lines of context. The affected lines shall show which ones
+need to be deleted or changed in
+<I>file1</I>,
+
+and those added from
+<I>file2</I>.
+
+With the
+<B>-c</B>
+
+option, three lines of context, if available, shall be written before
+and after the affected lines. With the
+<B>-C</B>
+
+option, the user can specify how many lines of context are written.
+The exact format follows.
+<P>
+
+The name and last modification time of each file shall be output in the
+following format:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+&quot;*** %s %s\n&quot;, </B><I>file1</I>, &lt;<I>file1 timestamp</I>&gt;
+&quot;--- %s %s\n&quot;, <I>file2</I>, &lt;<I>file2 timestamp</I>&gt;
+</PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+Each &lt;<I>file</I>&gt; field shall be the pathname of the corresponding
+file being compared. The pathname written for standard input is
+unspecified.
+<P>
+
+In the POSIX locale, each &lt;<I>timestamp</I>&gt; field shall be equivalent
+to the output from the following command:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+date &quot;+%a %b %e %T %Y&quot;
+</B></PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+without the trailing
+&lt;newline&gt;,
+executed at the time of last modification of the corresponding file (or
+the current time, if the file is standard input).
+<P>
+
+Then, the following output formats shall be applied for every set of
+changes.
+<P>
+
+First, a line shall be written in the following format:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+&quot;***************\n&quot;
+</B></PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+Next, the range of lines in
+<I>file1</I>
+
+shall be written in the following format if the range contains
+two or more lines:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+&quot;*** %d,%d ****\n&quot;, &lt;</B><I>beginning line number</I>&gt;, &lt;<I>ending line number</I>&gt;
+</PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+and the following format otherwise:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+&quot;*** %d ****\n&quot;, &lt;</B><I>ending line number</I>&gt;
+</PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+The ending line number of an empty range shall be the number of the
+preceding line, or 0 if the range is at the start of the file.
+<P>
+
+Next, the affected lines along with lines of context (unaffected lines)
+shall be written. Unaffected lines shall be written in the following
+format:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+&quot;  %s&quot;, &lt;</B><I>unaffected_line</I>&gt;
+</PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+Deleted lines shall be written as:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+&quot;- %s&quot;, &lt;</B><I>deleted_line</I>&gt;
+</PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+Changed lines shall be written as:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+&quot;! %s&quot;, &lt;</B><I>changed_line</I>&gt;
+</PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+Next, the range of lines in
+<I>file2</I>
+
+shall be written in the following format if the range contains two
+or more lines:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+&quot;--- %d,%d ----\n&quot;, &lt;</B><I>beginning line number</I>&gt;, &lt;<I>ending line number</I>&gt;
+</PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+and the following format otherwise:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+&quot;--- %d ----\n&quot;, &lt;</B><I>ending line number</I>&gt;
+</PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+Then, lines of context and changed lines shall be written as described in
+the previous formats. Lines added from
+<I>file2</I>
+
+shall be written in the following format:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+&quot;+ %s&quot;, &lt;</B><I>added_line</I>&gt;
+</PRE>
+
+<P>
+
+</DL>
+
+<A NAME="lbAS">&nbsp;</A>
+<H3>Diff -u or -U Output Format</H3>
+
+<P>
+
+The
+<B>-u</B>
+
+or
+<B>-U</B>
+
+options behave like the
+<B>-c</B>
+
+or
+<B>-C</B>
+
+options, except that the context lines are not repeated; instead,
+the context, deleted, and added lines are shown together, interleaved.
+The exact format follows.
+<P>
+
+The name and last modification time of each file shall be output
+in the following format:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+&quot;--- %s	%s%s %s, file1, &lt;file1 timestamp&gt;, &lt;file1 frac&gt;, &lt;file1 zone&gt;
+&quot;+++ %s	%s%s %s, file2, &lt;file2 timestamp&gt;, &lt;file2 frac&gt;, &lt;file2 zone&gt;
+</B></PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+Each &lt;<I>file</I>&gt; field shall be the pathname of the corresponding file
+being compared, or the single character
+<B>'-'</B>
+
+if standard input is being compared. However, if the pathname contains
+a
+&lt;tab&gt;
+or a
+&lt;newline&gt;,
+or if it does not consist entirely of characters taken
+from the portable character set, the behavior is implementation-defined.
+<P>
+
+Each &lt;<I>timestamp</I>&gt; field shall be equivalent to the output from the
+following command:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+date '+%Y-%m-%d %H:%M:%S'
+</B></PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+without the trailing
+&lt;newline&gt;,
+executed at the time of last modification of the corresponding file
+(or the current time, if the file is standard input).
+<P>
+
+Each &lt;<I>frac</I>&gt; field shall be either empty, or a decimal point
+followed by at least one decimal digit, indicating the
+fractional-seconds part (if any) of the file timestamp. The
+number of fractional digits shall be at least the number needed to
+represent the file's timestamp without loss of information.
+<P>
+
+Each &lt;<I>zone</I>&gt; field shall be of the form
+<B>&quot;shhmm&quot;</B>,
+
+where
+<B>&quot;shh&quot;</B>
+
+is a signed two-digit decimal number in the range -24 through +25, and
+<B>&quot;mm&quot;</B>
+
+is an unsigned two-digit decimal number in the range 00 through 59.
+It represents the timezone of the timestamp as the number of hours
+(hh) and minutes (mm) east (+) or west (-) of UTC for the timestamp.
+If the hours and minutes are both zero, the sign shall be
+<B>'+'</B>.
+
+However, if the timezone is not an integral number of minutes away
+from UTC, the &lt;<I>zone</I>&gt; field is implementation-defined.
+<P>
+
+Then, the following output formats shall be applied for every set
+of changes.
+<P>
+
+First, the range of lines in each file shall be written in the
+following format:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+&quot;@@ -%s +%s @@&quot;, &lt;file1 range&gt;, &lt;file2 range&gt;
+</B></PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+Each &lt;<I>range</I>&gt; field shall be of the form:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+&quot;%1d&quot;, &lt;beginning line number&gt;
+</B></PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+if the range contains exactly one line, and:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+&quot;%1d,%1d&quot;, &lt;beginning line number&gt;, &lt;number of lines&gt;
+</B></PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+otherwise. If a range is empty, its beginning line number shall be
+the number of the line just before the range, or 0 if the empty
+range starts the file.
+<P>
+
+Next, the affected lines along with lines of context shall be written.
+Each non-empty unaffected line shall be written in the following format:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+&quot; %s&quot;, &lt;unaffected_line&gt;
+</B></PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+where the contents of the unaffected line shall be taken from
+<I>file1</I>.
+
+It is implementation-defined whether an empty unaffected line is written
+as an empty line or a line containing a single
+&lt;space&gt;
+character. This line also represents the same line of
+<I>file2</I>,
+
+even though
+<I>file2</I>'s
+
+line may contain different contents due to the
+<B>-b</B>.
+
+Deleted lines shall be written as:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+&quot;-%s&quot;, &lt;deleted_line&gt;
+</B></PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+Added lines shall be written as:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+&quot;+%s&quot;, &lt;added_line&gt;
+</B></PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+The order of lines written shall be the same as that of the
+corresponding file. A deleted line shall never be written
+immediately after an added line.
+<P>
+
+If
+<B>-U</B>
+
+<I>n</I>
+
+is specified, the output shall contain no more than
+<I>n</I>
+
+consecutive unaffected lines; and if the output contains an
+affected line and this line is adjacent to up to
+<I>n</I>
+
+consecutive unaffected lines in the corresponding file, the output shall
+contain these unaffected lines.
+<B>-u</B>
+
+shall act like
+<B>-U</B>3.
+
+<A NAME="lbAT">&nbsp;</A>
+<H2>STDERR</H2>
+
+The standard error shall be used only for diagnostic messages.
+<A NAME="lbAU">&nbsp;</A>
+<H2>OUTPUT FILES</H2>
+
+None.
+<A NAME="lbAV">&nbsp;</A>
+<H2>EXTENDED DESCRIPTION</H2>
+
+None.
+<A NAME="lbAW">&nbsp;</A>
+<H2>EXIT STATUS</H2>
+
+The following exit values shall be returned:
+<DL COMPACT>
+<DT>&nbsp;0<DD>
+No differences were found.
+<DT>&nbsp;1<DD>
+Differences were found.
+<DT>&gt;1<DD>
+An error occurred.
+</DL>
+<A NAME="lbAX">&nbsp;</A>
+<H2>CONSEQUENCES OF ERRORS</H2>
+
+Default.
+<P>
+
+<I>The following sections are informative.</I>
+
+<A NAME="lbAY">&nbsp;</A>
+<H2>APPLICATION USAGE</H2>
+
+If lines at the end of a file are changed and other lines are added,
+<I>diff</I>
+
+output may show this as a delete and add, as a change, or as a change
+and add;
+<I>diff</I>
+
+is not expected to know which happened and users should not care about
+the difference in output as long as it clearly shows the differences
+between the files.
+<A NAME="lbAZ">&nbsp;</A>
+<H2>EXAMPLES</H2>
+
+If
+<B>dir1</B>
+
+is a directory containing a directory named
+<B>x</B>,
+
+<B>dir2</B>
+
+is a directory containing a directory named
+<B>x</B>,
+
+<B>dir1/x</B>
+
+and
+<B>dir2/x</B>
+
+both contain files named
+<B>date.out</B>,
+
+and
+<B>dir2/x</B>
+
+contains a file named
+<B>y</B>,
+
+the command:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+diff -r dir1 dir2
+</B></PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+could produce output similar to:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+Common subdirectories: dir1/x and dir2/x
+Only in dir2/x: y
+diff -r dir1/x/date.out dir2/x/date.out
+1c1
+&lt; Mon Jul  2 13:12:16 PDT 1990
+---
+&gt; Tue Jun 19 21:41:39 PDT 1990
+</B></PRE>
+
+<P>
+
+</DL>
+
+<A NAME="lbBA">&nbsp;</A>
+<H2>RATIONALE</H2>
+
+The
+<B>-h</B>
+
+option was omitted because it was insufficiently specified and does not
+add to applications portability.
+<P>
+
+Historical implementations employ algorithms that do not always produce
+a minimum list of differences; the current language about making every
+effort is the best this volume of POSIX.1-2008 can do, as there is no metric that could be
+employed to judge the quality of implementations against any and all
+file contents. The statement ``This list should be minimal'' clearly
+implies that implementations are not expected to provide the following
+output when comparing two 100-line files that differ in only one
+character on a single line:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+1,100c1,100
+all 100 lines from file1 preceded with &quot;&lt; &quot;
+---
+all 100 lines from file2 preceded with &quot;&gt; &quot;
+</B></PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+The ``Only in'' messages required when the
+<B>-r</B>
+
+option is specified are not used by most historical implementations if
+the
+<B>-e</B>
+
+option is also specified. It is required here because it provides
+useful information that must be provided to update a target directory
+hierarchy to match a source hierarchy. The ``Common subdirectories''
+messages are written by System V and 4.3 BSD when the
+<B>-r</B>
+
+option is specified. They are allowed here but are not required because
+they are reporting on something that is the same, not reporting a
+difference, and are not needed to update a target hierarchy.
+<P>
+
+The
+<B>-c</B>
+
+option, which writes output in a format using lines of context, has
+been included. The format is useful for a variety of reasons, among
+them being much improved readability and the ability to understand
+difference changes when the target file has line numbers that differ
+from another similar, but slightly different, copy. The
+<I>patch</I>
+
+utility is most valuable when working with difference listings using
+a context format. The BSD version of
+<B>-c</B>
+
+takes an optional argument specifying the amount of context. Rather
+than overloading
+<B>-c</B>
+
+and breaking the Utility Syntax Guidelines for
+<I>diff</I>,
+
+the standard developers decided to add a separate option for specifying
+a context diff with a specified amount of context (<B>-C</B>).
+
+Also, the format for context
+<I>diff</I>s
+
+was extended slightly in 4.3 BSD to allow multiple changes that are
+within context lines from each other to be merged together. The output
+format contains an additional four
+&lt;asterisk&gt;
+characters after the range of affected lines in the first filename. This
+was to provide a flag for old programs (like old versions of
+<I>patch</I>)
+
+that only understand the old context format. The version of context
+described here does not require that multiple changes within context
+lines be merged, but it does not prohibit it either. The extension is
+upwards-compatible, so any vendors that wish to retain the old version
+of
+<I>diff</I>
+
+can do so by adding the extra four
+&lt;asterisk&gt;
+characters (that is, utilities that currently use
+<I>diff</I>
+
+and understand the new merged format will also understand the old
+unmerged format, but not <I>vice versa</I>).
+<P>
+
+The
+<B>-u</B>
+
+and
+<B>-U</B>
+
+options of GNU
+<I>diff</I>
+
+have been included. Their output format, designed by Wayne Davison,
+takes up less space than
+<B>-c</B>
+
+and
+<B>-C</B>
+
+format, and in many cases is easier to read. The format's timestamps
+do not vary by locale, so
+<I>LC_TIME</I>
+
+does not affect it. The format's line numbers are rendered with the
+<B>%1d</B>
+
+format, not
+<B>%d</B>,
+
+because the file format notation rules would allow extra
+&lt;blank&gt;
+characters to appear around the numbers.
+<P>
+
+The substitute command was added as an additional format for the
+<B>-e</B>
+
+option. This was added to provide implementations with a way to fix the
+classic ``dot alone on a line'' bug present in many versions of
+<I>diff</I>.
+
+Since many implementations have fixed this bug, the standard developers
+decided not to standardize broken behavior, but rather to provide the
+necessary tool for fixing the bug. One way to fix this bug is to output
+two periods whenever a lone period is needed, then terminate the append
+command with a period, and then use the substitute command to convert
+the two periods into one period.
+<P>
+
+The BSD-derived
+<B>-r</B>
+
+option was added to provide a mechanism for using
+<I>diff</I>
+
+to compare two file system trees. This behavior is useful, is standard
+practice on all BSD-derived systems, and is not easily reproducible
+with the
+<I>find</I>
+
+utility.
+<P>
+
+The requirement that
+<I>diff</I>
+
+not compare files in some circumstances, even though they have the same
+name, is based on the actual output of historical implementations.
+The specified behavior precludes the problems arising from running
+into FIFOs and other files that would cause
+<I>diff</I>
+
+to hang waiting for input with no indication to the user that
+<I>diff</I>
+
+was hung. An earlier version of this standard specified the output
+format more precisely, but in practice this requirement was widely
+ignored and the benefit of standardization seemed small, so it is now
+unspecified. In most common usage,
+<I>diff</I>
+
+<B>-r</B>
+
+should indicate differences in the file hierarchies, not the difference
+of contents of devices pointed to by the hierarchies.
+<P>
+
+Many early implementations of
+<I>diff</I>
+
+require seekable files. Since the System Interfaces volume of POSIX.1-2008 supports named pipes, the
+standard developers decided that such a restriction was unreasonable.
+Note also that the allowed filename
+<B>-</B>
+
+almost always refers to a pipe.
+<P>
+
+No directory search order is specified for
+<I>diff</I>.
+
+The historical ordering is, in fact, not optimal, in that it prints out
+all of the differences at the current level, including the statements
+about all common subdirectories before recursing into those
+subdirectories.
+<P>
+
+The message:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+&quot;diff %s %s %s\n&quot;, &lt;</B><I>diff_options</I>&gt;, &lt;<I>filename1</I>&gt;, &lt;<I>filename2</I>&gt;
+</PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+does not vary by locale because it is the representation of a command,
+not an English sentence.
+<A NAME="lbBB">&nbsp;</A>
+<H2>FUTURE DIRECTIONS</H2>
+
+None.
+<A NAME="lbBC">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+<I>cmp</I>,
+
+<I>comm</I>,
+
+<I>ed</I>,
+
+<I>find</I>
+
+<P>
+
+The Base Definitions volume of POSIX.1-2008,
+<I>Chapter 8</I>, <I>Environment Variables,</I>
+
+<I>Section 12.2</I>, <I>Utility Syntax Guidelines</I>
+
+<A NAME="lbBD">&nbsp;</A>
+<H2>COPYRIGHT</H2>
+
+Portions of this text are reprinted and reproduced in electronic form
+from IEEE Std 1003.1, 2013 Edition, Standard for Information Technology
+-- Portable Operating System Interface (POSIX), The Open Group Base
+Specifications Issue 7, Copyright (C) 2013 by the Institute of
+Electrical and Electronics Engineers, Inc and The Open Group.
+(This is POSIX.1-2008 with the 2013 Technical Corrigendum 1 applied.) In the
+event of any discrepancy between this version and the original IEEE and
+The Open Group Standard, the original IEEE and The Open Group Standard
+is the referee document. The original Standard can be obtained online at
+<A HREF="http://www.unix.org/online.html">http://www.unix.org/online.html</A> .
+<P>
+Any typographical or formatting errors that appear
+in this page are most likely
+to have been introduced during the conversion of the source files to
+man page format. To report such errors, see
+<A HREF="https://www.kernel.org/doc/man-pages/reporting_bugs.html">https://www.kernel.org/doc/man-pages/reporting_bugs.html</A> .
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">PROLOG</A><DD>
+<DT><A HREF="#lbAC">NAME</A><DD>
+<DT><A HREF="#lbAD">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAE">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAF">OPTIONS</A><DD>
+<DT><A HREF="#lbAG">OPERANDS</A><DD>
+<DT><A HREF="#lbAH">STDIN</A><DD>
+<DT><A HREF="#lbAI">INPUT FILES</A><DD>
+<DT><A HREF="#lbAJ">ENVIRONMENT VARIABLES</A><DD>
+<DT><A HREF="#lbAK">ASYNCHRONOUS EVENTS</A><DD>
+<DT><A HREF="#lbAL">STDOUT</A><DD>
+<DL>
+<DT><A HREF="#lbAM">Diff Directory Comparison Format</A><DD>
+<DT><A HREF="#lbAN">Diff Binary Output Format</A><DD>
+<DT><A HREF="#lbAO">Diff Default Output Format</A><DD>
+<DT><A HREF="#lbAP">Diff -e Output Format</A><DD>
+<DT><A HREF="#lbAQ">Diff -f Output Format</A><DD>
+<DT><A HREF="#lbAR">Diff -c or -C Output Format</A><DD>
+<DT><A HREF="#lbAS">Diff -u or -U Output Format</A><DD>
+</DL>
+<DT><A HREF="#lbAT">STDERR</A><DD>
+<DT><A HREF="#lbAU">OUTPUT FILES</A><DD>
+<DT><A HREF="#lbAV">EXTENDED DESCRIPTION</A><DD>
+<DT><A HREF="#lbAW">EXIT STATUS</A><DD>
+<DT><A HREF="#lbAX">CONSEQUENCES OF ERRORS</A><DD>
+<DT><A HREF="#lbAY">APPLICATION USAGE</A><DD>
+<DT><A HREF="#lbAZ">EXAMPLES</A><DD>
+<DT><A HREF="#lbBA">RATIONALE</A><DD>
+<DT><A HREF="#lbBB">FUTURE DIRECTIONS</A><DD>
+<DT><A HREF="#lbBC">SEE ALSO</A><DD>
+<DT><A HREF="#lbBD">COPYRIGHT</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 14:28:44 GMT, February 25, 2017
+</BODY>
+</HTML>

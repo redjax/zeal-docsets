@@ -1,0 +1,217 @@
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML><HEAD><TITLE>Man page of poll.h</TITLE>
+</HEAD><BODY>
+<H1>poll.h</H1>
+Section: POSIX Programmer's Manual (0P)<BR>Updated: 2013<BR><A HREF="#index">Index</A>
+<A HREF="../index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>PROLOG</H2>
+
+This manual page is part of the POSIX Programmer's Manual.
+The Linux implementation of this interface may differ (consult
+the corresponding Linux manual page for details of Linux behavior),
+or the interface may not be implemented on Linux.
+<P>
+<A NAME="lbAC">&nbsp;</A>
+<H2>NAME</H2>
+
+poll.h
+--- definitions for the poll() function
+<A NAME="lbAD">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<P>
+
+<PRE>
+#include &lt;<A HREF="file:///usr/include/poll.h">poll.h</A>&gt;
+</PRE>
+
+<A NAME="lbAE">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+The
+<I>&lt;<A HREF="file:///usr/include/poll.h">poll.h</A>&gt;</I>
+
+header shall define the
+<B>pollfd</B>
+
+structure, which shall include at least the following members:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+int    fd       </B>The following descriptor being polled.
+short  events   The input event flags (see below).
+short  revents  The output event flags (see below).
+</PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/poll.h">poll.h</A>&gt;</I>
+
+header shall define the following type through
+<B>typedef</B>:
+
+<DL COMPACT>
+<DT><B>nfds_t</B><DD>
+An unsigned integer type used for the number of file descriptors.
+</DL>
+<P>
+
+The implementation shall support one or more programming environments
+in which the width of
+<B>nfds_t</B>
+
+is no greater than the width of type
+<B>long</B>.
+
+The names of these programming environments can be obtained using the
+<I>confstr</I>()
+function or the
+<I>getconf</I>
+
+utility.
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/poll.h">poll.h</A>&gt;</I>
+
+header shall define the following symbolic constants, zero or more of
+which may be OR'ed together to form the
+<I>events</I>
+
+or
+<I>revents</I>
+
+members in the
+<B>pollfd</B>
+
+structure:
+<DL COMPACT>
+<DT>POLLIN<DD>
+Data other than high-priority data may be read without blocking.
+<DT>POLLRDNORM<DD>
+Normal data may be read without blocking.
+<DT>POLLRDBAND<DD>
+Priority data may be read without blocking.
+<DT>POLLPRI<DD>
+High priority data may be read without blocking.
+<DT>POLLOUT<DD>
+Normal data may be written without blocking.
+<DT>POLLWRNORM<DD>
+Equivalent to POLLOUT.
+<DT>POLLWRBAND<DD>
+Priority data may be written.
+<DT>POLLERR<DD>
+An error has occurred (<I>revents</I>
+
+only).
+<DT>POLLHUP<DD>
+Device has been disconnected (<I>revents</I>
+
+only).
+<DT>POLLNVAL<DD>
+Invalid
+<I>fd</I>
+
+member (<I>revents</I>
+
+only).
+</DL>
+<P>
+
+The significance and semantics of normal, priority, and high-priority
+data are file and device-specific.
+<P>
+
+The following shall be declared as a function and may also be defined
+as a macro. A function prototype shall be provided.
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+int   poll(struct pollfd [], nfds_t, int);
+</B></PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+<I>The following sections are informative.</I>
+
+<A NAME="lbAF">&nbsp;</A>
+<H2>APPLICATION USAGE</H2>
+
+None.
+<A NAME="lbAG">&nbsp;</A>
+<H2>RATIONALE</H2>
+
+None.
+<A NAME="lbAH">&nbsp;</A>
+<H2>FUTURE DIRECTIONS</H2>
+
+None.
+<A NAME="lbAI">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+The System Interfaces volume of POSIX.1-2008,
+<I>confstr</I>(),
+
+<I>poll</I>()
+
+<P>
+
+The Shell and Utilities volume of POSIX.1-2008,
+<I>getconf</I>
+
+<A NAME="lbAJ">&nbsp;</A>
+<H2>COPYRIGHT</H2>
+
+Portions of this text are reprinted and reproduced in electronic form
+from IEEE Std 1003.1, 2013 Edition, Standard for Information Technology
+-- Portable Operating System Interface (POSIX), The Open Group Base
+Specifications Issue 7, Copyright (C) 2013 by the Institute of
+Electrical and Electronics Engineers, Inc and The Open Group.
+(This is POSIX.1-2008 with the 2013 Technical Corrigendum 1 applied.) In the
+event of any discrepancy between this version and the original IEEE and
+The Open Group Standard, the original IEEE and The Open Group Standard
+is the referee document. The original Standard can be obtained online at
+<A HREF="http://www.unix.org/online.html">http://www.unix.org/online.html</A> .
+<P>
+Any typographical or formatting errors that appear
+in this page are most likely
+to have been introduced during the conversion of the source files to
+man page format. To report such errors, see
+<A HREF="https://www.kernel.org/doc/man-pages/reporting_bugs.html">https://www.kernel.org/doc/man-pages/reporting_bugs.html</A> .
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">PROLOG</A><DD>
+<DT><A HREF="#lbAC">NAME</A><DD>
+<DT><A HREF="#lbAD">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAE">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAF">APPLICATION USAGE</A><DD>
+<DT><A HREF="#lbAG">RATIONALE</A><DD>
+<DT><A HREF="#lbAH">FUTURE DIRECTIONS</A><DD>
+<DT><A HREF="#lbAI">SEE ALSO</A><DD>
+<DT><A HREF="#lbAJ">COPYRIGHT</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 14:28:43 GMT, February 25, 2017
+</BODY>
+</HTML>

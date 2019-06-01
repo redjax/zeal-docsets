@@ -1,0 +1,1964 @@
+<!DOCTYPE html>
+<html class="no-js hasSidebar hasPageActions hasBreadcrumb conceptual" data-authenticated="false" data-render="docs" dir="ltr" lang="en-us">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Test-ADDSDomainControllerInstallation (addsdeployment)" property="og:title"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" property="og:image"/>
+  <meta content="summary" name="twitter:card"/>
+  <meta content="@docsmsft" name="twitter:site"/>
+  <meta content="Test-ADDSDomainControllerInstallation (addsdeployment)" name="twitter:title"/>
+  <meta content="Use this topic to help manage Windows and Windows Server technologies with Windows PowerShell." name="twitter:description"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" name="twitter:image"/>
+  <meta content="Microsoft Logo" name="twitter:image:alt"/>
+  <meta content="Use this topic to help manage Windows and Windows Server technologies with Windows PowerShell." name="description"/>
+  <meta content="Docs" name="search.ms_sitename"/>
+  <meta content="powershell-windows" name="search.ms_docsetname"/>
+  <meta content="0" name="version"/>
+  <meta content="en-us" name="locale"/>
+  <meta content="Docs" name="site_name"/>
+  <meta content="MSDN" name="search.ms_product"/>
+  <meta content="MSDN.powershell-windows" name="depot_name"/>
+  <meta content="https://cpubwin.visualstudio.com/DefaultCollection/powershell/_git/powershell/commit/ced7757924addcaea0b7a244ae4d240e4d28d93a?path=%2fdocset%2fwindows%2faddsdeployment%2ftest-addsdomaincontrollerinstallation.md&amp;_a=contents" name="ref_skeleton_gitcommit"/>
+  <meta content="https://cpubwin.visualstudio.com/DefaultCollection/powershell/_git/powershell?path=%2fdocset%2fwindows%2faddsdeployment%2ftest-addsdomaincontrollerinstallation.md&amp;version=GBlive&amp;_a=contents" name="original_ref_skeleton_git_url"/>
+  <meta content="2017-09-15 03:44 AM" name="updated_at"/>
+  <meta content="80116797-a4bd-8cd3-2e01-29053fc466d5" name="document_id"/>
+  <meta content="05095324-22ef-6c13-4e96-a530bc8d51c3" name="document_version_independent_id"/>
+  <meta content="powershell" name="page_type"/>
+  <meta content="command" name="page_kind"/>
+  <meta content="manage" name="ms.mktglfcycl"/>
+  <meta content="library" name="ms.sitesec"/>
+  <meta content="brianlic" name="ms.author"/>
+  <meta content="brianlic-msft" name="author"/>
+  <meta content="Microsoft.DirectoryServices.Deployment.dll-Help.xml" name="external_help_file"/>
+  <meta content="powershell, cmdlet" name="keywords"/>
+  <meta content="alanth" name="manager"/>
+  <meta content="12/27/2016" name="ms.date"/>
+  <meta content="w10" name="ms.prod"/>
+  <meta content="powershell-windows" name="ms.technology"/>
+  <meta content="reference" name="ms.topic"/>
+  <meta content="" name="online_version"/>
+  <meta content="2.0.0" name="schema"/>
+  <meta content="E65920A5-9158-4832-B973-403C6AD3892A" name="ms.assetid"/>
+  <meta content="powershell" name="ms.devlang"/>
+  <meta content="INDEX, FOLLOW" name="ROBOTS"/>
+  <meta content="/powershell/windows/bread/toc.json?view=win10-ps" name="breadcrumb_path"/>
+  <meta content="powershell" name="apiPlatform"/>
+  <meta content="MSDocsHeader-WindowsIT" name="uhfHeaderId"/>
+  <meta content="../win10-ps/toc.json?view=win10-ps" name="toc_rel"/>
+  <link href="https://docs.microsoft.com/en-us/powershell/module/addsdeployment/test-addsdomaincontrollerinstallation" rel="canonical"/>
+  <title>
+   Test-ADDSDomainControllerInstallation
+  </title>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/e4a1f3a3.site.css" rel="stylesheet"/>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/31353636.conceptual.css" rel="stylesheet"/>
+ </head>
+ <body dir="ltr" lang="en-us">
+  <div class="header-holder">
+   <div data-bi-name="header" id="headerAreaHolder">
+    <div id="uhf-placeholder">
+    </div>
+   </div>
+   <div class="disclaimer-holder" id="disclaimer-holder">
+   </div>
+  </div>
+  <div class="container mainContainer" data-bi-name="body">
+   <div class="content-header" data-bi-name="content-header">
+    <div class="content-header-controls">
+     <button class="contents-button button-border" data-bi-name="contents-expand" type="button">
+      <span class="docon docon-menu">
+      </span>
+      Contents
+     </button>
+    </div>
+    <div class="content-header-controls">
+     <button class="ap-collapse-behavior ap-expanded button-border" data-bi-name="ap-collapse" type="button">
+      <span class="docon docon-exit-mode">
+      </span>
+      Exit focus mode
+     </button>
+    </div>
+   </div>
+   <div class="primary-holder">
+    <main class="content" data-bi-name="content" dir="ltr" id="main" lang="en-us" role="main">
+     <!-- <content> -->
+     <h1>
+      Test-ADDSDomain
+      <wbr/>
+      Controller
+      <wbr/>
+      Installation
+     </h1>
+     <div class="metadata">
+      <dl class="attributeList">
+       <dt>
+        Module:
+       </dt>
+       <dd>
+        <a data-linktype="relative-path" href="./.html">
+         addsdeployment
+        </a>
+       </dd>
+      </dl>
+     </div>
+     <div class="summaryHolder">
+      <div class="summary">
+       Runs the prerequisites (only) for installing a domain controller in Active Directory.
+      </div>
+     </div>
+     <h2 class="hiddenAnchor" id="syntax">
+      Syntax
+     </h2>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Test-ADDSDomainControllerInstallation
+    -DomainName &lt;String&gt;
+    [-SafeModeAdministratorPassword &lt;SecureString&gt;]
+    [-SiteName &lt;String&gt;]
+    [-ADPrepCredential &lt;PSCredential&gt;]
+    [-AllowDomainControllerReinstall]
+    [-ApplicationPartitionsToReplicate &lt;String[]&gt;]
+    [-CreateDnsDelegation]
+    [-Credential &lt;PSCredential&gt;]
+    [-CriticalReplicationOnly]
+    [-DatabasePath &lt;String&gt;]
+    [-DnsDelegationCredential &lt;PSCredential&gt;]
+    [-NoDnsOnNetwork]
+    [-NoGlobalCatalog]
+    [-InstallationMediaPath &lt;String&gt;]
+    [-InstallDns]
+    [-LogPath &lt;String&gt;]
+    [-MoveInfrastructureOperationMasterRoleIfNecessary]
+    [-NoRebootOnCompletion]
+    [-ReplicationSourceDC &lt;String&gt;]
+    [-SkipAutoConfigureDns]
+    [-SystemKey &lt;SecureString&gt;]
+    [-SysvolPath &lt;String&gt;]
+    [-Force]
+    [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Test-ADDSDomainControllerInstallation
+    -DomainName &lt;String&gt;
+    [-SafeModeAdministratorPassword &lt;SecureString&gt;]
+    -SiteName &lt;String&gt;
+    [-ADPrepCredential &lt;PSCredential&gt;]
+    [-AllowDomainControllerReinstall]
+    [-AllowPasswordReplicationAccountName &lt;String[]&gt;]
+    [-ApplicationPartitionsToReplicate &lt;String[]&gt;]
+    [-Credential &lt;PSCredential&gt;]
+    [-CriticalReplicationOnly]
+    [-DatabasePath &lt;String&gt;]
+    [-DelegatedAdministratorAccountName &lt;String&gt;]
+    [-DenyPasswordReplicationAccountName &lt;String[]&gt;]
+    [-NoDnsOnNetwork]
+    [-NoGlobalCatalog]
+    [-InstallationMediaPath &lt;String&gt;]
+    [-InstallDns]
+    [-LogPath &lt;String&gt;]
+    [-MoveInfrastructureOperationMasterRoleIfNecessary]
+    [-ReadOnlyReplica]
+    [-NoRebootOnCompletion]
+    [-ReplicationSourceDC &lt;String&gt;]
+    [-SkipAutoConfigureDns]
+    [-SystemKey &lt;SecureString&gt;]
+    [-SysvolPath &lt;String&gt;]
+    [-Force]
+    [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Test-ADDSDomainControllerInstallation
+    -DomainName &lt;String&gt;
+    [-SafeModeAdministratorPassword &lt;SecureString&gt;]
+    [-ADPrepCredential &lt;PSCredential&gt;]
+    [-ApplicationPartitionsToReplicate &lt;String[]&gt;]
+    [-Credential &lt;PSCredential&gt;]
+    [-CriticalReplicationOnly]
+    [-DatabasePath &lt;String&gt;]
+    [-NoDnsOnNetwork]
+    [-InstallationMediaPath &lt;String&gt;]
+    [-LogPath &lt;String&gt;]
+    [-NoRebootOnCompletion]
+    [-ReplicationSourceDC &lt;String&gt;]
+    [-SkipAutoConfigureDns]
+    [-SystemKey &lt;SecureString&gt;]
+    [-SysvolPath &lt;String&gt;]
+    [-UseExistingAccount]
+    [-Force]
+    [&lt;CommonParameters&gt;]</code></pre>
+     <h2 id="description">
+      Description
+     </h2>
+     <p>
+      The
+      <strong>
+       Test-ADDSDomainControllerInstallation
+      </strong>
+      cmdlet runs those prerequisite checks (only) which would be performed if you were to use the
+      <strong>
+       Install-ADDSDomainController
+      </strong>
+      cmdlet to install a domain controller in Active Directory.
+It differs from using the
+      <em>
+       WhatIf
+      </em>
+      parameter with the
+      <strong>
+       Install-ADDSDomainController
+      </strong>
+      cmdlet in that instead of summarizing the changes that would occur during the installation process, this cmdlet actually tests whether those changes are possible given the current environment.
+     </p>
+     <p>
+      For more information on the scope of these prerequisite checks that the ADDSDeployment module performs when using this cmdlet see the section ADPrep and Prerequisite Checking Architecture in
+      <a data-linktype="external" href="http://go.microsoft.com/fwlink/?LinkID=237244">
+       AD DS Simplified Administration
+      </a>
+      .
+     </p>
+     <h2 id="examples">
+      Examples
+     </h2>
+     <p>
+      <strong>
+       Example 1: Test if the installation of domain controller is possible
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Test-ADDSDomainControllerInstallation -InstallDns -Credential (Get-Credential CORP\Administrator) -DomainName "corp.contoso.com"</code></pre>
+     <p>
+      This command runs the prerequisites to determine if installing a domain controller is possible that includes a DNS server for the corp.contoso.com domain using domain administrator credentials.
+The command also prompts the user to enter and confirm the Directory Services Restore Mode (DSRM) password.
+     </p>
+     <p>
+      <strong>
+       Example 2: Test if the installation of domain controller and DNS server is possible
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Test-ADDSDomainControllerInstallation -InstallDns -DomainName "corp.contoso.com "</code></pre>
+     <p>
+      This command runs the prerequisites to determine if installing a domain controller along with the DNS server in the corp.contoso.com domain.
+The command also prompts the user to enter and confirm the DSRM password.
+     </p>
+     <p>
+      <strong>
+       Example 3: Test if the installation of domain controller is possible using Administrator credentials
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Test-ADDSDomainControllerInstallation -InstallDns -Credential (Get-Credential) -DomainName (Read-Host "Domain to promote into")</code></pre>
+     <p>
+      This command runs the prerequisites to determine if installing a domain controller along with a DNS server and that will cause the user to be prompted for Administrator credentials as well as whether the domain name is possible and if the user is prompted to enter and confirm the DSRM password.
+     </p>
+     <h2 id="required-parameters">
+      Required Parameters
+     </h2>
+     <div class="parameterName stack">
+      -DomainName
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the fully qualified domain name (FQDN) for the domain where the domain controller is installed or added.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         &lt;mandatory&gt;
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="optional-parameters">
+      Optional Parameters
+     </h2>
+     <div class="parameterName stack">
+      -ADPrepCredential
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the user name and password that corresponds to the account to be used for running operations (if they are required) to prepare Active Directory prior to the installation of this domain.
+Use the
+       <strong>
+        Get-Credential
+       </strong>
+       cmdlet to prompt the user to supply a password.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          PSCredential
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         NULL
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -AllowDomainControllerReinstall
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that the cmdlet continues to install this domain controller, despite the fact that another domain controller account with the same name is detected.
+By default, the
+       <strong>
+        Install-ADDSDomainController
+       </strong>
+       cmdlet does not continue to install if another domain controller with the same name is found.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         NULL
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -AllowPasswordReplicationAccountName
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies an array of names of user accounts, group accounts, and computer accounts whose passwords can be replicated to this RODC.
+Use an empty string ("") if you want to keep the value empty.
+By default, only the Allowed read-only domain controller (RODC) Password Replication Group is allowed.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         NULL
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -ApplicationPartitionsToReplicate
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies an array of application directory partitions that DCPromo replicates.
+Use the following format: "partition1" "partition2" "partitionN".
+Use * to replicate all application directory partitions.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         NULL
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -CreateDnsDelegation
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that the cmdlet creates a DNS delegation that references the new DNS server that you are installing along with the domain controller.
+Valid for Active Directory-integrated DNS only.
+If this parameter is specified then the DNS delegation is created.
+If the value of $False is specified then no DNS delegation is created.
+By default, the value for this parameter is computed automatically based on the environment.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         NULL
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Credential
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the user name and password that corresponds to the account used to install the domain controller.
+Use the
+       <strong>
+        Get-Credential
+       </strong>
+       cmdlet to prompt the user to supply a password.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          PSCredential
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         NULL
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -CriticalReplicationOnly
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that the cmdlet performs only critical replication before reboot and then continues during the AD DS installation operation.
+This parameter will skip the noncritical and potentially lengthy portion of replication.
+The noncritical replication happens after the installation finishes and the computer reboots.
+By default, the cmdlet performs both critical and noncritical portions of the replication.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         NULL
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -DatabasePath
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the fully qualified, non-Universal Naming Convention (UNC) path to a directory on a fixed disk of the local computer that will contain the domain database, for instance, C:\Windows\NTDS.
+The default is %SYSTEMROOT%\NTDS.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         NULL
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -DelegatedAdministratorAccountName
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the name of the user or group that is the delegated administrator of this domain controller.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         NULL
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -DenyPasswordReplicationAccountName
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies an array of names of user accounts, group accounts, and computer accounts whose passwords are not to be replicated to this RODC.
+Use an empty string ("") if you do not want to deny the replication of credentials of any users or computers.
+By default, Administrators, Server Operators, Backup Operators, Account Operators, and the Denied RODC Password Replication Group are denied.
+By default, the Denied RODC Password Replication Group includes Cert Publishers, Domain Admins, Enterprise Admins, Enterprise Domain Controllers, Enterprise Read-Only Domain Controllers, Group Policy Creator Owners, the krbtgt account, and Schema Admins.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         NULL
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -DnsDelegationCredential
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the user name and password for creating DNS delegation.
+The cmdlet will skip the parameter if the value for the
+       <em>
+        CreateDnsDelegation
+       </em>
+       parameter is either specified or computed to be $False.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          PSCredential
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         NULL
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Force
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Forces the command to run without asking for user confirmation.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -InstallDns
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that the cmdlet installs and configures the DNS Server service on the domain controller.
+For domain controller installation, if this parameter is left unspecified and the current domain already hosts and stores the DNS names for the domain, then the default for this parameter is $True and the DNS server is installed.
+Otherwise, if DNS domain names are hosted outside of Active Directory, the default is $False and no DNS server is installed.
+      </p>
+      <p>
+       To test if DNS domain names are hosted outside of Active Directory, this cmdlet uses a start of authority (SOA) type DNS query.
+For example, if the value of the
+       <em>
+        DomainName
+       </em>
+       parameter is corp.contoso.com, Active Directory performs an SOA query for corp.contoso.com and ensures that the zone name in the response is corp.contoso.com.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         NULL
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -InstallationMediaPath
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the location of the installation media that is used to install a new domain controller.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         NULL
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -LogPath
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the fully qualified, non-UNC path to a directory on a fixed disk of the local computer that will contain the domain log files, for instance, C:\Windows\Logs.
+The default is %SYSTEMROOT%\NTDS.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         NULL
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -MoveInfrastructureOperationMasterRoleIfNecessary
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that the cmdlet transfers the infrastructure master role to the domain controller that you create in case the transfer is needed.
+You cannot use the
+       <em>
+        NoGlobalCatalog
+       </em>
+       parameter when specifying this parameter.
+Do not specify this parameter if you want the infrastructure master role to remain where it currently is.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         NULL
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -NoDnsOnNetwork
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that the DNS service is not available on the network.
+This parameter is used only when the IP setting of the network adapter for this computer is not configured with the name of a DNS server for name resolution.
+It indicates that a DNS server is installed on this computer for name resolution.
+Otherwise, the IP settings of the network adapter must first be configured with the address of a DNS server.
+      </p>
+      <p>
+       Omitting this parameter (the default) indicates that the TCP/IP client settings of the network adapter on this server computer is used to contact a DNS server.
+Therefore, if you do not specify this parameter, ensure that TCP/IP client settings are first configured with a preferred DNS server address.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -NoGlobalCatalog
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that the read-only domain controller (RODC) is not a global catalog server.
+By default, the domain controller that you are installing is a global catalog server.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -NoRebootOnCompletion
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that the cmdlet does not restart the computer upon the completion of the operation to install the domain controller.
+By default, if this parameter is omitted the computer restarts upon the completion of the install operation.
+As a general rule, Microsoft support recommends that you not use this parameter except for testing or troubleshooting purposes because once configuration has completed the server will not function correctly as either a member server or a domain controller until it is rebooted.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -ReadOnlyReplica
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that this cmdlet installs the domain controller as an RODC for an existing domain.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         FALSE
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -ReplicationSourceDC
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the name of the domain controller to be used as the source for replicating to this domain controller.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         NULL
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -SafeModeAdministratorPassword
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Supplies the password for the administrator account when the computer is started in Safe Mode or a variant of Safe Mode, such as Directory Services Restore Mode.
+If no value is specified for this parameter, the cmdlet prompts you to enter and confirm a masked password.
+If specified with a value, the value must be a secure string.
+      </p>
+      <p>
+       Supplies the password for the administrator account when the computer is started in Safe Mode or a variant of Safe Mode, such as Directory Services Restore Mode.
+You must supply a password that meets the password complexity rules of the domain and the password cannot be blank.
+If specified with a value, the value must be a secure string.
+      </p>
+      <p>
+       If this parameter is not specified, the cmdlet prompts you to enter and confirm a masked password.
+This is the preferred usage when running the cmdlet interactively.
+If additionally there are no other arguments specified with the cmdlet, you are prompted to enter a masked password for this parameter but no confirmation of the password entered is made.
+This is not recommended as it could allow a mistyped password to be configured.
+Another available advanced option is to use the
+       <strong>
+        ConvertTo-SecureString
+       </strong>
+       cmdlet and specify the password string inline as unmasked console input, which is also not a recommended security best practice in production deployments.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SecureString
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         &lt;mandatory&gt;
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -SiteName
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the name of an existing site where you can place the new domain controller.
+The default value depends on the type of installation.
+For a new forest, the default is Default-First-Site-Name.
+For all other installations, the default is the site that is associated with the subnet that includes the IP address of this server.
+If no such site exists, the default is the site of the replication source domain controller.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         &lt;mandatory&gt;
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -SkipAutoConfigureDns
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that the cmdlet skips automatic configuration of DNS client settings, forwarders, and root hints.
+This parameter is in effect only if the DNS Server service is already installed.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         NULL
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -SystemKey
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the system key for the media from which you replicate the data.
+The default is none.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SecureString
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         NULL
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -SysvolPath
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the fully qualified, non-UNC path to a directory on a fixed disk of the local computer that will contain the Sysvol data, for example, C:\Windows\SYSVOL.
+The default is %SYSTEMROOT%\SYSVOL.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         NULL
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -UseExistingAccount
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that the cmdlet attaches a server to an existing RODC account.
+If specified, a member of the Domain Admins group or a delegated user can run this cmdlet.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         FALSE
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="related-links">
+      Related Links
+     </h2>
+     <ul>
+      <li>
+       <a data-linktype="external" href="http://go.microsoft.com/fwlink/?LinkID=237244">
+        Understand and Troubleshoot AD DS Simplified Administration
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="./install-addsdomaincontroller.html">
+        Install-ADDSDomainController
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="./test-addsreadonlydomaincontrolleraccountcreation.html">
+        Test-ADDSReadOnlyDomainControllerAccountCreation
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="./test-addsdomaininstallation.html">
+        Test-ADDSDomainInstallation
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="./test-addsforestinstallation.html">
+        Test-ADDSForestInstallation
+       </a>
+      </li>
+      <li>
+       <a data-linktype="external" href="http://go.microsoft.com/fwlink/?LinkID=293936">
+        Get-Credential
+       </a>
+      </li>
+      <li>
+       <a data-linktype="external" href="http://go.microsoft.com/fwlink/p/?LinkId=113291">
+        ConvertTo-SecureString
+       </a>
+      </li>
+     </ul>
+     <!-- </content> -->
+    </main>
+    <section class="feedback-section" data-bi-name="feedback-section">
+     <h2 id="feedback">
+      Feedback
+     </h2>
+     <div class="alert choose-feedback-type">
+      <p>
+       We'd love to hear your thoughts. Choose the type you'd like to provide:
+      </p>
+      <div class="choose-feedback-buttons">
+       <a class="button-border feedback-type-product" data-bi-name="product-feedback" href="https://windowsserver.uservoice.com/forums/301869-powershell">
+        Product feedback
+        <span aria-hidden="true" class="docon docon-navigate-external">
+        </span>
+       </a>
+       <div class="button-group">
+        <button class="button-border feedback-sign-in-button" data-bi-name="feedback-sign-in">
+         <span aria-hidden="true" class="docon docon-brand-github">
+         </span>
+         Sign in to give documentation feedback
+        </button>
+        <button aria-controls="feedback-form" aria-expanded="false" class="button-border feedback-form-toggle" data-bi-name="documentation-feedback" hidden="">
+         Content feedback
+        </button>
+        <div auto-align="" class="dropdown has-caret">
+         <button aria-controls="fbm0" aria-expanded="false" aria-haspopup="true" aria-label="Expand documentation feedback menu" class="button-border dropdown-trigger" data-bi-name="documentation-feedback-menu">
+          <span aria-hidden="true" class="docon docon-chevron-down-light">
+          </span>
+         </button>
+         <div class="dropdown-menu documentation-feedback-menu" id="fbm0" role="menu">
+          You may also leave feedback
+          <a data-bi-name="create-issue-on-github" href="{0}">
+           directly on GitHub
+           <span aria-hidden="true" class="docon docon-navigate-external">
+           </span>
+          </a>
+          .
+         </div>
+        </div>
+       </div>
+      </div>
+      <p>
+       <small>
+        Our new feedback system is built on GitHub Issues. Read about this change in
+        <a href="https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs">
+         our blog post
+        </a>
+        .
+       </small>
+      </p>
+     </div>
+     <form accept-charset="UTF-8" action="javascript:" autocomplete="off" class="feedback-form" hidden="" id="feedback-form">
+      <h3 class="feedback-form-heading current-user">
+       <img alt="Avatar" aria-hidden="true" class="avatar" height="36" width="36"/>
+       <span aria-hidden="true" class="username">
+       </span>
+       <span class="visually-hidden">
+        Liquid error: Can't find the localized string giveDocumentationFeedback for template Conceptual.
+       </span>
+      </h3>
+      <label>
+       <span class="visually-hidden">
+        Title
+       </span>
+       <input name="title" pattern=".*\w.*" placeholder="Title" required="" type="text"/>
+      </label>
+      <label>
+       <span class="visually-hidden">
+        Leave a comment
+       </span>
+       <textarea name="body" placeholder="Leave a comment" required=""></textarea>
+      </label>
+      <div class="action-container">
+       <button class="primary-action" name="submit" type="submit">
+        Submit feedback
+       </button>
+      </div>
+     </form>
+     <div class="feedback-status alert busy" role="alert">
+      <p>
+       Loading feedback...
+      </p>
+     </div>
+     <div class="feedback-tab-group tabGroup" data-tab-group-independent="" hidden="">
+      <ul role="tablist">
+       <li role="presentation">
+        <a aria-controls="tabpanel-issues-open" aria-label="Open Issues" data-tab="issues-open" href="#tabpanel-issues-open" role="tab">
+        </a>
+       </li>
+       <li role="presentation">
+        <a aria-controls="tabpanel-issues-closed" aria-label="Closed Issues" data-tab="issues-closed" href="#tabpanel-issues-closed" role="tab">
+        </a>
+       </li>
+      </ul>
+      <section data-tab="issues-open" id="tabpanel-issues-open" role="tabpanel">
+       <div class="no-issues-placeholder">
+        There are no open issues
+       </div>
+       <ul aria-label="Open Issues" class="github-issues-list">
+       </ul>
+      </section>
+      <section data-tab="issues-closed" id="tabpanel-issues-closed" role="tabpanel">
+       <div class="no-issues-placeholder">
+        There are no closed issues
+       </div>
+       <ul aria-label="Closed Issues" class="github-issues-list">
+       </ul>
+      </section>
+     </div>
+     <div class="action-container">
+      <a class="view-on-github" data-bi-name="view-on-github" hidden="" href="https://github.com/MicrosoftDocs/windows-powershell-docs/issues">
+       <span aria-hidden="true" class="docon docon-brand-github">
+       </span>
+       <span>
+        View on GitHub
+       </span>
+       <span aria-hidden="true" class="docon docon-navigate-external">
+       </span>
+      </a>
+     </div>
+    </section>
+   </div>
+  </div>
+  <div class="openfeedback-container" id="openFeedbackContainer">
+  </div>
+  <div class="action-panel">
+  </div>
+ </body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    
+<!-- Mirrored from mdn.mozillademos.org/en-US/docs/Web/API/HTMLDialogElement/cancel_event$samples/Live_example?revision=1532524 by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 02 May 2019 00:02:49 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+        <meta charset="utf-8">
+        <link href="../../../../../../../developer.mozilla.org/static/build/styles/samples.37902ba3b7fe.css" rel="stylesheet" type="text/css" />
+        
+        <style type="text/css">
+            button, div {
+    margin: .5rem;
+}
+
+        </style>
+        
+        <title>HTMLDialogElement: cancel event</title>
+    </head>
+    <body>
+        
+            <dialog class="example-dialog">
+    <button class="close" type="reset">Close</button>
+</dialog>
+
+<button class="open-dialog">Open dialog</button>
+
+<div class="result"></div>
+        
+        
+            <script>
+                const result = document.querySelector('.result');
+
+const dialog = document.querySelector('.example-dialog');
+
+dialog.addEventListener('cancel', (event) => { 
+  result.textContent = 'dialog was canceled'; 
+});
+
+const openDialog = document.querySelector('.open-dialog');
+openDialog.addEventListener('click', () => {
+  if (typeof dialog.showModal === 'function') {
+      dialog.showModal();
+      result.textContent = '';
+  } else {
+      result.textContent = 'The dialog API is not supported by this browser';
+  }
+});
+
+const closeButton = document.querySelector('.close');
+closeButton.addEventListener('click', () => {
+    dialog.close();
+});
+
+            </script>
+        
+    </body>
+
+<!-- Mirrored from mdn.mozillademos.org/en-US/docs/Web/API/HTMLDialogElement/cancel_event$samples/Live_example?revision=1532524 by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 02 May 2019 00:02:49 GMT -->
+</html>

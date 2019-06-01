@@ -1,0 +1,477 @@
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML><HEAD><TITLE>Man page of KCMP</TITLE>
+</HEAD><BODY>
+<H1>KCMP</H1>
+Section: Linux Programmer's Manual (2)<BR>Updated: 2016-07-17<BR><A HREF="#index">Index</A>
+<A HREF="../index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+kcmp - compare two processes to determine if they share a kernel resource
+<A NAME="lbAC">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<PRE>
+<B>#include &lt;<A HREF="file:///usr/include/linux/kcmp.h">linux/kcmp.h</A>&gt;</B>
+
+<B>int kcmp(pid_t </B><I>pid1</I><B>, pid_t </B><I>pid2</I><B>, int </B><I>type</I><B>,</B>
+<B>         unsigned long </B><I>idx1</I><B>, unsigned long </B><I>idx2</I><B>);</B>
+</PRE>
+
+<P>
+<I>Note</I>:
+
+There is no glibc wrapper for this system call; see NOTES.
+<A NAME="lbAD">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+The
+<B>kcmp</B>()
+
+system call can be used to check whether the two processes identified by
+<I>pid1</I>
+
+and
+<I>pid2</I>
+
+share a kernel resource such as virtual memory, file descriptors,
+and so on.
+<P>
+Permission to employ
+<B>kcmp</B>()
+
+is governed by ptrace access mode
+<B>PTRACE_MODE_READ_REALCREDS</B>
+
+checks against both
+<I>pid1</I>
+
+and
+<I>pid2</I>;
+
+see
+<B><A HREF="../man2/ptrace.2.html">ptrace</A></B>(2).
+
+<P>
+The
+<I>type</I>
+
+argument specifies which resource is to be compared in the two processes.
+It has one of the following values:
+<DL COMPACT>
+<DT><B>KCMP_FILE</B>
+
+<DD>
+Check whether a file descriptor
+<I>idx1</I>
+
+in the process
+<I>pid1</I>
+
+refers to the same open file description (see
+<B><A HREF="../man2/open.2.html">open</A></B>(2))
+
+as file descriptor
+<I>idx2</I>
+
+in the process
+<I>pid2</I>.
+
+<DT><B>KCMP_FILES</B>
+
+<DD>
+Check whether the process share the same set of open file descriptors.
+The arguments
+<I>idx1</I>
+
+and
+<I>idx2</I>
+
+are ignored.
+<DT><B>KCMP_FS</B>
+
+<DD>
+Check whether the processes share the same filesystem information
+(i.e., file mode creation mask, working directory, and filesystem root).
+The arguments
+<I>idx1</I>
+
+and
+<I>idx2</I>
+
+are ignored.
+<DT><B>KCMP_IO</B>
+
+<DD>
+Check whether the processes share I/O context.
+The arguments
+<I>idx1</I>
+
+and
+<I>idx2</I>
+
+are ignored.
+<DT><B>KCMP_SIGHAND</B>
+
+<DD>
+Check whether the processes share the same table of signal dispositions.
+The arguments
+<I>idx1</I>
+
+and
+<I>idx2</I>
+
+are ignored.
+<DT><B>KCMP_SYSVSEM</B>
+
+<DD>
+Check whether the processes share the same
+list of System&nbsp;V semaphore undo operations.
+The arguments
+<I>idx1</I>
+
+and
+<I>idx2</I>
+
+are ignored.
+<DT><B>KCMP_VM</B>
+
+<DD>
+Check whether the processes share the same address space.
+The arguments
+<I>idx1</I>
+
+and
+<I>idx2</I>
+
+are ignored.
+</DL>
+<P>
+
+Note the
+<B>kcmp</B>()
+
+is not protected against false positives which may occur if
+the processes are currently running.
+One should stop the processes by sending
+<B>SIGSTOP</B>
+
+(see
+<B><A HREF="../man7/signal.7.html">signal</A></B>(7))
+
+prior to inspection with this system call to obtain meaningful results.
+<A NAME="lbAE">&nbsp;</A>
+<H2>RETURN VALUE</H2>
+
+The return value of a successful call to
+<B>kcmp</B>()
+
+is simply the result of arithmetic comparison
+of kernel pointers (when the kernel compares resources, it uses their
+memory addresses).
+<P>
+The easiest way to explain is to consider an example.
+Suppose that
+<I>v1</I>
+
+and
+<I>v2</I>
+
+are the addresses of appropriate resources, then the return value
+is one of the following:
+<DL COMPACT><DT><DD>
+<DL COMPACT>
+<DT>0<DD>
+<I>v1</I>
+
+is equal to
+<I>v2</I>;
+
+in other words, the two processes share the resource.
+<DT>1<DD>
+<I>v1</I>
+
+is less than
+<I>v2</I>.
+
+<DT>2<DD>
+<I>v1</I>
+
+is greater than
+<I>v2</I>.
+
+<DT>3<DD>
+<I>v1</I>
+
+is not equal to
+<I>v2</I>,
+
+but ordering information is unavailable.
+</DL>
+</DL>
+
+<P>
+
+On error, -1 is returned, and
+<I>errno</I>
+
+is set appropriately.
+<P>
+<B>kcmp</B>()
+
+was designed to return values suitable for sorting.
+This is particularly handy if one needs to compare
+a large number of file descriptors.
+<A NAME="lbAF">&nbsp;</A>
+<H2>ERRORS</H2>
+
+<DL COMPACT>
+<DT><B>EBADF</B>
+
+<DD>
+<I>type</I>
+
+is
+<B>KCMP_FILE</B>
+
+and
+<I>fd1</I>
+
+or
+<I>fd2</I>
+
+is not an open file descriptor.
+<DT><B>EINVAL</B>
+
+<DD>
+<I>type</I>
+
+is invalid.
+<DT><B>EPERM</B>
+
+<DD>
+Insufficient permission to inspect process resources.
+The
+<B>CAP_SYS_PTRACE</B>
+
+capability is required to inspect processes that you do not own.
+Other ptrace limitations may also apply, such as
+<B>CONFIG_SECURITY_YAMA</B>,
+
+which, when
+<I>/proc/sys/kernel/yama/ptrace_scope</I>
+
+is 2, limits
+<B>kcmp</B>()
+
+to child processes;
+see
+<B><A HREF="../man2/ptrace.2.html">ptrace</A></B>(2).
+
+<DT><B>ESRCH</B>
+
+<DD>
+Process
+<I>pid1</I>
+
+or
+<I>pid2</I>
+
+does not exist.
+</DL>
+<A NAME="lbAG">&nbsp;</A>
+<H2>VERSIONS</H2>
+
+The
+<B>kcmp</B>()
+
+system call first appeared in Linux 3.5.
+<A NAME="lbAH">&nbsp;</A>
+<H2>CONFORMING TO</H2>
+
+<B>kcmp</B>()
+
+is Linux-specific and should not be used in programs intended to be portable.
+<A NAME="lbAI">&nbsp;</A>
+<H2>NOTES</H2>
+
+Glibc does not provide a wrapper for this system call; call it using
+<B><A HREF="../man2/syscall.2.html">syscall</A></B>(2).
+
+<P>
+This system call is available only if the kernel was configured with
+<B>CONFIG_CHECKPOINT_RESTORE</B>.
+
+The main use of the system call is for the
+checkpoint/restore in user space (CRIU) feature.
+The alternative to this system call would have been to expose suitable
+process information via the
+<B><A HREF="../man5/proc.5.html">proc</A></B>(5)
+
+filesystem; this was deemed to be unsuitable for security reasons.
+<P>
+See
+<B><A HREF="../man2/clone.2.html">clone</A></B>(2)
+
+for some background information on the shared resources
+referred to on this page.
+<A NAME="lbAJ">&nbsp;</A>
+<H2>EXAMPLE</H2>
+
+The program below uses
+<B>kcmp</B>()
+
+to test whether pairs of file descriptors refer to
+the same open file description.
+The program tests different cases for the file descriptor pairs,
+as described in the program output.
+An example run of the program is as follows:
+<P>
+<PRE>
+$ <B>./a.out</B>
+Parent PID is 1144
+Parent opened file on FD 3
+
+PID of child of fork() is 1145
+        Compare duplicate FDs from different processes:
+                kcmp(1145, 1144, KCMP_FILE, 3, 3) ==&gt; same
+Child opened file on FD 4
+        Compare FDs from distinct open()s in same process:
+                kcmp(1145, 1145, KCMP_FILE, 3, 4) ==&gt; different
+Child duplicated FD 3 to create FD 5
+        Compare duplicated FDs in same process:
+                kcmp(1145, 1145, KCMP_FILE, 3, 5) ==&gt; same
+</PRE>
+
+<A NAME="lbAK">&nbsp;</A>
+<H3>Program source</H3>
+
+
+<PRE>
+#define _GNU_SOURCE
+#include &lt;<A HREF="file:///usr/include/sys/syscall.h">sys/syscall.h</A>&gt;
+#include &lt;<A HREF="file:///usr/include/sys/wait.h">sys/wait.h</A>&gt;
+#include &lt;<A HREF="file:///usr/include/sys/stat.h">sys/stat.h</A>&gt;
+#include &lt;<A HREF="file:///usr/include/stdlib.h">stdlib.h</A>&gt;
+#include &lt;<A HREF="file:///usr/include/stdio.h">stdio.h</A>&gt;
+#include &lt;<A HREF="file:///usr/include/unistd.h">unistd.h</A>&gt;
+#include &lt;<A HREF="file:///usr/include/fcntl.h">fcntl.h</A>&gt;
+#include &lt;<A HREF="file:///usr/include/linux/kcmp.h">linux/kcmp.h</A>&gt;
+
+#define errExit(msg)    do { perror(msg); exit(EXIT_FAILURE); \
+                        } while (0)
+
+static int
+kcmp(pid_t pid1, pid_t pid2, int type,
+     unsigned long idx1, unsigned long idx2)
+{
+    return syscall(SYS_kcmp, pid1, pid2, type, idx1, idx2);
+}
+
+static void
+test_kcmp(char *msg, id_t pid1, pid_t pid2, int fd_a, int fd_b)
+{
+    printf(&quot;\t%s\n&quot;, msg);
+    printf(&quot;\t\tkcmp(%ld, %ld, KCMP_FILE, %d, %d) ==&gt; %s\n&quot;,
+            (long) pid1, (long) pid2, fd_a, fd_b,
+            (kcmp(pid1, pid2, KCMP_FILE, fd_a, fd_b) == 0) ?
+                        &quot;same&quot; : &quot;different&quot;);
+}
+
+int
+main(int argc, char *argv[])
+{
+    int fd1, fd2, fd3;
+    char pathname[] = &quot;/tmp/kcmp.test&quot;;
+
+    fd1 = open(pathname, O_CREAT | O_RDWR, S_IRUSR | S_IWUSR);
+    if (fd1 == -1)
+        errExit(&quot;open&quot;);
+
+    printf(&quot;Parent PID is %ld\n&quot;, (long) getpid());
+    printf(&quot;Parent opened file on FD %d\n\n&quot;, fd1);
+
+    switch (fork()) {
+    case -1:
+        errExit(&quot;fork&quot;);
+
+    case 0:
+        printf(&quot;PID of child of fork() is %ld\n&quot;, (long) getpid());
+
+        test_kcmp(&quot;Compare duplicate FDs from different processes:&quot;,
+                getpid(), getppid(), fd1, fd1);
+
+        fd2 = open(pathname, O_CREAT | O_RDWR, S_IRUSR | S_IWUSR);
+        if (fd2 == -1)
+            errExit(&quot;open&quot;);
+        printf(&quot;Child opened file on FD %d\n&quot;, fd2);
+
+        test_kcmp(&quot;Compare FDs from distinct open()s in same process:&quot;,
+                getpid(), getpid(), fd1, fd2);
+
+        fd3 = dup(fd1);
+        if (fd3 == -1)
+            errExit(&quot;dup&quot;);
+        printf(&quot;Child duplicated FD %d to create FD %d\n&quot;, fd1, fd3);
+
+        test_kcmp(&quot;Compare duplicated FDs in same process:&quot;,
+                getpid(), getpid(), fd1, fd3);
+        break;
+
+    default:
+        wait(NULL);
+    }
+
+    exit(EXIT_SUCCESS);
+}
+</PRE>
+
+<A NAME="lbAL">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+<B><A HREF="../man2/clone.2.html">clone</A></B>(2),
+
+<B><A HREF="../man2/unshare.2.html">unshare</A></B>(2)
+
+<A NAME="lbAM">&nbsp;</A>
+<H2>COLOPHON</H2>
+
+This page is part of release 4.09 of the Linux
+<I>man-pages</I>
+
+project.
+A description of the project,
+information about reporting bugs,
+and the latest version of this page,
+can be found at
+<A HREF="https://www.kernel.org/doc/man-pages/.">https://www.kernel.org/doc/man-pages/.</A>
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAD">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAE">RETURN VALUE</A><DD>
+<DT><A HREF="#lbAF">ERRORS</A><DD>
+<DT><A HREF="#lbAG">VERSIONS</A><DD>
+<DT><A HREF="#lbAH">CONFORMING TO</A><DD>
+<DT><A HREF="#lbAI">NOTES</A><DD>
+<DT><A HREF="#lbAJ">EXAMPLE</A><DD>
+<DL>
+<DT><A HREF="#lbAK">Program source</A><DD>
+</DL>
+<DT><A HREF="#lbAL">SEE ALSO</A><DD>
+<DT><A HREF="#lbAM">COLOPHON</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 14:28:27 GMT, February 25, 2017
+</BODY>
+</HTML>

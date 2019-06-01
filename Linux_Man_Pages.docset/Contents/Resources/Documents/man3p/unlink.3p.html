@@ -1,0 +1,637 @@
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML><HEAD><TITLE>Man page of UNLINK</TITLE>
+</HEAD><BODY>
+<H1>UNLINK</H1>
+Section: POSIX Programmer's Manual (3P)<BR>Updated: 2013<BR><A HREF="#index">Index</A>
+<A HREF="../index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>PROLOG</H2>
+
+This manual page is part of the POSIX Programmer's Manual.
+The Linux implementation of this interface may differ (consult
+the corresponding Linux manual page for details of Linux behavior),
+or the interface may not be implemented on Linux.
+<P>
+<A NAME="lbAC">&nbsp;</A>
+<H2>NAME</H2>
+
+unlink, unlinkat
+--- remove a directory entry relative to directory file descriptor
+<A NAME="lbAD">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<P>
+
+<PRE>
+#include &lt;<A HREF="file:///usr/include/unistd.h">unistd.h</A>&gt;
+
+int unlink(const char *<I>path</I>);
+int unlinkat(int <I>fd</I>, const char *<I>path</I>, int <I>flag</I>);
+</PRE>
+
+<A NAME="lbAE">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+The
+<I>unlink</I>()
+function shall remove a link to a file. If
+<I>path</I>
+
+names a symbolic link,
+<I>unlink</I>()
+shall remove the symbolic link named by
+<I>path</I>
+
+and shall not affect any file or directory named by the contents of the
+symbolic link. Otherwise,
+<I>unlink</I>()
+shall remove the link named by the pathname pointed to by
+<I>path</I>
+
+and shall decrement the link count of the file referenced by the link.
+<P>
+
+When the file's link count becomes 0 and no process has the file open,
+the space occupied by the file shall be freed and the file shall no
+longer be accessible. If one or more processes have the file open when
+the last link is removed, the link shall be removed before
+<I>unlink</I>()
+returns, but the removal of the file contents shall be postponed until
+all references to the file are closed.
+<P>
+
+The
+<I>path</I>
+
+argument shall not name a directory unless the process has appropriate
+privileges and the implementation supports using
+<I>unlink</I>()
+on directories.
+<P>
+
+Upon successful completion,
+<I>unlink</I>()
+shall mark for update the last data modification and last file status
+change timestamps of the parent directory. Also, if the file's link
+count is not 0, the last file status change timestamp of the file shall
+be marked for update.
+<P>
+
+The
+<I>unlinkat</I>()
+function shall be equivalent to the
+<I>unlink</I>()
+or
+<I>rmdir</I>()
+function except in the case where
+<I>path</I>
+
+specifies a relative path. In this case the directory entry to be
+removed is determined relative to the directory associated with the
+file descriptor
+<I>fd</I>
+
+instead of the current working directory. If the file descriptor was
+opened without O_SEARCH, the function shall check whether directory
+searches are permitted using the current permissions of the directory
+underlying the file descriptor. If the file descriptor was opened with
+O_SEARCH, the function shall not perform the check.
+<P>
+
+Values for
+<I>flag</I>
+
+are constructed by a bitwise-inclusive OR of flags from the following
+list, defined in
+<I>&lt;<A HREF="file:///usr/include/fcntl.h">fcntl.h</A>&gt;</I>:
+
+<DL COMPACT>
+<DT>AT_REMOVEDIR<DD>
+<BR>
+
+Remove the directory entry specified by
+<I>fd</I>
+
+and
+<I>path</I>
+
+as a directory, not a normal file.
+</DL>
+<P>
+
+If
+<I>unlinkat</I>()
+is passed the special value AT_FDCWD in the
+<I>fd</I>
+
+parameter, the current working directory shall be used and the behavior
+shall be identical to a call to
+<I>unlink</I>()
+or
+<I>rmdir</I>()
+respectively, depending on whether or not the AT_REMOVEDIR bit is set in
+<I>flag</I>.
+
+<A NAME="lbAF">&nbsp;</A>
+<H2>RETURN VALUE</H2>
+
+Upon successful completion, these functions shall return 0. Otherwise,
+these functions shall return -1 and set
+<I>errno</I>
+
+to indicate the error. If -1 is returned, the named file shall not
+be changed.
+<A NAME="lbAG">&nbsp;</A>
+<H2>ERRORS</H2>
+
+These functions shall fail and shall not unlink the file if:
+<DL COMPACT>
+<DT><B>EACCES</B>
+
+<DD>
+Search permission is denied for a component of the path prefix, or
+write permission is denied on the directory containing the directory
+entry to be removed.
+<DT><B>EBUSY</B>
+
+<DD>
+The file named by the
+<I>path</I>
+
+argument cannot be unlinked because it is being used by the system or
+another process and the implementation considers this an error.
+<DT><B>ELOOP</B>
+
+<DD>
+A loop exists in symbolic links encountered during resolution of the
+<I>path</I>
+
+argument.
+<DT><B>ENAMETOOLONG</B>
+
+<DD>
+<BR>
+
+The length of a component of a pathname is longer than
+{NAME_MAX}.
+<DT><B>ENOENT</B>
+
+<DD>
+A component of
+<I>path</I>
+
+does not name an existing file or
+<I>path</I>
+
+is an empty string.
+<DT><B>ENOTDIR</B>
+
+<DD>
+A component of the path prefix names an existing file that is neither
+a directory nor a symbolic link to a directory, or the
+<I>path</I>
+
+argument contains at least one non-&lt;slash&gt;
+character and ends with one or more trailing
+&lt;slash&gt;
+characters and the last pathname component names an existing file
+that is neither a directory nor a symbolic link to a directory.
+<DT><B>EPERM</B>
+
+<DD>
+The file named by
+<I>path</I>
+
+is a directory, and either the calling process does not have
+appropriate privileges, or the implementation prohibits using
+<I>unlink</I>()
+on directories.
+<DT><B>EPERM</B> or <B>EACCES</B>
+
+<DD>
+<BR>
+
+The S_ISVTX flag is set on the directory containing the file referred
+to by the
+<I>path</I>
+
+argument and the process does not satisfy the criteria specified in the Base Definitions volume of POSIX.1-2008,
+<I>Section 4.2</I>, <I>Directory Protection.</I>
+
+<DT><B>EROFS</B>
+
+<DD>
+The directory entry to be unlinked is part of a read-only file system.
+</DL>
+<P>
+
+The
+<I>unlinkat</I>()
+function shall fail if:
+<DL COMPACT>
+<DT><B>EACCES</B>
+
+<DD>
+<I>fd</I>
+
+was not opened with O_SEARCH and the permissions of the directory
+underlying
+<I>fd</I>
+
+do not permit directory searches.
+<DT><B>EBADF</B>
+
+<DD>
+The
+<I>path</I>
+
+argument does not specify an absolute path and the
+<I>fd</I>
+
+argument is neither AT_FDCWD nor a valid file descriptor open for reading
+or searching.
+<DT><B>ENOTDIR</B>
+
+<DD>
+The
+<I>path</I>
+
+argument is not an absolute path and
+<I>fd</I>
+
+is a file descriptor associated with a non-directory file.
+<DT><B>EEXIST</B> or <B>ENOTEMPTY</B>
+
+<DD>
+<BR>
+
+The
+<I>flag</I>
+
+parameter has the AT_REMOVEDIR bit set and the
+<I>path</I>
+
+argument names a directory that is not an empty directory, or there are
+hard links to the directory other than dot or a single entry in dot-dot.
+<DT><B>ENOTDIR</B>
+
+<DD>
+The
+<I>flag</I>
+
+parameter has the AT_REMOVEDIR bit set and
+<I>path</I>
+
+does not name a directory.
+</DL>
+<P>
+
+These functions may fail and not unlink the file if:
+<DL COMPACT>
+<DT><B>EBUSY</B>
+
+<DD>
+The file named by
+<I>path</I>
+
+is a named STREAM.
+<DT><B>ELOOP</B>
+
+<DD>
+More than
+{SYMLOOP_MAX}
+symbolic links were encountered during resolution of the
+<I>path</I>
+
+argument.
+<DT><B>ENAMETOOLONG</B>
+
+<DD>
+<BR>
+
+The length of a pathname exceeds
+{PATH_MAX},
+or pathname resolution of a symbolic link produced an intermediate
+result with a length that exceeds
+{PATH_MAX}.
+<DT><B>ETXTBSY</B>
+
+<DD>
+The entry to be unlinked is the last directory entry to a pure
+procedure (shared text) file that is being executed.
+<BR>
+
+</DL>
+<P>
+
+The
+<I>unlinkat</I>()
+function may fail if:
+<DL COMPACT>
+<DT><B>EINVAL</B>
+
+<DD>
+The value of the
+<I>flag</I>
+
+argument is not valid.
+</DL>
+<P>
+
+<I>The following sections are informative.</I>
+
+<A NAME="lbAH">&nbsp;</A>
+<H2>EXAMPLES</H2>
+
+<A NAME="lbAI">&nbsp;</A>
+<H3>Removing a Link to a File</H3>
+
+<P>
+
+The following example shows how to remove a link to a file named
+<B>/home/cnd/mod1</B>
+
+by removing the entry named
+<B>/modules/pass1</B>.
+
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+#include &lt;<A HREF="file:///usr/include/unistd.h">unistd.h</A>&gt;
+
+char *path = &quot;/modules/pass1&quot;;
+int   status;
+...
+status = unlink(path);
+</B></PRE>
+
+<P>
+
+</DL>
+
+<A NAME="lbAJ">&nbsp;</A>
+<H3>Checking for an Error</H3>
+
+<P>
+
+The following example fragment creates a temporary password lock file
+named
+<B>LOCKFILE</B>,
+
+which is defined as
+<B>/etc/ptmp</B>,
+
+and gets a file descriptor for it. If the file cannot be opened for
+writing,
+<I>unlink</I>()
+is used to remove the link between the file descriptor and
+<B>LOCKFILE</B>.
+
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+#include &lt;<A HREF="file:///usr/include/sys/types.h">sys/types.h</A>&gt;
+#include &lt;<A HREF="file:///usr/include/stdio.h">stdio.h</A>&gt;
+#include &lt;<A HREF="file:///usr/include/fcntl.h">fcntl.h</A>&gt;
+#include &lt;<A HREF="file:///usr/include/errno.h">errno.h</A>&gt;
+#include &lt;<A HREF="file:///usr/include/unistd.h">unistd.h</A>&gt;
+#include &lt;<A HREF="file:///usr/include/sys/stat.h">sys/stat.h</A>&gt;
+
+#define LOCKFILE &quot;/etc/ptmp&quot;
+
+int pfd;  /* Integer for file descriptor returned by open call. */
+FILE *fpfd;  /* File pointer for use in putpwent(). */
+...
+/* Open password Lock file. If it exists, this is an error. */
+if ((pfd = open(LOCKFILE, O_WRONLY| O_CREAT | O_EXCL, S_IRUSR
+    | S_IWUSR | S_IRGRP | S_IROTH)) == -1)  {
+    fprintf(stderr, &quot;Cannot open /etc/ptmp. Try again later.\n&quot;);
+    <A HREF="../man1/exit.1.html">exit</A>(1);
+}
+
+/* Lock file created; proceed with fdopen of lock file so that
+   putpwent() can be used.
+ */
+if ((fpfd = fdopen(pfd, &quot;w&quot;)) == NULL) {
+    close(pfd);
+    unlink(LOCKFILE);
+    <A HREF="../man1/exit.1.html">exit</A>(1);
+}
+</B></PRE>
+
+<P>
+
+</DL>
+
+<A NAME="lbAK">&nbsp;</A>
+<H3>Replacing Files</H3>
+
+<P>
+
+The following example fragment uses
+<I>unlink</I>()
+to discard links to files, so that they can be replaced with new
+versions of the files. The first call removes the link to
+<B>LOCKFILE</B>
+
+if an error occurs. Successive calls remove the links to
+<B>SAVEFILE</B>
+
+and
+<B>PASSWDFILE</B>
+
+so that new links can be created, then removes the link to
+<B>LOCKFILE</B>
+
+when it is no longer needed.
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+#include &lt;<A HREF="file:///usr/include/sys/types.h">sys/types.h</A>&gt;
+#include &lt;<A HREF="file:///usr/include/stdio.h">stdio.h</A>&gt;
+#include &lt;<A HREF="file:///usr/include/fcntl.h">fcntl.h</A>&gt;
+#include &lt;<A HREF="file:///usr/include/errno.h">errno.h</A>&gt;
+#include &lt;<A HREF="file:///usr/include/unistd.h">unistd.h</A>&gt;
+#include &lt;<A HREF="file:///usr/include/sys/stat.h">sys/stat.h</A>&gt;
+
+#define LOCKFILE &quot;/etc/ptmp&quot;
+#define PASSWDFILE &quot;/etc/passwd&quot;
+#define SAVEFILE &quot;/etc/opasswd&quot;
+...
+/* If no change was made, assume error and leave passwd unchanged. */
+if (!valid_change) {
+    fprintf(stderr, &quot;Could not change password for user %s\n&quot;, user);
+    unlink(LOCKFILE);
+    <A HREF="../man1/exit.1.html">exit</A>(1);
+}
+
+/* Change permissions on new password file. */
+chmod(LOCKFILE, S_IRUSR | S_IRGRP | S_IROTH);
+
+/* Remove saved password file. */
+unlink(SAVEFILE);
+
+/* Save current password file. */
+link(PASSWDFILE, SAVEFILE);
+
+/* Remove current password file. */
+unlink(PASSWDFILE);
+
+/* Save new password file as current password file. */
+link(LOCKFILE,PASSWDFILE);
+
+/* Remove lock file. */
+unlink(LOCKFILE);
+
+exit(0);
+</B></PRE>
+
+<P>
+
+</DL>
+
+<A NAME="lbAL">&nbsp;</A>
+<H2>APPLICATION USAGE</H2>
+
+Applications should use
+<I>rmdir</I>()
+to remove a directory.
+<A NAME="lbAM">&nbsp;</A>
+<H2>RATIONALE</H2>
+
+Unlinking a directory is restricted to the superuser
+in many historical implementations for reasons given in
+<I>link</I>()
+(see also
+<I>rename</I>()).
+<P>
+
+The meaning of
+<B>[EBUSY]</B>
+
+in historical implementations is ``mount point busy''. Since this volume of POSIX.1-2008 does
+not cover the system administration concepts of mounting and unmounting,
+the description of the error was changed to ``resource busy''. (This
+meaning is used by some device drivers when a second process tries to
+open an exclusive use device.) The wording is also intended to allow
+implementations to refuse to remove a directory if it is the root or
+current working directory of any process.
+<P>
+
+The standard developers reviewed TR 24715-2006 and noted that
+LSB-conforming implementations may return
+<B>[EISDIR]</B>
+
+instead of
+<B>[EPERM]</B>
+
+when unlinking a directory. A change to permit this behavior by
+changing the requirement for
+<B>[EPERM]</B>
+
+to
+<B>[EPERM]</B>
+
+or
+<B>[EISDIR]</B>
+
+was considered, but decided against since it would break existing
+strictly conforming and conforming applications. Applications written
+for portability to both POSIX.1-2008 and the LSB should be prepared to
+handle either error code.
+<P>
+
+The purpose of the
+<I>unlinkat</I>()
+function is to remove directory entries in directories other than the
+current working directory without exposure to race conditions. Any part
+of the path of a file could be changed in parallel to a call to
+<I>unlink</I>(),
+resulting in unspecified behavior. By opening a file descriptor for
+the target directory and using the
+<I>unlinkat</I>()
+function it can be guaranteed that the removed directory entry is
+located relative to the desired directory.
+<A NAME="lbAN">&nbsp;</A>
+<H2>FUTURE DIRECTIONS</H2>
+
+None.
+<A NAME="lbAO">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+<I>close</I>(),
+
+<I>link</I>(),
+
+<I>remove</I>(),
+
+<I>rename</I>(),
+
+<I>rmdir</I>(),
+
+<I>symlink</I>()
+
+<P>
+
+The Base Definitions volume of POSIX.1-2008,
+<I>Section 4.2</I>, <I>Directory Protection,</I>
+
+<I></I><B>&lt;<A HREF="file:///usr/include/fcntl.h">fcntl.h</A>&gt;</B>,
+
+<I></I><B>&lt;<A HREF="file:///usr/include/unistd.h">unistd.h</A>&gt;</B>
+
+<A NAME="lbAP">&nbsp;</A>
+<H2>COPYRIGHT</H2>
+
+Portions of this text are reprinted and reproduced in electronic form
+from IEEE Std 1003.1, 2013 Edition, Standard for Information Technology
+-- Portable Operating System Interface (POSIX), The Open Group Base
+Specifications Issue 7, Copyright (C) 2013 by the Institute of
+Electrical and Electronics Engineers, Inc and The Open Group.
+(This is POSIX.1-2008 with the 2013 Technical Corrigendum 1 applied.) In the
+event of any discrepancy between this version and the original IEEE and
+The Open Group Standard, the original IEEE and The Open Group Standard
+is the referee document. The original Standard can be obtained online at
+<A HREF="http://www.unix.org/online.html">http://www.unix.org/online.html</A> .
+<P>
+Any typographical or formatting errors that appear
+in this page are most likely
+to have been introduced during the conversion of the source files to
+man page format. To report such errors, see
+<A HREF="https://www.kernel.org/doc/man-pages/reporting_bugs.html">https://www.kernel.org/doc/man-pages/reporting_bugs.html</A> .
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">PROLOG</A><DD>
+<DT><A HREF="#lbAC">NAME</A><DD>
+<DT><A HREF="#lbAD">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAE">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAF">RETURN VALUE</A><DD>
+<DT><A HREF="#lbAG">ERRORS</A><DD>
+<DT><A HREF="#lbAH">EXAMPLES</A><DD>
+<DL>
+<DT><A HREF="#lbAI">Removing a Link to a File</A><DD>
+<DT><A HREF="#lbAJ">Checking for an Error</A><DD>
+<DT><A HREF="#lbAK">Replacing Files</A><DD>
+</DL>
+<DT><A HREF="#lbAL">APPLICATION USAGE</A><DD>
+<DT><A HREF="#lbAM">RATIONALE</A><DD>
+<DT><A HREF="#lbAN">FUTURE DIRECTIONS</A><DD>
+<DT><A HREF="#lbAO">SEE ALSO</A><DD>
+<DT><A HREF="#lbAP">COPYRIGHT</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 14:28:56 GMT, February 25, 2017
+</BODY>
+</HTML>

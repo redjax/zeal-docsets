@@ -1,0 +1,484 @@
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML><HEAD><TITLE>Man page of WHO</TITLE>
+</HEAD><BODY>
+<H1>WHO</H1>
+Section: POSIX Programmer's Manual (1P)<BR>Updated: 2013<BR><A HREF="#index">Index</A>
+<A HREF="../index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>PROLOG</H2>
+
+This manual page is part of the POSIX Programmer's Manual.
+The Linux implementation of this interface may differ (consult
+the corresponding Linux manual page for details of Linux behavior),
+or the interface may not be implemented on Linux.
+<P>
+<A NAME="lbAC">&nbsp;</A>
+<H2>NAME</H2>
+
+who
+--- display who is on the system
+<A NAME="lbAD">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<P>
+
+<PRE>
+who <B>[</B>-mTu<B>] [</B>-abdHlprt<B>] [</B><I>file</I><B>]</B>
+
+who <B>[</B>-mu<B>] </B>-s<B> [</B>-bHlprt<B>] [</B><I>file</I><B>]</B>
+
+who -q <B>[</B><I>file</I><B>]</B>
+
+who am i
+
+who am I
+</PRE>
+
+<A NAME="lbAE">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+The
+<I>who</I>
+
+utility shall list various pieces of information about accessible
+users. The domain of accessibility is implementation-defined.
+<P>
+
+Based on the options given,
+<I>who</I>
+
+can also list the user's name, terminal line, login time, elapsed time
+since activity occurred on the line, and the process ID of the command
+interpreter for each current system user.
+<A NAME="lbAF">&nbsp;</A>
+<H2>OPTIONS</H2>
+
+The
+<I>who</I>
+
+utility shall conform to the Base Definitions volume of POSIX.1-2008,
+<I>Section 12.2</I>, <I>Utility Syntax Guidelines.</I>
+
+<P>
+
+The following options shall be supported. The metavariables, such as
+&lt;<I>line</I>&gt;, refer to fields described in the STDOUT section.
+<DL COMPACT>
+<DT><B>-a</B><DD>
+Process the implementation-defined database or named file with the
+<B>-b</B>,
+
+<B>-d</B>,
+
+<B>-l</B>,
+
+<B>-p</B>,
+
+<B>-r</B>,
+
+<B>-t</B>,
+
+<B>-T</B>
+
+and
+<B>-u</B>
+
+options turned on.
+<DT><B>-b</B><DD>
+Write the time and date of the last system reboot. The system reboot
+time is the time at which the implementation is able to commence
+running processes.
+<DT><B>-d</B><DD>
+Write a list of all processes that have expired and not been respawned
+by the
+<I>init</I>
+
+system process. The &lt;<I>exit</I>&gt; field shall appear for dead processes
+and contain the termination and exit values of the dead process. This
+can be useful in determining why a process terminated.
+<DT><B>-H</B><DD>
+Write column headings above the regular output.
+<DT><B>-l</B><DD>
+(The letter ell.) List only those lines on which the system is waiting
+for someone to login. The &lt;<I>name</I>&gt; field shall be
+<B>LOGIN</B>
+
+in such cases. Other fields shall be the same as for user entries
+except that the &lt;<I>state</I>&gt; field does not exist.
+<DT><B>-m</B><DD>
+Output only information about the current terminal.
+<DT><B>-p</B><DD>
+List any other process that is currently active and has been previously
+spawned by
+<I>init</I>.
+
+<DT><B>-q</B><DD>
+(Quick.) List only the names and the number of users currently logged
+on. When this option is used, all other options shall be ignored.
+<DT><B>-r</B><DD>
+Write the current
+<I>run-level</I>
+
+of the
+<I>init</I>
+
+process.
+<DT><B>-s</B><DD>
+List only the &lt;<I>name</I>&gt;, &lt;<I>line</I>&gt;, and &lt;<I>time</I>&gt; fields.
+This is the default case.
+<DT><B>-t</B><DD>
+Indicate the last change to the system clock.
+<DT><B>-T</B><DD>
+Show the state of each terminal, as described in the STDOUT section.
+<DT><B>-u</B><DD>
+Write ``idle time'' for each displayed user in addition to any other
+information. The idle time is the time since any activity occurred on
+the user's terminal. The method of determining this is unspecified.
+This option shall list only those users who are currently logged in.
+The &lt;<I>name</I>&gt; is the user's login name. The &lt;<I>line</I>&gt; is the name
+of the line as found in the directory
+<B>/dev</B>.
+
+The &lt;<I>time</I>&gt; is the time that the user logged in. The
+&lt;<I>activity</I>&gt; is the number of hours and minutes since activity last
+occurred on that particular line. A dot indicates that the terminal has
+seen activity in the last minute and is therefore ``current''. If more
+than twenty-four hours have elapsed or the line has not been used since
+boot time, the entry shall be marked &lt;<I>old</I>&gt;. This field is useful
+when trying to determine whether a person is working at the terminal or
+not. The &lt;<I>pid</I>&gt; is the process ID of the user's login process.
+</DL>
+<A NAME="lbAG">&nbsp;</A>
+<H2>OPERANDS</H2>
+
+The following operands shall be supported:
+<DL COMPACT>
+<DT><B>am&nbsp;i</B>,&nbsp;<B>am&nbsp;I</B><DD>
+In the POSIX locale, limit the output to describing the invoking user,
+equivalent to the
+<B>-m</B>
+
+option. The
+<B>am</B>
+
+and
+<B>i</B>
+
+or
+<B>I</B>
+
+must be separate arguments.
+<DT><I>file</I><DD>
+Specify a pathname of a file to substitute for the
+implementation-defined database of logged-on users that
+<I>who</I>
+
+uses by default.
+</DL>
+<A NAME="lbAH">&nbsp;</A>
+<H2>STDIN</H2>
+
+Not used.
+<A NAME="lbAI">&nbsp;</A>
+<H2>INPUT FILES</H2>
+
+None.
+<A NAME="lbAJ">&nbsp;</A>
+<H2>ENVIRONMENT VARIABLES</H2>
+
+The following environment variables shall affect the execution of
+<I>who</I>:
+
+<DL COMPACT>
+<DT><I>LANG</I><DD>
+Provide a default value for the internationalization variables that are
+unset or null. (See the Base Definitions volume of POSIX.1-2008,
+<I>Section 8.2</I>, <I>Internationalization Variables</I>
+
+for the precedence of internationalization variables used to determine
+the values of locale categories.)
+<DT><I>LC_ALL</I><DD>
+If set to a non-empty string value, override the values of all the
+other internationalization variables.
+<DT><I>LC_CTYPE</I><DD>
+Determine the locale for the interpretation of sequences of bytes of
+text data as characters (for example, single-byte as opposed to
+multi-byte characters in arguments).
+<DT><I>LC_MESSAGES</I><DD>
+<BR>
+
+Determine the locale that should be used to affect the format and
+contents of diagnostic messages written to standard error.
+<DT><I>LC_TIME</I><DD>
+Determine the locale used for the format and contents of the date and
+time strings.
+<DT><I>NLSPATH</I><DD>
+Determine the location of message catalogs for the processing of
+<I>LC_MESSAGES</I>.
+
+<DT><I>TZ</I><DD>
+Determine the timezone used when writing date and time information. If
+<I>TZ</I>
+
+is unset or null, an unspecified default timezone shall be used.
+</DL>
+<A NAME="lbAK">&nbsp;</A>
+<H2>ASYNCHRONOUS EVENTS</H2>
+
+Default.
+<A NAME="lbAL">&nbsp;</A>
+<H2>STDOUT</H2>
+
+The
+<I>who</I>
+
+utility shall write its default format to the standard output in an
+implementation-defined format, subject only to the requirement of
+containing the information described above.
+<P>
+
+XSI-conformant systems shall write the default information to the
+standard output in the following general format:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+&lt;</B><I>name</I>&gt;<B>[</B>&lt;<I>state</I>&gt;<B>]</B>&lt;<I>line</I>&gt;&lt;<I>time</I>&gt;<B>[</B>&lt;<I>activity</I>&gt;<B>][</B>&lt;<I>pid</I>&gt;<B>][</B>&lt;<I>comment</I>&gt;<B>][</B>&lt;<I>exit</I>&gt;<B>]</B>
+</PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+For the
+<B>-b</B>
+
+option, &lt;<I>line</I>&gt; shall be
+<B>&quot;system</B>boot&quot;<B>.</B>
+
+The &lt;<I>name</I>&gt; is unspecified.
+<P>
+
+The following format shall be used for the
+<B>-T</B>
+
+option:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+&quot;%s %c %s %s\n&quot; &lt;</B><I>name</I>&gt;, &lt;<I>terminal state</I>&gt;, &lt;<I>terminal name</I>&gt;,
+    &lt;<I>time of login</I>&gt;
+</PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+where &lt;<I>terminal&nbsp;state</I>&gt; is one of the following characters:
+<DL COMPACT>
+<DT>+<DD>
+The terminal allows write access to other users.
+<DT>-<DD>
+The terminal denies write access to other users.
+<DT>?<DD>
+The terminal write-access state cannot be determined.
+<DT>&lt;space&gt;<DD>
+This entry is not associated with a terminal.
+</DL>
+<P>
+
+In the POSIX locale, the &lt;<I>time&nbsp;of&nbsp;login</I>&gt; shall be equivalent in
+format to the output of:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+date +&quot;%b %e %H:%M&quot;
+</B></PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+If the
+<B>-u</B>
+
+option is used with
+<B>-T</B>,
+
+the idle time shall be added to the end of the previous format in an
+unspecified format.
+<A NAME="lbAM">&nbsp;</A>
+<H2>STDERR</H2>
+
+The standard error shall be used only for diagnostic messages.
+<A NAME="lbAN">&nbsp;</A>
+<H2>OUTPUT FILES</H2>
+
+None.
+<A NAME="lbAO">&nbsp;</A>
+<H2>EXTENDED DESCRIPTION</H2>
+
+None.
+<A NAME="lbAP">&nbsp;</A>
+<H2>EXIT STATUS</H2>
+
+The following exit values shall be returned:
+<DL COMPACT>
+<DT>&nbsp;0<DD>
+Successful completion.
+<DT>&gt;0<DD>
+An error occurred.
+</DL>
+<A NAME="lbAQ">&nbsp;</A>
+<H2>CONSEQUENCES OF ERRORS</H2>
+
+Default.
+<P>
+
+<I>The following sections are informative.</I>
+
+<A NAME="lbAR">&nbsp;</A>
+<H2>APPLICATION USAGE</H2>
+
+The name
+<I>init</I>
+
+used for the system process is the most commonly used on historical
+systems, but it may vary.
+<P>
+
+The ``domain of accessibility'' referred to is a broad concept that
+permits interpretation either on a very secure basis or even to allow a
+network-wide implementation like the historical
+<I>rwho</I>.
+
+<A NAME="lbAS">&nbsp;</A>
+<H2>EXAMPLES</H2>
+
+None.
+<A NAME="lbAT">&nbsp;</A>
+<H2>RATIONALE</H2>
+
+Due to differences between historical implementations, the base options
+provided were a compromise to allow users to work with those
+functions. The standard developers also considered removing all the
+options, but felt that these options offered users valuable
+functionality. Additional options to match historical systems are
+available on XSI-conformant systems.
+<P>
+
+It is recognized that the
+<I>who</I>
+
+command may be of limited usefulness, especially in a multi-level
+secure environment. The standard developers considered, however, that
+having some standard method of determining the ``accessibility'' of
+other users would aid user portability.
+<P>
+
+No format was specified for the default
+<I>who</I>
+
+output for systems not supporting the XSI option. In such a
+user-oriented command, designed only for human use, this was not
+considered to be a deficiency.
+<P>
+
+The format of the terminal name is unspecified, but the descriptions of
+<I>ps</I>,
+
+<I>talk</I>,
+
+and
+<I>write</I>
+
+require that they use the same format.
+<P>
+
+It is acceptable for an implementation to produce no output for
+an invocation of
+<I>who</I>
+
+<B>mil</B>.
+
+<A NAME="lbAU">&nbsp;</A>
+<H2>FUTURE DIRECTIONS</H2>
+
+None.
+<A NAME="lbAV">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+<I>mesg</I>
+
+<P>
+
+The Base Definitions volume of POSIX.1-2008,
+<I>Chapter 8</I>, <I>Environment Variables,</I>
+
+<I>Section 12.2</I>, <I>Utility Syntax Guidelines</I>
+
+<A NAME="lbAW">&nbsp;</A>
+<H2>COPYRIGHT</H2>
+
+Portions of this text are reprinted and reproduced in electronic form
+from IEEE Std 1003.1, 2013 Edition, Standard for Information Technology
+-- Portable Operating System Interface (POSIX), The Open Group Base
+Specifications Issue 7, Copyright (C) 2013 by the Institute of
+Electrical and Electronics Engineers, Inc and The Open Group.
+(This is POSIX.1-2008 with the 2013 Technical Corrigendum 1 applied.) In the
+event of any discrepancy between this version and the original IEEE and
+The Open Group Standard, the original IEEE and The Open Group Standard
+is the referee document. The original Standard can be obtained online at
+<A HREF="http://www.unix.org/online.html">http://www.unix.org/online.html</A> .
+<P>
+Any typographical or formatting errors that appear
+in this page are most likely
+to have been introduced during the conversion of the source files to
+man page format. To report such errors, see
+<A HREF="https://www.kernel.org/doc/man-pages/reporting_bugs.html">https://www.kernel.org/doc/man-pages/reporting_bugs.html</A> .
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">PROLOG</A><DD>
+<DT><A HREF="#lbAC">NAME</A><DD>
+<DT><A HREF="#lbAD">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAE">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAF">OPTIONS</A><DD>
+<DT><A HREF="#lbAG">OPERANDS</A><DD>
+<DT><A HREF="#lbAH">STDIN</A><DD>
+<DT><A HREF="#lbAI">INPUT FILES</A><DD>
+<DT><A HREF="#lbAJ">ENVIRONMENT VARIABLES</A><DD>
+<DT><A HREF="#lbAK">ASYNCHRONOUS EVENTS</A><DD>
+<DT><A HREF="#lbAL">STDOUT</A><DD>
+<DT><A HREF="#lbAM">STDERR</A><DD>
+<DT><A HREF="#lbAN">OUTPUT FILES</A><DD>
+<DT><A HREF="#lbAO">EXTENDED DESCRIPTION</A><DD>
+<DT><A HREF="#lbAP">EXIT STATUS</A><DD>
+<DT><A HREF="#lbAQ">CONSEQUENCES OF ERRORS</A><DD>
+<DT><A HREF="#lbAR">APPLICATION USAGE</A><DD>
+<DT><A HREF="#lbAS">EXAMPLES</A><DD>
+<DT><A HREF="#lbAT">RATIONALE</A><DD>
+<DT><A HREF="#lbAU">FUTURE DIRECTIONS</A><DD>
+<DT><A HREF="#lbAV">SEE ALSO</A><DD>
+<DT><A HREF="#lbAW">COPYRIGHT</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 14:28:45 GMT, February 25, 2017
+</BODY>
+</HTML>

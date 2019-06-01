@@ -1,0 +1,2354 @@
+<!DOCTYPE html>
+<html class="no-js hasSidebar hasPageActions hasBreadcrumb conceptual" data-authenticated="false" data-render="docs" dir="ltr" lang="en-us">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Enter-PSSession (Microsoft.PowerShell.Core)" property="og:title"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" property="og:image"/>
+  <meta content="summary" name="twitter:card"/>
+  <meta content="@docsmsft" name="twitter:site"/>
+  <meta content="Enter-PSSession (Microsoft.PowerShell.Core)" name="twitter:title"/>
+  <meta content="The Enter-PSSession cmdlet starts an interactive session with a single remote computer. During the session, the commands that you type run on the remote computer, just as if you were typing directlyâ¦" name="twitter:description"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" name="twitter:image"/>
+  <meta content="Microsoft Logo" name="twitter:image:alt"/>
+  <meta content="The Enter-PSSession cmdlet starts an interactive session with a single remote computer. During the session, the commands that you type run on the remote computer, just as if you were typing directlyâ¦" name="description"/>
+  <meta content="Docs" name="search.ms_sitename"/>
+  <meta content="PowerShell_PowerShell-docs_reference" name="search.ms_docsetname"/>
+  <meta content="0" name="version"/>
+  <meta content="en-us" name="locale"/>
+  <meta content="Docs" name="site_name"/>
+  <meta content="PowerShell" name="search.ms_product"/>
+  <meta content="PowerShell.PowerShell_PowerShell-docs_reference" name="depot_name"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/0c398b3f2a5eec14e3063cd7498aba75609ed506/reference/6/Microsoft.PowerShell.Core/Enter-PSSession.md" name="ref_skeleton_gitcommit"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/live/reference/6/Microsoft.PowerShell.Core/Enter-PSSession.md" name="original_ref_skeleton_git_url"/>
+  <meta content="2018-05-24 09:55 PM" name="updated_at"/>
+  <meta content="a6bec4d3-9abe-d74d-cb6b-085d3cba7030" name="document_id"/>
+  <meta content="5bc062a1-9f01-41f6-189e-691e655f962c" name="document_version_independent_id"/>
+  <meta content="powershell" name="page_type"/>
+  <meta content="command" name="page_kind"/>
+  <meta content="06/09/2017" name="ms.date"/>
+  <meta content="2.0.0" name="schema"/>
+  <meta content="powershell,cmdlet" name="keywords"/>
+  <meta content="http://go.microsoft.com/fwlink/?LinkId=821477" name="online_version"/>
+  <meta content="System.Management.Automation.dll-Help.xml" name="external_help_file"/>
+  <meta content="powershell" name="ms.devlang"/>
+  <meta content="INDEX, FOLLOW" name="ROBOTS"/>
+  <meta content="sdwheeler" name="author"/>
+  <meta content="sewhee" name="ms.author"/>
+  <meta content="carmonm" name="manager"/>
+  <meta content="/powershell/bread-pscore/toc.yml?view=powershell-6" name="breadcrumb_path"/>
+  <meta content="powershell" name="apiPlatform"/>
+  <meta content="reference" name="ms.topic"/>
+  <meta content="windows, macos, linux" name="ms.tgt_pltfr"/>
+  <meta content="powershell-scripting" name="ms.technology"/>
+  <meta content="powershell" name="ms.prod"/>
+  <meta content="MSDocsHeader-Powershell" name="uhfHeaderId"/>
+  <meta content="../psdocs/toc.json?view=powershell-6" name="toc_rel"/>
+  <link href="https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/enter-pssession" rel="canonical"/>
+  <title>
+   Enter-PSSession
+  </title>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/60aac04b.site.css" rel="stylesheet"/>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/fdb8a38a.conceptual.css" rel="stylesheet"/>
+ </head>
+ <body dir="ltr" lang="en-us">
+  <div class="header-holder">
+   <div data-bi-name="header" id="headerAreaHolder">
+    <div id="uhf-placeholder">
+    </div>
+   </div>
+   <div class="disclaimer-holder" id="disclaimer-holder">
+   </div>
+  </div>
+  <div class="container mainContainer" data-bi-name="body">
+   <div class="content-header" data-bi-name="content-header">
+    <div class="content-header-controls">
+     <button class="contents-button button-border" data-bi-name="contents-expand" type="button">
+      <span class="docon docon-menu">
+      </span>
+      Contents
+     </button>
+    </div>
+    <div class="content-header-controls">
+     <button class="ap-collapse-behavior ap-expanded button-border" data-bi-name="ap-collapse" type="button">
+      <span class="docon docon-exit-mode">
+      </span>
+      Exit focus mode
+     </button>
+    </div>
+   </div>
+   <div class="primary-holder">
+    <main class="content" data-bi-name="content" dir="ltr" id="main" lang="en-us" role="main">
+     <!-- <content> -->
+     <h1>
+      Enter-PSSession
+     </h1>
+     <div class="metadata">
+      <dl class="attributeList">
+       <dt>
+        Module:
+       </dt>
+       <dd>
+        <a data-linktype="relative-path" href="./Microsoft.PowerShell.Core.html">
+         Microsoft.PowerShell.Core
+        </a>
+       </dd>
+      </dl>
+     </div>
+     <div class="summaryHolder">
+      <div class="summary">
+       Starts an interactive session with a remote computer.
+      </div>
+     </div>
+     <h2 class="hiddenAnchor" id="syntax">
+      Syntax
+     </h2>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Enter-PSSession
+     [-ComputerName] &lt;String&gt;
+     [-EnableNetworkAccess]
+     [-Credential &lt;PSCredential&gt;]
+     [-ConfigurationName &lt;String&gt;]
+     [-Port &lt;Int32&gt;]
+     [-UseSSL]
+     [-ApplicationName &lt;String&gt;]
+     [-SessionOption &lt;PSSessionOption&gt;]
+     [-Authentication &lt;AuthenticationMechanism&gt;]
+     [-CertificateThumbprint &lt;String&gt;]
+     [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Enter-PSSession
+     [[-Session] &lt;PSSession&gt;]
+     [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Enter-PSSession
+     [[-ConnectionUri] &lt;Uri&gt;]
+     [-EnableNetworkAccess]
+     [-Credential &lt;PSCredential&gt;]
+     [-ConfigurationName &lt;String&gt;]
+     [-AllowRedirection]
+     [-SessionOption &lt;PSSessionOption&gt;]
+     [-Authentication &lt;AuthenticationMechanism&gt;]
+     [-CertificateThumbprint &lt;String&gt;]
+     [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Enter-PSSession
+     [-InstanceId &lt;Guid&gt;]
+     [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Enter-PSSession
+     [[-Id] &lt;Int32&gt;]
+     [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Enter-PSSession
+     [-Name &lt;String&gt;]
+     [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Enter-PSSession
+     -VMId &lt;Guid&gt;
+     -Credential &lt;PSCredential&gt;
+     [-ConfigurationName &lt;String&gt;]
+     [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Enter-PSSession
+     [-VMName] &lt;String&gt;
+     -Credential &lt;PSCredential&gt;
+     [-ConfigurationName &lt;String&gt;]
+     [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Enter-PSSession
+     -ContainerId &lt;String&gt;
+     [-ConfigurationName &lt;String&gt;]
+     [-RunAsAdministrator]
+     [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Enter-PSSession
+     [-HostName] &lt;string&gt;
+     [-Port &lt;int&gt;]
+     [-UserName &lt;string&gt;]
+     [-KeyFilePath &lt;string&gt;]
+     [-SSHTransport]
+     [&lt;CommonParameters&gt;]</code></pre>
+     <h2 id="description">
+      Description
+     </h2>
+     <p>
+      The
+      <strong>
+       Enter-PSSession
+      </strong>
+      cmdlet starts an interactive session with a single remote computer.
+During the session, the commands that you type run on the remote computer, just as if you were typing directly on the remote computer.
+You can have only one interactive session at a time.
+     </p>
+     <p>
+      Typically, you use the
+      <em>
+       ComputerName
+      </em>
+      parameter to specify the name of the remote computer.
+However, you can also use a session that you create by using the New-PSSession cmdlet for the interactive session.
+However, you cannot use the Disconnect-PSSession, Connect-PSSession, or Receive-PSSession cmdlets to disconnect from or re-connect to an interactive session.
+     </p>
+     <p>
+      Starting with PowerShell 6.0 you can use Secure Shell (SSH) to establish a connection to a remote computer, if SSH is available on the local computer and the remote computer is configured with a PowerShell SSH endpoint. The benefit an SSH based PowerShell remote session is that it works across multiple platforms (Windows, Linux, macOS). For SSH based remoting you use the
+      <strong>
+       HostName
+      </strong>
+      parameter set to specify the remote computer and relevant connection information.
+For more information about how to set up PowerShell SSH remoting see the
+      <a data-linktype="absolute-path" href="/en-us/powershell/scripting/core-powershell/ssh-remoting-in-powershell-core">
+       PowerShell remoting over SSH
+      </a>
+      topic.
+     </p>
+     <p>
+      To end the interactive session and disconnect from the remote computer, use the Exit-PSSession cmdlet, or type
+      <code>
+       exit
+      </code>
+      .
+     </p>
+     <h2 id="examples">
+      Examples
+     </h2>
+     <p>
+      <strong>
+       Example 1: Start an interactive session
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Enter-PSSession
+
+[localhost]: PS C:\&gt;</code></pre>
+     <p>
+      This command starts an interactive session on the local computer.
+The command prompt changes to indicate that you are now running commands in a different session.
+     </p>
+     <p>
+      The commands that you enter run in the new session, and the results are returned to the default session as text.
+     </p>
+     <p>
+      <strong>
+       Example 2: Work with an interactive session
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">The first command uses the **Enter-PSSession** cmdlet to start an interactive session with Server01, a remote computer. When the session starts, the command prompt changes to include the computer name.
+
+PS C:\&gt; Enter-PSSession -Computer Server01
+
+[Server01]: PS C:\&gt;
+
+
+
+The second command gets the Windows PowerShell process and redirects the output to the Process.txt file. The command is submitted to the remote computer, and the file is saved on the remote computer.
+
+[Server01]: PS C:\&gt; Get-Process Powershell &gt; C:\ps-test\Process.txt
+
+
+
+The third command uses the **Exit** keyword to end the interactive session and close the connection.
+
+[Server01]: PS C:\&gt; exit
+
+PS C:\&gt;
+
+
+
+The fourth command confirms that the Process.txt file is on the remote computer. A **Get-ChildItem** ("dir") command on the local computer cannot find the file.
+
+PS C:\&gt; dir C:\ps-test\process.txt
+
+Get-ChildItem : Cannot find path 'C:\ps-test\process.txt' because it does not exist.
+
+At line:1 char:4
+
++ dir &lt;&lt;&lt;&lt;  c:\ps-test\process.txt</code></pre>
+     <p>
+      This command shows how to work in an interactive session with a remote computer.
+     </p>
+     <p>
+      <strong>
+       Example 3: Use the Session parameter
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; $s = New-PSSession -ComputerName Server01
+
+PS C:\&gt; Enter-PSSession -Session $s
+
+[Server01]: PS C:\&gt;</code></pre>
+     <p>
+      These commands use the
+      <em>
+       Session
+      </em>
+      parameter of
+      <strong>
+       Enter-PSSession
+      </strong>
+      to run the interactive session in an existing Windows PowerShell session (
+      <strong>
+       PSSession
+      </strong>
+      ).
+     </p>
+     <p>
+      <strong>
+       Example 4: Start an interactive session and specify the Port and Credential parameters
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Enter-PSSession -ComputerName Server01 -Port 90 -Credential Domain01\User01
+
+[Server01]: PS C:\&gt;</code></pre>
+     <p>
+      This command starts an interactive session with the Server01 computer.
+It uses the
+      <em>
+       Port
+      </em>
+      parameter to specify the port and the
+      <em>
+       Credential
+      </em>
+      parameter to specify the account of a user who has permission to connect to the remote computer.
+     </p>
+     <p>
+      <strong>
+       Example 5: Stop an interactive session
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Enter-PSSession -ComputerName Server01
+
+[Server01]: PS C:\&gt; Exit-PSSession
+
+PS C:\&gt;</code></pre>
+     <p>
+      This example shows how to start and stop an interactive session.
+The first command uses the
+      <strong>
+       Enter-PSSession
+      </strong>
+      cmdlet to start an interactive session with the Server01 computer.
+     </p>
+     <p>
+      The second command uses the
+      <strong>
+       Exit-PSSession
+      </strong>
+      cmdlet to end the session.
+You can also use the
+      <strong>
+       Exit
+      </strong>
+      keyword to end the interactive session.
+      <strong>
+       Exit-PSSession
+      </strong>
+      and
+      <strong>
+       Exit
+      </strong>
+      have the same effect.
+     </p>
+     <p>
+      <strong>
+       Example 6: Start an interactive session using SSH
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Enter-PSSession -HostName LinuxServer01 -UserName UserA</code></pre>
+     <p>
+      This example shows how to start an interactive session using Secure Shell (SSH). If SSH is configured on the remote computer to prompt for passwords then you will get a password prompt.  Otherwise you will have to use SSH key based user authentication.
+     </p>
+     <p>
+      <strong>
+       Example 7: Start an interactive session using SSH and specify the Port and user authentication key
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Enter-PSSession -HostName LinuxServer02 -UserName UserA -Port 22 -KeyFilePath c:\&lt;path&gt;\userAKey_rsa</code></pre>
+     <p>
+      This example shows how to start an interactive session using SSH. It uses the
+      <em>
+       Port
+      </em>
+      parameter to specify the port to use and the
+      <em>
+       KeyFilePath
+      </em>
+      parameter to specify an RSA key used to authenticate the user on the remote computer.
+     </p>
+     <h2 id="required-parameters">
+      Required Parameters
+     </h2>
+     <div class="parameterName stack">
+      -ComputerName
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a computer name.
+This cmdlet starts an interactive session with the specified remote computer.
+Enter only one computer name.
+The default is the local computer.
+      </p>
+      <p>
+       Type the NetBIOS name, the IP address, or the fully qualified domain name of the computer.
+You can also pipe a computer name to
+       <strong>
+        Enter-PSSession
+       </strong>
+       .
+      </p>
+      <p>
+       To use an IP address in the value of the
+       <em>
+        ComputerName
+       </em>
+       parameter, the command must include the
+       <em>
+        Credential
+       </em>
+       parameter.
+Also, the computer must be configured for HTTPS transport or the IP address of the remote computer must be included in the WinRM TrustedHosts list on the local computer.
+For instructions for adding a computer name to the TrustedHosts list, see "How to Add a Computer to the Trusted Host List" in about_Remote_Troubleshooting.
+      </p>
+      <p>
+       Note: In Windows Vista and later versions of the Windows operating system, to include the local computer in the value of the
+       <em>
+        ComputerName
+       </em>
+       parameter, you must start Windows PowerShell with the Run as administrator option.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         Cn
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         0
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName, ByValue)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -ContainerId
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the ID of a container.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName, ByValue)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -HostName
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a computer name for a Secure Shell (SSH) based connection.
+This is similar to the
+       <em>
+        ComputerName
+       </em>
+       parameter except that the connection to the remote computer is made using SSH rather than Windows WinRM.
+      </p>
+      <p>
+       This parameter was introduced in PowerShell 6.0.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         0
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -VMId
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the ID of a virtual machine.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Guid
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         VMGuid
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName, ByValue)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -VMName
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the name of a virtual machine.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         0
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName, ByValue)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="optional-parameters">
+      Optional Parameters
+     </h2>
+     <div class="parameterName stack">
+      -AllowRedirection
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Allows redirection of this connection to an alternate Uniform Resource Identifier (URI).
+By default, redirection is not allowed.
+      </p>
+      <p>
+       When you use the
+       <em>
+        ConnectionURI
+       </em>
+       parameter, the remote destination can return an instruction to redirect to a different URI.
+By default, Windows PowerShell does not redirect connections, but you can use this parameter to allow it to redirect the connection.
+      </p>
+      <p>
+       You can also limit the number of times the connection is redirected by changing the
+       <strong>
+        MaximumConnectionRedirectionCount
+       </strong>
+       session option value.
+Use the
+       <em>
+        MaximumRedirection
+       </em>
+       parameter of the New-PSSessionOption cmdlet or set the
+       <strong>
+        MaximumConnectionRedirectionCount
+       </strong>
+       property of the $PSSessionOption preference variable.
+The default value is 5.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -ApplicationName
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the application name segment of the connection URI.
+Use this parameter to specify the application name when you are not using the
+       <em>
+        ConnectionURI
+       </em>
+       parameter in the command.
+      </p>
+      <p>
+       The default value is the value of the $PSSessionApplicationName preference variable on the local computer.
+If this preference variable is not defined, the default value is WSMAN.
+This value is appropriate for most uses.
+For more information, see about_Preference_Variables.
+      </p>
+      <p>
+       The
+       <strong>
+        WinRM
+       </strong>
+       service uses the application name to select a listener to service the connection request.
+The value of this parameter should match the value of the
+       <strong>
+        URLPrefix
+       </strong>
+       property of a listener on the remote computer.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Authentication
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the mechanism that is used to authenticate the user's credentials.
+The acceptable values for this parameter are:
+      </p>
+      <ul>
+       <li>
+        Default
+       </li>
+       <li>
+        Basic
+       </li>
+       <li>
+        Credssp
+       </li>
+       <li>
+        Digest
+       </li>
+       <li>
+        Kerberos
+       </li>
+       <li>
+        Negotiate
+       </li>
+       <li>
+        NegotiateWithImplicitCredential
+       </li>
+      </ul>
+      <p>
+       The default value is Default.
+      </p>
+      <p>
+       CredSSP authentication is available only in Windows Vista, Windows Server 2008, and later versions of the Windows operating system.
+      </p>
+      <p>
+       For more information about the values of this parameter, see
+       <a data-linktype="external" href="https://msdn.microsoft.com/library/system.management.automation.runspaces.authenticationmechanism">
+        AuthenticationMechanism Enumeration
+       </a>
+       in the MSDN library.
+      </p>
+      <p>
+       Caution: Credential Security Support Provider (CredSSP) authentication, in which the user's credentials are passed to a remote computer to be authenticated, is designed for commands that require authentication on more than one resource, such as accessing a remote network share.
+This mechanism increases the security risk of the remote operation.
+If the remote computer is compromised, the credentials that are passed to it can be used to control the network session.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          AuthenticationMechanism
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Parameter Sets:
+        </td>
+        <td>
+         Default, Basic, Negotiate, NegotiateWithImplicitCredential, Credssp, Digest, Kerberos
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -CertificateThumbprint
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the digital public key certificate (X509) of a user account that has permission to perform this action.
+Enter the certificate thumbprint of the certificate.
+      </p>
+      <p>
+       Certificates are used in client certificate-based authentication.
+They can be mapped only to local user accounts; they do not work with domain accounts.
+      </p>
+      <p>
+       To get a certificate, use the Get-Item or Get-ChildItem command in the Windows PowerShell Cert: drive.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -ConfigurationName
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the session configuration that is used for the interactive session.
+      </p>
+      <p>
+       Enter a configuration name or the fully qualified resource URI for a session configuration.
+If you specify only the configuration name, the following schema URI is prepended:
+       <a data-linktype="external" href="http://schemas.microsoft.com/powershell">
+        http://schemas.microsoft.com/powershell
+       </a>
+       .
+      </p>
+      <p>
+       The session configuration for a session is located on the remote computer.
+If the specified session configuration does not exist on the remote computer, the command fails.
+      </p>
+      <p>
+       The default value is the value of the $PSSessionConfigurationName preference variable on the local computer.
+If this preference variable is not set, the default is Microsoft.PowerShell.
+For more information, see about_Preference_Variables.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -ConnectionUri
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a URI that defines the connection endpoint for the session.
+The URI must be fully qualified.
+The format of this string is as follows:
+      </p>
+      <p>
+       &lt;Transport&gt;://&lt;ComputerName&gt;:&lt;Port&gt;/&lt;ApplicationName&gt;
+      </p>
+      <p>
+       The default value is as follows:
+      </p>
+      <p>
+       <code>
+        http://localhost:5985/WSMAN
+       </code>
+      </p>
+      <p>
+       If you do not specify a
+       <em>
+        ConnectionURI
+       </em>
+       , you can use the
+       <em>
+        UseSSL
+       </em>
+       ,
+       <em>
+        ComputerName
+       </em>
+       ,
+       <em>
+        Port
+       </em>
+       , and
+       <em>
+        ApplicationName
+       </em>
+       parameters to specify the
+       <em>
+        ConnectionURI
+       </em>
+       values.
+      </p>
+      <p>
+       Valid values for the Transport segment of the URI are HTTP and HTTPS.
+If you specify a connection URI with a Transport segment, but do not specify a port, the session is created by using standards ports: 80 for HTTP and 443 for HTTPS.
+To use the default ports for Windows PowerShell remoting, specify port 5985 for HTTP or 5986 for HTTPS.
+      </p>
+      <p>
+       If the destination computer redirects the connection to a different URI, Windows PowerShell prevents the redirection unless you use the
+       <em>
+        AllowRedirection
+       </em>
+       parameter in the command.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Uri
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         URI, CU
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         1
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Credential
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a user account that has permission to perform this action.
+The default is the current user.
+      </p>
+      <p>
+       Type a user name, such as
+       <code>
+        User01
+       </code>
+       ,
+       <code>
+        Domain01\User01
+       </code>
+       , or
+       <code>
+        User@Domain.com
+       </code>
+       , or enter a
+       <strong>
+        PSCredential
+       </strong>
+       object, such as one returned by the Get-Credential cmdlet.
+      </p>
+      <p>
+       When you type a user name, this cmdlet prompts you for a password.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          PSCredential
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -EnableNetworkAccess
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that this cmdlet adds an interactive security token to loopback sessions.
+The interactive token lets you run commands in the loopback session that get data from other computers.
+For example, you can run a command in the session that copies XML files from a remote computer to the local computer.
+      </p>
+      <p>
+       A loopback session is a
+       <strong>
+        PSSession
+       </strong>
+       that originates and ends on the same computer.
+To create a loopback session, omit the
+       <em>
+        ComputerName
+       </em>
+       parameter or set its value to .
+(dot), localhost, or the name of the local computer.
+      </p>
+      <p>
+       By default, loopback sessions are created by using a network token, which might not provide sufficient permission to authenticate to remote computers.
+      </p>
+      <p>
+       The
+       <em>
+        EnableNetworkAccess
+       </em>
+       parameter is effective only in loopback sessions.
+If you use
+       <em>
+        EnableNetworkAccess
+       </em>
+       when you create a session on a remote computer, the command succeeds, but the parameter is ignored.
+      </p>
+      <p>
+       You can also allow remote access in a loopback session by using the
+       <strong>
+        CredSSP
+       </strong>
+       value of the
+       <em>
+        Authentication
+       </em>
+       parameter, which delegates the session credentials to other computers.
+      </p>
+      <p>
+       This parameter was introduced in Windows PowerShell 3.0.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Id
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the ID of an existing session.
+       <strong>
+        Enter-PSSession
+       </strong>
+       uses the specified session for the interactive session.
+      </p>
+      <p>
+       To find the ID of a session, use the Get-PSSession cmdlet.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Int32
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         0
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -InstanceId
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the instance ID of an existing session.
+       <strong>
+        Enter-PSSession
+       </strong>
+       uses the specified session for the interactive session.
+      </p>
+      <p>
+       The instance ID is a GUID.
+To find the instance ID of a session, use the
+       <strong>
+        Get-PSSession
+       </strong>
+       cmdlet.
+You can also use the
+       <em>
+        Session
+       </em>
+       ,
+       <em>
+        Name
+       </em>
+       , or
+       <em>
+        ID
+       </em>
+       parameters to specify an existing session.
+Or, you can use the
+       <em>
+        ComputerName
+       </em>
+       parameter to start a temporary session.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Guid
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -KeyFilePath
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a key file path used by Secure Shell (SSH) to authenticate a user on a remote computer.
+      </p>
+      <p>
+       SSH allows user authentication to be performed via private/public keys as an alternative to basic password authentication. If the remote computer is configured for key authentication then this parameter can be used to provide the key that identifies the user.
+      </p>
+      <p>
+       This parameter was introduced in PowerShell 6.0.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Name
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the friendly name of an existing session.
+       <strong>
+        Enter-PSSession
+       </strong>
+       uses the specified session for the interactive session.
+      </p>
+      <p>
+       If the name that you specify matches more than one session, the command fails.
+You can also use the
+       <em>
+        Session
+       </em>
+       ,
+       <em>
+        InstanceID
+       </em>
+       , or
+       <em>
+        ID
+       </em>
+       parameters to specify an existing session.
+Or, you can use the
+       <em>
+        ComputerName
+       </em>
+       parameter to start a temporary session.
+      </p>
+      <p>
+       To establish a friendly name for a session, use the
+       <em>
+        Name
+       </em>
+       parameter of the
+       <strong>
+        New-PSSession
+       </strong>
+       cmdlet.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Port
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the network port on the remote computer that is used for this command.
+      </p>
+      <p>
+       In PowerShell 6.0 this parameter was inlcuded in the
+       <strong>
+        HostName
+       </strong>
+       parameter set which supports Secure Shell (SSH) connections.
+      </p>
+      <p>
+       <strong>
+        WinRM (ComputerName parameter set)
+       </strong>
+       To connect to a remote computer, the remote computer must be listening on the port that the connection uses.
+The default ports are 5985, which is the WinRM port for HTTP, and 5986, which is the WinRM port for HTTPS.
+      </p>
+      <p>
+       Before using an alternate port, you must configure the WinRM listener on the remote computer to listen at that port.
+Use the following commands to configure the listener:
+      </p>
+      <p>
+       <code>
+        1.
+winrm delete winrm/config/listener?Address=*+Transport=HTTP
+       </code>
+      </p>
+      <p>
+       <code>
+        2.
+winrm create winrm/config/listener?Address=*+Transport=HTTP @{Port="\&lt;port-number\&gt;"}
+       </code>
+      </p>
+      <p>
+       Do not use the
+       <em>
+        Port
+       </em>
+       parameter unless you must.
+The port setting in the command applies to all computers or sessions on which the command runs.
+An alternate port setting might prevent the command from running on all computers.
+      </p>
+      <p>
+       <strong>
+        SSH (HostName parameter set)
+       </strong>
+       To connect to a remote computer, the remote computer must be configured with the SSH service (SSHD) and must be listening on the port that the connection uses.
+The default port for SSH is 22.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Int32
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -RunAsAdministrator
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that the
+       <strong>
+        PSSession
+       </strong>
+       runs as administrator.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -SSHTransport
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that the remote connection is established using Secure Shell (SSH).
+      </p>
+      <p>
+       By default PowerShell uses Windows WinRM to connect to a remote computer. This switch forces PowerShell to use the HostName parameter set for establishing an SSH based remote connection.
+      </p>
+      <p>
+       This parameter was introduced in PowerShell 6.0.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Session
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a Windows PowerShell session (
+       <strong>
+        PSSession
+       </strong>
+       ) to use for the interactive session.
+This parameter takes a session object.
+You can also use the
+       <em>
+        Name
+       </em>
+       ,
+       <em>
+        InstanceID
+       </em>
+       , or
+       <em>
+        ID
+       </em>
+       parameters to specify a
+       <strong>
+        PSSession
+       </strong>
+       .
+      </p>
+      <p>
+       Enter a variable that contains a session object or a command that creates or gets a session object, such as a
+       <strong>
+        New-PSSession
+       </strong>
+       or
+       <strong>
+        Get-PSSession
+       </strong>
+       command.
+You can also pipe a session object to
+       <strong>
+        Enter-PSSession
+       </strong>
+       .
+You can submit only one
+       <strong>
+        PSSession
+       </strong>
+       by using this parameter.
+If you enter a variable that contains more than one
+       <strong>
+        PSSession
+       </strong>
+       , the command fails.
+      </p>
+      <p>
+       When you use
+       <strong>
+        Exit-PSSession
+       </strong>
+       or the
+       <strong>
+        EXIT
+       </strong>
+       keyword, the interactive session ends, but the
+       <strong>
+        PSSession
+       </strong>
+       that you created remains open and available for use.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          PSSession
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         0
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName, ByValue)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -SessionOption
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Sets advanced options for the session.
+Enter a
+       <strong>
+        SessionOption
+       </strong>
+       object, such as one that you create by using the
+       <strong>
+        New-PSSessionOption
+       </strong>
+       cmdlet, or a hash table in which the keys are session option names and the values are session option values.
+      </p>
+      <p>
+       The default values for the options are determined by the value of the $PSSessionOption preference variable, if it is set.
+Otherwise, the default values are established by options set in the session configuration.
+      </p>
+      <p>
+       The session option values take precedence over default values for sessions set in the $PSSessionOption preference variable and in the session configuration.
+However, they do not take precedence over maximum values, quotas or limits set in the session configuration.
+      </p>
+      <p>
+       For a description of the session options, including the default values, see
+       <strong>
+        New-PSSessionOption
+       </strong>
+       .
+For information about the $PSSessionOption preference variable, see
+       <a data-linktype="relative-path" href="about/about_preference_variables.html">
+        about_Preference_Variables
+       </a>
+       .
+For more information about session configurations, see about_Session_Configurations (
+       <a data-linktype="external" href="http://go.microsoft.com/fwlink/?LinkID=145152">
+        http://go.microsoft.com/fwlink/?LinkID=145152
+       </a>
+       ).
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          PSSessionOption
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -UseSSL
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that this cmdlet uses the Secure Sockets Layer (SSL) protocol to establish a connection to the remote computer.
+By default, SSL is not used.
+      </p>
+      <p>
+       WS-Management encrypts all Windows PowerShell content transmitted over the network.
+The
+       <em>
+        UseSSL
+       </em>
+       parameter is an additional protection that sends the data across an HTTPS connection instead of an HTTP connection.
+      </p>
+      <p>
+       If you use this parameter, but SSL is not available on the port that is used for the command, the command fails.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -UserName
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the user name for the account used to create a session on the remote computer. User authentication method will depend on how Secure Shell (SSH) is configured on the remote computer.
+      </p>
+      <p>
+       If SSH is configured for basic password authentication then you will be prompted for the user password.
+      </p>
+      <p>
+       If SSH is configured for key based user authentication then a key file path can be provided via the
+       <em>
+        KeyFilePath
+       </em>
+       parameter and no password prompt will occur. Note that if the client user key file is located in an SSH known location then the
+       <em>
+        KeyFilePath
+       </em>
+       parameter is not needed for key based authentication, and user authentication will occur automatically based on the user name. See SSH documentation about key based user authentication for more information.
+      </p>
+      <p>
+       This is not a required parameter.  If no
+       <em>
+        UserName
+       </em>
+       parameter is specified then the current log on user name is used for the connection.
+      </p>
+      <p>
+       This parameter was introduced in PowerShell 6.0.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="inputs">
+      Inputs
+     </h2>
+     <p>
+      <strong>
+       System.String, System.Management.Automation.Runspaces.PSSession
+      </strong>
+     </p>
+     <p>
+      You can pipe a computer name, as a string, or a session object to this cmdlet.
+     </p>
+     <h2 id="outputs">
+      Outputs
+     </h2>
+     <p>
+      <strong>
+       None
+      </strong>
+     </p>
+     <p>
+      The cmdlet does not return any output.
+     </p>
+     <h2 id="notes">
+      Notes
+     </h2>
+     <ul>
+      <li>
+       To connect to a remote computer, you must be a member of the Administrators group on the remote computer.
+      </li>
+      <li>
+       In Windows Vista and later versions of the Windows operating system, to start an interactive session on the local computer, you must start Windows PowerShell with the Run as administrator option.
+      </li>
+      <li>
+       When you use
+       <strong>
+        Enter-PSSession
+       </strong>
+       , your user profile on the remote computer is used for the interactive session. The commands in the remote user profile, including commands to add Windows PowerShell snap-ins and to change the command prompt, run before the remote prompt is displayed.
+      </li>
+      <li>
+       <strong>
+        Enter-PSSession
+       </strong>
+       uses the UI culture setting on the local computer for the interactive session. To find the local UI culture, use the $UICulture automatic variable.
+      </li>
+      <li>
+       <strong>
+        Enter-PSSession
+       </strong>
+       requires the Get-Command, Out-Default, and Exit-PSSession cmdlets. If these cmdlets are not included in the session configuration on the remote computer, the
+       <strong>
+        Enter-PSSession
+       </strong>
+       commands fails.
+      </li>
+      <li>
+       Unlike Invoke-Command, which parses and interprets the commands before it sends them to the remote computer,
+       <strong>
+        Enter-PSSession
+       </strong>
+       sends the commands directly to the remote computer without interpretation.
+      </li>
+      <li>
+       If the session that you want to enter is busy processing a command, there might be a delay before Windows PowerShell responds to
+       <strong>
+        the Enter-PSSession
+       </strong>
+       command. You will be connected as soon as the session is available. To cancel the
+       <strong>
+        Enter-PSSession
+       </strong>
+       command, press
+       <code>
+        CTRL+C
+       </code>
+       .
+      </li>
+      <li>
+       The
+       <strong>
+        HostName
+       </strong>
+       parameter set was included starting with PowerShell 6.0. It was added to provide PowerShell remoting based on Secure Shell (SSH). Both SSH and PowerShell are supported on multiple platforms (Windows, Linux, macOS) and PowerShell remoting will work over these platforms where PowerShell and SSH are installed and configured. This is separate from the previous Windows only remoting that is based on WinRM and much of the WinRM specific features and limitations do not apply. For example WinRM based quotas, session options, custom endpoint configuration, and disconnect/reconnect features are currently not supported.
+For more information about how to set up PowerShell SSH remoting see (
+       <a data-linktype="external" href="https://github.com/PowerShell/PowerShell/tree/master/demos/SSHRemoting">
+        https://github.com/PowerShell/PowerShell/tree/master/demos/SSHRemoting
+       </a>
+       ).
+      </li>
+     </ul>
+     <h2 id="related-links">
+      Related Links
+     </h2>
+     <ul>
+      <li>
+       <a data-linktype="relative-path" href="exit-pssession.html">
+        Exit-PSSession
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="get-pssession.html">
+        Get-PSSession
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="invoke-command.html">
+        Invoke-Command
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="new-pssession.html">
+        New-PSSession
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="remove-pssession.html">
+        Remove-PSSession
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="connect-pssession.html">
+        Connect-PSSession
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="disconnect-pssession.html">
+        Disconnect-PSSession
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="receive-pssession.html">
+        Receive-PSSession
+       </a>
+      </li>
+     </ul>
+     <!-- </content> -->
+    </main>
+    <div class="note alert feedback-system-change-alert">
+     <p>
+      Note
+     </p>
+     <p>
+      The feedback system for this content will be changing soon. Old comments will not be carried over. If content within a comment thread is important to you, please save a copy. For more information on the upcoming change,
+      <a href="https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs">
+       we invite you to read our blog post
+      </a>
+      .
+     </p>
+    </div>
+    <div data-bi-name="comments" id="comments-container" role="form">
+    </div>
+   </div>
+  </div>
+  <div class="openfeedback-container" id="openFeedbackContainer">
+  </div>
+  <div class="action-panel">
+  </div>
+ </body>
+</html>

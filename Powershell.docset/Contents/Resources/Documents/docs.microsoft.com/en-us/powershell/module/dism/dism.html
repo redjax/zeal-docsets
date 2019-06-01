@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html class="no-js hasSidebar hasPageActions hasBreadcrumb conceptual" data-authenticated="false" data-render="docs" dir="ltr" lang="en-us">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="DISM" property="og:title"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" property="og:image"/>
+  <meta content="summary" name="twitter:card"/>
+  <meta content="@docsmsft" name="twitter:site"/>
+  <meta content="DISM" name="twitter:title"/>
+  <meta content="Use this topic to help manage Windows and Windows Server technologies with Windows PowerShell." name="twitter:description"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" name="twitter:image"/>
+  <meta content="Microsoft Logo" name="twitter:image:alt"/>
+  <meta content="Docs" name="search.ms_sitename"/>
+  <meta content="powershell-windows" name="search.ms_docsetname"/>
+  <meta content="0" name="version"/>
+  <meta content="en-us" name="locale"/>
+  <meta content="Docs" name="site_name"/>
+  <meta content="MSDN" name="search.ms_product"/>
+  <meta content="MSDN.powershell-windows" name="depot_name"/>
+  <meta content="https://cpubwin.visualstudio.com/DefaultCollection/powershell/_git/powershell/commit/ced7757924addcaea0b7a244ae4d240e4d28d93a?path=%2fdocset%2fwindows%2fdism%2fdism.md&amp;_a=contents" name="ref_skeleton_gitcommit"/>
+  <meta content="https://cpubwin.visualstudio.com/DefaultCollection/powershell/_git/powershell?path=%2fdocset%2fwindows%2fdism%2fdism.md&amp;version=GBlive&amp;_a=contents" name="original_ref_skeleton_git_url"/>
+  <meta content="2017-09-15 03:44 AM" name="updated_at"/>
+  <meta content="a2909a7c-0b34-e12f-d03f-402e895d3886" name="document_id"/>
+  <meta content="583e305b-89cd-15a4-15de-822209712318" name="document_version_independent_id"/>
+  <meta content="powershell" name="page_type"/>
+  <meta content="module" name="page_kind"/>
+  <meta content="../win10-ps/toc.json?view=win10-ps" name="toc_rel"/>
+  <meta content="manage" name="ms.mktglfcycl"/>
+  <meta content="library" name="ms.sitesec"/>
+  <meta content="brianlic" name="ms.author"/>
+  <meta content="DISM" name="Module_Name"/>
+  <meta content="389c464d-8b8d-48e9-aafe-6d8a590d6798" name="Module_Guid"/>
+  <meta content="http://go.microsoft.com/fwlink/?linkid=390767" name="Download_Help_Link"/>
+  <meta content="5.0.1.1" name="Help_Version"/>
+  <meta content="en-US" name="Locale"/>
+  <meta content="Use this topic to help manage Windows and Windows Server technologies with Windows PowerShell." name="description"/>
+  <meta content="powershell, cmdlet" name="keywords"/>
+  <meta content="brianlic-msft" name="author"/>
+  <meta content="alanth" name="manager"/>
+  <meta content="12/21/2016" name="ms.date"/>
+  <meta content="reference" name="ms.topic"/>
+  <meta content="w10" name="ms.prod"/>
+  <meta content="powershell-windows" name="ms.technology"/>
+  <meta content="3DD32417-9E7D-41FE-BB76-8F24D96B835A" name="ms.assetid"/>
+  <meta content="dism" name="Add-AppxProvisionedPackage"/>
+  <meta content="dism" name="Add-WindowsCapability"/>
+  <meta content="dism" name="Add-WindowsDriver"/>
+  <meta content="dism" name="Add-WindowsImage"/>
+  <meta content="dism" name="Add-WindowsPackage"/>
+  <meta content="dism" name="Clear-WindowsCorruptMountPoint"/>
+  <meta content="dism" name="Disable-WindowsOptionalFeature"/>
+  <meta content="dism" name="Dismount-WindowsImage"/>
+  <meta content="dism" name="Enable-WindowsOptionalFeature"/>
+  <meta content="dism" name="Expand-WindowsCustomDataImage"/>
+  <meta content="dism" name="Expand-WindowsImage"/>
+  <meta content="dism" name="Export-WindowsDriver"/>
+  <meta content="dism" name="Export-WindowsImage"/>
+  <meta content="dism" name="Get-AppxProvisionedPackage"/>
+  <meta content="dism" name="Get-WIMBootEntry"/>
+  <meta content="dism" name="Get-WindowsCapability"/>
+  <meta content="dism" name="Get-WindowsDriver"/>
+  <meta content="dism" name="Get-WindowsEdition"/>
+  <meta content="dism" name="Get-WindowsImage"/>
+  <meta content="dism" name="Get-WindowsImageContent"/>
+  <meta content="dism" name="Get-WindowsOptionalFeature"/>
+  <meta content="dism" name="Get-WindowsPackage"/>
+  <meta content="dism" name="Mount-WindowsImage"/>
+  <meta content="dism" name="New-WindowsCustomImage"/>
+  <meta content="dism" name="New-WindowsImage"/>
+  <meta content="dism" name="Optimize-WindowsImage"/>
+  <meta content="dism" name="Remove-AppxProvisionedPackage"/>
+  <meta content="dism" name="Remove-WindowsCapability"/>
+  <meta content="dism" name="Remove-WindowsDriver"/>
+  <meta content="dism" name="Remove-WindowsImage"/>
+  <meta content="dism" name="Remove-WindowsPackage"/>
+  <meta content="dism" name="Repair-WindowsImage"/>
+  <meta content="dism" name="Save-WindowsImage"/>
+  <meta content="dism" name="Set-AppXProvisionedDataFile"/>
+  <meta content="dism" name="Set-WindowsEdition"/>
+  <meta content="dism" name="Set-WindowsProductKey"/>
+  <meta content="dism" name="Split-WindowsImage"/>
+  <meta content="dism" name="Update-WIMBootEntry"/>
+  <meta content="dism" name="Use-WindowsUnattend"/>
+  <meta content="powershell" name="ms.devlang"/>
+  <meta content="INDEX, FOLLOW" name="ROBOTS"/>
+  <meta content="/powershell/windows/bread/toc.json?view=win10-ps" name="breadcrumb_path"/>
+  <meta content="powershell" name="apiPlatform"/>
+  <meta content="MSDocsHeader-WindowsIT" name="uhfHeaderId"/>
+  <link href="https://docs.microsoft.com/en-us/powershell/module/dism/" rel="canonical"/>
+  <title>
+   DISM
+  </title>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/e4a1f3a3.site.css" rel="stylesheet"/>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/31353636.conceptual.css" rel="stylesheet"/>
+ </head>
+ <body dir="ltr" lang="en-us">
+  <div class="header-holder">
+   <div data-bi-name="header" id="headerAreaHolder">
+    <div id="uhf-placeholder">
+    </div>
+   </div>
+   <div class="disclaimer-holder" id="disclaimer-holder">
+   </div>
+  </div>
+  <div class="container mainContainer" data-bi-name="body">
+   <div class="content-header" data-bi-name="content-header">
+    <div class="content-header-controls">
+     <button class="contents-button button-border" data-bi-name="contents-expand" type="button">
+      <span class="docon docon-menu">
+      </span>
+      Contents
+     </button>
+    </div>
+    <div class="content-header-controls">
+     <button class="ap-collapse-behavior ap-expanded button-border" data-bi-name="ap-collapse" type="button">
+      <span class="docon docon-exit-mode">
+      </span>
+      Exit focus mode
+     </button>
+    </div>
+   </div>
+   <div class="primary-holder">
+    <main class="content" data-bi-name="content" dir="ltr" id="main" lang="en-us" role="main">
+     <!-- <content> -->
+     <h1>
+      DISM
+     </h1>
+     <div class="summaryHolder">
+      <div class="summary">
+       <p>
+        The Deployment Image Servicing and Management (DISM) platform is used to mount and service Windows images before deployment. A subset of DISM commands can be used on online Windows images. You can use DISM tools to mount, and get information about, Windows image (.wim) files or virtual hard disks (.vhd or .vhdx). You can also use it to install, uninstall, configure, and update Windows features, packages, and drivers in a Windows image or to change the edition of a Windows image.
+       </p>
+       <p>
+        This topic introduces the DISM cmdlets available in the DISM PowerShell module. This module is available in Windows 8.1 and Windows Server 2012 R2. On other supported operating systems, you can install the DISM module from the
+        <a data-linktype="external" href="http://go.microsoft.com/fwlink/?LinkId=206587">
+         Windows Assessment and Deployment Kit (Windows ADK)
+        </a>
+        . For more information about how to use the DISM PowerShell module installed with the ADK, see
+        <a data-linktype="external" href="http://go.microsoft.com/fwlink/?LinkId=239927">
+         How to Use DISM in Windows PowerShell
+        </a>
+        .
+       </p>
+       <p>
+        For Windows 8.1 and Windows Server 2012 R2, Windows PowerShell 4.0 is included in the installation. For other supported versions of Windows and Windows Server, (including Windows 8, Windows 7 SP1, Windows Server 2012, and Windows Server 2008 R2 SP1), you must install Windows Management Framework 4.0. You can download and install
+        <a data-linktype="external" href="http://go.microsoft.com/fwlink/?LinkId=293881">
+         Windows Management Framework 4.0
+        </a>
+        from the Microsoft Download Center.
+       </p>
+       <p>
+        The DISM platform also includes a command-line tool, DISM.exe, and the
+        <a data-linktype="external" href="http://go.microsoft.com/fwlink/?LinkID=237611">
+         DISM API
+        </a>
+        . The command-line tool is available in the
+        <a data-linktype="external" href="http://go.microsoft.com/fwlink/?LinkId=206587">
+         Windows Assessment and Deployment Kit (Windows ADK)
+        </a>
+        and includes additional functionality that supports servicing commands for international settings.
+       </p>
+       <p>
+        You can check for errors when running DISM cmdlets by checking if the $?. If set to True the last operation succeeded. If False the last operation failed. The $LASTEXITCODE contains the exit code of the last Win32 executable run. For example, to check that the
+        <strong>
+         Get-WindowsImage
+        </strong>
+        cmdlet fails to get information about the Windows image contained in the file, E:\images\c.wim, type the following:
+       </p>
+       <pre><code>try
+{
+
+    Get-WindowsImage -ImagePath E:\images\c.wim
+}
+catch
+{
+    $message = "TRAPPED: {0}: '{1}'" -f ($_.Exception.GetType().FullName), ($_.Exception.Message)
+    Write-host $message
+}
+</code></pre>
+       <p>
+        For more information about error handling, see the
+        <a data-linktype="external" href="http://go.microsoft.com/fwlink/p/?LinkID=317390">
+         about_Try_Catch_Finally
+        </a>
+        .
+       </p>
+      </div>
+     </div>
+     <h2 id="dism">
+      dism
+     </h2>
+     <table class="nameValue">
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Add-AppxProvisionedPackage.html">
+         Add-Appx
+         <wbr/>
+         Provisioned
+         <wbr/>
+         Package
+        </a>
+       </td>
+       <td>
+        <p>
+         Adds an app package (.appx) that will install for each new user to a Windows image.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Add-WindowsCapability.html">
+         Add-Windows
+         <wbr/>
+         Capability
+        </a>
+       </td>
+       <td>
+        <p>
+         Installs a Windows capability package on the specified operating system image.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Add-WindowsDriver.html">
+         Add-Windows
+         <wbr/>
+         Driver
+        </a>
+       </td>
+       <td>
+        <p>
+         Adds a driver to an offline Windows image.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Add-WindowsImage.html">
+         Add-Windows
+         <wbr/>
+         Image
+        </a>
+       </td>
+       <td>
+        <p>
+         Adds an additional image to an existing image (.wim) file.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Add-WindowsPackage.html">
+         Add-Windows
+         <wbr/>
+         Package
+        </a>
+       </td>
+       <td>
+        <p>
+         Adds a single .cab or .msu file to a Windows image.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Clear-WindowsCorruptMountPoint.html">
+         Clear-Windows
+         <wbr/>
+         Corrupt
+         <wbr/>
+         Mount
+         <wbr/>
+         Point
+        </a>
+       </td>
+       <td>
+        <p>
+         Deletes all of the resources associated with a mounted image that has been corrupted.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Disable-WindowsOptionalFeature.html">
+         Disable-Windows
+         <wbr/>
+         Optional
+         <wbr/>
+         Feature
+        </a>
+       </td>
+       <td>
+        <p>
+         Disables a feature in a Windows image.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Dismount-WindowsImage.html">
+         Dismount-Windows
+         <wbr/>
+         Image
+        </a>
+       </td>
+       <td>
+        <p>
+         Dismounts a Windows image from the directory it is mapped to.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Enable-WindowsOptionalFeature.html">
+         Enable-Windows
+         <wbr/>
+         Optional
+         <wbr/>
+         Feature
+        </a>
+       </td>
+       <td>
+        <p>
+         Enables a feature in a Windows image.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Expand-WindowsCustomDataImage.html">
+         Expand-Windows
+         <wbr/>
+         Custom
+         <wbr/>
+         Data
+         <wbr/>
+         Image
+        </a>
+       </td>
+       <td>
+        <p>
+         Expands a custom data image.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Expand-WindowsImage.html">
+         Expand-Windows
+         <wbr/>
+         Image
+        </a>
+       </td>
+       <td>
+        <p>
+         Applies an image to a specified location.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Export-WindowsDriver.html">
+         Export-Windows
+         <wbr/>
+         Driver
+        </a>
+       </td>
+       <td>
+        <p>
+         Exports all third-party drivers from a Windows image to a destination folder.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Export-WindowsImage.html">
+         Export-Windows
+         <wbr/>
+         Image
+        </a>
+       </td>
+       <td>
+        <p>
+         Exports a copy of the specified image to another image file.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-AppxProvisionedPackage.html">
+         Get-Appx
+         <wbr/>
+         Provisioned
+         <wbr/>
+         Package
+        </a>
+       </td>
+       <td>
+        <p>
+         Gets information about app packages (.appx) in an image that will be installed for each new user.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-WIMBootEntry.html">
+         Get-WIMBoot
+         <wbr/>
+         Entry
+        </a>
+       </td>
+       <td>
+        <p>
+         Displays the Windows image file boot (WIMBoot) configuration entries for a specified disk volume.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-WindowsCapability.html">
+         Get-Windows
+         <wbr/>
+         Capability
+        </a>
+       </td>
+       <td>
+        <p>
+         Gets Windows capabilities for an image or a running operating system.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-WindowsDriver.html">
+         Get-Windows
+         <wbr/>
+         Driver
+        </a>
+       </td>
+       <td>
+        <p>
+         Displays information about drivers in a Windows image.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-WindowsEdition.html">
+         Get-Windows
+         <wbr/>
+         Edition
+        </a>
+       </td>
+       <td>
+        <p>
+         Gets edition information about a Windows image.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-WindowsImage.html">
+         Get-Windows
+         <wbr/>
+         Image
+        </a>
+       </td>
+       <td>
+        <p>
+         Gets information about a Windows image in a WIM or VHD file.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-WindowsImageContent.html">
+         Get-Windows
+         <wbr/>
+         Image
+         <wbr/>
+         Content
+        </a>
+       </td>
+       <td>
+        <p>
+         Displays a list of the files and folders in a specified image.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-WindowsOptionalFeature.html">
+         Get-Windows
+         <wbr/>
+         Optional
+         <wbr/>
+         Feature
+        </a>
+       </td>
+       <td>
+        <p>
+         Gets information about optional features in a Windows image.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-WindowsPackage.html">
+         Get-Windows
+         <wbr/>
+         Package
+        </a>
+       </td>
+       <td>
+        <p>
+         Gets information about packages in a Windows image.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Mount-WindowsImage.html">
+         Mount-Windows
+         <wbr/>
+         Image
+        </a>
+       </td>
+       <td>
+        <p>
+         Mounts a Windows image in a WIM or VHD file to a directory on the local computer.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="New-WindowsCustomImage.html">
+         New-Windows
+         <wbr/>
+         Custom
+         <wbr/>
+         Image
+        </a>
+       </td>
+       <td>
+        <p>
+         Captures an image of customized or serviced Windows components on a Windows Image File Boot (WIMBoot) configured device.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="New-WindowsImage.html">
+         New-Windows
+         <wbr/>
+         Image
+        </a>
+       </td>
+       <td>
+        <p>
+         Captures an image of a drive to a new WIM file.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Optimize-WindowsImage.html">
+         Optimize-Windows
+         <wbr/>
+         Image
+        </a>
+       </td>
+       <td>
+        <p>
+         Configures a Windows image with specified optimizations.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Remove-AppxProvisionedPackage.html">
+         Remove-Appx
+         <wbr/>
+         Provisioned
+         <wbr/>
+         Package
+        </a>
+       </td>
+       <td>
+        <p>
+         Removes an app package (.appx) from a Windows image.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Remove-WindowsCapability.html">
+         Remove-Windows
+         <wbr/>
+         Capability
+        </a>
+       </td>
+       <td>
+        <p>
+         Uninstalls a Windows capability package from an image.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Remove-WindowsDriver.html">
+         Remove-Windows
+         <wbr/>
+         Driver
+        </a>
+       </td>
+       <td>
+        <p>
+         Removes a driver from an offline Windows image.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Remove-WindowsImage.html">
+         Remove-Windows
+         <wbr/>
+         Image
+        </a>
+       </td>
+       <td>
+        <p>
+         Deletes the specified volume image from a WIM file that has multiple volume images.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Remove-WindowsPackage.html">
+         Remove-Windows
+         <wbr/>
+         Package
+        </a>
+       </td>
+       <td>
+        <p>
+         Removes a package from a Windows image.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Repair-WindowsImage.html">
+         Repair-Windows
+         <wbr/>
+         Image
+        </a>
+       </td>
+       <td>
+        <p>
+         Repairs a Windows image in a WIM or VHD file.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Save-WindowsImage.html">
+         Save-Windows
+         <wbr/>
+         Image
+        </a>
+       </td>
+       <td>
+        <p>
+         Applies changes made to a mounted image to its WIM or VHD file.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Set-AppXProvisionedDataFile.html">
+         Set-App
+         <wbr/>
+         XProvisioned
+         <wbr/>
+         Data
+         <wbr/>
+         File
+        </a>
+       </td>
+       <td>
+        <p>
+         Adds custom data into the specified app (.appx) package that has been provisioned in a Windows image.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Set-WindowsEdition.html">
+         Set-Windows
+         <wbr/>
+         Edition
+        </a>
+       </td>
+       <td>
+        <p>
+         Changes a Windows image to a higher edition.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Set-WindowsProductKey.html">
+         Set-Windows
+         <wbr/>
+         Product
+         <wbr/>
+         Key
+        </a>
+       </td>
+       <td>
+        <p>
+         Sets the product key for the Windows image.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Split-WindowsImage.html">
+         Split-Windows
+         <wbr/>
+         Image
+        </a>
+       </td>
+       <td>
+        <p>
+         Splits an existing .wim file into multiple read-only split .wim files.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Update-WIMBootEntry.html">
+         Update-WIMBoot
+         <wbr/>
+         Entry
+        </a>
+       </td>
+       <td>
+        <p>
+         Updates the Windows image file boot (WIMBoot) configuration entry, associated with either the specified data source ID, the renamed image file path or the moved image file path.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Use-WindowsUnattend.html">
+         Use-Windows
+         <wbr/>
+         Unattend
+        </a>
+       </td>
+       <td>
+        <p>
+         Applies an unattended answer file to a Windows image.
+        </p>
+       </td>
+      </tr>
+     </table>
+     <!-- </content> -->
+    </main>
+    <section class="feedback-section" data-bi-name="feedback-section">
+     <h2 id="feedback">
+      Feedback
+     </h2>
+     <div class="alert choose-feedback-type">
+      <p>
+       We'd love to hear your thoughts. Choose the type you'd like to provide:
+      </p>
+      <div class="choose-feedback-buttons">
+       <a class="button-border feedback-type-product" data-bi-name="product-feedback" href="https://windowsserver.uservoice.com/forums/301869-powershell">
+        Product feedback
+        <span aria-hidden="true" class="docon docon-navigate-external">
+        </span>
+       </a>
+       <div class="button-group">
+        <button class="button-border feedback-sign-in-button" data-bi-name="feedback-sign-in">
+         <span aria-hidden="true" class="docon docon-brand-github">
+         </span>
+         Sign in to give documentation feedback
+        </button>
+        <button aria-controls="feedback-form" aria-expanded="false" class="button-border feedback-form-toggle" data-bi-name="documentation-feedback" hidden="">
+         Content feedback
+        </button>
+        <div auto-align="" class="dropdown has-caret">
+         <button aria-controls="fbm0" aria-expanded="false" aria-haspopup="true" aria-label="Expand documentation feedback menu" class="button-border dropdown-trigger" data-bi-name="documentation-feedback-menu">
+          <span aria-hidden="true" class="docon docon-chevron-down-light">
+          </span>
+         </button>
+         <div class="dropdown-menu documentation-feedback-menu" id="fbm0" role="menu">
+          You may also leave feedback
+          <a data-bi-name="create-issue-on-github" href="{0}">
+           directly on GitHub
+           <span aria-hidden="true" class="docon docon-navigate-external">
+           </span>
+          </a>
+          .
+         </div>
+        </div>
+       </div>
+      </div>
+      <p>
+       <small>
+        Our new feedback system is built on GitHub Issues. Read about this change in
+        <a href="https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs">
+         our blog post
+        </a>
+        .
+       </small>
+      </p>
+     </div>
+     <form accept-charset="UTF-8" action="javascript:" autocomplete="off" class="feedback-form" hidden="" id="feedback-form">
+      <h3 class="feedback-form-heading current-user">
+       <img alt="Avatar" aria-hidden="true" class="avatar" height="36" width="36"/>
+       <span aria-hidden="true" class="username">
+       </span>
+       <span class="visually-hidden">
+        Liquid error: Can't find the localized string giveDocumentationFeedback for template Conceptual.
+       </span>
+      </h3>
+      <label>
+       <span class="visually-hidden">
+        Title
+       </span>
+       <input name="title" pattern=".*\w.*" placeholder="Title" required="" type="text"/>
+      </label>
+      <label>
+       <span class="visually-hidden">
+        Leave a comment
+       </span>
+       <textarea name="body" placeholder="Leave a comment" required=""></textarea>
+      </label>
+      <div class="action-container">
+       <button class="primary-action" name="submit" type="submit">
+        Submit feedback
+       </button>
+      </div>
+     </form>
+     <div class="feedback-status alert busy" role="alert">
+      <p>
+       Loading feedback...
+      </p>
+     </div>
+     <div class="feedback-tab-group tabGroup" data-tab-group-independent="" hidden="">
+      <ul role="tablist">
+       <li role="presentation">
+        <a aria-controls="tabpanel-issues-open" aria-label="Open Issues" data-tab="issues-open" href="#tabpanel-issues-open" role="tab">
+        </a>
+       </li>
+       <li role="presentation">
+        <a aria-controls="tabpanel-issues-closed" aria-label="Closed Issues" data-tab="issues-closed" href="#tabpanel-issues-closed" role="tab">
+        </a>
+       </li>
+      </ul>
+      <section data-tab="issues-open" id="tabpanel-issues-open" role="tabpanel">
+       <div class="no-issues-placeholder">
+        There are no open issues
+       </div>
+       <ul aria-label="Open Issues" class="github-issues-list">
+       </ul>
+      </section>
+      <section data-tab="issues-closed" id="tabpanel-issues-closed" role="tabpanel">
+       <div class="no-issues-placeholder">
+        There are no closed issues
+       </div>
+       <ul aria-label="Closed Issues" class="github-issues-list">
+       </ul>
+      </section>
+     </div>
+     <div class="action-container">
+      <a class="view-on-github" data-bi-name="view-on-github" hidden="" href="https://github.com/MicrosoftDocs/windows-powershell-docs/issues">
+       <span aria-hidden="true" class="docon docon-brand-github">
+       </span>
+       <span>
+        View on GitHub
+       </span>
+       <span aria-hidden="true" class="docon docon-navigate-external">
+       </span>
+      </a>
+     </div>
+    </section>
+   </div>
+  </div>
+  <div class="openfeedback-container" id="openFeedbackContainer">
+  </div>
+  <div class="action-panel">
+  </div>
+ </body>
+</html>

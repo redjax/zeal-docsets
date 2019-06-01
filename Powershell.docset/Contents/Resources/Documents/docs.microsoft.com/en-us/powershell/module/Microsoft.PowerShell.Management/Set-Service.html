@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+<html class="no-js hasSidebar hasPageActions hasBreadcrumb conceptual" data-authenticated="false" data-render="docs" dir="ltr" lang="en-us">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Set-Service (Microsoft.PowerShell.Management)" property="og:title"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" property="og:image"/>
+  <meta content="summary" name="twitter:card"/>
+  <meta content="@docsmsft" name="twitter:site"/>
+  <meta content="Set-Service (Microsoft.PowerShell.Management)" name="twitter:title"/>
+  <meta content="The Set-Service cmdlet changes the properties of a local or remote service. This includes the status, description, display name, and start mode. You can use this cmdlet to start, stop, or suspend, orâ¦" name="twitter:description"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" name="twitter:image"/>
+  <meta content="Microsoft Logo" name="twitter:image:alt"/>
+  <meta content="The Set-Service cmdlet changes the properties of a local or remote service. This includes the status, description, display name, and start mode. You can use this cmdlet to start, stop, or suspend, orâ¦" name="description"/>
+  <meta content="Docs" name="search.ms_sitename"/>
+  <meta content="PowerShell_PowerShell-docs_reference" name="search.ms_docsetname"/>
+  <meta content="0" name="version"/>
+  <meta content="en-us" name="locale"/>
+  <meta content="Docs" name="site_name"/>
+  <meta content="PowerShell" name="search.ms_product"/>
+  <meta content="PowerShell.PowerShell_PowerShell-docs_reference" name="depot_name"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/446813f2b0922607a6ae1d2df7a11be56edfa4c1/reference/6/Microsoft.PowerShell.Management/Set-Service.md" name="ref_skeleton_gitcommit"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/live/reference/6/Microsoft.PowerShell.Management/Set-Service.md" name="original_ref_skeleton_git_url"/>
+  <meta content="2018-03-30 03:35 PM" name="updated_at"/>
+  <meta content="8e165924-1ae5-9e65-7660-51676680a63c" name="document_id"/>
+  <meta content="6cffca1e-ef66-505b-d610-1a9f5867e116" name="document_version_independent_id"/>
+  <meta content="powershell" name="page_type"/>
+  <meta content="command" name="page_kind"/>
+  <meta content="06/09/2017" name="ms.date"/>
+  <meta content="2.0.0" name="schema"/>
+  <meta content="powershell,cmdlet" name="keywords"/>
+  <meta content="http://go.microsoft.com/fwlink/?LinkId=821633" name="online_version"/>
+  <meta content="Microsoft.PowerShell.Commands.Management.dll-Help.xml" name="external_help_file"/>
+  <meta content="powershell" name="ms.devlang"/>
+  <meta content="INDEX, FOLLOW" name="ROBOTS"/>
+  <meta content="sdwheeler" name="author"/>
+  <meta content="sewhee" name="ms.author"/>
+  <meta content="carmonm" name="manager"/>
+  <meta content="/powershell/bread-pscore/toc.yml?view=powershell-6" name="breadcrumb_path"/>
+  <meta content="powershell" name="apiPlatform"/>
+  <meta content="reference" name="ms.topic"/>
+  <meta content="windows, macos, linux" name="ms.tgt_pltfr"/>
+  <meta content="powershell-scripting" name="ms.technology"/>
+  <meta content="powershell" name="ms.prod"/>
+  <meta content="MSDocsHeader-Powershell" name="uhfHeaderId"/>
+  <meta content="../psdocs/toc.json?view=powershell-6" name="toc_rel"/>
+  <link href="https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.management/set-service" rel="canonical"/>
+  <title>
+   Set-Service
+  </title>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/60aac04b.site.css" rel="stylesheet"/>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/fdb8a38a.conceptual.css" rel="stylesheet"/>
+ </head>
+ <body dir="ltr" lang="en-us">
+  <div class="header-holder">
+   <div data-bi-name="header" id="headerAreaHolder">
+    <div id="uhf-placeholder">
+    </div>
+   </div>
+   <div class="disclaimer-holder" id="disclaimer-holder">
+   </div>
+  </div>
+  <div class="container mainContainer" data-bi-name="body">
+   <div class="content-header" data-bi-name="content-header">
+    <div class="content-header-controls">
+     <button class="contents-button button-border" data-bi-name="contents-expand" type="button">
+      <span class="docon docon-menu">
+      </span>
+      Contents
+     </button>
+    </div>
+    <div class="content-header-controls">
+     <button class="ap-collapse-behavior ap-expanded button-border" data-bi-name="ap-collapse" type="button">
+      <span class="docon docon-exit-mode">
+      </span>
+      Exit focus mode
+     </button>
+    </div>
+   </div>
+   <div class="primary-holder">
+    <main class="content" data-bi-name="content" dir="ltr" id="main" lang="en-us" role="main">
+     <!-- <content> -->
+     <h1>
+      Set-Service
+     </h1>
+     <div class="metadata">
+      <dl class="attributeList">
+       <dt>
+        Module:
+       </dt>
+       <dd>
+        <a data-linktype="relative-path" href="./Microsoft.PowerShell.Management.html">
+         Microsoft.PowerShell.Management
+        </a>
+       </dd>
+      </dl>
+     </div>
+     <div class="summaryHolder">
+      <div class="summary">
+       Starts, stops, and suspends a service, and changes its properties.
+      </div>
+     </div>
+     <h2 class="hiddenAnchor" id="syntax">
+      Syntax
+     </h2>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Set-Service
+   [-Name] &lt;String&gt;
+   [-DisplayName &lt;String&gt;]
+   [-Description &lt;String&gt;]
+   [-StartupType &lt;ServiceStartMode&gt;]
+   [-Status &lt;String&gt;]
+   [-PassThru]
+   [-WhatIf]
+   [-Confirm]
+   [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Set-Service
+   [-DisplayName &lt;String&gt;]
+   [-Description &lt;String&gt;]
+   [-StartupType &lt;ServiceStartMode&gt;]
+   [-Status &lt;String&gt;]
+   [-InputObject &lt;ServiceController&gt;]
+   [-PassThru]
+   [-WhatIf]
+   [-Confirm]
+   [&lt;CommonParameters&gt;]</code></pre>
+     <h2 id="description">
+      Description
+     </h2>
+     <p>
+      The
+      <strong>
+       Set-Service
+      </strong>
+      cmdlet changes the properties of a local or remote service.
+This includes the status, description, display name, and start mode.
+You can use this cmdlet to start, stop, or suspend, or pause, a service.
+To identify the service, enter its service name or submit a service object, or pipe a service name or service object to
+      <strong>
+       Set-Service
+      </strong>
+      .
+     </p>
+     <h2 id="examples">
+      Examples
+     </h2>
+     <p>
+      <strong>
+       Example 1: Change a display name
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Set-Service -Name "lanmanworkstation" -DisplayName "LanMan Workstation"</code></pre>
+     <p>
+      This command changes the display name of the lanmanworkstation service to LanMan Workstation.
+The default is Workstation.
+     </p>
+     <p>
+      <strong>
+       Example 2: Change the startup type of services
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-WMIObject win32_service -Filter "name = 'SysmonLog'"
+
+
+
+ExitCode  : 0
+
+Name      : SysmonLog
+
+ProcessId : 0
+
+StartMode : Manual
+
+State     : Stopped
+
+Status    : OK
+
+PS C:\&gt; Set-Service -Name "sysmonlog" -StartupType automatic
+
+PS C:\&gt; Get-WMIObject win32_service -Filter "name = 'SysmonLog'"
+
+ExitCode  : 0
+
+Name      : SysmonLog
+
+ProcessId : 0
+
+StartMode : Auto
+
+State     : Stopped
+
+Status    : OK
+
+
+
+PS C:\&gt; Get-WMIObject win32_service | Format-Table Name, StartMode -auto
+
+
+
+Name                                  StartMode
+
+----                                  ---------
+
+AdtAgent                              Auto
+
+Alerter                               Disabled
+
+ALG                                   Manual
+
+AppMgmt                               Manual
+
+...</code></pre>
+     <p>
+      These commands get the startup type of the Performance Logs and Alerts (SysmonLog) service, set the start mode to automatic, and then display the result of the change.
+     </p>
+     <p>
+      These commands use the
+      <strong>
+       Get-WmiObject
+      </strong>
+      cmdlet to get the
+      <strong>
+       Win32_Service
+      </strong>
+      object for the service, because the
+      <strong>
+       ServiceController
+      </strong>
+      object that
+      <strong>
+       Get-Service
+      </strong>
+      returns does not include the start mode.
+     </p>
+     <p>
+      The first command uses the
+      <strong>
+       Get-WmiObject
+      </strong>
+      cmdlet to get the Windows Management Instrumentation (WMI) object that represents the
+      <strong>
+       SysmonLog
+      </strong>
+      service.
+The default output of this command displays the start mode of the service.
+     </p>
+     <p>
+      The second command uses Set-Service to change the start mode to automatic.
+Then, the first command is repeated to display the change.
+     </p>
+     <p>
+      The final command displays the start mode of all services on the computer.
+     </p>
+     <p>
+      <strong>
+       Example 3: Change the description of a service
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Set-Service -Name "Schedule" -Description "Configures and schedules tasks."
+
+PS C:\&gt; Get-WMIObject win32_service | Where-Object {$_.Name -eq "Schedule"} | Format-List Name, Description</code></pre>
+     <p>
+      These commands change the description of the Task Scheduler service and then display the result.
+     </p>
+     <p>
+      These commands use the
+      <strong>
+       Get-WmiObject
+      </strong>
+      cmdlet to get the
+      <strong>
+       Win32_Service
+      </strong>
+      object for the service, because the
+      <strong>
+       ServiceController
+      </strong>
+      object that
+      <strong>
+       Get-Service
+      </strong>
+      returns does not include the service description.
+     </p>
+     <p>
+      The first command changes the description.
+It identifies the service by using the service name of the service, Schedule.
+     </p>
+     <p>
+      The second command uses the
+      <strong>
+       Get-WmiObject
+      </strong>
+      cmdlet to get an instance of the WMI
+      <strong>
+       Win32_Service
+      </strong>
+      that represents the Task Scheduler service.
+The first element in the command gets all instances of the
+      <strong>
+       Win32_service
+      </strong>
+      class.
+     </p>
+     <p>
+      The pipeline operator (|) passes the result to the Where-Object cmdlet, which selects instances with a value of Schedule in the
+      <strong>
+       Name
+      </strong>
+      property.
+     </p>
+     <p>
+      Another pipeline operator sends the result to the Format-List cmdlet, which formats the output as a list that has only the
+      <strong>
+       Name
+      </strong>
+      and
+      <strong>
+       Description
+      </strong>
+      properties.
+     </p>
+     <p>
+      <strong>
+       Example 4: Start a service
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Set-Service -Name "winrm" -Status Running -PassThru</code></pre>
+     <p>
+      This command starts the WinRM service.
+The command uses the Status parameter to specify the desired status, which is running, and the
+      <em>
+       PassThru
+      </em>
+      parameter to direct
+      <strong>
+       Set-Service
+      </strong>
+      to return an object that represents the WinRM service.
+     </p>
+     <p>
+      <strong>
+       Example 5: Suspend a service
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-Service -Name "schedule" | Set-Service -Status paused</code></pre>
+     <p>
+      This command suspends the Schedule service.
+It uses
+      <strong>
+       Get-Service
+      </strong>
+      to get the service.
+A pipeline operator (|) sends the service to
+      <strong>
+       Set-Service
+      </strong>
+      , which changes its status to Paused.
+     </p>
+     <p>
+      <strong>
+       Example 6: Stop a service
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; $s = Get-Service -Name "schedule"
+
+PS C:\&gt; Set-Service -InputObject $s -Status stopped</code></pre>
+     <p>
+      These commands stop the Schedule service.
+     </p>
+     <p>
+      The first command uses
+      <strong>
+       Get-Service
+      </strong>
+      to get the Schedule service.
+The command stores the service in the $s variable.
+     </p>
+     <p>
+      The second command changes the status of the Schedule service to Stopped.
+It uses the
+      <em>
+       InputObject
+      </em>
+      parameter to submit the service stored in the $s variable, and it uses the
+      <em>
+       Status
+      </em>
+      parameter to specify the desired status.
+     </p>
+     <p>
+      <strong>
+       Example 7: Change credential of a service
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; $credential = Get-Credential
+
+PS C:\&gt; Set-Service -Name "schedule" -Credential $credential</code></pre>
+     <p>
+      These commands changes credentials of the Schedule service.
+     </p>
+     <p>
+      The first command uses
+      <strong>
+       Get-Credential
+      </strong>
+      to get the new credentials.
+The command stores the credentials in the $credential variable.
+     </p>
+     <p>
+      The second command changes the credentials of the Schedule service.
+     </p>
+     <h2 id="required-parameters">
+      Required Parameters
+     </h2>
+     <div class="parameterName stack">
+      -Name
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the service name of the service to be changed.
+Wildcard characters are not permitted.
+You can also pipe a service name to
+       <strong>
+        Set-Service
+       </strong>
+       .
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         ServiceName, SN
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         1
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName, ByValue)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="optional-parameters">
+      Optional Parameters
+     </h2>
+     <div class="parameterName stack">
+      -Confirm
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Prompts you for confirmation before running the cmdlet.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         cf
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Credential
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the credentials under which the service should be run.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          PSCredential
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Description
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a new description for the service.
+      </p>
+      <p>
+       The service description appears in Services in Computer Management.
+Description is not a property of the
+       <strong>
+        ServiceController
+       </strong>
+       object that Get-Service gets.
+To see the service description, use Get-WmiObject to get a
+       <strong>
+        Win32_Service
+       </strong>
+       object that represents the service.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -DisplayName
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a new display name for the service.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         DN
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -InputObject
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a
+       <strong>
+        ServiceController
+       </strong>
+       object that represents the service to change.
+Enter a variable that contains the object, or type a command or expression that gets the object, such as a
+       <strong>
+        Get-Service
+       </strong>
+       command.
+You can also pipe a service object to Set-Service.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          ServiceController
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByValue)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -PassThru
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Returns objects that represent the services that were changed.
+By default, this cmdlet does not generate any output.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -StartupType
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the start mode of the service.
+The acceptable values for this parameter are:
+      </p>
+      <ul>
+       <li>
+        Automatic.
+Start when the system starts.
+       </li>
+       <li>
+        Manual.
+Starts only when started by a user or program.
+       </li>
+       <li>
+        Disabled.
+Cannot be started.
+       </li>
+      </ul>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          ServiceStartMode
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         StartMode, SM, ST
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Parameter Sets:
+        </td>
+        <td>
+         Automatic, Manual, Disabled
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Status
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the status for the service.
+The acceptable values for this parameter are:
+      </p>
+      <ul>
+       <li>
+        Running.
+Starts the service.
+       </li>
+       <li>
+        Stopped.
+Stops the service.
+       </li>
+       <li>
+        Paused.
+Suspends the service.
+       </li>
+      </ul>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Parameter Sets:
+        </td>
+        <td>
+         Running, Stopped, Paused
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -WhatIf
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         wi
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="inputs">
+      Inputs
+     </h2>
+     <p>
+      <strong>
+       System.ServiceProcess.ServiceController, System.String
+      </strong>
+     </p>
+     <p>
+      You can pipe a service object or a string that contains a service name to Set-Service.
+     </p>
+     <h2 id="outputs">
+      Outputs
+     </h2>
+     <p>
+      <strong>
+       System.ServiceProcess.ServiceController
+      </strong>
+     </p>
+     <p>
+      This cmdlet does not return any objects.
+     </p>
+     <h2 id="notes">
+      Notes
+     </h2>
+     <ul>
+      <li>
+       To use
+       <strong>
+        Set-Service
+       </strong>
+       on Windows Vista and later versions of the Windows operating system, start Windows PowerShell by using the Run as administrator option.
+      </li>
+      <li>
+       <strong>
+        Set-Service
+       </strong>
+       can control services only when the current user has permission to do this. If a command does not work correctly, you might not have the required permissions.
+      </li>
+      <li>
+       To find the service names and display names of the services on your system, type
+       <code>
+        Get-Service
+       </code>
+       . The service names appear in the
+       <strong>
+        Name
+       </strong>
+       column and the display names appear in the
+       <strong>
+        DisplayName
+       </strong>
+       column.
+      </li>
+     </ul>
+     <h2 id="related-links">
+      Related Links
+     </h2>
+     <ul>
+      <li>
+       <a data-linktype="relative-path" href="get-service.html">
+        Get-Service
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="new-service.html">
+        New-Service
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="restart-service.html">
+        Restart-Service
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="resume-service.html">
+        Resume-Service
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="start-service.html">
+        Start-Service
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="stop-service.html">
+        Stop-Service
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="suspend-service.html">
+        Suspend-Service
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="remove-service.html">
+        Remove-Service
+       </a>
+      </li>
+     </ul>
+     <!-- </content> -->
+    </main>
+    <div class="note alert feedback-system-change-alert">
+     <p>
+      Note
+     </p>
+     <p>
+      The feedback system for this content will be changing soon. Old comments will not be carried over. If content within a comment thread is important to you, please save a copy. For more information on the upcoming change,
+      <a href="https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs">
+       we invite you to read our blog post
+      </a>
+      .
+     </p>
+    </div>
+    <div data-bi-name="comments" id="comments-container" role="form">
+    </div>
+   </div>
+  </div>
+  <div class="openfeedback-container" id="openFeedbackContainer">
+  </div>
+  <div class="action-panel">
+  </div>
+ </body>
+</html>

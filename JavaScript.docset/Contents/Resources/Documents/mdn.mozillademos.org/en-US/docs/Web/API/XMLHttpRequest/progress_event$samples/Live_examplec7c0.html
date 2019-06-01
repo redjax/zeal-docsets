@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    
+<!-- Mirrored from mdn.mozillademos.org/en-US/docs/Web/API/XMLHttpRequest/progress_event$samples/Live_example?revision=1468714 by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 02 May 2019 00:12:16 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+        <meta charset="utf-8">
+        <link href="../../../../../../../developer.mozilla.org/static/build/styles/samples.37902ba3b7fe.css" rel="stylesheet" type="text/css" />
+        
+        <style type="text/css">
+            .event-log {
+    width: 25rem;
+    height: 4rem;
+    border: 1px solid black;
+    margin: .5rem;
+    padding: .2rem;
+}
+
+input {
+    width: 11rem;
+    margin: .5rem;
+}
+
+        </style>
+        
+        <title>XMLHttpRequest: progress event</title>
+    </head>
+    <body>
+        
+            <div class="controls">
+    <input class="xhr success" type="button" name="xhr" value="Click to start XHR (success)" />
+    <input class="xhr error" type="button" name="xhr" value="Click to start XHR (error)" />
+    <input class="xhr abort" type="button" name="xhr" value="Click to start XHR (abort)" />
+</div>
+
+<textarea readonly class="event-log"></textarea>
+        
+        
+            <script>
+                const xhrButtonSuccess = document.querySelector('.xhr.success');
+const xhrButtonError = document.querySelector('.xhr.error');
+const xhrButtonAbort = document.querySelector('.xhr.abort');
+const log = document.querySelector('.event-log');
+
+function handleEvent(e) {
+    log.textContent = log.textContent + `${e.type}: ${e.loaded} bytes transferred\n`;
+}
+
+function addListeners(xhr) {
+    xhr.addEventListener('loadstart', handleEvent);
+    xhr.addEventListener('load', handleEvent);
+    xhr.addEventListener('loadend', handleEvent);
+    xhr.addEventListener('progress', handleEvent);
+    xhr.addEventListener('error', handleEvent);
+    xhr.addEventListener('abort', handleEvent);
+}
+
+function runXHR(url) {
+    log.textContent = '';
+
+    const xhr = new XMLHttpRequest();
+    addListeners(xhr);
+    xhr.open("GET.html", url);
+    xhr.send();
+    return xhr;  
+}
+
+xhrButtonSuccess.addEventListener('click', () => {
+    runXHR('../../../../../../files/16553/DgsZYJNXcAIPwzy.jpg');
+});
+
+xhrButtonError.addEventListener('click', () => {
+    runXHR('https://somewhere.org/i-dont-exist');
+});
+
+xhrButtonAbort.addEventListener('click', () => {
+    runXHR('../../../../../../files/16553/DgsZYJNXcAIPwzy.jpg').abort();
+});
+            </script>
+        
+    </body>
+
+<!-- Mirrored from mdn.mozillademos.org/en-US/docs/Web/API/XMLHttpRequest/progress_event$samples/Live_example?revision=1468714 by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 02 May 2019 00:12:16 GMT -->
+</html>

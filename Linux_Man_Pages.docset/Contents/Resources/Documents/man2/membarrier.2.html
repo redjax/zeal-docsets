@@ -1,0 +1,391 @@
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML><HEAD><TITLE>Man page of MEMBARRIER</TITLE>
+</HEAD><BODY>
+<H1>MEMBARRIER</H1>
+Section: Linux Programmer's Manual (2)<BR>Updated: 2015-12-28<BR><A HREF="#index">Index</A>
+<A HREF="../index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+membarrier - issue memory barriers on a set of threads
+<A NAME="lbAC">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<B>#include &lt;<A HREF="file:///usr/include/linux/membarrier.h">linux/membarrier.h</A>&gt;</B>
+
+<P>
+<B>int membarrier(int </B><I>cmd</I><B>, int </B><I>flags</I><B>);</B>
+
+<A NAME="lbAD">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+The
+<B>membarrier</B>()
+
+system call helps reducing the overhead of the memory barrier
+instructions required to order memory accesses on multi-core systems.
+However, this system call is heavier than a memory barrier, so using it
+effectively is
+<I>not</I>
+
+as simple as replacing memory barriers with this
+system call, but requires understanding of the details below.
+<P>
+Use of memory barriers needs to be done taking into account that a
+memory barrier always needs to be either matched with its memory barrier
+counterparts, or that the architecture's memory model doesn't require the
+matching barriers.
+<P>
+There are cases where one side of the matching barriers (which we will
+refer to as &quot;fast side&quot;) is executed much more often than the other
+(which we will refer to as &quot;slow side&quot;).
+This is a prime target for the use of
+<B>membarrier</B>().
+
+The key idea is to replace, for these matching
+barriers, the fast-side memory barriers by simple compiler barriers,
+for example:
+<P>
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;asm&nbsp;volatile&nbsp;(&quot;&quot;&nbsp;:&nbsp;:&nbsp;:&nbsp;&quot;memory&quot;)
+<P>
+and replace the slow-side memory barriers by calls to
+<B>membarrier</B>().
+
+<P>
+This will add overhead to the slow side, and remove overhead from the
+fast side, thus resulting in an overall performance increase as long as
+the slow side is infrequent enough that the overhead of the
+<B>membarrier</B>()
+
+calls does not outweigh the performance gain on the fast side.
+<P>
+The
+<I>cmd</I>
+
+argument is one of the following:
+<DL COMPACT>
+<DT><B>MEMBARRIER_CMD_QUERY</B>
+
+<DD>
+Query the set of supported commands.
+The return value of the call is a bit mask of supported
+commands.
+<B>MEMBARRIER_CMD_QUERY</B>,
+
+which has the value 0,
+is not itself included in this bit mask.
+This command is always supported (on kernels where
+<B>membarrier</B>()
+
+is provided).
+<DT><B>MEMBARRIER_CMD_SHARED</B>
+
+<DD>
+Ensure that all threads from all processes on the system pass through a
+state where all memory accesses to user-space addresses match program
+order between entry to and return from the
+<B>membarrier</B>()
+
+system call.
+All threads on the system are targeted by this command.
+</DL>
+<P>
+
+The
+<I>flags</I>
+
+argument is currently unused and must be specified as 0.
+<P>
+
+All memory accesses performed in program order from each targeted thread
+are guaranteed to be ordered with respect to
+<B>membarrier</B>().
+
+<P>
+If we use the semantic
+<I>barrier()</I>
+
+to represent a compiler barrier forcing memory
+accesses to be performed in program order across the barrier, and
+<I>smp_mb()</I>
+
+to represent explicit memory barriers forcing full memory
+ordering across the barrier, we have the following ordering table for
+each pairing of
+<I>barrier()</I>,
+
+<B>membarrier</B>()
+
+and
+<I>smp_mb()</I>.
+
+The pair ordering is detailed as (O: ordered, X: not ordered):
+<P>
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;barrier()&nbsp;&nbsp;smp_mb()&nbsp;&nbsp;membarrier()
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;barrier()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;X&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;X&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;O
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;smp_mb()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;X&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;O&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;O
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;membarrier()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;O&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;O&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;O
+<A NAME="lbAE">&nbsp;</A>
+<H2>RETURN VALUE</H2>
+
+On success, the
+<B>MEMBARRIER_CMD_QUERY</B>
+
+operation returns a bit mask of supported commands and the
+<B>MEMBARRIER_CMD_SHARED</B>
+
+operation returns zero.
+On error, -1 is returned,
+and
+<I>errno</I>
+
+is set appropriately.
+<P>
+For a given command, with
+<I>flags</I>
+
+set to 0, this system call is
+guaranteed to always return the same value until reboot.
+Further calls with the same arguments will lead to the same result.
+Therefore, with
+<I>flags</I>
+
+set to 0, error handling is required only for the first call to
+<B>membarrier</B>().
+
+<A NAME="lbAF">&nbsp;</A>
+<H2>ERRORS</H2>
+
+<DL COMPACT>
+<DT><B>EINVAL</B>
+
+<DD>
+<I>cmd</I>
+
+is invalid or
+<I>flags</I>
+
+is non-zero.
+<DT><B>ENOSYS</B>
+
+<DD>
+The
+<B>membarrier</B>()
+
+system call is not implemented by this kernel.
+</DL>
+<A NAME="lbAG">&nbsp;</A>
+<H2>VERSIONS</H2>
+
+The
+<B>membarrier</B>()
+
+system call was added in Linux 4.3.
+
+<A NAME="lbAH">&nbsp;</A>
+<H2>CONFORMING TO</H2>
+
+<B>membarrier</B>()
+
+is Linux-specific.
+<A NAME="lbAI">&nbsp;</A>
+<H2>NOTES</H2>
+
+A memory barrier instruction is part of the instruction set of
+architectures with weakly-ordered memory models.
+It orders memory
+accesses prior to the barrier and after the barrier with respect to
+matching barriers on other cores.
+For instance, a load fence can order
+loads prior to and following that fence with respect to stores ordered
+by store fences.
+<P>
+Program order is the order in which instructions are ordered in the
+program assembly code.
+<P>
+Examples where
+<B>membarrier</B>()
+
+can be useful include implementations
+of Read-Copy-Update libraries and garbage collectors.
+<A NAME="lbAJ">&nbsp;</A>
+<H2>EXAMPLE</H2>
+
+Assuming a multithreaded application where &quot;fast_path()&quot; is executed
+very frequently, and where &quot;slow_path()&quot; is executed infrequently, the
+following code (x86) can be transformed using
+<B>membarrier</B>():
+
+<P>
+
+<PRE>
+#include &lt;<A HREF="file:///usr/include/stdlib.h">stdlib.h</A>&gt;
+
+static volatile int a, b;
+
+static void
+fast_path(void)
+{
+    int read_a, read_b;
+
+    read_b = b;
+    asm volatile (&quot;mfence&quot; : : : &quot;memory&quot;);
+    read_a = a;
+
+    /* read_b == 1 implies read_a == 1. */
+
+    if (read_b == 1 &amp;&amp; read_a == 0)
+        abort();
+}
+
+static void
+slow_path(void)
+{
+    a = 1;
+    asm volatile (&quot;mfence&quot; : : : &quot;memory&quot;);
+    b = 1;
+}
+
+int
+main(int argc, char **argv)
+{
+    /*
+     * Real applications would call fast_path() and slow_path()
+     * from different threads. Call those from main() to keep
+     * this example short.
+     */
+
+    slow_path();
+    fast_path();
+
+    exit(EXIT_SUCCESS);
+}
+</PRE>
+
+
+<P>
+The code above transformed to use
+<B>membarrier</B>()
+
+becomes:
+<P>
+
+<PRE>
+#define _GNU_SOURCE
+#include &lt;<A HREF="file:///usr/include/stdlib.h">stdlib.h</A>&gt;
+#include &lt;<A HREF="file:///usr/include/stdio.h">stdio.h</A>&gt;
+#include &lt;<A HREF="file:///usr/include/unistd.h">unistd.h</A>&gt;
+#include &lt;<A HREF="file:///usr/include/sys/syscall.h">sys/syscall.h</A>&gt;
+#include &lt;<A HREF="file:///usr/include/linux/membarrier.h">linux/membarrier.h</A>&gt;
+
+static volatile int a, b;
+
+static int
+membarrier(int cmd, int flags)
+{
+    return syscall(__NR_membarrier, cmd, flags);
+}
+
+static int
+init_membarrier(void)
+{
+    int ret;
+
+    /* Check that membarrier() is supported. */
+
+    ret = membarrier(MEMBARRIER_CMD_QUERY, 0);
+    if (ret &lt; 0) {
+        perror(&quot;membarrier&quot;);
+        return -1;
+    }
+
+    if (!(ret &amp; MEMBARRIER_CMD_SHARED)) {
+        fprintf(stderr,
+            &quot;membarrier does not support MEMBARRIER_CMD_SHARED\n&quot;);
+        return -1;
+    }
+
+    return 0;
+}
+
+static void
+fast_path(void)
+{
+    int read_a, read_b;
+
+    read_b = b;
+    asm volatile (&quot;&quot; : : : &quot;memory&quot;);
+    read_a = a;
+
+    /* read_b == 1 implies read_a == 1. */
+
+    if (read_b == 1 &amp;&amp; read_a == 0)
+        abort();
+}
+
+static void
+slow_path(void)
+{
+    a = 1;
+    membarrier(MEMBARRIER_CMD_SHARED, 0);
+    b = 1;
+}
+
+int
+main(int argc, char **argv)
+{
+    if (init_membarrier())
+        exit(EXIT_FAILURE);
+
+    /*
+     * Real applications would call fast_path() and slow_path()
+     * from different threads. Call those from main() to keep
+     * this example short.
+     */
+
+    slow_path();
+    fast_path();
+
+    exit(EXIT_SUCCESS);
+}
+</PRE>
+
+
+<A NAME="lbAK">&nbsp;</A>
+<H2>COLOPHON</H2>
+
+This page is part of release 4.09 of the Linux
+<I>man-pages</I>
+
+project.
+A description of the project,
+information about reporting bugs,
+and the latest version of this page,
+can be found at
+<A HREF="https://www.kernel.org/doc/man-pages/.">https://www.kernel.org/doc/man-pages/.</A>
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAD">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAE">RETURN VALUE</A><DD>
+<DT><A HREF="#lbAF">ERRORS</A><DD>
+<DT><A HREF="#lbAG">VERSIONS</A><DD>
+<DT><A HREF="#lbAH">CONFORMING TO</A><DD>
+<DT><A HREF="#lbAI">NOTES</A><DD>
+<DT><A HREF="#lbAJ">EXAMPLE</A><DD>
+<DT><A HREF="#lbAK">COLOPHON</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 14:28:27 GMT, February 25, 2017
+</BODY>
+</HTML>

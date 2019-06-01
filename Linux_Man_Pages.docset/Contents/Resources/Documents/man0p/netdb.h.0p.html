@@ -1,0 +1,473 @@
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML><HEAD><TITLE>Man page of netdb.h</TITLE>
+</HEAD><BODY>
+<H1>netdb.h</H1>
+Section: POSIX Programmer's Manual (0P)<BR>Updated: 2013<BR><A HREF="#index">Index</A>
+<A HREF="../index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>PROLOG</H2>
+
+This manual page is part of the POSIX Programmer's Manual.
+The Linux implementation of this interface may differ (consult
+the corresponding Linux manual page for details of Linux behavior),
+or the interface may not be implemented on Linux.
+<P>
+<A NAME="lbAC">&nbsp;</A>
+<H2>NAME</H2>
+
+netdb.h
+--- definitions for network database operations
+<A NAME="lbAD">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<P>
+
+<PRE>
+#include &lt;<A HREF="file:///usr/include/netdb.h">netdb.h</A>&gt;
+</PRE>
+
+<A NAME="lbAE">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+The
+<I>&lt;<A HREF="file:///usr/include/netdb.h">netdb.h</A>&gt;</I>
+
+header may define the
+<B>in_port_t</B>
+
+type and the
+<B>in_addr_t</B>
+
+type as described in
+<I>&lt;<A HREF="file:///usr/include/netinet/in.h">netinet/in.h</A>&gt;</I>.
+
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/netdb.h">netdb.h</A>&gt;</I>
+
+header shall define the
+<B>hostent</B>
+
+structure, which shall include at least the following members:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+char   *h_name       </B>Official name of the host.
+char  **h_aliases    A pointer to an array of pointers to
+                     alternative host names, terminated by a
+                     null pointer.
+int     h_addrtype   Address type.
+int     h_length     The length, in bytes, of the address.
+char  **h_addr_list  A pointer to an array of pointers to network
+                     addresses (in network byte order) for the host,
+                     terminated by a null pointer.
+</PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/netdb.h">netdb.h</A>&gt;</I>
+
+header shall define the
+<B>netent</B>
+
+structure, which shall include at least the following members:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+char     *n_name      </B>Official, fully-qualified (including the
+                      domain) name of the host.
+char    **n_aliases   A pointer to an array of pointers to
+                      alternative network names, terminated by a
+                      null pointer.
+int       n_addrtype  The address type of the network.
+uint32_t  n_net       The network number, in host byte order.
+</PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/netdb.h">netdb.h</A>&gt;</I>
+
+header shall define the
+<B>uint32_t</B>
+
+type as described in
+<I>&lt;<A HREF="file:///usr/include/inttypes.h">inttypes.h</A>&gt;</I>.
+
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/netdb.h">netdb.h</A>&gt;</I>
+
+header shall define the
+<B>protoent</B>
+
+structure, which shall include at least the following members:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+char   *p_name     </B>Official name of the protocol.
+char  **p_aliases  A pointer to an array of pointers to
+                   alternative protocol names, terminated by
+                   a null pointer.
+int     p_proto    The protocol number.
+</PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/netdb.h">netdb.h</A>&gt;</I>
+
+header shall define the
+<B>servent</B>
+
+structure, which shall include at least the following members:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+char   *s_name     </B>Official name of the service.
+char  **s_aliases  A pointer to an array of pointers to
+                   alternative service names, terminated by
+                   a null pointer.
+int     s_port     A value which, when converted to uint16_t,
+                   yields the port number in network byte order
+                   at which the service resides.
+char   *s_proto    The name of the protocol to use when
+                   contacting the service.
+</PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/netdb.h">netdb.h</A>&gt;</I>
+
+header shall define the IPPORT_RESERVED symbolic constant with the
+value of the highest reserved Internet port number.
+<A NAME="lbAF">&nbsp;</A>
+<H3>Address Information Structure</H3>
+
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/netdb.h">netdb.h</A>&gt;</I>
+
+header shall define the
+<B>addrinfo</B>
+
+structure, which shall include at least the following members:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+int               ai_flags      </B>Input flags.
+int               ai_family     Address family of socket.
+int               ai_socktype   Socket type.
+int               ai_protocol   Protocol of socket.
+socklen_t         ai_addrlen    Length of socket address.
+struct sockaddr  *ai_addr       Socket address of socket.
+char             *ai_canonname  Canonical name of service location.
+struct addrinfo  *ai_next       Pointer to next in list.
+</PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/netdb.h">netdb.h</A>&gt;</I>
+
+header shall define the following symbolic constants that evaluate to
+bitwise-distinct integer constants for use in the
+<I>flags</I>
+
+field of the
+<B>addrinfo</B>
+
+structure:
+<DL COMPACT>
+<DT>AI_PASSIVE<DD>
+Socket address is intended for
+<I>bind</I>().
+<DT>AI_CANONNAME<DD>
+Request for canonical name.
+<DT>AI_NUMERICHOST<DD>
+Return numeric host address as name.
+<DT>AI_NUMERICSERV<DD>
+Inhibit service name resolution.
+<DT>AI_V4MAPPED<DD>
+If no IPv6 addresses are found, query for IPv4 addresses and return
+them to the caller as IPv4-mapped IPv6 addresses.
+<DT>AI_ALL<DD>
+Query for both IPv4 and IPv6 addresses.
+<DT>AI_ADDRCONFIG<DD>
+Query for IPv4 addresses only when an IPv4 address is configured;
+query for IPv6 addresses only when an IPv6 address is configured.
+</DL>
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/netdb.h">netdb.h</A>&gt;</I>
+
+header shall define the following symbolic constants that evaluate
+to bitwise-distinct integer constants for use in the
+<I>flags</I>
+
+argument to
+<I>getnameinfo</I>():
+<DL COMPACT>
+<DT>NI_NOFQDN<DD>
+Only the nodename portion of the FQDN is returned for local hosts.
+<DT>NI_NUMERICHOST<DD>
+The numeric form of the node's address is returned instead of its
+name.
+<DT>NI_NAMEREQD<DD>
+Return an error if the node's name cannot be located in the database.
+<DT>NI_NUMERICSERV<DD>
+The numeric form of the service address is returned instead of its name.
+<DT>NI_NUMERICSCOPE<DD>
+<BR>
+
+For IPv6 addresses, the numeric form of the scope identifier is
+returned instead of its name.
+<DT>NI_DGRAM<DD>
+Indicates that the service is a datagram service (SOCK_DGRAM).
+</DL>
+<A NAME="lbAG">&nbsp;</A>
+<H3>Address Information Errors</H3>
+
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/netdb.h">netdb.h</A>&gt;</I>
+
+header shall define the following symbolic constants for use as
+error values for
+<I>getaddrinfo</I>()
+and
+<I>getnameinfo</I>().
+The values shall be suitable for use in
+<B>#if</B>
+
+preprocessing directives.
+<DL COMPACT>
+<DT>EAI_AGAIN<DD>
+The name could not be resolved at this time. Future attempts may
+succeed.
+<DT>EAI_BADFLAGS<DD>
+The flags had an invalid value.
+<DT>EAI_FAIL<DD>
+A non-recoverable error occurred.
+<DT>EAI_FAMILY<DD>
+The address family was not recognized or the address length was invalid
+for the specified family.
+<DT>EAI_MEMORY<DD>
+There was a memory allocation failure.
+<DT>EAI_NONAME<DD>
+The name does not resolve for the supplied parameters.
+<DL COMPACT><DT><DD>
+<P>
+<P>
+
+NI_NAMEREQD is set and the host's name cannot be located, or both
+<I>nodename</I>
+
+and
+<I>servname</I>
+
+were null.
+</DL>
+
+<DT>EAI_SERVICE<DD>
+The service passed was not recognized for the specified socket type.
+<DT>EAI_SOCKTYPE<DD>
+The intended socket type was not recognized.
+<DT>EAI_SYSTEM<DD>
+A system error occurred. The error code can be found in
+<I>errno</I>.
+
+<DT>EAI_OVERFLOW<DD>
+An argument buffer overflowed.
+</DL>
+<P>
+
+The following shall be declared as functions and may also be defined as
+macros. Function prototypes shall be provided.
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+void              endhostent(void);
+void              endnetent(void);
+void              endprotoent(void);
+void              endservent(void);
+void              freeaddrinfo(struct addrinfo *);
+const char       *gai_strerror(int);
+int               getaddrinfo(const char *restrict, const char *restrict,
+                      const struct addrinfo *restrict,
+                      struct addrinfo **restrict);
+struct hostent   *gethostent(void);
+int               getnameinfo(const struct sockaddr *restrict, socklen_t,
+                      char *restrict, socklen_t, char *restrict,
+                      socklen_t, int);
+struct netent    *getnetbyaddr(uint32_t, int);
+struct netent    *getnetbyname(const char *);
+struct netent    *getnetent(void);
+struct protoent  *getprotobyname(const char *);
+struct protoent  *getprotobynumber(int);
+struct protoent  *getprotoent(void);
+struct servent   *getservbyname(const char *, const char *);
+struct servent   *getservbyport(int, const char *);
+struct servent   *getservent(void);
+void              sethostent(int);
+void              setnetent(int);
+void              setprotoent(int);
+void              setservent(int);
+</B></PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/netdb.h">netdb.h</A>&gt;</I>
+
+header shall define the
+<B>socklen_t</B>
+
+type through
+<B>typedef</B>,
+
+as described in
+<I>&lt;<A HREF="file:///usr/include/sys/socket.h">sys/socket.h</A>&gt;</I>.
+
+<P>
+
+Inclusion of the
+<I>&lt;<A HREF="file:///usr/include/netdb.h">netdb.h</A>&gt;</I>
+
+header may also make visible all symbols from
+<I>&lt;<A HREF="file:///usr/include/netinet/in.h">netinet/in.h</A>&gt;</I>,
+
+<I>&lt;<A HREF="file:///usr/include/sys/socket.h">sys/socket.h</A>&gt;</I>,
+
+and
+<I>&lt;<A HREF="file:///usr/include/inttypes.h">inttypes.h</A>&gt;</I>.
+
+<P>
+
+<I>The following sections are informative.</I>
+
+<A NAME="lbAH">&nbsp;</A>
+<H2>APPLICATION USAGE</H2>
+
+None.
+<A NAME="lbAI">&nbsp;</A>
+<H2>RATIONALE</H2>
+
+None.
+<A NAME="lbAJ">&nbsp;</A>
+<H2>FUTURE DIRECTIONS</H2>
+
+None.
+<A NAME="lbAK">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+<I></I><B>&lt;<A HREF="file:///usr/include/inttypes.h">inttypes.h</A>&gt;</B>,
+
+<I></I><B>&lt;<A HREF="file:///usr/include/netinet_in.h">netinet_in.h</A>&gt;</B>,
+
+<I></I><B>&lt;<A HREF="file:///usr/include/sys_socket.h">sys_socket.h</A>&gt;</B>
+
+<P>
+
+The System Interfaces volume of POSIX.1-2008,
+<I>bind</I>(),
+
+<I>endhostent</I>(),
+
+<I>endnetent</I>(),
+
+<I>endprotoent</I>(),
+
+<I>endservent</I>(),
+
+<I>freeaddrinfo</I>(),
+
+<I>gai_strerror</I>(),
+
+<I>getnameinfo</I>()
+
+<A NAME="lbAL">&nbsp;</A>
+<H2>COPYRIGHT</H2>
+
+Portions of this text are reprinted and reproduced in electronic form
+from IEEE Std 1003.1, 2013 Edition, Standard for Information Technology
+-- Portable Operating System Interface (POSIX), The Open Group Base
+Specifications Issue 7, Copyright (C) 2013 by the Institute of
+Electrical and Electronics Engineers, Inc and The Open Group.
+(This is POSIX.1-2008 with the 2013 Technical Corrigendum 1 applied.) In the
+event of any discrepancy between this version and the original IEEE and
+The Open Group Standard, the original IEEE and The Open Group Standard
+is the referee document. The original Standard can be obtained online at
+<A HREF="http://www.unix.org/online.html">http://www.unix.org/online.html</A> .
+<P>
+Any typographical or formatting errors that appear
+in this page are most likely
+to have been introduced during the conversion of the source files to
+man page format. To report such errors, see
+<A HREF="https://www.kernel.org/doc/man-pages/reporting_bugs.html">https://www.kernel.org/doc/man-pages/reporting_bugs.html</A> .
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">PROLOG</A><DD>
+<DT><A HREF="#lbAC">NAME</A><DD>
+<DT><A HREF="#lbAD">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAE">DESCRIPTION</A><DD>
+<DL>
+<DT><A HREF="#lbAF">Address Information Structure</A><DD>
+<DT><A HREF="#lbAG">Address Information Errors</A><DD>
+</DL>
+<DT><A HREF="#lbAH">APPLICATION USAGE</A><DD>
+<DT><A HREF="#lbAI">RATIONALE</A><DD>
+<DT><A HREF="#lbAJ">FUTURE DIRECTIONS</A><DD>
+<DT><A HREF="#lbAK">SEE ALSO</A><DD>
+<DT><A HREF="#lbAL">COPYRIGHT</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 14:28:43 GMT, February 25, 2017
+</BODY>
+</HTML>

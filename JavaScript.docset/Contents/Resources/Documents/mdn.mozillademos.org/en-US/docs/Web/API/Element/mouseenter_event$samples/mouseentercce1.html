@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    
+<!-- Mirrored from mdn.mozillademos.org/en-US/docs/Web/API/Element/mouseenter_event$samples/mouseenter?revision=1547566 by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 02 May 2019 00:10:35 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+        <meta charset="utf-8">
+        <link href="../../../../../../../developer.mozilla.org/static/build/styles/samples.37902ba3b7fe.css" rel="stylesheet" type="text/css" />
+        
+        <style type="text/css">
+            #mouseTarget {
+  box-sizing: border-box;
+  width:15rem;
+  border:1px solid #333;
+}
+        </style>
+        
+        <title>Element: mouseenter event</title>
+    </head>
+    <body>
+        
+            <div id='mouseTarget'>
+ <ul id="unorderedList">
+  <li>No events yet!</li>
+ </ul>
+</div>
+        
+        
+            <script>
+                var enterEventCount = 0;
+var leaveEventCount = 0;
+const mouseTarget = document.getElementById('mouseTarget');
+const unorderedList = document.getElementById('unorderedList');
+
+mouseTarget.addEventListener('mouseenter', e => {
+  mouseTarget.style.border = '5px dotted orange';
+  enterEventCount++;
+  addListItem('This is mouseenter event ' + enterEventCount + '.');
+});
+
+mouseTarget.addEventListener('mouseleave', e => {
+  mouseTarget.style.border = '1px solid #333';
+  leaveEventCount++;
+  addListItem('This is mouseleave event ' + leaveEventCount + '.');
+});
+
+function addListItem(text) {
+  // Create a new text node using the supplied text
+  var newTextNode = document.createTextNode(text);
+
+  // Create a new li element
+  var newListItem = document.createElement("li");
+
+  // Add the text node to the li element
+  newListItem.appendChild(newTextNode);
+
+  // Add the newly created list item to list
+  unorderedList.appendChild(newListItem);  
+}
+            </script>
+        
+    </body>
+
+<!-- Mirrored from mdn.mozillademos.org/en-US/docs/Web/API/Element/mouseenter_event$samples/mouseenter?revision=1547566 by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 02 May 2019 00:10:35 GMT -->
+</html>

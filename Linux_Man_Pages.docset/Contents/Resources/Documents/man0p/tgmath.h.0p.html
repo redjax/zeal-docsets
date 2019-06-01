@@ -1,0 +1,512 @@
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML><HEAD><TITLE>Man page of tgmath.h</TITLE>
+</HEAD><BODY>
+<H1>tgmath.h</H1>
+Section: POSIX Programmer's Manual (0P)<BR>Updated: 2013<BR><A HREF="#index">Index</A>
+<A HREF="../index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>PROLOG</H2>
+
+This manual page is part of the POSIX Programmer's Manual.
+The Linux implementation of this interface may differ (consult
+the corresponding Linux manual page for details of Linux behavior),
+or the interface may not be implemented on Linux.
+<P>
+<A NAME="lbAC">&nbsp;</A>
+<H2>NAME</H2>
+
+tgmath.h
+--- type-generic macros
+<A NAME="lbAD">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<P>
+
+<PRE>
+#include &lt;<A HREF="file:///usr/include/tgmath.h">tgmath.h</A>&gt;
+</PRE>
+
+<A NAME="lbAE">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+The functionality described on this reference page is aligned with the
+ISO&nbsp;C standard. Any conflict between the requirements described here and the
+ISO&nbsp;C standard is unintentional. This volume of POSIX.1-2008 defers to the ISO&nbsp;C standard.
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/tgmath.h">tgmath.h</A>&gt;</I>
+
+header shall include the headers
+<I>&lt;<A HREF="file:///usr/include/math.h">math.h</A>&gt;</I>
+
+and
+<I>&lt;<A HREF="file:///usr/include/complex.h">complex.h</A>&gt;</I>
+
+and shall define several type-generic macros.
+<P>
+
+Of the functions contained within the
+<I>&lt;<A HREF="file:///usr/include/math.h">math.h</A>&gt;</I>
+
+and
+<I>&lt;<A HREF="file:///usr/include/complex.h">complex.h</A>&gt;</I>
+
+headers without an
+<I>f</I>
+
+(<B>float</B>)
+
+or
+<I>l</I>
+
+(<B>long double</B>)
+
+suffix, several have one or more parameters whose corresponding real
+type is
+<B>double</B>.
+
+For each such function, except
+<I>modf</I>(),
+<I>j0</I>(),
+<I>j1</I>(),
+<I>jn</I>(),
+<I>y0</I>(),
+<I>y1</I>(),
+and
+<I>yn</I>(),
+there shall be a corresponding type-generic macro. The parameters
+whose corresponding real type is
+<B>double</B>
+
+in the function synopsis are generic parameters. Use of the macro
+invokes a function whose corresponding real type and type domain are
+determined by the arguments for the generic parameters.
+<P>
+
+Use of the macro invokes a function whose generic parameters have the
+corresponding real type determined as follows:
+<DL COMPACT>
+<DT> *<DD>
+First, if any argument for generic parameters has type
+<B>long double</B>,
+
+the type determined is
+<B>long double</B>.
+
+<DT> *<DD>
+Otherwise, if any argument for generic parameters has type
+<B>double</B>
+
+or is of integer type, the type determined is
+<B>double</B>.
+
+<DT> *<DD>
+Otherwise, the type determined is
+<B>float</B>.
+
+</DL>
+<P>
+
+For each unsuffixed function in the
+<I>&lt;<A HREF="file:///usr/include/math.h">math.h</A>&gt;</I>
+
+header for which there is a function in the
+<I>&lt;<A HREF="file:///usr/include/complex.h">complex.h</A>&gt;</I>
+
+header with the same name except for a
+<I>c</I>
+
+prefix, the corresponding type-generic macro (for both functions) has
+the same name as the function in the
+<I>&lt;<A HREF="file:///usr/include/math.h">math.h</A>&gt;</I>
+
+header. The corresponding type-generic macro for
+<I>fabs</I>()
+and
+<I>cabs</I>()
+is
+<I>fabs</I>().
+<CENTER><TABLE BORDER><TR><TD><TABLE>
+<TR VALIGN=top><TD ALIGN=center><B>&lt;<A HREF="file:///usr/include/math.h">math.h</A>&gt; Function</B></TD><TD ALIGN=center><B>&lt;<A HREF="file:///usr/include/complex.h">complex.h</A>&gt; Function</B></TD><TD ALIGN=center><B>Type-Generic Macro</B><BR></TD></TR>
+<TR VALIGN=top><TD COLSPAN=3><HR></TD></TR>
+<TR VALIGN=top><TD><I>acos</I>()</TD><TD><I>cacos</I>()</TD><TD><I>acos</I>()<BR></TD></TR>
+<TR VALIGN=top><TD><I>asin</I>()</TD><TD><I>casin</I>()</TD><TD><I>asin</I>()<BR></TD></TR>
+<TR VALIGN=top><TD><I>atan</I>()</TD><TD><I>catan</I>()</TD><TD><I>atan</I>()<BR></TD></TR>
+<TR VALIGN=top><TD><I>acosh</I>()</TD><TD><I>cacosh</I>()</TD><TD><I>acosh</I>()<BR></TD></TR>
+<TR VALIGN=top><TD><I>asinh</I>()</TD><TD><I>casinh</I>()</TD><TD><I>asinh</I>()<BR></TD></TR>
+<TR VALIGN=top><TD><I>atanh</I>()</TD><TD><I>catanh</I>()</TD><TD><I>atanh</I>()<BR></TD></TR>
+<TR VALIGN=top><TD><I>cos</I>()</TD><TD><I>ccos</I>()</TD><TD><I>cos</I>()<BR></TD></TR>
+<TR VALIGN=top><TD><I>sin</I>()</TD><TD><I>csin</I>()</TD><TD><I>sin</I>()<BR></TD></TR>
+<TR VALIGN=top><TD><I>tan</I>()</TD><TD><I>ctan</I>()</TD><TD><I>tan</I>()<BR></TD></TR>
+<TR VALIGN=top><TD><I>cosh</I>()</TD><TD><I>ccosh</I>()</TD><TD><I>cosh</I>()<BR></TD></TR>
+<TR VALIGN=top><TD><I>sinh</I>()</TD><TD><I>csinh</I>()</TD><TD><I>sinh</I>()<BR></TD></TR>
+<TR VALIGN=top><TD><I>tanh</I>()</TD><TD><I>ctanh</I>()</TD><TD><I>tanh</I>()<BR></TD></TR>
+<TR VALIGN=top><TD><I>exp</I>()</TD><TD><I>cexp</I>()</TD><TD><I>exp</I>()<BR></TD></TR>
+<TR VALIGN=top><TD><I>log</I>()</TD><TD><I>clog</I>()</TD><TD><I>log</I>()<BR></TD></TR>
+<TR VALIGN=top><TD><I>pow</I>()</TD><TD><I>cpow</I>()</TD><TD><I>pow</I>()<BR></TD></TR>
+<TR VALIGN=top><TD><I>sqrt</I>()</TD><TD><I>csqrt</I>()</TD><TD><I>sqrt</I>()<BR></TD></TR>
+<TR VALIGN=top><TD><I>fabs</I>()</TD><TD><I>cabs</I>()</TD><TD><I>fabs</I>()<BR></TD></TR>
+</TABLE></TABLE></CENTER>
+
+<P>
+
+If at least one argument for a generic parameter is complex, then use
+of the macro invokes a complex function; otherwise, use of the macro
+invokes a real function.
+<P>
+
+For each unsuffixed function in the
+<I>&lt;<A HREF="file:///usr/include/math.h">math.h</A>&gt;</I>
+
+header without a
+<I>c</I>-prefixed
+
+counterpart in the
+<I>&lt;<A HREF="file:///usr/include/complex.h">complex.h</A>&gt;</I>
+
+header, except for
+<I>modf</I>(),
+<I>j0</I>(),
+<I>j1</I>(),
+<I>jn</I>(),
+<I>y0</I>(),
+<I>y1</I>(),
+and
+<I>yn</I>(),
+the corresponding type-generic macro has the same name as the function.
+These type-generic macros are:
+<P>
+<DL COMPACT><DT><DD>
+<TABLE>
+<TR VALIGN=top><TD>
+<PRE>
+<I>atan2</I>()
+<I>cbrt</I>()
+<I>ceil</I>()
+<I>copysign</I>()
+<I>erf</I>()
+<I>erfc</I>()
+<I>exp2</I>()
+<I>expm1</I>()
+<I>fdim</I>()
+<I>floor</I>()
+</TD><TD>
+<I>fma</I>()
+<I>fmax</I>()
+<I>fmin</I>()
+<I>fmod</I>()
+<I>frexp</I>()
+<I>hypot</I>()
+<I>ilogb</I>()
+<I>ldexp</I>()
+<I>lgamma</I>()
+<I>llrint</I>()
+</TD><TD>
+<I>llround</I>()
+<I>log10</I>()
+<I>log1p</I>()
+<I>log2</I>()
+<I>logb</I>()
+<I>lrint</I>()
+<I>lround</I>()
+<I>nearbyint</I>()
+<I>nextafter</I>()
+<I>nexttoward</I>()
+</TD><TD>
+<I>remainder</I>()
+<I>remquo</I>()
+<I>rint</I>()
+<I>round</I>()
+<I>scalbln</I>()
+<I>scalbn</I>()
+<I>tgamma</I>()
+<I>trunc</I>()
+</PRE>
+
+<BR></TD></TR>
+</TABLE>
+
+</DL>
+
+<P>
+
+If all arguments for generic parameters are real, then use of the macro
+invokes a real function; otherwise, use of the macro results in
+undefined behavior.
+<P>
+
+For each unsuffixed function in the
+<I>&lt;<A HREF="file:///usr/include/complex.h">complex.h</A>&gt;</I>
+
+header that is not a
+<I>c</I>-prefixed
+
+counterpart to a function in the
+<I>&lt;<A HREF="file:///usr/include/math.h">math.h</A>&gt;</I>
+
+header, the corresponding type-generic macro has the same name as the
+function. These type-generic macros are:
+<P>
+<DL COMPACT><DT><DD>
+<I>carg</I>()
+<I>cimag</I>()
+<I>conj</I>()
+<I>cproj</I>()
+<I>creal</I>()
+</DL>
+
+<P>
+
+Use of the macro with any real or complex argument invokes a complex
+function.
+<P>
+
+<I>The following sections are informative.</I>
+
+<A NAME="lbAF">&nbsp;</A>
+<H2>APPLICATION USAGE</H2>
+
+With the declarations:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+#include &lt;<A HREF="file:///usr/include/tgmath.h">tgmath.h</A>&gt;
+int n;
+float f;
+double d;
+long double ld;
+float complex fc;
+double complex dc;
+long double complex ldc;
+</B></PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+functions invoked by use of type-generic macros are shown in the
+following table:
+<CENTER><TABLE BORDER><TR><TD><TABLE>
+<TR VALIGN=top><TD ALIGN=center><B>Macro</B></TD><TD ALIGN=center><B>Use Invokes</B><BR></TD></TR>
+<TR VALIGN=top><TD COLSPAN=2><HR></TD></TR>
+<TR VALIGN=top><TD><I>exp</I>(<I>n</I>)</TD><TD><I>exp</I>(<I>n</I>), the function<BR></TD></TR>
+<TR VALIGN=top><TD><I>acosh</I>(<I>f</I>)</TD><TD><I>acoshf</I>(<I>f</I>)<BR></TD></TR>
+<TR VALIGN=top><TD><I>sin</I>(<I>d</I>)</TD><TD><I>sin</I>(<I>d</I>), the function<BR></TD></TR>
+<TR VALIGN=top><TD><I>atan</I>(<I>ld</I>)</TD><TD><I>atanl</I>(<I>ld</I>)<BR></TD></TR>
+<TR VALIGN=top><TD><I>log</I>(<I>fc</I>)</TD><TD><I>clogf</I>(<I>fc</I>)<BR></TD></TR>
+<TR VALIGN=top><TD><I>sqrt</I>(<I>dc</I>)</TD><TD><I>csqrt</I>(<I>dc</I>)<BR></TD></TR>
+<TR VALIGN=top><TD><I>pow</I>(<I>ldc,f</I>)</TD><TD><I>cpowl</I>(<I>ldc, f</I>)<BR></TD></TR>
+<TR VALIGN=top><TD><I>remainder</I>(<I>n,n</I>)</TD><TD><I>remainder</I>(<I>n, n</I>), the function<BR></TD></TR>
+<TR VALIGN=top><TD><I>nextafter</I>(<I>d,f</I>)</TD><TD><I>nextafter</I>(<I>d, f</I>), the function<BR></TD></TR>
+<TR VALIGN=top><TD><I>nexttoward</I>(<I>f,ld</I>)</TD><TD><I>nexttowardf</I>(<I>f, ld</I>)<BR></TD></TR>
+<TR VALIGN=top><TD><I>copysign</I>(<I>n,ld</I>)</TD><TD><I>copysignl</I>(<I>n, ld</I>)<BR></TD></TR>
+<TR VALIGN=top><TD><I>ceil</I>(<I>fc</I>)</TD><TD>Undefined behavior<BR></TD></TR>
+<TR VALIGN=top><TD><I>rint</I>(<I>dc</I>)</TD><TD>Undefined behavior<BR></TD></TR>
+<TR VALIGN=top><TD><I>fmax</I>(<I>ldc,ld</I>)</TD><TD>Undefined behavior<BR></TD></TR>
+<TR VALIGN=top><TD><I>carg</I>(<I>n</I>)</TD><TD><I>carg</I>(<I>n</I>), the function<BR></TD></TR>
+<TR VALIGN=top><TD><I>cproj</I>(<I>f</I>)</TD><TD><I>cprojf</I>(<I>f</I>)<BR></TD></TR>
+<TR VALIGN=top><TD><I>creal</I>(<I>d</I>)</TD><TD><I>creal</I>(<I>d</I>), the function<BR></TD></TR>
+<TR VALIGN=top><TD><I>cimag</I>(<I>ld</I>)</TD><TD><I>cimagl</I>(<I>ld</I>)<BR></TD></TR>
+<TR VALIGN=top><TD><I>cabs</I>(<I>fc</I>)</TD><TD><I>cabsf</I>(<I>fc</I>)<BR></TD></TR>
+<TR VALIGN=top><TD><I>carg</I>(<I>dc</I>)</TD><TD><I>carg</I>(<I>dc</I>), the function<BR></TD></TR>
+<TR VALIGN=top><TD><I>cproj</I>(<I>ldc</I>)</TD><TD><I>cprojl</I>(<I>ldc</I>)<BR></TD></TR>
+</TABLE></TABLE></CENTER>
+
+<A NAME="lbAG">&nbsp;</A>
+<H2>RATIONALE</H2>
+
+Type-generic macros allow calling a function whose type is determined
+by the argument type, as is the case for C operators such as
+<B>'+'</B>
+
+and
+<B>'*'</B>.
+
+For example, with a type-generic
+<I>cos</I>()
+macro, the expression
+<I>cos</I>((<B>float</B>)<I>x</I>)
+
+will have type
+<B>float</B>.
+
+This feature enables writing more portably efficient code and
+alleviates need for awkward casting and suffixing in the process of
+porting or adjusting precision. Generic math functions are a widely
+appreciated feature of Fortran.
+<P>
+
+The only arguments that affect the type resolution are the arguments
+corresponding to the parameters that have type
+<B>double</B>
+
+in the synopsis. Hence the type of a type-generic call to
+<I>nexttoward</I>(),
+whose second parameter is
+<B>long double</B>
+
+in the synopsis, is determined solely by the type of the first
+argument.
+<P>
+
+The term ``type-generic'' was chosen over the proposed alternatives of
+intrinsic and overloading. The term is more specific than intrinsic,
+which already is widely used with a more general meaning, and reflects
+a closer match to Fortran's generic functions than to C++ overloading.
+<P>
+
+The macros are placed in their own header in order not to silently
+break old programs that include the
+<I>&lt;<A HREF="file:///usr/include/math.h">math.h</A>&gt;</I>
+
+header; for example, with:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+printf (&quot;%e&quot;, sin(x))
+</B></PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+<I>modf</I>(<B>double</B>,
+
+<B>double *</B>)
+
+is excluded because no way was seen to make it safe without
+complicating the type resolution.
+<P>
+
+The implementation might, as an extension, endow appropriate ones of
+the macros that POSIX.1-2008 specifies only for real arguments with the
+ability to invoke the complex functions.
+<P>
+
+POSIX.1-2008 does not prescribe any particular implementation mechanism
+for generic macros. It could be implemented simply with built-in
+macros. The generic macro for
+<I>sqrt</I>(),
+for example, could be implemented with:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+#undef sqrt
+#define sqrt(x) __BUILTIN_GENERIC_sqrt(x)
+</B></PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+Generic macros are designed for a useful level of consistency with C++
+overloaded math functions.
+<P>
+
+The great majority of existing C programs are expected to be unaffected
+when the
+<I>&lt;<A HREF="file:///usr/include/tgmath.h">tgmath.h</A>&gt;</I>
+
+header is included instead of the
+<I>&lt;<A HREF="file:///usr/include/math.h">math.h</A>&gt;</I>
+
+or
+<I>&lt;<A HREF="file:///usr/include/complex.h">complex.h</A>&gt;</I>
+
+headers. Generic macros are similar to the ISO/IEC&nbsp;9899:1999 standard library masking
+macros, though the semantic types of return values differ.
+<P>
+
+The ability to overload on integer as well as floating types would have
+been useful for some functions; for example,
+<I>copysign</I>().
+Overloading with different numbers of arguments would have allowed
+reusing names; for example,
+<I>remainder</I>()
+for
+<I>remquo</I>().
+However, these facilities would have complicated the specification; and
+their natural consistent use, such as for a floating
+<I>abs</I>()
+or a two-argument
+<I>atan</I>(),
+would have introduced further inconsistencies with the ISO/IEC&nbsp;9899:1999 standard for
+insufficient benefit.
+<P>
+
+The ISO&nbsp;C standard in no way limits the implementation's options for efficiency,
+including inlining library functions.
+<A NAME="lbAH">&nbsp;</A>
+<H2>FUTURE DIRECTIONS</H2>
+
+None.
+<A NAME="lbAI">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+<I></I><B>&lt;<A HREF="file:///usr/include/math.h">math.h</A>&gt;</B>,
+
+<I></I><B>&lt;<A HREF="file:///usr/include/complex.h">complex.h</A>&gt;</B>
+
+<P>
+
+The System Interfaces volume of POSIX.1-2008,
+<I>cabs</I>(),
+
+<I>fabs</I>(),
+
+<I>modf</I>()
+
+<A NAME="lbAJ">&nbsp;</A>
+<H2>COPYRIGHT</H2>
+
+Portions of this text are reprinted and reproduced in electronic form
+from IEEE Std 1003.1, 2013 Edition, Standard for Information Technology
+-- Portable Operating System Interface (POSIX), The Open Group Base
+Specifications Issue 7, Copyright (C) 2013 by the Institute of
+Electrical and Electronics Engineers, Inc and The Open Group.
+(This is POSIX.1-2008 with the 2013 Technical Corrigendum 1 applied.) In the
+event of any discrepancy between this version and the original IEEE and
+The Open Group Standard, the original IEEE and The Open Group Standard
+is the referee document. The original Standard can be obtained online at
+<A HREF="http://www.unix.org/online.html">http://www.unix.org/online.html</A> .
+<P>
+Any typographical or formatting errors that appear
+in this page are most likely
+to have been introduced during the conversion of the source files to
+man page format. To report such errors, see
+<A HREF="https://www.kernel.org/doc/man-pages/reporting_bugs.html">https://www.kernel.org/doc/man-pages/reporting_bugs.html</A> .
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">PROLOG</A><DD>
+<DT><A HREF="#lbAC">NAME</A><DD>
+<DT><A HREF="#lbAD">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAE">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAF">APPLICATION USAGE</A><DD>
+<DT><A HREF="#lbAG">RATIONALE</A><DD>
+<DT><A HREF="#lbAH">FUTURE DIRECTIONS</A><DD>
+<DT><A HREF="#lbAI">SEE ALSO</A><DD>
+<DT><A HREF="#lbAJ">COPYRIGHT</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 14:28:43 GMT, February 25, 2017
+</BODY>
+</HTML>

@@ -1,0 +1,216 @@
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML><HEAD><TITLE>Man page of PTHREAD_ATTR_SETSCHEDPARAM</TITLE>
+</HEAD><BODY>
+<H1>PTHREAD_ATTR_SETSCHEDPARAM</H1>
+Section: Linux Programmer's Manual (3)<BR>Updated: 2015-08-08<BR><A HREF="#index">Index</A>
+<A HREF="../index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+pthread_attr_setschedparam, pthread_attr_getschedparam - set/get
+scheduling parameter attributes in thread attributes object
+<A NAME="lbAC">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<PRE>
+<B>#include &lt;<A HREF="file:///usr/include/pthread.h">pthread.h</A>&gt;</B>
+
+<B>int pthread_attr_setschedparam(pthread_attr_t *</B><I>attr</I><B>,</B>
+<B>                               const struct sched_param *</B><I>param</I><B>);</B>
+<B>int pthread_attr_getschedparam(const pthread_attr_t *</B><I>attr</I><B>,</B>
+<B>                               struct sched_param *</B><I>param</I><B>);</B>
+
+Compile and link with <I>-pthread</I>.
+</PRE>
+
+<A NAME="lbAD">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+The
+<B>pthread_attr_setschedparam</B>()
+
+function sets the scheduling parameter attributes of the
+thread attributes object referred to by
+<I>attr</I>
+
+to the values specified in the buffer pointed to by
+<I>param</I>.
+
+These attributes determine the scheduling parameters of
+a thread created using the thread attributes object
+<I>attr</I>.
+
+<P>
+The
+<B>pthread_attr_getschedparam</B>()
+
+returns the scheduling parameter attributes of the thread attributes object
+<I>attr</I>
+
+in the buffer pointed to by
+<I>param</I>.
+
+<P>
+Scheduling parameters are maintained in the following structure:
+<P>
+
+<PRE>
+struct sched_param {
+    int sched_priority;     /* Scheduling priority */
+};
+</PRE>
+
+
+<P>
+As can be seen, only one scheduling parameter is supported.
+For details of the permitted ranges for scheduling priorities
+in each scheduling policy, see
+<B><A HREF="../man7/sched.7.html">sched</A></B>(7).
+
+<P>
+In order for the parameter setting made by
+<B>pthread_attr_setschedparam</B>()
+
+to have effect when calling
+<B><A HREF="../man3/pthread_create.3.html">pthread_create</A></B>(3),
+
+the caller must use
+<B><A HREF="../man3/pthread_attr_setinheritsched.3.html">pthread_attr_setinheritsched</A></B>(3)
+
+to set the inherit-scheduler attribute of the attributes object
+<I>attr</I>
+
+to
+<B>PTHREAD_EXPLICIT_SCHED</B>.
+
+<A NAME="lbAE">&nbsp;</A>
+<H2>RETURN VALUE</H2>
+
+On success, these functions return 0;
+on error, they return a nonzero error number.
+<A NAME="lbAF">&nbsp;</A>
+<H2>ERRORS</H2>
+
+<B>pthread_attr_setschedparam</B>()
+
+can fail with the following error:
+<DL COMPACT>
+<DT><B>EINVAL</B>
+
+<DD>
+The priority specified in
+<I>param</I>
+
+does not make sense for the current scheduling policy of
+<I>attr</I>.
+
+</DL>
+<P>
+
+POSIX.1 also documents an
+<B>ENOTSUP</B>
+
+error for
+<B>pthread_attr_setschedparam</B>().
+
+This value is never returned on Linux
+(but portable and future-proof applications should nevertheless
+handle this error return value).
+
+
+<A NAME="lbAG">&nbsp;</A>
+<H2>ATTRIBUTES</H2>
+
+For an explanation of the terms used in this section, see
+<B><A HREF="../man7/attributes.7.html">attributes</A></B>(7).
+
+<TABLE BORDER>
+<TR VALIGN=top><TD><B>Interface</B></TD><TD><B>Attribute</B></TD><TD><B>Value</B><BR></TD></TR>
+<TR VALIGN=top><TD>
+<B>pthread_attr_setschedparam</B>(),
+
+<B>pthread_attr_getschedparam</B>()
+
+</TD><TD>Thread safety</TD><TD>MT-Safe<BR></TD></TR>
+</TABLE>
+
+<A NAME="lbAH">&nbsp;</A>
+<H2>CONFORMING TO</H2>
+
+POSIX.1-2001, POSIX.1-2008.
+<A NAME="lbAI">&nbsp;</A>
+<H2>NOTES</H2>
+
+See
+<B><A HREF="../man3/pthread_attr_setschedpolicy.3.html">pthread_attr_setschedpolicy</A></B>(3)
+
+for a list of the thread scheduling policies supported on Linux.
+<A NAME="lbAJ">&nbsp;</A>
+<H2>EXAMPLE</H2>
+
+See
+<B><A HREF="../man3/pthread_setschedparam.3.html">pthread_setschedparam</A></B>(3).
+
+<A NAME="lbAK">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+
+
+<B><A HREF="../man2/sched_get_priority_min.2.html">sched_get_priority_min</A></B>(2),
+
+<B><A HREF="../man3/pthread_attr_init.3.html">pthread_attr_init</A></B>(3),
+
+<B><A HREF="../man3/pthread_attr_setinheritsched.3.html">pthread_attr_setinheritsched</A></B>(3),
+
+<B><A HREF="../man3/pthread_attr_setschedpolicy.3.html">pthread_attr_setschedpolicy</A></B>(3),
+
+<B><A HREF="../man3/pthread_create.3.html">pthread_create</A></B>(3),
+
+<B><A HREF="../man3/pthread_setschedparam.3.html">pthread_setschedparam</A></B>(3),
+
+<B><A HREF="../man3/pthread_setschedprio.3.html">pthread_setschedprio</A></B>(3),
+
+<B><A HREF="../man7/pthreads.7.html">pthreads</A></B>(7),
+
+<B><A HREF="../man7/sched.7.html">sched</A></B>(7)
+
+<A NAME="lbAL">&nbsp;</A>
+<H2>COLOPHON</H2>
+
+This page is part of release 4.09 of the Linux
+<I>man-pages</I>
+
+project.
+A description of the project,
+information about reporting bugs,
+and the latest version of this page,
+can be found at
+<A HREF="https://www.kernel.org/doc/man-pages/.">https://www.kernel.org/doc/man-pages/.</A>
+
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAD">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAE">RETURN VALUE</A><DD>
+<DT><A HREF="#lbAF">ERRORS</A><DD>
+<DT><A HREF="#lbAG">ATTRIBUTES</A><DD>
+<DT><A HREF="#lbAH">CONFORMING TO</A><DD>
+<DT><A HREF="#lbAI">NOTES</A><DD>
+<DT><A HREF="#lbAJ">EXAMPLE</A><DD>
+<DT><A HREF="#lbAK">SEE ALSO</A><DD>
+<DT><A HREF="#lbAL">COLOPHON</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 14:28:36 GMT, February 25, 2017
+</BODY>
+</HTML>

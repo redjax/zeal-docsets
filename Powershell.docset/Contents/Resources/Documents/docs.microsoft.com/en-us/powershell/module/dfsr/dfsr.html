@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html class="no-js hasSidebar hasPageActions hasBreadcrumb conceptual" data-authenticated="false" data-render="docs" dir="ltr" lang="en-us">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="DFSR" property="og:title"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" property="og:image"/>
+  <meta content="summary" name="twitter:card"/>
+  <meta content="@docsmsft" name="twitter:site"/>
+  <meta content="DFSR" name="twitter:title"/>
+  <meta content="Use this topic to help manage Windows and Windows Server technologies with Windows PowerShell." name="twitter:description"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" name="twitter:image"/>
+  <meta content="Microsoft Logo" name="twitter:image:alt"/>
+  <meta content="Docs" name="search.ms_sitename"/>
+  <meta content="powershell-windows" name="search.ms_docsetname"/>
+  <meta content="0" name="version"/>
+  <meta content="en-us" name="locale"/>
+  <meta content="Docs" name="site_name"/>
+  <meta content="MSDN" name="search.ms_product"/>
+  <meta content="MSDN.powershell-windows" name="depot_name"/>
+  <meta content="https://cpubwin.visualstudio.com/DefaultCollection/powershell/_git/powershell/commit/ced7757924addcaea0b7a244ae4d240e4d28d93a?path=%2fdocset%2fwindows%2fdfsr%2fdfsr.md&amp;_a=contents" name="ref_skeleton_gitcommit"/>
+  <meta content="https://cpubwin.visualstudio.com/DefaultCollection/powershell/_git/powershell?path=%2fdocset%2fwindows%2fdfsr%2fdfsr.md&amp;version=GBlive&amp;_a=contents" name="original_ref_skeleton_git_url"/>
+  <meta content="2017-09-15 03:44 AM" name="updated_at"/>
+  <meta content="01b32992-f1d1-1b6a-a5ef-aab435fc1563" name="document_id"/>
+  <meta content="ac737ed0-4bb0-845b-e05e-a0484fdf611f" name="document_version_independent_id"/>
+  <meta content="powershell" name="page_type"/>
+  <meta content="module" name="page_kind"/>
+  <meta content="../win10-ps/toc.json?view=win10-ps" name="toc_rel"/>
+  <meta content="manage" name="ms.mktglfcycl"/>
+  <meta content="library" name="ms.sitesec"/>
+  <meta content="brianlic" name="ms.author"/>
+  <meta content="DFSR" name="Module_Name"/>
+  <meta content="CMDLETS" name="Module_Guid"/>
+  <meta content="http://go.microsoft.com/fwlink/?linkid=390764" name="Download_Help_Link"/>
+  <meta content="5.0.0.1" name="Help_Version"/>
+  <meta content="en-US" name="Locale"/>
+  <meta content="Use this topic to help manage Windows and Windows Server technologies with Windows PowerShell." name="description"/>
+  <meta content="powershell, cmdlet" name="keywords"/>
+  <meta content="brianlic-msft" name="author"/>
+  <meta content="alanth" name="manager"/>
+  <meta content="12/20/2016" name="ms.date"/>
+  <meta content="reference" name="ms.topic"/>
+  <meta content="w10" name="ms.prod"/>
+  <meta content="powershell-windows" name="ms.technology"/>
+  <meta content="B75B2770-4CC0-424F-97F5-7B5C1078BB98" name="ms.assetid"/>
+  <meta content="dfsr" name="Add-DfsrConnection"/>
+  <meta content="dfsr" name="Add-DfsrMember"/>
+  <meta content="dfsr" name="ConvertFrom-DfsrGuid"/>
+  <meta content="dfsr" name="Export-DfsrClone"/>
+  <meta content="dfsr" name="Get-DfsrBacklog"/>
+  <meta content="dfsr" name="Get-DfsrCloneState"/>
+  <meta content="dfsr" name="Get-DfsrConnection"/>
+  <meta content="dfsr" name="Get-DfsrConnectionSchedule"/>
+  <meta content="dfsr" name="Get-DfsrDelegation"/>
+  <meta content="dfsr" name="Get-DfsReplicatedFolder"/>
+  <meta content="dfsr" name="Get-DfsReplicationGroup"/>
+  <meta content="dfsr" name="Get-DfsrFileHash"/>
+  <meta content="dfsr" name="Get-DfsrGroupSchedule"/>
+  <meta content="dfsr" name="Get-DfsrIdRecord"/>
+  <meta content="dfsr" name="Get-DfsrMember"/>
+  <meta content="dfsr" name="Get-DfsrMembership"/>
+  <meta content="dfsr" name="Get-DfsrPreservedFiles"/>
+  <meta content="dfsr" name="Get-DfsrServiceConfiguration"/>
+  <meta content="dfsr" name="Get-DfsrState"/>
+  <meta content="dfsr" name="Grant-DfsrDelegation"/>
+  <meta content="dfsr" name="Import-DfsrClone"/>
+  <meta content="dfsr" name="New-DfsReplicatedFolder"/>
+  <meta content="dfsr" name="New-DfsReplicationGroup"/>
+  <meta content="dfsr" name="Remove-DfsrConnection"/>
+  <meta content="dfsr" name="Remove-DfsReplicatedFolder"/>
+  <meta content="dfsr" name="Remove-DfsReplicationGroup"/>
+  <meta content="dfsr" name="Remove-DfsrMember"/>
+  <meta content="dfsr" name="Remove-DfsrPropagationTestFile"/>
+  <meta content="dfsr" name="Reset-DfsrCloneState"/>
+  <meta content="dfsr" name="Restore-DfsrPreservedFiles"/>
+  <meta content="dfsr" name="Revoke-DfsrDelegation"/>
+  <meta content="dfsr" name="Set-DfsrConnection"/>
+  <meta content="dfsr" name="Set-DfsrConnectionSchedule"/>
+  <meta content="dfsr" name="Set-DfsReplicatedFolder"/>
+  <meta content="dfsr" name="Set-DfsReplicationGroup"/>
+  <meta content="dfsr" name="Set-DfsrGroupSchedule"/>
+  <meta content="dfsr" name="Set-DfsrMember"/>
+  <meta content="dfsr" name="Set-DfsrMembership"/>
+  <meta content="dfsr" name="Set-DfsrServiceConfiguration"/>
+  <meta content="dfsr" name="Start-DfsrPropagationTest"/>
+  <meta content="dfsr" name="Suspend-DfsReplicationGroup"/>
+  <meta content="dfsr" name="Sync-DfsReplicationGroup"/>
+  <meta content="dfsr" name="Update-DfsrConfigurationFromAD"/>
+  <meta content="dfsr" name="Write-DfsrHealthReport"/>
+  <meta content="dfsr" name="Write-DfsrPropagationReport"/>
+  <meta content="powershell" name="ms.devlang"/>
+  <meta content="INDEX, FOLLOW" name="ROBOTS"/>
+  <meta content="/powershell/windows/bread/toc.json?view=win10-ps" name="breadcrumb_path"/>
+  <meta content="powershell" name="apiPlatform"/>
+  <meta content="MSDocsHeader-WindowsIT" name="uhfHeaderId"/>
+  <link href="https://docs.microsoft.com/en-us/powershell/module/dfsr/" rel="canonical"/>
+  <title>
+   DFSR
+  </title>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/e4a1f3a3.site.css" rel="stylesheet"/>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/31353636.conceptual.css" rel="stylesheet"/>
+ </head>
+ <body dir="ltr" lang="en-us">
+  <div class="header-holder">
+   <div data-bi-name="header" id="headerAreaHolder">
+    <div id="uhf-placeholder">
+    </div>
+   </div>
+   <div class="disclaimer-holder" id="disclaimer-holder">
+   </div>
+  </div>
+  <div class="container mainContainer" data-bi-name="body">
+   <div class="content-header" data-bi-name="content-header">
+    <div class="content-header-controls">
+     <button class="contents-button button-border" data-bi-name="contents-expand" type="button">
+      <span class="docon docon-menu">
+      </span>
+      Contents
+     </button>
+    </div>
+    <div class="content-header-controls">
+     <button class="ap-collapse-behavior ap-expanded button-border" data-bi-name="ap-collapse" type="button">
+      <span class="docon docon-exit-mode">
+      </span>
+      Exit focus mode
+     </button>
+    </div>
+   </div>
+   <div class="primary-holder">
+    <main class="content" data-bi-name="content" dir="ltr" id="main" lang="en-us" role="main">
+     <!-- <content> -->
+     <h1>
+      DFSR
+     </h1>
+     <div class="summaryHolder">
+      <div class="summary">
+       <p>
+        This reference provides cmdlet descriptions and syntax for all Distributed File System (DFS) Replication cmdlets. It lists the cmdlets in alphabetical order based on the verb at the beginning of the cmdlet.
+       </p>
+      </div>
+     </div>
+     <h2 id="dfsr">
+      dfsr
+     </h2>
+     <table class="nameValue">
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Add-DfsrConnection.html">
+         Add-Dfsr
+         <wbr/>
+         Connection
+        </a>
+       </td>
+       <td>
+        <p>
+         Creates a connection between members of a replication group.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Add-DfsrMember.html">
+         Add-Dfsr
+         <wbr/>
+         Member
+        </a>
+       </td>
+       <td>
+        <p>
+         Adds computers to a replication group.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="ConvertFrom-DfsrGuid.html">
+         Convert
+         <wbr/>
+         From-Dfsr
+         <wbr/>
+         Guid
+        </a>
+       </td>
+       <td>
+        <p>
+         Translates GUIDs to friendly names within a given replication group.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Export-DfsrClone.html">
+         Export-Dfsr
+         <wbr/>
+         Clone
+        </a>
+       </td>
+       <td>
+        <p>
+         Exports the cloned DFS Replication database and volume configuration settings.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-DfsReplicatedFolder.html">
+         Get-Dfs
+         <wbr/>
+         Replicated
+         <wbr/>
+         Folder
+        </a>
+       </td>
+       <td>
+        <p>
+         Gets a replicated folder from a replication group.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-DfsReplicationGroup.html">
+         Get-Dfs
+         <wbr/>
+         Replication
+         <wbr/>
+         Group
+        </a>
+       </td>
+       <td>
+        <p>
+         Retrieves a replication group.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-DfsrBacklog.html">
+         Get-Dfsr
+         <wbr/>
+         Backlog
+        </a>
+       </td>
+       <td>
+        <p>
+         Retrieves the list of pending file updates between two DFS Replication partners.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-DfsrCloneState.html">
+         Get-Dfsr
+         <wbr/>
+         Clone
+         <wbr/>
+         State
+        </a>
+       </td>
+       <td>
+        <p>
+         Gets the status of a database cloning operation.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-DfsrConnection.html">
+         Get-Dfsr
+         <wbr/>
+         Connection
+        </a>
+       </td>
+       <td>
+        <p>
+         Gets a connection between DFS Replication partners.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-DfsrConnectionSchedule.html">
+         Get-Dfsr
+         <wbr/>
+         Connection
+         <wbr/>
+         Schedule
+        </a>
+       </td>
+       <td>
+        <p>
+         Gets a connection schedule between members of a replication group.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-DfsrDelegation.html">
+         Get-Dfsr
+         <wbr/>
+         Delegation
+        </a>
+       </td>
+       <td>
+        <p>
+         Gets principals that have permissions for a replication group.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-DfsrFileHash.html">
+         Get-Dfsr
+         <wbr/>
+         File
+         <wbr/>
+         Hash
+        </a>
+       </td>
+       <td>
+        <p>
+         Gets a file hash.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-DfsrGroupSchedule.html">
+         Get-Dfsr
+         <wbr/>
+         Group
+         <wbr/>
+         Schedule
+        </a>
+       </td>
+       <td>
+        <p>
+         Retrieves a replication group schedule.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-DfsrIdRecord.html">
+         Get-Dfsr
+         <wbr/>
+         IdRecord
+        </a>
+       </td>
+       <td>
+        <p>
+         Gets ID records for replicated files or folders from the DFS Replication database.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-DfsrMember.html">
+         Get-Dfsr
+         <wbr/>
+         Member
+        </a>
+       </td>
+       <td>
+        <p>
+         Gets member computers in a replication group.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-DfsrMembership.html">
+         Get-Dfsr
+         <wbr/>
+         Membership
+        </a>
+       </td>
+       <td>
+        <p>
+         Gets membership settings for members of replication groups.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-DfsrPreservedFiles.html">
+         Get-Dfsr
+         <wbr/>
+         Preserved
+         <wbr/>
+         Files
+        </a>
+       </td>
+       <td>
+        <p>
+         Gets a list of files and folders that DFS Replication previously preserved.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-DfsrServiceConfiguration.html">
+         Get-Dfsr
+         <wbr/>
+         Service
+         <wbr/>
+         Configuration
+        </a>
+       </td>
+       <td>
+        <p>
+         Gets settings for the DFS Replication service on group members.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-DfsrState.html">
+         Get-Dfsr
+         <wbr/>
+         State
+        </a>
+       </td>
+       <td>
+        <p>
+         Gets the DFS Replication state for a member.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Grant-DfsrDelegation.html">
+         Grant-Dfsr
+         <wbr/>
+         Delegation
+        </a>
+       </td>
+       <td>
+        <p>
+         Grants permissions to security principals for a replication group.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Import-DfsrClone.html">
+         Import-Dfsr
+         <wbr/>
+         Clone
+        </a>
+       </td>
+       <td>
+        <p>
+         Imports a cloned DFS Replication database and volume configuration settings.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="New-DfsReplicatedFolder.html">
+         New-Dfs
+         <wbr/>
+         Replicated
+         <wbr/>
+         Folder
+        </a>
+       </td>
+       <td>
+        <p>
+         Creates a replicated folder in a replication group.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="New-DfsReplicationGroup.html">
+         New-Dfs
+         <wbr/>
+         Replication
+         <wbr/>
+         Group
+        </a>
+       </td>
+       <td>
+        <p>
+         Creates a replication group.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Remove-DfsReplicatedFolder.html">
+         Remove-Dfs
+         <wbr/>
+         Replicated
+         <wbr/>
+         Folder
+        </a>
+       </td>
+       <td>
+        <p>
+         Removes a replicated folder from a replication group.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Remove-DfsReplicationGroup.html">
+         Remove-Dfs
+         <wbr/>
+         Replication
+         <wbr/>
+         Group
+        </a>
+       </td>
+       <td>
+        <p>
+         Removes a replication group.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Remove-DfsrConnection.html">
+         Remove-Dfsr
+         <wbr/>
+         Connection
+        </a>
+       </td>
+       <td>
+        <p>
+         Removes a connection between members of a replication group.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Remove-DfsrMember.html">
+         Remove-Dfsr
+         <wbr/>
+         Member
+        </a>
+       </td>
+       <td>
+        <p>
+         Removes computers from a replication group.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Remove-DfsrPropagationTestFile.html">
+         Remove-Dfsr
+         <wbr/>
+         Propagation
+         <wbr/>
+         Test
+         <wbr/>
+         File
+        </a>
+       </td>
+       <td>
+        <p>
+         Removes DFS Replication propagation test files.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Reset-DfsrCloneState.html">
+         Reset-Dfsr
+         <wbr/>
+         Clone
+         <wbr/>
+         State
+        </a>
+       </td>
+       <td>
+        <p>
+         Cancels a cloning operation.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Restore-DfsrPreservedFiles.html">
+         Restore-Dfsr
+         <wbr/>
+         Preserved
+         <wbr/>
+         Files
+        </a>
+       </td>
+       <td>
+        <p>
+         Restores files and folders that DFS Replication previously preserved.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Revoke-DfsrDelegation.html">
+         Revoke-Dfsr
+         <wbr/>
+         Delegation
+        </a>
+       </td>
+       <td>
+        <p>
+         Revokes permissions to security principals for a replication group.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Set-DfsReplicatedFolder.html">
+         Set-Dfs
+         <wbr/>
+         Replicated
+         <wbr/>
+         Folder
+        </a>
+       </td>
+       <td>
+        <p>
+         Changes settings of a replicated folder.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Set-DfsReplicationGroup.html">
+         Set-Dfs
+         <wbr/>
+         Replication
+         <wbr/>
+         Group
+        </a>
+       </td>
+       <td>
+        <p>
+         Modifies a replication group.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Set-DfsrConnection.html">
+         Set-Dfsr
+         <wbr/>
+         Connection
+        </a>
+       </td>
+       <td>
+        <p>
+         Changes the settings of a connection between members of a replication group.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Set-DfsrConnectionSchedule.html">
+         Set-Dfsr
+         <wbr/>
+         Connection
+         <wbr/>
+         Schedule
+        </a>
+       </td>
+       <td>
+        <p>
+         Changes the settings of a connection schedule between members of a replication group.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Set-DfsrGroupSchedule.html">
+         Set-Dfsr
+         <wbr/>
+         Group
+         <wbr/>
+         Schedule
+        </a>
+       </td>
+       <td>
+        <p>
+         Modifies a replication group schedule.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Set-DfsrMember.html">
+         Set-Dfsr
+         <wbr/>
+         Member
+        </a>
+       </td>
+       <td>
+        <p>
+         Modifies member computer information in a replication group.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Set-DfsrMembership.html">
+         Set-Dfsr
+         <wbr/>
+         Membership
+        </a>
+       </td>
+       <td>
+        <p>
+         Configures membership settings for replication group members.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Set-DfsrServiceConfiguration.html">
+         Set-Dfsr
+         <wbr/>
+         Service
+         <wbr/>
+         Configuration
+        </a>
+       </td>
+       <td>
+        <p>
+         Modifies settings for the DFS Replication service.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Start-DfsrPropagationTest.html">
+         Start-Dfsr
+         <wbr/>
+         Propagation
+         <wbr/>
+         Test
+        </a>
+       </td>
+       <td>
+        <p>
+         Creates a propagation test file in a replicated folder.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Suspend-DfsReplicationGroup.html">
+         Suspend-Dfs
+         <wbr/>
+         Replication
+         <wbr/>
+         Group
+        </a>
+       </td>
+       <td>
+        <p>
+         Suspends replication between computers regardless of schedule.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Sync-DfsReplicationGroup.html">
+         Sync-Dfs
+         <wbr/>
+         Replication
+         <wbr/>
+         Group
+        </a>
+       </td>
+       <td>
+        <p>
+         Synchronizes replication between computers regardless of schedule.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Update-DfsrConfigurationFromAD.html">
+         Update-Dfsr
+         <wbr/>
+         Configuration
+         <wbr/>
+         FromAD
+        </a>
+       </td>
+       <td>
+        <p>
+         Initiates an update of the DFS Replication service.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Write-DfsrHealthReport.html">
+         Write-Dfsr
+         <wbr/>
+         Health
+         <wbr/>
+         Report
+        </a>
+       </td>
+       <td>
+        <p>
+         Generates a DFS Replication health report.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Write-DfsrPropagationReport.html">
+         Write-Dfsr
+         <wbr/>
+         Propagation
+         <wbr/>
+         Report
+        </a>
+       </td>
+       <td>
+        <p>
+         Generates reports for propagation test files in a replication group.
+        </p>
+       </td>
+      </tr>
+     </table>
+     <!-- </content> -->
+    </main>
+    <section class="feedback-section" data-bi-name="feedback-section">
+     <h2 id="feedback">
+      Feedback
+     </h2>
+     <div class="alert choose-feedback-type">
+      <p>
+       We'd love to hear your thoughts. Choose the type you'd like to provide:
+      </p>
+      <div class="choose-feedback-buttons">
+       <a class="button-border feedback-type-product" data-bi-name="product-feedback" href="https://windowsserver.uservoice.com/forums/301869-powershell">
+        Product feedback
+        <span aria-hidden="true" class="docon docon-navigate-external">
+        </span>
+       </a>
+       <div class="button-group">
+        <button class="button-border feedback-sign-in-button" data-bi-name="feedback-sign-in">
+         <span aria-hidden="true" class="docon docon-brand-github">
+         </span>
+         Sign in to give documentation feedback
+        </button>
+        <button aria-controls="feedback-form" aria-expanded="false" class="button-border feedback-form-toggle" data-bi-name="documentation-feedback" hidden="">
+         Content feedback
+        </button>
+        <div auto-align="" class="dropdown has-caret">
+         <button aria-controls="fbm0" aria-expanded="false" aria-haspopup="true" aria-label="Expand documentation feedback menu" class="button-border dropdown-trigger" data-bi-name="documentation-feedback-menu">
+          <span aria-hidden="true" class="docon docon-chevron-down-light">
+          </span>
+         </button>
+         <div class="dropdown-menu documentation-feedback-menu" id="fbm0" role="menu">
+          You may also leave feedback
+          <a data-bi-name="create-issue-on-github" href="{0}">
+           directly on GitHub
+           <span aria-hidden="true" class="docon docon-navigate-external">
+           </span>
+          </a>
+          .
+         </div>
+        </div>
+       </div>
+      </div>
+      <p>
+       <small>
+        Our new feedback system is built on GitHub Issues. Read about this change in
+        <a href="https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs">
+         our blog post
+        </a>
+        .
+       </small>
+      </p>
+     </div>
+     <form accept-charset="UTF-8" action="javascript:" autocomplete="off" class="feedback-form" hidden="" id="feedback-form">
+      <h3 class="feedback-form-heading current-user">
+       <img alt="Avatar" aria-hidden="true" class="avatar" height="36" width="36"/>
+       <span aria-hidden="true" class="username">
+       </span>
+       <span class="visually-hidden">
+        Liquid error: Can't find the localized string giveDocumentationFeedback for template Conceptual.
+       </span>
+      </h3>
+      <label>
+       <span class="visually-hidden">
+        Title
+       </span>
+       <input name="title" pattern=".*\w.*" placeholder="Title" required="" type="text"/>
+      </label>
+      <label>
+       <span class="visually-hidden">
+        Leave a comment
+       </span>
+       <textarea name="body" placeholder="Leave a comment" required=""></textarea>
+      </label>
+      <div class="action-container">
+       <button class="primary-action" name="submit" type="submit">
+        Submit feedback
+       </button>
+      </div>
+     </form>
+     <div class="feedback-status alert busy" role="alert">
+      <p>
+       Loading feedback...
+      </p>
+     </div>
+     <div class="feedback-tab-group tabGroup" data-tab-group-independent="" hidden="">
+      <ul role="tablist">
+       <li role="presentation">
+        <a aria-controls="tabpanel-issues-open" aria-label="Open Issues" data-tab="issues-open" href="#tabpanel-issues-open" role="tab">
+        </a>
+       </li>
+       <li role="presentation">
+        <a aria-controls="tabpanel-issues-closed" aria-label="Closed Issues" data-tab="issues-closed" href="#tabpanel-issues-closed" role="tab">
+        </a>
+       </li>
+      </ul>
+      <section data-tab="issues-open" id="tabpanel-issues-open" role="tabpanel">
+       <div class="no-issues-placeholder">
+        There are no open issues
+       </div>
+       <ul aria-label="Open Issues" class="github-issues-list">
+       </ul>
+      </section>
+      <section data-tab="issues-closed" id="tabpanel-issues-closed" role="tabpanel">
+       <div class="no-issues-placeholder">
+        There are no closed issues
+       </div>
+       <ul aria-label="Closed Issues" class="github-issues-list">
+       </ul>
+      </section>
+     </div>
+     <div class="action-container">
+      <a class="view-on-github" data-bi-name="view-on-github" hidden="" href="https://github.com/MicrosoftDocs/windows-powershell-docs/issues">
+       <span aria-hidden="true" class="docon docon-brand-github">
+       </span>
+       <span>
+        View on GitHub
+       </span>
+       <span aria-hidden="true" class="docon docon-navigate-external">
+       </span>
+      </a>
+     </div>
+    </section>
+   </div>
+  </div>
+  <div class="openfeedback-container" id="openFeedbackContainer">
+  </div>
+  <div class="action-panel">
+  </div>
+ </body>
+</html>

@@ -1,0 +1,323 @@
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML><HEAD><TITLE>Man page of SEMGET</TITLE>
+</HEAD><BODY>
+<H1>SEMGET</H1>
+Section: POSIX Programmer's Manual (3P)<BR>Updated: 2013<BR><A HREF="#index">Index</A>
+<A HREF="../index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>PROLOG</H2>
+
+This manual page is part of the POSIX Programmer's Manual.
+The Linux implementation of this interface may differ (consult
+the corresponding Linux manual page for details of Linux behavior),
+or the interface may not be implemented on Linux.
+<P>
+<A NAME="lbAC">&nbsp;</A>
+<H2>NAME</H2>
+
+semget
+--- get set of XSI semaphores
+<A NAME="lbAD">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<P>
+
+<PRE>
+#include &lt;<A HREF="file:///usr/include/sys/sem.h">sys/sem.h</A>&gt;
+
+int semget(key_t <I>key</I>, int <I>nsems</I>, int <I>semflg</I>);
+</PRE>
+
+<A NAME="lbAE">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+The
+<I>semget</I>()
+function operates on XSI semaphores (see the Base Definitions volume of POSIX.1-2008,
+<I>Section 4.16</I>, <I>Semaphore).</I>
+
+It is unspecified whether this function interoperates with the
+realtime interprocess communication facilities defined in
+<I>Section 2.8</I>, <I>Realtime.</I>
+
+<P>
+
+The
+<I>semget</I>()
+function shall return the semaphore identifier associated with
+<I>key</I>.
+
+<P>
+
+A semaphore identifier with its associated
+<B>semid_ds</B>
+
+data structure and its associated set of
+<I>nsems</I>
+
+semaphores (see
+<I>&lt;<A HREF="file:///usr/include/sys/sem.h">sys/sem.h</A>&gt;</I>)
+
+is created for
+<I>key</I>
+
+if one of the following is true:
+<DL COMPACT>
+<DT> *<DD>
+The argument
+<I>key</I>
+
+is equal to IPC_PRIVATE.
+<DT> *<DD>
+The argument
+<I>key</I>
+
+does not already have a semaphore identifier associated with it and
+(<I>semflg</I> &amp;IPC_CREAT) is non-zero.
+</DL>
+<P>
+
+Upon creation, the
+<B>semid_ds</B>
+
+data structure associated with the new semaphore identifier is
+initialized as follows:
+<DL COMPACT>
+<DT> *<DD>
+In the operation permissions structure
+<I>sem_perm.cuid</I>,
+
+<I>sem_perm.uid</I>,
+
+<I>sem_perm.cgid</I>,
+
+and
+<I>sem_perm.gid</I>
+
+shall be set to the effective user ID and effective group ID,
+respectively, of the calling process.
+<DT> *<DD>
+The low-order 9 bits of
+<I>sem_perm.mode</I>
+
+shall be set to the low-order 9 bits of
+<I>semflg</I>.
+
+<DT> *<DD>
+The variable
+<I>sem_nsems</I>
+
+shall be set to the value of
+<I>nsems</I>.
+
+<DT> *<DD>
+The variable
+<I>sem_otime</I>
+
+shall be set to 0 and
+<I>sem_ctime</I>
+
+shall be set to the current time, as described in
+<I>Section 2.7.1</I>, <I>IPC General Description.</I>
+
+<DT> *<DD>
+The data structure associated with each semaphore in the set need not
+be initialized. The
+<I>semctl</I>()
+function with the command SETVAL or SETALL
+can be used to initialize each semaphore.
+</DL>
+<A NAME="lbAF">&nbsp;</A>
+<H2>RETURN VALUE</H2>
+
+Upon successful completion,
+<I>semget</I>()
+shall return a non-negative integer, namely a semaphore identifier;
+otherwise, it shall return -1 and set
+<I>errno</I>
+
+to indicate the error.
+<A NAME="lbAG">&nbsp;</A>
+<H2>ERRORS</H2>
+
+The
+<I>semget</I>()
+function shall fail if:
+<DL COMPACT>
+<DT><B>EACCES</B>
+
+<DD>
+A semaphore identifier exists for
+<I>key</I>,
+
+but operation permission as specified by the low-order 9 bits of
+<I>semflg</I>
+
+would not be granted; see
+<I>Section 2.7</I>, <I>XSI Interprocess Communication.</I>
+
+<DT><B>EEXIST</B>
+
+<DD>
+A semaphore identifier exists for the argument
+<I>key</I>
+
+but ((<I>semflg</I> &amp;IPC_CREAT) &amp;&amp;(<I>semflg</I> &amp;IPC_EXCL))
+is non-zero.
+<DT><B>EINVAL</B>
+
+<DD>
+The value of
+<I>nsems</I>
+
+is either less than or equal to 0 or greater than the system-imposed
+limit, or a semaphore identifier exists for the argument
+<I>key</I>,
+
+but the number of semaphores in the set associated with it is less than
+<I>nsems</I>
+
+and
+<I>nsems</I>
+
+is not equal to 0.
+<DT><B>ENOENT</B>
+
+<DD>
+A semaphore identifier does not exist for the argument
+<I>key</I>
+
+and (<I>semflg</I> &amp;IPC_CREAT) is equal to 0.
+<DT><B>ENOSPC</B>
+
+<DD>
+A semaphore identifier is to be created but the system-imposed limit on
+the maximum number of allowed semaphores system-wide would be
+exceeded.
+</DL>
+<P>
+
+<I>The following sections are informative.</I>
+
+<A NAME="lbAH">&nbsp;</A>
+<H2>EXAMPLES</H2>
+
+Refer to
+<I>semop</I>().
+
+<A NAME="lbAI">&nbsp;</A>
+<H2>APPLICATION USAGE</H2>
+
+The POSIX Realtime Extension defines alternative interfaces for interprocess
+communication. Application developers who need to use IPC should
+design their applications so that modules using the IPC routines
+described in
+<I>Section 2.7</I>, <I>XSI Interprocess Communication</I>
+
+can be easily modified to use the alternative interfaces.
+<A NAME="lbAJ">&nbsp;</A>
+<H2>RATIONALE</H2>
+
+None.
+<A NAME="lbAK">&nbsp;</A>
+<H2>FUTURE DIRECTIONS</H2>
+
+A future version may require that the value of the
+<I>semval</I>,
+
+<I>sempid</I>,
+
+<I>semncnt</I>,
+
+and
+<I>semzcnt</I>
+
+members of all semaphores in a semaphore set be initialized to zero when
+a call to
+<I>semget</I>()
+creates a semaphore set. Many semaphore implementations already do this
+and it greatly simplifies what an application must do to initialize a
+semaphore set.
+<A NAME="lbAL">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+<I>Section 2.7</I>, <I>XSI Interprocess Communication,</I>
+
+<I>Section 2.8</I>, <I>Realtime,</I>
+
+<I>ftok</I>(),
+
+<I>semctl</I>(),
+
+<I>semop</I>(),
+
+<I>sem_close</I>(),
+
+<I>sem_destroy</I>(),
+
+<I>sem_getvalue</I>(),
+
+<I>sem_init</I>(),
+
+<I>sem_open</I>(),
+
+<I>sem_post</I>(),
+
+<I>sem_trywait</I>(),
+
+<I>sem_unlink</I>()
+
+<P>
+
+The Base Definitions volume of POSIX.1-2008,
+<I>Section 4.16</I>, <I>Semaphore,</I>
+
+<I></I><B>&lt;<A HREF="file:///usr/include/sys_sem.h">sys_sem.h</A>&gt;</B>
+
+<A NAME="lbAM">&nbsp;</A>
+<H2>COPYRIGHT</H2>
+
+Portions of this text are reprinted and reproduced in electronic form
+from IEEE Std 1003.1, 2013 Edition, Standard for Information Technology
+-- Portable Operating System Interface (POSIX), The Open Group Base
+Specifications Issue 7, Copyright (C) 2013 by the Institute of
+Electrical and Electronics Engineers, Inc and The Open Group.
+(This is POSIX.1-2008 with the 2013 Technical Corrigendum 1 applied.) In the
+event of any discrepancy between this version and the original IEEE and
+The Open Group Standard, the original IEEE and The Open Group Standard
+is the referee document. The original Standard can be obtained online at
+<A HREF="http://www.unix.org/online.html">http://www.unix.org/online.html</A> .
+<P>
+Any typographical or formatting errors that appear
+in this page are most likely
+to have been introduced during the conversion of the source files to
+man page format. To report such errors, see
+<A HREF="https://www.kernel.org/doc/man-pages/reporting_bugs.html">https://www.kernel.org/doc/man-pages/reporting_bugs.html</A> .
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">PROLOG</A><DD>
+<DT><A HREF="#lbAC">NAME</A><DD>
+<DT><A HREF="#lbAD">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAE">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAF">RETURN VALUE</A><DD>
+<DT><A HREF="#lbAG">ERRORS</A><DD>
+<DT><A HREF="#lbAH">EXAMPLES</A><DD>
+<DT><A HREF="#lbAI">APPLICATION USAGE</A><DD>
+<DT><A HREF="#lbAJ">RATIONALE</A><DD>
+<DT><A HREF="#lbAK">FUTURE DIRECTIONS</A><DD>
+<DT><A HREF="#lbAL">SEE ALSO</A><DD>
+<DT><A HREF="#lbAM">COPYRIGHT</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 14:28:55 GMT, February 25, 2017
+</BODY>
+</HTML>

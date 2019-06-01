@@ -1,0 +1,1223 @@
+<!DOCTYPE html>
+<html class="no-js hasSidebar hasPageActions hasBreadcrumb conceptual" data-authenticated="false" data-render="docs" dir="ltr" lang="en-us">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Install-PackageProvider (PackageManagement)" property="og:title"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" property="og:image"/>
+  <meta content="summary" name="twitter:card"/>
+  <meta content="@docsmsft" name="twitter:site"/>
+  <meta content="Install-PackageProvider (PackageManagement)" name="twitter:title"/>
+  <meta content="The Install-PackageProvider cmdlet installs matching Package Management providers that are available in package sources registered with PowerShellGet. By default, this includes modules available in tâ¦" name="twitter:description"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" name="twitter:image"/>
+  <meta content="Microsoft Logo" name="twitter:image:alt"/>
+  <meta content="The Install-PackageProvider cmdlet installs matching Package Management providers that are available in package sources registered with PowerShellGet. By default, this includes modules available in tâ¦" name="description"/>
+  <meta content="Docs" name="search.ms_sitename"/>
+  <meta content="PowerShell_PowerShell-docs_reference" name="search.ms_docsetname"/>
+  <meta content="0" name="version"/>
+  <meta content="en-us" name="locale"/>
+  <meta content="Docs" name="site_name"/>
+  <meta content="PowerShell" name="search.ms_product"/>
+  <meta content="PowerShell.PowerShell_PowerShell-docs_reference" name="depot_name"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/32c27c5b78fb8a8af58aaf73da28d5329aba66d1/reference/6/PackageManagement/Install-PackageProvider.md" name="ref_skeleton_gitcommit"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/live/reference/6/PackageManagement/Install-PackageProvider.md" name="original_ref_skeleton_git_url"/>
+  <meta content="2018-03-30 03:35 PM" name="updated_at"/>
+  <meta content="5f3177f5-67dd-8077-335a-4528f01662c9" name="document_id"/>
+  <meta content="1ca59e2b-35f8-34c8-19ec-609bf8d11527" name="document_version_independent_id"/>
+  <meta content="powershell" name="page_type"/>
+  <meta content="command" name="page_kind"/>
+  <meta content="06/09/2017" name="ms.date"/>
+  <meta content="2.0.0" name="schema"/>
+  <meta content="powershell,cmdlet" name="keywords"/>
+  <meta content="http://go.microsoft.com/fwlink/?LinkId=822308" name="online_version"/>
+  <meta content="Microsoft.PowerShell.PackageManagement.dll-Help.xml" name="external_help_file"/>
+  <meta content="powershell" name="ms.devlang"/>
+  <meta content="INDEX, FOLLOW" name="ROBOTS"/>
+  <meta content="sdwheeler" name="author"/>
+  <meta content="sewhee" name="ms.author"/>
+  <meta content="carmonm" name="manager"/>
+  <meta content="/powershell/bread-pscore/toc.yml?view=powershell-6" name="breadcrumb_path"/>
+  <meta content="powershell" name="apiPlatform"/>
+  <meta content="reference" name="ms.topic"/>
+  <meta content="windows, macos, linux" name="ms.tgt_pltfr"/>
+  <meta content="powershell-scripting" name="ms.technology"/>
+  <meta content="powershell" name="ms.prod"/>
+  <meta content="MSDocsHeader-Powershell" name="uhfHeaderId"/>
+  <meta content="../psdocs/toc.json?view=powershell-6" name="toc_rel"/>
+  <link href="https://docs.microsoft.com/en-us/powershell/module/packagemanagement/install-packageprovider" rel="canonical"/>
+  <title>
+   Install-PackageProvider
+  </title>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/60aac04b.site.css" rel="stylesheet"/>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/fdb8a38a.conceptual.css" rel="stylesheet"/>
+ </head>
+ <body dir="ltr" lang="en-us">
+  <div class="header-holder">
+   <div data-bi-name="header" id="headerAreaHolder">
+    <div id="uhf-placeholder">
+    </div>
+   </div>
+   <div class="disclaimer-holder" id="disclaimer-holder">
+   </div>
+  </div>
+  <div class="container mainContainer" data-bi-name="body">
+   <div class="content-header" data-bi-name="content-header">
+    <div class="content-header-controls">
+     <button class="contents-button button-border" data-bi-name="contents-expand" type="button">
+      <span class="docon docon-menu">
+      </span>
+      Contents
+     </button>
+    </div>
+    <div class="content-header-controls">
+     <button class="ap-collapse-behavior ap-expanded button-border" data-bi-name="ap-collapse" type="button">
+      <span class="docon docon-exit-mode">
+      </span>
+      Exit focus mode
+     </button>
+    </div>
+   </div>
+   <div class="primary-holder">
+    <main class="content" data-bi-name="content" dir="ltr" id="main" lang="en-us" role="main">
+     <!-- <content> -->
+     <h1>
+      Install-Package
+      <wbr/>
+      Provider
+     </h1>
+     <div class="metadata">
+      <dl class="attributeList">
+       <dt>
+        Module:
+       </dt>
+       <dd>
+        <a data-linktype="relative-path" href="./PackageManagement.html">
+         PackageManagement
+        </a>
+       </dd>
+      </dl>
+     </div>
+     <div class="summaryHolder">
+      <div class="summary">
+       Installs one or more Package Management package providers.
+      </div>
+     </div>
+     <h2 class="hiddenAnchor" id="syntax">
+      Syntax
+     </h2>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Install-PackageProvider
+       [-Name] &lt;String[]&gt;
+       [-RequiredVersion &lt;String&gt;]
+       [-MinimumVersion &lt;String&gt;]
+       [-MaximumVersion &lt;String&gt;]
+       [-Credential &lt;PSCredential&gt;]
+       [-Scope &lt;String&gt;]
+       [-Source &lt;String[]&gt;]
+       [-Proxy &lt;Uri&gt;]
+       [-ProxyCredential &lt;PSCredential&gt;]
+       [-AllVersions]
+       [-Force]
+       [-ForceBootstrap]
+       [-WhatIf]
+       [-Confirm]
+       [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Install-PackageProvider
+       [-Scope &lt;String&gt;]
+       [-InputObject] &lt;SoftwareIdentity[]&gt;
+       [-Proxy &lt;Uri&gt;]
+       [-ProxyCredential &lt;PSCredential&gt;]
+       [-AllVersions]
+       [-Force]
+       [-ForceBootstrap]
+       [-WhatIf]
+       [-Confirm]
+       [&lt;CommonParameters&gt;]</code></pre>
+     <h2 id="description">
+      Description
+     </h2>
+     <p>
+      The
+      <strong>
+       Install-PackageProvider
+      </strong>
+      cmdlet installs matching Package Management providers that are available in package sources registered with
+      <strong>
+       PowerShellGet
+      </strong>
+      .
+By default, this includes modules available in the Windows PowerShell Gallery with the
+      <strong>
+       PackageManagement
+      </strong>
+      .
+The
+      <strong>
+       PowerShellGet
+      </strong>
+      Package Management provider is used for finding providers in these repositories.
+     </p>
+     <p>
+      This cmdlet also installs matching Package Management providers that are available using the Package Management bootstrapping application.
+     </p>
+     <p>
+      This cmdlet also installs matching Package Management providers that are available in the Package Management Azure Blob store.
+Use the bootstrapper provider to find and install them.
+     </p>
+     <p>
+      In order to execute the first time, PackageManagement requires an internet connection to download the Nuget package provider.
+However, if your computer does not have an internet connection and you need to use the Nuget or PowerShellGet provider, you can download them on another computer and copy them to your target computer.
+Use the following steps to do this:
+     </p>
+     <p>
+      1.
+Run
+      <code>
+       Install-PackageProvider -Name NuGet -RequiredVersion 2.8.5.201 -Force
+      </code>
+      to install the provider from a computer with an internet connection.
+     </p>
+     <p>
+      2.
+After the install, you can find the provider installed in
+      <code>
+       $env:ProgramFiles\PackageManagement\ReferenceAssemblies\\\&lt;ProviderName\&gt;\\\&lt;ProviderVersion\&gt;
+      </code>
+      or
+      <code>
+       $env:LOCALAPPDATA\PackageManagement\ProviderAssemblies\\\&lt;ProviderName\&gt;\\\&lt;ProviderVersion\&gt;
+      </code>
+      .
+     </p>
+     <p>
+      3.
+Place the &lt;ProviderName&gt; folder, which in this case is the Nuget folder, in the corresponding location on your target computer.
+If your target computer is a Nano server, you need to run
+      <strong>
+       Install-PackageProvider
+      </strong>
+      from Nano Server to download the correct Nuget binaries.
+     </p>
+     <p>
+      4.
+Restart PowerShell to auto-load the package provider.
+Alternatively, run
+      <code>
+       Get-PackageProvider -ListAvailable
+      </code>
+      to list all the package providers available on the computer.
+Then use
+      <code>
+       Import-PackageProvider -Name -RequiredVersion 2.8.5.201
+      </code>
+      to import the provider to the current Windows PowerShell session.
+     </p>
+     <h2 id="examples">
+      Examples
+     </h2>
+     <p>
+      <strong>
+       Example 1: Install a package provider from the PowerShell Gallery
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Install-PackageProvider -Name "Gistprovider" -Verbose</code></pre>
+     <p>
+      This command installs the Gistprovider from the PowerShell Gallery.
+     </p>
+     <p>
+      <strong>
+       Example 2: Install a specified version of a package provider
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Find-PackageProvider -Name "Nuget" -AllVersions
+
+PS C:\&gt; Install-PackageProvider -Name "Nuget" -RequiredVersion "2.8.5.216" -Force</code></pre>
+     <p>
+      This example installs a specified version of the Nuget package provider.
+     </p>
+     <p>
+      The first command finds all versions of the package provider named Nuget.
+The second command installs a specified version of the Nuget package provider.
+     </p>
+     <p>
+      <strong>
+       Example 3: Find a provider and install it
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Find-PackageProvider -Name "Gistprovider" | Install-PackageProvider -Verbose</code></pre>
+     <p>
+      This command uses
+      <strong>
+       Find-PackageProvider
+      </strong>
+      and the pipeline to search for the Gist provider and install it.
+     </p>
+     <p>
+      <strong>
+       Example 4: Install a provider to the current user's module folder
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Install-PackageProvider -Name Gistprovider -Verbose -Scope CurrentUser</code></pre>
+     <p>
+      This command installs a package provider to $env:LOCALAPPDATA\PackageManagement\ProviderAssemblies so that only the current user can use it.
+     </p>
+     <h2 id="required-parameters">
+      Required Parameters
+     </h2>
+     <div class="parameterName stack">
+      -InputObject
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a
+       <strong>
+        SoftwareIdentity
+       </strong>
+       object.
+Use the
+       <strong>
+        Find-PackageProvider
+       </strong>
+       cmdlet to obtain a
+       <strong>
+        SoftwareIdentity
+       </strong>
+       object to pipe into
+       <strong>
+        Install-PackageProvider
+       </strong>
+       .
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SoftwareIdentity[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         1
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByValue)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Name
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies one or more package provider module names.
+Separate multiple package names with commas.
+Wildcard characters are not supported.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         1
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="optional-parameters">
+      Optional Parameters
+     </h2>
+     <div class="parameterName stack">
+      -AllVersions
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that this cmdlet installs all available versions of the package provider.
+By default,
+       <strong>
+        Install-PackageProvider
+       </strong>
+       only returns the highest available version.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Confirm
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Prompts you for confirmation before running the cmdlet.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         cf
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Credential
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a user account that has permission to install package providers.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          PSCredential
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Force
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that this cmdlet forces all actions with this cmdlet that can be forced.
+Currently, this means the
+       <em>
+        Force
+       </em>
+       parameter acts the same as the
+       <em>
+        ForceBootstrap
+       </em>
+       parameter.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -ForceBootstrap
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that this cmdlet automatically installs the package provider.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -MaximumVersion
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the maximum allowed version of the package provider that you want to install.
+If you do not add this parameter,
+       <strong>
+        Install-PackageProvider
+       </strong>
+       installs the highest available version of the provider.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -MinimumVersion
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the minimum allowed version of the package provider that you want to install.
+If you do not add this parameter,
+       <strong>
+        Install-PackageProvider
+       </strong>
+       installs the highest available version of the package that also satisfies any requirement specified by the
+       <em>
+        MaximumVersion
+       </em>
+       parameter.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Proxy
+     </div>
+     <div class="parameterInfo">
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Uri
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -ProxyCredential
+     </div>
+     <div class="parameterInfo">
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          PSCredential
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -RequiredVersion
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the exact allowed version of the package provider that you want to install.
+If you do not add this parameter,
+       <strong>
+        Install-PackageProvider
+       </strong>
+       installs the highest available version of the provider that also satisfies any maximum version specified by the
+       <em>
+        MaximumVersion
+       </em>
+       parameter.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Scope
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the installation scope of the provider.
+The acceptable values for this parameter are:
+       <strong>
+        AllUsers
+       </strong>
+       and
+       <strong>
+        CurrentUser
+       </strong>
+       .
+      </p>
+      <p>
+       The
+       <strong>
+        AllUsers
+       </strong>
+       scope installs providers in a location that is accessible to all users of the computer.
+By default, this is
+       <strong>
+        $env:ProgramFiles\PackageManagement\ProviderAssemblies.
+       </strong>
+      </p>
+      <p>
+       The
+       <strong>
+        CurrentUser
+       </strong>
+       scope installs providers in a location where they are only accessible to the current user.
+By default, this is
+       <strong>
+        $env:LOCALAPPDATA\PackageManagement\ProviderAssemblies.
+       </strong>
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Parameter Sets:
+        </td>
+        <td>
+         CurrentUser, AllUsers
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Source
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies one or more package sources.
+Use the Get-PackageSource cmdlet to get a list of available package sources.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -WhatIf
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         wi
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="inputs">
+      Inputs
+     </h2>
+     <p>
+      <strong>
+       Microsoft.PackageManagement.Packaging.SoftwareIdentity
+      </strong>
+     </p>
+     <p>
+      You can pipe a
+      <strong>
+       SoftwareIdentity
+      </strong>
+      object to this cmdlet.
+Use Find-PackageProvider to get a
+      <strong>
+       SoftwareIdentity
+      </strong>
+      object that can be piped into
+      <strong>
+       Install-PackageProvider
+      </strong>
+      .
+     </p>
+     <h2 id="related-links">
+      Related Links
+     </h2>
+     <ul>
+      <li>
+       <a data-linktype="relative-path" href="find-packageprovider.html">
+        Find-PackageProvider
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="get-packageprovider.html">
+        Get-PackageProvider
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="import-packageprovider.html">
+        Import-PackageProvider
+       </a>
+      </li>
+     </ul>
+     <!-- </content> -->
+    </main>
+    <div class="note alert feedback-system-change-alert">
+     <p>
+      Note
+     </p>
+     <p>
+      The feedback system for this content will be changing soon. Old comments will not be carried over. If content within a comment thread is important to you, please save a copy. For more information on the upcoming change,
+      <a href="https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs">
+       we invite you to read our blog post
+      </a>
+      .
+     </p>
+    </div>
+    <div data-bi-name="comments" id="comments-container" role="form">
+    </div>
+   </div>
+  </div>
+  <div class="openfeedback-container" id="openFeedbackContainer">
+  </div>
+  <div class="action-panel">
+  </div>
+ </body>
+</html>

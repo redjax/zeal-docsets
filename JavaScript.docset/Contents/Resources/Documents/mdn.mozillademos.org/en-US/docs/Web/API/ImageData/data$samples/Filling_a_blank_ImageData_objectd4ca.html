@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    
+<!-- Mirrored from mdn.mozillademos.org/en-US/docs/Web/API/ImageData/data$samples/Filling_a_blank_ImageData_object?revision=1505914 by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 02 May 2019 02:04:13 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+        <meta charset="utf-8">
+        <link href="../../../../../../../developer.mozilla.org/static/build/styles/samples.37902ba3b7fe.css" rel="stylesheet" type="text/css" />
+        
+        <title>ImageData.data</title>
+    </head>
+    <body>
+        
+            <canvas id="canvas"></canvas>
+
+        
+        
+            <script>
+                const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
+const imageData = ctx.createImageData(100, 100);
+
+// Iterate through every pixel
+for (let i = 0; i < imageData.data.length; i += 4) {
+  // Percentage in the x direction, times 255
+  let x = (i % 400) / 400 * 255;
+  // Percentage in the y direction, times 255
+  let y = Math.ceil(i / 400) / 100 * 255;
+
+  // Modify pixel data
+  imageData.data[i + 0] = x;        // R value
+  imageData.data[i + 1] = y;        // G value
+  imageData.data[i + 2] = 255 - x;  // B value
+  imageData.data[i + 3] = 255;      // A value
+}
+
+// Draw image data to the canvas
+ctx.putImageData(imageData, 20, 20);
+            </script>
+        
+    </body>
+
+<!-- Mirrored from mdn.mozillademos.org/en-US/docs/Web/API/ImageData/data$samples/Filling_a_blank_ImageData_object?revision=1505914 by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 02 May 2019 02:04:13 GMT -->
+</html>

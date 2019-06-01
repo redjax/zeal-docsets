@@ -1,0 +1,784 @@
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML><HEAD><TITLE>Man page of NAMESPACES</TITLE>
+</HEAD><BODY>
+<H1>NAMESPACES</H1>
+Section: Linux Programmer's Manual (7)<BR>Updated: 2016-12-12<BR><A HREF="#index">Index</A>
+<A HREF="../index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+namespaces - overview of Linux namespaces
+<A NAME="lbAC">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+A namespace wraps a global system resource in an abstraction that
+makes it appear to the processes within the namespace that they
+have their own isolated instance of the global resource.
+Changes to the global resource are visible to other processes
+that are members of the namespace, but are invisible to other processes.
+One use of namespaces is to implement containers.
+<P>
+Linux provides the following namespaces:
+<TABLE>
+<TR VALIGN=top><TD><B>Namespace</B></TD><TD><B>Constant</B></TD><TD><B>Isolates</B><BR></TD></TR>
+<TR VALIGN=top><TD>Cgroup</TD><TD><B>CLONE_NEWCGROUP</B></TD><TD>Cgroup root directory<BR></TD></TR>
+<TR VALIGN=top><TD>IPC</TD><TD><B>CLONE_NEWIPC</B></TD><TD>System V IPC, POSIX message queues<BR></TD></TR>
+<TR VALIGN=top><TD>Network</TD><TD><B>CLONE_NEWNET</B></TD><TD>Network devices, stacks, ports, etc.<BR></TD></TR>
+<TR VALIGN=top><TD>Mount</TD><TD><B>CLONE_NEWNS</B></TD><TD>Mount points<BR></TD></TR>
+<TR VALIGN=top><TD>PID</TD><TD><B>CLONE_NEWPID</B></TD><TD>Process IDs<BR></TD></TR>
+<TR VALIGN=top><TD>User</TD><TD><B>CLONE_NEWUSER</B></TD><TD>User and group IDs<BR></TD></TR>
+<TR VALIGN=top><TD>UTS</TD><TD><B>CLONE_NEWUTS</B></TD><TD>Hostname and NIS domain name<BR></TD></TR>
+</TABLE>
+
+<P>
+This page describes the various namespaces and the associated
+<I>/proc</I>
+
+files, and summarizes the APIs for working with namespaces.
+
+
+
+<A NAME="lbAD">&nbsp;</A>
+<H3>The namespaces API</H3>
+
+As well as various
+<I>/proc</I>
+
+files described below,
+the namespaces API includes the following system calls:
+<DL COMPACT>
+<DT><B><A HREF="../man2/clone.2.html">clone</A></B>(2)
+
+<DD>
+The
+<B><A HREF="../man2/clone.2.html">clone</A></B>(2)
+
+system call creates a new process.
+If the
+<I>flags</I>
+
+argument of the call specifies one or more of the
+<B>CLONE_NEW*</B>
+
+flags listed below, then new namespaces are created for each flag,
+and the child process is made a member of those namespaces.
+(This system call also implements a number of features
+unrelated to namespaces.)
+<DT><B><A HREF="../man2/setns.2.html">setns</A></B>(2)
+
+<DD>
+The
+<B><A HREF="../man2/setns.2.html">setns</A></B>(2)
+
+system call allows the calling process to join an existing namespace.
+The namespace to join is specified via a file descriptor that refers to
+one of the
+<I>/proc/[pid]/ns</I>
+
+files described below.
+<DT><B><A HREF="../man2/unshare.2.html">unshare</A></B>(2)
+
+<DD>
+The
+<B><A HREF="../man2/unshare.2.html">unshare</A></B>(2)
+
+system call moves the calling process to a new namespace.
+If the
+<I>flags</I>
+
+argument of the call specifies one or more of the
+<B>CLONE_NEW*</B>
+
+flags listed below, then new namespaces are created for each flag,
+and the calling process is made a member of those namespaces.
+(This system call also implements a number of features
+unrelated to namespaces.)
+</DL>
+<P>
+
+Creation of new namespaces using
+<B><A HREF="../man2/clone.2.html">clone</A></B>(2)
+
+and
+<B><A HREF="../man2/unshare.2.html">unshare</A></B>(2)
+
+in most cases requires the
+<B>CAP_SYS_ADMIN</B>
+
+capability.
+User namespaces are the exception: since Linux 3.8,
+no privilege is required to create a user namespace.
+
+
+
+<A NAME="lbAE">&nbsp;</A>
+<H3>The /proc/[pid]/ns/ directory</H3>
+
+Each process has a
+<I>/proc/[pid]/ns/</I>
+
+
+subdirectory containing one entry for each namespace that
+supports being manipulated by
+<B><A HREF="../man2/setns.2.html">setns</A></B>(2):
+
+<P>
+
+<PRE>
+$ <B>ls -l /proc/$$/ns</B>
+total 0
+lrwxrwxrwx. 1 mtk mtk 0 Apr 28 12:46 cgroup -&gt; cgroup:[4026531835]
+lrwxrwxrwx. 1 mtk mtk 0 Apr 28 12:46 ipc -&gt; ipc:[4026531839]
+lrwxrwxrwx. 1 mtk mtk 0 Apr 28 12:46 mnt -&gt; mnt:[4026531840]
+lrwxrwxrwx. 1 mtk mtk 0 Apr 28 12:46 net -&gt; net:[4026531969]
+lrwxrwxrwx. 1 mtk mtk 0 Apr 28 12:46 pid -&gt; pid:[4026531836]
+lrwxrwxrwx. 1 mtk mtk 0 Apr 28 12:46 user -&gt; user:[4026531837]
+lrwxrwxrwx. 1 mtk mtk 0 Apr 28 12:46 uts -&gt; uts:[4026531838]
+</PRE>
+
+
+<P>
+Bind mounting (see
+<B><A HREF="../man2/mount.2.html">mount</A></B>(2))
+
+one of the files in this directory
+to somewhere else in the filesystem keeps
+the corresponding namespace of the process specified by
+<I>pid</I>
+
+alive even if all processes currently in the namespace terminate.
+<P>
+Opening one of the files in this directory
+(or a file that is bind mounted to one of these files)
+returns a file handle for
+the corresponding namespace of the process specified by
+<I>pid</I>.
+
+As long as this file descriptor remains open,
+the namespace will remain alive,
+even if all processes in the namespace terminate.
+The file descriptor can be passed to
+<B><A HREF="../man2/setns.2.html">setns</A></B>(2).
+
+<P>
+In Linux 3.7 and earlier, these files were visible as hard links.
+Since Linux 3.8,
+
+they appear as symbolic links.
+If two processes are in the same namespace, then the inode numbers of their
+<I>/proc/[pid]/ns/xxx</I>
+
+symbolic links will be the same; an application can check this using the
+<I>stat.st_ino</I>
+
+field returned by
+<B><A HREF="../man2/stat.2.html">stat</A></B>(2).
+
+The content of this symbolic link is a string containing
+the namespace type and inode number as in the following example:
+<P>
+
+<PRE>
+$ <B>readlink /proc/$$/ns/uts</B>
+uts:[4026531838]
+</PRE>
+
+
+<P>
+The symbolic links in this subdirectory are as follows:
+<DL COMPACT>
+<DT><I>/proc/[pid]/ns/cgroup</I> (since Linux 4.6)
+
+<DD>
+This file is a handle for the cgroup namespace of the process.
+<DT><I>/proc/[pid]/ns/ipc</I> (since Linux 3.0)
+
+<DD>
+This file is a handle for the IPC namespace of the process.
+<DT><I>/proc/[pid]/ns/mnt</I> (since Linux 3.8)
+
+<DD>
+
+This file is a handle for the mount namespace of the process.
+<DT><I>/proc/[pid]/ns/net</I> (since Linux 3.0)
+
+<DD>
+This file is a handle for the network namespace of the process.
+<DT><I>/proc/[pid]/ns/pid</I> (since Linux 3.8)
+
+<DD>
+
+This file is a handle for the PID namespace of the process.
+<DT><I>/proc/[pid]/ns/user</I> (since Linux 3.8)
+
+<DD>
+
+This file is a handle for the user namespace of the process.
+<DT><I>/proc/[pid]/ns/uts</I> (since Linux 3.0)
+
+<DD>
+This file is a handle for the UTS namespace of the process.
+</DL>
+<P>
+
+Permission to dereference or read
+(<B><A HREF="../man2/readlink.2.html">readlink</A></B>(2))
+
+these symbolic links is governed by a ptrace access mode
+<B>PTRACE_MODE_READ_FSCREDS</B>
+
+check; see
+<B><A HREF="../man2/ptrace.2.html">ptrace</A></B>(2).
+
+
+
+
+<A NAME="lbAF">&nbsp;</A>
+<H3>Cgroup namespaces (CLONE_NEWCGROUP)</H3>
+
+See
+<B><A HREF="../man7/cgroup_namespaces.7.html">cgroup_namespaces</A></B>(7).
+
+
+
+
+<A NAME="lbAG">&nbsp;</A>
+<H3>IPC namespaces (CLONE_NEWIPC)</H3>
+
+IPC namespaces isolate certain IPC resources,
+namely, System V IPC objects (see
+<B><A HREF="../man7/svipc.7.html">svipc</A></B>(7))
+
+and (since Linux 2.6.30)
+
+
+POSIX message queues (see
+<B><A HREF="../man7/mq_overview.7.html">mq_overview</A></B>(7)).
+
+The common characteristic of these IPC mechanisms is that IPC
+objects are identified by mechanisms other than filesystem
+pathnames.
+<P>
+Each IPC namespace has its own set of System V IPC identifiers and
+its own POSIX message queue filesystem.
+Objects created in an IPC namespace are visible to all other processes
+that are members of that namespace,
+but are not visible to processes in other IPC namespaces.
+<P>
+The following
+<I>/proc</I>
+
+interfaces are distinct in each IPC namespace:
+<DL COMPACT>
+<DT>*<DD>
+The POSIX message queue interfaces in
+<I>/proc/sys/fs/mqueue</I>.
+
+<DT>*<DD>
+The System V IPC interfaces in
+<I>/proc/sys/kernel</I>,
+
+namely:
+<I>msgmax</I>,
+
+<I>msgmnb</I>,
+
+<I>msgmni</I>,
+
+<I>sem</I>,
+
+<I>shmall</I>,
+
+<I>shmmax</I>,
+
+<I>shmmni</I>,
+
+and
+<I>shm_rmid_forced</I>.
+
+<DT>*<DD>
+The System V IPC interfaces in
+<I>/proc/sysvipc</I>.
+
+</DL>
+<P>
+
+When an IPC namespace is destroyed
+(i.e., when the last process that is a member of the namespace terminates),
+all IPC objects in the namespace are automatically destroyed.
+<P>
+Use of IPC namespaces requires a kernel that is configured with the
+<B>CONFIG_IPC_NS</B>
+
+option.
+
+
+
+<A NAME="lbAH">&nbsp;</A>
+<H3>Network namespaces (CLONE_NEWNET)</H3>
+
+Network namespaces provide isolation of the system resources associated
+with networking: network devices, IPv4 and IPv6 protocol stacks,
+IP routing tables, firewalls, the
+<I>/proc/net</I>
+
+directory, the
+<I>/sys/class/net</I>
+
+directory, port numbers (sockets), and so on.
+A physical network device can live in exactly one
+network namespace.
+A virtual network device (&quot;veth&quot;) pair provides a pipe-like abstraction
+
+that can be used to create tunnels between network namespaces,
+and can be used to create a bridge to a physical network device
+in another namespace.
+<P>
+When a network namespace is freed
+(i.e., when the last process in the namespace terminates),
+its physical network devices are moved back to the
+initial network namespace (not to the parent of the process).
+<P>
+Use of network namespaces requires a kernel that is configured with the
+<B>CONFIG_NET_NS</B>
+
+option.
+
+
+
+<A NAME="lbAI">&nbsp;</A>
+<H3>Mount namespaces (CLONE_NEWNS)</H3>
+
+See
+<B><A HREF="../man7/mount_namespaces.7.html">mount_namespaces</A></B>(7).
+
+
+
+
+<A NAME="lbAJ">&nbsp;</A>
+<H3>PID namespaces (CLONE_NEWPID)</H3>
+
+See
+<B><A HREF="../man7/pid_namespaces.7.html">pid_namespaces</A></B>(7).
+
+
+
+
+<A NAME="lbAK">&nbsp;</A>
+<H3>User namespaces (CLONE_NEWUSER)</H3>
+
+See
+<B><A HREF="../man7/user_namespaces.7.html">user_namespaces</A></B>(7).
+
+
+
+
+<A NAME="lbAL">&nbsp;</A>
+<H3>UTS namespaces (CLONE_NEWUTS)</H3>
+
+UTS namespaces provide isolation of two system identifiers:
+the hostname and the NIS domain name.
+These identifiers are set using
+<B><A HREF="../man2/sethostname.2.html">sethostname</A></B>(2)
+
+and
+<B><A HREF="../man2/setdomainname.2.html">setdomainname</A></B>(2),
+
+and can be retrieved using
+<B><A HREF="../man2/uname.2.html">uname</A></B>(2),
+
+<B><A HREF="../man2/gethostname.2.html">gethostname</A></B>(2),
+
+and
+<B><A HREF="../man2/getdomainname.2.html">getdomainname</A></B>(2).
+
+<P>
+Use of UTS namespaces requires a kernel that is configured with the
+<B>CONFIG_UTS_NS</B>
+
+option.
+
+
+
+<A NAME="lbAM">&nbsp;</A>
+<H3>Introspecting namespace relationships</H3>
+
+Since Linux 4.9,
+
+
+
+
+two
+<B><A HREF="../man2/ioctl.2.html">ioctl</A></B>(2)
+
+operations are provided to allow introspection of namespace relationships
+(see
+<B><A HREF="../man7/user_namespaces.7.html">user_namespaces</A></B>(7)
+
+and
+<B><A HREF="../man7/pid_namespaces.7.html">pid_namespaces</A></B>(7)).
+
+The form of the calls is:
+<P>
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;new_fd&nbsp;=&nbsp;ioctl(fd,&nbsp;request);
+<P>
+In each case,
+<I>fd</I>
+
+refers to a
+<I>/proc/[pid]/ns/*</I>
+
+file.
+Both operations return a new file descriptor on success.
+<DL COMPACT>
+<DT><B>NS_GET_USERNS</B>
+
+<DD>
+Returns a file descriptor that refers to the owning user namespace
+for the namespace referred to by
+<I>fd</I>.
+
+<DT><B>NS_GET_PARENT</B>
+
+<DD>
+Returns a file descriptor that refers to the parent namespace of
+the namespace referred to by
+<I>fd</I>.
+
+This operation is valid only for hierarchical namespaces
+(i.e., PID and user namespaces).
+For user namespaces,
+<B>NS_GET_PARENT</B>
+
+is synonymous with
+<B>NS_GET_USERNS</B>.
+
+</DL>
+<P>
+
+The new file descriptor returned by these operations is opened with the
+<B>O_RDONLY</B>
+
+and
+<B>O_CLOEXEC</B>
+
+(close-on-exec; see
+<B><A HREF="../man2/fcntl.2.html">fcntl</A></B>(2))<B>flags.</B>
+
+<P>
+
+By applying
+<B><A HREF="../man2/fstat.2.html">fstat</A></B>(2)
+
+to the returned file descriptor, one obtains a
+<I>stat</I>
+
+structure whose
+<I>st_dev</I>
+
+(resident device) and
+<I>st_ino</I>
+
+(inode number) fields together identify the owning/parent namespace.
+This inode number can be matched with the inode number of another
+<I>/proc/[pid]/ns/{pid,user}</I>
+
+file to determine whether that is the owning/parent namespace.
+<P>
+Either of these
+<B><A HREF="../man2/ioctl.2.html">ioctl</A></B>(2)
+
+operations can fail with the following errors:
+<DL COMPACT>
+<DT><B>EPERM</B>
+
+<DD>
+The requested namespace is outside of the caller's namespace scope.
+This error can occur if, for example, the owning user namespace is an
+ancestor of the caller's current user namespace.
+It can also occur on attempts to obtain the parent of the initial
+user or PID namespace.
+<DT><B>ENOTTY</B>
+
+<DD>
+The operation is not supported by this kernel version.
+</DL>
+<P>
+
+Additionally, the
+<B>NS_GET_PARENT</B>
+
+operation can fail with the following error:
+<DL COMPACT>
+<DT><B>EINVAL</B>
+
+<DD>
+<I>fd</I>
+
+refers to a nonhierarchical namespace.
+</DL>
+<P>
+
+See the EXAMPLE section for an example of the use of these operations.
+<A NAME="lbAN">&nbsp;</A>
+<H2>CONFORMING TO</H2>
+
+Namespaces are a Linux-specific feature.
+<A NAME="lbAO">&nbsp;</A>
+<H2>EXAMPLE</H2>
+
+For one example,
+<B><A HREF="../man7/user_namespaces.7.html">user_namespaces</A></B>(7).
+
+<P>
+The example shown below uses the
+<B><A HREF="../man2/ioctl.2.html">ioctl</A></B>(2)
+
+operations described above to perform simple
+introspection of namespace relationships.
+The following shell sessions show various examples of the use
+of this program.
+<P>
+Trying to get the parent of the initial user namespace fails,
+for the reasons explained earlier:
+<P>
+<PRE>
+$ <B>./ns_introspect /proc/self/ns/user p</B>
+The parent namespace is outside your namespace scope
+</PRE>
+
+<P>
+Create a process running
+<B><A HREF="../man1/sleep.1.html">sleep</A></B>(1)
+
+that resides in new user and UTS namespaces,
+and show that new UTS namespace is associated with the new user namespace:
+<P>
+<PRE>
+$ <B>unshare -Uu sleep 1000 &amp;</B>
+[1] 23235
+$ <B>./ns_introspect /proc/23235/ns/uts</B>
+Device/Inode of owning user namespace is: [0,3] / 4026532448
+$ <B>readlink /proc/23235/ns/user </B>
+user:[4026532448]
+</PRE>
+
+<P>
+Then show that the parent of the new user namespace in the preceding
+example is the initial user namespace:
+<P>
+<PRE>
+$ <B>readlink /proc/self/ns/user</B>
+user:[4026531837]
+$ <B>./ns_introspect /proc/23235/ns/user</B>
+Device/Inode of owning user namespace is: [0,3] / 4026531837
+</PRE>
+
+<P>
+Start a shell in a new user namespace, and show that from within
+this shell, the parent user namespace can't be discovered.
+Similarly, the UTS namespace
+(which is associated with the initial user namespace)
+can't be discovered.
+<P>
+<PRE>
+$ <B>PS1=&quot;sh2$ &quot; unshare -U bash</B>
+sh2$ <B>./ns_introspect /proc/self/ns/user p</B>
+The parent namespace is outside your namespace scope
+sh2$ <B>./ns_introspect /proc/self/ns/uts u</B>
+The owning user namespace is outside your namespace scope
+</PRE>
+
+<A NAME="lbAP">&nbsp;</A>
+<H3>Program source</H3>
+
+
+<PRE>
+/* ns_introspect.c
+
+   Licensed under the GNU General Public License v2 or later.
+*/
+#include &lt;<A HREF="file:///usr/include/stdlib.h">stdlib.h</A>&gt;
+#include &lt;<A HREF="file:///usr/include/unistd.h">unistd.h</A>&gt;
+#include &lt;<A HREF="file:///usr/include/stdio.h">stdio.h</A>&gt;
+#include &lt;<A HREF="file:///usr/include/fcntl.h">fcntl.h</A>&gt;
+#include &lt;<A HREF="file:///usr/include/string.h">string.h</A>&gt;
+#include &lt;<A HREF="file:///usr/include/sys/stat.h">sys/stat.h</A>&gt;
+#include &lt;<A HREF="file:///usr/include/sys/ioctl.h">sys/ioctl.h</A>&gt;
+#include &lt;<A HREF="file:///usr/include/errno.h">errno.h</A>&gt;
+#include &lt;<A HREF="file:///usr/include/sys/sysmacros.h">sys/sysmacros.h</A>&gt;
+
+#ifndef NS_GET_USERNS
+#define NSIO    0xb7
+#define NS_GET_USERNS   _IO(NSIO, 0x1)
+#define NS_GET_PARENT   _IO(NSIO, 0x2)
+#endif
+
+int
+main(int argc, char *argv[])
+{
+    int fd, userns_fd, parent_fd;
+    struct stat sb;
+
+    if (argc &lt; 2) {
+        fprintf(stderr, &quot;Usage: %s /proc/[pid]/ns/[file] [p|u]\n&quot;,
+                argv[0]);
+        fprintf(stderr, &quot;\nDisplay the result of one or both &quot;
+                &quot;of NS_GET_USERNS (u) or NS_GET_PARENT (p)\n&quot;
+                &quot;for the specified /proc/[pid]/ns/[file]. If neither &quot;
+                &quot;'p' nor 'u' is specified,\n&quot;
+                &quot;NS_GET_USERNS is the default.\n&quot;);
+        exit(EXIT_FAILURE);
+    }
+
+    /* Obtain a file descriptor for the 'ns' file specified
+       in argv[1] */
+
+    fd = open(argv[1], O_RDONLY);
+    if (fd == -1) {
+        perror(&quot;open&quot;);
+        exit(EXIT_FAILURE);
+    }
+
+    /* Obtain a file descriptor for the owning user namespace and
+       then obtain and display the inode number of that namespace */
+
+    if (argc &lt; 3 || strchr(argv[2], 'u')) {
+        userns_fd = ioctl(fd, NS_GET_USERNS);
+
+        if (userns_fd == -1) {
+            if (errno == EPERM)
+                printf(&quot;The owning user namespace is outside &quot;
+                        &quot;your namespace scope\n&quot;);
+            else
+               perror(&quot;ioctl-NS_GET_USERNS&quot;);
+            exit(EXIT_FAILURE);
+         }
+
+        if (fstat(userns_fd, &amp;sb) == -1) {
+            perror(&quot;fstat-userns&quot;);
+            exit(EXIT_FAILURE);
+        }
+        printf(&quot;Device/Inode of owning user namespace is: &quot;
+                &quot;[%lx,%lx] / %ld\n&quot;,
+                (long) major(sb.st_dev), (long) minor(sb.st_dev),
+                (long) sb.st_ino);
+
+        close(userns_fd);
+    }
+
+    /* Obtain a file descriptor for the parent namespace and
+       then obtain and display the inode number of that namespace */
+
+    if (argc &gt; 2 &amp;&amp; strchr(argv[2], 'p')) {
+        parent_fd = ioctl(fd, NS_GET_PARENT);
+
+        if (parent_fd == -1) {
+            if (errno == EINVAL)
+                printf(&quot;Can' get parent namespace of a &quot;
+                        &quot;nonhierarchical namespace\n&quot;);
+            else if (errno == EPERM)
+                printf(&quot;The parent namespace is outside &quot;
+                        &quot;your namespace scope\n&quot;);
+            else
+                perror(&quot;ioctl-NS_GET_PARENT&quot;);
+            exit(EXIT_FAILURE);
+        }
+
+        if (fstat(parent_fd, &amp;sb) == -1) {
+            perror(&quot;fstat-parentns&quot;);
+            exit(EXIT_FAILURE);
+        }
+        printf(&quot;Device/Inode of parent namespace is: [%lx,%lx] / %ld\n&quot;,
+                (long) major(sb.st_dev), (long) minor(sb.st_dev),
+                (long) sb.st_ino);
+
+        close(parent_fd);
+    }
+
+    exit(EXIT_SUCCESS);
+}
+</PRE>
+
+<A NAME="lbAQ">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+<B><A HREF="../man1/nsenter.1.html">nsenter</A></B>(1),
+
+<B><A HREF="../man1/readlink.1.html">readlink</A></B>(1),
+
+<B><A HREF="../man1/unshare.1.html">unshare</A></B>(1),
+
+<B><A HREF="../man2/clone.2.html">clone</A></B>(2),
+
+<B><A HREF="../man2/setns.2.html">setns</A></B>(2),
+
+<B><A HREF="../man2/unshare.2.html">unshare</A></B>(2),
+
+<B><A HREF="../man5/proc.5.html">proc</A></B>(5),
+
+<B><A HREF="../man7/capabilities.7.html">capabilities</A></B>(7),
+
+<B><A HREF="../man7/cgroup_namespaces.7.html">cgroup_namespaces</A></B>(7),
+
+<B><A HREF="../man7/cgroups.7.html">cgroups</A></B>(7),
+
+<B><A HREF="../man7/credentials.7.html">credentials</A></B>(7),
+
+<B><A HREF="../man7/pid_namespaces.7.html">pid_namespaces</A></B>(7),
+
+<B><A HREF="../man7/user_namespaces.7.html">user_namespaces</A></B>(7),
+
+<B><A HREF="../man8/lsns.8.html">lsns</A></B>(8),
+
+<B><A HREF="../man8/switch_root.8.html">switch_root</A></B>(8)
+
+<A NAME="lbAR">&nbsp;</A>
+<H2>COLOPHON</H2>
+
+This page is part of release 4.09 of the Linux
+<I>man-pages</I>
+
+project.
+A description of the project,
+information about reporting bugs,
+and the latest version of this page,
+can be found at
+<A HREF="https://www.kernel.org/doc/man-pages/.">https://www.kernel.org/doc/man-pages/.</A>
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">DESCRIPTION</A><DD>
+<DL>
+<DT><A HREF="#lbAD">The namespaces API</A><DD>
+<DT><A HREF="#lbAE">The /proc/[pid]/ns/ directory</A><DD>
+<DT><A HREF="#lbAF">Cgroup namespaces (CLONE_NEWCGROUP)</A><DD>
+<DT><A HREF="#lbAG">IPC namespaces (CLONE_NEWIPC)</A><DD>
+<DT><A HREF="#lbAH">Network namespaces (CLONE_NEWNET)</A><DD>
+<DT><A HREF="#lbAI">Mount namespaces (CLONE_NEWNS)</A><DD>
+<DT><A HREF="#lbAJ">PID namespaces (CLONE_NEWPID)</A><DD>
+<DT><A HREF="#lbAK">User namespaces (CLONE_NEWUSER)</A><DD>
+<DT><A HREF="#lbAL">UTS namespaces (CLONE_NEWUTS)</A><DD>
+<DT><A HREF="#lbAM">Introspecting namespace relationships</A><DD>
+</DL>
+<DT><A HREF="#lbAN">CONFORMING TO</A><DD>
+<DT><A HREF="#lbAO">EXAMPLE</A><DD>
+<DL>
+<DT><A HREF="#lbAP">Program source</A><DD>
+</DL>
+<DT><A HREF="#lbAQ">SEE ALSO</A><DD>
+<DT><A HREF="#lbAR">COLOPHON</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 14:28:41 GMT, February 25, 2017
+</BODY>
+</HTML>

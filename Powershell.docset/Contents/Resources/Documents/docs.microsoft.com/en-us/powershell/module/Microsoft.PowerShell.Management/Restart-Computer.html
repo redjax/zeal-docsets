@@ -1,0 +1,1552 @@
+<!DOCTYPE html>
+<html class="no-js hasSidebar hasPageActions hasBreadcrumb conceptual" data-authenticated="false" data-render="docs" dir="ltr" lang="en-us">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Restart-Computer (Microsoft.PowerShell.Management)" property="og:title"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" property="og:image"/>
+  <meta content="summary" name="twitter:card"/>
+  <meta content="@docsmsft" name="twitter:site"/>
+  <meta content="Restart-Computer (Microsoft.PowerShell.Management)" name="twitter:title"/>
+  <meta content="The Restart-Computer cmdlet restarts the operating system on the local and remote computers. You can use the parameters of Restart-Computer to run the restart operations as a background job, to speciâ¦" name="twitter:description"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" name="twitter:image"/>
+  <meta content="Microsoft Logo" name="twitter:image:alt"/>
+  <meta content="The Restart-Computer cmdlet restarts the operating system on the local and remote computers. You can use the parameters of Restart-Computer to run the restart operations as a background job, to speciâ¦" name="description"/>
+  <meta content="Docs" name="search.ms_sitename"/>
+  <meta content="PowerShell_PowerShell-docs_reference" name="search.ms_docsetname"/>
+  <meta content="0" name="version"/>
+  <meta content="en-us" name="locale"/>
+  <meta content="Docs" name="site_name"/>
+  <meta content="PowerShell" name="search.ms_product"/>
+  <meta content="PowerShell.PowerShell_PowerShell-docs_reference" name="depot_name"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/446813f2b0922607a6ae1d2df7a11be56edfa4c1/reference/6/Microsoft.PowerShell.Management/Restart-Computer.md" name="ref_skeleton_gitcommit"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/live/reference/6/Microsoft.PowerShell.Management/Restart-Computer.md" name="original_ref_skeleton_git_url"/>
+  <meta content="2018-03-30 03:35 PM" name="updated_at"/>
+  <meta content="5b56646b-9f1d-3f94-64b7-1e556c9ad803" name="document_id"/>
+  <meta content="c4358932-1228-6e20-37e3-5ded6a469b8a" name="document_version_independent_id"/>
+  <meta content="powershell" name="page_type"/>
+  <meta content="command" name="page_kind"/>
+  <meta content="06/09/2017" name="ms.date"/>
+  <meta content="2.0.0" name="schema"/>
+  <meta content="powershell,cmdlet" name="keywords"/>
+  <meta content="http://go.microsoft.com/fwlink/?LinkId=821625" name="online_version"/>
+  <meta content="Microsoft.PowerShell.Commands.Management.dll-Help.xml" name="external_help_file"/>
+  <meta content="powershell" name="ms.devlang"/>
+  <meta content="INDEX, FOLLOW" name="ROBOTS"/>
+  <meta content="sdwheeler" name="author"/>
+  <meta content="sewhee" name="ms.author"/>
+  <meta content="carmonm" name="manager"/>
+  <meta content="/powershell/bread-pscore/toc.yml?view=powershell-6" name="breadcrumb_path"/>
+  <meta content="powershell" name="apiPlatform"/>
+  <meta content="reference" name="ms.topic"/>
+  <meta content="windows, macos, linux" name="ms.tgt_pltfr"/>
+  <meta content="powershell-scripting" name="ms.technology"/>
+  <meta content="powershell" name="ms.prod"/>
+  <meta content="MSDocsHeader-Powershell" name="uhfHeaderId"/>
+  <meta content="../psdocs/toc.json?view=powershell-6" name="toc_rel"/>
+  <link href="https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.management/restart-computer" rel="canonical"/>
+  <title>
+   Restart-Computer
+  </title>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/60aac04b.site.css" rel="stylesheet"/>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/fdb8a38a.conceptual.css" rel="stylesheet"/>
+ </head>
+ <body dir="ltr" lang="en-us">
+  <div class="header-holder">
+   <div data-bi-name="header" id="headerAreaHolder">
+    <div id="uhf-placeholder">
+    </div>
+   </div>
+   <div class="disclaimer-holder" id="disclaimer-holder">
+   </div>
+  </div>
+  <div class="container mainContainer" data-bi-name="body">
+   <div class="content-header" data-bi-name="content-header">
+    <div class="content-header-controls">
+     <button class="contents-button button-border" data-bi-name="contents-expand" type="button">
+      <span class="docon docon-menu">
+      </span>
+      Contents
+     </button>
+    </div>
+    <div class="content-header-controls">
+     <button class="ap-collapse-behavior ap-expanded button-border" data-bi-name="ap-collapse" type="button">
+      <span class="docon docon-exit-mode">
+      </span>
+      Exit focus mode
+     </button>
+    </div>
+   </div>
+   <div class="primary-holder">
+    <main class="content" data-bi-name="content" dir="ltr" id="main" lang="en-us" role="main">
+     <!-- <content> -->
+     <h1>
+      Restart-Computer
+     </h1>
+     <div class="metadata">
+      <dl class="attributeList">
+       <dt>
+        Module:
+       </dt>
+       <dd>
+        <a data-linktype="relative-path" href="./Microsoft.PowerShell.Management.html">
+         Microsoft.PowerShell.Management
+        </a>
+       </dd>
+      </dl>
+     </div>
+     <div class="summaryHolder">
+      <div class="summary">
+       Restarts ("reboots") the operating system on local and remote computers.
+      </div>
+     </div>
+     <h2 class="hiddenAnchor" id="syntax">
+      Syntax
+     </h2>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Restart-Computer
+       [-DcomAuthentication &lt;AuthenticationLevel&gt;]
+       [-Impersonation &lt;ImpersonationLevel&gt;]
+       [-WsmanAuthentication &lt;String&gt;]
+       [-Protocol &lt;String&gt;]
+       [[-ComputerName] &lt;String[]&gt;]
+       [[-Credential] &lt;PSCredential&gt;]
+       [-Force]
+       [-Wait]
+       [-Timeout &lt;Int32&gt;]
+       [-For &lt;WaitForServiceTypes&gt;]
+       [-Delay &lt;Int16&gt;]
+       [-WhatIf]
+       [-Confirm]
+       [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Restart-Computer
+       [-AsJob]
+       [-DcomAuthentication &lt;AuthenticationLevel&gt;]
+       [-Impersonation &lt;ImpersonationLevel&gt;]
+       [[-ComputerName] &lt;String[]&gt;]
+       [[-Credential] &lt;PSCredential&gt;]
+       [-Force]
+       [-ThrottleLimit &lt;Int32&gt;]
+       [-WhatIf]
+       [-Confirm]
+       [&lt;CommonParameters&gt;]</code></pre>
+     <h2 id="description">
+      Description
+     </h2>
+     <p>
+      The
+      <strong>
+       Restart-Computer
+      </strong>
+      cmdlet restarts the operating system on the local and remote computers.
+     </p>
+     <p>
+      You can use the parameters of
+      <strong>
+       Restart-Computer
+      </strong>
+      to run the restart operations as a background job, to specify the authentication levels and alternate credentials, to limit the operations that run at the same time, and to force an immediate restart.
+     </p>
+     <p>
+      Starting in Windows PowerShell 3.0, you can wait for the restart to complete before you run the next command, specify a waiting time-out and query interval, and wait for particular services to be available on the restarted computer.
+This feature makes it practical to use
+      <strong>
+       Restart-Computer
+      </strong>
+      in scripts and functions.
+You can also use the WSMan protocol to restart the computer, in case DCOM calls are blocked, such as by an enterprise firewall.
+     </p>
+     <p>
+      This cmdlet requires Windows PowerShell remoting only when you use the
+      <em>
+       AsJob
+      </em>
+      parameter in a command.
+     </p>
+     <h2 id="examples">
+      Examples
+     </h2>
+     <p>
+      <strong>
+       Example 1: Restart the local computer
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Restart-Computer</code></pre>
+     <p>
+      This command restarts the local computer.
+     </p>
+     <p>
+      <strong>
+       Example 2: Restart several computers including the local computer
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Restart-Computer -ComputerName "Server01", "Server02", "localhost"</code></pre>
+     <p>
+      This command restarts two remote computers, Server01 and Server02, and the local computer, identified as localhost.
+     </p>
+     <p>
+      <strong>
+       Example 3: Restart computers as a background job
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">The first command uses the *AsJob* parameter to run the command as a background job. The command stores the resulting job object in the $j variable.
+
+PS C:\&gt; $j = Restart-Computer -ComputerName "Server01", "Server02" -AsJob
+
+
+
+The second command uses a pipeline operator to send the job object in $j to the Receive-Job cmdlet, which gets the job results. The command stores the results in the $Results variable.
+
+PS C:\&gt; $Results = $j | Receive-Job
+
+
+
+The third command displays the result stores in the $Results variable.Because *AsJob* creates the job on the local computer and automatically returns the results to the local computer, you can run **Receive-Job** as a local command.
+
+PS C:\&gt; $Results</code></pre>
+     <p>
+      These commands run a
+      <strong>
+       Restart-Computer
+      </strong>
+      command as a background job on two remote computers, and then get the results.
+     </p>
+     <p>
+      <strong>
+       Example 4: Restart a remote computer
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Restart-Computer -ComputerName "Server01" -Impersonation Anonymous -Authentication PacketIntegrity</code></pre>
+     <p>
+      This command restarts the Server01 remote computer.
+The command uses customized impersonation and authentication settings.
+     </p>
+     <p>
+      <strong>
+       Example 5: Force restart of all computers in a domain
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">The first command uses the Get-Content cmdlet to get a list of computers in the domain from the Domain01.txt file. It stores the list in the $s variable.
+
+PS C:\&gt; $s = Get-Content Domain01.txt
+
+
+
+The second command gets the credentials of a domain administrator and stores them in the $c variable.
+
+PS C:\&gt; $c = Get-Credential Domain01\Admin01
+
+
+
+The third command restarts the computers. It uses the *ComputerName* parameter to submit the list of computers in the $s variable, the *Force* parameter to force an immediate restart, and the *Credential* parameter to submit the credentials saved in the $c variable. It also uses the *ThrottleLimit* parameter to limit the command to 10 concurrent connections.
+
+PS C:\&gt; Restart-Computer -ComputerName $s -Force -ThrottleLimit 10 -Credential $c</code></pre>
+     <p>
+      This example forces an immediate restart of all of the computers in Domain01.
+     </p>
+     <p>
+      <strong>
+       Example 6: Restart a remote computer and wait
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Restart-Computer -ComputerName "Server01" -Wait -For PowerShell -Timeout 300 -Delay 2</code></pre>
+     <p>
+      This command restarts the Server01 remote computer and then waits up to 5 minutes (300 seconds) for Windows PowerShell to be available on the restarted computer before it continues.
+     </p>
+     <p>
+      The command uses the
+      <em>
+       Wait
+      </em>
+      ,
+      <em>
+       For
+      </em>
+      , and
+      <em>
+       Timeout
+      </em>
+      parameters to specify the conditions of the wait.
+It uses the
+      <em>
+       Delay
+      </em>
+      parameter to reduce the interval between queries to the remote computer that determine whether it is restarted.
+     </p>
+     <p>
+      <strong>
+       Example 7: Restart a computer by using WSMan
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Restart-Computer -ComputerName "Server01" -Protocol WSMan -WSManAuthentication Kerberos</code></pre>
+     <p>
+      This command restarts the Server01 remote computer by using the WSMan protocol, instead of DCOM, which is the default.
+It also uses Kerberos authentication to determine whether the current user has permission to restart the remote computer.
+     </p>
+     <p>
+      These settings are designed for enterprises in which DCOM-based restarts fail because DCOM is blocked, such as by a firewall.
+     </p>
+     <h2 id="optional-parameters">
+      Optional Parameters
+     </h2>
+     <div class="parameterName stack">
+      -AsJob
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that this cmdlet runs as a background job.
+      </p>
+      <p>
+       To use this parameter, the local and remote computers must be configured for remoting and, on Windows Vista and later versions of the Windows operating system, you must open Windows PowerShell by using the Run as administrator option.
+For more information, see
+       <a data-linktype="relative-path" href="../microsoft.powershell.core/about/about_remote_requirements.html">
+        about_Remote_Requirements
+       </a>
+       .
+      </p>
+      <p>
+       When you specify the
+       <em>
+        AsJob
+       </em>
+       parameter, the command immediately returns an object that represents the background job.
+You can continue to work in the session while the job finishes.
+The job is created on the local computer and the results from remote computers are automatically returned to the local computer.
+To manage the job, use the
+       <strong>
+        Job
+       </strong>
+       cmdlets.
+To get the job results, use the Receive-Job cmdlet.
+      </p>
+      <p>
+       For more information about Windows PowerShell background jobs, see
+       <a data-linktype="relative-path" href="../microsoft.powershell.core/about/about_jobs.html">
+        about_Jobs
+       </a>
+       and
+       <a data-linktype="relative-path" href="../microsoft.powershell.core/about/about_remote_jobs.html">
+        about_Remote_Jobs
+       </a>
+       .
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -ComputerName
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies one or more computers.
+The default is the local computer.
+      </p>
+      <p>
+       Type the NETBIOS name, an IP address, or a fully qualified domain name of a remote computer.
+To specify the local computer, type the computer name, a dot (.), or localhost.
+      </p>
+      <p>
+       This parameter does not rely on Windows PowerShell remoting.
+You can use the
+       <em>
+        ComputerName
+       </em>
+       parameter even if your computer is not configured to run remote commands.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         CN, __SERVER, Server, IPAddress
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         1
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName, ByValue)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Confirm
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Prompts you for confirmation before running the cmdlet.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         cf
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Credential
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a user account that has permission to perform this action.
+The default is the current user.
+      </p>
+      <p>
+       Type a user name, such as User01 or Domain01\User01, or enter a
+       <strong>
+        PSCredential
+       </strong>
+       object, such as one generated by the Get-Credential cmdlet.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          PSCredential
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         2
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -DcomAuthentication
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the authentication level that is used for the WMI connection.
+The acceptable values for this parameter are:
+      </p>
+      <ul>
+       <li>
+        Call.
+Call-level COM authentication
+       </li>
+       <li>
+        Connect.
+Connect-level COM authentication
+       </li>
+       <li>
+        Default.
+Windows Authentication
+       </li>
+       <li>
+        None.
+No COM authentication
+       </li>
+       <li>
+        Packet.
+Packet-level COM authentication
+       </li>
+       <li>
+        PacketIntegrity.
+Packet Integrity-level COM authentication
+       </li>
+       <li>
+        PacketPrivacy.
+Packet Privacy-level COM authentication
+       </li>
+       <li>
+        Unchanged.
+The authentication level is the same as the previous command
+       </li>
+      </ul>
+      <p>
+       The default value is Packet.
+      </p>
+      <p>
+       For more information about the values of this parameter, see
+       <a data-linktype="external" href="https://msdn.microsoft.com/library/system.management.authenticationlevel">
+        AuthenticationLevel Enumeration
+       </a>
+       in the MSDN library.
+      </p>
+      <p>
+       This parameter was introduced in Windows PowerShell 3.0.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          AuthenticationLevel
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         Authentication
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Parameter Sets:
+        </td>
+        <td>
+         Default, None, Connect, Call, Packet, PacketIntegrity, PacketPrivacy, Unchanged
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Delay
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Determines how often, in seconds, Windows PowerShell queries the service that is specified by the
+       <em>
+        For
+       </em>
+       parameter to determine whether it is available after the computer is restarted.
+Specify a delay between queries, in seconds.
+The default value is 5 seconds.
+      </p>
+      <p>
+       This parameter is valid only together with the
+       <em>
+        Wait
+       </em>
+       and
+       <em>
+        For
+       </em>
+       parameters.
+      </p>
+      <p>
+       This parameter was introduced in Windows PowerShell 3.0.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Int16
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -For
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the behavior of Windows PowerShell as it waits for the specified service or feature to become available after the computer restarts.
+This parameter is valid only with the
+       <em>
+        Wait
+       </em>
+       parameter.
+      </p>
+      <p>
+       The acceptable values for this parameter are:
+      </p>
+      <ul>
+       <li>
+        Default.
+Waits for Windows PowerShell to restart.
+       </li>
+       <li>
+        PowerShell.
+Can run commands in a Windows PowerShell remote session on the computer.
+       </li>
+       <li>
+        WMI.
+Receives a reply to a Win32_ComputerSystem query for the computer.
+       </li>
+       <li>
+        WinRM.
+Can establish a remote session to the computer by using WS-Management.
+       </li>
+      </ul>
+      <p>
+       This parameter was introduced in Windows PowerShell 3.0.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          WaitForServiceTypes
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Parameter Sets:
+        </td>
+        <td>
+         PowerShell, WinRM, Wmi
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Force
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Forces an immediate restart of the computers.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         f
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Impersonation
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the impersonation level that this cmdlet uses to call WMI.
+       <strong>
+        Restart-Computer
+       </strong>
+       uses WMI.
+The acceptable values for this parameter are:
+      </p>
+      <p>
+       -- Default.
+Default impersonation.
+      </p>
+      <ul>
+       <li>
+        Anonymous.
+Hides the identity of the caller.
+       </li>
+       <li>
+        Identify.
+Allows objects to query the credentials of the caller.
+       </li>
+       <li>
+        Impersonate.
+Allows objects to use the credentials of the caller.
+       </li>
+      </ul>
+      <p>
+       The default value is Impersonate.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          ImpersonationLevel
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Parameter Sets:
+        </td>
+        <td>
+         Default, Anonymous, Identify, Impersonate, Delegate
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Protocol
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies which protocol to use to restart the computers.
+The acceptable values for this parameter are: WSMan and DCOM.
+The default value is DCOM.
+      </p>
+      <p>
+       This parameter was introduced in Windows PowerShell 3.0.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Parameter Sets:
+        </td>
+        <td>
+         DCOM, WSMan
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -ThrottleLimit
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the maximum number of concurrent connections that can be established to run this command.
+If you omit this parameter or enter a value of 0, the default value, 32, is used.
+      </p>
+      <p>
+       The throttle limit applies only to the current command, not to the session or to the computer.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Int32
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Timeout
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the duration of the wait, in seconds.
+When the time-out elapses,
+       <strong>
+        Restart-Computer
+       </strong>
+       returns the command prompt, even if the computers are not restarted.
+The default value, -1, represents an indefinite time-out.
+      </p>
+      <p>
+       The
+       <em>
+        Timeout
+       </em>
+       parameter is valid only with the
+       <em>
+        Wait
+       </em>
+       parameter.
+      </p>
+      <p>
+       This parameter was introduced in Windows PowerShell 3.0.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Int32
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         TimeoutSec
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Wait
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that this cmdlet suppresses the Windows PowerShell prompt and blocks the pipeline until all of the computers have restarted.
+You can use this parameter in a script to restart computers and then continue to process when the restart is finished.
+      </p>
+      <p>
+       By default,
+       <em>
+        Wait
+       </em>
+       waits indefinitely for the computers to restart, but you can use
+       <em>
+        Timeout
+       </em>
+       to adjust the timing and the
+       <em>
+        For
+       </em>
+       and
+       <em>
+        Delay
+       </em>
+       parameters to wait for particular services to be available on the restarted computers.
+      </p>
+      <p>
+       The
+       <em>
+        Wait
+       </em>
+       parameter is not valid when you are restarting the local computer.
+If the value of the
+       <em>
+        ComputerName
+       </em>
+       parameter contains the names of remote computers and the local computer,
+       <strong>
+        Restart-Computer
+       </strong>
+       generates a non-terminating error for
+       <em>
+        Wait
+       </em>
+       on the local computer, but it waits for the remote computers to restart.
+      </p>
+      <p>
+       This parameter was introduced in Windows PowerShell 3.0.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -WhatIf
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         wi
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -WsmanAuthentication
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the mechanism that is used to authenticate the user credentials when you use the WSMan protocol.
+      </p>
+      <p>
+       The acceptable values for this parameter are: Basic, CredSSP, Default, Digest, Kerberos, and Negotiate.
+The default value is Default.
+For more information about the values of this parameter, see
+       <a data-linktype="external" href="https://msdn.microsoft.com/library/system.management.automation.runspaces.authenticationmechanism">
+        AuthenticationMechanism Enumeration
+       </a>
+       in the MSDN library.
+      </p>
+      <p>
+       Caution: Credential Security Service Provider (CredSSP) authentication, in which the user credentials are passed to a remote computer to be authenticated, is designed for commands that require authentication on more than one resource, such as accessing a remote network share.
+This mechanism increases the security risk of the remote operation.
+If the remote computer is compromised, the credentials that are passed to it can be used to control the network session.
+      </p>
+      <p>
+       This parameter was introduced in Windows PowerShell 3.0.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Parameter Sets:
+        </td>
+        <td>
+         Default, Basic, Negotiate, CredSSP, Digest, Kerberos
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="inputs">
+      Inputs
+     </h2>
+     <p>
+      <strong>
+       System.String
+      </strong>
+     </p>
+     <p>
+      You can pipe computer names to this cmdlet..
+     </p>
+     <p>
+      In Windows PowerShell 2.0, the
+      <em>
+       ComputerName
+      </em>
+      parameter takes input from the pipeline only by property name.
+In Windows PowerShell 3.0, the
+      <em>
+       ComputerName
+      </em>
+      parameter takes input from the pipeline by value.
+     </p>
+     <h2 id="outputs">
+      Outputs
+     </h2>
+     <p>
+      <strong>
+       None, System.Management.Automation.RemotingJob
+      </strong>
+     </p>
+     <p>
+      This cmdlet returns a job object, if you specify the
+      <em>
+       AsJob
+      </em>
+      parameter.
+Otherwise, it does not generate any output.
+     </p>
+     <h2 id="notes">
+      Notes
+     </h2>
+     <ul>
+      <li>
+       This cmdlet uses the
+       <strong>
+        Win32Shutdown
+       </strong>
+       method of the WMI
+       <strong>
+        WIN32_OperatingSystem
+       </strong>
+       class.
+      </li>
+      <li>
+       In Windows PowerShell 2.0,
+       <em>
+        AsJob
+       </em>
+       does not work reliably when you are restarting/stopping remote computers. In Windows PowerShell 3.0, the implementation is changed to resolve this problem.
+      </li>
+     </ul>
+     <h2 id="related-links">
+      Related Links
+     </h2>
+     <ul>
+      <li>
+       <a data-linktype="external" href="https://msdn.microsoft.com/en-us/powershell/reference/5.1/Microsoft.PowerShell.Management/Add-Computer">
+        Add-Computer
+       </a>
+      </li>
+      <li>
+       <a data-linktype="external" href="https://msdn.microsoft.com/en-us/powershell/reference/5.1/Microsoft.PowerShell.Management/Checkpoint-Computer">
+        Checkpoint-Computer
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="rename-computer.html">
+        Rename-Computer
+       </a>
+      </li>
+      <li>
+       <a data-linktype="external" href="https://msdn.microsoft.com/en-us/powershell/reference/5.1/Microsoft.PowerShell.Management/Remove-Computer">
+        Remove-Computer
+       </a>
+      </li>
+      <li>
+       <a data-linktype="external" href="https://msdn.microsoft.com/en-us/powershell/reference/5.1/Microsoft.PowerShell.Management/Restore-Computer">
+        Restore-Computer
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="stop-computer.html">
+        Stop-Computer
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="test-connection.html">
+        Test-Connection
+       </a>
+      </li>
+     </ul>
+     <!-- </content> -->
+    </main>
+    <div class="note alert feedback-system-change-alert">
+     <p>
+      Note
+     </p>
+     <p>
+      The feedback system for this content will be changing soon. Old comments will not be carried over. If content within a comment thread is important to you, please save a copy. For more information on the upcoming change,
+      <a href="https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs">
+       we invite you to read our blog post
+      </a>
+      .
+     </p>
+    </div>
+    <div data-bi-name="comments" id="comments-container" role="form">
+    </div>
+   </div>
+  </div>
+  <div class="openfeedback-container" id="openFeedbackContainer">
+  </div>
+  <div class="action-panel">
+  </div>
+ </body>
+</html>

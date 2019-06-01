@@ -1,0 +1,380 @@
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML><HEAD><TITLE>Man page of MKDIR</TITLE>
+</HEAD><BODY>
+<H1>MKDIR</H1>
+Section: POSIX Programmer's Manual (3P)<BR>Updated: 2013<BR><A HREF="#index">Index</A>
+<A HREF="../index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>PROLOG</H2>
+
+This manual page is part of the POSIX Programmer's Manual.
+The Linux implementation of this interface may differ (consult
+the corresponding Linux manual page for details of Linux behavior),
+or the interface may not be implemented on Linux.
+<P>
+<A NAME="lbAC">&nbsp;</A>
+<H2>NAME</H2>
+
+mkdir, mkdirat
+--- make a directory relative to directory file descriptor
+<A NAME="lbAD">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<P>
+
+<PRE>
+#include &lt;<A HREF="file:///usr/include/sys/stat.h">sys/stat.h</A>&gt;
+
+int mkdir(const char *<I>path</I>, mode_t <I>mode</I>);
+int mkdirat(int <I>fd</I>, const char *<I>path</I>, mode_t <I>mode</I>);
+</PRE>
+
+<A NAME="lbAE">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+The
+<I>mkdir</I>()
+function shall create a new directory with name
+<I>path</I>.
+
+The file permission bits of the new directory shall be initialized from
+<I>mode</I>.
+
+These file permission bits of the
+<I>mode</I>
+
+argument shall be modified by the process' file creation mask.
+<P>
+
+When bits in
+<I>mode</I>
+
+other than the file permission bits are set, the meaning of these
+additional bits is implementation-defined.
+<P>
+
+The directory's user ID shall be set to the process' effective user ID.
+The directory's group ID shall be set to the group ID of the parent
+directory or to the effective group ID of the process. Implementations
+shall provide a way to initialize the directory's group ID to the group
+ID of the parent directory. Implementations may, but need not, provide
+an implementation-defined way to initialize the directory's group ID to
+the effective group ID of the calling process.
+<P>
+
+The newly created directory shall be an empty directory.
+<P>
+
+If
+<I>path</I>
+
+names a symbolic link,
+<I>mkdir</I>()
+shall fail and set
+<I>errno</I>
+
+to
+<B>[EEXIST]</B>.
+
+<P>
+
+Upon successful completion,
+<I>mkdir</I>()
+shall mark for update the last data access, last data modification,
+and last file status change timestamps of the directory. Also, the last
+data modification and last file status change timestamps of the directory
+that contains the new entry shall be marked for update.
+<P>
+
+The
+<I>mkdirat</I>()
+function shall be equivalent to the
+<I>mkdir</I>()
+function except in the case where
+<I>path</I>
+
+specifies a relative path. In this case the newly created directory is
+created relative to the directory associated with the file descriptor
+<I>fd</I>
+
+instead of the current working directory. If the file descriptor was
+opened without O_SEARCH, the function shall check whether directory
+searches are permitted using the current permissions of the directory
+underlying the file descriptor. If the file descriptor was opened with
+O_SEARCH, the function shall not perform the check.
+<P>
+
+If
+<I>mkdirat</I>()
+is passed the special value AT_FDCWD in the
+<I>fd</I>
+
+parameter, the current working directory shall be used and the behavior
+shall be identical to a call to
+<I>mkdir</I>().
+<A NAME="lbAF">&nbsp;</A>
+<H2>RETURN VALUE</H2>
+
+Upon successful completion, these functions shall return 0.
+Otherwise, these functions shall return -1 and set
+<I>errno</I>
+
+to indicate the error. If -1 is returned, no directory shall be created.
+<A NAME="lbAG">&nbsp;</A>
+<H2>ERRORS</H2>
+
+These functions shall fail if:
+<DL COMPACT>
+<DT><B>EACCES</B>
+
+<DD>
+Search permission is denied on a component of the path prefix, or write
+permission is denied on the parent directory of the directory to be
+created.
+<DT><B>EEXIST</B>
+
+<DD>
+The named file exists.
+<DT><B>ELOOP</B>
+
+<DD>
+A loop exists in symbolic links encountered during resolution of the
+<I>path</I>
+
+argument.
+<DT><B>EMLINK</B>
+
+<DD>
+The link count of the parent directory would exceed
+{LINK_MAX}.
+<DT><B>ENAMETOOLONG</B>
+
+<DD>
+<BR>
+
+The length of a component of a pathname is longer than
+{NAME_MAX}.
+<DT><B>ENOENT</B>
+
+<DD>
+A component of the path prefix specified by
+<I>path</I>
+
+does not name an existing directory or
+<I>path</I>
+
+is an empty string.
+<DT><B>ENOSPC</B>
+
+<DD>
+The file system does not contain enough space to hold the contents of
+the new directory or to extend the parent directory of the new
+directory.
+<DT><B>ENOTDIR</B>
+
+<DD>
+A component of the path prefix names an existing file that is neither
+a directory nor a symbolic link to a directory.
+<DT><B>EROFS</B>
+
+<DD>
+The parent directory resides on a read-only file system.
+</DL>
+<P>
+
+In addition, the
+<I>mkdirat</I>()
+function shall fail if:
+<DL COMPACT>
+<DT><B>EBADF</B>
+
+<DD>
+The
+<I>path</I>
+
+argument does not specify an absolute path and the
+<I>fd</I>
+
+argument is neither AT_FDCWD nor a valid file descriptor open for reading
+or searching.
+<DT><B>ENOTDIR</B>
+
+<DD>
+The
+<I>path</I>
+
+argument is not an absolute path and
+<I>fd</I>
+
+is a file descriptor associated with a non-directory file.
+</DL>
+<P>
+
+These functions may fail if:
+<DL COMPACT>
+<DT><B>ELOOP</B>
+
+<DD>
+More than
+{SYMLOOP_MAX}
+symbolic links were encountered during resolution of the
+<I>path</I>
+
+argument.
+<DT><B>ENAMETOOLONG</B>
+
+<DD>
+<BR>
+
+The length of a pathname exceeds
+{PATH_MAX},
+or pathname resolution of a symbolic link produced an intermediate
+result with a length that exceeds
+{PATH_MAX}.
+</DL>
+<P>
+
+<I>The following sections are informative.</I>
+
+<A NAME="lbAH">&nbsp;</A>
+<H2>EXAMPLES</H2>
+
+<A NAME="lbAI">&nbsp;</A>
+<H3>Creating a Directory</H3>
+
+<P>
+
+The following example shows how to create a directory named
+<B>/home/cnd/mod1</B>,
+
+with read/write/search permissions for owner and group, and with
+read/search permissions for others.
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+#include &lt;<A HREF="file:///usr/include/sys/types.h">sys/types.h</A>&gt;
+#include &lt;<A HREF="file:///usr/include/sys/stat.h">sys/stat.h</A>&gt;
+
+int status;
+...
+status = mkdir(&quot;/home/cnd/mod1&quot;, S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH);
+</B></PRE>
+
+<P>
+
+</DL>
+
+<A NAME="lbAJ">&nbsp;</A>
+<H2>APPLICATION USAGE</H2>
+
+None.
+<A NAME="lbAK">&nbsp;</A>
+<H2>RATIONALE</H2>
+
+The
+<I>mkdir</I>()
+function originated in 4.2 BSD and was added to System V in Release 3.0.
+<P>
+
+4.3 BSD detects
+<B>[ENAMETOOLONG]</B>.
+
+<P>
+
+The POSIX.1-1990 standard required that the group ID of a newly created directory be
+set to the group ID of its parent directory or to the effective group
+ID of the creating process. FIPS 151-2 required that implementations provide
+a way to have the group ID be set to the group ID of the containing
+directory, but did not prohibit implementations also supporting a way
+to set the group ID to the effective group ID of the creating process.
+Conforming applications should not assume which group ID will be used. If
+it matters, an application can use
+<I>chown</I>()
+to set the group ID after the directory is created, or determine under
+what conditions the implementation will set the desired group ID.
+<P>
+
+The purpose of the
+<I>mkdirat</I>()
+function is to create a directory in directories other than the
+current working directory without exposure to race conditions. Any part
+of the path of a file could be changed in parallel to the call to
+<I>mkdir</I>(),
+resulting in unspecified behavior. By opening a file descriptor for
+the target directory and using the
+<I>mkdirat</I>()
+function it can be guaranteed that the newly created directory is
+located relative to the desired directory.
+<A NAME="lbAL">&nbsp;</A>
+<H2>FUTURE DIRECTIONS</H2>
+
+None.
+<A NAME="lbAM">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+<I>chmod</I>(),
+
+<I>mkdtemp</I>(),
+
+<I>mknod</I>(),
+
+<I>umask</I>()
+
+<P>
+
+The Base Definitions volume of POSIX.1-2008,
+<I></I><B>&lt;<A HREF="file:///usr/include/sys_stat.h">sys_stat.h</A>&gt;</B>,
+
+<I></I><B>&lt;<A HREF="file:///usr/include/sys_types.h">sys_types.h</A>&gt;</B>
+
+<A NAME="lbAN">&nbsp;</A>
+<H2>COPYRIGHT</H2>
+
+Portions of this text are reprinted and reproduced in electronic form
+from IEEE Std 1003.1, 2013 Edition, Standard for Information Technology
+-- Portable Operating System Interface (POSIX), The Open Group Base
+Specifications Issue 7, Copyright (C) 2013 by the Institute of
+Electrical and Electronics Engineers, Inc and The Open Group.
+(This is POSIX.1-2008 with the 2013 Technical Corrigendum 1 applied.) In the
+event of any discrepancy between this version and the original IEEE and
+The Open Group Standard, the original IEEE and The Open Group Standard
+is the referee document. The original Standard can be obtained online at
+<A HREF="http://www.unix.org/online.html">http://www.unix.org/online.html</A> .
+<P>
+Any typographical or formatting errors that appear
+in this page are most likely
+to have been introduced during the conversion of the source files to
+man page format. To report such errors, see
+<A HREF="https://www.kernel.org/doc/man-pages/reporting_bugs.html">https://www.kernel.org/doc/man-pages/reporting_bugs.html</A> .
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">PROLOG</A><DD>
+<DT><A HREF="#lbAC">NAME</A><DD>
+<DT><A HREF="#lbAD">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAE">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAF">RETURN VALUE</A><DD>
+<DT><A HREF="#lbAG">ERRORS</A><DD>
+<DT><A HREF="#lbAH">EXAMPLES</A><DD>
+<DL>
+<DT><A HREF="#lbAI">Creating a Directory</A><DD>
+</DL>
+<DT><A HREF="#lbAJ">APPLICATION USAGE</A><DD>
+<DT><A HREF="#lbAK">RATIONALE</A><DD>
+<DT><A HREF="#lbAL">FUTURE DIRECTIONS</A><DD>
+<DT><A HREF="#lbAM">SEE ALSO</A><DD>
+<DT><A HREF="#lbAN">COPYRIGHT</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 14:28:54 GMT, February 25, 2017
+</BODY>
+</HTML>

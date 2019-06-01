@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+    
+<!-- Mirrored from mdn.mozillademos.org/en-US/docs/Web/API/AddressErrors$samples/Complete_example?revision=1530545 by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 01 May 2019 23:21:02 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+        <meta charset="utf-8">
+        <link href="../../../../../../developer.mozilla.org/static/build/styles/samples.37902ba3b7fe.css" rel="stylesheet" type="text/css" />
+        
+        <title>AddressErrors</title>
+    </head>
+    <body>
+        
+            <p>Donate US $65 to our worthwhile cause and we will send you a totally
+not-useless gift as a token of our thanks!</p>
+<button id="pay">Donate Now</button>
+        
+        
+            <script>
+                let supportedHandlers = [
+  {
+    supportedMethods: "basic-card",
+    data: {
+      supportedNetworks: ["visa", "mastercard", "amex", "discover"],
+      supportedTypes: ["credit", "debit"]
+    }
+  }
+];
+
+let defaultPaymentDetails = {
+  total: {label: 'Donation', amount: {currency: 'USD', value: '65.00'}},
+  displayItems: [
+    {
+      label: 'Original donation amount',
+      amount: {currency: 'USD', value: '65.00'}
+    }
+  ],
+  shippingOptions: [
+    {
+      id: 'standard',
+      label: 'Standard shipping',
+      amount: {currency: 'USD', value: '0.00'},
+      selected: true
+    }
+  ]
+}; let request;
+
+function process() {
+  let options = {requestShipping: true};
+
+  try {
+    request = new PaymentRequest(supportedHandlers, defaultPaymentDetails, options);
+    // Add event listeners here.
+    request.onshippingaddresschange = handleAddressChange;
+    // Call show() to trigger the browser's payment flow.
+    request.show().then(function(instrumentResponse) {
+      // Do something with the response from the UI.
+      console.log("Got response!");
+    })
+    .catch(function(err) {
+      // Do something with the error from request.show().
+      console.log("Error from show(): " + err);
+    });
+  } catch (e) {
+    // Catch any errors from trying to create the PaymentRequest object.
+  }
+} function handleAddressChange(ev) {
+  const validCountries = ["US", "CA", "GB", "JP", "CN", "MX"];
+ 
+  const genericAddressError = "Unable to ship to the given address. Please check for any errors.";
+  const invalidCountryError = "At this time, we only ship to the United States, Canada, Great Britain, Japan, China, and Germany.";
+ 
+  let shippingAddress = ev.target.shippingAddress;
+  let shippingAddressErrors = {};
+  let updateDetails = {};
+
+  if (!validCountries.includes(shippingAddress.country)) {
+    ev.target.shippingOptions = [];
+    shippingAddressErrors.country = invalidCountryError;
+    
+    updateDetails = {
+      error: genericAddressError,
+      shippingAddressErrors,
+      ...defaultPaymentDetails
+    };
+  }
+
+  ev.updateWith(updateDetails);
+} window.addEventListener("load", function(ev) {
+  document.getElementById("pay").addEventListener("click", process, false);
+}, false);
+
+            </script>
+        
+    </body>
+
+<!-- Mirrored from mdn.mozillademos.org/en-US/docs/Web/API/AddressErrors$samples/Complete_example?revision=1530545 by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 01 May 2019 23:21:02 GMT -->
+</html>

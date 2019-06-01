@@ -1,0 +1,783 @@
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML><HEAD><TITLE>Man page of signal.h</TITLE>
+</HEAD><BODY>
+<H1>signal.h</H1>
+Section: POSIX Programmer's Manual (0P)<BR>Updated: 2013<BR><A HREF="#index">Index</A>
+<A HREF="../index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>PROLOG</H2>
+
+This manual page is part of the POSIX Programmer's Manual.
+The Linux implementation of this interface may differ (consult
+the corresponding Linux manual page for details of Linux behavior),
+or the interface may not be implemented on Linux.
+<P>
+<A NAME="lbAC">&nbsp;</A>
+<H2>NAME</H2>
+
+signal.h
+--- signals
+<A NAME="lbAD">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<P>
+
+<PRE>
+#include &lt;<A HREF="file:///usr/include/signal.h">signal.h</A>&gt;
+</PRE>
+
+<A NAME="lbAE">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+Some of the functionality described on this reference page extends the
+ISO&nbsp;C standard. Applications shall define the appropriate feature test macro
+(see the System Interfaces volume of POSIX.1-2008,
+<I>Section 2.2</I>, <I>The Compilation Environment)</I>
+
+to enable the visibility of these symbols in this header.
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/signal.h">signal.h</A>&gt;</I>
+
+header shall define the following macros, which shall expand to constant
+expressions with distinct values that have a type compatible with the
+second argument to, and the return value of, the
+<I>signal</I>()
+function, and whose values shall compare unequal to the address of any
+declarable function.
+<DL COMPACT>
+<DT>SIG_DFL<DD>
+Request for default signal handling.
+<DT>SIG_ERR<DD>
+Return value from
+<I>signal</I>()
+in case of error.
+<DT>SIG_HOLD<DD>
+Request that signal be held.
+<DT>SIG_IGN<DD>
+Request that signal be ignored.
+</DL>
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/signal.h">signal.h</A>&gt;</I>
+
+header shall define the
+<B>pthread_t</B>,
+
+<B>size_t</B>,
+
+and
+<B>uid_t</B>
+
+types as described in
+<I>&lt;<A HREF="file:///usr/include/sys/types.h">sys/types.h</A>&gt;</I>.
+
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/signal.h">signal.h</A>&gt;</I>
+
+header shall define the
+<B>timespec</B>
+
+structure as described in
+<I>&lt;<A HREF="file:///usr/include/time.h">time.h</A>&gt;</I>.
+
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/signal.h">signal.h</A>&gt;</I>
+
+header shall define the following data types:
+<DL COMPACT>
+<DT><B>sig_atomic_t</B><DD>
+Possibly volatile-qualified integer type of an object that can be
+accessed as an atomic entity, even in the presence of asynchronous
+interrupts.
+<DT><B>sigset_t</B><DD>
+Integer or structure type of an object used to represent sets of
+signals.
+<DT><B>pid_t</B><DD>
+As described in
+<I>&lt;<A HREF="file:///usr/include/sys/types.h">sys/types.h</A>&gt;</I>.
+
+</DL>
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/signal.h">signal.h</A>&gt;</I>
+
+header shall define the
+<B>pthread_attr_t</B>
+
+type as described in
+<I>&lt;<A HREF="file:///usr/include/sys/types.h">sys/types.h</A>&gt;</I>.
+
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/signal.h">signal.h</A>&gt;</I>
+
+header shall define the
+<B>sigevent</B>
+
+structure, which shall include at least the following members:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+int              sigev_notify            </B>Notification type.
+int              sigev_signo             Signal number.
+union sigval     sigev_value             Signal value.
+void           (*sigev_notify_function)(union sigval)
+                                         Notification function.
+pthread_attr_t *sigev_notify_attributes  Notification attributes.
+</PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/signal.h">signal.h</A>&gt;</I>
+
+header shall define the following symbolic constants for the values of
+<I>sigev_notify</I>:
+
+<DL COMPACT>
+<DT>SIGEV_NONE<DD>
+No asynchronous notification is delivered when the event of interest
+occurs.
+<DT>SIGEV_SIGNAL<DD>
+A queued signal, with an application-defined value, is generated when
+the event of interest occurs.
+<DT>SIGEV_THREAD<DD>
+A notification function is called to perform notification.
+<BR>
+
+</DL>
+<P>
+
+The
+<B>sigval</B>
+
+union shall be defined as:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+int    sival_int    </B>Integer signal value.
+void  *sival_ptr    Pointer signal value.
+</PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/signal.h">signal.h</A>&gt;</I>
+
+header shall declare the SIGRTMIN and SIGRTMAX macros,
+which shall expand to positive integer expressions with type
+<B>int</B>,
+
+but which need not be constant expressions. These macros specify a
+range of signal numbers that are reserved for application use and for
+which the realtime signal behavior specified in this volume of POSIX.1-2008 is supported. The
+signal numbers in this range do not overlap any of the signals specified
+in the following table.
+<P>
+
+The range SIGRTMIN through SIGRTMAX inclusive shall include at least
+{RTSIG_MAX}
+signal numbers.
+<P>
+
+It is implementation-defined whether realtime signal behavior is
+supported for other signals.
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/signal.h">signal.h</A>&gt;</I>
+
+header shall define the following macros that are used to refer to the
+signals that occur in the system. Signals defined here begin with the
+letters SIG followed by an uppercase letter. The macros shall expand to
+positive integer constant expressions with type
+<B>int</B>
+
+and distinct values. The value 0 is reserved for use as the null signal
+(see
+<I>kill</I>()).
+Additional implementation-defined signals may occur in the system.
+<P>
+
+The ISO&nbsp;C standard only requires the signal names SIGABRT, SIGFPE, SIGILL,
+SIGINT, SIGSEGV, and SIGTERM to be defined.
+<P>
+
+The following signals shall be supported on all implementations
+(default actions are explained below the table):
+<CENTER><TABLE BORDER><TR><TD><TABLE>
+<TR VALIGN=top><TD ALIGN=center><B>Signal</B></TD><TD ALIGN=center><B>Default Action</B></TD><TD ALIGN=center><B>Description</B><BR></TD></TR>
+<TR VALIGN=top><TD COLSPAN=3><HR></TD></TR>
+<TR VALIGN=top><TD>SIGABRT</TD><TD ALIGN=right>A&nbsp;&nbsp;&nbsp;&nbsp;</TD><TD>Process abort signal.<BR></TD></TR>
+<TR VALIGN=top><TD>SIGALRM</TD><TD ALIGN=right>T&nbsp;&nbsp;&nbsp;&nbsp;</TD><TD>Alarm clock.<BR></TD></TR>
+<TR VALIGN=top><TD>SIGBUS</TD><TD ALIGN=right>A&nbsp;&nbsp;&nbsp;&nbsp;</TD><TD>Access to an undefined portion of a memory object.<BR></TD></TR>
+<TR VALIGN=top><TD>SIGCHLD</TD><TD ALIGN=right>I&nbsp;&nbsp;&nbsp;&nbsp;</TD><TD>Child process terminated, stopped,<BR></TD></TR>
+<TR VALIGN=top><TD></TD><TD ALIGN=right>&nbsp;&nbsp;&nbsp;&nbsp;</TD><TD>or continued.<BR></TD></TR>
+<TR VALIGN=top><TD>SIGCONT</TD><TD ALIGN=right>C&nbsp;&nbsp;&nbsp;&nbsp;</TD><TD>Continue executing, if stopped.<BR></TD></TR>
+<TR VALIGN=top><TD>SIGFPE</TD><TD ALIGN=right>A&nbsp;&nbsp;&nbsp;&nbsp;</TD><TD>Erroneous arithmetic operation.<BR></TD></TR>
+<TR VALIGN=top><TD>SIGHUP</TD><TD ALIGN=right>T&nbsp;&nbsp;&nbsp;&nbsp;</TD><TD>Hangup.<BR></TD></TR>
+<TR VALIGN=top><TD>SIGILL</TD><TD ALIGN=right>A&nbsp;&nbsp;&nbsp;&nbsp;</TD><TD>Illegal instruction.<BR></TD></TR>
+<TR VALIGN=top><TD>SIGINT</TD><TD ALIGN=right>T&nbsp;&nbsp;&nbsp;&nbsp;</TD><TD>Terminal interrupt signal.<BR></TD></TR>
+<TR VALIGN=top><TD>SIGKILL</TD><TD ALIGN=right>T&nbsp;&nbsp;&nbsp;&nbsp;</TD><TD>Kill (cannot be caught or ignored).<BR></TD></TR>
+<TR VALIGN=top><TD>SIGPIPE</TD><TD ALIGN=right>T&nbsp;&nbsp;&nbsp;&nbsp;</TD><TD>Write on a pipe with no one to read it.<BR></TD></TR>
+<TR VALIGN=top><TD>SIGQUIT</TD><TD ALIGN=right>A&nbsp;&nbsp;&nbsp;&nbsp;</TD><TD>Terminal quit signal.<BR></TD></TR>
+<TR VALIGN=top><TD>SIGSEGV</TD><TD ALIGN=right>A&nbsp;&nbsp;&nbsp;&nbsp;</TD><TD>Invalid memory reference.<BR></TD></TR>
+<TR VALIGN=top><TD>SIGSTOP</TD><TD ALIGN=right>S&nbsp;&nbsp;&nbsp;&nbsp;</TD><TD>Stop executing (cannot be caught or ignored).<BR></TD></TR>
+<TR VALIGN=top><TD>SIGTERM</TD><TD ALIGN=right>T&nbsp;&nbsp;&nbsp;&nbsp;</TD><TD>Termination signal.<BR></TD></TR>
+<TR VALIGN=top><TD>SIGTSTP</TD><TD ALIGN=right>S&nbsp;&nbsp;&nbsp;&nbsp;</TD><TD>Terminal stop signal.<BR></TD></TR>
+<TR VALIGN=top><TD>SIGTTIN</TD><TD ALIGN=right>S&nbsp;&nbsp;&nbsp;&nbsp;</TD><TD>Background process attempting read.<BR></TD></TR>
+<TR VALIGN=top><TD>SIGTTOU</TD><TD ALIGN=right>S&nbsp;&nbsp;&nbsp;&nbsp;</TD><TD>Background process attempting write.<BR></TD></TR>
+<TR VALIGN=top><TD>SIGUSR1</TD><TD ALIGN=right>T&nbsp;&nbsp;&nbsp;&nbsp;</TD><TD>User-defined signal 1.<BR></TD></TR>
+<TR VALIGN=top><TD>SIGUSR2</TD><TD ALIGN=right>T&nbsp;&nbsp;&nbsp;&nbsp;</TD><TD>User-defined signal 2.<BR></TD></TR>
+<TR VALIGN=top><TD>SIGPOLL</TD><TD ALIGN=right>T&nbsp;&nbsp;&nbsp;&nbsp;</TD><TD>Pollable event.<BR></TD></TR>
+<TR VALIGN=top><TD>SIGPROF</TD><TD ALIGN=right>T&nbsp;&nbsp;&nbsp;&nbsp;</TD><TD>Profiling timer expired.<BR></TD></TR>
+<TR VALIGN=top><TD>SIGSYS</TD><TD ALIGN=right>A&nbsp;&nbsp;&nbsp;&nbsp;</TD><TD>Bad system call.<BR></TD></TR>
+<TR VALIGN=top><TD>SIGTRAP</TD><TD ALIGN=right>A&nbsp;&nbsp;&nbsp;&nbsp;</TD><TD>Trace/breakpoint trap.<BR></TD></TR>
+<TR VALIGN=top><TD>SIGURG</TD><TD ALIGN=right>I&nbsp;&nbsp;&nbsp;&nbsp;</TD><TD>High bandwidth data is available at a socket.<BR></TD></TR>
+<TR VALIGN=top><TD>SIGVTALRM</TD><TD ALIGN=right>T&nbsp;&nbsp;&nbsp;&nbsp;</TD><TD>Virtual timer expired.<BR></TD></TR>
+<TR VALIGN=top><TD>SIGXCPU</TD><TD ALIGN=right>A&nbsp;&nbsp;&nbsp;&nbsp;</TD><TD>CPU time limit exceeded.<BR></TD></TR>
+<TR VALIGN=top><TD>SIGXFSZ</TD><TD ALIGN=right>A&nbsp;&nbsp;&nbsp;&nbsp;</TD><TD>File size limit exceeded.<BR></TD></TR>
+</TABLE></TABLE></CENTER>
+
+<BR>
+
+<P>
+
+The default actions are as follows:
+<DL COMPACT>
+<DT>T<DD>
+Abnormal termination of the process.
+<DT>A<DD>
+Abnormal termination of the process
+with additional actions.
+<DT>I<DD>
+Ignore the signal.
+<DT>S<DD>
+Stop the process.
+<DT>C<DD>
+Continue the process, if it is stopped; otherwise, ignore the signal.
+</DL>
+<P>
+
+The effects on the process in each case are described in the System Interfaces volume of POSIX.1-2008,
+<I>Section 2.4.3</I>, <I>Signal Actions.</I>
+
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/signal.h">signal.h</A>&gt;</I>
+
+header shall declare the
+<B>sigaction</B>
+
+structure, which shall include at least the following members:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+void   (*sa_handler)(int)  </B>Pointer to a signal-catching function
+                           or one of the SIG_IGN or SIG_DFL.
+sigset_t sa_mask           Set of signals to be blocked during execution
+                           of the signal handling function.
+int      sa_flags          Special flags.
+void   (*sa_sigaction)(int, siginfo_t *, void *)
+                           Pointer to a signal-catching function.
+</PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+The storage occupied by
+<I>sa_handler</I>
+
+and
+<I>sa_sigaction</I>
+
+may overlap, and a conforming application shall not use both
+simultaneously.
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/signal.h">signal.h</A>&gt;</I>
+
+header shall define the following macros which shall expand to
+integer constant expressions that need not be usable in
+<B>#if</B>
+
+preprocessing directives:
+<DL COMPACT>
+<DT>SIG_BLOCK<DD>
+The resulting set is the union of the current set and the signal set
+pointed to by the argument
+<I>set</I>.
+
+<DT>SIG_UNBLOCK<DD>
+The resulting set is the intersection of the current set and the
+complement of the signal set pointed to by the argument
+<I>set</I>.
+
+<DT>SIG_SETMASK<DD>
+The resulting set is the signal set pointed to by the argument
+<I>set</I>.
+
+</DL>
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/signal.h">signal.h</A>&gt;</I>
+
+header shall also define the following symbolic constants:
+<DL COMPACT>
+<DT>SA_NOCLDSTOP<DD>
+Do not generate SIGCHLD when children stop
+<BR>
+
+or stopped children continue.
+<DT>SA_ONSTACK<DD>
+Causes signal delivery to occur on an alternate stack.
+<DT>SA_RESETHAND<DD>
+Causes signal dispositions to be set to SIG_DFL on entry to signal
+handlers.
+<DT>SA_RESTART<DD>
+Causes certain functions to become restartable.
+<DT>SA_SIGINFO<DD>
+Causes extra information to be passed to signal handlers at the time of
+receipt of a signal.
+<DT>SA_NOCLDWAIT<DD>
+Causes implementations not to create zombie processes on child death.
+<DT>SA_NODEFER<DD>
+Causes signal not to be automatically blocked on entry to signal handler.
+<DT>SS_ONSTACK<DD>
+Process is executing on an alternate signal stack.
+<DT>SS_DISABLE<DD>
+Alternate signal stack is disabled.
+<DT>MINSIGSTKSZ<DD>
+Minimum stack size for a signal handler.
+<DT>SIGSTKSZ<DD>
+Default size in bytes for the alternate signal stack.
+</DL>
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/signal.h">signal.h</A>&gt;</I>
+
+header shall define the
+<B>mcontext_t</B>
+
+type through
+<B>typedef</B>.
+
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/signal.h">signal.h</A>&gt;</I>
+
+header shall define the
+<B>ucontext_t</B>
+
+type as a structure that shall include at least the following members:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+ucontext_t *uc_link     </B>Pointer to the context that is resumed
+                        when this context returns.
+sigset_t    uc_sigmask  The set of signals that are blocked when this
+                        context is active.
+stack_t     uc_stack    The stack used by this context.
+mcontext_t  uc_mcontext A machine-specific representation of the saved
+                        context.
+</PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/signal.h">signal.h</A>&gt;</I>
+
+header shall define the
+<B>stack_t</B>
+
+type as a structure, which shall include at least the following members:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+void     *ss_sp       </B>Stack base or pointer.
+size_t    ss_size     Stack size.
+int       ss_flags    Flags.
+</PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/signal.h">signal.h</A>&gt;</I>
+
+header shall define the
+<B>siginfo_t</B>
+
+type as a structure, which shall include at least the following members:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+int           si_signo  </B>Signal number.
+int           si_code   Signal code.
+int           si_errno  If non-zero, an <I>errno</I> value associated with
+                        this signal, as described in <B>&lt;<A HREF="file:///usr/include/errno.h">errno.h</A>&gt;</B>.
+pid_t         si_pid    Sending process ID.
+uid_t         si_uid    Real user ID of sending process.
+void         *si_addr   Address of faulting instruction.
+int           si_status Exit value or signal.
+long          si_band   Band event for SIGPOLL.
+union sigval  si_value  Signal value.
+</PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/signal.h">signal.h</A>&gt;</I>
+
+header shall define the symbolic constants in the
+<B>Code</B>
+
+column of the following table for use as values of
+<I>si_code</I>
+
+that are signal-specific or non-signal-specific reasons why the
+signal was generated.
+<CENTER><TABLE BORDER><TR><TD><TABLE>
+<TR VALIGN=top><TD ALIGN=center><B>Signal</B></TD><TD ALIGN=center><B>Code</B></TD><TD ALIGN=center><B>Reason</B><BR></TD></TR>
+<TR VALIGN=top><TD COLSPAN=3><HR></TD></TR>
+<TR VALIGN=top><TD>SIGILL&nbsp;</TD><TD>ILL_ILLOPC&nbsp;</TD><TD>Illegal opcode.<BR></TD></TR>
+<TR VALIGN=top><TD>&nbsp;</TD><TD>ILL_ILLOPN&nbsp;</TD><TD>Illegal operand.<BR></TD></TR>
+<TR VALIGN=top><TD>&nbsp;</TD><TD>ILL_ILLADR&nbsp;</TD><TD>Illegal addressing mode.<BR></TD></TR>
+<TR VALIGN=top><TD>&nbsp;</TD><TD>ILL_ILLTRP&nbsp;</TD><TD>Illegal trap.<BR></TD></TR>
+<TR VALIGN=top><TD>&nbsp;</TD><TD>ILL_PRVOPC&nbsp;</TD><TD>Privileged opcode.<BR></TD></TR>
+<TR VALIGN=top><TD>&nbsp;</TD><TD>ILL_PRVREG&nbsp;</TD><TD>Privileged register.<BR></TD></TR>
+<TR VALIGN=top><TD>&nbsp;</TD><TD>ILL_COPROC&nbsp;</TD><TD>Coprocessor error.<BR></TD></TR>
+<TR VALIGN=top><TD>&nbsp;</TD><TD>ILL_BADSTK&nbsp;</TD><TD>Internal stack error.<BR></TD></TR>
+<TR VALIGN=top><TD COLSPAN=3><HR></TD></TR>
+<TR VALIGN=top><TD>SIGFPE&nbsp;</TD><TD>FPE_INTDIV&nbsp;</TD><TD>Integer divide by zero.<BR></TD></TR>
+<TR VALIGN=top><TD>&nbsp;</TD><TD>FPE_INTOVF&nbsp;</TD><TD>Integer overflow.<BR></TD></TR>
+<TR VALIGN=top><TD>&nbsp;</TD><TD>FPE_FLTDIV&nbsp;</TD><TD>Floating-point divide by zero.<BR></TD></TR>
+<TR VALIGN=top><TD>&nbsp;</TD><TD>FPE_FLTOVF&nbsp;</TD><TD>Floating-point overflow.<BR></TD></TR>
+<TR VALIGN=top><TD>&nbsp;</TD><TD>FPE_FLTUND&nbsp;</TD><TD>Floating-point underflow.<BR></TD></TR>
+<TR VALIGN=top><TD>&nbsp;</TD><TD>FPE_FLTRES&nbsp;</TD><TD>Floating-point inexact result.<BR></TD></TR>
+<TR VALIGN=top><TD>&nbsp;</TD><TD>FPE_FLTINV&nbsp;</TD><TD>Invalid floating-point operation.<BR></TD></TR>
+<TR VALIGN=top><TD>&nbsp;</TD><TD>FPE_FLTSUB&nbsp;</TD><TD>Subscript out of range.<BR></TD></TR>
+<TR VALIGN=top><TD COLSPAN=3><HR></TD></TR>
+<TR VALIGN=top><TD>SIGSEGV&nbsp;</TD><TD>SEGV_MAPERR&nbsp;</TD><TD>Address not mapped to object.<BR></TD></TR>
+<TR VALIGN=top><TD>&nbsp;</TD><TD>SEGV_ACCERR&nbsp;</TD><TD>Invalid permissions for mapped object.<BR></TD></TR>
+<TR VALIGN=top><TD COLSPAN=3><HR></TD></TR>
+<TR VALIGN=top><TD>SIGBUS&nbsp;</TD><TD>BUS_ADRALN&nbsp;</TD><TD>Invalid address alignment.<BR></TD></TR>
+<TR VALIGN=top><TD>&nbsp;</TD><TD>BUS_ADRERR&nbsp;</TD><TD>Nonexistent physical address.<BR></TD></TR>
+<TR VALIGN=top><TD>&nbsp;</TD><TD>BUS_OBJERR&nbsp;</TD><TD>Object-specific hardware error.<BR></TD></TR>
+<TR VALIGN=top><TD COLSPAN=3><HR></TD></TR>
+<TR VALIGN=top><TD>SIGTRAP&nbsp;</TD><TD>TRAP_BRKPT&nbsp;</TD><TD>Process breakpoint.<BR></TD></TR>
+<TR VALIGN=top><TD>&nbsp;</TD><TD>TRAP_TRACE&nbsp;</TD><TD>Process trace trap.<BR></TD></TR>
+<TR VALIGN=top><TD COLSPAN=3><HR></TD></TR>
+<TR VALIGN=top><TD>SIGCHLD&nbsp;</TD><TD>CLD_EXITED&nbsp;</TD><TD>Child has exited.<BR></TD></TR>
+<TR VALIGN=top><TD>&nbsp;</TD><TD>CLD_KILLED&nbsp;</TD><TD>Child has terminated abnormally and did not create a <B>core</B> file.<BR></TD></TR>
+<TR VALIGN=top><TD>&nbsp;</TD><TD>CLD_DUMPED&nbsp;</TD><TD>Child has terminated abnormally and created a <B>core</B> file.<BR></TD></TR>
+<TR VALIGN=top><TD>&nbsp;</TD><TD>CLD_TRAPPED&nbsp;</TD><TD>Traced child has trapped.<BR></TD></TR>
+<TR VALIGN=top><TD>&nbsp;</TD><TD>CLD_STOPPED&nbsp;</TD><TD>Child has stopped.<BR></TD></TR>
+<TR VALIGN=top><TD>&nbsp;</TD><TD>CLD_CONTINUED&nbsp;</TD><TD>Stopped child has continued.<BR></TD></TR>
+<TR VALIGN=top><TD COLSPAN=3><HR></TD></TR>
+<TR VALIGN=top><TD>SIGPOLL&nbsp;</TD><TD>POLL_IN&nbsp;</TD><TD>Data input available.<BR></TD></TR>
+<TR VALIGN=top><TD>&nbsp;</TD><TD>POLL_OUT&nbsp;</TD><TD>Output buffers available.<BR></TD></TR>
+<TR VALIGN=top><TD>&nbsp;</TD><TD>POLL_MSG&nbsp;</TD><TD>Input message available.<BR></TD></TR>
+<TR VALIGN=top><TD>&nbsp;</TD><TD>POLL_ERR&nbsp;</TD><TD>I/O error.<BR></TD></TR>
+<TR VALIGN=top><TD>&nbsp;</TD><TD>POLL_PRI&nbsp;</TD><TD>High priority input available.<BR></TD></TR>
+<TR VALIGN=top><TD>&nbsp;</TD><TD>POLL_HUP&nbsp;</TD><TD>Device disconnected.<BR></TD></TR>
+<TR VALIGN=top><TD COLSPAN=3><HR></TD></TR>
+<TR VALIGN=top><TD>Any&nbsp;</TD><TD>SI_USER&nbsp;</TD><TD>Signal sent by <I>kill</I>().<BR></TD></TR>
+<TR VALIGN=top><TD>&nbsp;</TD><TD>SI_QUEUE&nbsp;</TD><TD>Signal sent by <I>sigqueue</I>().<BR></TD></TR>
+<TR VALIGN=top><TD>&nbsp;</TD><TD>SI_TIMER&nbsp;</TD><TD>Signal generated by expiration of a timer set by <I>timer_settime</I>().<BR></TD></TR>
+<TR VALIGN=top><TD>&nbsp;</TD><TD>SI_ASYNCIO&nbsp;</TD><TD>Signal generated by completion of an asynchronous I/O<BR></TD></TR>
+<TR VALIGN=top><TD>&nbsp;</TD><TD>&nbsp;</TD><TD>request.<BR></TD></TR>
+<TR VALIGN=top><TD>&nbsp;</TD><TD>SI_MESGQ&nbsp;</TD><TD>Signal generated by arrival of a message on an empty message<BR></TD></TR>
+<TR VALIGN=top><TD>&nbsp;</TD><TD>&nbsp;</TD><TD>queue.<BR></TD></TR>
+</TABLE></TABLE></CENTER>
+
+<P>
+
+Implementations may support additional
+<I>si_code</I>
+
+values not included in this list, may generate values included in this
+list under circumstances other than those described in this list, and
+may contain extensions or limitations that prevent some values from
+being generated. Implementations do not generate a different value from
+the ones described in this list for circumstances described in this
+list.
+<BR>
+
+<P>
+
+In addition, the following signal-specific information shall be
+available:
+<CENTER><TABLE BORDER><TR><TD><TABLE>
+<TR VALIGN=top><TD ALIGN=center><B>Signal</B></TD><TD ALIGN=center><B>Member</B></TD><TD ALIGN=center><B>Value</B><BR></TD></TR>
+<TR VALIGN=top><TD COLSPAN=3><HR></TD></TR>
+<TR VALIGN=top><TD>SIGILL</TD><TD><B>void * <I>si_addr</I></B></TD><TD>Address of faulting instruction.<BR></TD></TR>
+<TR VALIGN=top><TD>SIGFPE</TD><TD><B></B></TD><TD><BR></TD></TR>
+<TR VALIGN=top><TD COLSPAN=3><HR></TD></TR>
+<TR VALIGN=top><TD>SIGSEGV</TD><TD><B>void * <I>si_addr</I></B></TD><TD>Address of faulting memory reference.<BR></TD></TR>
+<TR VALIGN=top><TD>SIGBUS</TD><TD><B></B></TD><TD><BR></TD></TR>
+<TR VALIGN=top><TD COLSPAN=3><HR></TD></TR>
+<TR VALIGN=top><TD>SIGCHLD</TD><TD><B>pid_t <I>si_pid</I></B></TD><TD>Child process ID.<BR></TD></TR>
+<TR VALIGN=top><TD></TD><TD><B>int <I>si_status</I></B></TD><TD>Exit value or signal.<BR></TD></TR>
+<TR VALIGN=top><TD></TD><TD><B>uid_t <I>si_uid</I></B></TD><TD>Real user ID of the process that sent the signal.<BR></TD></TR>
+<TR VALIGN=top><TD COLSPAN=3><HR></TD></TR>
+<TR VALIGN=top><TD>SIGPOLL</TD><TD><B>long <I>si_band</I></B></TD><TD>Band event for POLL_IN, POLL_OUT, or POLL_MSG.<BR></TD></TR>
+</TABLE></TABLE></CENTER>
+
+<P>
+
+For some implementations, the value of <I>si_addr</I> may be inaccurate.
+<P>
+
+The following shall be declared as functions and may also be defined as
+macros. Function prototypes shall be provided.
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+int    kill(pid_t, int);
+int    killpg(pid_t, int);
+void   psiginfo(const siginfo_t *, const char *);
+void   psignal(int, const char *);
+int    pthread_kill(pthread_t, int);
+int    pthread_sigmask(int, const sigset_t *restrict,
+           sigset_t *restrict);
+int    raise(int);
+int    sigaction(int, const struct sigaction *restrict,
+           struct sigaction *restrict);
+int    sigaddset(sigset_t *, int);
+int    sigaltstack(const stack_t *restrict, stack_t *restrict);
+int    sigdelset(sigset_t *, int);
+int    sigemptyset(sigset_t *);
+int    sigfillset(sigset_t *);
+int    sighold(int);
+int    sigignore(int);
+int    siginterrupt(int, int);
+int    sigismember(const sigset_t *, int);
+void (*signal(int, void (*)(int)))(int);
+int    sigpause(int);
+int    sigpending(sigset_t *);
+int    sigprocmask(int, const sigset_t *restrict, sigset_t *restrict);
+int    sigqueue(pid_t, int, const union sigval);
+int    sigrelse(int);
+void (*sigset(int, void (*)(int)))(int);
+int    sigsuspend(const sigset_t *);
+int    sigtimedwait(const sigset_t *restrict, siginfo_t *restrict,
+           const struct timespec *restrict);
+int    sigwait(const sigset_t *restrict, int *restrict);
+int    sigwaitinfo(const sigset_t *restrict, siginfo_t *restrict);
+</B></PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+Inclusion of the
+<I>&lt;<A HREF="file:///usr/include/signal.h">signal.h</A>&gt;</I>
+
+header may make visible all symbols from the
+<I>&lt;<A HREF="file:///usr/include/time.h">time.h</A>&gt;</I>
+
+header.
+<P>
+
+<I>The following sections are informative.</I>
+
+<A NAME="lbAF">&nbsp;</A>
+<H2>APPLICATION USAGE</H2>
+
+On systems not supporting the XSI option, the
+<I>si_pid</I>
+
+and
+<I>si_uid</I>
+
+members of
+<B>siginfo_t</B>
+
+are only required to be valid when
+<I>si_code</I>
+
+is SI_USER or SI_QUEUE. On XSI-conforming systems, they are also
+valid for all
+<I>si_code</I>
+
+values less than or equal to 0; however, it is unspecified whether
+SI_USER and SI_QUEUE have values less than or equal to zero, and
+therefore XSI applications should check whether
+<I>si_code</I>
+
+has the value SI_USER or SI_QUEUE or is less than or equal to 0
+to tell whether
+<I>si_pid</I>
+
+and
+<I>si_uid</I>
+
+are valid.
+<A NAME="lbAG">&nbsp;</A>
+<H2>RATIONALE</H2>
+
+None.
+<A NAME="lbAH">&nbsp;</A>
+<H2>FUTURE DIRECTIONS</H2>
+
+The SIGPOLL and SIGPROF signals may be removed in a future version.
+<A NAME="lbAI">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+<I></I><B>&lt;<A HREF="file:///usr/include/errno.h">errno.h</A>&gt;</B>,
+
+<I></I><B>&lt;<A HREF="file:///usr/include/stropts.h">stropts.h</A>&gt;</B>,
+
+<I></I><B>&lt;<A HREF="file:///usr/include/sys_types.h">sys_types.h</A>&gt;</B>,
+
+<I></I><B>&lt;<A HREF="file:///usr/include/time.h">time.h</A>&gt;</B>
+
+<P>
+
+
+The System Interfaces volume of POSIX.1-2008,
+<I>Section 2.2</I>, <I>The Compilation Environment,</I>
+
+<I>alarm</I>(),
+
+<I>ioctl</I>(),
+
+<I>kill</I>(),
+
+<I>killpg</I>(),
+
+<I>psiginfo</I>(),
+
+<I>pthread_kill</I>(),
+
+<I>pthread_sigmask</I>(),
+
+<I>raise</I>(),
+
+<I>sigaction</I>(),
+
+<I>sigaddset</I>(),
+
+<I>sigaltstack</I>(),
+
+<I>sigdelset</I>(),
+
+<I>sigemptyset</I>(),
+
+<I>sigfillset</I>(),
+
+<I>sighold</I>(),
+
+<I>siginterrupt</I>(),
+
+<I>sigismember</I>(),
+
+<I>signal</I>(),
+
+<I>sigpending</I>(),
+
+<I>sigqueue</I>(),
+
+<I>sigsuspend</I>(),
+
+<I>sigtimedwait</I>(),
+
+<I>sigwait</I>(),
+
+<I>timer_create</I>(),
+
+<I>wait</I>(),
+
+<I>waitid</I>()
+
+
+<A NAME="lbAJ">&nbsp;</A>
+<H2>COPYRIGHT</H2>
+
+Portions of this text are reprinted and reproduced in electronic form
+from IEEE Std 1003.1, 2013 Edition, Standard for Information Technology
+-- Portable Operating System Interface (POSIX), The Open Group Base
+Specifications Issue 7, Copyright (C) 2013 by the Institute of
+Electrical and Electronics Engineers, Inc and The Open Group.
+(This is POSIX.1-2008 with the 2013 Technical Corrigendum 1 applied.) In the
+event of any discrepancy between this version and the original IEEE and
+The Open Group Standard, the original IEEE and The Open Group Standard
+is the referee document. The original Standard can be obtained online at
+<A HREF="http://www.unix.org/online.html">http://www.unix.org/online.html</A> .
+<P>
+Any typographical or formatting errors that appear
+in this page are most likely
+to have been introduced during the conversion of the source files to
+man page format. To report such errors, see
+<A HREF="https://www.kernel.org/doc/man-pages/reporting_bugs.html">https://www.kernel.org/doc/man-pages/reporting_bugs.html</A> .
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">PROLOG</A><DD>
+<DT><A HREF="#lbAC">NAME</A><DD>
+<DT><A HREF="#lbAD">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAE">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAF">APPLICATION USAGE</A><DD>
+<DT><A HREF="#lbAG">RATIONALE</A><DD>
+<DT><A HREF="#lbAH">FUTURE DIRECTIONS</A><DD>
+<DT><A HREF="#lbAI">SEE ALSO</A><DD>
+<DT><A HREF="#lbAJ">COPYRIGHT</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 14:28:43 GMT, February 25, 2017
+</BODY>
+</HTML>

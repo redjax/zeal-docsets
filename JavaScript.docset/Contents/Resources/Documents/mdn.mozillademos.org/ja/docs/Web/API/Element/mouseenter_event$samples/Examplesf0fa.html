@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    
+<!-- Mirrored from mdn.mozillademos.org/ja/docs/Web/API/Element/mouseenter_event$samples/Examples?revision=1546346 by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 02 May 2019 02:53:49 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+        <meta charset="utf-8">
+        <link href="../../../../../../../developer.mozilla.org/static/build/styles/samples.37902ba3b7fe.css" rel="stylesheet" type="text/css" />
+        
+        <title>Element: mouseenter イベント</title>
+    </head>
+    <body>
+        
+            <ul id="test">
+  <li>
+    <ul class="enter-sensitive">
+      <li>item 1-1</li>
+      <li>item 1-2</li>
+    </ul>
+  </li>
+  <li>
+    <ul class="enter-sensitive">
+      <li>item 2-1</li>
+      <li>item 2-2</li>
+    </ul>
+  </li>
+</ul>
+
+<script>
+  var delegationSelector = ".enter-sensitive";
+
+  document.getElementById("test").addEventListener("mouseover", function( event ) {
+    var target = event.target,
+        related = event.relatedTarget,
+        match;
+
+    // 委任セレクターに一致する親ノードを探す
+    while ( target && target != document && !( match = matches( target, delegationSelector ) ) ) {
+        target = target.parentNode;
+    }
+
+    // 一致するノードが見つからなければ抜ける
+    if ( !match ) { return; }
+
+    // 関連するターゲットの親をループして、ターゲットの子でないことを確認する
+    while ( related && related != target && related != document ) {
+        related = related.parentNode;
+    }
+
+    // この場合は抜ける
+    if ( related == target ) { return; }
+
+    // "委任された mouseenter" のハンドラーが実行されるようになる
+    // テキストの色を変更
+    target.style.color = "orange";
+    // わずかな時間を置いて色をリセット
+    setTimeout(function() {
+        target.style.color = "";
+    }, 500);
+    
+
+  }, false);
+ 
+
+  // DOM 要素が指定されたセレクターに一致するかどうかをチェックするために使用される関数
+  // 以下のコードは IE8 の互換関数 https://gist.github.com/2851541 によって置き換えることが可能
+  function matches( elem, selector ){
+    // matchesSelector は多くの (すべてではない) ブラウザーで接頭辞付き
+    return elem.matchesSelector( selector );
+  };
+</script>
+        
+        
+    </body>
+
+<!-- Mirrored from mdn.mozillademos.org/ja/docs/Web/API/Element/mouseenter_event$samples/Examples?revision=1546346 by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 02 May 2019 02:53:49 GMT -->
+</html>

@@ -1,0 +1,163 @@
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML><HEAD><TITLE>Man page of SYSV_SIGNAL</TITLE>
+</HEAD><BODY>
+<H1>SYSV_SIGNAL</H1>
+Section: Linux Programmer's Manual (3)<BR>Updated: 2015-03-02<BR><A HREF="#index">Index</A>
+<A HREF="../index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+sysv_signal - signal handling with System V semantics
+<A NAME="lbAC">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<B>#define _GNU_SOURCE</B>         /* See <A HREF="../man7/feature_test_macros.7.html">feature_test_macros</A>(7) */
+
+<BR>
+
+<B>#include &lt;<A HREF="file:///usr/include/signal.h">signal.h</A>&gt;</B>
+
+<P>
+<B>typedef void (*sighandler_t)(int);</B>
+
+<P>
+<B>sighandler_t sysv_signal(int </B><I>signum</I><B>, sighandler_t </B><I>handler</I><B>);</B>
+
+<A NAME="lbAD">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+The
+<B>sysv_signal</B>()
+
+function takes the same arguments, and performs the same task, as
+<B><A HREF="../man2/signal.2.html">signal</A></B>(2).
+
+<P>
+However
+<B>sysv_signal</B>()
+
+provides the System V unreliable signal semantics, that is:
+a) the disposition of the signal is reset to the default
+when the handler is invoked;
+b) delivery of further instances of the signal is not blocked while
+the signal handler is executing; and
+c) if the handler interrupts (certain) blocking system calls,
+then the system call is not automatically restarted.
+<A NAME="lbAE">&nbsp;</A>
+<H2>RETURN VALUE</H2>
+
+The
+<B>sysv_signal</B>()
+
+function returns the previous value of the signal handler, or
+<B>SIG_ERR</B>
+
+on error.
+<A NAME="lbAF">&nbsp;</A>
+<H2>ERRORS</H2>
+
+As for
+<B><A HREF="../man2/signal.2.html">signal</A></B>(2).
+
+<A NAME="lbAG">&nbsp;</A>
+<H2>ATTRIBUTES</H2>
+
+For an explanation of the terms used in this section, see
+<B><A HREF="../man7/attributes.7.html">attributes</A></B>(7).
+
+<TABLE BORDER>
+<TR VALIGN=top><TD><B>Interface</B></TD><TD><B>Attribute</B></TD><TD><B>Value</B><BR></TD></TR>
+<TR VALIGN=top><TD>
+<B>sysv_signal</B>()
+
+</TD><TD>Thread safety</TD><TD>MT-Safe<BR></TD></TR>
+</TABLE>
+
+<A NAME="lbAH">&nbsp;</A>
+<H2>CONFORMING TO</H2>
+
+This function is nonstandard.
+<A NAME="lbAI">&nbsp;</A>
+<H2>NOTES</H2>
+
+Use of
+<B>sysv_signal</B>()
+
+should be avoided; use
+<B><A HREF="../man2/sigaction.2.html">sigaction</A></B>(2)
+
+instead.
+<P>
+On older Linux systems,
+<B>sysv_signal</B>()
+
+and
+<B><A HREF="../man2/signal.2.html">signal</A></B>(2)
+
+were equivalent.
+But on newer systems,
+<B><A HREF="../man2/signal.2.html">signal</A></B>(2)
+
+provides reliable signal semantics; see
+<B><A HREF="../man2/signal.2.html">signal</A></B>(2)
+
+for details.
+<P>
+The use of
+<I>sighandler_t</I>
+
+is a GNU extension;
+this type is defined only if
+the
+<B>_GNU_SOURCE</B>
+
+feature test macro is defined.
+<A NAME="lbAJ">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+<B><A HREF="../man2/sigaction.2.html">sigaction</A></B>(2),
+
+<B><A HREF="../man2/signal.2.html">signal</A></B>(2),
+
+<B><A HREF="../man3/bsd_signal.3.html">bsd_signal</A></B>(3),
+
+<B><A HREF="../man7/signal.7.html">signal</A></B>(7)
+
+<A NAME="lbAK">&nbsp;</A>
+<H2>COLOPHON</H2>
+
+This page is part of release 4.09 of the Linux
+<I>man-pages</I>
+
+project.
+A description of the project,
+information about reporting bugs,
+and the latest version of this page,
+can be found at
+<A HREF="https://www.kernel.org/doc/man-pages/.">https://www.kernel.org/doc/man-pages/.</A>
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAD">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAE">RETURN VALUE</A><DD>
+<DT><A HREF="#lbAF">ERRORS</A><DD>
+<DT><A HREF="#lbAG">ATTRIBUTES</A><DD>
+<DT><A HREF="#lbAH">CONFORMING TO</A><DD>
+<DT><A HREF="#lbAI">NOTES</A><DD>
+<DT><A HREF="#lbAJ">SEE ALSO</A><DD>
+<DT><A HREF="#lbAK">COLOPHON</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 14:28:38 GMT, February 25, 2017
+</BODY>
+</HTML>

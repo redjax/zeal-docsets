@@ -1,0 +1,1428 @@
+<!DOCTYPE html>
+<html class="no-js hasSidebar hasPageActions hasBreadcrumb conceptual" data-authenticated="false" data-render="docs" dir="ltr" lang="en-us">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Import-WdsInstallImage (wds)" property="og:title"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" property="og:image"/>
+  <meta content="summary" name="twitter:card"/>
+  <meta content="@docsmsft" name="twitter:site"/>
+  <meta content="Import-WdsInstallImage (wds)" name="twitter:title"/>
+  <meta content="Use this topic to help manage Windows and Windows Server technologies with Windows PowerShell." name="twitter:description"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" name="twitter:image"/>
+  <meta content="Microsoft Logo" name="twitter:image:alt"/>
+  <meta content="Use this topic to help manage Windows and Windows Server technologies with Windows PowerShell." name="description"/>
+  <meta content="Docs" name="search.ms_sitename"/>
+  <meta content="powershell-windows" name="search.ms_docsetname"/>
+  <meta content="0" name="version"/>
+  <meta content="en-us" name="locale"/>
+  <meta content="Docs" name="site_name"/>
+  <meta content="MSDN" name="search.ms_product"/>
+  <meta content="MSDN.powershell-windows" name="depot_name"/>
+  <meta content="https://cpubwin.visualstudio.com/DefaultCollection/powershell/_git/powershell/commit/ced7757924addcaea0b7a244ae4d240e4d28d93a?path=%2fdocset%2fwindows%2fwds%2fimport-wdsinstallimage.md&amp;_a=contents" name="ref_skeleton_gitcommit"/>
+  <meta content="https://cpubwin.visualstudio.com/DefaultCollection/powershell/_git/powershell?path=%2fdocset%2fwindows%2fwds%2fimport-wdsinstallimage.md&amp;version=GBlive&amp;_a=contents" name="original_ref_skeleton_git_url"/>
+  <meta content="2017-09-15 03:44 AM" name="updated_at"/>
+  <meta content="04b725e3-2ae4-60a5-d542-d044a837c8b1" name="document_id"/>
+  <meta content="6ab34f72-8e88-851c-f913-5d12ddb8bdfc" name="document_version_independent_id"/>
+  <meta content="powershell" name="page_type"/>
+  <meta content="command" name="page_kind"/>
+  <meta content="manage" name="ms.mktglfcycl"/>
+  <meta content="library" name="ms.sitesec"/>
+  <meta content="brianlic" name="ms.author"/>
+  <meta content="brianlic-msft" name="author"/>
+  <meta content="MSFT_WdsInstallImage_v1.0.cdxml-help.xml" name="external_help_file"/>
+  <meta content="powershell, cmdlet" name="keywords"/>
+  <meta content="alanth" name="manager"/>
+  <meta content="12/27/2016" name="ms.date"/>
+  <meta content="w10" name="ms.prod"/>
+  <meta content="powershell-windows" name="ms.technology"/>
+  <meta content="reference" name="ms.topic"/>
+  <meta content="" name="online_version"/>
+  <meta content="2.0.0" name="schema"/>
+  <meta content="E0AD370F-BD3C-43DD-B5FC-137A11B3D6D9" name="ms.assetid"/>
+  <meta content="powershell" name="ms.devlang"/>
+  <meta content="INDEX, FOLLOW" name="ROBOTS"/>
+  <meta content="/powershell/windows/bread/toc.json?view=win10-ps" name="breadcrumb_path"/>
+  <meta content="powershell" name="apiPlatform"/>
+  <meta content="MSDocsHeader-WindowsIT" name="uhfHeaderId"/>
+  <meta content="../win10-ps/toc.json?view=win10-ps" name="toc_rel"/>
+  <link href="https://docs.microsoft.com/en-us/powershell/module/wds/import-wdsinstallimage" rel="canonical"/>
+  <title>
+   Import-WdsInstallImage
+  </title>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/e4a1f3a3.site.css" rel="stylesheet"/>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/31353636.conceptual.css" rel="stylesheet"/>
+ </head>
+ <body dir="ltr" lang="en-us">
+  <div class="header-holder">
+   <div data-bi-name="header" id="headerAreaHolder">
+    <div id="uhf-placeholder">
+    </div>
+   </div>
+   <div class="disclaimer-holder" id="disclaimer-holder">
+   </div>
+  </div>
+  <div class="container mainContainer" data-bi-name="body">
+   <div class="content-header" data-bi-name="content-header">
+    <div class="content-header-controls">
+     <button class="contents-button button-border" data-bi-name="contents-expand" type="button">
+      <span class="docon docon-menu">
+      </span>
+      Contents
+     </button>
+    </div>
+    <div class="content-header-controls">
+     <button class="ap-collapse-behavior ap-expanded button-border" data-bi-name="ap-collapse" type="button">
+      <span class="docon docon-exit-mode">
+      </span>
+      Exit focus mode
+     </button>
+    </div>
+   </div>
+   <div class="primary-holder">
+    <main class="content" data-bi-name="content" dir="ltr" id="main" lang="en-us" role="main">
+     <!-- <content> -->
+     <h1>
+      Import-Wds
+      <wbr/>
+      Install
+      <wbr/>
+      Image
+     </h1>
+     <div class="metadata">
+      <dl class="attributeList">
+       <dt>
+        Module:
+       </dt>
+       <dd>
+        <a data-linktype="relative-path" href="./.html">
+         wds
+        </a>
+       </dd>
+      </dl>
+     </div>
+     <div class="summaryHolder">
+      <div class="summary">
+       Imports an install image to an image store.
+      </div>
+     </div>
+     <h2 class="hiddenAnchor" id="syntax">
+      Syntax
+     </h2>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Import-WdsInstallImage
+      [-SkipVerify]
+      [-ImageGroup &lt;String&gt;]
+      [-DisplayOrder &lt;UInt32&gt;]
+      [-UnattendFile &lt;String&gt;]
+      -Path &lt;String&gt;
+      [-NewImageName &lt;String&gt;]
+      [-NewDescription &lt;String&gt;]
+      [-NewFileName &lt;String&gt;]
+      [-ImageName &lt;String&gt;]
+      [-TransmissionName &lt;String&gt;]
+      [-Multicast]
+      [-ManualStart]
+      [-CimSession &lt;CimSession[]&gt;]
+      [-ThrottleLimit &lt;Int32&gt;]
+      [-AsJob]
+      [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Import-WdsInstallImage
+      [-SkipVerify]
+      [-ImageGroup &lt;String&gt;]
+      [-DisplayOrder &lt;UInt32&gt;]
+      [-UnattendFile &lt;String&gt;]
+      -Path &lt;String&gt;
+      [-NewImageName &lt;String&gt;]
+      [-NewDescription &lt;String&gt;]
+      [-NewFileName &lt;String&gt;]
+      [-ImageName &lt;String&gt;]
+      [-ClientCount &lt;UInt32&gt;]
+      [-StartTime &lt;DateTime&gt;]
+      [-TransmissionName &lt;String&gt;]
+      [-Multicast]
+      [-CimSession &lt;CimSession[]&gt;]
+      [-ThrottleLimit &lt;Int32&gt;]
+      [-AsJob]
+      [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Import-WdsInstallImage
+      [-SkipVerify]
+      [-ImageGroup &lt;String&gt;]
+      [-DisplayOrder &lt;UInt32&gt;]
+      [-UnattendFile &lt;String&gt;]
+      -Path &lt;String&gt;
+      [-NewImageName &lt;String&gt;]
+      [-NewDescription &lt;String&gt;]
+      [-NewFileName &lt;String&gt;]
+      [-ImageName &lt;String&gt;]
+      [-CimSession &lt;CimSession[]&gt;]
+      [-ThrottleLimit &lt;Int32&gt;]
+      [-AsJob]
+      [&lt;CommonParameters&gt;]</code></pre>
+     <h2 id="description">
+      Description
+     </h2>
+     <p>
+      The
+      <strong>
+       Import-WdsInstallImage
+      </strong>
+      cmdlet imports an install image to an image store.
+You can import a single image from a WIM file, all images from a WIM file, or a VHD image.
+If you add a single image, you can also specify a new name, description, and file name for the image.
+     </p>
+     <p>
+      When you work with multicast transmissions that use a single install image as content you can do any of the following:
+     </p>
+     <ul>
+      <li>
+       Create and name an AutoCast transmission.
+      </li>
+      <li>
+       Create and name a ScheduledCast transmission which starts when a preset number of clients are ready to start, at a specific time, or both.
+      </li>
+      <li>
+       Create a manually started ScheduledCast transmission.
+      </li>
+     </ul>
+     <p>
+      An AutoCast transmission is a multicast transmission.
+When a client requests an install image, the multicast transmission starts.
+Clients that request the same image are joined to the multicast transmission.
+     </p>
+     <p>
+      A ScheduledCast transmission is a multicast transmission.
+When a specified number of clients request an image, or a specified time of day is reached, the multicast transmission starts.
+If you do not specify either of these conditions, you must manually start the transmission.
+     </p>
+     <p>
+      If you add multiple images, they will be added to the same image group.
+You can associate an answer file for unattended install with the images that you import.
+Specify the image to import by using the full path of the image file.
+     </p>
+     <h2 id="examples">
+      Examples
+     </h2>
+     <p>
+      <strong>
+       Example 1: Import an image
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Import-WdsInstallImage -Path "D:\images\install.wim" -ImageGroup "Fabrikam Latest Images" -SkipVerify</code></pre>
+     <p>
+      This command imports an install image and skips the verification of the image.
+     </p>
+     <p>
+      <strong>
+       Example 2: Import an install image by using an unattend file
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt;Import-WdsInstallImage -Path "D:\images\install.wim" -ImageName "Fabrikam Latest with LOB apps" -ImageGroup "Fabrikam Latest Images" -DisplayOrder 0 -NewImageName "Fabrikam Latest with LOB v2.0 apps" -UnattendFile "D:\images\unattend\FabrikamLatestwLOB.xml"</code></pre>
+     <p>
+      This command imports an install image by using an answer file that is named FabrikamLatestwLOB.xml.
+     </p>
+     <p>
+      <strong>
+       Example 3: Import an install image and create a multicast transmission
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt;Import-WdsInstallImage -Path "D:\images\install.wim" -ImageName "Fabrikam Latest with LOB apps" -ImageGroup "Fabrikam Latest Images" -Multicast -TransmissionName "Fabrikam Latest AutoCast"</code></pre>
+     <p>
+      This command imports an install image and creates a multicast transmission.
+     </p>
+     <p>
+      <strong>
+       Example 4: Import an install image and create a multicast transmission with a start time
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt;Import-WdsInstallImage -Path "D:\images\install.wim" -ImageName "Fabrikam Latest with LOB apps" -ImageGroup "Fabrikam Latest Images" -Multicast -ClientCount 50 -StartTime 2014/12/01:11:00 -TransmissionName "Fabrikam Latest ScheduledCast with automatic start"</code></pre>
+     <p>
+      This command imports an install image and create a multicast transmission with an automatic start time.
+     </p>
+     <p>
+      <strong>
+       Example 5: Import an install image and create a multicast transmission with manual start
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt;Import-WdsInstallImage -Path "D:\images\install.wim" -ImageName "Fabrikam Latest with LOB apps" -ImageGroup "Fabrikam Latest Images" -Multicast -ManualStart -TransmissionName "Fabrikam Latest ScheduledCast with manual start"</code></pre>
+     <p>
+      This command imports an install image and creates a multicast transmission with a manual start.
+     </p>
+     <h2 id="required-parameters">
+      Required Parameters
+     </h2>
+     <div class="parameterName stack">
+      -ManualStart
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that the transmission uses a manual start.
+If you also specify the
+       <em>
+        MulticastTransmission
+       </em>
+       parameter, the cmdlet creates a ScheduledCast transmission that does not begin until a StartScheduledCast command is given.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Multicast
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that the cmdlet enables an AutoCast transmission on the image.
+If you do not specify a name by using the
+       <em>
+        TransmissionName
+       </em>
+       parameter, the multicast transmission uses the image name.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Path
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a fully-qualified path that is available to the Windows Deployment Services server.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByValue)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="optional-parameters">
+      Optional Parameters
+     </h2>
+     <div class="parameterName stack">
+      -AsJob
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Runs the cmdlet as a background job.
+Use this parameter to run commands that take a long time to complete. 
+ The cmdlet immediately returns an object that represents the job and then displays the command prompt.
+You can continue to work in the session while the job completes.
+To manage the job, use the
+       <code>
+        *-Job
+       </code>
+       cmdlets.
+To get the job results, use the
+       <a data-linktype="external" href="http://go.microsoft.com/fwlink/?LinkID=113372">
+        Receive-Job
+       </a>
+       cmdlet. 
+ For more information about Windows PowerShellÂ® background jobs, see
+       <a data-linktype="external" href="http://go.microsoft.com/fwlink/?LinkID=113251">
+        about_Jobs
+       </a>
+       .
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -CimSession
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Runs the cmdlet in a remote session or on a remote computer.
+Enter a computer name or a session object, such as the output of a
+       <a data-linktype="external" href="http://go.microsoft.com/fwlink/p/?LinkId=227967">
+        New-CimSession
+       </a>
+       or
+       <a data-linktype="external" href="http://go.microsoft.com/fwlink/p/?LinkId=227966">
+        Get-CimSession
+       </a>
+       cmdlet.
+The default is the current session on the local computer.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          CimSession[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         Session
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -ClientCount
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the number of clients that must connect to a transmission.
+If you also specify
+       <em>
+        MulticastTransmission
+       </em>
+       , this parameter specifies the number of clients that must connect to the ScheduledCast transmission for it to begin.
+The
+       <em>
+        StartScheduledCast
+       </em>
+       parameter can start a transmission before reaching the client count.
+If you specify the
+       <em>
+        ClientCount
+       </em>
+       parameter with the
+       <em>
+        StartTime
+       </em>
+       parameter, the transmission starts when either a sufficient number of clients connect, or at the time specified by the
+       <em>
+        StartTime
+       </em>
+       parameter.
+      </p>
+      <p>
+       D not use this parameter together with the
+       <em>
+        ManualStart
+       </em>
+       parameter.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          UInt32
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -DisplayOrder
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the order in which images appear in the boot menu on Pre-Boot Execution Environment (PXE) clients.
+The menu lists the boot images in ascending order, smallest number to largest number.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          UInt32
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -ImageGroup
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the name of an image group.
+This image group contains the image to import.
+If you do not specify an image group, and only one image group exists on the server, the cmdlet uses that image group by default.
+If more than one image group exists on the server, you must specify the image group.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -ImageName
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the name of an image.
+This is the name of the image to import.
+This parameter does not support VHD images.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -NewDescription
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a new description for the install image to create in the import operation.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -NewFileName
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a new file name for the install image to create in the import operation.
+If you do not specify a name, the cmdlet uses the display name of the source image.
+The file name must be unique.
+If you add more than one image, a number is appended to the file name.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -NewImageName
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a new name for the image file to create in the import operation.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -SkipVerify
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that Windows Deployment Services does not verify the source image file before it adds it to the image store.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -StartTime
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a day and time, in MM/DD/YYYY.hh:mm:ss format, that denotes the start time.
+When you specify the
+       <em>
+        MulticastTransmission
+       </em>
+       parameter, this parameter denotes the time the ScheduledCast transmission starts.
+The StartScheduledCast command can start a transmission before reaching the client count.
+If you specify both the
+       <em>
+        StartTime
+       </em>
+       parameter and the
+       <em>
+        ClientCount
+       </em>
+       parameter, the transmission starts when either a sufficient number of clients connect, or the time specified in this parameter is reached.
+Do not specify this parameter together with the
+       <em>
+        ManualStart
+       </em>
+       parameter.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          DateTime
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -ThrottleLimit
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the maximum number of concurrent operations that can be established to run the cmdlet.
+If this parameter is omitted or a value of
+       <code>
+        0
+       </code>
+       is entered, then Windows PowerShellÂ® calculates an optimum throttle limit for the cmdlet based on the number of CIM cmdlets that are running on the computer.
+The throttle limit applies only to the current cmdlet, not to the session or to the computer.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Int32
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -TransmissionName
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a name for the multicast transmission.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -UnattendFile
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the full path of the answer file associated with the image.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="outputs">
+      Outputs
+     </h2>
+     <p>
+      <strong>
+       Microsoft.Management.Infrastructure.CimInstance#MSFT_WdsInstallImage
+      </strong>
+     </p>
+     <h2 id="related-links">
+      Related Links
+     </h2>
+     <ul>
+      <li>
+       <a data-linktype="relative-path" href="./copy-wdsinstallimage.html">
+        Copy-WdsInstallImage
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="./disable-wdsinstallimage.html">
+        Disable-WdsInstallImage
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="./enable-wdsinstallimage.html">
+        Enable-WdsInstallImage
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="./export-wdsinstallimage.html">
+        Export-WdsInstallImage
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="./get-wdsinstallimage.html">
+        Get-WdsInstallImage
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="./remove-wdsinstallimage.html">
+        Remove-WdsInstallImage
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="./set-wdsinstallimage.html">
+        Set-WdsInstallImage
+       </a>
+      </li>
+     </ul>
+     <!-- </content> -->
+    </main>
+    <section class="feedback-section" data-bi-name="feedback-section">
+     <h2 id="feedback">
+      Feedback
+     </h2>
+     <div class="alert choose-feedback-type">
+      <p>
+       We'd love to hear your thoughts. Choose the type you'd like to provide:
+      </p>
+      <div class="choose-feedback-buttons">
+       <a class="button-border feedback-type-product" data-bi-name="product-feedback" href="https://windowsserver.uservoice.com/forums/301869-powershell">
+        Product feedback
+        <span aria-hidden="true" class="docon docon-navigate-external">
+        </span>
+       </a>
+       <div class="button-group">
+        <button class="button-border feedback-sign-in-button" data-bi-name="feedback-sign-in">
+         <span aria-hidden="true" class="docon docon-brand-github">
+         </span>
+         Sign in to give documentation feedback
+        </button>
+        <button aria-controls="feedback-form" aria-expanded="false" class="button-border feedback-form-toggle" data-bi-name="documentation-feedback" hidden="">
+         Content feedback
+        </button>
+        <div auto-align="" class="dropdown has-caret">
+         <button aria-controls="fbm0" aria-expanded="false" aria-haspopup="true" aria-label="Expand documentation feedback menu" class="button-border dropdown-trigger" data-bi-name="documentation-feedback-menu">
+          <span aria-hidden="true" class="docon docon-chevron-down-light">
+          </span>
+         </button>
+         <div class="dropdown-menu documentation-feedback-menu" id="fbm0" role="menu">
+          You may also leave feedback
+          <a data-bi-name="create-issue-on-github" href="{0}">
+           directly on GitHub
+           <span aria-hidden="true" class="docon docon-navigate-external">
+           </span>
+          </a>
+          .
+         </div>
+        </div>
+       </div>
+      </div>
+      <p>
+       <small>
+        Our new feedback system is built on GitHub Issues. Read about this change in
+        <a href="https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs">
+         our blog post
+        </a>
+        .
+       </small>
+      </p>
+     </div>
+     <form accept-charset="UTF-8" action="javascript:" autocomplete="off" class="feedback-form" hidden="" id="feedback-form">
+      <h3 class="feedback-form-heading current-user">
+       <img alt="Avatar" aria-hidden="true" class="avatar" height="36" width="36"/>
+       <span aria-hidden="true" class="username">
+       </span>
+       <span class="visually-hidden">
+        Liquid error: Can't find the localized string giveDocumentationFeedback for template Conceptual.
+       </span>
+      </h3>
+      <label>
+       <span class="visually-hidden">
+        Title
+       </span>
+       <input name="title" pattern=".*\w.*" placeholder="Title" required="" type="text"/>
+      </label>
+      <label>
+       <span class="visually-hidden">
+        Leave a comment
+       </span>
+       <textarea name="body" placeholder="Leave a comment" required=""></textarea>
+      </label>
+      <div class="action-container">
+       <button class="primary-action" name="submit" type="submit">
+        Submit feedback
+       </button>
+      </div>
+     </form>
+     <div class="feedback-status alert busy" role="alert">
+      <p>
+       Loading feedback...
+      </p>
+     </div>
+     <div class="feedback-tab-group tabGroup" data-tab-group-independent="" hidden="">
+      <ul role="tablist">
+       <li role="presentation">
+        <a aria-controls="tabpanel-issues-open" aria-label="Open Issues" data-tab="issues-open" href="#tabpanel-issues-open" role="tab">
+        </a>
+       </li>
+       <li role="presentation">
+        <a aria-controls="tabpanel-issues-closed" aria-label="Closed Issues" data-tab="issues-closed" href="#tabpanel-issues-closed" role="tab">
+        </a>
+       </li>
+      </ul>
+      <section data-tab="issues-open" id="tabpanel-issues-open" role="tabpanel">
+       <div class="no-issues-placeholder">
+        There are no open issues
+       </div>
+       <ul aria-label="Open Issues" class="github-issues-list">
+       </ul>
+      </section>
+      <section data-tab="issues-closed" id="tabpanel-issues-closed" role="tabpanel">
+       <div class="no-issues-placeholder">
+        There are no closed issues
+       </div>
+       <ul aria-label="Closed Issues" class="github-issues-list">
+       </ul>
+      </section>
+     </div>
+     <div class="action-container">
+      <a class="view-on-github" data-bi-name="view-on-github" hidden="" href="https://github.com/MicrosoftDocs/windows-powershell-docs/issues">
+       <span aria-hidden="true" class="docon docon-brand-github">
+       </span>
+       <span>
+        View on GitHub
+       </span>
+       <span aria-hidden="true" class="docon docon-navigate-external">
+       </span>
+      </a>
+     </div>
+    </section>
+   </div>
+  </div>
+  <div class="openfeedback-container" id="openFeedbackContainer">
+  </div>
+  <div class="action-panel">
+  </div>
+ </body>
+</html>

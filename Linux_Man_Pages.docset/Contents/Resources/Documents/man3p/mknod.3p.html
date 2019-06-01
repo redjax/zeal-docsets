@@ -1,0 +1,477 @@
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML><HEAD><TITLE>Man page of MKNOD</TITLE>
+</HEAD><BODY>
+<H1>MKNOD</H1>
+Section: POSIX Programmer's Manual (3P)<BR>Updated: 2013<BR><A HREF="#index">Index</A>
+<A HREF="../index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>PROLOG</H2>
+
+This manual page is part of the POSIX Programmer's Manual.
+The Linux implementation of this interface may differ (consult
+the corresponding Linux manual page for details of Linux behavior),
+or the interface may not be implemented on Linux.
+<P>
+<A NAME="lbAC">&nbsp;</A>
+<H2>NAME</H2>
+
+mknod, mknodat
+--- make directory, special file, or regular file
+<A NAME="lbAD">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<P>
+
+<PRE>
+#include &lt;<A HREF="file:///usr/include/sys/stat.h">sys/stat.h</A>&gt;
+
+int mknod(const char *<I>path</I>, mode_t <I>mode</I>, dev_t <I>dev</I>);
+int mknodat(int <I>fd</I>, const char *<I>path</I>, mode_t <I>mode</I>, dev_t <I>dev</I>);
+</PRE>
+
+<A NAME="lbAE">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+The
+<I>mknod</I>()
+function shall create a new file named by the pathname to which the
+argument
+<I>path</I>
+
+points.
+<P>
+
+The file type for
+<I>path</I>
+
+is OR'ed into the
+<I>mode</I>
+
+argument, and the application shall select one of the following
+symbolic constants:
+<CENTER><TABLE BORDER><TR><TD><TABLE>
+<TR VALIGN=top><TD ALIGN=center><B>Name</B></TD><TD ALIGN=center><B>Description</B><BR></TD></TR>
+<TR VALIGN=top><TD COLSPAN=2><HR></TD></TR>
+<TR VALIGN=top><TD>S_IFIFO</TD><TD>FIFO-special<BR></TD></TR>
+<TR VALIGN=top><TD>S_IFCHR</TD><TD>Character-special (non-portable)<BR></TD></TR>
+<TR VALIGN=top><TD>S_IFDIR</TD><TD>Directory (non-portable)<BR></TD></TR>
+<TR VALIGN=top><TD>S_IFBLK</TD><TD>Block-special (non-portable)<BR></TD></TR>
+<TR VALIGN=top><TD>S_IFREG</TD><TD>Regular (non-portable)<BR></TD></TR>
+</TABLE></TABLE></CENTER>
+
+<P>
+
+The only portable use of
+<I>mknod</I>()
+is to create a FIFO-special file. If
+<I>mode</I>
+
+is not S_IFIFO or
+<I>dev</I>
+
+is not 0, the behavior of
+<I>mknod</I>()
+is unspecified.
+<P>
+
+The permissions for the new file are OR'ed into the
+<I>mode</I>
+
+argument, and may be selected from any combination of the following
+symbolic constants:
+<CENTER><TABLE BORDER><TR><TD><TABLE>
+<TR VALIGN=top><TD ALIGN=center><B>Name</B></TD><TD ALIGN=center><B>Description</B><BR></TD></TR>
+<TR VALIGN=top><TD COLSPAN=2><HR></TD></TR>
+<TR VALIGN=top><TD>S_ISUID</TD><TD>Set user ID on execution.<BR></TD></TR>
+<TR VALIGN=top><TD>S_ISGID</TD><TD>Set group ID on execution.<BR></TD></TR>
+<TR VALIGN=top><TD>S_IRWXU</TD><TD>Read, write, or execute (search) by owner.<BR></TD></TR>
+<TR VALIGN=top><TD>S_IRUSR</TD><TD>Read by owner.<BR></TD></TR>
+<TR VALIGN=top><TD>S_IWUSR</TD><TD>Write by owner.<BR></TD></TR>
+<TR VALIGN=top><TD>S_IXUSR</TD><TD>Execute (search) by owner.<BR></TD></TR>
+<TR VALIGN=top><TD>S_IRWXG</TD><TD>Read, write, or execute (search) by group.<BR></TD></TR>
+<TR VALIGN=top><TD>S_IRGRP</TD><TD>Read by group.<BR></TD></TR>
+<TR VALIGN=top><TD>S_IWGRP</TD><TD>Write by group.<BR></TD></TR>
+<TR VALIGN=top><TD>S_IXGRP</TD><TD>Execute (search) by group.<BR></TD></TR>
+<TR VALIGN=top><TD>S_IRWXO</TD><TD>Read, write, or execute (search) by others.<BR></TD></TR>
+<TR VALIGN=top><TD>S_IROTH</TD><TD>Read by others.<BR></TD></TR>
+<TR VALIGN=top><TD>S_IWOTH</TD><TD>Write by others.<BR></TD></TR>
+<TR VALIGN=top><TD>S_IXOTH</TD><TD>Execute (search) by others.<BR></TD></TR>
+<TR VALIGN=top><TD>S_ISVTX</TD><TD>On directories, restricted deletion flag.<BR></TD></TR>
+</TABLE></TABLE></CENTER>
+
+<P>
+
+The user ID of the file shall be initialized to the effective user ID
+of the process. The group ID of the file shall be initialized to either
+the effective group ID of the process or the group ID of the parent
+directory. Implementations shall provide a way to initialize the file's
+group ID to the group ID of the parent directory. Implementations may,
+but need not, provide an implementation-defined way to initialize the
+file's group ID to the effective group ID of the calling process. The
+owner, group, and other permission bits of
+<I>mode</I>
+
+shall be modified by the file mode creation mask of the process. The
+<I>mknod</I>()
+function shall clear each bit whose corresponding bit in the file mode
+creation mask of the process is set.
+<P>
+
+If
+<I>path</I>
+
+names a symbolic link,
+<I>mknod</I>()
+shall fail and set
+<I>errno</I>
+
+to
+<B>[EEXIST]</B>.
+
+<P>
+
+Upon successful completion,
+<I>mknod</I>()
+shall mark for update the last data access, last data modification,
+and last file status change timestamps of the file. Also, the last
+data modification and last file status change timestamps of the directory
+that contains the new entry shall be marked for update.
+<P>
+
+Only a process with appropriate privileges may invoke
+<I>mknod</I>()
+for file types other than FIFO-special.
+<P>
+
+The
+<I>mknodat</I>()
+function shall be equivalent to the
+<I>mknod</I>()
+function except in the case where
+<I>path</I>
+
+specifies a relative path. In this case the newly created
+directory, special file, or regular file is located relative to the
+directory associated with the file descriptor
+<I>fd</I>
+
+instead of the current working directory. If the file descriptor was
+opened without O_SEARCH, the function shall check whether directory
+searches are permitted using the current permissions of the directory
+underlying the file descriptor. If the file descriptor was opened with
+O_SEARCH, the function shall not perform the check.
+<P>
+
+If
+<I>mknodat</I>()
+is passed the special value AT_FDCWD in the
+<I>fd</I>
+
+parameter, the current working directory shall be used and the behavior
+shall be identical to a call to
+<I>mknod</I>().
+<A NAME="lbAF">&nbsp;</A>
+<H2>RETURN VALUE</H2>
+
+Upon successful completion, these functions shall return 0.
+Otherwise, these functions shall return -1 and set
+<I>errno</I>
+
+to indicate the error. If -1 is returned, the new file shall
+not be created.
+<A NAME="lbAG">&nbsp;</A>
+<H2>ERRORS</H2>
+
+These functions shall fail if:
+<DL COMPACT>
+<DT><B>EACCES</B>
+
+<DD>
+A component of the path prefix denies search permission, or write
+permission is denied on the parent directory.
+<DT><B>EEXIST</B>
+
+<DD>
+The named file exists.
+<DT><B>EINVAL</B>
+
+<DD>
+An invalid argument exists.
+<DT><B>EIO</B>
+
+<DD>
+An I/O error occurred while accessing the file system.
+<DT><B>ELOOP</B>
+
+<DD>
+A loop exists in symbolic links encountered during resolution of the
+<I>path</I>
+
+argument.
+<DT><B>ENAMETOOLONG</B>
+
+<DD>
+<BR>
+
+The length of a component of a pathname is longer than
+{NAME_MAX}.
+<DT><B>ENOENT</B>
+
+<DD>
+A component of the path prefix of
+<I>path</I>
+
+does not name an existing file or
+<I>path</I>
+
+is an empty string.
+<DT><B>ENOENT</B> or <B>ENOTDIR</B>
+
+<DD>
+<BR>
+
+The
+<I>path</I>
+
+argument contains at least one non-&lt;slash&gt;
+character and ends with one or more trailing
+&lt;slash&gt;
+characters. If
+<I>path</I>
+
+names an existing file, an
+<B>[ENOENT]</B>
+
+error shall not occur.
+<DT><B>ENOSPC</B>
+
+<DD>
+The directory that would contain the new file cannot be extended or the
+file system is out of file allocation resources.
+<DT><B>ENOTDIR</B>
+
+<DD>
+A component of the path prefix names an existing file that is neither
+a directory nor a symbolic link to a directory.
+<DT><B>EPERM</B>
+
+<DD>
+The invoking process does not have appropriate privileges and the
+file type is not FIFO-special.
+<DT><B>EROFS</B>
+
+<DD>
+The directory in which the file is to be created is located on a
+read-only file system.
+<BR>
+
+</DL>
+<P>
+
+The
+<I>mknodat</I>()
+function shall fail if:
+<DL COMPACT>
+<DT><B>EACCES</B>
+
+<DD>
+<I>fd</I>
+
+was not opened with O_SEARCH and the permissions of the directory
+underlying
+<I>fd</I>
+
+do not permit directory searches.
+<DT><B>EBADF</B>
+
+<DD>
+The
+<I>path</I>
+
+argument does not specify an absolute path and the
+<I>fd</I>
+
+argument is neither AT_FDCWD nor a valid file descriptor open
+for reading or searching.
+<DT><B>ENOTDIR</B>
+
+<DD>
+The
+<I>path</I>
+
+argument is not an absolute path and
+<I>fd</I>
+
+is a file descriptor associated with a non-directory file.
+</DL>
+<P>
+
+These functions may fail if:
+<DL COMPACT>
+<DT><B>ELOOP</B>
+
+<DD>
+More than
+{SYMLOOP_MAX}
+symbolic links were encountered during resolution of the
+<I>path</I>
+
+argument.
+<DT><B>ENAMETOOLONG</B>
+
+<DD>
+<BR>
+
+The length of a pathname exceeds
+{PATH_MAX},
+or pathname resolution of a symbolic link produced an intermediate
+result with a length that exceeds
+{PATH_MAX}.
+</DL>
+<P>
+
+<I>The following sections are informative.</I>
+
+<A NAME="lbAH">&nbsp;</A>
+<H2>EXAMPLES</H2>
+
+<A NAME="lbAI">&nbsp;</A>
+<H3>Creating a FIFO Special File</H3>
+
+<P>
+
+The following example shows how to create a FIFO special file named
+<B>/home/cnd/mod_done</B>,
+
+with read/write permissions for owner, and with read permissions for
+group and others.
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+#include &lt;<A HREF="file:///usr/include/sys/types.h">sys/types.h</A>&gt;
+#include &lt;<A HREF="file:///usr/include/sys/stat.h">sys/stat.h</A>&gt;
+
+dev_t dev;
+int   status;
+...
+status  = mknod(&quot;/home/cnd/mod_done&quot;, S_IFIFO | S_IWUSR |
+    S_IRUSR | S_IRGRP | S_IROTH, dev);
+</B></PRE>
+
+<P>
+
+</DL>
+
+<A NAME="lbAJ">&nbsp;</A>
+<H2>APPLICATION USAGE</H2>
+
+The
+<I>mkfifo</I>()
+function is preferred over this function for making FIFO special files.
+<A NAME="lbAK">&nbsp;</A>
+<H2>RATIONALE</H2>
+
+The POSIX.1-1990 standard required that the group ID of a newly created file be
+set to the group ID of its parent directory or to the effective group
+ID of the creating process. FIPS 151-2 required that implementations provide
+a way to have the group ID be set to the group ID of the containing
+directory, but did not prohibit implementations also supporting a way
+to set the group ID to the effective group ID of the creating process.
+Conforming applications should not assume which group ID will be used. If
+it matters, an application can use
+<I>chown</I>()
+to set the group ID after the file is created, or determine under
+what conditions the implementation will set the desired group ID.
+<P>
+
+The purpose of the
+<I>mknodat</I>()
+function is to create directories, special files, or regular files in
+directories other than the current working directory without exposure
+to race conditions. Any part of the path of a file could be changed in
+parallel to a call to
+<I>mknod</I>(),
+resulting in unspecified behavior. By opening a file descriptor for
+the target directory and using the
+<I>mknodat</I>()
+function it can be guaranteed that the newly created directory, special
+file, or regular file is located relative to the desired directory.
+<A NAME="lbAL">&nbsp;</A>
+<H2>FUTURE DIRECTIONS</H2>
+
+None.
+<A NAME="lbAM">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+<I>chmod</I>(),
+
+<I>creat</I>(),
+
+<I>exec</I>,
+
+<I>fstatat</I>(),
+
+<I>mkdir</I>(),
+
+<I>mkfifo</I>(),
+
+<I>open</I>(),
+
+<I>umask</I>()
+
+<P>
+
+The Base Definitions volume of POSIX.1-2008,
+<I></I><B>&lt;<A HREF="file:///usr/include/sys_stat.h">sys_stat.h</A>&gt;</B>
+
+<A NAME="lbAN">&nbsp;</A>
+<H2>COPYRIGHT</H2>
+
+Portions of this text are reprinted and reproduced in electronic form
+from IEEE Std 1003.1, 2013 Edition, Standard for Information Technology
+-- Portable Operating System Interface (POSIX), The Open Group Base
+Specifications Issue 7, Copyright (C) 2013 by the Institute of
+Electrical and Electronics Engineers, Inc and The Open Group.
+(This is POSIX.1-2008 with the 2013 Technical Corrigendum 1 applied.) In the
+event of any discrepancy between this version and the original IEEE and
+The Open Group Standard, the original IEEE and The Open Group Standard
+is the referee document. The original Standard can be obtained online at
+<A HREF="http://www.unix.org/online.html">http://www.unix.org/online.html</A> .
+<P>
+Any typographical or formatting errors that appear
+in this page are most likely
+to have been introduced during the conversion of the source files to
+man page format. To report such errors, see
+<A HREF="https://www.kernel.org/doc/man-pages/reporting_bugs.html">https://www.kernel.org/doc/man-pages/reporting_bugs.html</A> .
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">PROLOG</A><DD>
+<DT><A HREF="#lbAC">NAME</A><DD>
+<DT><A HREF="#lbAD">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAE">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAF">RETURN VALUE</A><DD>
+<DT><A HREF="#lbAG">ERRORS</A><DD>
+<DT><A HREF="#lbAH">EXAMPLES</A><DD>
+<DL>
+<DT><A HREF="#lbAI">Creating a FIFO Special File</A><DD>
+</DL>
+<DT><A HREF="#lbAJ">APPLICATION USAGE</A><DD>
+<DT><A HREF="#lbAK">RATIONALE</A><DD>
+<DT><A HREF="#lbAL">FUTURE DIRECTIONS</A><DD>
+<DT><A HREF="#lbAM">SEE ALSO</A><DD>
+<DT><A HREF="#lbAN">COPYRIGHT</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 14:28:54 GMT, February 25, 2017
+</BODY>
+</HTML>

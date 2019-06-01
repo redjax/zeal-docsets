@@ -1,0 +1,1414 @@
+<!DOCTYPE html>
+<html class="no-js hasSidebar hasPageActions hasBreadcrumb conceptual" data-authenticated="false" data-render="docs" dir="ltr" lang="en-us">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Copy-Item (Microsoft.PowerShell.Management)" property="og:title"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" property="og:image"/>
+  <meta content="summary" name="twitter:card"/>
+  <meta content="@docsmsft" name="twitter:site"/>
+  <meta content="Copy-Item (Microsoft.PowerShell.Management)" name="twitter:title"/>
+  <meta content="The Copy-Item cmdlet copies an item from one location to another location in the same namespace. For instance, it can copy a file to a folder, but it cannot copy a file to a certificate drive. This câ¦" name="twitter:description"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" name="twitter:image"/>
+  <meta content="Microsoft Logo" name="twitter:image:alt"/>
+  <meta content="The Copy-Item cmdlet copies an item from one location to another location in the same namespace. For instance, it can copy a file to a folder, but it cannot copy a file to a certificate drive. This câ¦" name="description"/>
+  <meta content="Docs" name="search.ms_sitename"/>
+  <meta content="PowerShell_PowerShell-docs_reference" name="search.ms_docsetname"/>
+  <meta content="0" name="version"/>
+  <meta content="en-us" name="locale"/>
+  <meta content="Docs" name="site_name"/>
+  <meta content="PowerShell" name="search.ms_product"/>
+  <meta content="PowerShell.PowerShell_PowerShell-docs_reference" name="depot_name"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/37454ad28c8d97d9d90b9ee1022ec1ba75a9453d/reference/6/Microsoft.PowerShell.Management/Copy-Item.md" name="ref_skeleton_gitcommit"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/live/reference/6/Microsoft.PowerShell.Management/Copy-Item.md" name="original_ref_skeleton_git_url"/>
+  <meta content="2018-05-04 01:53 PM" name="updated_at"/>
+  <meta content="e00c3697-d754-2a07-ed37-a92ddc943cdc" name="document_id"/>
+  <meta content="1eace7de-83aa-39a7-7a19-862e9e37b5f7" name="document_version_independent_id"/>
+  <meta content="powershell" name="page_type"/>
+  <meta content="command" name="page_kind"/>
+  <meta content="06/09/2017" name="ms.date"/>
+  <meta content="2.0.0" name="schema"/>
+  <meta content="powershell,cmdlet" name="keywords"/>
+  <meta content="http://go.microsoft.com/fwlink/?LinkId=821574" name="online_version"/>
+  <meta content="Microsoft.PowerShell.Commands.Management.dll-Help.xml" name="external_help_file"/>
+  <meta content="powershell" name="ms.devlang"/>
+  <meta content="INDEX, FOLLOW" name="ROBOTS"/>
+  <meta content="sdwheeler" name="author"/>
+  <meta content="sewhee" name="ms.author"/>
+  <meta content="carmonm" name="manager"/>
+  <meta content="/powershell/bread-pscore/toc.yml?view=powershell-6" name="breadcrumb_path"/>
+  <meta content="powershell" name="apiPlatform"/>
+  <meta content="reference" name="ms.topic"/>
+  <meta content="windows, macos, linux" name="ms.tgt_pltfr"/>
+  <meta content="powershell-scripting" name="ms.technology"/>
+  <meta content="powershell" name="ms.prod"/>
+  <meta content="MSDocsHeader-Powershell" name="uhfHeaderId"/>
+  <meta content="../psdocs/toc.json?view=powershell-6" name="toc_rel"/>
+  <link href="https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.management/copy-item" rel="canonical"/>
+  <title>
+   Copy-Item
+  </title>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/60aac04b.site.css" rel="stylesheet"/>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/fdb8a38a.conceptual.css" rel="stylesheet"/>
+ </head>
+ <body dir="ltr" lang="en-us">
+  <div class="header-holder">
+   <div data-bi-name="header" id="headerAreaHolder">
+    <div id="uhf-placeholder">
+    </div>
+   </div>
+   <div class="disclaimer-holder" id="disclaimer-holder">
+   </div>
+  </div>
+  <div class="container mainContainer" data-bi-name="body">
+   <div class="content-header" data-bi-name="content-header">
+    <div class="content-header-controls">
+     <button class="contents-button button-border" data-bi-name="contents-expand" type="button">
+      <span class="docon docon-menu">
+      </span>
+      Contents
+     </button>
+    </div>
+    <div class="content-header-controls">
+     <button class="ap-collapse-behavior ap-expanded button-border" data-bi-name="ap-collapse" type="button">
+      <span class="docon docon-exit-mode">
+      </span>
+      Exit focus mode
+     </button>
+    </div>
+   </div>
+   <div class="primary-holder">
+    <main class="content" data-bi-name="content" dir="ltr" id="main" lang="en-us" role="main">
+     <!-- <content> -->
+     <h1>
+      Copy-Item
+     </h1>
+     <div class="metadata">
+      <dl class="attributeList">
+       <dt>
+        Module:
+       </dt>
+       <dd>
+        <a data-linktype="relative-path" href="./Microsoft.PowerShell.Management.html">
+         Microsoft.PowerShell.Management
+        </a>
+       </dd>
+      </dl>
+     </div>
+     <div class="summaryHolder">
+      <div class="summary">
+       Copies an item from one location to another.
+      </div>
+     </div>
+     <h2 class="hiddenAnchor" id="syntax">
+      Syntax
+     </h2>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Copy-Item
+    [-Path] &lt;String[]&gt;
+    [[-Destination] &lt;String&gt;]
+    [-Container]
+    [-Force]
+    [-Filter &lt;String&gt;]
+    [-Include &lt;String[]&gt;]
+    [-Exclude &lt;String[]&gt;]
+    [-Recurse]
+    [-PassThru]
+    [-Credential &lt;PSCredential&gt;]
+    [-WhatIf]
+    [-Confirm]
+    [-UseTransaction]
+    [-FromSession &lt;PSSession&gt;]
+    [-ToSession &lt;PSSession&gt;]
+    [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Copy-Item
+    -LiteralPath &lt;String[]&gt;
+    [[-Destination] &lt;String&gt;]
+    [-Container]
+    [-Force]
+    [-Filter &lt;String&gt;]
+    [-Include &lt;String[]&gt;]
+    [-Exclude &lt;String[]&gt;]
+    [-Recurse]
+    [-PassThru]
+    [-Credential &lt;PSCredential&gt;]
+    [-WhatIf]
+    [-Confirm]
+    [-UseTransaction]
+    [-FromSession &lt;PSSession&gt;]
+    [-ToSession &lt;PSSession&gt;]
+    [&lt;CommonParameters&gt;]</code></pre>
+     <h2 id="description">
+      Description
+     </h2>
+     <p>
+      The
+      <strong>
+       Copy-Item
+      </strong>
+      cmdlet copies an item from one location to another location in the same namespace.
+For instance, it can copy a file to a folder, but it cannot copy a file to a certificate drive.
+     </p>
+     <p>
+      This cmdlet does not cut or delete the items being copied.
+The particular items that the cmdlet can copy depend on the Windows PowerShell provider that exposes the item.
+For instance, it can copy files and directories in a file system drive and registry keys and entries in the registry drive.
+     </p>
+     <p>
+      This cmdlet can copy and rename items in the same command.
+To rename an item, enter the new name in the value of the
+      <em>
+       Destination
+      </em>
+      parameter.
+To rename an item and not copy it, use the Rename-Item cmdlet.
+     </p>
+     <h2 id="examples">
+      Examples
+     </h2>
+     <p>
+      <strong>
+       Example 1: Copy a file to the specified directory
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Copy-Item "C:\Wabash\Logfiles\mar1604.log.txt" -Destination "C:\Presentation"</code></pre>
+     <p>
+      This command copies the mar1604.log.txt file to the C:\Presentation directory.
+The command does not delete the original file.
+     </p>
+     <p>
+      <strong>
+       Example 2: Copy the contents of a directory to another directory
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Copy-Item "C:\Logfiles" -Destination "C:\Drawings" -Recurse</code></pre>
+     <p>
+      This command copies the entire contents of the Logfiles directory into the Drawings directory.
+If the LogFiles directory contains files in subdirectories, those subdirectories are copied with their file trees intact.
+The
+      <em>
+       Container
+      </em>
+      parameter is set to true by default.
+This preserves the directory structure.
+     </p>
+     <p>
+      <strong>
+       Example 3: Copy the contents of a directory to another directory and create the destination directory if it does not exist
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Copy-Item C:\Logfiles -Destination C:\Drawings\Logs -Recurse</code></pre>
+     <p>
+      This command copies the contents of the C:\Logfiles directory to the C:\Drawings\Logs directory.
+It creates the \Logs subdirectory if it does not already exist.
+     </p>
+     <p>
+      <strong>
+       Example 4: Copy a file to the specified directory and rename the file
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Copy-Item "\\Server01\Share\Get-Widget.ps1" -Destination "\\Server12\ScriptArchive\Get-Widget.ps1.txt"</code></pre>
+     <p>
+      This command uses the
+      <strong>
+       Copy-Item
+      </strong>
+      cmdlet to copy the Get-Widget.ps1 script from the \\Server01\Share directory to the \\Server12\ScriptArchive directory.
+As part of the copy operation, the command also changes the item name from Get-Widget.ps1 to Get-Widget.ps1.txt, so it can be attached to email messages.
+     </p>
+     <p>
+      <strong>
+       Example 5: Copy a file to a remote computer
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; $Session = New-PSSession -ComputerName "Server01" -Credential "Contoso\PattiFul"
+
+PS C:\&gt; Copy-Item "D:\Folder001\test.log" -Destination "C:\Folder001_Copy\" -ToSession $Session</code></pre>
+     <p>
+      The first command creates a session to the remote computer named Server01 with the credential of Contoso\PattiFul and stores the results in the variable named $Session.
+     </p>
+     <p>
+      The second command uses the
+      <strong>
+       Copy-Item
+      </strong>
+      cmdlet to copy test.log from the D:\Folder001 folder to the C:\Folder001_Copy folder on the remote computer using the session information stored in the $Session variable.
+This command does not delete the original file.
+     </p>
+     <p>
+      <strong>
+       Example 6: Copy the entire contents of a folder to a remote computer
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; $Session = New-PSSession -ComputerName "Server02" -Credential "Contoso\PattiFul"
+
+PS C:\&gt; Copy-Item "D:\Folder002\" -Destination "C:\Folder002_Copy\" -ToSession $Session</code></pre>
+     <p>
+      The first command creates a session to the remote computer named Server01 with the credential of Contoso\PattiFul and stores the results in the variable named $Session.
+     </p>
+     <p>
+      The second command uses the
+      <strong>
+       Copy-Item
+      </strong>
+      cmdlet to copy the entire contents from the D:\Folder002 folder to the C:\Folder002_Copy directory on the remote computer using the session information stored in the $Session variable.
+The subfolders are copied with their file trees intact.
+     </p>
+     <p>
+      <strong>
+       Example 7: Recursively copy the entire contents of a folder to a remote computer
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; $Session = New-PSSession -ComputerName "Server04" -Credential "Contoso\PattiFul"
+
+PS C:\&gt; Copy-Item "D:\Folder003\" -Destination "C:\Folder003_Copy\" -ToSession $Session -Recurse</code></pre>
+     <p>
+      The first command creates a session to the remote computer named Server01 with the credential of Contoso\PattiFul and stores the results in the variable named $Session.
+     </p>
+     <p>
+      The second command uses the
+      <strong>
+       Copy-Item
+      </strong>
+      cmdlet to copy the entire contents from the D:\Folder003 folder to the C:\Folder003_Copy directory on the remote computer using the session information stored in the $Session variable.
+The subfolders are copied with their file trees intact.
+Since this command uses the
+      <em>
+       Recurse
+      </em>
+      parameter, the operation creates the Folder003_Copy folder if it does not already exist.
+     </p>
+     <p>
+      <strong>
+       Example 8: Copy a file to a remote computer and then rename the file
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; $Session = New-PSSession -ComputerName "Server04" -Credential "Contoso\PattiFul"
+
+PS C:\&gt; Copy-Item "D:\Folder004\scriptingexample.ps1" -Destination "C:\Folder004_Copy\scriptingexample_copy.ps1" -ToSession $Session</code></pre>
+     <p>
+      The first command creates a session to the remote computer named Server01 with the credential of Contoso\PattiFul and stores the results in the variable named $Session.
+     </p>
+     <p>
+      The second command uses the
+      <strong>
+       Copy-Item
+      </strong>
+      cmdlet to copy scriptingexample.ps1 from the D:\Folder004 folder to the C:\Folder004_Copy folder on the remote computer using the session information stored in the $Session variable.
+As part of the copy operation, the command also changes the item name from scriptingexample.ps1 to scriptingexample_copy.ps1, so it can be attached to email messages.
+This command does not delete the original file.
+     </p>
+     <p>
+      <strong>
+       Example 9: Copy a remote file to the local computer
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; $Session = New-PSSession -ComputerName "Server01" -Credential "Contoso\PattiFul"
+
+PS C:\&gt; Copy-Item "C:\MyRemoteData\test.log" -Destination "D:\MyLocalData\" -FromSession $Session</code></pre>
+     <p>
+      The first command creates a session to the remote computer named Server01 with the credential of Contoso\PattiFul and stores the results in the variable named $Session.
+     </p>
+     <p>
+      The second command uses the
+      <strong>
+       Copy-Item
+      </strong>
+      cmdlet to copy test.log from the remote C:\MyRemoteData\ to the local D:\MyLocalData folder using the session information stored in the $Session variable.
+This command does not delete the original file.
+     </p>
+     <p>
+      <strong>
+       Example 10: Copy the entire contents of a remote folder to the local computer
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; $Session = New-PSSession -ComputerName "Server01" -Credential "Contoso\PattiFul"
+
+PS C:\&gt; Copy-Item "C:\MyRemoteData\scripts" -Destination "D:\MyLocalData\" -FromSession $Session</code></pre>
+     <p>
+      The first command creates a session to the remote computer named Server01 with the credential of Contoso\PattiFul and stores the results in the variable named $Session.
+     </p>
+     <p>
+      The second command uses the
+      <strong>
+       Copy-Item
+      </strong>
+      cmdlet to copy the entire contents from the remote C:\MyRemoteData\scripts folder to the local D:\MyLocalData folder using the session information stored in the $Session variable.
+If the scripts folder contains files in subfolders, those subfolders are copied with their file trees intact.
+     </p>
+     <p>
+      <strong>
+       Example 11: Recursively copy the entire contents of a remote folder to the local computer
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; $Session = New-PSSession -ComputerName "Server01" -Credential "Contoso\PattiFul"
+
+PS C:\&gt; Copy-Item "C:\MyRemoteData\scripts" -Destination "D:\MyLocalData\scripts" -FromSession $Session -Recurse</code></pre>
+     <p>
+      The first command creates a session to the remote computer named Server01 with the credential of Contoso\PattiFul and stores the results in the variable named $Session.
+     </p>
+     <p>
+      The second command uses the
+      <strong>
+       Copy-Item
+      </strong>
+      cmdlet to copy the entire contents from the remote C:\MyRemoteData\scripts folder to the local D:\MyLocalData\scripts folder using the session information stored in the $Session variable.
+Since this command uses the
+      <em>
+       Recurse
+      </em>
+      parameter, the operation creates the scripts folder if it does not already exist. If the scripts folder contains files in subfolders, those subfolders are copied with their file trees intact.
+     </p>
+     <h2 id="required-parameters">
+      Required Parameters
+     </h2>
+     <div class="parameterName stack">
+      -LiteralPath
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a path to the item.
+The value of the
+       <em>
+        LiteralPath
+       </em>
+       parameter is used exactly as it is typed.
+No characters are interpreted as wildcards.
+If the path includes escape characters, enclose it in single quotation marks.
+Single quotation marks tell Windows PowerShell not to interpret any characters as escape sequences.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         PSPath
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Path
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies, as a string array, the path to the items to copy.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         1
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName, ByValue)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="optional-parameters">
+      Optional Parameters
+     </h2>
+     <div class="parameterName stack">
+      -Confirm
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Prompts you for confirmation before running the cmdlet.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         cf
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Container
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that this cmdlet preserves container objects during the copy operation.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Credential
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a user account that has permission to perform this action.
+The default is the current user.
+      </p>
+      <p>
+       Type a user name, such as User01 or Domain01\User01, or enter a
+       <strong>
+        PSCredential
+       </strong>
+       object, such as one generated by the Get-Credential cmdlet.
+If you type a user name, you are prompted for a password.
+      </p>
+      <p>
+       This parameter is not supported by any providers installed with Windows PowerShell.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          PSCredential
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Destination
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the path to the new location.
+To rename a copied item, include the new name in the value.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         2
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Exclude
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies, as a string array, an item or items that this cmdlet excludes from the operation.
+Wildcards are permitted.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Filter
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a filter in the provider's format or language.
+The value of this parameter qualifies the
+       <em>
+        Path
+       </em>
+       parameter.
+The syntax of the filter, including the use of wildcards, depends on the provider.
+Filters are more efficient than other parameters, because the provider applies them when the cmdlet gets the objects, rather than have Windows PowerShell filter the objects after they are retrieved.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Force
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that this cmdlet copies items that cannot otherwise be changed, such as copying over a read-only file or alias.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -FromSession
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the
+       <strong>
+        PSSession
+       </strong>
+       object from which a remote file is being copied.
+When you use this parameter, the
+       <em>
+        Path
+       </em>
+       and
+       <em>
+        LiteralPath
+       </em>
+       parameters refer to the local path on the remote machine.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          PSSession
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Include
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies, as a string array, only those items upon which the cmdlet acts, excluding all others.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -PassThru
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Returns an object representing the item with which you are working.
+By default, this cmdlet does not generate any output.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Recurse
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that this cmdlet performs a recursive copy.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -ToSession
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the
+       <strong>
+        PSSession
+       </strong>
+       object to which a remote file is being copied.
+When you use this parameter, the
+       <em>
+        Path
+       </em>
+       and
+       <em>
+        LiteralPath
+       </em>
+       parameters refer to the local path on the remote machine.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          PSSession
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -UseTransaction
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Includes the command in the active transaction.
+This parameter is valid only when a transaction is in progress.
+For more information, see Includes the command in the active transaction.
+This parameter is valid only when a transaction is in progress.
+For more information, see
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         usetx
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -WhatIf
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         wi
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="inputs">
+      Inputs
+     </h2>
+     <p>
+      <strong>
+       System.String
+      </strong>
+     </p>
+     <p>
+      You can pipe a string that contains a path to this cmdlet.
+     </p>
+     <h2 id="outputs">
+      Outputs
+     </h2>
+     <p>
+      <strong>
+       None or an object representing the copied item.
+      </strong>
+     </p>
+     <p>
+      When you use the
+      <em>
+       PassThru
+      </em>
+      parameter, this cmdlet returns an object that represents the copied item.
+Otherwise, this cmdlet does not generate any output.
+     </p>
+     <h2 id="notes">
+      Notes
+     </h2>
+     <ul>
+      <li>
+       <p>
+        This cmdlet is similar to the cp or copy commands in other shells.
+       </p>
+       <p>
+        This cmdlet is designed to work with the data exposed by any provider.
+To list the providers available in your session, type
+        <code>
+         Get-PsProvider
+        </code>
+        .
+For more information, see about_Providers.
+       </p>
+      </li>
+     </ul>
+     <p>
+      *
+     </p>
+     <h2 id="related-links">
+      Related Links
+     </h2>
+     <ul>
+      <li>
+       <a data-linktype="relative-path" href="clear-item.html">
+        Clear-Item
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="get-item.html">
+        Get-Item
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="invoke-item.html">
+        Invoke-Item
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="move-item.html">
+        Move-Item
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="new-item.html">
+        New-Item
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="remove-item.html">
+        Remove-Item
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="rename-item.html">
+        Rename-Item
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="set-item.html">
+        Set-Item
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="get-psprovider.html">
+        Get-PSProvider
+       </a>
+      </li>
+     </ul>
+     <!-- </content> -->
+    </main>
+    <div class="note alert feedback-system-change-alert">
+     <p>
+      Note
+     </p>
+     <p>
+      The feedback system for this content will be changing soon. Old comments will not be carried over. If content within a comment thread is important to you, please save a copy. For more information on the upcoming change,
+      <a href="https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs">
+       we invite you to read our blog post
+      </a>
+      .
+     </p>
+    </div>
+    <div data-bi-name="comments" id="comments-container" role="form">
+    </div>
+   </div>
+  </div>
+  <div class="openfeedback-container" id="openFeedbackContainer">
+  </div>
+  <div class="action-panel">
+  </div>
+ </body>
+</html>

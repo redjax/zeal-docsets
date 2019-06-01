@@ -1,0 +1,1155 @@
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML><HEAD><TITLE>Man page of M4</TITLE>
+</HEAD><BODY>
+<H1>M4</H1>
+Section: POSIX Programmer's Manual (1P)<BR>Updated: 2013<BR><A HREF="#index">Index</A>
+<A HREF="../index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>PROLOG</H2>
+
+This manual page is part of the POSIX Programmer's Manual.
+The Linux implementation of this interface may differ (consult
+the corresponding Linux manual page for details of Linux behavior),
+or the interface may not be implemented on Linux.
+<P>
+<A NAME="lbAC">&nbsp;</A>
+<H2>NAME</H2>
+
+m4 --- macro processor
+<A NAME="lbAD">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<P>
+
+<PRE>
+m4 <B>[</B>-s<B>] [</B>-D <I>name</I><B>[</B>=<I>val</I><B>]]</B>...<B> [</B>-U <I>name</I><B>]</B>... <I>file</I>...
+</PRE>
+
+<A NAME="lbAE">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+The
+<I>m4</I>
+
+utility is a macro processor that shall read one or more text files,
+process them according to their included macro statements, and write
+the results to standard output.
+<A NAME="lbAF">&nbsp;</A>
+<H2>OPTIONS</H2>
+
+The
+<I>m4</I>
+
+utility shall conform to the Base Definitions volume of POSIX.1-2008,
+<I>Section 12.2</I>, <I>Utility Syntax Guidelines,</I>
+
+except that the order of the
+<B>-D</B>
+
+and
+<B>-U</B>
+
+options shall be significant, and options can be interspersed with
+operands.
+<P>
+
+The following options shall be supported:
+<DL COMPACT>
+<DT><B>-s</B><DD>
+Enable line synchronization output for the
+<I>c99</I>
+
+preprocessor phase (that is,
+<B>#line</B>
+
+directives).
+<DT><B>-D&nbsp;</B><I>name</I><B>[</B>=<I>val</I><B>]</B><DD>
+<BR>
+
+Define
+<I>name</I>
+
+to
+<I>val</I>
+
+or to null if =<I>val</I>
+
+is omitted.
+<DT><B>-U&nbsp;</B><I>name</I><DD>
+Undefine
+<I>name</I>.
+
+</DL>
+<A NAME="lbAG">&nbsp;</A>
+<H2>OPERANDS</H2>
+
+The following operand shall be supported:
+<DL COMPACT>
+<DT><I>file</I><DD>
+A pathname of a text file to be processed. If no
+<I>file</I>
+
+is given, or if it is
+<B>'-'</B>,
+
+the standard input shall be read.
+</DL>
+<A NAME="lbAH">&nbsp;</A>
+<H2>STDIN</H2>
+
+The standard input shall be a text file that is used if no
+<I>file</I>
+
+operand is given, or if it is
+<B>'-'</B>.
+
+<A NAME="lbAI">&nbsp;</A>
+<H2>INPUT FILES</H2>
+
+The input file named by the
+<I>file</I>
+
+operand shall be a text file.
+<A NAME="lbAJ">&nbsp;</A>
+<H2>ENVIRONMENT VARIABLES</H2>
+
+The following environment variables shall affect the execution of
+<I>m4</I>:
+
+<DL COMPACT>
+<DT><I>LANG</I><DD>
+Provide a default value for the internationalization variables that are
+unset or null. (See the Base Definitions volume of POSIX.1-2008,
+<I>Section 8.2</I>, <I>Internationalization Variables</I>
+
+for the precedence of internationalization variables used to determine
+the values of locale categories.)
+<DT><I>LC_ALL</I><DD>
+If set to a non-empty string value, override the values of all the
+other internationalization variables.
+<DT><I>LC_CTYPE</I><DD>
+Determine the locale for the interpretation of sequences of bytes of
+text data as characters (for example, single-byte as opposed to
+multi-byte characters in arguments and input files).
+<DT><I>LC_MESSAGES</I><DD>
+<BR>
+
+Determine the locale that should be used to affect the format and
+contents of diagnostic messages written to standard error.
+<DT><I>NLSPATH</I><DD>
+Determine the location of message catalogs for the processing of
+<I>LC_MESSAGES</I>.
+
+</DL>
+<A NAME="lbAK">&nbsp;</A>
+<H2>ASYNCHRONOUS EVENTS</H2>
+
+Default.
+<A NAME="lbAL">&nbsp;</A>
+<H2>STDOUT</H2>
+
+The standard output shall be the same as the input files, after being
+processed for macro expansion.
+<A NAME="lbAM">&nbsp;</A>
+<H2>STDERR</H2>
+
+The standard error shall be used to display strings with the
+<B>errprint</B>
+
+macro, macro tracing enabled by the
+<B>traceon</B>
+
+macro, the defined text for macros written by the
+<B>dumpdef</B>
+
+macro, or for diagnostic messages.
+<A NAME="lbAN">&nbsp;</A>
+<H2>OUTPUT FILES</H2>
+
+None.
+<A NAME="lbAO">&nbsp;</A>
+<H2>EXTENDED DESCRIPTION</H2>
+
+The
+<I>m4</I>
+
+utility shall compare each token from the input against the set of
+built-in and user-defined macros. If the token matches the name of a
+macro, then the token shall be replaced by the macro's defining text, if
+any, and rescanned for matching macro names. Once no portion of the
+token matches the name of a macro, it shall be written to standard
+output. Macros may have arguments, in which case the arguments shall
+be substituted into the defining text before it is rescanned.
+<P>
+
+Macro calls have the form:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+</B><I>name</I>(<I>arg1</I>, <I>arg2</I>, ..., <I>argn</I>)
+</PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+Macro names shall consist of letters, digits, and underscores, where
+the first character is not a digit. Tokens not of this form shall not
+be treated as macros.
+<P>
+
+The application shall ensure that the
+&lt;left-parenthesis&gt;
+immediately follows the name of the macro. If a token matching the name
+of a macro is not followed by a
+&lt;left-parenthesis&gt;,
+it is handled as a use of that macro without arguments.
+<P>
+
+If a macro name is followed by a
+&lt;left-parenthesis&gt;,
+its arguments are the
+&lt;comma&gt;-separated
+tokens between the
+&lt;left-parenthesis&gt;
+and the matching
+&lt;right-parenthesis&gt;.
+Unquoted white-space characters preceding each argument shall be
+ignored. All other characters, including trailing white-space characters,
+are retained.
+&lt;comma&gt;
+characters enclosed between
+&lt;left-parenthesis&gt;
+and
+&lt;right-parenthesis&gt;
+characters do not delimit arguments.
+<P>
+
+Arguments are positionally defined and referenced. The string
+<B>&quot;$1&quot;</B>
+
+in the defining text shall be replaced by the first argument. Systems
+shall support at least nine arguments; only the first nine can be
+referenced, using the strings
+<B>&quot;$1&quot;</B>
+
+to
+<B>&quot;$9&quot;</B>,
+
+inclusive. The string
+<B>&quot;$0&quot;</B>
+
+is replaced with the name of the macro. The string
+<B>&quot;$#&quot;</B>
+
+is replaced by the number of arguments as a string. The string
+<B>&quot;$*&quot;</B>
+
+is replaced by a list of all of the arguments, separated by
+&lt;comma&gt;
+characters. The string
+<B>&quot;$@&quot;</B>
+
+is replaced by a list of all of the arguments separated by
+&lt;comma&gt;
+characters, and each argument is quoted using the current left and right
+quoting strings. The string
+<B>&quot;${&quot;</B>
+
+produces unspecified behavior.
+<P>
+
+If fewer arguments are supplied than are in the macro definition, the
+omitted arguments are taken to be null. It is not an error if more
+arguments are supplied than are in the macro definition.
+<P>
+
+No special meaning is given to any characters enclosed between matching
+left and right quoting strings, but the quoting strings are themselves
+discarded. By default, the left quoting string consists of a grave accent
+(backquote) and the right quoting string consists of an acute accent
+(single-quote); see also the
+<B>changequote</B>
+
+macro.
+<P>
+
+Comments are written but not scanned for matching macro names; by
+default, the begin-comment string consists of the
+&lt;number-sign&gt;
+character and the end-comment string consists of a
+&lt;newline&gt;.
+See also the
+<B>changecom</B>
+
+and
+<B>dnl</B>
+
+macros.
+<P>
+
+The
+<I>m4</I>
+
+utility shall make available the following built-in macros. They can be
+redefined, but once this is done the original meaning is lost. Their
+values shall be null unless otherwise stated. In the descriptions
+below, the term
+<I>defining text</I>
+
+refers to the value of the macro: the second argument to the
+<B>define</B>
+
+macro, among other things. Except for the first argument to the
+<B>eval</B>
+
+macro, all numeric arguments to built-in macros shall be interpreted as
+decimal values. The string values produced as the defining text of the
+<B>decr</B>,
+
+<B>divnum</B>,
+
+<B>incr</B>,
+
+<B>index</B>,
+
+<B>len</B>,
+
+and
+<B>sysval</B>
+
+built-in macros shall be in the form of a decimal-constant as defined
+in the C language.
+<DL COMPACT>
+<DT><B>changecom</B><DD>
+The
+<B>changecom</B>
+
+macro shall set the begin-comment and end-comment strings. With no
+arguments, the comment mechanism shall be disabled. With a single non-null
+argument, that argument shall become the begin-comment and the
+&lt;newline&gt;
+shall become the end-comment string. With two non-null arguments,
+the first argument shall become the begin-comment string and the second
+argument shall become the end-comment string. The behavior is unspecified
+if either argument is provided but null. Systems shall support comment
+strings of at least five characters.
+<DT><B>changequote</B><DD>
+The
+<B>changequote</B>
+
+macro shall set the begin-quote and end-quote strings. With no
+arguments, the quote strings shall be set to the default values (that
+is, `'). The behavior is unspecified if there is a single argument
+or either argument is null. With two non-null arguments, the first
+argument shall become the begin-quote string and the second argument
+shall become the end-quote string. Systems shall support quote strings
+of at least five characters.
+<DT><B>decr</B><DD>
+The defining text of the
+<B>decr</B>
+
+macro shall be its first argument decremented by 1. It shall be an
+error to specify an argument containing any non-numeric characters.
+The behavior is unspecified if
+<B>decr</B>
+
+is not immediately followed by a
+&lt;left-parenthesis&gt;.
+<DT><B>define</B><DD>
+The second argument shall become the defining text of the macro
+whose name is the first argument. It is unspecified whether the
+<B>define</B>
+
+macro deletes all prior definitions of the macro named by its first
+argument or preserves all but the current definition of the macro.
+The behavior is unspecified if
+<B>define</B>
+
+is not immediately followed by a
+&lt;left-parenthesis&gt;.
+<DT><B>defn</B><DD>
+The defining text of the
+<B>defn</B>
+
+macro shall be the quoted definition (using the current quoting
+strings) of its arguments. The behavior is unspecified if
+<B>defn</B>
+
+is not immediately followed by a
+&lt;left-parenthesis&gt;.
+<DT><B>divert</B><DD>
+The
+<I>m4</I>
+
+utility maintains nine temporary buffers, numbered 1 to 9, inclusive.
+When the last of the input has been processed, any output that has been
+placed in these buffers shall be written to standard output in
+buffer-numerical order. The
+<B>divert</B>
+
+macro shall divert future output to the buffer specified by its
+argument. Specifying no argument or an argument of 0 shall resume the
+normal output process. Output diverted to a stream with a negative
+number shall be discarded. Behavior is implementation-defined if
+a stream number larger than 9 is specified. It shall be an error to
+specify an argument containing any non-numeric characters.
+<DT><B>divnum</B><DD>
+The defining text of the
+<B>divnum</B>
+
+macro shall be the number of the current output stream as a string.
+<DT><B>dnl</B><DD>
+The
+<B>dnl</B>
+
+macro shall cause
+<I>m4</I>
+
+to discard all input characters up to and including the next
+&lt;newline&gt;.
+<DT><B>dumpdef</B><DD>
+The
+<B>dumpdef</B>
+
+macro shall write the defined text to standard error for each of the
+macros specified as arguments, or, if no arguments are specified, for
+all macros.
+<DT><B>errprint</B><DD>
+The
+<B>errprint</B>
+
+macro shall write its arguments to standard error. The behavior
+is unspecified if
+<B>errprint</B>
+
+is not immediately followed by a
+&lt;left-parenthesis&gt;.
+<DT><B>eval</B><DD>
+The
+<B>eval</B>
+
+macro shall evaluate its first argument as an arithmetic expression,
+using signed integer arithmetic with at least 32-bit precision. At least
+the following C-language operators shall be supported, with precedence,
+associativity, and behavior as described in
+<I>Section 1.1.2.1</I>, <I>Arithmetic Precision and Operations:</I>
+
+<DL COMPACT><DT><DD>
+<P>
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+()
+unary +
+unary -
+~
+
+!
+binary *
+/
+%
+binary +
+binary -
+&lt;&lt;
+&gt;&gt;
+&lt;
+&lt;=
+&gt;
+&gt;=
+==
+!=
+binary &amp;
+^
+|
+&amp;&amp;
+||
+</B></PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+Systems shall support octal and hexadecimal numbers as in the ISO&nbsp;C standard.
+The second argument, if specified, shall set the radix for the result;
+if the argument is blank or unspecified, the default is 10. Behavior is
+unspecified if the radix falls outside the range 2 to 36, inclusive. The
+third argument, if specified, sets the minimum number of digits in the
+result. Behavior is unspecified if the third argument is less than
+zero. It shall be an error to specify the second or third argument
+containing any non-numeric characters. The behavior is unspecified if
+<B>eval</B>
+
+is not immediately followed by a
+&lt;left-parenthesis&gt;.
+</DL>
+
+<DT><B>ifdef</B><DD>
+If the first argument to the
+<B>ifdef</B>
+
+macro is defined, the defining text shall be the second argument.
+Otherwise, the defining text shall be the third argument, if specified,
+or the null string, if not. The behavior is unspecified if
+<B>ifdef</B>
+
+is not immediately followed by a
+&lt;left-parenthesis&gt;.
+<DT><B>ifelse</B><DD>
+The
+<B>ifelse</B>
+
+macro takes three or more arguments. If the first two arguments compare
+as equal strings (after macro expansion of both arguments), the
+defining text shall be the third argument. If the first two arguments
+do not compare as equal strings and there are three arguments, the
+defining text shall be null. If the first two arguments do not compare
+as equal strings and there are four or five arguments, the defining
+text shall be the fourth argument. If the first two arguments do not
+compare as equal strings and there are six or more arguments, the first
+three arguments shall be discarded and processing shall restart with
+the remaining arguments. The behavior is unspecified if
+<B>ifelse</B>
+
+is not immediately followed by a
+&lt;left-parenthesis&gt;.
+<DT><B>include</B><DD>
+The defining text for the
+<B>include</B>
+
+macro shall be the contents of the file named by the first argument. It
+shall be an error if the file cannot be read. The behavior is unspecified if
+<B>include</B>
+
+is not immediately followed by a
+&lt;left-parenthesis&gt;.
+<DT><B>incr</B><DD>
+The defining text of the
+<B>incr</B>
+
+macro shall be its first argument incremented by 1. It shall be an
+error to specify an argument containing any non-numeric characters.
+The behavior is unspecified if
+<B>incr</B>
+
+is not immediately followed by a
+&lt;left-parenthesis&gt;.
+<DT><B>index</B><DD>
+The defining text of the
+<B>index</B>
+
+macro shall be the first character position (as a string) in the first
+argument where a string matching the second argument begins (zero
+origin), or -1 if the second argument does not occur.
+The behavior is unspecified if
+<B>index</B>
+
+is not immediately followed by a
+&lt;left-parenthesis&gt;.
+<DT><B>len</B><DD>
+The defining text of the
+<B>len</B>
+
+macro shall be the length (as a string) of the first argument.
+The behavior is unspecified if
+<B>len</B>
+
+is not immediately followed by a
+&lt;left-parenthesis&gt;.
+<DT><B>m4exit</B><DD>
+Exit from the
+<I>m4</I>
+
+utility. If the first argument is specified, it is the exit code. The
+default is zero. It shall be an error to specify an argument containing
+any non-numeric characters.
+<DT><B>m4wrap</B><DD>
+The first argument shall be processed when EOF is reached. If the
+<B>m4wrap</B>
+
+macro is used multiple times, the arguments specified shall be
+processed in the order in which the
+<B>m4wrap</B>
+
+macros were processed. The behavior is unspecified if
+<B>m4wrap</B>
+
+is not immediately followed by a
+&lt;left-parenthesis&gt;.
+<DT><B>maketemp</B><DD>
+The defining text shall be the first argument, with any trailing
+<B>'X'</B>
+
+characters replaced with the current process ID as a string.
+The behavior is unspecified if
+<B>maketemp</B>
+
+is not immediately followed by a
+&lt;left-parenthesis&gt;.
+<DT><B>mkstemp</B><DD>
+The first argument shall be taken as a template for creating an
+empty file, with trailing
+<B>'X'</B>
+
+characters replaced with characters from the portable filename
+character set. The behavior is unspecified if the first argument
+does not end in at least six
+<B>'X'</B>
+
+characters. If a temporary file is successfully created, then the
+defining text of the macro shall be the name of the new file.
+The user ID of the file shall be set to the effective user ID
+of the process. The group ID of the file shall be set to the group ID
+of the file's parent directory or to the effective group ID of the
+process. The file access permission bits are set such that
+only the owner can both read and write the file, regardless of
+the current
+<I>umask</I>
+
+of the process. If a file could not be created, the defining text
+of the macro shall be the empty string. The behavior is unspecified if
+<B>mkstemp</B>
+
+is not immediately followed by a
+&lt;left-parenthesis&gt;.
+<DT><B>popdef</B><DD>
+The
+<B>popdef</B>
+
+macro shall delete the current definition of its arguments, replacing
+that definition with the previous one. If there is no previous
+definition, the macro is undefined. The behavior is unspecified if
+<B>popdef</B>
+
+is not immediately followed by a
+&lt;left-parenthesis&gt;.
+<DT><B>pushdef</B><DD>
+The
+<B>pushdef</B>
+
+macro shall be equivalent to the
+<B>define</B>
+
+macro with the exception that it shall preserve any current definition
+for future retrieval using the
+<B>popdef</B>
+
+macro. The behavior is unspecified if
+<B>pushdef</B>
+
+is not immediately followed by a
+&lt;left-parenthesis&gt;.
+<DT><B>shift</B><DD>
+The defining text for the
+<B>shift</B>
+
+macro shall be a comma-separated list of its arguments except the first
+one. Each argument shall be quoted using the current quoting strings.
+The behavior is unspecified if
+<B>shift</B>
+
+is not immediately followed by a
+&lt;left-parenthesis&gt;.
+<DT><B>sinclude</B><DD>
+The
+<B>sinclude</B>
+
+macro shall be equivalent to the
+<B>include</B>
+
+macro, except that it shall not be an error if the file is inaccessible.
+The behavior is unspecified if
+<B>sinclude</B>
+
+is not immediately followed by a
+&lt;left-parenthesis&gt;.
+<DT><B>substr</B><DD>
+The defining text for the
+<B>substr</B>
+
+macro shall be the substring of the first argument beginning at the
+zero-offset character position specified by the second argument. The
+third argument, if specified, shall be the number of characters to
+select; if not specified, the characters from the starting point to the
+end of the first argument shall become the defining text. It shall not
+be an error to specify a starting point beyond the end of the first
+argument and the defining text shall be null. It shall be an error to
+specify an argument containing any non-numeric characters.
+The behavior is unspecified if
+<B>substr</B>
+
+is not immediately followed by a
+&lt;left-parenthesis&gt;.
+<DT><B>syscmd</B><DD>
+The
+<B>syscmd</B>
+
+macro shall interpret its first argument as a shell command line. The
+defining text shall be the string result of that command. The string
+result shall not be rescanned for macros while setting the defining
+text. No output redirection shall be performed by the
+<I>m4</I>
+
+utility. The exit status value from the command can be retrieved using
+the
+<B>sysval</B>
+
+macro. The behavior is unspecified if
+<B>syscmd</B>
+
+is not immediately followed by a
+&lt;left-parenthesis&gt;.
+<DT><B>sysval</B><DD>
+The defining text of the
+<B>sysval</B>
+
+macro shall be the exit value of the utility last invoked by the
+<B>syscmd</B>
+
+macro (as a string).
+<DT><B>traceon</B><DD>
+The
+<B>traceon</B>
+
+macro shall enable tracing for the macros specified as arguments, or,
+if no arguments are specified, for all macros. The trace output shall
+be written to standard error in an unspecified format.
+<DT><B>traceoff</B><DD>
+The
+<B>traceoff</B>
+
+macro shall disable tracing for the macros specified as arguments, or,
+if no arguments are specified, for all macros.
+<DT><B>translit</B><DD>
+The defining text of the
+<B>translit</B>
+
+macro shall be the first argument with every character that occurs in
+the second argument replaced with the corresponding character from the
+third argument. If no replacement character is specified for some
+source character because the second argument is longer than the third
+argument, that character shall be deleted from the first argument in
+<B>translit</B>'s
+
+defining text. The behavior is unspecified if the
+<B>'-'</B>
+
+character appears within the second or third argument anywhere besides
+the first or last character. The behavior is unspecified if the same
+character appears more than once in the second argument. The behavior
+is unspecified if
+<B>translit</B>
+
+is not immediately followed by a
+&lt;left-parenthesis&gt;.
+<DT><B>undefine</B><DD>
+The
+<B>undefine</B>
+
+macro shall delete all definitions (including those preserved using the
+<B>pushdef</B>
+
+macro) of the macros named by its arguments. The behavior is unspecified if
+<B>undefine</B>
+
+is not immediately followed by a
+&lt;left-parenthesis&gt;.
+<DT><B>undivert</B><DD>
+The
+<B>undivert</B>
+
+macro shall cause immediate output of any text in temporary buffers
+named as arguments, or all temporary buffers if no arguments are
+specified. Buffers can be undiverted into other temporary buffers.
+Undiverting shall discard the contents of the temporary buffer. The
+behavior is unspecified if an argument contains any non-numeric
+characters.
+</DL>
+<A NAME="lbAP">&nbsp;</A>
+<H2>EXIT STATUS</H2>
+
+The following exit values shall be returned:
+<DL COMPACT>
+<DT>&nbsp;0<DD>
+Successful completion.
+<DT>&gt;0<DD>
+An error occurred
+</DL>
+<P>
+
+If the
+<B>m4exit</B>
+
+macro is used, the exit value can be specified by the input file.
+<A NAME="lbAQ">&nbsp;</A>
+<H2>CONSEQUENCES OF ERRORS</H2>
+
+Default.
+<P>
+
+<I>The following sections are informative.</I>
+
+<A NAME="lbAR">&nbsp;</A>
+<H2>APPLICATION USAGE</H2>
+
+The
+<B>defn</B>
+
+macro is useful for renaming macros, especially built-ins.
+<P>
+
+Since
+<B>eval</B>
+
+defers to the ISO&nbsp;C standard, some operations have undefined behavior. In some
+implementations, division or remainder by zero cause a fatal signal,
+even if the division occurs on the short-circuited branch of
+<B>&quot;&amp;&amp;&quot;</B>
+
+or
+<B>&quot;||&quot;</B>.
+
+Any operation that overflows in signed arithmetic produces undefined
+behavior. Likewise, using the
+<B>shift</B>
+
+operators with a shift amount that is not positive and smaller
+than the precision is undefined, as is shifting a negative number to
+the right. Historically, not all implementations obeyed C-language
+precedence rules:
+<B>'~'</B>
+
+and
+<B>'!'</B>
+
+were lower than
+<B>'=='</B>;
+
+<B>'=='</B>
+
+and
+<B>'!='</B>
+
+were not lower than
+<B>'&lt;'</B>;
+
+and
+<B>'|'</B>
+
+was not lower than
+<B>'^'</B>;
+
+the liberal use of
+<B>&quot;()&quot;</B>
+
+can force the desired precedence even with these non-compliant
+implementations. Furthermore, some traditional implementations treated
+<B>'^'</B>
+
+as an exponentiation operator, although most implementations now use
+<B>&quot;**&quot;</B>
+
+as an extension for this purpose.
+<P>
+
+When a macro has been multiply defined via the
+<B>pushdef</B>
+
+macro, it is unspecified whether the
+<B>define</B>
+
+macro will alter only the most recent definition (as though by
+<B>popdef</B>
+
+and
+<B>pushdef</B>),
+
+or replace the entire stack of definitions with a single definition
+(as though by
+<B>undefine</B>
+
+and
+<B>pushdef</B>).
+
+An application desiring particular behavior for the
+<B>define</B>
+
+macro in this case can redefine it accordingly.
+<P>
+
+Applications should use the
+<B>mkstemp</B>
+
+macro instead of the obsolescent
+<B>maketemp</B>
+
+macro for creating temporary files.
+<A NAME="lbAS">&nbsp;</A>
+<H2>EXAMPLES</H2>
+
+If the file
+<B>m4src</B>
+
+contains the lines:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+The value of `VER' is &quot;VER&quot;.
+ifdef(`VER', ``VER'' is defined to be VER., VER is not defined.)
+ifelse(VER, 1, ``VER'' is `VER'.)
+ifelse(VER, 2, ``VER'' is `VER'., ``VER'' is not 2.)
+end
+</B></PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+then the command
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+m4 m4src
+</B></PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+or the command:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+m4 -U VER m4src
+</B></PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+produces the output:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+The value of VER is &quot;VER&quot;.
+VER is not defined.
+
+VER is not 2.
+end
+</B></PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+The command:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+m4 -D VER m4src
+</B></PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+produces the output:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+The value of VER is &quot;&quot;.
+VER is defined to be .
+
+VER is not 2.
+end
+</B></PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+The command:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+m4 -D VER=1 m4src
+</B></PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+produces the output:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+The value of VER is &quot;1&quot;.
+VER is defined to be 1.
+VER is 1.
+VER is not 2.
+end
+</B></PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+The command:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+m4 -D VER=2 m4src
+</B></PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+produces the output:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+The value of VER is &quot;2&quot;.
+VER is defined to be 2.
+
+VER is 2.
+end
+</B></PRE>
+
+<P>
+
+</DL>
+
+<A NAME="lbAT">&nbsp;</A>
+<H2>RATIONALE</H2>
+
+Historic System V-based behavior treated
+<B>&quot;${&quot;</B>
+
+in a macro definition as two literal characters. However, this sequence
+is left unspecified so that implementations may offer extensions
+such as
+<B>&quot;${11}&quot;</B>
+
+meaning the eleventh positional parameter. Macros can still be defined with
+appropriate uses of nested quoting to result in a literal
+<B>&quot;${&quot;</B>
+
+in the output after rescanning removes the nested quotes.
+<P>
+
+In the
+<B>translit</B>
+
+built-in, historic System V-based behavior treated
+<B>'-'</B>
+
+as a literal; GNU behavior treats it as a range. This version of
+the standard allows either behavior.
+<A NAME="lbAU">&nbsp;</A>
+<H2>FUTURE DIRECTIONS</H2>
+
+None.
+<A NAME="lbAV">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+<I>c99</I>
+
+<P>
+
+The Base Definitions volume of POSIX.1-2008,
+<I>Chapter 8</I>, <I>Environment Variables,</I>
+
+<I>Section 12.2</I>, <I>Utility Syntax Guidelines</I>
+
+<A NAME="lbAW">&nbsp;</A>
+<H2>COPYRIGHT</H2>
+
+Portions of this text are reprinted and reproduced in electronic form
+from IEEE Std 1003.1, 2013 Edition, Standard for Information Technology
+-- Portable Operating System Interface (POSIX), The Open Group Base
+Specifications Issue 7, Copyright (C) 2013 by the Institute of
+Electrical and Electronics Engineers, Inc and The Open Group.
+(This is POSIX.1-2008 with the 2013 Technical Corrigendum 1 applied.) In the
+event of any discrepancy between this version and the original IEEE and
+The Open Group Standard, the original IEEE and The Open Group Standard
+is the referee document. The original Standard can be obtained online at
+<A HREF="http://www.unix.org/online.html">http://www.unix.org/online.html</A> .
+<P>
+Any typographical or formatting errors that appear
+in this page are most likely
+to have been introduced during the conversion of the source files to
+man page format. To report such errors, see
+<A HREF="https://www.kernel.org/doc/man-pages/reporting_bugs.html">https://www.kernel.org/doc/man-pages/reporting_bugs.html</A> .
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">PROLOG</A><DD>
+<DT><A HREF="#lbAC">NAME</A><DD>
+<DT><A HREF="#lbAD">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAE">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAF">OPTIONS</A><DD>
+<DT><A HREF="#lbAG">OPERANDS</A><DD>
+<DT><A HREF="#lbAH">STDIN</A><DD>
+<DT><A HREF="#lbAI">INPUT FILES</A><DD>
+<DT><A HREF="#lbAJ">ENVIRONMENT VARIABLES</A><DD>
+<DT><A HREF="#lbAK">ASYNCHRONOUS EVENTS</A><DD>
+<DT><A HREF="#lbAL">STDOUT</A><DD>
+<DT><A HREF="#lbAM">STDERR</A><DD>
+<DT><A HREF="#lbAN">OUTPUT FILES</A><DD>
+<DT><A HREF="#lbAO">EXTENDED DESCRIPTION</A><DD>
+<DT><A HREF="#lbAP">EXIT STATUS</A><DD>
+<DT><A HREF="#lbAQ">CONSEQUENCES OF ERRORS</A><DD>
+<DT><A HREF="#lbAR">APPLICATION USAGE</A><DD>
+<DT><A HREF="#lbAS">EXAMPLES</A><DD>
+<DT><A HREF="#lbAT">RATIONALE</A><DD>
+<DT><A HREF="#lbAU">FUTURE DIRECTIONS</A><DD>
+<DT><A HREF="#lbAV">SEE ALSO</A><DD>
+<DT><A HREF="#lbAW">COPYRIGHT</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 14:28:44 GMT, February 25, 2017
+</BODY>
+</HTML>

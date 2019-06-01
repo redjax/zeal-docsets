@@ -1,0 +1,2181 @@
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML><HEAD><TITLE>Man page of unistd.h</TITLE>
+</HEAD><BODY>
+<H1>unistd.h</H1>
+Section: POSIX Programmer's Manual (0P)<BR>Updated: 2013<BR><A HREF="#index">Index</A>
+<A HREF="../index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>PROLOG</H2>
+
+This manual page is part of the POSIX Programmer's Manual.
+The Linux implementation of this interface may differ (consult
+the corresponding Linux manual page for details of Linux behavior),
+or the interface may not be implemented on Linux.
+<P>
+<A NAME="lbAC">&nbsp;</A>
+<H2>NAME</H2>
+
+unistd.h
+--- standard symbolic constants and types
+<A NAME="lbAD">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<P>
+
+<PRE>
+#include &lt;<A HREF="file:///usr/include/unistd.h">unistd.h</A>&gt;
+</PRE>
+
+<A NAME="lbAE">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+The
+<I>&lt;<A HREF="file:///usr/include/unistd.h">unistd.h</A>&gt;</I>
+
+header defines miscellaneous symbolic constants and types, and declares
+miscellaneous functions. The actual values of the constants are
+unspecified except as shown. The contents of this header are shown
+below.
+<A NAME="lbAF">&nbsp;</A>
+<H3>Version Test Macros</H3>
+
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/unistd.h">unistd.h</A>&gt;</I>
+
+header shall define the following symbolic constants. The values shall
+be suitable for use in
+<B>#if</B>
+
+preprocessing directives.
+<DL COMPACT>
+<DT>_POSIX_VERSION<DD>
+<BR>
+
+Integer value indicating version of this standard (C-language
+binding) to which the implementation conforms. For implementations
+conforming to POSIX.1-2008, the value shall be 200809L.
+<DT>_POSIX2_VERSION<DD>
+<BR>
+
+Integer value indicating version of the Shell and Utilities volume of POSIX.1 to which the implementation
+conforms. For implementations conforming to POSIX.1-2008, the value shall
+be 200809L. For profile implementations that define _POSIX_SUBPROFILE
+(see
+<I>Section 2.1.5.1</I>, <I>Subprofiling Considerations)</I>
+
+in
+<I>&lt;<A HREF="file:///usr/include/unistd.h">unistd.h</A>&gt;</I>,
+
+POSIX2_VERSION may be left undefined or be defined with the value -1
+to indicate that the Shell and Utilities volume of POSIX.1 is not supported. In this case, a call to
+<I>sysconf(_SC_2_VERSION)</I>
+
+shall return either 200809L or -1 indicating that the Shell and Utilities volume of POSIX.1 is or is
+not, respectively, supported at runtime.
+</DL>
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/unistd.h">unistd.h</A>&gt;</I>
+
+header shall define the following symbolic constant only if
+the implementation supports the XSI option; see
+<I>Section 2.1.4</I>, <I>XSI Conformance.</I>
+
+If defined, its value shall be suitable for use in
+<B>#if</B>
+
+preprocessing directives.
+<DL COMPACT>
+<DT>_XOPEN_VERSION<DD>
+<BR>
+
+Integer value indicating version of the X/Open Portability Guide
+to which the implementation conforms. The value shall be 700.
+</DL>
+<A NAME="lbAG">&nbsp;</A>
+<H3>Constants for Options and Option Groups</H3>
+
+<P>
+
+The following symbolic constants, if defined in
+<I>&lt;<A HREF="file:///usr/include/unistd.h">unistd.h</A>&gt;</I>,
+
+shall have a value of -1, 0, or greater, unless otherwise specified
+below. For profile implementations that define _POSIX_SUBPROFILE (see
+<I>Section 2.1.5.1</I>, <I>Subprofiling Considerations)</I>
+
+in
+<I>&lt;<A HREF="file:///usr/include/unistd.h">unistd.h</A>&gt;</I>,
+
+constants described below as always having a value greater than zero need
+not be defined and, if defined, may have a value of -1, 0, or greater.
+The values shall be suitable for use in
+<B>#if</B>
+
+preprocessing directives.
+<P>
+
+If a symbolic constant is not defined or is defined with the value
+-1, the option is not supported for compilation. If it is defined
+with a value greater than zero, the option shall always be supported
+when the application is executed. If it is defined with the value zero,
+the option shall be supported for compilation and might or might not be
+supported at runtime. See
+<I>Section 2.1.6</I>, <I>Options</I>
+
+for further information about the conformance requirements of these
+three categories of support.
+<DL COMPACT>
+<DT>_POSIX_ADVISORY_INFO<DD>
+<BR>
+
+The implementation supports the Advisory Information option.
+If this symbol is defined in
+<I>&lt;<A HREF="file:///usr/include/unistd.h">unistd.h</A>&gt;</I>,
+
+it shall be defined to be -1, 0, or 200809L. The value of this
+symbol reported by
+<I>sysconf</I>()
+shall either be -1 or 200809L.
+<DT>_POSIX_ASYNCHRONOUS_IO<DD>
+<BR>
+
+The implementation supports asynchronous input and output.
+This symbol shall always be set to the value 200809L.
+<DT>_POSIX_BARRIERS<DD>
+<BR>
+
+The implementation supports barriers.
+This symbol shall always be set to the value 200809L.
+<DT>_POSIX_CHOWN_RESTRICTED<DD>
+<BR>
+
+The use of
+<I>chown</I>()
+and
+<I>fchown</I>()
+is restricted to a process with appropriate privileges, and to changing
+the group ID of a file only to the effective group ID of the process or
+to one of its supplementary group IDs. This symbol shall be defined
+with a value other than -1.
+<DT>_POSIX_CLOCK_SELECTION<DD>
+<BR>
+
+The implementation supports clock selection.
+This symbol shall always be set to the value 200809L.
+<DT>_POSIX_CPUTIME<DD>
+<BR>
+
+The implementation supports the Process CPU-Time Clocks option.
+If this symbol is defined in
+<I>&lt;<A HREF="file:///usr/include/unistd.h">unistd.h</A>&gt;</I>,
+
+it shall be defined to be -1, 0, or 200809L. The value of this
+symbol reported by
+<I>sysconf</I>()
+shall either be -1 or 200809L.
+<DT>_POSIX_FSYNC<DD>
+<BR>
+
+The implementation supports the File Synchronization option.
+If this symbol is defined in
+<I>&lt;<A HREF="file:///usr/include/unistd.h">unistd.h</A>&gt;</I>,
+
+it shall be defined to be -1, 0, or 200809L. The value of this
+symbol reported by
+<I>sysconf</I>()
+shall either be -1 or 200809L.
+<DT>_POSIX_IPV6<DD>
+<BR>
+
+The implementation supports the IPv6 option.
+If this symbol is defined in
+<I>&lt;<A HREF="file:///usr/include/unistd.h">unistd.h</A>&gt;</I>,
+
+it shall be defined to be -1, 0, or 200809L. The value of this
+symbol reported by
+<I>sysconf</I>()
+shall either be -1 or 200809L.
+<DT>_POSIX_JOB_CONTROL<DD>
+<BR>
+
+The implementation supports job control. This symbol shall always be
+set to a value greater than zero.
+<DT>_POSIX_MAPPED_FILES<DD>
+<BR>
+
+The implementation supports memory mapped Files.
+This symbol shall always be set to the value 200809L.
+<DT>_POSIX_MEMLOCK<DD>
+<BR>
+
+The implementation supports the Process Memory Locking option.
+If this symbol is defined in
+<I>&lt;<A HREF="file:///usr/include/unistd.h">unistd.h</A>&gt;</I>,
+
+it shall be defined to be -1, 0, or 200809L. The value of this
+symbol reported by
+<I>sysconf</I>()
+shall either be -1 or 200809L.
+<DT>_POSIX_MEMLOCK_RANGE<DD>
+<BR>
+
+The implementation supports the Range Memory Locking option.
+If this symbol is defined in
+<I>&lt;<A HREF="file:///usr/include/unistd.h">unistd.h</A>&gt;</I>,
+
+it shall be defined to be -1, 0, or 200809L. The value of this
+symbol reported by
+<I>sysconf</I>()
+shall either be -1 or 200809L.
+<DT>_POSIX_MEMORY_PROTECTION<DD>
+<BR>
+
+The implementation supports memory protection.
+This symbol shall always be set to the value 200809L.
+<DT>_POSIX_MESSAGE_PASSING<DD>
+<BR>
+
+The implementation supports the Message Passing option.
+If this symbol is defined in
+<I>&lt;<A HREF="file:///usr/include/unistd.h">unistd.h</A>&gt;</I>,
+
+it shall be defined to be -1, 0, or 200809L. The value of this
+symbol reported by
+<I>sysconf</I>()
+shall either be -1 or 200809L.
+<DT>_POSIX_MONOTONIC_CLOCK<DD>
+<BR>
+
+The implementation supports the Monotonic Clock option.
+If this symbol is defined in
+<I>&lt;<A HREF="file:///usr/include/unistd.h">unistd.h</A>&gt;</I>,
+
+it shall be defined to be -1, 0, or 200809L. The value of this
+symbol reported by
+<I>sysconf</I>()
+shall either be -1 or 200809L.
+<DT>_POSIX_NO_TRUNC<DD>
+<BR>
+
+Pathname components longer than
+{NAME_MAX}
+generate an error. This symbol shall be defined with a value
+other than -1.
+<DT>_POSIX_PRIORITIZED_IO<DD>
+<BR>
+
+The implementation supports the Prioritized Input and Output option.
+If this symbol is defined in
+<I>&lt;<A HREF="file:///usr/include/unistd.h">unistd.h</A>&gt;</I>,
+
+it shall be defined to be -1, 0, or 200809L. The value of this
+symbol reported by
+<I>sysconf</I>()
+shall either be -1 or 200809L.
+<DT>_POSIX_PRIORITY_SCHEDULING<DD>
+<BR>
+
+The implementation supports the Process Scheduling option.
+If this symbol is defined in
+<I>&lt;<A HREF="file:///usr/include/unistd.h">unistd.h</A>&gt;</I>,
+
+it shall be defined to be -1, 0, or 200809L. The value of this
+symbol reported by
+<I>sysconf</I>()
+shall either be -1 or 200809L.
+<DT>_POSIX_RAW_SOCKETS<DD>
+<BR>
+
+The implementation supports the Raw Sockets option.
+If this symbol is defined in
+<I>&lt;<A HREF="file:///usr/include/unistd.h">unistd.h</A>&gt;</I>,
+
+it shall be defined to be -1, 0, or 200809L. The value of this
+symbol reported by
+<I>sysconf</I>()
+shall either be -1 or 200809L.
+<DT>_POSIX_READER_WRITER_LOCKS<DD>
+<BR>
+
+The implementation supports read-write locks.
+This symbol shall always be set to the value 200809L.
+<DT>_POSIX_REALTIME_SIGNALS<DD>
+<BR>
+
+The implementation supports realtime signals.
+This symbol shall always be set to the value 200809L.
+<DT>_POSIX_REGEXP<DD>
+<BR>
+
+The implementation supports the Regular Expression Handling option.
+This symbol shall always be set to a value greater than zero.
+<DT>_POSIX_SAVED_IDS<DD>
+<BR>
+
+Each process has a saved set-user-ID and a saved set-group-ID.
+This symbol shall always be set to a value greater than zero.
+<DT>_POSIX_SEMAPHORES<DD>
+<BR>
+
+The implementation supports semaphores.
+This symbol shall always be set to the value 200809L.
+<DT>_POSIX_SHARED_MEMORY_OBJECTS<DD>
+<BR>
+
+The implementation supports the Shared Memory Objects option.
+If this symbol is defined in
+<I>&lt;<A HREF="file:///usr/include/unistd.h">unistd.h</A>&gt;</I>,
+
+it shall be defined to be -1, 0, or 200809L. The value of this
+symbol reported by
+<I>sysconf</I>()
+shall either be -1 or 200809L.
+<DT>_POSIX_SHELL<DD>
+<BR>
+
+The implementation supports the POSIX shell. This symbol shall always
+be set to a value greater than zero.
+<DT>_POSIX_SPAWN<DD>
+<BR>
+
+The implementation supports the Spawn option.
+If this symbol is defined in
+<I>&lt;<A HREF="file:///usr/include/unistd.h">unistd.h</A>&gt;</I>,
+
+it shall be defined to be -1, 0, or 200809L. The value of this
+symbol reported by
+<I>sysconf</I>()
+shall either be -1 or 200809L.
+<DT>_POSIX_SPIN_LOCKS<DD>
+<BR>
+
+The implementation supports spin locks.
+This symbol shall always be set to the value 200809L.
+<DT>_POSIX_SPORADIC_SERVER<DD>
+<BR>
+
+The implementation supports the Process Sporadic Server option.
+If this symbol is defined in
+<I>&lt;<A HREF="file:///usr/include/unistd.h">unistd.h</A>&gt;</I>,
+
+it shall be defined to be -1, 0, or 200809L. The value of this
+symbol reported by
+<I>sysconf</I>()
+shall either be -1 or 200809L.
+<DT>_POSIX_SYNCHRONIZED_IO<DD>
+<BR>
+
+The implementation supports the Synchronized Input and Output option.
+If this symbol is defined in
+<I>&lt;<A HREF="file:///usr/include/unistd.h">unistd.h</A>&gt;</I>,
+
+it shall be defined to be -1, 0, or 200809L. The value of this
+symbol reported by
+<I>sysconf</I>()
+shall either be -1 or 200809L.
+<DT>_POSIX_THREAD_ATTR_STACKADDR<DD>
+<BR>
+
+The implementation supports the Thread Stack Address Attribute option.
+If this symbol is defined in
+<I>&lt;<A HREF="file:///usr/include/unistd.h">unistd.h</A>&gt;</I>,
+
+it shall be defined to be -1, 0, or 200809L. The value of this
+symbol reported by
+<I>sysconf</I>()
+shall either be -1 or 200809L.
+<DT>_POSIX_THREAD_ATTR_STACKSIZE<DD>
+<BR>
+
+The implementation supports the Thread Stack Size Attribute option.
+If this symbol is defined in
+<I>&lt;<A HREF="file:///usr/include/unistd.h">unistd.h</A>&gt;</I>,
+
+it shall be defined to be -1, 0, or 200809L. The value of this
+symbol reported by
+<I>sysconf</I>()
+shall either be -1 or 200809L.
+<DT>_POSIX_THREAD_CPUTIME<DD>
+<BR>
+
+The implementation supports the Thread CPU-Time Clocks option.
+If this symbol is defined in
+<I>&lt;<A HREF="file:///usr/include/unistd.h">unistd.h</A>&gt;</I>,
+
+it shall be defined to be -1, 0, or 200809L. The value of this
+symbol reported by
+<I>sysconf</I>()
+shall either be -1 or 200809L.
+<DT>_POSIX_THREAD_PRIO_INHERIT<DD>
+<BR>
+
+The implementation supports the Non-Robust Mutex Priority
+Inheritance option. If this symbol is defined in
+<I>&lt;<A HREF="file:///usr/include/unistd.h">unistd.h</A>&gt;</I>,
+
+it shall be defined to be -1, 0, or 200809L. The value of this
+symbol reported by
+<I>sysconf</I>()
+shall either be -1 or 200809L.
+<DT>_POSIX_THREAD_PRIO_PROTECT<DD>
+<BR>
+
+The implementation supports the Non-Robust Mutex Priority
+Protection option. If this symbol is defined in
+<I>&lt;<A HREF="file:///usr/include/unistd.h">unistd.h</A>&gt;</I>,
+
+it shall be defined to be -1, 0, or 200809L. The value of this
+symbol reported by
+<I>sysconf</I>()
+shall either be -1 or 200809L.
+<DT>_POSIX_THREAD_PRIORITY_SCHEDULING<DD>
+<BR>
+
+The implementation supports the Thread Execution Scheduling option.
+If this symbol is defined in
+<I>&lt;<A HREF="file:///usr/include/unistd.h">unistd.h</A>&gt;</I>,
+
+it shall be defined to be -1, 0, or 200809L. The value of this
+symbol reported by
+<I>sysconf</I>()
+shall either be -1 or 200809L.
+<DT>_POSIX_THREAD_PROCESS_SHARED<DD>
+<BR>
+
+The implementation supports the Thread Process-Shared Synchronization
+option.
+If this symbol is defined in
+<I>&lt;<A HREF="file:///usr/include/unistd.h">unistd.h</A>&gt;</I>,
+
+it shall be defined to be -1, 0, or 200809L. The value of this
+symbol reported by
+<I>sysconf</I>()
+shall either be -1 or 200809L.
+<DT>_POSIX_THREAD_ROBUST_PRIO_INHERIT<DD>
+<BR>
+
+The implementation supports the Robust Mutex Priority Inheritance
+option. If this symbol is defined in
+<I>&lt;<A HREF="file:///usr/include/unistd.h">unistd.h</A>&gt;</I>,
+
+it shall be defined to be -1, 0, or 200809L. The value of this
+symbol reported by
+<I>sysconf</I>()
+shall either be -1 or 200809L.
+<DT>_POSIX_THREAD_ROBUST_PRIO_PROTECT<DD>
+<BR>
+
+The implementation supports the Robust Mutex Priority Protection
+option. If this symbol is defined in
+<I>&lt;<A HREF="file:///usr/include/unistd.h">unistd.h</A>&gt;</I>,
+
+it shall be defined to be -1, 0, or 200809L. The value of this
+symbol reported by
+<I>sysconf</I>()
+shall either be -1 or 200809L.
+<DT>_POSIX_THREAD_SAFE_FUNCTIONS<DD>
+<BR>
+
+The implementation supports thread-safe functions.
+This symbol shall always be set to the value 200809L.
+<DT>_POSIX_THREAD_SPORADIC_SERVER<DD>
+<BR>
+
+The implementation supports the Thread Sporadic Server option.
+If this symbol is defined in
+<I>&lt;<A HREF="file:///usr/include/unistd.h">unistd.h</A>&gt;</I>,
+
+it shall be defined to be -1, 0, or 200809L. The value of this
+symbol reported by
+<I>sysconf</I>()
+shall either be -1 or 200809L.
+<DT>_POSIX_THREADS<DD>
+<BR>
+
+The implementation supports threads.
+This symbol shall always be set to the value 200809L.
+<DT>_POSIX_TIMEOUTS<DD>
+<BR>
+
+The implementation supports timeouts.
+This symbol shall always be set to the value 200809L.
+<DT>_POSIX_TIMERS<DD>
+<BR>
+
+The implementation supports timers.
+This symbol shall always be set to the value 200809L.
+<DT>_POSIX_TRACE<DD>
+<BR>
+
+The implementation supports the Trace option.
+If this symbol is defined in
+<I>&lt;<A HREF="file:///usr/include/unistd.h">unistd.h</A>&gt;</I>,
+
+it shall be defined to be -1, 0, or 200809L. The value of this
+symbol reported by
+<I>sysconf</I>()
+shall either be -1 or 200809L.
+<DT>_POSIX_TRACE_EVENT_FILTER<DD>
+<BR>
+
+The implementation supports the Trace Event Filter option.
+If this symbol is defined in
+<I>&lt;<A HREF="file:///usr/include/unistd.h">unistd.h</A>&gt;</I>,
+
+it shall be defined to be -1, 0, or 200809L. The value of this
+symbol reported by
+<I>sysconf</I>()
+shall either be -1 or 200809L.
+<DT>_POSIX_TRACE_INHERIT<DD>
+<BR>
+
+The implementation supports the Trace Inherit option.
+If this symbol is defined in
+<I>&lt;<A HREF="file:///usr/include/unistd.h">unistd.h</A>&gt;</I>,
+
+it shall be defined to be -1, 0, or 200809L. The value of this
+symbol reported by
+<I>sysconf</I>()
+shall either be -1 or 200809L.
+<DT>_POSIX_TRACE_LOG<DD>
+<BR>
+
+The implementation supports the Trace Log option.
+If this symbol is defined in
+<I>&lt;<A HREF="file:///usr/include/unistd.h">unistd.h</A>&gt;</I>,
+
+it shall be defined to be -1, 0, or 200809L. The value of this
+symbol reported by
+<I>sysconf</I>()
+shall either be -1 or 200809L.
+<DT>_POSIX_TYPED_MEMORY_OBJECTS<DD>
+<BR>
+
+The implementation supports the Typed Memory Objects option.
+If this symbol is defined in
+<I>&lt;<A HREF="file:///usr/include/unistd.h">unistd.h</A>&gt;</I>,
+
+it shall be defined to be -1, 0, or 200809L. The value of this
+symbol reported by
+<I>sysconf</I>()
+shall either be -1 or 200809L.
+<DT>_POSIX_V6_ILP32_OFF32<DD>
+<BR>
+
+The implementation provides a C-language compilation environment with
+32-bit
+<B>int</B>,
+
+<B>long</B>,
+
+<B>pointer</B>,
+
+and
+<B>off_t</B>
+
+types.
+<DT>_POSIX_V6_ILP32_OFFBIG<DD>
+<BR>
+
+The implementation provides a C-language compilation environment with
+32-bit
+<B>int</B>,
+
+<B>long</B>,
+
+and
+<B>pointer</B>
+
+types and an
+<B>off_t</B>
+
+type using at least 64 bits.
+<DT>_POSIX_V6_LP64_OFF64<DD>
+<BR>
+
+The implementation provides a C-language compilation environment with
+32-bit
+<B>int</B>
+
+and 64-bit
+<B>long</B>,
+
+<B>pointer</B>,
+
+and
+<B>off_t</B>
+
+types.
+<DT>_POSIX_V6_LPBIG_OFFBIG<DD>
+<BR>
+
+The implementation provides a C-language compilation environment with
+an
+<B>int</B>
+
+type using at least 32 bits and
+<B>long</B>,
+
+<B>pointer</B>,
+
+and
+<B>off_t</B>
+
+types using at least 64 bits.
+<DT>_POSIX_V7_ILP32_OFF32<DD>
+<BR>
+
+The implementation provides a C-language compilation environment with
+32-bit
+<B>int</B>,
+
+<B>long</B>,
+
+<B>pointer</B>,
+
+and
+<B>off_t</B>
+
+types.
+<DT>_POSIX_V7_ILP32_OFFBIG<DD>
+<BR>
+
+The implementation provides a C-language compilation environment with
+32-bit
+<B>int</B>,
+
+<B>long</B>,
+
+and
+<B>pointer</B>
+
+types and an
+<B>off_t</B>
+
+type using at least 64 bits.
+<DT>_POSIX_V7_LP64_OFF64<DD>
+<BR>
+
+The implementation provides a C-language compilation environment with
+32-bit
+<B>int</B>
+
+and 64-bit
+<B>long</B>,
+
+<B>pointer</B>,
+
+and
+<B>off_t</B>
+
+types.
+<DT>_POSIX_V7_LPBIG_OFFBIG<DD>
+<BR>
+
+The implementation provides a C-language compilation environment with
+an
+<B>int</B>
+
+type using at least 32 bits and
+<B>long</B>,
+
+<B>pointer</B>,
+
+and
+<B>off_t</B>
+
+types using at least 64 bits.
+<DT>_POSIX2_C_BIND<DD>
+<BR>
+
+The implementation supports the C-Language Binding option. This
+symbol shall always have the value 200809L.
+<DT>_POSIX2_C_DEV<DD>
+<BR>
+
+The implementation supports the C-Language Development Utilities option.
+If this symbol is defined in
+<I>&lt;<A HREF="file:///usr/include/unistd.h">unistd.h</A>&gt;</I>,
+
+it shall be defined to be -1, 0, or 200809L. The value of this
+symbol reported by
+<I>sysconf</I>()
+shall either be -1 or 200809L.
+<DT>_POSIX2_CHAR_TERM<DD>
+<BR>
+
+The implementation supports the Terminal Characteristics option.
+The value of this symbol reported by
+<I>sysconf</I>()
+shall either be -1 or a value greater than zero.
+<DT>_POSIX2_FORT_DEV<DD>
+<BR>
+
+The implementation supports the FORTRAN Development Utilities option.
+If this symbol is defined in
+<I>&lt;<A HREF="file:///usr/include/unistd.h">unistd.h</A>&gt;</I>,
+
+it shall be defined to be -1, 0, or 200809L. The value of this
+symbol reported by
+<I>sysconf</I>()
+shall either be -1 or 200809L.
+<DT>_POSIX2_FORT_RUN<DD>
+<BR>
+
+The implementation supports the FORTRAN Runtime Utilities option.
+If this symbol is defined in
+<I>&lt;<A HREF="file:///usr/include/unistd.h">unistd.h</A>&gt;</I>,
+
+it shall be defined to be -1, 0, or 200809L. The value of this
+symbol reported by
+<I>sysconf</I>()
+shall either be -1 or 200809L.
+<DT>_POSIX2_LOCALEDEF<DD>
+<BR>
+
+The implementation supports the creation of locales by the
+<I>localedef</I>
+
+utility.
+If this symbol is defined in
+<I>&lt;<A HREF="file:///usr/include/unistd.h">unistd.h</A>&gt;</I>,
+
+it shall be defined to be -1, 0, or 200809L. The value of this
+symbol reported by
+<I>sysconf</I>()
+shall either be -1 or 200809L.
+<DT>_POSIX2_PBS<DD>
+<BR>
+
+The implementation supports the Batch Environment Services and
+Utilities option.
+If this symbol is defined in
+<I>&lt;<A HREF="file:///usr/include/unistd.h">unistd.h</A>&gt;</I>,
+
+it shall be defined to be -1, 0, or 200809L. The value of this
+symbol reported by
+<I>sysconf</I>()
+shall either be -1 or 200809L.
+<DT>_POSIX2_PBS_ACCOUNTING<DD>
+<BR>
+
+The implementation supports the Batch Accounting option.
+If this symbol is defined in
+<I>&lt;<A HREF="file:///usr/include/unistd.h">unistd.h</A>&gt;</I>,
+
+it shall be defined to be -1, 0, or 200809L. The value of this
+symbol reported by
+<I>sysconf</I>()
+shall either be -1 or 200809L.
+<DT>_POSIX2_PBS_CHECKPOINT<DD>
+<BR>
+
+The implementation supports the Batch Checkpoint/Restart option.
+If this symbol is defined in
+<I>&lt;<A HREF="file:///usr/include/unistd.h">unistd.h</A>&gt;</I>,
+
+it shall be defined to be -1, 0, or 200809L. The value of this
+symbol reported by
+<I>sysconf</I>()
+shall either be -1 or 200809L.
+<DT>_POSIX2_PBS_LOCATE<DD>
+<BR>
+
+The implementation supports the Locate Batch Job Request option.
+If this symbol is defined in
+<I>&lt;<A HREF="file:///usr/include/unistd.h">unistd.h</A>&gt;</I>,
+
+it shall be defined to be -1, 0, or 200809L. The value of this
+symbol reported by
+<I>sysconf</I>()
+shall either be -1 or 200809L.
+<DT>_POSIX2_PBS_MESSAGE<DD>
+<BR>
+
+The implementation supports the Batch Job Message Request option.
+If this symbol is defined in
+<I>&lt;<A HREF="file:///usr/include/unistd.h">unistd.h</A>&gt;</I>,
+
+it shall be defined to be -1, 0, or 200809L. The value of this
+symbol reported by
+<I>sysconf</I>()
+shall either be -1 or 200809L.
+<DT>_POSIX2_PBS_TRACK<DD>
+<BR>
+
+The implementation supports the Track Batch Job Request option.
+If this symbol is defined in
+<I>&lt;<A HREF="file:///usr/include/unistd.h">unistd.h</A>&gt;</I>,
+
+it shall be defined to be -1, 0, or 200809L. The value of this
+symbol reported by
+<I>sysconf</I>()
+shall either be -1 or 200809L.
+<DT>_POSIX2_SW_DEV<DD>
+<BR>
+
+The implementation supports the Software Development Utilities option.
+If this symbol is defined in
+<I>&lt;<A HREF="file:///usr/include/unistd.h">unistd.h</A>&gt;</I>,
+
+it shall be defined to be -1, 0, or 200809L. The value of this
+symbol reported by
+<I>sysconf</I>()
+shall either be -1 or 200809L.
+<DT>_POSIX2_UPE<DD>
+<BR>
+
+The implementation supports the User Portability Utilities option.
+If this symbol is defined in
+<I>&lt;<A HREF="file:///usr/include/unistd.h">unistd.h</A>&gt;</I>,
+
+it shall be defined to be -1, 0, or 200809L. The value of this
+symbol reported by
+<I>sysconf</I>()
+shall either be -1 or 200809L.
+<DT>_XOPEN_CRYPT<DD>
+<BR>
+
+The implementation supports the X/Open Encryption Option Group.
+<DT>_XOPEN_ENH_I18N<DD>
+<BR>
+
+The implementation supports the Issue 4, Version 2 Enhanced
+Internationalization Option Group. This symbol shall always be set
+to a value other than -1.
+<DT>_XOPEN_REALTIME<DD>
+<BR>
+
+The implementation supports the X/Open Realtime Option Group.
+<DT>_XOPEN_REALTIME_THREADS<DD>
+<BR>
+
+The implementation supports the X/Open Realtime Threads Option Group.
+<DT>_XOPEN_SHM<DD>
+<BR>
+
+The implementation supports the Issue 4, Version 2 Shared Memory Option
+Group. This symbol shall always be set to a value other than -1.
+<DT>_XOPEN_STREAMS<DD>
+<BR>
+
+The implementation supports the XSI STREAMS Option Group.
+<DT>_XOPEN_UNIX<DD>
+<BR>
+
+The implementation supports the XSI option.
+<DT>_XOPEN_UUCP<DD>
+<BR>
+
+The implementation supports the UUCP Utilities option. If this symbol
+is defined in
+<I>&lt;<A HREF="file:///usr/include/unistd.h">unistd.h</A>&gt;</I>,
+
+it shall be defined to be -1, 0, or 200809L. The value of this symbol
+reported by
+<I>sysconf</I>()
+shall be either -1 or 200809L.
+</DL>
+<A NAME="lbAH">&nbsp;</A>
+<H3>Execution-Time Symbolic Constants</H3>
+
+<P>
+
+If any of the following symbolic constants are not defined in the
+<I>&lt;<A HREF="file:///usr/include/unistd.h">unistd.h</A>&gt;</I>
+
+header, the value shall vary depending on the file to which it
+is applied. If defined, they shall have values suitable for use in
+<B>#if</B>
+
+preprocessing directives.
+<P>
+
+If any of the following symbolic constants are defined to have value
+-1 in the
+<I>&lt;<A HREF="file:///usr/include/unistd.h">unistd.h</A>&gt;</I>
+
+header, the implementation shall not provide the option on any file; if
+any are defined to have a value other than -1 in the
+<I>&lt;<A HREF="file:///usr/include/unistd.h">unistd.h</A>&gt;</I>
+
+header, the implementation shall provide the option on all applicable
+files.
+<P>
+
+All of the following values, whether defined as symbolic constants in
+<I>&lt;<A HREF="file:///usr/include/unistd.h">unistd.h</A>&gt;</I>
+
+or not, may be queried with respect to a specific file using the
+<I>pathconf</I>()
+or
+<I>fpathconf</I>()
+functions:
+<DL COMPACT>
+<DT>_POSIX_ASYNC_IO<DD>
+<BR>
+
+Asynchronous input or output operations may be performed for the
+associated file.
+<DT>_POSIX_PRIO_IO<DD>
+<BR>
+
+Prioritized input or output operations may be performed for the
+associated file.
+<DT>_POSIX_SYNC_IO<DD>
+<BR>
+
+Synchronized input or output operations may be performed for the
+associated file.
+</DL>
+<P>
+
+If the following symbolic constants are defined in the
+<I>&lt;<A HREF="file:///usr/include/unistd.h">unistd.h</A>&gt;</I>
+
+header, they apply to files and all paths in all file systems on
+the implementation:
+<DL COMPACT>
+<DT>_POSIX_TIMESTAMP_RESOLUTION<DD>
+<BR>
+
+The resolution in nanoseconds for all file timestamps.
+<DT>_POSIX2_SYMLINKS<DD>
+<BR>
+
+Symbolic links can be created.
+</DL>
+<A NAME="lbAI">&nbsp;</A>
+<H3>Constants for Functions</H3>
+
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/unistd.h">unistd.h</A>&gt;</I>
+
+header shall define NULL as described in
+<I>&lt;<A HREF="file:///usr/include/stddef.h">stddef.h</A>&gt;</I>.
+
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/unistd.h">unistd.h</A>&gt;</I>
+
+header shall define the following symbolic constants for use with the
+<I>access</I>()
+function. The values shall be suitable for use in
+<B>#if</B>
+
+preprocessing directives.
+<DL COMPACT>
+<DT>F_OK<DD>
+Test for existence of file.
+<DT>R_OK<DD>
+Test for read permission.
+<DT>W_OK<DD>
+Test for write permission.
+<DT>X_OK<DD>
+Test for execute (search) permission.
+</DL>
+<P>
+
+The constants F_OK, R_OK, W_OK, and X_OK and the expressions
+<I>R_OK</I>|<I>W_OK</I>, <I>R_OK</I>|<I>X_OK</I>, and
+<I>R_OK</I>|<I>W_OK</I>|<I>X_OK</I> shall all have distinct values.
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/unistd.h">unistd.h</A>&gt;</I>
+
+header shall define the following symbolic constants for the
+<I>confstr</I>()
+function:
+<DL COMPACT>
+<DT>_CS_PATH<DD>
+<BR>
+
+This is the value for the
+<I>PATH</I>
+
+environment variable that finds all standard utilities.
+<DT>_CS_POSIX_V7_ILP32_OFF32_CFLAGS<DD>
+<BR>
+
+If <I>sysconf</I>(_SC_V7_ILP32_OFF32) returns -1, the meaning of
+this value is unspecified. Otherwise, this value is the set of initial
+options to be given to the
+<I>c99</I>
+
+utility to build an application using a programming model with 32-bit
+<B>int</B>,
+
+<B>long</B>,
+
+<B>pointer</B>,
+
+and
+<B>off_t</B>
+
+types.
+<DT>_CS_POSIX_V7_ILP32_OFF32_LDFLAGS<DD>
+<BR>
+
+If <I>sysconf</I>(_SC_V7_ILP32_OFF32) returns -1, the meaning of
+this value is unspecified. Otherwise, this value is the set of final
+options to be given to the
+<I>c99</I>
+
+utility to build an application using a programming model with 32-bit
+<B>int</B>,
+
+<B>long</B>,
+
+<B>pointer</B>,
+
+and
+<B>off_t</B>
+
+types.
+<DT>_CS_POSIX_V7_ILP32_OFF32_LIBS<DD>
+<BR>
+
+If <I>sysconf</I>(_SC_V7_ILP32_OFF32) returns -1, the meaning of
+this value is unspecified. Otherwise, this value is the set of
+libraries to be given to the
+<I>c99</I>
+
+utility to build an application using a programming model with 32-bit
+<B>int</B>,
+
+<B>long</B>,
+
+<B>pointer</B>,
+
+and
+<B>off_t</B>
+
+types.
+<DT>_CS_POSIX_V7_ILP32_OFFBIG_CFLAGS<DD>
+<BR>
+
+If <I>sysconf</I>(_SC_V7_ILP32_OFFBIG) returns -1, the meaning of
+this value is unspecified. Otherwise, this value is the set of initial
+options to be given to the
+<I>c99</I>
+
+utility to build an application using a programming model with 32-bit
+<B>int</B>,
+
+<B>long</B>,
+
+and
+<B>pointer</B>
+
+types, and an
+<B>off_t</B>
+
+type using at least 64 bits.
+<DT>_CS_POSIX_V7_ILP32_OFFBIG_LDFLAGS<DD>
+<BR>
+
+If <I>sysconf</I>(_SC_V7_ILP32_OFFBIG) returns -1, the meaning of
+this value is unspecified. Otherwise, this value is the set of final
+options to be given to the
+<I>c99</I>
+
+utility to build an application using a programming model with 32-bit
+<B>int</B>,
+
+<B>long</B>,
+
+and
+<B>pointer</B>
+
+types, and an
+<B>off_t</B>
+
+type using at least 64 bits.
+<DT>_CS_POSIX_V7_ILP32_OFFBIG_LIBS<DD>
+<BR>
+
+If <I>sysconf</I>(_SC_V7_ILP32_OFFBIG) returns -1, the meaning of
+this value is unspecified. Otherwise, this value is the set of
+libraries to be given to the
+<I>c99</I>
+
+utility to build an application using a programming model with 32-bit
+<B>int</B>,
+
+<B>long</B>,
+
+and
+<B>pointer</B>
+
+types, and an
+<B>off_t</B>
+
+type using at least 64 bits.
+<DT>_CS_POSIX_V7_LP64_OFF64_CFLAGS<DD>
+<BR>
+
+If <I>sysconf</I>(_SC_V7_LP64_OFF64) returns -1, the meaning of
+this value is unspecified. Otherwise, this value is the set of initial
+options to be given to the
+<I>c99</I>
+
+utility to build an application using a programming model with 32-bit
+<B>int</B>
+
+and 64-bit
+<B>long</B>,
+
+<B>pointer</B>,
+
+and
+<B>off_t</B>
+
+types.
+<DT>_CS_POSIX_V7_LP64_OFF64_LDFLAGS<DD>
+<BR>
+
+If <I>sysconf</I>(_SC_V7_LP64_OFF64) returns -1, the meaning of
+this value is unspecified. Otherwise, this value is the set of final
+options to be given to the
+<I>c99</I>
+
+utility to build an application using a programming model with 32-bit
+<B>int</B>
+
+and 64-bit
+<B>long</B>,
+
+<B>pointer</B>,
+
+and
+<B>off_t</B>
+
+types.
+<DT>_CS_POSIX_V7_LP64_OFF64_LIBS<DD>
+<BR>
+
+If <I>sysconf</I>(_SC_V7_LP64_OFF64) returns -1, the meaning of
+this value is unspecified. Otherwise, this value is the set of
+libraries to be given to the
+<I>c99</I>
+
+utility to build an application using a programming model with 32-bit
+<B>int</B>
+
+and 64-bit
+<B>long</B>,
+
+<B>pointer</B>,
+
+and
+<B>off_t</B>
+
+types.
+<DT>_CS_POSIX_V7_LPBIG_OFFBIG_CFLAGS<DD>
+<BR>
+
+If <I>sysconf</I>(_SC_V7_LPBIG_OFFBIG) returns -1, the meaning of
+this value is unspecified. Otherwise, this value is the set of initial
+options to be given to the
+<I>c99</I>
+
+utility to build an application using a programming model with an
+<B>int</B>
+
+type using at least 32 bits and
+<B>long</B>,
+
+<B>pointer</B>,
+
+and
+<B>off_t</B>
+
+types using at least 64 bits.
+<DT>_CS_POSIX_V7_LPBIG_OFFBIG_LDFLAGS<DD>
+<BR>
+
+If <I>sysconf</I>(_SC_V7_LPBIG_OFFBIG) returns -1, the meaning of
+this value is unspecified. Otherwise, this value is the set of final
+options to be given to the
+<I>c99</I>
+
+utility to build an application using a programming model with an
+<B>int</B>
+
+type using at least 32 bits and
+<B>long</B>,
+
+<B>pointer</B>,
+
+and
+<B>off_t</B>
+
+types using at least 64 bits.
+<DT>_CS_POSIX_V7_LPBIG_OFFBIG_LIBS<DD>
+<BR>
+
+If <I>sysconf</I>(_SC_V7_LPBIG_OFFBIG) returns -1, the meaning of
+this value is unspecified. Otherwise, this value is the set of
+libraries to be given to the
+<I>c99</I>
+
+utility to build an application using a programming model with an
+<B>int</B>
+
+type using at least 32 bits and
+<B>long</B>,
+
+<B>pointer</B>,
+
+and
+<B>off_t</B>
+
+types using at least 64 bits.
+<DT>_CS_POSIX_V7_THREADS_CFLAGS<DD>
+<BR>
+
+If
+<I>sysconf</I>(_SC_POSIX_THREADS)
+
+returns -1, the meaning of this value is unspecified. Otherwise,
+this value is the set of initial options to be given to the
+<I>c99</I>
+
+utility to build a multi-threaded application. These flags are in addition
+to those associated with any of the other _CS_POSIX_V7_*_CFLAGS values
+used to specify particular type size programing environments.
+<DT>_CS_POSIX_V7_THREADS_LDFLAGS<DD>
+<BR>
+
+If
+<I>sysconf</I>(_SC_POSIX_THREADS)
+
+returns -1, the meaning of this value is unspecified. Otherwise,
+this value is the set of final options to be given to the
+<I>c99</I>
+
+utility to build a multi-threaded application. These flags are in addition
+to those associated with any of the other _CS_POSIX_V7_*_LDFLAGS values
+used to specify particular type size programing environments.
+<DT>_CS_POSIX_V7_WIDTH_RESTRICTED_ENVS<DD>
+<BR>
+
+This value is a
+&lt;newline&gt;-separated
+list of names of programming environments supported by the
+implementation in which the widths of the
+<B>blksize_t</B>,
+
+<B>cc_t</B>,
+
+<B>mode_t</B>,
+
+<B>nfds_t</B>,
+
+<B>pid_t</B>,
+
+<B>ptrdiff_t</B>,
+
+<B>size_t</B>,
+
+<B>speed_t</B>,
+
+<B>ssize_t</B>,
+
+<B>suseconds_t</B>,
+
+<B>tcflag_t</B>,
+
+<B>wchar_t</B>,
+
+and
+<B>wint_t</B>
+
+types are no greater than the width of type
+<B>long</B>.
+
+The format of each name shall be suitable for use with the
+<I>getconf</I>
+
+<B>-v</B>
+
+option.
+<DT>_CS_V7_ENV<DD>
+<BR>
+
+This is the value that provides the environment variable information
+(other than that provided by _CS_PATH) that is required by the
+implementation to create a conforming environment, as described in the
+implementation's conformance documentation.
+<BR>
+
+</DL>
+<P>
+
+The following symbolic constants are reserved for compatibility
+with Issue 6:
+<P>
+
+<PRE>
+_CS_POSIX_V6_ILP32_OFF32_CFLAGS
+_CS_POSIX_V6_ILP32_OFF32_LDFLAGS
+_CS_POSIX_V6_ILP32_OFF32_LIBS
+_CS_POSIX_V6_ILP32_OFFBIG_CFLAGS
+_CS_POSIX_V6_ILP32_OFFBIG_LDFLAGS
+_CS_POSIX_V6_ILP32_OFFBIG_LIBS
+_CS_POSIX_V6_LP64_OFF64_CFLAGS
+_CS_POSIX_V6_LP64_OFF64_LDFLAGS
+_CS_POSIX_V6_LP64_OFF64_LIBS
+_CS_POSIX_V6_LPBIG_OFFBIG_CFLAGS
+_CS_POSIX_V6_LPBIG_OFFBIG_LDFLAGS
+_CS_POSIX_V6_LPBIG_OFFBIG_LIBS
+_CS_POSIX_V6_WIDTH_RESTRICTED_ENVS
+_CS_V6_ENV
+</PRE>
+
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/unistd.h">unistd.h</A>&gt;</I>
+
+header shall define SEEK_CUR, SEEK_END, and SEEK_SET as described in
+<I>&lt;<A HREF="file:///usr/include/stdio.h">stdio.h</A>&gt;</I>.
+
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/unistd.h">unistd.h</A>&gt;</I>
+
+header shall define the following symbolic constants as possible
+values for the
+<I>function</I>
+
+argument to the
+<I>lockf</I>()
+function:
+<DL COMPACT>
+<DT>F_LOCK<DD>
+Lock a section for exclusive use.
+<DT>F_TEST<DD>
+Test section for locks by other processes.
+<DT>F_TLOCK<DD>
+Test and lock a section for exclusive use.
+<DT>F_ULOCK<DD>
+Unlock locked sections.
+</DL>
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/unistd.h">unistd.h</A>&gt;</I>
+
+header shall define the following symbolic constants for
+<I>pathconf</I>():
+<P>
+
+<PRE>
+_PC_2_SYMLINKS
+_PC_ALLOC_SIZE_MIN
+_PC_ASYNC_IO
+_PC_CHOWN_RESTRICTED
+_PC_FILESIZEBITS
+_PC_LINK_MAX
+_PC_MAX_CANON
+_PC_MAX_INPUT
+_PC_NAME_MAX
+_PC_NO_TRUNC
+_PC_PATH_MAX
+_PC_PIPE_BUF
+_PC_PRIO_IO
+_PC_REC_INCR_XFER_SIZE
+_PC_REC_MAX_XFER_SIZE
+_PC_REC_MIN_XFER_SIZE
+_PC_REC_XFER_ALIGN
+_PC_SYMLINK_MAX
+_PC_SYNC_IO
+_PC_TIMESTAMP_RESOLUTION
+_PC_VDISABLE
+</PRE>
+
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/unistd.h">unistd.h</A>&gt;</I>
+
+header shall define the following symbolic constants for
+<I>sysconf</I>():
+<P>
+
+<PRE>
+_SC_2_C_BIND
+_SC_2_C_DEV
+_SC_2_CHAR_TERM
+_SC_2_FORT_DEV
+_SC_2_FORT_RUN
+_SC_2_LOCALEDEF
+_SC_2_PBS
+_SC_2_PBS_ACCOUNTING
+_SC_2_PBS_CHECKPOINT
+_SC_2_PBS_LOCATE
+_SC_2_PBS_MESSAGE
+_SC_2_PBS_TRACK
+_SC_2_SW_DEV
+_SC_2_UPE
+_SC_2_VERSION
+_SC_ADVISORY_INFO
+_SC_AIO_LISTIO_MAX
+_SC_AIO_MAX
+_SC_AIO_PRIO_DELTA_MAX
+_SC_ARG_MAX
+_SC_ASYNCHRONOUS_IO
+_SC_ATEXIT_MAX
+_SC_BARRIERS
+_SC_BC_BASE_MAX
+_SC_BC_DIM_MAX
+_SC_BC_SCALE_MAX
+_SC_BC_STRING_MAX
+_SC_CHILD_MAX
+_SC_CLK_TCK
+_SC_CLOCK_SELECTION
+_SC_COLL_WEIGHTS_MAX
+_SC_CPUTIME
+_SC_DELAYTIMER_MAX
+_SC_EXPR_NEST_MAX
+_SC_FSYNC
+_SC_GETGR_R_SIZE_MAX
+_SC_GETPW_R_SIZE_MAX
+_SC_HOST_NAME_MAX
+_SC_IOV_MAX
+_SC_IPV6
+_SC_JOB_CONTROL
+_SC_LINE_MAX
+_SC_LOGIN_NAME_MAX
+_SC_MAPPED_FILES
+_SC_MEMLOCK
+_SC_MEMLOCK_RANGE
+_SC_MEMORY_PROTECTION
+_SC_MESSAGE_PASSING
+_SC_MONOTONIC_CLOCK
+_SC_MQ_OPEN_MAX
+_SC_MQ_PRIO_MAX
+_SC_NGROUPS_MAX
+_SC_OPEN_MAX
+_SC_PAGE_SIZE
+_SC_PAGESIZE
+_SC_PRIORITIZED_IO
+_SC_PRIORITY_SCHEDULING
+_SC_RAW_SOCKETS
+_SC_RE_DUP_MAX
+_SC_READER_WRITER_LOCKS
+_SC_REALTIME_SIGNALS
+_SC_REGEXP
+_SC_RTSIG_MAX
+_SC_SAVED_IDS
+_SC_SEM_NSEMS_MAX
+_SC_SEM_VALUE_MAX
+_SC_SEMAPHORES
+_SC_SHARED_MEMORY_OBJECTS
+_SC_SHELL
+_SC_SIGQUEUE_MAX
+_SC_SPAWN
+_SC_SPIN_LOCKS
+_SC_SPORADIC_SERVER
+_SC_SS_REPL_MAX
+_SC_STREAM_MAX
+_SC_SYMLOOP_MAX
+_SC_SYNCHRONIZED_IO
+_SC_THREAD_ATTR_STACKADDR
+_SC_THREAD_ATTR_STACKSIZE
+_SC_THREAD_CPUTIME
+_SC_THREAD_DESTRUCTOR_ITERATIONS
+_SC_THREAD_KEYS_MAX
+_SC_THREAD_PRIO_INHERIT
+_SC_THREAD_PRIO_PROTECT
+_SC_THREAD_PRIORITY_SCHEDULING
+_SC_THREAD_PROCESS_SHARED
+_SC_THREAD_ROBUST_PRIO_INHERIT
+_SC_THREAD_ROBUST_PRIO_PROTECT
+_SC_THREAD_SAFE_FUNCTIONS
+_SC_THREAD_SPORADIC_SERVER
+_SC_THREAD_STACK_MIN
+_SC_THREAD_THREADS_MAX
+_SC_THREADS
+_SC_TIMEOUTS
+_SC_TIMER_MAX
+_SC_TIMERS
+_SC_TRACE
+_SC_TRACE_EVENT_FILTER
+_SC_TRACE_EVENT_NAME_MAX
+_SC_TRACE_INHERIT
+_SC_TRACE_LOG
+_SC_TRACE_NAME_MAX
+_SC_TRACE_SYS_MAX
+_SC_TRACE_USER_EVENT_MAX
+_SC_TTY_NAME_MAX
+_SC_TYPED_MEMORY_OBJECTS
+_SC_TZNAME_MAX
+_SC_V7_ILP32_OFF32
+_SC_V7_ILP32_OFFBIG
+_SC_V7_LP64_OFF64
+_SC_V7_LPBIG_OFFBIG
+_SC_V6_ILP32_OFF32
+_SC_V6_ILP32_OFFBIG
+_SC_V6_LP64_OFF64
+_SC_V6_LPBIG_OFFBIG
+_SC_VERSION
+_SC_XOPEN_CRYPT
+_SC_XOPEN_ENH_I18N
+_SC_XOPEN_REALTIME
+_SC_XOPEN_REALTIME_THREADS
+_SC_XOPEN_SHM
+_SC_XOPEN_STREAMS
+_SC_XOPEN_UNIX
+_SC_XOPEN_UUCP
+_SC_XOPEN_VERSION
+</PRE>
+
+<P>
+
+The two constants _SC_PAGESIZE and _SC_PAGE_SIZE may be defined to
+have the same value.
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/unistd.h">unistd.h</A>&gt;</I>
+
+header shall define the following symbolic constants for file streams:
+<DL COMPACT>
+<DT>STDERR_FILENO<DD>
+File number of
+<I>stderr</I>;
+
+2.
+<DT>STDIN_FILENO<DD>
+File number of
+<I>stdin</I>;
+
+0.
+<DT>STDOUT_FILENO<DD>
+File number of
+<I>stdout</I>;
+
+1.
+</DL>
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/unistd.h">unistd.h</A>&gt;</I>
+
+header shall define the following symbolic constant for terminal
+special character handling:
+<DL COMPACT>
+<DT>_POSIX_VDISABLE<DD>
+This symbol shall be defined to be the value of a character that shall
+disable terminal special character handling as described in
+<I>Section 11.2.6</I>, <I>Special Control Characters.</I>
+
+This symbol shall always be set to a value other than -1.
+</DL>
+<A NAME="lbAJ">&nbsp;</A>
+<H3>Type Definitions</H3>
+
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/unistd.h">unistd.h</A>&gt;</I>
+
+header shall define the
+<B>size_t</B>,
+
+<B>ssize_t</B>,
+
+<B>uid_t</B>,
+
+<B>gid_t</B>,
+
+<B>off_t</B>,
+
+and
+<B>pid_t</B>
+
+types as described in
+<I>&lt;<A HREF="file:///usr/include/sys/types.h">sys/types.h</A>&gt;</I>.
+
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/unistd.h">unistd.h</A>&gt;</I>
+
+header shall define the
+<B>intptr_t</B>
+
+type as described in
+<I>&lt;<A HREF="file:///usr/include/inttypes.h">inttypes.h</A>&gt;</I>.
+
+<A NAME="lbAK">&nbsp;</A>
+<H3>Declarations</H3>
+
+<P>
+
+The following shall be declared as functions and may also be defined
+as macros. Function prototypes shall be provided.
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+int          access(const char *, int);
+unsigned     alarm(unsigned);
+int          chdir(const char *);
+int          chown(const char *, uid_t, gid_t);
+int          close(int);
+size_t       confstr(int, char *, size_t);
+char        *crypt(const char *, const char *);
+int          dup(int);
+<BR>
+int          dup2(int, int);
+void         _exit(int);
+void         encrypt(char [64], int);
+int          execl(const char *, const char *, ...);
+int          execle(const char *, const char *, ...);
+int          execlp(const char *, const char *, ...);
+int          execv(const char *, char *const []);
+int          execve(const char *, char *const [], char *const []);
+int          execvp(const char *, char *const []);
+int          faccessat(int, const char *, int, int);
+int          fchdir(int);
+int          fchown(int, uid_t, gid_t);
+int          fchownat(int, const char *, uid_t, gid_t, int);
+int          fdatasync(int);
+int          fexecve(int, char *const [], char *const []);
+pid_t        fork(void);
+long         fpathconf(int, int);
+int          fsync(int);
+int          ftruncate(int, off_t);
+char        *getcwd(char *, size_t);
+gid_t        getegid(void);
+uid_t        geteuid(void);
+gid_t        getgid(void);
+int          getgroups(int, gid_t []);
+long         gethostid(void);
+int          gethostname(char *, size_t);
+char        *getlogin(void);
+int          getlogin_r(char *, size_t);
+int          getopt(int, char * const [], const char *);
+pid_t        getpgid(pid_t);
+pid_t        getpgrp(void);
+pid_t        getpid(void);
+pid_t        getppid(void);
+pid_t        getsid(pid_t);
+uid_t        getuid(void);
+int          isatty(int);
+int          lchown(const char *, uid_t, gid_t);
+int          link(const char *, const char *);
+int          linkat(int, const char *, int, const char *, int);
+int          lockf(int, int, off_t);
+off_t        lseek(int, off_t, int);
+int          nice(int);
+long         pathconf(const char *, int);
+int          pause(void);
+int          pipe(int [2]);
+ssize_t      pread(int, void *, size_t, off_t);
+ssize_t      pwrite(int, const void *, size_t, off_t);
+ssize_t      read(int, void *, size_t);
+ssize_t      readlink(const char *restrict, char *restrict, size_t);
+ssize_t      readlinkat(int, const char *restrict, char *restrict, size_t);
+int          rmdir(const char *);
+int          setegid(gid_t);
+int          seteuid(uid_t);
+int          setgid(gid_t);
+<BR>
+int          setpgid(pid_t, pid_t);
+pid_t        setpgrp(void);
+int          setregid(gid_t, gid_t);
+int          setreuid(uid_t, uid_t);
+pid_t        setsid(void);
+int          setuid(uid_t);
+unsigned     sleep(unsigned);
+void         swab(const void *restrict, void *restrict, ssize_t);
+int          symlink(const char *, const char *);
+int          symlinkat(const char *, int, const char *);
+void         sync(void);
+long         sysconf(int);
+pid_t        tcgetpgrp(int);
+int          tcsetpgrp(int, pid_t);
+int          truncate(const char *, off_t);
+char        *ttyname(int);
+int          ttyname_r(int, char *, size_t);
+int          unlink(const char *);
+int          unlinkat(int, const char *, int);
+ssize_t      write(int, const void *, size_t);
+</B></PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+Implementations may also include the
+<I>pthread_atfork</I>()
+prototype as defined in
+<I>&lt;<A HREF="file:///usr/include/pthread.h">pthread.h</A>&gt;</I>.
+
+Implementations may also include the
+<I>ctermid</I>()
+prototype as defined in
+<I>&lt;<A HREF="file:///usr/include/stdio.h">stdio.h</A>&gt;</I>.
+
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/unistd.h">unistd.h</A>&gt;</I>
+
+header shall declare the following external variables:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+extern char  *optarg;
+extern int    opterr, optind, optopt;
+</B></PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+<I>The following sections are informative.</I>
+
+<A NAME="lbAL">&nbsp;</A>
+<H2>APPLICATION USAGE</H2>
+
+POSIX.1-2008 only describes the behavior of systems that claim conformance to
+it. However, application developers who want to write applications that
+adapt to other versions of this standard (or to systems that do not
+conform to any POSIX standard) may find it useful to code them so as to
+conditionally compile different code depending on the value of
+_POSIX_VERSION, for example:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+#if _POSIX_VERSION &gt;= 200112L
+/* Use the newer function that copes with large files. */
+off_t pos=ftello(fp);
+#else
+/* Either this is an old version of POSIX, or _POSIX_VERSION is
+   not even defined, so use the traditional function. */
+long pos=ftell(fp);
+#endif
+</B></PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+Earlier versions of POSIX.1-2008 and of the Single UNIX Specification
+can be identified by the following macros:
+<DL COMPACT>
+<DT>POSIX.1-1988 standard<DD>
+<BR>
+
+_POSIX_VERSION==198808L
+<DT>POSIX.1-1990 standard<DD>
+<BR>
+
+_POSIX_VERSION==199009L
+<DT>ISO&nbsp;POSIX-1:1996 standard<DD>
+<BR>
+
+_POSIX_VERSION==199506L
+<DT>Single UNIX Specification, Version 1<DD>
+<BR>
+
+_XOPEN_UNIX and _XOPEN_VERSION==4
+<DT>Single UNIX Specification, Version 2<DD>
+<BR>
+
+_XOPEN_UNIX and _XOPEN_VERSION==500
+<DT>ISO POSIX-1:2001 and Single UNIX Specification, Version 3<DD>
+<BR>
+
+_POSIX_VERSION==200112L, plus (if the XSI option is supported)
+_XOPEN_UNIX and _XOPEN_VERSION==600
+</DL>
+<P>
+
+POSIX.1-2008 does not make any attempt to define application binary
+interaction with the underlying operating system. However, application
+developers may find it useful to query _SC_VERSION at runtime via
+<I>sysconf</I>()
+to determine whether the current version of the operating system
+supports the necessary functionality as in the following program
+fragment:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+if (sysconf(_SC_VERSION) &lt; 200809L) {
+    fprintf(stderr, &quot;POSIX.1-2008 system required, terminating \n&quot;);
+    <A HREF="../man1/exit.1.html">exit</A>(1);
+}
+</B></PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+New applications should not use _XOPEN_SHM or _XOPEN_ENH_I18N.
+<A NAME="lbAM">&nbsp;</A>
+<H2>RATIONALE</H2>
+
+As POSIX.1-2008 evolved, certain options became sufficiently standardized that
+it was concluded that simply requiring one of the option choices was
+simpler than retaining the option. However, for backwards-compatibility,
+the option flags (with required constant values) are retained.
+<A NAME="lbAN">&nbsp;</A>
+<H3>Version Test Macros</H3>
+
+<P>
+
+The standard developers considered altering the definition of
+_POSIX_VERSION and removing _SC_VERSION from the specification of
+<I>sysconf</I>()
+since the utility to an application was deemed by some to be minimal,
+and since the implementation of the functionality is potentially
+problematic. However, they recognized that support for existing
+application binaries is a concern to manufacturers, application
+developers, and the users of implementations conforming to POSIX.1-2008.
+<P>
+
+While the example using _SC_VERSION in the APPLICATION USAGE section
+does not provide the greatest degree of imaginable utility to the
+application developer or user, it is arguably better than a
+<B>core</B>
+
+file or some other equally obscure result. (It is also possible for
+implementations to encode and recognize application binaries compiled
+in various POSIX.1-conforming environments, and modify the semantics of
+the underlying system to conform to the expectations of the
+application.) For the reasons outlined in the preceding paragraphs and
+in the APPLICATION USAGE section, the standard developers elected to
+retain the _POSIX_VERSION and _SC_VERSION functionality.
+<A NAME="lbAO">&nbsp;</A>
+<H3>Compile-Time Symbolic Constants for System-Wide Options</H3>
+
+<P>
+
+POSIX.1-2008 includes support in certain areas for the newly adopted
+policy governing options and stubs.
+<P>
+
+This policy provides flexibility for implementations in how they
+support options. It also specifies how conforming applications can
+adapt to different implementations that support different sets of
+options. It allows the following:
+<DL COMPACT>
+<DT> 1.<DD>
+If an implementation has no interest in supporting an option, it does
+not have to provide anything associated with that option beyond the
+announcement that it does not support it.
+<DT> 2.<DD>
+An implementation can support a partial or incompatible version of an
+option (as a non-standard extension) as long as it does not claim to
+support the option.
+<DT> 3.<DD>
+An application can determine whether the option is supported. A
+strictly conforming application must check this announcement mechanism
+before first using anything associated with the option.
+</DL>
+<P>
+
+There is an important implication of this policy. POSIX.1-2008 cannot
+dictate the behavior of interfaces associated with an option when the
+implementation does not claim to support the option. In particular, it
+cannot require that a function associated with an unsupported option
+will fail if it does not perform as specified. However, this policy
+does not prevent a standard from requiring certain functions to always
+be present, but that they shall always fail on some implementations.
+The
+<I>setpgid</I>()
+function in the POSIX.1-1990 standard, for example, is considered appropriate.
+<P>
+
+The POSIX standards include various options, and the C-language
+binding support for an option implies that the implementation must
+supply data types and function interfaces. An application must be able
+to discover whether the implementation supports each option.
+<P>
+
+Any application must consider the following three cases for each
+option:
+<DL COMPACT>
+<DT> 1.<DD>
+Option never supported.
+<DL COMPACT><DT><DD>
+<P>
+<P>
+
+The implementation advertises at compile time that the option will
+never be supported. In this case, it is not necessary for the
+implementation to supply any of the data types or function interfaces
+that are provided only as part of the option. The implementation might
+provide data types and functions that are similar to those defined by
+POSIX.1-2008, but there is no guarantee for any particular behavior.
+</DL>
+
+<DT> 2.<DD>
+Option always supported.
+<DL COMPACT><DT><DD>
+<P>
+<P>
+
+The implementation advertises at compile time that the option will
+always be supported. In this case, all data types and function
+interfaces shall be available and shall operate as specified.
+</DL>
+
+<DT> 3.<DD>
+Option might or might not be supported.
+<DL COMPACT><DT><DD>
+<P>
+<P>
+
+Some implementations might not provide a mechanism to specify support
+of options at compile time. In addition, the implementation might be
+unable or unwilling to specify support or non-support at compile time.
+In either case, any application that might use the option at runtime
+must be able to compile and execute. The implementation must provide,
+at compile time, all data types and function interfaces that are
+necessary to allow this. In this situation, there must be a mechanism
+that allows the application to query, at runtime, whether the option is
+supported. If the application attempts to use the option when it is not
+supported, the result is unspecified unless explicitly specified
+otherwise in POSIX.1-2008.
+</DL>
+
+</DL>
+<A NAME="lbAP">&nbsp;</A>
+<H2>FUTURE DIRECTIONS</H2>
+
+None.
+<A NAME="lbAQ">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+<I></I><B>&lt;<A HREF="file:///usr/include/inttypes.h">inttypes.h</A>&gt;</B>,
+
+<I></I><B>&lt;<A HREF="file:///usr/include/limits.h">limits.h</A>&gt;</B>,
+
+<I></I><B>&lt;<A HREF="file:///usr/include/stddef.h">stddef.h</A>&gt;</B>,
+
+<I></I><B>&lt;<A HREF="file:///usr/include/stdio.h">stdio.h</A>&gt;</B>,
+
+<I></I><B>&lt;<A HREF="file:///usr/include/sys_socket.h">sys_socket.h</A>&gt;</B>,
+
+<I></I><B>&lt;<A HREF="file:///usr/include/sys_types.h">sys_types.h</A>&gt;</B>,
+
+<I></I><B>&lt;<A HREF="file:///usr/include/termios.h">termios.h</A>&gt;</B>,
+
+<I></I><B>&lt;<A HREF="file:///usr/include/wctype.h">wctype.h</A>&gt;</B>
+
+<P>
+
+
+The System Interfaces volume of POSIX.1-2008,
+<I>access</I>(),
+
+<I>alarm</I>(),
+
+<I>chown</I>(),
+
+<I>close</I>(),
+
+<I>confstr</I>(),
+
+<I>crypt</I>(),
+
+<I>ctermid</I>(),
+
+<I>dup</I>(),
+
+<I>_Exit</I>(),
+
+<I>encrypt</I>(),
+
+<I>exec</I>,
+
+<I>fchdir</I>(),
+
+<I>fchown</I>(),
+
+<I>fdatasync</I>(),
+
+<I>fork</I>(),
+
+<I>fpathconf</I>(),
+
+<I>fsync</I>(),
+
+<I>ftruncate</I>(),
+
+<I>getcwd</I>(),
+
+<I>getegid</I>(),
+
+<I>geteuid</I>(),
+
+<I>getgid</I>(),
+
+<I>getgroups</I>(),
+
+<I>gethostid</I>(),
+
+<I>gethostname</I>(),
+
+<I>getlogin</I>(),
+
+<I>getopt</I>(),
+
+<I>getpgid</I>(),
+
+<I>getpgrp</I>(),
+
+<I>getpid</I>(),
+
+<I>getppid</I>(),
+
+<I>getsid</I>(),
+
+<I>getuid</I>(),
+
+<I>isatty</I>(),
+
+<I>lchown</I>(),
+
+<I>link</I>(),
+
+<I>lockf</I>(),
+
+<I>lseek</I>(),
+
+<I>nice</I>(),
+
+<I>pause</I>(),
+
+<I>pipe</I>(),
+
+<I>read</I>(),
+
+<I>readlink</I>(),
+
+<I>rmdir</I>(),
+
+<I>setegid</I>(),
+
+<I>seteuid</I>(),
+
+<I>setgid</I>(),
+
+<I>setpgid</I>(),
+
+<I>setpgrp</I>(),
+
+<I>setregid</I>(),
+
+<I>setreuid</I>(),
+
+<I>setsid</I>(),
+
+<I>setuid</I>(),
+
+<I>sleep</I>(),
+
+<I>swab</I>(),
+
+<I>symlink</I>(),
+
+<I>sync</I>(),
+
+<I>sysconf</I>(),
+
+<I>tcgetpgrp</I>(),
+
+<I>tcsetpgrp</I>(),
+
+<I>truncate</I>(),
+
+<I>ttyname</I>(),
+
+<I>unlink</I>(),
+
+<I>write</I>()
+
+
+<A NAME="lbAR">&nbsp;</A>
+<H2>COPYRIGHT</H2>
+
+Portions of this text are reprinted and reproduced in electronic form
+from IEEE Std 1003.1, 2013 Edition, Standard for Information Technology
+-- Portable Operating System Interface (POSIX), The Open Group Base
+Specifications Issue 7, Copyright (C) 2013 by the Institute of
+Electrical and Electronics Engineers, Inc and The Open Group.
+(This is POSIX.1-2008 with the 2013 Technical Corrigendum 1 applied.) In the
+event of any discrepancy between this version and the original IEEE and
+The Open Group Standard, the original IEEE and The Open Group Standard
+is the referee document. The original Standard can be obtained online at
+<A HREF="http://www.unix.org/online.html">http://www.unix.org/online.html</A> .
+<P>
+Any typographical or formatting errors that appear
+in this page are most likely
+to have been introduced during the conversion of the source files to
+man page format. To report such errors, see
+<A HREF="https://www.kernel.org/doc/man-pages/reporting_bugs.html">https://www.kernel.org/doc/man-pages/reporting_bugs.html</A> .
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">PROLOG</A><DD>
+<DT><A HREF="#lbAC">NAME</A><DD>
+<DT><A HREF="#lbAD">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAE">DESCRIPTION</A><DD>
+<DL>
+<DT><A HREF="#lbAF">Version Test Macros</A><DD>
+<DT><A HREF="#lbAG">Constants for Options and Option Groups</A><DD>
+<DT><A HREF="#lbAH">Execution-Time Symbolic Constants</A><DD>
+<DT><A HREF="#lbAI">Constants for Functions</A><DD>
+<DT><A HREF="#lbAJ">Type Definitions</A><DD>
+<DT><A HREF="#lbAK">Declarations</A><DD>
+</DL>
+<DT><A HREF="#lbAL">APPLICATION USAGE</A><DD>
+<DT><A HREF="#lbAM">RATIONALE</A><DD>
+<DL>
+<DT><A HREF="#lbAN">Version Test Macros</A><DD>
+<DT><A HREF="#lbAO">Compile-Time Symbolic Constants for System-Wide Options</A><DD>
+</DL>
+<DT><A HREF="#lbAP">FUTURE DIRECTIONS</A><DD>
+<DT><A HREF="#lbAQ">SEE ALSO</A><DD>
+<DT><A HREF="#lbAR">COPYRIGHT</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 14:28:43 GMT, February 25, 2017
+</BODY>
+</HTML>

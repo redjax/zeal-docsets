@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    
+<!-- Mirrored from mdn.mozillademos.org/en-US/docs/Web/API/GlobalEventHandlers/onkeypress$samples/Filter_keys_with_a_regular_expression?revision=1473772 by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 02 May 2019 00:08:45 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+        <meta charset="utf-8">
+        <link href="../../../../../../../developer.mozilla.org/static/build/styles/samples.37902ba3b7fe.css" rel="stylesheet" type="text/css" />
+        
+        <title>GlobalEventHandlers.onkeypress</title>
+    </head>
+    <body>
+        
+            <label>Enter numbers only:
+  <input>
+</label>
+        
+        
+            <script>
+                function numbersOnly(event) {
+  return event.charCode === 0 || /\d/.test(String.fromCharCode(event.charCode));
+}
+
+const input = document.querySelector('input');
+input.onkeypress = numbersOnly;
+
+// Prevent pasting (since pasted content might include non-number characters)
+input.onpaste = event => false;
+            </script>
+        
+    </body>
+
+<!-- Mirrored from mdn.mozillademos.org/en-US/docs/Web/API/GlobalEventHandlers/onkeypress$samples/Filter_keys_with_a_regular_expression?revision=1473772 by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 02 May 2019 00:08:45 GMT -->
+</html>

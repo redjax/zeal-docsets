@@ -1,0 +1,371 @@
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML><HEAD><TITLE>Man page of UUENCODE</TITLE>
+</HEAD><BODY>
+<H1>UUENCODE</H1>
+Section: POSIX Programmer's Manual (1P)<BR>Updated: 2013<BR><A HREF="#index">Index</A>
+<A HREF="../index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>PROLOG</H2>
+
+This manual page is part of the POSIX Programmer's Manual.
+The Linux implementation of this interface may differ (consult
+the corresponding Linux manual page for details of Linux behavior),
+or the interface may not be implemented on Linux.
+<P>
+<A NAME="lbAC">&nbsp;</A>
+<H2>NAME</H2>
+
+uuencode
+--- encode a binary file
+<A NAME="lbAD">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<P>
+
+<PRE>
+uuencode <B>[</B>-m<B>] [</B><I>file</I><B>] </B><I>decode_pathname</I>
+</PRE>
+
+<A NAME="lbAE">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+The
+<I>uuencode</I>
+
+utility shall write an encoded version of the named input file, or
+standard input if no
+<I>file</I>
+
+is specified, to standard output. The output shall be encoded using
+one of the algorithms described in the STDOUT section and shall
+include the file access permission bits (in
+<I>chmod</I>
+
+octal or symbolic notation) of the input file and the
+<I>decode_pathname</I>,
+
+for re-creation of the file on another system that conforms to this volume of POSIX.1-2008.
+<A NAME="lbAF">&nbsp;</A>
+<H2>OPTIONS</H2>
+
+The
+<I>uuencode</I>
+
+utility shall conform to the Base Definitions volume of POSIX.1-2008,
+<I>Section 12.2</I>, <I>Utility Syntax Guidelines.</I>
+
+<P>
+
+The following option shall be supported by the implementation:
+<DL COMPACT>
+<DT><B>-m</B><DD>
+Encode the output using the MIME Base64 algorithm described in STDOUT.
+If
+<B>-m</B>
+
+is not specified, the historical algorithm described in STDOUT shall be
+used.
+</DL>
+<A NAME="lbAG">&nbsp;</A>
+<H2>OPERANDS</H2>
+
+The following operands shall be supported:
+<DL COMPACT>
+<DT><I>decode_pathname</I><DD>
+<BR>
+
+The pathname of the file into which the
+<I>uudecode</I>
+
+utility shall place the decoded file. Specifying a
+<I>decode_pathname</I>
+
+operand of
+<B>/dev/stdout</B>
+
+shall indicate that
+<I>uudecode</I>
+
+is to use standard output. If there are characters in
+<I>decode_pathname</I>
+
+that are not in the portable filename character set the results are
+unspecified.
+<DT><I>file</I><DD>
+A pathname of the file to be encoded.
+</DL>
+<A NAME="lbAH">&nbsp;</A>
+<H2>STDIN</H2>
+
+See the INPUT FILES section.
+<A NAME="lbAI">&nbsp;</A>
+<H2>INPUT FILES</H2>
+
+Input files can be files of any type.
+<A NAME="lbAJ">&nbsp;</A>
+<H2>ENVIRONMENT VARIABLES</H2>
+
+The following environment variables shall affect the execution of
+<I>uuencode</I>:
+
+<DL COMPACT>
+<DT><I>LANG</I><DD>
+Provide a default value for the internationalization variables that are
+unset or null. (See the Base Definitions volume of POSIX.1-2008,
+<I>Section 8.2</I>, <I>Internationalization Variables</I>
+
+for the precedence of internationalization variables used to determine
+the values of locale categories.)
+<DT><I>LC_ALL</I><DD>
+If set to a non-empty string value, override the values of all the
+other internationalization variables.
+<DT><I>LC_CTYPE</I><DD>
+Determine the locale for the interpretation of sequences of bytes of
+text data as characters (for example, single-byte as opposed to
+multi-byte characters in arguments and input files).
+<DT><I>LC_MESSAGES</I><DD>
+<BR>
+
+Determine the locale that should be used to affect the format and
+contents of diagnostic messages written to standard error.
+<DT><I>NLSPATH</I><DD>
+Determine the location of message catalogs for the processing of
+<I>LC_MESSAGES</I>.
+
+</DL>
+<A NAME="lbAK">&nbsp;</A>
+<H2>ASYNCHRONOUS EVENTS</H2>
+
+Default.
+<A NAME="lbAL">&nbsp;</A>
+<H2>STDOUT</H2>
+
+<A NAME="lbAM">&nbsp;</A>
+<H3>uuencode Base64 Algorithm</H3>
+
+<P>
+
+The standard output shall be a text file (encoded in the character set
+of the current locale) that begins with the line:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+&quot;begin-base64 %s %s\n&quot;, &lt;</B><I>mode</I>&gt;, &lt;<I>decode_pathname</I>&gt;
+</PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+and ends with the line:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+&quot;====\n&quot;
+</B></PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+In both cases, the lines shall have no preceding or trailing
+&lt;blank&gt;
+characters.
+<P>
+
+The encoding process represents 24-bit groups of input bits as output
+strings of four encoded characters. Proceeding from left to right, a
+24-bit input group shall be formed by concatenating three 8-bit input
+groups. Each 24-bit input group then shall be treated as four
+concatenated 6-bit groups, each of which shall be translated into a
+single digit in the Base64 alphabet. When encoding a bit stream via the
+Base64 encoding, the bit stream shall be presumed to be ordered with
+the most-significant bit first. That is, the first bit in the stream
+shall be the high-order bit in the first byte, and the eighth bit shall
+be the low-order bit in the first byte, and so on. Each 6-bit group is
+used as an index into an array of 64 printable characters, as shown in
+<I>Table 4-22, uuencode Base64 Values.</I>
+
+<P>
+<CENTER>
+<B>Table 4-22: uuencode Base64 Values</B><BR>
+</CENTER>
+
+<CENTER><TABLE BORDER><TR><TD><TABLE>
+<TR VALIGN=top><TD ALIGN=center><B>The character referenced by the index shall be placed in the output</B></TD><TD ALIGN=center><B></B></TD><TD ALIGN=center><B></B></TD><TD ALIGN=center><B></B></TD><TD ALIGN=center><B></B></TD><TD ALIGN=center><B></B></TD><TD ALIGN=center><B></B></TD><TD ALIGN=center><B></B><BR></TD></TR>
+<TR VALIGN=top><TD ALIGN=right>string.&nbsp;&nbsp;&nbsp;&nbsp;</TD><TD ALIGN=center></TD><TD ALIGN=right>&nbsp;&nbsp;&nbsp;&nbsp;</TD><TD ALIGN=center></TD><TD ALIGN=right>&nbsp;&nbsp;&nbsp;&nbsp;</TD><TD ALIGN=center></TD><TD ALIGN=right>&nbsp;&nbsp;&nbsp;&nbsp;</TD><TD ALIGN=center><BR></TD></TR>
+<TR VALIGN=top><TD>The output stream (encoded bytes) shall be represented in lines of no</TD><TD></TD><TD ALIGN=right>&nbsp;&nbsp;&nbsp;&nbsp;</TD><TD ALIGN=center><I></I></TD><TD ALIGN=right>&nbsp;&nbsp;&nbsp;&nbsp;</TD><TD></TD><TD></TD><TD ALIGN=right>&nbsp;&nbsp;&nbsp;&nbsp;<BR></TD><TD ALIGN=center><I></I><BR></TD><TD ALIGN=right>&nbsp;&nbsp;&nbsp;&nbsp;<BR></TD><TD><BR></TD><TD><BR></TD><TD ALIGN=right>&nbsp;&nbsp;&nbsp;&nbsp;<BR></TD><TD ALIGN=center><I></I><BR></TD><TD ALIGN=right>&nbsp;&nbsp;&nbsp;&nbsp;<BR></TD><TD><BR></TD><TD><BR></TD><TD ALIGN=right>&nbsp;&nbsp;&nbsp;&nbsp;<BR></TD><TD ALIGN=center><I></I><BR></TD><TD ALIGN=right>&nbsp;&nbsp;&nbsp;&nbsp;<BR></TD></TR>
+<TR VALIGN=top><TD><HR></TD></TR>
+<TR VALIGN=top><TD>found in the table shall be ignored by decoding software (see&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD><TD ALIGN=right><I>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</I></TD></TR>
+<TR VALIGN=top></TR>
+<TR VALIGN=top><TD ALIGN=center>available at the end of a message or encapsulated part of a message. A&nbsp;</TD></TR>
+<TR VALIGN=top><TD>full encoding quantum shall always be completed at the end of a&nbsp;&nbsp;</TD></TR>
+<TR VALIGN=top><TD>message. When fewer than 24 input bits are available in an input group,&nbsp;&nbsp;&nbsp;</TD></TR>
+<TR VALIGN=top><TD ALIGN=right>zero bits shall be added (on the right) to form an integral number of&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD></TR>
+<TR VALIGN=top><TD>6-bit groups. Output character positions that are not required to&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD></TR>
+<TR VALIGN=top><TD><FONT SIZE="-9">represent actual input data shall be set to the character&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></TD></TR>
+<TR VALIGN=top><TD><I>Since all Base64 input is an integral number of octets, only the&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</I></TD></TR>
+<TR VALIGN=top><TD>following cases can arise:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD><TD ALIGN=right>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD></TR>
+<TR VALIGN=top></TR>
+<TR VALIGN=top><TD>here, the final unit of encoded output shall be an integral multiple of&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD><TD ALIGN=center>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD></TR>
+<TR VALIGN=top><TD>4 characters with no&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD></TR>
+<TR VALIGN=top><TD ALIGN=right>padding.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD></TR>
+<TR VALIGN=top><TD><FONT SIZE="-9">The final quantum of encoding input is exactly 16 bits; here, the final&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></TD></TR>
+<TR VALIGN=top><TD><FONT SIZE="-9">unit of encoded output shall be three characters followed by one&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></TD></TR>
+<TR VALIGN=top><TD>padding character.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD></TR>
+<TR VALIGN=top><TD>The final quantum of encoding input is exactly 8 bits; here, the final</TD></TR>
+<TR VALIGN=top><TD>unit of encoded output shall be two characters followed by two</TD></TR>
+<TR VALIGN=top><TD>padding characters.</TD></TR>
+<TR VALIGN=top><TD>A terminating</TD></TR>
+<TR VALIGN=top><TD>evaluates to nothing and denotes the end of the encoded data.</TD></TR>
+<TR VALIGN=top><TD>The standard output shall be a text file (encoded in the character set</TD></TR>
+<TR VALIGN=top><TD>of the current locale) that begins with the line:</TD></TR>
+<TR VALIGN=top><TD><B></B></TD></TR>
+<TR VALIGN=top><TD>&quot;begin %s %s\n&quot; &lt;<I>mode</I>&gt;, &lt;<I>decode_pathname</I>&gt;</TD></TR>
+<TR VALIGN=top><TD>and ends with the line:</TD></TR>
+<TR VALIGN=top><TD><B></B></TD></TR>
+<TR VALIGN=top><TD>&quot;end\n&quot;</TD></TR>
+<TR VALIGN=top><TD>In both cases, the lines shall have no preceding or trailing</TD></TR>
+<TR VALIGN=top><TD>&lt;blank&gt;</TD></TR>
+<TR VALIGN=top><TD>characters.</TD></TR>
+<TR VALIGN=top><TD>The algorithm that shall be used for lines in between</TD></TR>
+<TR VALIGN=top><TD>and</TD></TR>
+<TR VALIGN=top><TD>takes three octets as input and writes four characters of output by</TD></TR>
+<TR VALIGN=top><TD>splitting the input at six-bit intervals into four octets, containing</TD></TR>
+<TR VALIGN=top><TD>data in the lower six bits only. These octets shall be converted to</TD></TR>
+<TR VALIGN=top><TD>characters by adding a value of 0x20 to each octet, so that each octet</TD></TR>
+<TR VALIGN=top><TD>is in the range [0x20,0x5f], and then it shall be assumed to represent</TD></TR>
+<TR VALIGN=top><TD>a printable character in the ISO/IEC&nbsp;646:1991 standard encoded character set. It then</TD></TR>
+<TR VALIGN=top><TD>shall be translated into the corresponding character codes for the</TD></TR>
+<TR VALIGN=top><TD>codeset in use in the current locale. (For example, the octet 0x41,</TD></TR>
+<TR VALIGN=top><TD>representing</TD></TR>
+<TR VALIGN=top><TD>would be translated to</TD></TR>
+<TR VALIGN=top><TD>in the current codeset, such as 0xc1 if it were EBCDIC.)</TD></TR>
+<TR VALIGN=top><TD>Where the bits of two octets are combined, the least significant bits</TD></TR>
+<TR VALIGN=top><TD>of the first octet shall be shifted left and combined with the most</TD></TR>
+<TR VALIGN=top><TD>significant bits of the second octet shifted right. Thus the three</TD></TR>
+<TR VALIGN=top><TD>octets</TD></TR>
+<TR VALIGN=top><TD>shall be converted into the four octets:</TD></TR>
+<TR VALIGN=top><TD><B></B></TD></TR>
+<TR VALIGN=top><TD>0x20 + (( A &gt;&gt; 2                    ) &amp; 0x3F)</TD></TR>
+<TR VALIGN=top><TD>0x20 + (((A &lt;&lt; 4) | ((B &gt;&gt; 4) &amp; 0xF)) &amp; 0x3F)</TD></TR>
+<TR VALIGN=top><TD>0x20 + (((B &lt;&lt; 2) | ((C &gt;&gt; 6) &amp; 0x3)) &amp; 0x3F)</TD></TR>
+<TR VALIGN=top><TD>0x20 + (( C                         ) &amp; 0x3F)</TD></TR>
+<TR VALIGN=top><TD>These octets then shall be translated into the local character set.</TD></TR>
+<TR VALIGN=top><TD>Each encoded line contains a length character, equal to the number of</TD></TR>
+<TR VALIGN=top><TD>characters to be decoded plus 0x20 translated to the local character</TD></TR>
+<TR VALIGN=top><TD>set as described above, followed by the encoded characters. The</TD></TR>
+<TR VALIGN=top><TD>maximum number of octets to be encoded on each line shall be 45.</TD></TR>
+<TR VALIGN=top><TD>The standard error shall be used only for diagnostic messages.</TD></TR>
+<TR VALIGN=top><TD>None.</TD></TR>
+<TR VALIGN=top><TD>None.</TD></TR>
+<TR VALIGN=top><TD>The following exit values shall be returned:</TD></TR>
+<TR VALIGN=top><TD>Successful completion.</TD></TR>
+<TR VALIGN=top><TD>An error occurred.</TD></TR>
+<TR VALIGN=top><TD>Default.</TD></TR>
+<TR VALIGN=top><TD>The file is expanded by 35 percent (each three octets become four, plus</TD></TR>
+<TR VALIGN=top><TD>control information) causing it to take longer to transmit.</TD></TR>
+<TR VALIGN=top><TD>Since this utility is intended to create files to be used for data</TD></TR>
+<TR VALIGN=top><TD>interchange between systems with possibly different codesets, and to</TD></TR>
+<TR VALIGN=top><TD>represent binary data as a text file, the ISO/IEC&nbsp;646:1991 standard was chosen for a</TD></TR>
+<TR VALIGN=top><TD>midpoint in the algorithm as a known reference point. The output from</TD></TR>
+<TR VALIGN=top><TD>is a text file on the local system. If the output were in the ISO/IEC&nbsp;646:1991 standard</TD></TR>
+<TR VALIGN=top><TD>codeset, it might not be a text file (at least because the</TD></TR>
+<TR VALIGN=top><TD>&lt;newline&gt;</TD></TR>
+<TR VALIGN=top><TD>characters might not match), and the goal of creating a text file would</TD></TR>
+<TR VALIGN=top><TD>be defeated. If this text file was then carried to another machine with</TD></TR>
+<TR VALIGN=top><TD>the same codeset, it would be perfectly compatible with that system's</TD></TR>
+<TR VALIGN=top><TD>If it was transmitted over a mail system or sent to a machine with a</TD></TR>
+<TR VALIGN=top><TD>different codeset, it is assumed that, as for every other text file,</TD></TR>
+<TR VALIGN=top><TD>some translation mechanism would convert it (by the time it reached a</TD></TR>
+<TR VALIGN=top><TD>user on the other system) into an appropriate codeset. This</TD></TR>
+<TR VALIGN=top><TD>translation only makes sense from the local codeset, not if the file</TD></TR>
+<TR VALIGN=top><TD>has been put into a ISO/IEC&nbsp;646:1991 standard representation first. Similarly, files</TD></TR>
+<TR VALIGN=top><TD>processed by</TD></TR>
+<TR VALIGN=top><TD>can be placed in</TD></TR>
+<TR VALIGN=top><TD>archives, intermixed with other text files in the same codeset.</TD></TR>
+<TR VALIGN=top><TD>None.</TD></TR>
+<TR VALIGN=top><TD>A new algorithm was added at the request of the international community</TD></TR>
+<TR VALIGN=top><TD>to parallel work in RFC&nbsp;2045 (MIME). As with the historical</TD></TR>
+<TR VALIGN=top><TD>format, the Base64 Content-Transfer-Encoding is designed to represent</TD></TR>
+<TR VALIGN=top><TD>arbitrary sequences of octets in a form that is not humanly readable. A</TD></TR>
+<TR VALIGN=top><TD>65-character subset of the ISO/IEC&nbsp;646:1991 standard is used, enabling 6 bits to be</TD></TR>
+<TR VALIGN=top><TD>represented per printable character. (The extra 65th character,</TD></TR>
+<TR VALIGN=top><TD>is used to signify a special processing function.)</TD></TR>
+<TR VALIGN=top><TD>This subset has the important property that it is represented</TD></TR>
+<TR VALIGN=top><TD>identically in all versions of the ISO/IEC&nbsp;646:1991 standard, including US ASCII, and all</TD></TR>
+<TR VALIGN=top><TD>characters in the subset are also represented identically in all</TD></TR>
+<TR VALIGN=top><TD>versions of EBCDIC. The historical</TD></TR>
+<TR VALIGN=top><TD>algorithm does not share this property, which is the reason that a</TD></TR>
+<TR VALIGN=top><TD>second algorithm was added to the ISO&nbsp;POSIX-2 standard.</TD></TR>
+<TR VALIGN=top><TD>The string</TD></TR>
+<TR VALIGN=top><TD>was used for the termination instead of the end used in the original</TD></TR>
+<TR VALIGN=top><TD>format because the latter is a string that could be valid encoded</TD></TR>
+<TR VALIGN=top><TD>input.</TD></TR>
+<TR VALIGN=top><TD>In an early draft, the</TD></TR>
+<TR VALIGN=top><TD>option was named</TD></TR>
+<TR VALIGN=top><TD>(for Base64), but it was renamed to reflect its relationship to the</TD></TR>
+<TR VALIGN=top><TD>RFC&nbsp;2045. A</TD></TR>
+<TR VALIGN=top><TD>was also present to invoke the default algorithm, but since this was</TD></TR>
+<TR VALIGN=top><TD>not historical practice, it was omitted as being unnecessary.</TD></TR>
+<TR VALIGN=top><TD>See the RATIONALE section in</TD></TR>
+<TR VALIGN=top><TD>for the derivation of the</TD></TR>
+<TR VALIGN=top><TD>symbol.</TD></TR>
+<TR VALIGN=top><TD>None.</TD></TR>
+<TR VALIGN=top><TD>The Base Definitions volume of POSIX.1-2008,</TD></TR>
+<TR VALIGN=top><TD>Portions of this text are reprinted and reproduced in electronic form</TD></TR>
+<TR VALIGN=top><TD>from IEEE Std 1003.1, 2013 Edition, Standard for Information Technology</TD></TR>
+<TR VALIGN=top><TD>-- Portable Operating System Interface (POSIX), The Open Group Base</TD></TR>
+<TR VALIGN=top><TD>Specifications Issue 7, Copyright (C) 2013 by the Institute of</TD></TR>
+<TR VALIGN=top><TD>Electrical and Electronics Engineers, Inc and The Open Group.</TD></TR>
+<TR VALIGN=top><TD>(This is POSIX.1-2008 with the 2013 Technical Corrigendum 1 applied.) In the</TD></TR>
+<TR VALIGN=top><TD>event of any discrepancy between this version and the original IEEE and</TD></TR>
+<TR VALIGN=top><TD>The Open Group Standard, the original IEEE and The Open Group Standard</TD></TR>
+<TR VALIGN=top><TD>is the referee document. The original Standard can be obtained online at</TD></TR>
+<TR VALIGN=top><TD><A HREF="http://www.unix.org/online.html">http://www.unix.org/online.html</A> .</TD></TR>
+<TR VALIGN=top><TD></TD></TR>
+<TR VALIGN=top><TD>Any typographical or formatting errors that appear</TD></TR>
+<TR VALIGN=top><TD>in this page are most likely</TD></TR>
+<TR VALIGN=top><TD>to have been introduced during the conversion of the source files to</TD></TR>
+<TR VALIGN=top><TD>man page format. To report such errors, see</TD></TR>
+<TR VALIGN=top><TD><A HREF="https://www.kernel.org/doc/man-pages/reporting_bugs.html">https://www.kernel.org/doc/man-pages/reporting_bugs.html</A> .</TD></TR>
+<TR VALIGN=top><TD></TD></TR>
+<TR VALIGN=top><TD></TD></TR>
+<TR VALIGN=top><TD></TD></TR>
+</TABLE></TABLE></CENTER>
+
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">PROLOG</A><DD>
+<DT><A HREF="#lbAC">NAME</A><DD>
+<DT><A HREF="#lbAD">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAE">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAF">OPTIONS</A><DD>
+<DT><A HREF="#lbAG">OPERANDS</A><DD>
+<DT><A HREF="#lbAH">STDIN</A><DD>
+<DT><A HREF="#lbAI">INPUT FILES</A><DD>
+<DT><A HREF="#lbAJ">ENVIRONMENT VARIABLES</A><DD>
+<DT><A HREF="#lbAK">ASYNCHRONOUS EVENTS</A><DD>
+<DT><A HREF="#lbAL">STDOUT</A><DD>
+<DL>
+<DT><A HREF="#lbAM">uuencode Base64 Algorithm</A><DD>
+</DL>
+</DL>
+<HR>
+This document was created by
+<A HREF="/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 14:28:45 GMT, February 25, 2017
+</BODY>
+</HTML>

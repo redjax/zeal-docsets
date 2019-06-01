@@ -1,0 +1,539 @@
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML><HEAD><TITLE>Man page of CHMOD</TITLE>
+</HEAD><BODY>
+<H1>CHMOD</H1>
+Section: POSIX Programmer's Manual (3P)<BR>Updated: 2013<BR><A HREF="#index">Index</A>
+<A HREF="../index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>PROLOG</H2>
+
+This manual page is part of the POSIX Programmer's Manual.
+The Linux implementation of this interface may differ (consult
+the corresponding Linux manual page for details of Linux behavior),
+or the interface may not be implemented on Linux.
+<P>
+<A NAME="lbAC">&nbsp;</A>
+<H2>NAME</H2>
+
+chmod, fchmodat
+--- change mode of a file relative to directory file descriptor
+<A NAME="lbAD">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<P>
+
+<PRE>
+#include &lt;<A HREF="file:///usr/include/sys/stat.h">sys/stat.h</A>&gt;
+
+int chmod(const char *<I>path</I>, mode_t <I>mode</I>);
+int fchmodat(int <I>fd</I>, const char *<I>path</I>, mode_t <I>mode</I>, int <I>flag</I>);
+</PRE>
+
+<A NAME="lbAE">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+The
+<I>chmod</I>()
+function shall change S_ISUID, S_ISGID,
+S_ISVTX,
+and the file permission bits of the file named by the pathname pointed
+to by the
+<I>path</I>
+
+argument to the corresponding bits in the
+<I>mode</I>
+
+argument. The application shall ensure that the effective user ID
+of the process matches the owner of the file or the process has
+appropriate privileges in order to do this.
+<P>
+
+S_ISUID, S_ISGID,
+S_ISVTX,
+and the file permission bits
+are described in
+<I>&lt;<A HREF="file:///usr/include/sys/stat.h">sys/stat.h</A>&gt;</I>.
+
+<P>
+
+If the calling process does not have appropriate privileges, and if the
+group ID of the file does not match the effective group ID or one of
+the supplementary group IDs and if the file is a regular file, bit
+S_ISGID (set-group-ID on execution) in the file's mode shall be cleared
+upon successful return from
+<I>chmod</I>().
+<P>
+
+Additional implementation-defined restrictions may cause the S_ISUID
+and S_ISGID bits in
+<I>mode</I>
+
+to be ignored.
+<P>
+
+Upon successful completion,
+<I>chmod</I>()
+shall mark for update the last file status change timestamp of the file.
+<P>
+
+The
+<I>fchmodat</I>()
+function shall be equivalent to the
+<I>chmod</I>()
+function except in the case where
+<I>path</I>
+
+specifies a relative path. In this case the file to be changed is
+determined relative to the directory associated with the file
+descriptor
+<I>fd</I>
+
+instead of the current working directory. If the file descriptor was
+opened without O_SEARCH, the function shall check whether directory
+searches are permitted using the current permissions of the directory
+underlying the file descriptor. If the file descriptor was opened with
+O_SEARCH, the function shall not perform the check.
+<P>
+
+Values for
+<I>flag</I>
+
+are constructed by a bitwise-inclusive OR of flags from the following
+list, defined in
+<I>&lt;<A HREF="file:///usr/include/fcntl.h">fcntl.h</A>&gt;</I>:
+
+<DL COMPACT>
+<DT>AT_SYMLINK_NOFOLLOW<DD>
+<BR>
+
+If
+<I>path</I>
+
+names a symbolic link, then the mode of the symbolic link is changed.
+</DL>
+<P>
+
+If
+<I>fchmodat</I>()
+is passed the special value AT_FDCWD in the
+<I>fd</I>
+
+parameter, the current working directory shall be used. If also
+<I>flag</I>
+
+is zero, the behavior shall be identical to a call to
+<I>chmod</I>().
+<A NAME="lbAF">&nbsp;</A>
+<H2>RETURN VALUE</H2>
+
+Upon successful completion, these functions shall return 0.
+Otherwise, these functions shall return -1 and set
+<I>errno</I>
+
+to indicate the error. If -1 is returned, no change to the
+file mode occurs.
+<A NAME="lbAG">&nbsp;</A>
+<H2>ERRORS</H2>
+
+These functions shall fail if:
+<DL COMPACT>
+<DT><B>EACCES</B>
+
+<DD>
+Search permission is denied on a component of the path prefix.
+<DT><B>ELOOP</B>
+
+<DD>
+A loop exists in symbolic links encountered during resolution of the
+<I>path</I>
+
+argument.
+<DT><B>ENAMETOOLONG</B>
+
+<DD>
+<BR>
+
+The length of a component of a pathname is longer than
+{NAME_MAX}.
+<DT><B>ENOENT</B>
+
+<DD>
+A component of
+<I>path</I>
+
+does not name an existing file or
+<I>path</I>
+
+is an empty string.
+<DT><B>ENOTDIR</B>
+
+<DD>
+A component of the path prefix names an existing file that is neither
+a directory nor a symbolic link to a directory, or the
+<I>path</I>
+
+argument contains at least one non-&lt;slash&gt;
+character and ends with one or more trailing
+&lt;slash&gt;
+characters and the last pathname component names an existing file
+that is neither a directory nor a symbolic link to a directory.
+<DT><B>EPERM</B>
+
+<DD>
+The effective user ID does not match the owner of the file and the
+process does not have appropriate privileges.
+<DT><B>EROFS</B>
+
+<DD>
+The named file resides on a read-only file system.
+</DL>
+<P>
+
+The
+<I>fchmodat</I>()
+function shall fail if:
+<DL COMPACT>
+<DT><B>EACCES</B>
+
+<DD>
+<I>fd</I>
+
+was not opened with O_SEARCH and the permissions of the directory
+underlying
+<I>fd</I>
+
+do not permit directory searches.
+<DT><B>EBADF</B>
+
+<DD>
+The
+<I>path</I>
+
+argument does not specify an absolute path and the
+<I>fd</I>
+
+argument is neither AT_FDCWD nor a valid file descriptor open
+for reading or searching.
+<DT><B>ENOTDIR</B>
+
+<DD>
+The
+<I>path</I>
+
+argument is not an absolute path and
+<I>fd</I>
+
+is a file descriptor associated with a non-directory file.
+</DL>
+<P>
+
+These functions may fail if:
+<DL COMPACT>
+<DT><B>EINTR</B>
+
+<DD>
+A signal was caught during execution of the function.
+<DT><B>EINVAL</B>
+
+<DD>
+The value of the
+<I>mode</I>
+
+argument is invalid.
+<DT><B>ELOOP</B>
+
+<DD>
+More than
+{SYMLOOP_MAX}
+symbolic links were encountered during resolution of the
+<I>path</I>
+
+argument.
+<DT><B>ENAMETOOLONG</B>
+
+<DD>
+<BR>
+
+The length of a pathname exceeds
+{PATH_MAX},
+or pathname resolution of a symbolic link produced an intermediate
+result with a length that exceeds
+{PATH_MAX}.
+</DL>
+<P>
+
+The
+<I>fchmodat</I>()
+function may fail if:
+<DL COMPACT>
+<DT><B>EINVAL</B>
+
+<DD>
+The value of the
+<I>flag</I>
+
+argument is invalid.
+<DT><B>EOPNOTSUPP</B>
+
+<DD>
+The AT_SYMLINK_NOFOLLOW bit is set in the
+<I>flag</I>
+
+argument,
+<I>path</I>
+
+names a symbolic link, and the system does not support changing the
+mode of a symbolic link.
+</DL>
+<P>
+
+<I>The following sections are informative.</I>
+
+<A NAME="lbAH">&nbsp;</A>
+<H2>EXAMPLES</H2>
+
+<A NAME="lbAI">&nbsp;</A>
+<H3>Setting Read Permissions for User, Group, and Others</H3>
+
+<P>
+
+The following example sets read permissions for the owner, group, and
+others.
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+#include &lt;<A HREF="file:///usr/include/sys/stat.h">sys/stat.h</A>&gt;
+
+const char *path;
+...
+chmod(path, S_IRUSR|S_IRGRP|S_IROTH);
+</B></PRE>
+
+<P>
+
+</DL>
+
+<A NAME="lbAJ">&nbsp;</A>
+<H3>Setting Read, Write, and Execute Permissions for the Owner Only</H3>
+
+<P>
+
+The following example sets read, write, and execute permissions for the
+owner, and no permissions for group and others.
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+#include &lt;<A HREF="file:///usr/include/sys/stat.h">sys/stat.h</A>&gt;
+
+const char *path;
+...
+chmod(path, S_IRWXU);
+</B></PRE>
+
+<P>
+
+</DL>
+
+<A NAME="lbAK">&nbsp;</A>
+<H3>Setting Different Permissions for Owner, Group, and Other</H3>
+
+<P>
+
+The following example sets owner permissions for CHANGEFILE to read,
+write, and execute, group permissions to read and execute, and other
+permissions to read.
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+#include &lt;<A HREF="file:///usr/include/sys/stat.h">sys/stat.h</A>&gt;
+
+#define CHANGEFILE &quot;/etc/myfile&quot;
+...
+chmod(CHANGEFILE, S_IRWXU|S_IRGRP|S_IXGRP|S_IROTH);
+</B></PRE>
+
+<P>
+
+</DL>
+
+<A NAME="lbAL">&nbsp;</A>
+<H3>Setting and Checking File Permissions</H3>
+
+<P>
+
+The following example sets the file permission bits for a file named
+<B>/home/cnd/mod1</B>,
+
+then calls the
+<I>stat</I>()
+function to verify the permissions.
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+#include &lt;<A HREF="file:///usr/include/sys/types.h">sys/types.h</A>&gt;
+#include &lt;<A HREF="file:///usr/include/sys/stat.h">sys/stat.h</A>&gt;
+
+int status;
+struct stat buffer
+...
+chmod(&quot;home/cnd/mod1&quot;, S_IRWXU|S_IRWXG|S_IROTH|S_IWOTH);
+status = stat(&quot;home/cnd/mod1&quot;, &amp;buffer;);
+</B></PRE>
+
+<P>
+
+</DL>
+
+<A NAME="lbAM">&nbsp;</A>
+<H2>APPLICATION USAGE</H2>
+
+In order to ensure that the S_ISUID and S_ISGID
+bits are set, an application requiring this should use
+<I>stat</I>()
+after a successful
+<I>chmod</I>()
+to verify this.
+<P>
+
+Any file descriptors currently open by any process on the file could
+possibly become invalid if the mode of the file is changed to a value
+which would deny access to that process. One situation where this could
+occur is on a stateless file system. This behavior will not occur in a
+conforming environment.
+<A NAME="lbAN">&nbsp;</A>
+<H2>RATIONALE</H2>
+
+This volume of POSIX.1-2008 specifies that the S_ISGID bit is cleared by
+<I>chmod</I>()
+on a regular file under certain conditions. This is specified on the
+assumption that regular files may be executed, and the system should
+prevent users from making executable
+<I>setgid</I>()
+files perform with privileges that the caller does not have. On
+implementations that support execution of other file types, the S_ISGID
+bit should be cleared for those file types under the same
+circumstances.
+<P>
+
+Implementations that use the S_ISUID bit to indicate some other
+function (for example, mandatory record locking) on non-executable
+files need not clear this bit on writing. They should clear the bit
+for executable files and any other cases where the bit grants special
+powers to processes that change the file contents. Similar comments
+apply to the S_ISGID bit.
+<P>
+
+The purpose of the
+<I>fchmodat</I>()
+function is to enable changing the mode of files in directories other
+than the current working directory without exposure to race conditions.
+Any part of the path of a file could be changed in parallel to a call
+to
+<I>chmod</I>(),
+resulting in unspecified behavior. By opening a file descriptor for
+the target directory and using the
+<I>fchmodat</I>()
+function it can be guaranteed that the changed file is located relative
+to the desired directory. Some implementations might allow changing
+the mode of symbolic links. This is not supported by the interfaces in
+the POSIX specification. Systems with such support provide an
+interface named
+<I>lchmod</I>().
+
+To support such implementations
+<I>fchmodat</I>()
+has a
+<I>flag</I>
+
+parameter.
+<A NAME="lbAO">&nbsp;</A>
+<H2>FUTURE DIRECTIONS</H2>
+
+None.
+<A NAME="lbAP">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+<I>access</I>(),
+
+<I>chown</I>(),
+
+<I>exec</I>,
+
+<I>fstatat</I>(),
+
+<I>fstatvfs</I>(),
+
+<I>mkdir</I>(),
+
+<I>mkfifo</I>(),
+
+<I>mknod</I>(),
+
+<I>open</I>()
+
+<P>
+
+The Base Definitions volume of POSIX.1-2008,
+<I></I><B>&lt;<A HREF="file:///usr/include/fcntl.h">fcntl.h</A>&gt;</B>,
+
+<I></I><B>&lt;<A HREF="file:///usr/include/sys_stat.h">sys_stat.h</A>&gt;</B>,
+
+<I></I><B>&lt;<A HREF="file:///usr/include/sys_types.h">sys_types.h</A>&gt;</B>
+
+<A NAME="lbAQ">&nbsp;</A>
+<H2>COPYRIGHT</H2>
+
+Portions of this text are reprinted and reproduced in electronic form
+from IEEE Std 1003.1, 2013 Edition, Standard for Information Technology
+-- Portable Operating System Interface (POSIX), The Open Group Base
+Specifications Issue 7, Copyright (C) 2013 by the Institute of
+Electrical and Electronics Engineers, Inc and The Open Group.
+(This is POSIX.1-2008 with the 2013 Technical Corrigendum 1 applied.) In the
+event of any discrepancy between this version and the original IEEE and
+The Open Group Standard, the original IEEE and The Open Group Standard
+is the referee document. The original Standard can be obtained online at
+<A HREF="http://www.unix.org/online.html">http://www.unix.org/online.html</A> .
+<P>
+Any typographical or formatting errors that appear
+in this page are most likely
+to have been introduced during the conversion of the source files to
+man page format. To report such errors, see
+<A HREF="https://www.kernel.org/doc/man-pages/reporting_bugs.html">https://www.kernel.org/doc/man-pages/reporting_bugs.html</A> .
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">PROLOG</A><DD>
+<DT><A HREF="#lbAC">NAME</A><DD>
+<DT><A HREF="#lbAD">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAE">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAF">RETURN VALUE</A><DD>
+<DT><A HREF="#lbAG">ERRORS</A><DD>
+<DT><A HREF="#lbAH">EXAMPLES</A><DD>
+<DL>
+<DT><A HREF="#lbAI">Setting Read Permissions for User, Group, and Others</A><DD>
+<DT><A HREF="#lbAJ">Setting Read, Write, and Execute Permissions for the Owner Only</A><DD>
+<DT><A HREF="#lbAK">Setting Different Permissions for Owner, Group, and Other</A><DD>
+<DT><A HREF="#lbAL">Setting and Checking File Permissions</A><DD>
+</DL>
+<DT><A HREF="#lbAM">APPLICATION USAGE</A><DD>
+<DT><A HREF="#lbAN">RATIONALE</A><DD>
+<DT><A HREF="#lbAO">FUTURE DIRECTIONS</A><DD>
+<DT><A HREF="#lbAP">SEE ALSO</A><DD>
+<DT><A HREF="#lbAQ">COPYRIGHT</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 14:28:45 GMT, February 25, 2017
+</BODY>
+</HTML>

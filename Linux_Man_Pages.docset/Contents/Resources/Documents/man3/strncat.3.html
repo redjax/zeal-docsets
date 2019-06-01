@@ -1,0 +1,333 @@
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML><HEAD><TITLE>Man page of STRCAT</TITLE>
+</HEAD><BODY>
+<H1>STRCAT</H1>
+Section: Linux Programmer's Manual (3)<BR>Updated: 2016-07-17<BR><A HREF="#index">Index</A>
+<A HREF="../index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+strcat, strncat - concatenate two strings
+<A NAME="lbAC">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<PRE>
+<B>#include &lt;<A HREF="file:///usr/include/string.h">string.h</A>&gt;</B>
+
+<B>char *strcat(char *</B><I>dest</I><B>, const char *</B><I>src</I><B>);</B>
+
+<B>char *strncat(char *</B><I>dest</I><B>, const char *</B><I>src</I><B>, size_t </B><I>n</I><B>);</B>
+</PRE>
+
+<A NAME="lbAD">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+The
+<B>strcat</B>()
+
+function appends the
+<I>src</I>
+
+string to the
+<I>dest</I>
+
+string,
+overwriting the terminating null byte ('\0') at the end of
+<I>dest</I>,
+
+and then adds a terminating null byte.
+The strings may not overlap, and the
+<I>dest</I>
+
+string must have
+enough space for the result.
+If
+<I>dest</I>
+
+is not large enough, program behavior is unpredictable;
+<I>buffer overruns are a favorite avenue for attacking secure programs</I>.
+
+<P>
+
+The
+<B>strncat</B>()
+
+function is similar, except that
+<DL COMPACT>
+<DT>*<DD>
+it will use at most
+<I>n</I>
+
+bytes from
+<I>src</I>;
+
+and
+<DT>*<DD>
+<I>src</I>
+
+does not need to be null-terminated if it contains
+<I>n</I>
+
+or more bytes.
+</DL>
+<P>
+
+As with
+<B>strcat</B>(),
+
+the resulting string in
+<I>dest</I>
+
+is always null-terminated.
+<P>
+
+If
+<I>src</I>
+
+contains
+<I>n</I>
+
+or more bytes,
+<B>strncat</B>()
+
+writes
+<I>n+1</I>
+
+bytes to
+<I>dest</I>
+
+(<I>n</I>
+
+from
+<I>src</I>
+
+plus the terminating null byte).
+Therefore, the size of
+<I>dest</I>
+
+must be at least
+<I>strlen(dest)+n+1</I>.
+
+<P>
+A simple implementation of
+<B>strncat</B>()
+
+might be:
+
+<PRE>
+
+char *
+strncat(char *dest, const char *src, size_t n)
+{
+    size_t dest_len = strlen(dest);
+    size_t i;
+
+    for (i = 0 ; i &lt; n &amp;&amp; src[i] != '\0' ; i++)
+        dest[dest_len + i] = src[i];
+    dest[dest_len + i] = '\0';
+
+    return dest;
+}
+</PRE>
+
+
+<A NAME="lbAE">&nbsp;</A>
+<H2>RETURN VALUE</H2>
+
+The
+<B>strcat</B>()
+
+and
+<B>strncat</B>()
+
+functions return a pointer to the resulting string
+<I>dest</I>.
+
+<A NAME="lbAF">&nbsp;</A>
+<H2>ATTRIBUTES</H2>
+
+For an explanation of the terms used in this section, see
+<B><A HREF="../man7/attributes.7.html">attributes</A></B>(7).
+
+<TABLE BORDER>
+<TR VALIGN=top><TD><B>Interface</B></TD><TD><B>Attribute</B></TD><TD><B>Value</B><BR></TD></TR>
+<TR VALIGN=top><TD>
+<B>strcat</B>(),
+
+<B>strncat</B>()
+
+</TD><TD>Thread safety</TD><TD>MT-Safe<BR></TD></TR>
+</TABLE>
+
+<A NAME="lbAG">&nbsp;</A>
+<H2>CONFORMING TO</H2>
+
+POSIX.1-2001, POSIX.1-2008, C89, C99, SVr4, 4.3BSD.
+<A NAME="lbAH">&nbsp;</A>
+<H2>NOTES</H2>
+
+Some systems (the BSDs, Solaris, and others) provide the following function:
+<P>
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;size_t&nbsp;strlcat(char&nbsp;*dest,&nbsp;const&nbsp;char&nbsp;*src,&nbsp;size_t&nbsp;size);
+<P>
+This function appends the null-terminated string
+<I>src</I>
+
+to the string
+<I>dest</I>,
+
+copying at most
+<I>size-strlen(dest)-1</I>
+
+from
+<I>src</I>,
+
+and adds a terminating null byte to the result,
+<I>unless</I>
+
+<I>size</I>
+
+is less than
+<I>strlen(dest)</I>.
+
+This function fixes the buffer overrun problem of
+<B>strcat</B>(),
+
+but the caller must still handle the possibility of data loss if
+<I>size</I>
+
+is too small.
+The function returns the length of the string
+<B>strlcat</B>()
+
+tried to create; if the return value is greater than or equal to
+<I>size</I>,
+
+data loss occurred.
+If data loss matters, the caller
+<I>must</I>
+
+either check the arguments before the call, or test the function return value.
+<B>strlcat</B>()
+
+is not present in glibc and is not standardized by POSIX,
+
+but is available on Linux via the
+<I>libbsd</I>
+
+library.
+
+<A NAME="lbAI">&nbsp;</A>
+<H2>EXAMPLE</H2>
+
+Because
+<B>strcat</B>()
+
+and
+<B>strncat</B>()
+
+must find the null byte that terminates the string
+<I>dest</I>
+
+using a search that starts at the beginning of the string,
+the execution time of these functions
+scales according to the length of the string
+<I>dest</I>.
+
+This can be demonstrated by running the program below.
+(If the goal is to concatenate many strings to one target,
+then manually copying the bytes from each source string
+while maintaining a pointer to the end of the target string
+will provide better performance.)
+
+<A NAME="lbAJ">&nbsp;</A>
+<H3>Program source</H3>
+
+
+<PRE>
+#include &lt;<A HREF="file:///usr/include/string.h">string.h</A>&gt;
+#include &lt;<A HREF="file:///usr/include/time.h">time.h</A>&gt;
+#include &lt;<A HREF="file:///usr/include/stdio.h">stdio.h</A>&gt;
+
+int
+main(int argc, char *argv[])
+{
+#define LIM 4000000
+    int j;
+    char p[LIM];
+    time_t base;
+
+    base = time(NULL);
+    p[0] = '\0';
+
+    for (j = 0; j &lt; LIM; j++) {
+        if ((j % 10000) == 0)
+            printf(&quot;%d %ld\n&quot;, j, (long) (time(NULL) - base));
+        strcat(p, &quot;a&quot;);
+    }
+}
+</PRE>
+
+
+
+<A NAME="lbAK">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+<B><A HREF="../man3/bcopy.3.html">bcopy</A></B>(3),
+
+<B><A HREF="../man3/memccpy.3.html">memccpy</A></B>(3),
+
+<B><A HREF="../man3/memcpy.3.html">memcpy</A></B>(3),
+
+<B><A HREF="../man3/strcpy.3.html">strcpy</A></B>(3),
+
+<B><A HREF="../man3/string.3.html">string</A></B>(3),
+
+<B><A HREF="../man3/strncpy.3.html">strncpy</A></B>(3),
+
+<B><A HREF="../man3/wcscat.3.html">wcscat</A></B>(3),
+
+<B><A HREF="../man3/wcsncat.3.html">wcsncat</A></B>(3)
+
+<A NAME="lbAL">&nbsp;</A>
+<H2>COLOPHON</H2>
+
+This page is part of release 4.09 of the Linux
+<I>man-pages</I>
+
+project.
+A description of the project,
+information about reporting bugs,
+and the latest version of this page,
+can be found at
+<A HREF="https://www.kernel.org/doc/man-pages/.">https://www.kernel.org/doc/man-pages/.</A>
+
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAD">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAE">RETURN VALUE</A><DD>
+<DT><A HREF="#lbAF">ATTRIBUTES</A><DD>
+<DT><A HREF="#lbAG">CONFORMING TO</A><DD>
+<DT><A HREF="#lbAH">NOTES</A><DD>
+<DT><A HREF="#lbAI">EXAMPLE</A><DD>
+<DL>
+<DT><A HREF="#lbAJ">Program source</A><DD>
+</DL>
+<DT><A HREF="#lbAK">SEE ALSO</A><DD>
+<DT><A HREF="#lbAL">COLOPHON</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 14:28:38 GMT, February 25, 2017
+</BODY>
+</HTML>

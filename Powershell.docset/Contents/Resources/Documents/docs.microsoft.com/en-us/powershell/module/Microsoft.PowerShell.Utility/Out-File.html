@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html class="no-js hasSidebar hasPageActions hasBreadcrumb conceptual" data-authenticated="false" data-render="docs" dir="ltr" lang="en-us">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Out-File (Microsoft.PowerShell.Utility)" property="og:title"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" property="og:image"/>
+  <meta content="summary" name="twitter:card"/>
+  <meta content="@docsmsft" name="twitter:site"/>
+  <meta content="Out-File (Microsoft.PowerShell.Utility)" name="twitter:title"/>
+  <meta content="The Out-File cmdlet sends output to a file. You can use this cmdlet instead of the redirection operator (&gt;) when you need to use its parameters. " name="twitter:description"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" name="twitter:image"/>
+  <meta content="Microsoft Logo" name="twitter:image:alt"/>
+  <meta content="The Out-File cmdlet sends output to a file. You can use this cmdlet instead of the redirection operator (&gt;) when you need to use its parameters. " name="description"/>
+  <meta content="Docs" name="search.ms_sitename"/>
+  <meta content="PowerShell_PowerShell-docs_reference" name="search.ms_docsetname"/>
+  <meta content="0" name="version"/>
+  <meta content="en-us" name="locale"/>
+  <meta content="Docs" name="site_name"/>
+  <meta content="PowerShell" name="search.ms_product"/>
+  <meta content="PowerShell.PowerShell_PowerShell-docs_reference" name="depot_name"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/57cd861e6079bc530a60692b1bbf35cfef1d3f35/reference/6/Microsoft.PowerShell.Utility/Out-File.md" name="ref_skeleton_gitcommit"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/live/reference/6/Microsoft.PowerShell.Utility/Out-File.md" name="original_ref_skeleton_git_url"/>
+  <meta content="2018-03-30 03:35 PM" name="updated_at"/>
+  <meta content="5f95ed04-db56-db40-5f41-b5ce1da572f8" name="document_id"/>
+  <meta content="6ca0aa0a-2b48-273f-cd95-831d08bef772" name="document_version_independent_id"/>
+  <meta content="powershell" name="page_type"/>
+  <meta content="command" name="page_kind"/>
+  <meta content="11/09/2017" name="ms.date"/>
+  <meta content="2.0.0" name="schema"/>
+  <meta content="powershell,cmdlet" name="keywords"/>
+  <meta content="http://go.microsoft.com/fwlink/?LinkId=821839" name="online_version"/>
+  <meta content="Microsoft.PowerShell.Commands.Utility.dll-Help.xml" name="external_help_file"/>
+  <meta content="powershell" name="ms.devlang"/>
+  <meta content="INDEX, FOLLOW" name="ROBOTS"/>
+  <meta content="sdwheeler" name="author"/>
+  <meta content="sewhee" name="ms.author"/>
+  <meta content="carmonm" name="manager"/>
+  <meta content="/powershell/bread-pscore/toc.yml?view=powershell-6" name="breadcrumb_path"/>
+  <meta content="powershell" name="apiPlatform"/>
+  <meta content="reference" name="ms.topic"/>
+  <meta content="windows, macos, linux" name="ms.tgt_pltfr"/>
+  <meta content="powershell-scripting" name="ms.technology"/>
+  <meta content="powershell" name="ms.prod"/>
+  <meta content="MSDocsHeader-Powershell" name="uhfHeaderId"/>
+  <meta content="../psdocs/toc.json?view=powershell-6" name="toc_rel"/>
+  <link href="https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/out-file" rel="canonical"/>
+  <title>
+   Out-File
+  </title>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/60aac04b.site.css" rel="stylesheet"/>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/fdb8a38a.conceptual.css" rel="stylesheet"/>
+ </head>
+ <body dir="ltr" lang="en-us">
+  <div class="header-holder">
+   <div data-bi-name="header" id="headerAreaHolder">
+    <div id="uhf-placeholder">
+    </div>
+   </div>
+   <div class="disclaimer-holder" id="disclaimer-holder">
+   </div>
+  </div>
+  <div class="container mainContainer" data-bi-name="body">
+   <div class="content-header" data-bi-name="content-header">
+    <div class="content-header-controls">
+     <button class="contents-button button-border" data-bi-name="contents-expand" type="button">
+      <span class="docon docon-menu">
+      </span>
+      Contents
+     </button>
+    </div>
+    <div class="content-header-controls">
+     <button class="ap-collapse-behavior ap-expanded button-border" data-bi-name="ap-collapse" type="button">
+      <span class="docon docon-exit-mode">
+      </span>
+      Exit focus mode
+     </button>
+    </div>
+   </div>
+   <div class="primary-holder">
+    <main class="content" data-bi-name="content" dir="ltr" id="main" lang="en-us" role="main">
+     <!-- <content> -->
+     <h1>
+      Out-File
+     </h1>
+     <div class="metadata">
+      <dl class="attributeList">
+       <dt>
+        Module:
+       </dt>
+       <dd>
+        <a data-linktype="relative-path" href="./Microsoft.PowerShell.Utility.html">
+         Microsoft.PowerShell.Utility
+        </a>
+       </dd>
+      </dl>
+     </div>
+     <div class="summaryHolder">
+      <div class="summary">
+       Sends output to a file.
+      </div>
+     </div>
+     <h2 class="hiddenAnchor" id="syntax">
+      Syntax
+     </h2>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Out-File
+   [-FilePath] &lt;String&gt;
+   [[-Encoding] &lt;String&gt;]
+   [-Append]
+   [-Force]
+   [-NoClobber]
+   [-Width &lt;Int32&gt;]
+   [-NoNewline]
+   [-InputObject &lt;PSObject&gt;]
+   [-WhatIf]
+   [-Confirm]
+   [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Out-File
+   -LiteralPath &lt;String&gt;
+   [[-Encoding] &lt;String&gt;]
+   [-Append]
+   [-Force]
+   [-NoClobber]
+   [-Width &lt;Int32&gt;]
+   [-NoNewline]
+   [-InputObject &lt;PSObject&gt;]
+   [-WhatIf]
+   [-Confirm]
+   [&lt;CommonParameters&gt;]</code></pre>
+     <h2 id="description">
+      Description
+     </h2>
+     <p>
+      The
+      <code>
+       Out-File
+      </code>
+      cmdlet sends output to a file.
+You can use this cmdlet instead of the redirection operator (&gt;) when you need to use its parameters.
+     </p>
+     <h2 id="examples">
+      Examples
+     </h2>
+     <p>
+      <strong>
+       Example 1: Send output to a file
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-Process | Out-File -filepath C:\Test1\process.txt</code></pre>
+     <p>
+      This command sends a list of processes on the computer to the Process.txt file.
+If the file does not exist,
+      <code>
+       Out-File
+      </code>
+      creates it.
+Because the name of the FilePath parameter is optional, you can omit it and submit the equivalent command "Get-Process | Out-File C:\Test1\process.txt".
+     </p>
+     <p>
+      <strong>
+       Example 2: Send output to a file without overwriting
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-Process | Out-File C:\Test1\process.txt -NoClobber
+
+
+
+Out-File : File C:\Test1\process.txt already exists and NoClobber was specified.
+
+At line:1 char:23
+
++ Get-Process | Out-File  &lt;&lt;&lt;&lt; process.txt -NoClobber</code></pre>
+     <p>
+      This command also sends a list of processes to the Process.txt file, but it uses the NoClobber parameter, which prevents an existing file from being overwritten.
+The output shows the error message that appears when NoClobber is used with an existing file.
+     </p>
+     <p>
+      <strong>
+       Example 3: Send output to a file in ASCII format
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; $A = Get-Process
+
+PS C:\&gt; Out-File -FilePath C:\Test1\process.txt -InputObject $A -Encoding ASCII -Width 50</code></pre>
+     <p>
+      These commands send a list of processes on the computer to the Process.txt file.
+The text is encoded in ASCII format so that it can be read by search programs like Findstr and Grep.
+By default,
+      <code>
+       Out-File
+      </code>
+      uses Unicode format.
+     </p>
+     <p>
+      The first command gets the list of processes and stores them in the $A variable.
+The second command uses the
+      <code>
+       Out-File
+      </code>
+      cmdlet to send the list to the Process.txt file.
+     </p>
+     <p>
+      The command uses the InputObject parameter to specify that the input is in the $A variable.
+It uses the Encoding parameter to convert the output to ASCII format.
+It uses the Width parameter to limit each line in the file to 50 characters.
+Because the lines of output are truncated at 50 characters, the rightmost column in the process table is omitted.
+     </p>
+     <p>
+      <strong>
+       Example 4: Send output from outside a file system drive
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Set-Location hklm:\software
+
+PS C:\&gt; Get-Acl mycompany\mykey | Out-File -FilePath c:\ps\acl.txt
+
+PS C:\&gt; Get-Acl mycompany\mykey | Out-File -FilePath filesystem::acl.txt</code></pre>
+     <p>
+      These commands show how to use the
+      <code>
+       Out-File
+      </code>
+      cmdlet when you are not in a FileSystem drive.
+     </p>
+     <p>
+      The first command sets the current location to the HKLM:\Software registry key.
+     </p>
+     <p>
+      The second and third commands have the same effect.
+They use the 1Get-Acl1 cmdlet to get the security descriptor of the MyKey registry subkey (HKLM\Software\MyCompany\MyKey).
+A pipeline operator passes the result to the
+      <code>
+       Out-File
+      </code>
+      cmdlet, which sends it to the Acl.txt file.
+     </p>
+     <p>
+      Because
+      <code>
+       Out-File
+      </code>
+      is not supported by the PowerShell Registry provider, you must specify either the file system drive name,
+such as "c:", or the name of the provider followed by two colons, "FileSystem::", in the value of the FilePath parameter.
+The second and third commands demonstrate these methods.
+     </p>
+     <h2 id="required-parameters">
+      Required Parameters
+     </h2>
+     <div class="parameterName stack">
+      -FilePath
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the path to the output file.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         1
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -LiteralPath
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the path to the output file.
+Unlike
+       <em>
+        FilePath
+       </em>
+       , the value of the
+       <em>
+        LiteralPath
+       </em>
+       parameter is used exactly as it is typed.
+No characters are interpreted as wildcards.
+If the path includes escape characters, enclose it in single quotation marks.
+Single quotation marks tell PowerShell not to interpret any characters as escape sequences.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         PSPath
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="optional-parameters">
+      Optional Parameters
+     </h2>
+     <div class="parameterName stack">
+      -Append
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Adds the output to the end of an existing file, instead of replacing the file contents.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Confirm
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Prompts you for confirmation before running the cmdlet.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         cf
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Encoding
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the type of character encoding used in the file.
+The acceptable values for this parameter are:
+      </p>
+      <ul>
+       <li>
+        Unknown
+       </li>
+       <li>
+        String
+       </li>
+       <li>
+        Unicode
+       </li>
+       <li>
+        BigEndianUnicode
+       </li>
+       <li>
+        UTF8
+       </li>
+       <li>
+        UTF7
+       </li>
+       <li>
+        UTF32
+       </li>
+       <li>
+        ASCII
+       </li>
+       <li>
+        Default
+       </li>
+       <li>
+        OEM
+       </li>
+      </ul>
+      <p>
+       Unicode is the default.
+      </p>
+      <p>
+       "Default" uses the encoding of the system's current ANSI code page.
+      </p>
+      <p>
+       "OEM" uses the current original equipment manufacturer code page identifier for the operating system.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Parameter Sets:
+        </td>
+        <td>
+         unknown, string, unicode, bigendianunicode, utf8, utf7, utf32, ascii, default, oem
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         2
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         Unicode
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Force
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that the cmdlet overwrites an existing read-only file.
+Even using the Force parameter, the cmdlet cannot override security restrictions.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -InputObject
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the objects to be written to the file.
+Enter a variable that contains the objects or type a command or expression that gets the objects.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          PSObject
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByValue)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -NoClobber
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that the cmdlet will not overwrite an existing file.
+By default, if a file exists in the specified path,
+       <code>
+        Out-File
+       </code>
+       overwrites the file without warning.
+If both
+       <em>
+        Append
+       </em>
+       and
+       <em>
+        NoClobber
+       </em>
+       are used, the output is appended to the existing file.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         NoOverwrite
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -NoNewline
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies that the content written to the file does not end with a newline character.
+The string representations of the input objects are concatenated to form the output.
+No spaces or newlines are inserted between the output strings.
+No newline is added after the last output string.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -WhatIf
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         wi
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Width
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the number of characters in each line of output.
+Any additional characters are truncated, not wrapped.
+If you omit this parameter, the width is determined by the characteristics of the host.
+The default for the Windows PowerShell console is 80 characters.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Int32
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="inputs">
+      Inputs
+     </h2>
+     <p>
+      <strong>
+       System.Management.Automation.PSObject
+      </strong>
+     </p>
+     <p>
+      You can pipe any object to
+      <code>
+       Out-File
+      </code>
+      .
+     </p>
+     <h2 id="outputs">
+      Outputs
+     </h2>
+     <p>
+      <strong>
+       None
+      </strong>
+     </p>
+     <p>
+      Out-File does not generate any output.
+     </p>
+     <h2 id="notes">
+      Notes
+     </h2>
+     <p>
+      The Out cmdlets do not format objects; they just render them and send them to the specified display destination.
+If you send an unformatted object to an Out cmdlet, the cmdlet sends it to a formatting cmdlet before rendering it.
+     </p>
+     <p>
+      The Out cmdlets do not have parameters for names or file paths.
+To send data to a cmdlet that contains the Out verb (an Out cmdlet), use a pipeline operator (|) to send the output of a PowerShell command to the cmdlet.
+You can also store data in a variable and use the InputObject parameter to pass the data to the cmdlet.
+For help, see the examples.
+     </p>
+     <p>
+      <code>
+       Out-File
+      </code>
+      sends data, but it does not emit any output objects.
+If you pipe the output of
+      <code>
+       Out-File
+      </code>
+      to
+      <code>
+       Get-Member
+      </code>
+      ,
+      <code>
+       Get-Member
+      </code>
+      reports that no objects have been specified.
+     </p>
+     <h2 id="related-links">
+      Related Links
+     </h2>
+     <ul>
+      <li>
+       <a data-linktype="relative-path" href="../microsoft.powershell.core/out-default.html">
+        Out-Default
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="out-gridview.html">
+        Out-GridView
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="../microsoft.powershell.core/out-host.html">
+        Out-Host
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="../microsoft.powershell.core/out-null.html">
+        Out-Null
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="out-printer.html">
+        Out-Printer
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="out-string.html">
+        Out-String
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="tee-object.html">
+        Tee-Object
+       </a>
+      </li>
+     </ul>
+     <!-- </content> -->
+    </main>
+    <div class="note alert feedback-system-change-alert">
+     <p>
+      Note
+     </p>
+     <p>
+      The feedback system for this content will be changing soon. Old comments will not be carried over. If content within a comment thread is important to you, please save a copy. For more information on the upcoming change,
+      <a href="https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs">
+       we invite you to read our blog post
+      </a>
+      .
+     </p>
+    </div>
+    <div data-bi-name="comments" id="comments-container" role="form">
+    </div>
+   </div>
+  </div>
+  <div class="openfeedback-container" id="openFeedbackContainer">
+  </div>
+  <div class="action-panel">
+  </div>
+ </body>
+</html>

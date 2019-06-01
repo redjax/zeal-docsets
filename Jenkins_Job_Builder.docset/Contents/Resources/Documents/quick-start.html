@@ -1,0 +1,185 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Quick Start Guide &#8212; Jenkins Job Builder 2.0.0.0b3.dev264 documentation</title>
+    
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '2.0.0.0b3.dev264',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="Jenkins Job Builder 2.0.0.0b3.dev264 documentation" href="index.html" />
+    <link rel="next" title="Installation" href="installation.html" />
+    <link rel="prev" title="Jenkins Job Builder" href="index.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="installation.html" title="Installation"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Jenkins Job Builder"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Jenkins Job Builder 2.0.0.0b3.dev264 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="quick-start-guide">
+<span id="id1"></span><h1>Quick Start Guide<a class="headerlink" href="#quick-start-guide" title="Permalink to this headline">¶</a></h1>
+<p>This guide was made with the impatient in mind so explanation is sparse.
+It will guide users through a set of typical use cases for JJB using the same
+job definitions we use to test JJB.</p>
+<ol class="arabic simple">
+<li>Clone the <a class="reference external" href="http://git.openstack.org/cgit/openstack-infra/jenkins-job-builder/">repository</a> to get the JJB job definition <a class="reference external" href="http://git.openstack.org/cgit/openstack-infra/jenkins-job-builder/tree/tests">examples</a></li>
+<li>The <a class="reference internal" href="installation.html"><span class="doc">Installation</span></a> can be either from <a class="reference external" href="https://pypi.python.org/pypi/jenkins-job-builder/">pypi</a> (released version) or from the clone (master).</li>
+</ol>
+<p>Usage of the commands below assumes that you are at the root of the cloned directory.</p>
+<div class="section" id="use-case-1-test-a-job-definition">
+<span id="use-case-1"></span><h2>Use Case 1: Test a job definition<a class="headerlink" href="#use-case-1-test-a-job-definition" title="Permalink to this headline">¶</a></h2>
+<p>JJB creates Jenkins XML configuration file from a YAML/JSON definition file and
+just uploads it to Jenkins.  JJB provides a convenient <code class="docutils literal"><span class="pre">test</span></code> command to allow
+you to validate the XML before you attempt to upload it to Jenkins.</p>
+<p>Test a YAML job definition:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">jenkins</span><span class="o">-</span><span class="n">jobs</span> <span class="n">test</span> <span class="n">tests</span><span class="o">/</span><span class="n">yamlparser</span><span class="o">/</span><span class="n">fixtures</span><span class="o">/</span><span class="n">templates002</span><span class="o">.</span><span class="n">yaml</span>
+</pre></div>
+</div>
+<p>The above command prints the generated Jenkins XML to the console.  If you
+prefer to send it to a directory:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">jenkins</span><span class="o">-</span><span class="n">jobs</span> <span class="n">test</span> <span class="o">-</span><span class="n">o</span> <span class="n">output</span> <span class="n">tests</span><span class="o">/</span><span class="n">yamlparser</span><span class="o">/</span><span class="n">fixtures</span><span class="o">/</span><span class="n">templates002</span><span class="o">.</span><span class="n">yaml</span>
+</pre></div>
+</div>
+<p>The <cite>output</cite> directory will contain files with the XML configurations.</p>
+</div>
+<div class="section" id="use-case-2-updating-jenkins-jobs">
+<span id="use-case-2"></span><h2>Use Case 2: Updating Jenkins Jobs<a class="headerlink" href="#use-case-2-updating-jenkins-jobs" title="Permalink to this headline">¶</a></h2>
+<p>Once you&#8217;ve tested your job definition and are happy with it then you can use the
+<code class="docutils literal"><span class="pre">update</span></code> command to deploy the job to Jenkins.  The <code class="docutils literal"><span class="pre">update</span></code> command requires a
+configuration file.  An example file is supplied in the etc folder, you should
+update it to match your Jenkins master:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">jenkins</span><span class="o">-</span><span class="n">jobs</span> <span class="o">--</span><span class="n">conf</span> <span class="n">etc</span><span class="o">/</span><span class="n">jenkins_jobs</span><span class="o">.</span><span class="n">ini</span><span class="o">-</span><span class="n">sample</span> <span class="n">update</span> <span class="n">tests</span><span class="o">/</span><span class="n">yamlparser</span><span class="o">/</span><span class="n">fixtures</span><span class="o">/</span><span class="n">templates002</span><span class="o">.</span><span class="n">yaml</span>
+</pre></div>
+</div>
+<p>The above command will update your Jenkins master with the generated jobs.</p>
+<p><strong>Caution</strong>: JJB caches Jenkins job information locally.  Changes
+made using the Jenkins UI will not update that cache, which may
+lead to confusion.  See <a class="reference internal" href="execution.html#updating-jobs"><span class="std std-ref">Updating Jobs</span></a> for more information.</p>
+</div>
+<div class="section" id="use-case-3-working-with-json-job-definitions">
+<span id="use-case-3"></span><h2>Use Case 3: Working with JSON job definitions<a class="headerlink" href="#use-case-3-working-with-json-job-definitions" title="Permalink to this headline">¶</a></h2>
+<p>You can also define your jobs in json instead of yaml:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">jenkins</span><span class="o">-</span><span class="n">jobs</span> <span class="o">--</span><span class="n">conf</span> <span class="n">etc</span><span class="o">/</span><span class="n">jenkins_jobs</span><span class="o">.</span><span class="n">ini</span><span class="o">-</span><span class="n">sample</span> <span class="n">update</span> <span class="n">tests</span><span class="o">/</span><span class="n">jsonparser</span><span class="o">/</span><span class="n">fixtures</span><span class="o">/</span><span class="n">simple</span><span class="o">.</span><span class="n">json</span>
+</pre></div>
+</div>
+<p>The above command just uses a simple job definition.  You can also convert any
+of the YAML examples to JSON and feed that to JJB.</p>
+</div>
+<div class="section" id="use-case-4-deleting-a-job">
+<span id="use-case-4"></span><h2>Use Case 4: Deleting a job<a class="headerlink" href="#use-case-4-deleting-a-job" title="Permalink to this headline">¶</a></h2>
+<p>To delete a job:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">jenkins</span><span class="o">-</span><span class="n">jobs</span> <span class="o">--</span><span class="n">conf</span> <span class="n">etc</span><span class="o">/</span><span class="n">jenkins_jobs</span><span class="o">.</span><span class="n">ini</span><span class="o">-</span><span class="n">sample</span> <span class="n">delete</span> <span class="n">simple</span>
+</pre></div>
+</div>
+<p>The above command deletes the job <cite>simple</cite> from the Jenkins master.</p>
+<p>Please refer to the jenkins-jobs <a class="reference internal" href="execution.html#command-reference"><span class="std std-ref">Command Reference</span></a> and the
+<a class="reference internal" href="definition.html"><span class="doc">Job Definitions</span></a> pages for more details.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Quick Start Guide</a><ul>
+<li><a class="reference internal" href="#use-case-1-test-a-job-definition">Use Case 1: Test a job definition</a></li>
+<li><a class="reference internal" href="#use-case-2-updating-jenkins-jobs">Use Case 2: Updating Jenkins Jobs</a></li>
+<li><a class="reference internal" href="#use-case-3-working-with-json-job-definitions">Use Case 3: Working with JSON job definitions</a></li>
+<li><a class="reference internal" href="#use-case-4-deleting-a-job">Use Case 4: Deleting a job</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Jenkins Job Builder</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="installation.html"
+                        title="next chapter">Installation</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/quick-start.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="installation.html" title="Installation"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Jenkins Job Builder"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Jenkins Job Builder 2.0.0.0b3.dev264 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2012, Jenkins Job Builder Maintainers.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.9.
+    </div>
+  </body>
+</html>

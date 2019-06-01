@@ -1,0 +1,1467 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+<title>Triggers — Jenkins Job Builder 2.0.0.0b3.dev264 documentation</title>
+<link href="_static/classic.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '2.0.0.0b3.dev264',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="index.html" rel="top" title="Jenkins Job Builder 2.0.0.0b3.dev264 documentation"/>
+<link href="definition.html" rel="up" title="Job Definitions"/>
+<link href="wrappers.html" rel="next" title="Wrappers"/>
+<link href="scm.html" rel="prev" title="SCM"/>
+</head>
+<body role="document">
+<div aria-label="related navigation" class="related" role="navigation">
+<h3>Navigation</h3>
+<ul>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="wrappers.html" title="Wrappers">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="scm.html" title="SCM">previous</a> |</li>
+<li class="nav-item nav-item-0"><a href="index.html">Jenkins Job Builder 2.0.0.0b3.dev264 documentation</a> »</li>
+<li class="nav-item nav-item-1"><a accesskey="U" href="definition.html">Job Definitions</a> »</li>
+</ul>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="bodywrapper">
+<div class="body" role="main">
+<div class="section" id="triggers"><a name="//apple_ref/cpp/Module/triggers"></a>
+<span id="id1"></span><h1>Triggers<a class="headerlink" href="#triggers" title="Permalink to this headline">¶</a></h1>
+<span class="target" id="module-triggers"></span><p>Triggers define what causes a Jenkins job to start building.</p>
+<dl class="docutils">
+<dt><strong>Component</strong>: triggers</dt>
+<dd><table class="first last docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Macro:</th><td class="field-body">trigger</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Entry Point:</th><td class="field-body">jenkins_jobs.triggers</td>
+</tr>
+</tbody>
+</table>
+</dd>
+</dl>
+<p>Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">job</span><span class="p">:</span>
+  <span class="n">name</span><span class="p">:</span> <span class="n">test_job</span>
+
+  <span class="n">triggers</span><span class="p">:</span>
+    <span class="o">-</span> <span class="n">timed</span><span class="p">:</span> <span class="s1">'@daily'</span>
+</pre></div>
+</div>
+<dl class="yamlfunction">
+<dt id="triggers.bitbucket">
+<code class="descname">bitbucket</code><a class="headerlink" href="#triggers.bitbucket" title="Permalink to this definition">¶</a></dt>
+<dd><p>Trigger a job when bitbucket repository is pushed to.
+Requires the Jenkins <a class="reference external" href="https://wiki.jenkins.io/display/JENKINS/BitBucket+Plugin">BitBucket Plugin</a>.</p>
+<p>Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">triggers</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">bitbucket</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="yamlfunction">
+<dt id="triggers.build-result">
+<code class="descname">build-result</code><a class="headerlink" href="#triggers.build-result" title="Permalink to this definition">¶</a></dt>
+<dd><p>Configure jobB to monitor jobA build result. A build is scheduled if there
+is a new build result that matches your criteria (unstable, failure, ...).
+Requires the Jenkins <a class="reference external" href="https://wiki.jenkins.io/display/JENKINS/BuildResultTrigger+Plugin">BuildResultTrigger Plugin</a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>groups</strong> (<em>list</em>) – List groups of jobs and results to monitor for</li>
+<li><strong>jobs</strong> (<em>list</em>) – The jobs to monitor (required)</li>
+<li><strong>results</strong> (<em>list</em>) – Build results to monitor for (default success)</li>
+<li><strong>combine</strong> (<em>bool</em>) – Combine all job information.  A build will be
+scheduled only if all conditions are met (default false)</li>
+<li><strong>cron</strong> (<em>str</em>) – The cron syntax with which to poll the jobs for the
+supplied result (default ‘’)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">triggers</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">build</span><span class="o">-</span><span class="n">result</span><span class="p">:</span>
+      <span class="n">combine</span><span class="p">:</span> <span class="n">true</span>
+      <span class="n">cron</span><span class="p">:</span> <span class="s1">'* * * * *'</span>
+      <span class="n">groups</span><span class="p">:</span>
+        <span class="o">-</span> <span class="n">jobs</span><span class="p">:</span>
+            <span class="o">-</span> <span class="n">foo</span>
+            <span class="o">-</span> <span class="n">example</span>
+          <span class="n">results</span><span class="p">:</span>
+            <span class="o">-</span> <span class="n">unstable</span>
+        <span class="o">-</span> <span class="n">jobs</span><span class="p">:</span>
+            <span class="o">-</span> <span class="n">foo2</span>
+          <span class="n">results</span><span class="p">:</span>
+            <span class="o">-</span> <span class="ow">not</span><span class="o">-</span><span class="n">built</span>
+            <span class="o">-</span> <span class="n">aborted</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="yamlfunction">
+<dt id="triggers.gerrit">
+<code class="descname">gerrit</code><a class="headerlink" href="#triggers.gerrit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Trigger on a Gerrit event.
+Requires the Jenkins <a class="reference external" href="https://wiki.jenkins.io/display/JENKINS/Gerrit+Trigger">Gerrit Trigger Plugin</a>
+version &gt;= 2.6.0.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>trigger-on</strong> (<em>list</em>) – <p>Events to react on. Please use either the new
+<strong>trigger-on</strong>, or the old <strong>trigger-on-*</strong> events definitions. You
+cannot use both at once.</p>
+<span class="target" id="trigger-on"></span><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Trigger on:</th><td class="field-body"><ul class="first last">
+<li><strong>patchset-created-event</strong> (<cite>dict</cite>) – Trigger upon patchset
+creation.<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">Patchset created:</th></tr>
+<tr class="field-odd field"><td> </td><td class="field-body"><ul class="first last">
+<li><strong>exclude-drafts</strong> (<cite>bool</cite>) – exclude drafts (default false)</li>
+<li><strong>exclude-trivial-rebase</strong> (<cite>bool</cite>) – exclude trivial rebase
+(default false)</li>
+<li><strong>exclude-no-code-change</strong> (<cite>bool</cite>) – exclude no code change
+(default false)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Exclude drafts|trivial-rebase|no-code-change needs
+Gerrit Trigger v2.12.0</p>
+</li>
+<li><strong>patchset-uploaded-event</strong> – Trigger upon patchset creation
+(this is a alias for <cite>patchset-created-event</cite>).<div class="deprecated">
+<p><span class="versionmodified">Deprecated since version 1.1.0: </span>Please use <a class="reference internal" href="#trigger-on"><span class="std std-ref">trigger-on</span></a>.</p>
+</div>
+</li>
+<li><strong>change-abandoned-event</strong> – Trigger on patchset abandoned.
+Requires Gerrit Trigger Plugin version &gt;= 2.8.0.</li>
+<li><strong>change-merged-event</strong> – Trigger on change merged</li>
+<li><strong>change-restored-event</strong> – Trigger on change restored. Requires
+Gerrit Trigger Plugin version &gt;= 2.8.0</li>
+<li><strong>draft-published-event</strong> – Trigger on draft published event.</li>
+<li><strong>ref-updated-event</strong> – Trigger on ref-updated.</li>
+<li><strong>comment-added-event</strong> (<cite>dict</cite>) – Trigger on comment added.<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Comment added:</th><td class="field-body"><ul class="first last">
+<li><strong>approval-category</strong> (<cite>str</cite>) – Approval (verdict) category
+(for example ‘APRV’, ‘CRVW’, ‘VRIF’ – see <a class="reference external" href="http://gerrit.googlecode.com/svn/documentation/2.1/access-control.html#categories">Gerrit access
+control</a></li>
+<li><strong>approval-value</strong> – Approval value for the comment added.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li><strong>comment-added-contains-event</strong> (<cite>dict</cite>) – Trigger on comment
+added contains Regular Expression.<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">Comment added contains:</th></tr>
+<tr class="field-odd field"><td> </td><td class="field-body"><ul class="first last">
+<li><strong>comment-contains-value</strong> (<cite>str</cite>) – Comment contains
+Regular Expression value.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li><strong>trigger-on-patchset-uploaded-event</strong> (<em>bool</em>) – <p>Trigger on patchset upload.</p>
+<div class="deprecated">
+<p><span class="versionmodified">Deprecated since version 1.1.0.: </span>Please use <a class="reference internal" href="#trigger-on"><span class="std std-ref">trigger-on</span></a>.</p>
+</div>
+</li>
+<li><strong>trigger-on-change-abandoned-event</strong> (<em>bool</em>) – <p>Trigger on change abandoned.
+Requires Gerrit Trigger Plugin version &gt;= 2.8.0</p>
+<div class="deprecated">
+<p><span class="versionmodified">Deprecated since version 1.1.0.: </span>Please use <a class="reference internal" href="#trigger-on"><span class="std std-ref">trigger-on</span></a>.</p>
+</div>
+</li>
+<li><strong>trigger-on-change-merged-event</strong> (<em>bool</em>) – <p>Trigger on change merged</p>
+<div class="deprecated">
+<p><span class="versionmodified">Deprecated since version 1.1.0.: </span>Please use <a class="reference internal" href="#trigger-on"><span class="std std-ref">trigger-on</span></a>.</p>
+</div>
+</li>
+<li><strong>trigger-on-change-restored-event</strong> (<em>bool</em>) – <p>Trigger on change restored.
+Requires Gerrit Trigger Plugin version &gt;= 2.8.0</p>
+<div class="deprecated">
+<p><span class="versionmodified">Deprecated since version 1.1.0.: </span>Please use <a class="reference internal" href="#trigger-on"><span class="std std-ref">trigger-on</span></a>.</p>
+</div>
+</li>
+<li><strong>trigger-on-comment-added-event</strong> (<em>bool</em>) – <p>Trigger on comment added</p>
+<div class="deprecated">
+<p><span class="versionmodified">Deprecated since version 1.1.0.: </span>Please use <a class="reference internal" href="#trigger-on"><span class="std std-ref">trigger-on</span></a>.</p>
+</div>
+</li>
+<li><strong>trigger-on-draft-published-event</strong> (<em>bool</em>) – <p>Trigger on draft published
+event</p>
+<div class="deprecated">
+<p><span class="versionmodified">Deprecated since version 1.1.0: </span>Please use <a class="reference internal" href="#trigger-on"><span class="std std-ref">trigger-on</span></a>.</p>
+</div>
+</li>
+<li><strong>trigger-on-ref-updated-event</strong> (<em>bool</em>) – <p>Trigger on ref-updated</p>
+<div class="deprecated">
+<p><span class="versionmodified">Deprecated since version 1.1.0.: </span>Please use <a class="reference internal" href="#trigger-on"><span class="std std-ref">trigger-on</span></a>.</p>
+</div>
+</li>
+<li><strong>trigger-approval-category</strong> (<em>str</em>) – <p>Approval category for comment added</p>
+<div class="deprecated">
+<p><span class="versionmodified">Deprecated since version 1.1.0.: </span>Please use <a class="reference internal" href="#trigger-on"><span class="std std-ref">trigger-on</span></a>.</p>
+</div>
+</li>
+<li><strong>trigger-approval-value</strong> (<em>int</em>) – <p>Approval value for comment added</p>
+<div class="deprecated">
+<p><span class="versionmodified">Deprecated since version 1.1.0.: </span>Please use <a class="reference internal" href="#trigger-on"><span class="std std-ref">trigger-on</span></a>.</p>
+</div>
+</li>
+<li><strong>override-votes</strong> (<em>bool</em>) – Override default vote values</li>
+<li><strong>gerrit-build-started-verified-value</strong> (<em>int</em>) – Started ‘’Verified’’ value</li>
+<li><strong>gerrit-build-successful-verified-value</strong> (<em>int</em>) – Successful ‘’Verified’’
+value</li>
+<li><strong>gerrit-build-failed-verified-value</strong> (<em>int</em>) – Failed ‘’Verified’’ value</li>
+<li><strong>gerrit-build-unstable-verified-value</strong> (<em>int</em>) – Unstable ‘’Verified’’ value</li>
+<li><strong>gerrit-build-notbuilt-verified-value</strong> (<em>int</em>) – Not built ‘’Verified’’
+value</li>
+<li><strong>gerrit-build-started-codereview-value</strong> (<em>int</em>) – Started ‘’CodeReview’’
+value</li>
+<li><strong>gerrit-build-successful-codereview-value</strong> (<em>int</em>) – Successful
+‘’CodeReview’’ value</li>
+<li><strong>gerrit-build-failed-codereview-value</strong> (<em>int</em>) – Failed ‘’CodeReview’’ value</li>
+<li><strong>gerrit-build-unstable-codereview-value</strong> (<em>int</em>) – Unstable ‘’CodeReview’’
+value</li>
+<li><strong>gerrit-build-notbuilt-codereview-value</strong> (<em>int</em>) – Not built ‘’CodeReview’’
+value</li>
+<li><strong>failure-message</strong> (<em>str</em>) – Message to leave on failure (default ‘’)</li>
+<li><strong>successful-message</strong> (<em>str</em>) – Message to leave on success (default ‘’)</li>
+<li><strong>unstable-message</strong> (<em>str</em>) – Message to leave when unstable (default ‘’)</li>
+<li><strong>notbuilt-message</strong> (<em>str</em>) – Message to leave when not built (default ‘’)</li>
+<li><strong>failure-message-file</strong> (<em>str</em>) – Sets the filename within the workspace from
+which to retrieve the unsuccessful review message. (optional)</li>
+<li><strong>projects</strong> (<em>list</em>) – <p>list of projects to match</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Project:</th><td class="field-body"><ul class="first">
+<li><strong>project-compare-type</strong> (<cite>str</cite>) –  ‘’PLAIN’‘, ‘’ANT’’ or
+‘’REG_EXP’‘</li>
+<li><strong>project-pattern</strong> (<cite>str</cite>) – Project name pattern to match</li>
+<li><strong>branch-compare-type</strong> (<cite>str</cite>) – ‘’PLAIN’‘, ‘’ANT’’ or
+‘’REG_EXP’’ (not used if <cite>branches</cite> list is specified)<div class="deprecated">
+<p><span class="versionmodified">Deprecated since version 1.1.0: </span>Please use <a class="reference internal" href="#branches"><span class="std std-ref">branches</span></a>.</p>
+</div>
+</li>
+<li><strong>branch-pattern</strong> (<cite>str</cite>) – Branch name pattern to match
+(not used if <cite>branches</cite> list is specified)<div class="deprecated">
+<p><span class="versionmodified">Deprecated since version 1.1.0: </span>Please use <a class="reference internal" href="#branches"><span class="std std-ref">branches</span></a>.</p>
+</div>
+</li>
+</ul>
+<ul class="last" id="branches">
+<li><strong>branches</strong> (<cite>list</cite>) – List of branches to match
+(optional)<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Branch:</th><td class="field-body"><ul class="first last">
+<li><strong>branch-compare-type</strong> (<cite>str</cite>) – ‘’PLAIN’‘,
+‘’ANT’’ or ‘’REG_EXP’’ (optional) (default
+‘’PLAIN’‘)</li>
+<li><strong>branch-pattern</strong> (<cite>str</cite>) – Branch name pattern
+to match</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li><strong>file-paths</strong> (<cite>list</cite>) – List of file paths to match
+(optional)<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">File Path:</th><td class="field-body"><ul class="first last">
+<li><strong>compare-type</strong> (<cite>str</cite>) – ‘’PLAIN’‘, ‘’ANT’’
+or ‘’REG_EXP’’ (optional) (default ‘’PLAIN’‘)</li>
+<li><strong>pattern</strong> (<cite>str</cite>) – File path pattern to
+match</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li><strong>forbidden-file-paths</strong> (<cite>list</cite>) – List of file paths to
+skip triggering (optional)<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">Forbidden File Path:</th></tr>
+<tr class="field-odd field"><td> </td><td class="field-body"><ul class="first last">
+<li><strong>compare-type</strong> (<cite>str</cite>) –
+‘’PLAIN’‘, ‘’ANT’’ or ‘’REG_EXP’’ (optional)
+(default ‘’PLAIN’‘)</li>
+<li><strong>pattern</strong> (<cite>str</cite>) – File path pattern to
+match</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li><strong>topics</strong> (<cite>list</cite>) – List of topics to match
+(optional)<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Topic:</th><td class="field-body"><ul class="first last">
+<li><strong>compare-type</strong> (<cite>str</cite>) – ‘’PLAIN’‘, ‘’ANT’’ or
+‘’REG_EXP’’ (optional) (default ‘’PLAIN’‘)</li>
+<li><strong>pattern</strong> (<cite>str</cite>) – Topic name pattern to
+match</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li><dl class="first docutils">
+<dt><strong>disable-strict-forbidden-file-verification</strong> (<cite>bool</cite>) –</dt>
+<dd>Enabling this option will allow an event to trigger a
+build if the event contains BOTH one or more wanted file
+paths AND one or more forbidden file paths.  In other
+words, with this option, the build will not get
+triggered if the change contains only forbidden files,
+otherwise it will get triggered. Requires plugin
+version &gt;= 2.16.0 (default false)</dd>
+</dl>
+</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li><strong>skip-vote</strong> (<em>dict</em>) – <p>map of build outcomes for which Jenkins must skip
+vote. Requires Gerrit Trigger Plugin version &gt;= 2.7.0</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Outcome:</th><td class="field-body"><ul class="first last">
+<li><strong>successful</strong> (<cite>bool</cite>)</li>
+<li><strong>failed</strong> (<cite>bool</cite>)</li>
+<li><strong>unstable</strong> (<cite>bool</cite>)</li>
+<li><strong>notbuilt</strong> (<cite>bool</cite>)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li><strong>silent</strong> (<em>bool</em>) – When silent mode is on there will be no communication
+back to Gerrit, i.e. no build started/failed/successful approve
+messages etc. If other non-silent jobs are triggered by the same
+Gerrit event as this job, the result of this job’s build will not be
+counted in the end result of the other jobs. (default false)</li>
+<li><strong>silent-start</strong> (<em>bool</em>) – Sets silent start mode to on or off. When silent
+start mode is on there will be no ‘build started’ messages sent back
+to Gerrit. (default false)</li>
+<li><strong>escape-quotes</strong> (<em>bool</em>) – escape quotes in the values of Gerrit change
+parameters (default true)</li>
+<li><strong>no-name-and-email</strong> (<em>bool</em>) – Do not pass compound ‘name and email’
+parameters (default false)</li>
+<li><strong>readable-message</strong> (<em>bool</em>) – If parameters regarding multiline text,
+e.g. commit message, should be as human readable or not. If false,
+those parameters are Base64 encoded to keep environment variables
+clean. (default false)</li>
+<li><strong>dependency-jobs</strong> (<em>str</em>) – All jobs on which this job depends. If a commit
+should trigger both a dependency and this job, the dependency will be
+built first. Use commas to separate job names. Beware of cyclic
+dependencies. (optional)</li>
+<li><strong>notification-level</strong> (<em>str</em>) – Defines to whom email notifications should be
+sent. This can either be nobody (‘NONE’), the change owner (‘OWNER’),
+reviewers and change owner (‘OWNER_REVIEWERS’), all interested users
+i.e. owning, reviewing, watching, and starring (‘ALL’) or server
+default (‘SERVER_DEFAULT’). (default ‘SERVER_DEFAULT’)</li>
+<li><strong>dynamic-trigger-enabled</strong> (<em>bool</em>) – Enable/disable the dynamic trigger
+(default false)</li>
+<li><strong>dynamic-trigger-url</strong> (<em>str</em>) – if you specify this option, the Gerrit
+trigger configuration will be fetched from there on a regular interval</li>
+<li><strong>trigger-for-unreviewed-patches</strong> (<em>bool</em>) – trigger patchset-created events
+for changes that were uploaded while connection to Gerrit was down
+(default false). Requires Gerrit Trigger Plugin version &gt;= 2.11.0</li>
+<li><strong>custom-url</strong> (<em>str</em>) – Custom URL for a message sent to Gerrit. Build
+details URL will be used if empty. (default ‘’)</li>
+<li><strong>server-name</strong> (<em>str</em>) – Name of the server to trigger on, or ‘’__ANY__’’ to
+trigger on any configured Gerrit server (default ‘__ANY__’). Requires
+Gerrit Trigger Plugin version &gt;= 2.11.0</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>You may select one or more Gerrit events upon which to trigger.
+You must also supply at least one project and branch, optionally
+more.  If you select the comment-added trigger, you should also
+indicate which approval category and value you want to trigger the
+job.</p>
+<p>Until version 0.4.0 of Jenkins Job Builder, camelCase keys were used to
+configure Gerrit Trigger Plugin, instead of hyphenated-keys.  While still
+supported, camedCase keys are deprecated and should not be used. Support
+for this will be removed after 1.0.0 is released.</p>
+<p>Example:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">triggers</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">gerrit</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">trigger-on</span><span class="p p-Indicator">:</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">patchset-created-event</span><span class="p p-Indicator">:</span>
+            <span class="l l-Scalar l-Scalar-Plain">exclude-drafts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+            <span class="l l-Scalar l-Scalar-Plain">exclude-trivial-rebase</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+            <span class="l l-Scalar l-Scalar-Plain">exclude-no-code-change</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">comment-added-event</span><span class="p p-Indicator">:</span>
+            <span class="l l-Scalar l-Scalar-Plain">approval-category</span><span class="p p-Indicator">:</span> <span class="s">'APRV'</span>
+            <span class="l l-Scalar l-Scalar-Plain">approval-value</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
+      <span class="l l-Scalar l-Scalar-Plain">projects</span><span class="p p-Indicator">:</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">project-compare-type</span><span class="p p-Indicator">:</span> <span class="s">'PLAIN'</span>
+          <span class="l l-Scalar l-Scalar-Plain">project-pattern</span><span class="p p-Indicator">:</span> <span class="s">'test-project'</span>
+          <span class="l l-Scalar l-Scalar-Plain">branches</span><span class="p p-Indicator">:</span>
+            <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">branch-compare-type</span><span class="p p-Indicator">:</span> <span class="s">'PLAIN'</span>
+              <span class="l l-Scalar l-Scalar-Plain">branch-pattern</span><span class="p p-Indicator">:</span> <span class="s">'master'</span>
+            <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">branch-compare-type</span><span class="p p-Indicator">:</span> <span class="s">'PLAIN'</span>
+              <span class="l l-Scalar l-Scalar-Plain">branch-pattern</span><span class="p p-Indicator">:</span> <span class="s">'stable'</span>
+          <span class="l l-Scalar l-Scalar-Plain">file-paths</span><span class="p p-Indicator">:</span>
+              <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">compare-type</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ANT</span>
+                <span class="l l-Scalar l-Scalar-Plain">pattern</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">subdirectory/**</span>
+          <span class="l l-Scalar l-Scalar-Plain">topics</span><span class="p p-Indicator">:</span>
+              <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">compare-type</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ANT</span>
+                <span class="l l-Scalar l-Scalar-Plain">pattern</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">refactor-xy**</span>
+      <span class="l l-Scalar l-Scalar-Plain">skip-vote</span><span class="p p-Indicator">:</span>
+          <span class="l l-Scalar l-Scalar-Plain">successful</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+          <span class="l l-Scalar l-Scalar-Plain">failed</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+          <span class="l l-Scalar l-Scalar-Plain">unstable</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+          <span class="l l-Scalar l-Scalar-Plain">notbuilt</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+      <span class="l l-Scalar l-Scalar-Plain">silent</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+      <span class="l l-Scalar l-Scalar-Plain">silent-start</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+      <span class="l l-Scalar l-Scalar-Plain">escape-quotes</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+      <span class="l l-Scalar l-Scalar-Plain">no-name-and-email</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+      <span class="l l-Scalar l-Scalar-Plain">dependency-jobs</span><span class="p p-Indicator">:</span> <span class="s">'job1,</span><span class="nv"> </span><span class="s">job2'</span>
+      <span class="l l-Scalar l-Scalar-Plain">notification-level</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ALL</span>
+      <span class="l l-Scalar l-Scalar-Plain">dynamic-trigger-enabled</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+      <span class="l l-Scalar l-Scalar-Plain">dynamic-trigger-url</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">http://myhost/mytrigger</span>
+      <span class="l l-Scalar l-Scalar-Plain">trigger-for-unreviewed-patches</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+      <span class="l l-Scalar l-Scalar-Plain">server-name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">my-server</span>
+      <span class="l l-Scalar l-Scalar-Plain">failure-message-file</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">path/to/filename</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="yamlfunction">
+<dt id="triggers.github">
+<code class="descname">github</code><a class="headerlink" href="#triggers.github" title="Permalink to this definition">¶</a></dt>
+<dd><p>Trigger a job when github repository is pushed to.
+Requires the Jenkins <a class="reference external" href="https://wiki.jenkins.io/display/JENKINS/GitHub+Plugin">GitHub Plugin</a>.</p>
+<p>Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">triggers</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">github</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="yamlfunction">
+<dt id="triggers.github-pull-request">
+<code class="descname">github-pull-request</code><a class="headerlink" href="#triggers.github-pull-request" title="Permalink to this definition">¶</a></dt>
+<dd><p>Build pull requests in github and report results.
+Requires the Jenkins <a class="reference external" href="https://wiki.jenkins.io/display/JENKINS/GitHub+pull+request+builder+plugin">GitHub Pull Request Builder Plugin</a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>admin-list</strong> (<em>list</em>) – the users with admin rights (optional)</li>
+<li><strong>white-list</strong> (<em>list</em>) – users whose pull requests build (optional)</li>
+<li><strong>org-list</strong> (<em>list</em>) – orgs whose users should be white listed (optional)</li>
+<li><strong>allow-whitelist-orgs-as-admins</strong> (<em>bool</em>) – members of white listed orgs
+will have admin rights. (default false)</li>
+<li><strong>cron</strong> (<em>string</em>) – cron syntax of when to run (optional)</li>
+<li><strong>trigger-phrase</strong> (<em>string</em>) – when filled, commenting this phrase
+in the pull request will trigger a build (optional)</li>
+<li><strong>only-trigger-phrase</strong> (<em>bool</em>) – only commenting the trigger phrase
+in the pull request will trigger a build (default false)</li>
+<li><strong>skip-build-phrase</strong> (<em>string</em>) – when filled, adding this phrase to
+the pull request title or body will not trigger a build (optional)</li>
+<li><strong>black-list-labels</strong> (<em>string</em>) – list of GitHub labels for which the build
+should not be triggered (optional)</li>
+<li><strong>white-list-labels</strong> (<em>string</em>) – list of GitHub labels for which the build
+should only be triggered. (Leave blank for ‘any’) (optional)</li>
+<li><strong>github-hooks</strong> (<em>bool</em>) – use github hook (default false)</li>
+<li><strong>permit-all</strong> (<em>bool</em>) – build every pull request automatically
+without asking (default false)</li>
+<li><strong>auto-close-on-fail</strong> (<em>bool</em>) – close failed pull request automatically
+(default false)</li>
+<li><strong>white-list-target-branches</strong> (<em>list</em>) – Adding branches to this whitelist
+allows you to selectively test pull requests destined for these
+branches only. Supports regular expressions (e.g. ‘master’,
+‘feature-.*’). (optional)</li>
+<li><strong>auth-id</strong> (<em>string</em>) – the auth id to use (optional)</li>
+<li><strong>build-desc-template</strong> (<em>string</em>) – the template for build descriptions in
+jenkins (optional)</li>
+<li><strong>status-context</strong> (<em>string</em>) – the context to include on PR status comments
+(optional)</li>
+<li><strong>triggered-status</strong> (<em>string</em>) – the status message to set when the build has
+been triggered (optional)</li>
+<li><strong>started-status</strong> (<em>string</em>) – the status comment to set when the build has
+been started (optional)</li>
+<li><strong>status-url</strong> (<em>string</em>) – the status URL to set (optional)</li>
+<li><strong>status-add-test-results</strong> (<em>bool</em>) – add test result one-liner to status
+message (optional)</li>
+<li><strong>success-status</strong> (<em>string</em>) – the status message to set if the job succeeds
+(optional)</li>
+<li><strong>failure-status</strong> (<em>string</em>) – the status message to set if the job fails
+(optional)</li>
+<li><strong>error-status</strong> (<em>string</em>) – the status message to set if the job errors
+(optional)</li>
+<li><strong>success-comment</strong> (<em>string</em>) – comment to add to the PR on a successful job
+(optional)</li>
+<li><strong>failure-comment</strong> (<em>string</em>) – comment to add to the PR on a failed job
+(optional)</li>
+<li><strong>error-comment</strong> (<em>string</em>) – comment to add to the PR on an errored job
+(optional)</li>
+<li><strong>cancel-builds-on-update</strong> (<em>bool</em>) – cancel existing builds when a PR is
+updated (optional)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">triggers</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">github</span><span class="o">-</span><span class="n">pull</span><span class="o">-</span><span class="n">request</span><span class="p">:</span>
+      <span class="n">admin</span><span class="o">-</span><span class="nb">list</span><span class="p">:</span>
+        <span class="o">-</span> <span class="n">user1</span>
+        <span class="o">-</span> <span class="n">user2</span>
+      <span class="n">white</span><span class="o">-</span><span class="nb">list</span><span class="p">:</span>
+        <span class="o">-</span> <span class="n">user3</span>
+        <span class="o">-</span> <span class="n">user4</span>
+      <span class="n">org</span><span class="o">-</span><span class="nb">list</span><span class="p">:</span>
+        <span class="o">-</span> <span class="n">org1</span>
+        <span class="o">-</span> <span class="n">org2</span>
+      <span class="n">white</span><span class="o">-</span><span class="nb">list</span><span class="o">-</span><span class="n">labels</span><span class="p">:</span>
+        <span class="o">-</span> <span class="n">label1</span>
+        <span class="o">-</span> <span class="n">label2</span>
+      <span class="n">black</span><span class="o">-</span><span class="nb">list</span><span class="o">-</span><span class="n">labels</span><span class="p">:</span>
+        <span class="o">-</span> <span class="n">label3</span>
+        <span class="o">-</span> <span class="n">label4</span>
+      <span class="n">cron</span><span class="p">:</span> <span class="s1">'* * * * *'</span>
+      <span class="n">build</span><span class="o">-</span><span class="n">desc</span><span class="o">-</span><span class="n">template</span><span class="p">:</span> <span class="s2">"build description"</span>
+      <span class="n">trigger</span><span class="o">-</span><span class="n">phrase</span><span class="p">:</span> <span class="s1">'retest this please'</span>
+      <span class="n">skip</span><span class="o">-</span><span class="n">build</span><span class="o">-</span><span class="n">phrase</span><span class="p">:</span> <span class="s1">'no tests'</span>
+      <span class="n">only</span><span class="o">-</span><span class="n">trigger</span><span class="o">-</span><span class="n">phrase</span><span class="p">:</span> <span class="n">true</span>
+      <span class="n">github</span><span class="o">-</span><span class="n">hooks</span><span class="p">:</span> <span class="n">true</span>
+      <span class="n">permit</span><span class="o">-</span><span class="nb">all</span><span class="p">:</span> <span class="n">false</span>
+      <span class="n">auto</span><span class="o">-</span><span class="n">close</span><span class="o">-</span><span class="n">on</span><span class="o">-</span><span class="n">fail</span><span class="p">:</span> <span class="n">false</span>
+      <span class="n">allow</span><span class="o">-</span><span class="n">whitelist</span><span class="o">-</span><span class="n">orgs</span><span class="o">-</span><span class="k">as</span><span class="o">-</span><span class="n">admins</span><span class="p">:</span> <span class="n">true</span>
+      <span class="n">white</span><span class="o">-</span><span class="nb">list</span><span class="o">-</span><span class="n">target</span><span class="o">-</span><span class="n">branches</span><span class="p">:</span>
+        <span class="o">-</span> <span class="n">master</span>
+        <span class="o">-</span> <span class="n">testing</span>
+      <span class="n">auth</span><span class="o">-</span><span class="nb">id</span><span class="p">:</span> <span class="s1">'123-456-789'</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="yamlfunction">
+<dt id="triggers.gitlab">
+<code class="descname">gitlab</code><a class="headerlink" href="#triggers.gitlab" title="Permalink to this definition">¶</a></dt>
+<dd><p>Makes Jenkins act like a GitLab CI server.
+Requires the Jenkins <a class="reference external" href="https://wiki.jenkins.io/display/JENKINS/GitLab+Plugin">GitLab Plugin</a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>trigger-push</strong> (<em>bool</em>) – Build on Push Events (default true)</li>
+<li><strong>trigger-merge-request</strong> (<em>bool</em>) – Build on Merge Request Events (default
+true)</li>
+<li><strong>trigger-open-merge-request-push</strong> (<em>str</em>) – <p>Rebuild open Merge Requests
+on Push Events.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">trigger-open-merge-request-push values (&lt; 1.1.26):</th></tr>
+<tr class="field-odd field"><td> </td><td class="field-body"><ul class="first">
+<li><strong>true</strong> (default)</li>
+<li><strong>false</strong></li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">trigger-open-merge-request-push values (&gt;= 1.1.26):</th></tr>
+<tr class="field-even field"><td> </td><td class="field-body"><ul class="first last">
+<li><strong>never</strong> (default)</li>
+<li><strong>source</strong></li>
+<li><strong>both</strong></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li><strong>trigger-note</strong> (<em>bool</em>) – Build when comment is added with defined phrase
+(&gt;= 1.2.4) (default true)</li>
+<li><strong>note-regex</strong> (<em>str</em>) – Phrase that triggers the build (&gt;= 1.2.4) (default
+‘Jenkins please retry a build’)</li>
+<li><strong>ci-skip</strong> (<em>bool</em>) – Enable skipping builds of commits that contain
+[ci-skip] in the commit message (default true)</li>
+<li><strong>wip-skip</strong> (<em>bool</em>) – Enable skipping builds of WIP Merge Requests (&gt;= 1.2.4)
+(default true)</li>
+<li><strong>set-build-description</strong> (<em>bool</em>) – Set build description to build cause
+(eg. Merge request or Git Push) (default true)</li>
+<li><strong>add-note-merge-request</strong> (<em>bool</em>) – Add note with build status on
+merge requests (default true)</li>
+<li><strong>add-vote-merge-request</strong> (<em>bool</em>) – Vote added to note with build status
+on merge requests (&gt;= 1.1.27) (default true)</li>
+<li><strong>accept-merge-request-on-success</strong> (<em>bool</em>) – Automatically accept the Merge
+Request if the build is successful (&gt;= 1.1.27) (default false)</li>
+<li><strong>add-ci-message</strong> (<em>bool</em>) – Add CI build status (1.1.28 - 1.2.0) (default
+false)</li>
+<li><strong>allow-all-branches</strong> (<em>bool</em>) – Allow all branches (Ignoring Filtered
+Branches) (&lt; 1.1.29) (default false)</li>
+<li><strong>branch-filter-type</strong> (<em>str</em>) – Filter branches that can trigger a build.
+Valid values and their additional attributes are described in the
+<a class="reference internal" href="#branch-filter-type">branch filter type</a> table (&gt;= 1.1.29) (default ‘All’).</li>
+<li><strong>include-branches</strong> (<em>list</em>) – Defined list of branches to include
+(default [])</li>
+<li><strong>exclude-branches</strong> (<em>list</em>) – Defined list of branches to exclude
+(default [])</li>
+<li><strong>target-branch-regex</strong> (<em>str</em>) – Regular expression to select branches</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils" id="branch-filter-type">
+<colgroup>
+<col width="26%"/>
+<col width="74%"/>
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Branch filter type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>All</td>
+<td>All branches are allowed to trigger this job.</td>
+</tr>
+<tr class="row-odd"><td>NameBasedFilter</td>
+<td>Filter branches by name.
+List source branches that are allowed to trigger a
+build from a Push event or a Merge Request event. If
+both fields are left empty, all branches are allowed
+to trigger this job. For Merge Request events only
+the target branch name is filtered out by the
+<strong>include-branches</strong> and <strong>exclude-branches</strong> lists.</td>
+</tr>
+<tr class="row-even"><td>RegexBasedFilter</td>
+<td>Filter branches by regex
+The target branch regex allows to limit the
+execution of this job to certain branches. Any
+branch matching the specified pattern in
+<strong>target-branch-regex</strong> triggers the job. No
+filtering is performed if the field is left empty.</td>
+</tr>
+</tbody>
+</table>
+<p>Example (version &lt; 1.1.26):</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">triggers</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">gitlab</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">trigger-push</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+      <span class="l l-Scalar l-Scalar-Plain">trigger-merge-request</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+      <span class="l l-Scalar l-Scalar-Plain">trigger-open-merge-request-push</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+      <span class="l l-Scalar l-Scalar-Plain">ci-skip</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+      <span class="l l-Scalar l-Scalar-Plain">set-build-description</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+      <span class="l l-Scalar l-Scalar-Plain">add-note-merge-request</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+      <span class="l l-Scalar l-Scalar-Plain">add-vote-merge-request</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+      <span class="l l-Scalar l-Scalar-Plain">add-ci-message</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+      <span class="l l-Scalar l-Scalar-Plain">allow-all-branches</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+      <span class="l l-Scalar l-Scalar-Plain">include-branches</span><span class="p p-Indicator">:</span>
+        <span class="p p-Indicator">-</span> <span class="s">'master'</span>
+        <span class="p p-Indicator">-</span> <span class="s">'master2'</span>
+        <span class="p p-Indicator">-</span> <span class="s">'local-test'</span>
+      <span class="l l-Scalar l-Scalar-Plain">exclude-branches</span><span class="p p-Indicator">:</span>
+        <span class="p p-Indicator">-</span> <span class="s">'broken-test'</span>
+        <span class="p p-Indicator">-</span> <span class="s">'master-foo'</span>
+</pre></div>
+</div>
+<p>Minimal example (version &gt;= 1.1.26):</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">triggers</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">gitlab</span>
+</pre></div>
+</div>
+<p>Full example (version &gt;= 1.1.26):</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">triggers</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">gitlab</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">trigger-push</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+      <span class="l l-Scalar l-Scalar-Plain">trigger-merge-request</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+      <span class="l l-Scalar l-Scalar-Plain">trigger-open-merge-request-push</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">both</span>
+      <span class="l l-Scalar l-Scalar-Plain">ci-skip</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+      <span class="l l-Scalar l-Scalar-Plain">set-build-description</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+      <span class="l l-Scalar l-Scalar-Plain">add-note-merge-request</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+      <span class="l l-Scalar l-Scalar-Plain">add-vote-merge-request</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+      <span class="l l-Scalar l-Scalar-Plain">add-ci-message</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+      <span class="l l-Scalar l-Scalar-Plain">allow-all-branches</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+      <span class="l l-Scalar l-Scalar-Plain">include-branches</span><span class="p p-Indicator">:</span>
+        <span class="p p-Indicator">-</span> <span class="s">'master'</span>
+        <span class="p p-Indicator">-</span> <span class="s">'master2'</span>
+        <span class="p p-Indicator">-</span> <span class="s">'local-test'</span>
+      <span class="l l-Scalar l-Scalar-Plain">exclude-branches</span><span class="p p-Indicator">:</span>
+        <span class="p p-Indicator">-</span> <span class="s">'broken-test'</span>
+        <span class="p p-Indicator">-</span> <span class="s">'master-foo'</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="yamlfunction">
+<dt id="triggers.gitlab-merge-request">
+<code class="descname">gitlab-merge-request</code><a class="headerlink" href="#triggers.gitlab-merge-request" title="Permalink to this definition">¶</a></dt>
+<dd><p>Build merge requests in gitlab and report results.
+Requires the Jenkins <a class="reference external" href="https://wiki.jenkins.io/display/JENKINS/Gitlab+Merge+Request+Builder+Plugin">Gitlab MergeRequest Builder Plugin.</a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>cron</strong> (<em>string</em>) – cron syntax of when to run (required)</li>
+<li><strong>project-path</strong> (<em>string</em>) – gitlab-relative path to project (required)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">triggers</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">gitlab</span><span class="o">-</span><span class="n">merge</span><span class="o">-</span><span class="n">request</span><span class="p">:</span>
+      <span class="n">cron</span><span class="p">:</span> <span class="s1">'* * * * *'</span>
+      <span class="n">project</span><span class="o">-</span><span class="n">path</span><span class="p">:</span> <span class="s1">'test/project'</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="yamlfunction">
+<dt id="triggers.groovy-script">
+<code class="descname">groovy-script</code><a class="headerlink" href="#triggers.groovy-script" title="Permalink to this definition">¶</a></dt>
+<dd><p>Triggers the job using a groovy script.
+Requires the Jenkins <a class="reference external" href="https://wiki.jenkins.io/display/JENKINS/ScriptTrigger+Plugin">ScriptTrigger Plugin</a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>system-script</strong> (<em>bool</em>) – If true, run the groovy script as a system script,
+the script will have access to the same variables as the Groovy Console.
+If false, run the groovy script on the executor node, the script will not
+have access to the hudson or job model. (default false)</li>
+<li><strong>script</strong> (<em>str</em>) – Content of the groovy script. If the script result is
+evaluated to true, a build is scheduled. (default ‘’)</li>
+<li><strong>script-file-path</strong> (<em>str</em>) – Groovy script path. (default ‘’)</li>
+<li><strong>property-file-path</strong> (<em>str</em>) – Property file path. All properties will be set
+as parameters for the triggered build. (default ‘’)</li>
+<li><strong>enable-concurrent</strong> (<em>bool</em>) – Enable concurrent build. (default false)</li>
+<li><strong>label</strong> (<em>str</em>) – Restrict where the polling should run. (default ‘’)</li>
+<li><strong>cron</strong> (<em>str</em>) – cron syntax of when to run (default ‘’)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Full Example:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">triggers</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">groovy-script</span><span class="p p-Indicator">:</span>
+        <span class="l l-Scalar l-Scalar-Plain">script</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">groovy-content</span>
+        <span class="l l-Scalar l-Scalar-Plain">script-file-path</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">path/to/filename</span>
+        <span class="l l-Scalar l-Scalar-Plain">property-file-path</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/path/to/properties/file</span>
+        <span class="l l-Scalar l-Scalar-Plain">cron</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">H/15 * * * *</span>
+        <span class="l l-Scalar l-Scalar-Plain">enable-concurrent</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+        <span class="l l-Scalar l-Scalar-Plain">label</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">master</span>
+        <span class="l l-Scalar l-Scalar-Plain">system-script</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+</pre></div>
+</div>
+<p>Minimal Example:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">triggers</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">groovy-script</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="yamlfunction">
+<dt id="triggers.ivy">
+<code class="descname">ivy</code><a class="headerlink" href="#triggers.ivy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Poll with an Ivy script
+Requires the Jenkins <a class="reference external" href="https://wiki.jenkins.io/display/JENKINS/IvyTrigger+Plugin">IvyTrigger Plugin</a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>path</strong> (<em>str</em>) – Path of the ivy file. (optional)</li>
+<li><strong>settings-path</strong> (<em>str</em>) – Ivy Settings Path. (optional)</li>
+<li><strong>str properties-file</strong> (<em>list</em>) – List of properties file path. Properties
+will be injected as variables in the ivy settings file. (optional)</li>
+<li><strong>properties-content</strong> (<em>str</em>) – Properties content. Properties will be
+injected as variables in the ivy settings file. (optional)</li>
+<li><strong>debug</strong> (<em>bool</em>) – Active debug mode on artifacts resolution. (default false)</li>
+<li><strong>download-artifacts</strong> – Download artifacts for dependencies to see if they
+have changed. (default true)</li>
+<li><strong>enable-concurrent</strong> (<em>bool</em>) – Enable Concurrent Build. (default false)</li>
+<li><strong>label</strong> (<em>str</em>) – Restrict where the polling should run. (default ‘’)</li>
+<li><strong>cron</strong> (<em>str</em>) – cron syntax of when to run (default ‘’)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">triggers</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">ivy</span><span class="p">:</span>
+        <span class="n">path</span><span class="p">:</span> <span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">file</span>
+        <span class="n">settings</span><span class="o">-</span><span class="n">path</span><span class="p">:</span> <span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">settings</span><span class="o">/</span><span class="n">file</span>
+        <span class="n">properties</span><span class="o">-</span><span class="n">file</span><span class="p">:</span>
+            <span class="o">-</span> <span class="s1">'filename1'</span>
+            <span class="o">-</span> <span class="s1">'filename2'</span>
+        <span class="n">debug</span><span class="p">:</span> <span class="n">true</span>
+        <span class="n">cron</span><span class="p">:</span> <span class="s1">'H/15 * * * *'</span>
+        <span class="n">enable</span><span class="o">-</span><span class="n">concurrent</span><span class="p">:</span> <span class="kc">False</span>
+        <span class="n">label</span><span class="p">:</span> <span class="n">master</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="yamlfunction">
+<dt id="triggers.jms-messaging">
+<code class="descname">jms-messaging</code><a class="headerlink" href="#triggers.jms-messaging" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>The JMS Messaging Plugin provides the following functionality:</dt>
+<dd><ul class="first last simple">
+<li>A build trigger to submit jenkins jobs upon receipt
+of a matching message.</li>
+<li>A builder that may be used to submit a message to the topic
+upon the completion of a job</li>
+<li>A post-build action that may be used to submit a message to the topic
+upon the completion of a job</li>
+</ul>
+</dd>
+<dt>JMS Messaging provider types supported:</dt>
+<dd><ul class="first last simple">
+<li>ActiveMQ</li>
+<li>FedMsg</li>
+</ul>
+</dd>
+</dl>
+<p>Requires the Jenkins <a class="reference external" href="https://wiki.jenkins.io/display/JENKINS/JMS+Messaging+Plugin">JMS Messaging Plugin
+Pipeline Plugin</a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>selector</strong> (<em>str</em>) – The JSON or YAML formatted text that conforms to
+the schema for defining the various OpenShift resources. (default ‘’)
+note: topic needs to be in double quotes
+ex. topic = “org.fedoraproject.prod.fedimg.image.upload”</li>
+<li><strong>provider-name</strong> (<em>str</em>) – Name of message provider setup in the
+global config. (default ‘’)</li>
+<li><strong>checks</strong> (<em>list</em>) – List of checks to monitor. (default [])</li>
+<li><strong>field</strong> (<em>str</em>) – Check the body of messages for a field. (default ‘’)</li>
+<li><strong>expected-value</strong> (<em>str</em>) – Expected value for the field. regex (default ‘’)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Full Example:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">triggers</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">jms-messaging</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">selector</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">topic = "org.fedoraproject.prod.fedimg.image.upload"</span>
+      <span class="l l-Scalar l-Scalar-Plain">provider-name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">fedmsg</span>
+      <span class="l l-Scalar l-Scalar-Plain">checks</span><span class="p p-Indicator">:</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">field</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">compose</span>
+          <span class="l l-Scalar l-Scalar-Plain">expected-value</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">.+compose_id.+Fedora-Atomic.+</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">field</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">image_name</span>
+          <span class="l l-Scalar l-Scalar-Plain">expected-value</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">.+Fedora-Atomic.+</span>
+</pre></div>
+</div>
+<p>Minimal Example:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">triggers</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">jms-messaging</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">selector</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">topic = "org.fedoraproject.prod.fedimg.image.upload"</span>
+      <span class="l l-Scalar l-Scalar-Plain">provider-name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">fedmsg</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="yamlfunction">
+<dt id="triggers.monitor-files">
+<code class="descname">monitor-files</code><a class="headerlink" href="#triggers.monitor-files" title="Permalink to this definition">¶</a></dt>
+<dd><p>Configure Jenkins to monitor files.
+Requires the Jenkins <a class="reference external" href="https://wiki.jenkins.io/display/JENKINS/FSTrigger+Plugin">Filesystem Trigger Plugin</a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>files</strong> (<em>list</em>) – <p>List of files to monitor</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">File:</th><td class="field-body"><ul class="first">
+<li><strong>path</strong> (<cite>str</cite>) – File path to monitor. You can use a pattern
+that specifies a set of files if you dont know the real file
+path. (required)</li>
+<li><strong>strategy</strong> (<cite>str</cite>) – Choose your strategy if there is more
+than one matching file. Can be one of Ignore file (‘IGNORE’) or
+Use the most recent (‘LATEST’). (default ‘LATEST’)</li>
+<li><strong>check-content</strong> (<cite>list</cite>) – List of content changes of the
+file to monitor<blockquote>
+<div><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Content Nature:</th><td class="field-body"><ul class="first last">
+<li><strong>simple</strong> (<cite>bool</cite>) – Trigger on change in content of
+the specified file (whatever the type file).
+(default false)</li>
+<li><strong>jar</strong> (<cite>bool</cite>) – Trigger on change in content of the
+specified JAR file. (default false)</li>
+<li><strong>tar</strong> (<cite>bool</cite>) – Trigger on change in content of the
+specified Tar file. (default false)</li>
+<li><strong>zip</strong> (<cite>bool</cite>) – Trigger on change in content of the
+specified ZIP file. (default false)</li>
+<li><strong>source-manifest</strong> (<cite>list</cite>) – Trigger on change to
+MANIFEST files.<blockquote>
+<div><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">MANIFEST File:</th><td class="field-body"><ul class="first last">
+<li><strong>keys</strong> (<cite>list</cite>) – List of keys to inspect.
+(optional)</li>
+<li><strong>all-keys</strong> (<cite>bool</cite>) – If true, take into
+account all keys. (default true)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</li>
+<li><strong>jar-manifest</strong> (<cite>list</cite>) – Trigger on change to
+MANIFEST files (contained in jar files).<blockquote>
+<div><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">MANIFEST File:</th><td class="field-body"><ul class="first last">
+<li><strong>keys</strong> (<cite>list</cite>) – List of keys to inspect.
+(optional)</li>
+<li><strong>all-keys</strong> (<cite>bool</cite>) – If true, take into
+account all keys. (default true)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</li>
+<li><strong>properties</strong> (<cite>list</cite>) – Monitor the contents of the
+properties file.<blockquote>
+<div><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">Properties File:</th></tr>
+<tr class="field-odd field"><td> </td><td class="field-body"><ul class="first last">
+<li><strong>keys</strong> (<cite>list</cite>) – List of keys to inspect.
+(optional)</li>
+<li><strong>all-keys</strong> (<cite>bool</cite>) – If true, take into
+account all keys. (default true)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</li>
+<li><strong>xml</strong> (<cite>list str</cite>) – Trigger on change to the listed
+XPath expressions.</li>
+<li><strong>text</strong> (<cite>list str</cite>) – Trigger on change to the listed
+regular expressions.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</li>
+</ul>
+<blockquote class="last">
+<div><ul>
+<li><strong>ignore-modificaton-date</strong> (<cite>bool</cite>) – If true, ignore the file
+modification date. Only valid when content changes of the file
+are being monitored. (default true)</li>
+</ul>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li><strong>cron</strong> (<em>str</em>) – cron syntax of when to run (default ‘’)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">triggers</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">monitor-files</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">cron</span><span class="p p-Indicator">:</span> <span class="s">'*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*'</span>
+      <span class="l l-Scalar l-Scalar-Plain">files</span><span class="p p-Indicator">:</span>
+          <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">path</span><span class="p p-Indicator">:</span> <span class="s">'path1'</span>
+            <span class="l l-Scalar l-Scalar-Plain">strategy</span><span class="p p-Indicator">:</span> <span class="s">'IGNORE'</span>
+          <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">path</span><span class="p p-Indicator">:</span> <span class="s">'path2'</span>
+            <span class="l l-Scalar l-Scalar-Plain">check-content</span><span class="p p-Indicator">:</span>
+                <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">simple</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+                <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">jar</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+                <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">tar</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+                <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">zip</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+                <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">source-manifest</span><span class="p p-Indicator">:</span>
+                    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">all-keys</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+                      <span class="l l-Scalar l-Scalar-Plain">keys</span><span class="p p-Indicator">:</span>
+                          <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">key1</span>
+                          <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">key2</span>
+                <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">jar-manifest</span><span class="p p-Indicator">:</span>
+                    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">keys</span><span class="p p-Indicator">:</span>
+                          <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">key1</span>
+                          <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">key2</span>
+                <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">properties</span><span class="p p-Indicator">:</span>
+                    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">all-keys</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+                      <span class="l l-Scalar l-Scalar-Plain">keys</span><span class="p p-Indicator">:</span>
+                          <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">prop1</span>
+                          <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">prop2</span>
+                <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">xml</span><span class="p p-Indicator">:</span>
+                    <span class="p p-Indicator">-</span> <span class="s">'xpath1'</span>
+                    <span class="p p-Indicator">-</span> <span class="s">'xpath2'</span>
+                <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">text</span><span class="p p-Indicator">:</span>
+                    <span class="p p-Indicator">-</span> <span class="s">'regex1'</span>
+            <span class="l l-Scalar l-Scalar-Plain">ignore-modificaton-date</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="yamlfunction">
+<dt id="triggers.monitor-folders">
+<code class="descname">monitor-folders</code><a class="headerlink" href="#triggers.monitor-folders" title="Permalink to this definition">¶</a></dt>
+<dd><p>Configure Jenkins to monitor folders.
+Requires the Jenkins <a class="reference external" href="https://wiki.jenkins.io/display/JENKINS/FSTrigger+Plugin">Filesystem Trigger Plugin</a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>path</strong> (<em>str</em>) – Folder path to poll. (default ‘’)</li>
+<li><strong>includes</strong> (<em>list</em>) – Fileset includes setting that specifies the list of
+includes files. Basedir of the fileset is relative to the workspace
+root. If no value is set, all files are used. (default ‘’)</li>
+<li><strong>excludes</strong> (<em>str</em>) – The ‘excludes’ pattern. A file that matches this mask
+will not be polled even if it matches the mask specified in ‘includes’
+section. (default ‘’)</li>
+<li><strong>check-modification-date</strong> (<em>bool</em>) – Check last modification date.
+(default true)</li>
+<li><strong>check-content</strong> (<em>bool</em>) – Check content. (default true)</li>
+<li><strong>check-fewer</strong> (<em>bool</em>) – Check fewer files (default true)</li>
+<li><strong>cron</strong> (<em>str</em>) – cron syntax of when to run (default ‘’)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Full Example:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">triggers</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">monitor-folders</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">path</span><span class="p p-Indicator">:</span> <span class="s">'pathname'</span>
+      <span class="l l-Scalar l-Scalar-Plain">includes</span><span class="p p-Indicator">:</span>
+        <span class="p p-Indicator">-</span> <span class="s">'pattern1'</span>
+        <span class="p p-Indicator">-</span> <span class="s">'pattern2'</span>
+      <span class="l l-Scalar l-Scalar-Plain">excludes</span><span class="p p-Indicator">:</span> <span class="s">'pattern1'</span>
+      <span class="l l-Scalar l-Scalar-Plain">check-modification-date</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+      <span class="l l-Scalar l-Scalar-Plain">check-content</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+      <span class="l l-Scalar l-Scalar-Plain">check-fewer</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+      <span class="l l-Scalar l-Scalar-Plain">cron</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">H/15 * * * *</span>
+</pre></div>
+</div>
+<p>Minimal Example:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">triggers</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">monitor-folders</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="yamlfunction">
+<dt id="triggers.parameterized-timer">
+<code class="descname">parameterized-timer</code><a class="headerlink" href="#triggers.parameterized-timer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Trigger builds with parameters at certain times.
+Requires the Jenkins <a class="reference external" href="https://wiki.jenkins.io/display/JENKINS/Parameterized+Scheduler+Plugin">Parameterized Scheduler Plugin</a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>cron</strong> (<em>str</em>) – cron syntax of when to run and with which parameters
+(required)</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">triggers</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">parameterized-timer</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">cron</span><span class="p p-Indicator">:</span> <span class="s">"@midnight</span><span class="nv"> </span><span class="s">%</span><span class="nv"> </span><span class="s">PARAM=value"</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="yamlfunction">
+<dt id="triggers.pollscm">
+<code class="descname">pollscm</code><a class="headerlink" href="#triggers.pollscm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Poll the SCM to determine if there has been a change.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameter:</th><td class="field-body">the polling interval (cron syntax)</td>
+</tr>
+</tbody>
+</table>
+<div class="deprecated">
+<p><span class="versionmodified">Deprecated since version 1.3.0.: </span>Please use <a class="reference internal" href="#cron"><span class="std std-ref">cron</span></a>.</p>
+</div>
+<table class="docutils field-list" frame="void" id="cron" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>cron</strong> (<em>string</em>) – the polling interval (cron syntax, required)</li>
+<li><strong>ignore-post-commit-hooks</strong> (<em>bool</em>) – Ignore changes notified by SCM
+post-commit hooks. The subversion-plugin supports this since
+version 1.44. (default false)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">triggers</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">pollscm</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">cron</span><span class="p p-Indicator">:</span> <span class="s">"*/30</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*"</span>
+      <span class="l l-Scalar l-Scalar-Plain">ignore-post-commit-hooks</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="yamlfunction">
+<dt id="triggers.pollurl">
+<code class="descname">pollurl</code><a class="headerlink" href="#triggers.pollurl" title="Permalink to this definition">¶</a></dt>
+<dd><p>Trigger when the HTTP response from a URL changes.
+Requires the Jenkins <a class="reference external" href="https://wiki.jenkins.io/display/JENKINS/URLTrigger+Plugin">URLTrigger Plugin</a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>cron</strong> (<em>string</em>) – cron syntax of when to run (default ‘’)</li>
+<li><strong>polling-node</strong> (<em>string</em>) – Restrict where the polling should run.
+(optional)</li>
+<li><strong>urls</strong> (<em>list</em>) – <p>List of URLs to monitor</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">URL:</th><td class="field-body"><ul class="first last">
+<li><strong>url</strong> (<cite>str</cite>) – URL to monitor for changes (required)</li>
+<li><strong>proxy</strong> (<cite>bool</cite>) – Activate the Jenkins proxy (default false)</li>
+<li><strong>timeout</strong> (<cite>int</cite>) – Connect/read timeout in seconds
+(default 300)</li>
+<li><strong>username</strong> (<cite>string</cite>) – User name for basic authentication
+(optional)</li>
+<li><strong>password</strong> (<cite>string</cite>) – Password for basic authentication
+(optional)</li>
+<li><strong>check-status</strong> (<cite>int</cite>) – Check for a specific HTTP status
+code (optional)</li>
+<li><strong>check-etag</strong> (<cite>bool</cite>) – Check the HTTP ETag for changes
+(default false)</li>
+<li><strong>check-date</strong> (<cite>bool</cite>) – Check the last modification date of
+the URL (default false)</li>
+<li><strong>check-content</strong> (<cite>list</cite>) – List of content type changes to
+monitor<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Content Type:</th><td class="field-body"><ul class="first last">
+<li><strong>simple</strong> (<cite>bool</cite>) – Trigger on any change to
+the content of the URL (default false)</li>
+<li><strong>json</strong> (<cite>list</cite>) – Trigger on any change to
+the listed JSON paths</li>
+<li><strong>text</strong> (<cite>list</cite>) – Trigger on any change to
+the listed regular expressions</li>
+<li><strong>xml</strong> (<cite>list</cite>) – Trigger on any change to
+the listed XPath expressions</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">triggers</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">pollurl</span><span class="p">:</span>
+      <span class="n">cron</span><span class="p">:</span> <span class="s1">'* * * * *'</span>
+      <span class="n">polling</span><span class="o">-</span><span class="n">node</span><span class="p">:</span> <span class="s1">'label expression'</span>
+      <span class="n">urls</span><span class="p">:</span>
+        <span class="o">-</span> <span class="n">url</span><span class="p">:</span> <span class="s1">'http://example.com/url1'</span>
+          <span class="n">proxy</span><span class="p">:</span> <span class="n">false</span>
+          <span class="n">timeout</span><span class="p">:</span> <span class="mi">442</span>
+          <span class="n">username</span><span class="p">:</span> <span class="n">username</span>
+          <span class="n">password</span><span class="p">:</span> <span class="n">sekr3t</span>
+          <span class="n">check</span><span class="o">-</span><span class="n">status</span><span class="p">:</span> <span class="mi">202</span>
+          <span class="n">check</span><span class="o">-</span><span class="n">etag</span><span class="p">:</span> <span class="n">false</span>
+          <span class="n">check</span><span class="o">-</span><span class="n">date</span><span class="p">:</span> <span class="n">true</span>
+          <span class="n">check</span><span class="o">-</span><span class="n">content</span><span class="p">:</span>
+            <span class="o">-</span> <span class="n">simple</span><span class="p">:</span> <span class="n">true</span>
+            <span class="o">-</span> <span class="n">json</span><span class="p">:</span>
+              <span class="o">-</span> <span class="s1">'$..author'</span>
+              <span class="o">-</span> <span class="s1">'$.store..price'</span>
+        <span class="o">-</span> <span class="n">url</span><span class="p">:</span> <span class="s1">'http://example.com/url2'</span>
+          <span class="n">proxy</span><span class="p">:</span> <span class="n">true</span>
+          <span class="n">check</span><span class="o">-</span><span class="n">etag</span><span class="p">:</span> <span class="n">true</span>
+          <span class="n">check</span><span class="o">-</span><span class="n">content</span><span class="p">:</span>
+            <span class="o">-</span> <span class="n">simple</span><span class="p">:</span> <span class="n">false</span>
+            <span class="o">-</span> <span class="n">xml</span><span class="p">:</span>
+              <span class="o">-</span> <span class="s1">'//author'</span>
+              <span class="o">-</span> <span class="s1">'/store//price'</span>
+            <span class="o">-</span> <span class="n">text</span><span class="p">:</span>
+              <span class="o">-</span> <span class="s1">'\d+'</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="yamlfunction">
+<dt id="triggers.rabbitmq">
+<code class="descname">rabbitmq</code><a class="headerlink" href="#triggers.rabbitmq" title="Permalink to this definition">¶</a></dt>
+<dd><p>This plugin triggers build using remote build message in RabbitMQ queue.
+Requires the Jenkins <a class="reference external" href="https://wiki.jenkins.io/display/JENKINS/RabbitMQ+Build+Trigger+Plugin">RabbitMQ Build Trigger Plugin</a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>token</strong> (<em>str</em>) – the build token expected in the message queue (required)</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">triggers</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">rabbitmq</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">token</span><span class="p p-Indicator">:</span> <span class="s">'build_trigger_token'</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="yamlfunction">
+<dt id="triggers.reverse">
+<code class="descname">reverse</code><a class="headerlink" href="#triggers.reverse" title="Permalink to this definition">¶</a></dt>
+<dd><p>This trigger can be configured in the UI using the checkbox with the
+following text: ‘Build after other projects are built’.</p>
+<p>Set up a trigger so that when some other projects finish building, a new
+build is scheduled for this project. This is convenient for running an
+extensive test after a build is complete, for example.</p>
+<p>This configuration complements the “Build other projects” section in the
+“Post-build Actions” of an upstream project, but is preferable when you
+want to configure the downstream project.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>jobs</strong> (<em>str</em>) – List of jobs to watch. Can be either a comma separated
+list or a list.</li>
+<li><strong>result</strong> (<em>str</em>) – Build results to monitor for between the following
+options: success, unstable and failure. (default ‘success’).</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">triggers</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">reverse</span><span class="p">:</span>
+        <span class="n">jobs</span><span class="p">:</span> <span class="s1">'Fantastic-job'</span>
+        <span class="n">result</span><span class="p">:</span> <span class="s1">'failure'</span>
+</pre></div>
+</div>
+<p>Example List:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">triggers</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">reverse</span><span class="p">:</span>
+        <span class="n">jobs</span><span class="p">:</span>
+            <span class="o">-</span> <span class="s1">'a'</span>
+            <span class="o">-</span> <span class="s1">'b'</span>
+            <span class="o">-</span> <span class="s1">'c'</span>
+        <span class="n">result</span><span class="p">:</span> <span class="s1">'failure'</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="yamlfunction">
+<dt id="triggers.script">
+<code class="descname">script</code><a class="headerlink" href="#triggers.script" title="Permalink to this definition">¶</a></dt>
+<dd><p>Triggers the job using shell or batch script.
+Requires the Jenkins <a class="reference external" href="https://wiki.jenkins.io/display/JENKINS/ScriptTrigger+Plugin">ScriptTrigger Plugin</a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>label</strong> (<em>str</em>) – Restrict where the polling should run. (default ‘’)</li>
+<li><strong>script</strong> (<em>str</em>) – A shell or batch script. (default ‘’)</li>
+<li><strong>script-file-path</strong> (<em>str</em>) – A shell or batch script path. (default ‘’)</li>
+<li><strong>cron</strong> (<em>str</em>) – cron syntax of when to run (default ‘’)</li>
+<li><strong>enable-concurrent</strong> (<em>bool</em>) – Enables triggering concurrent builds.
+(default false)</li>
+<li><strong>exit-code</strong> (<em>int</em>) – If the exit code of the script execution returns this
+expected exit code, a build is scheduled. (default 0)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Full Example:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">triggers</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">script</span><span class="p p-Indicator">:</span>
+        <span class="l l-Scalar l-Scalar-Plain">script</span><span class="p p-Indicator">:</span> <span class="s">'exit</span><span class="nv"> </span><span class="s">0'</span>
+        <span class="l l-Scalar l-Scalar-Plain">script-file-path</span><span class="p p-Indicator">:</span> <span class="s">'$WORKSPACE/scripts'</span>
+        <span class="l l-Scalar l-Scalar-Plain">cron</span><span class="p p-Indicator">:</span> <span class="s">'H/15</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*'</span>
+        <span class="l l-Scalar l-Scalar-Plain">enable-concurrent</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+        <span class="l l-Scalar l-Scalar-Plain">label</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">master</span>
+        <span class="l l-Scalar l-Scalar-Plain">exit-code</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">0</span>
+</pre></div>
+</div>
+<p>Minimal Example:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">triggers</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">script</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="yamlfunction">
+<dt id="triggers.timed">
+<code class="descname">timed</code><a class="headerlink" href="#triggers.timed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Trigger builds at certain times.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"/>
+<col class="field-body"/>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameter:</th><td class="field-body">when to run the job (cron syntax)</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">triggers</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">timed</span><span class="p">:</span> <span class="s2">"@midnight"</span>
+</pre></div>
+</div>
+</dd></dl>
+</div>
+</div>
+</div>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<h4>Previous topic</h4>
+<p class="topless"><a href="scm.html" title="previous chapter">SCM</a></p>
+<h4>Next topic</h4>
+<p class="topless"><a href="wrappers.html" title="next chapter">Wrappers</a></p>
+<div aria-label="source link" role="note">
+<h3>This Page</h3>
+<ul class="this-page-menu">
+<li><a href="_sources/triggers.txt" rel="nofollow">Show Source</a></li>
+</ul>
+</div>
+<div id="searchbox" role="search" style="display: none">
+<h3>Quick search</h3>
+<form action="search.html" class="search" method="get">
+<div><input name="q" type="text"/></div>
+<div><input type="submit" value="Go"/></div>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div aria-label="related navigation" class="related" role="navigation">
+<h3>Navigation</h3>
+<ul>
+<li class="right" style="margin-right: 10px">
+<a href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a href="wrappers.html" title="Wrappers">next</a> |</li>
+<li class="right">
+<a href="scm.html" title="SCM">previous</a> |</li>
+<li class="nav-item nav-item-0"><a href="index.html">Jenkins Job Builder 2.0.0.0b3.dev264 documentation</a> »</li>
+<li class="nav-item nav-item-1"><a href="definition.html">Job Definitions</a> »</li>
+</ul>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012, Jenkins Job Builder Maintainers.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.9.
+    </div>
+</body>
+</html>

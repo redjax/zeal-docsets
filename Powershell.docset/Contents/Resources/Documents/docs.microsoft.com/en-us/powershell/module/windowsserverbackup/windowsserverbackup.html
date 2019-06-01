@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html class="no-js hasSidebar hasPageActions hasBreadcrumb conceptual" data-authenticated="false" data-render="docs" dir="ltr" lang="en-us">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="WindowsServerBackup" property="og:title"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" property="og:image"/>
+  <meta content="summary" name="twitter:card"/>
+  <meta content="@docsmsft" name="twitter:site"/>
+  <meta content="WindowsServerBackup" name="twitter:title"/>
+  <meta content="Use this topic to help manage Windows and Windows Server technologies with Windows PowerShell." name="twitter:description"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" name="twitter:image"/>
+  <meta content="Microsoft Logo" name="twitter:image:alt"/>
+  <meta content="Docs" name="search.ms_sitename"/>
+  <meta content="powershell-windows" name="search.ms_docsetname"/>
+  <meta content="0" name="version"/>
+  <meta content="en-us" name="locale"/>
+  <meta content="Docs" name="site_name"/>
+  <meta content="MSDN" name="search.ms_product"/>
+  <meta content="MSDN.powershell-windows" name="depot_name"/>
+  <meta content="https://cpubwin.visualstudio.com/DefaultCollection/powershell/_git/powershell/commit/ced7757924addcaea0b7a244ae4d240e4d28d93a?path=%2fdocset%2fwindows%2fwindowsserverbackup%2fwindowsserverbackup.md&amp;_a=contents" name="ref_skeleton_gitcommit"/>
+  <meta content="https://cpubwin.visualstudio.com/DefaultCollection/powershell/_git/powershell?path=%2fdocset%2fwindows%2fwindowsserverbackup%2fwindowsserverbackup.md&amp;version=GBlive&amp;_a=contents" name="original_ref_skeleton_git_url"/>
+  <meta content="2017-09-15 03:44 AM" name="updated_at"/>
+  <meta content="be3afc6f-d28a-0d6c-be2b-48c39a875e04" name="document_id"/>
+  <meta content="387b8f7a-65e0-a71f-5e43-97783a403cac" name="document_version_independent_id"/>
+  <meta content="powershell" name="page_type"/>
+  <meta content="module" name="page_kind"/>
+  <meta content="../win10-ps/toc.json?view=win10-ps" name="toc_rel"/>
+  <meta content="manage" name="ms.mktglfcycl"/>
+  <meta content="library" name="ms.sitesec"/>
+  <meta content="brianlic" name="ms.author"/>
+  <meta content="WindowsServerBackup" name="Module_Name"/>
+  <meta content="D27A5D7A-8B1D-4B0A-809D-65EF33EE2F2D" name="Module_Guid"/>
+  <meta content="http://go.microsoft.com/fwlink/?LinkId=285580" name="Download_Help_Link"/>
+  <meta content="4.0.4.1" name="Help_Version"/>
+  <meta content="en-US" name="Locale"/>
+  <meta content="Use this topic to help manage Windows and Windows Server technologies with Windows PowerShell." name="description"/>
+  <meta content="powershell, cmdlet" name="keywords"/>
+  <meta content="brianlic-msft" name="author"/>
+  <meta content="alanth" name="manager"/>
+  <meta content="12/27/2016" name="ms.date"/>
+  <meta content="reference" name="ms.topic"/>
+  <meta content="w10" name="ms.prod"/>
+  <meta content="powershell-windows" name="ms.technology"/>
+  <meta content="0F8EB40C-4481-4DA7-9D60-62847E2BD367" name="ms.assetid"/>
+  <meta content="windowsserverbackup" name="Add-WBBackupTarget"/>
+  <meta content="windowsserverbackup" name="Add-WBBareMetalRecovery"/>
+  <meta content="windowsserverbackup" name="Add-WBFileSpec"/>
+  <meta content="windowsserverbackup" name="Add-WBSystemState"/>
+  <meta content="windowsserverbackup" name="Add-WBVirtualMachine"/>
+  <meta content="windowsserverbackup" name="Add-WBVolume"/>
+  <meta content="windowsserverbackup" name="Get-WBBackupSet"/>
+  <meta content="windowsserverbackup" name="Get-WBBackupTarget"/>
+  <meta content="windowsserverbackup" name="Get-WBBackupVolumeBrowsePath"/>
+  <meta content="windowsserverbackup" name="Get-WBBareMetalRecovery"/>
+  <meta content="windowsserverbackup" name="Get-WBDisk"/>
+  <meta content="windowsserverbackup" name="Get-WBFileSpec"/>
+  <meta content="windowsserverbackup" name="Get-WBJob"/>
+  <meta content="windowsserverbackup" name="Get-WBPerformanceConfiguration"/>
+  <meta content="windowsserverbackup" name="Get-WBPolicy"/>
+  <meta content="windowsserverbackup" name="Get-WBSchedule"/>
+  <meta content="windowsserverbackup" name="Get-WBSummary"/>
+  <meta content="windowsserverbackup" name="Get-WBSystemState"/>
+  <meta content="windowsserverbackup" name="Get-WBVirtualMachine"/>
+  <meta content="windowsserverbackup" name="Get-WBVolume"/>
+  <meta content="windowsserverbackup" name="Get-WBVssBackupOption"/>
+  <meta content="windowsserverbackup" name="New-WBBackupTarget"/>
+  <meta content="windowsserverbackup" name="New-WBFileSpec"/>
+  <meta content="windowsserverbackup" name="New-WBPolicy"/>
+  <meta content="windowsserverbackup" name="Remove-WBBackupSet"/>
+  <meta content="windowsserverbackup" name="Remove-WBBackupTarget"/>
+  <meta content="windowsserverbackup" name="Remove-WBBareMetalRecovery"/>
+  <meta content="windowsserverbackup" name="Remove-WBCatalog"/>
+  <meta content="windowsserverbackup" name="Remove-WBFileSpec"/>
+  <meta content="windowsserverbackup" name="Remove-WBPolicy"/>
+  <meta content="windowsserverbackup" name="Remove-WBSystemState"/>
+  <meta content="windowsserverbackup" name="Remove-WBVirtualMachine"/>
+  <meta content="windowsserverbackup" name="Remove-WBVolume"/>
+  <meta content="windowsserverbackup" name="Restore-WBCatalog"/>
+  <meta content="windowsserverbackup" name="Resume-WBBackup"/>
+  <meta content="windowsserverbackup" name="Resume-WBVolumeRecovery"/>
+  <meta content="windowsserverbackup" name="Set-WBPerformanceConfiguration"/>
+  <meta content="windowsserverbackup" name="Set-WBPolicy"/>
+  <meta content="windowsserverbackup" name="Set-WBSchedule"/>
+  <meta content="windowsserverbackup" name="Set-WBVssBackupOption"/>
+  <meta content="windowsserverbackup" name="Start-WBApplicationRecovery"/>
+  <meta content="windowsserverbackup" name="Start-WBBackup"/>
+  <meta content="windowsserverbackup" name="Start-WBFileRecovery"/>
+  <meta content="windowsserverbackup" name="Start-WBHyperVRecovery"/>
+  <meta content="windowsserverbackup" name="Start-WBSystemStateRecovery"/>
+  <meta content="windowsserverbackup" name="Start-WBVolumeRecovery"/>
+  <meta content="windowsserverbackup" name="Stop-WBJob"/>
+  <meta content="powershell" name="ms.devlang"/>
+  <meta content="INDEX, FOLLOW" name="ROBOTS"/>
+  <meta content="/powershell/windows/bread/toc.json?view=win10-ps" name="breadcrumb_path"/>
+  <meta content="powershell" name="apiPlatform"/>
+  <meta content="MSDocsHeader-WindowsIT" name="uhfHeaderId"/>
+  <link href="https://docs.microsoft.com/en-us/powershell/module/windowsserverbackup/" rel="canonical"/>
+  <title>
+   WindowsServerBackup
+  </title>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/e4a1f3a3.site.css" rel="stylesheet"/>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/31353636.conceptual.css" rel="stylesheet"/>
+ </head>
+ <body dir="ltr" lang="en-us">
+  <div class="header-holder">
+   <div data-bi-name="header" id="headerAreaHolder">
+    <div id="uhf-placeholder">
+    </div>
+   </div>
+   <div class="disclaimer-holder" id="disclaimer-holder">
+   </div>
+  </div>
+  <div class="container mainContainer" data-bi-name="body">
+   <div class="content-header" data-bi-name="content-header">
+    <div class="content-header-controls">
+     <button class="contents-button button-border" data-bi-name="contents-expand" type="button">
+      <span class="docon docon-menu">
+      </span>
+      Contents
+     </button>
+    </div>
+    <div class="content-header-controls">
+     <button class="ap-collapse-behavior ap-expanded button-border" data-bi-name="ap-collapse" type="button">
+      <span class="docon docon-exit-mode">
+      </span>
+      Exit focus mode
+     </button>
+    </div>
+   </div>
+   <div class="primary-holder">
+    <main class="content" data-bi-name="content" dir="ltr" id="main" lang="en-us" role="main">
+     <!-- <content> -->
+     <h1>
+      Windows
+      <wbr/>
+      Server
+      <wbr/>
+      Backup
+     </h1>
+     <div class="summaryHolder">
+      <div class="summary">
+       <p>
+        This reference provides cmdlet descriptions and syntax for all Windows Server Backup cmdlets. It lists the cmdlets in alphabetical order based on the verb at the beginning of the cmdlet.
+       </p>
+      </div>
+     </div>
+     <h2 id="windowsserverbackup">
+      windowsserverbackup
+     </h2>
+     <table class="nameValue">
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Add-WBBackupTarget.html">
+         Add-WBBackup
+         <wbr/>
+         Target
+        </a>
+       </td>
+       <td>
+        <p>
+         Adds a backup target to a backup policy.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Add-WBBareMetalRecovery.html">
+         Add-WBBare
+         <wbr/>
+         Metal
+         <wbr/>
+         Recovery
+        </a>
+       </td>
+       <td>
+        <p>
+         Adds items to a backup policy so that backups that use the policy can perform bare metal recoveries.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Add-WBFileSpec.html">
+         Add-WBFile
+         <wbr/>
+         Spec
+        </a>
+       </td>
+       <td>
+        <p>
+         Adds a backup file specification to a backup policy.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Add-WBSystemState.html">
+         Add-WBSystem
+         <wbr/>
+         State
+        </a>
+       </td>
+       <td>
+        <p>
+         Adds the system state components to the backup policy.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Add-WBVirtualMachine.html">
+         Add-WBVirtual
+         <wbr/>
+         Machine
+        </a>
+       </td>
+       <td>
+        <p>
+         Adds a list of virtual machines to the backup policy.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Add-WBVolume.html">
+         Add-WBVolume
+        </a>
+       </td>
+       <td>
+        <p>
+         Adds the list of source volumes to the backup policy.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-WBBackupSet.html">
+         Get-WBBackup
+         <wbr/>
+         Set
+        </a>
+       </td>
+       <td>
+        <p>
+         Gets backups for a server from a location that you specify.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-WBBackupTarget.html">
+         Get-WBBackup
+         <wbr/>
+         Target
+        </a>
+       </td>
+       <td>
+        <p>
+         Gets backup storage locations that you specified as part of a backup policy.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-WBBackupVolumeBrowsePath.html">
+         Get-WBBackup
+         <wbr/>
+         Volume
+         <wbr/>
+         Browse
+         <wbr/>
+         Path
+        </a>
+       </td>
+       <td>
+        <p>
+         Mounts a volume inside a backup so that you can browse the files on the volume.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-WBBareMetalRecovery.html">
+         Get-WBBare
+         <wbr/>
+         Metal
+         <wbr/>
+         Recovery
+        </a>
+       </td>
+       <td>
+        <p>
+         Gets a Boolean value that indicates whether or not a backup policy can perform bare metal recoveries from backups.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-WBDisk.html">
+         Get-WBDisk
+        </a>
+       </td>
+       <td>
+        <p>
+         Gets a list of internal and external disks that are online for the local computer.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-WBFileSpec.html">
+         Get-WBFile
+         <wbr/>
+         Spec
+        </a>
+       </td>
+       <td>
+        <p>
+         Gets the list of backup file specifications associated with a backup policy.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-WBJob.html">
+         Get-WBJob
+        </a>
+       </td>
+       <td>
+        <p>
+         Gets the current backup operation.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-WBPerformanceConfiguration.html">
+         Get-WBPerformance
+         <wbr/>
+         Configuration
+        </a>
+       </td>
+       <td>
+        <p>
+         Gets the current volume backup performance settings.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-WBPolicy.html">
+         Get-WBPolicy
+        </a>
+       </td>
+       <td>
+        <p>
+         Gets the current backup policy for the computer.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-WBSchedule.html">
+         Get-WBSchedule
+        </a>
+       </td>
+       <td>
+        <p>
+         Gets the current schedule for backups.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-WBSummary.html">
+         Get-WBSummary
+        </a>
+       </td>
+       <td>
+        <p>
+         Gets the history of backup operations on the computer.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-WBSystemState.html">
+         Get-WBSystem
+         <wbr/>
+         State
+        </a>
+       </td>
+       <td>
+        <p>
+         Gets a Boolean value that indicates whether system state recovery was added to the backup policy.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-WBVirtualMachine.html">
+         Get-WBVirtual
+         <wbr/>
+         Machine
+        </a>
+       </td>
+       <td>
+        <p>
+         Gets all virtual machines and components from the backup policy.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-WBVolume.html">
+         Get-WBVolume
+        </a>
+       </td>
+       <td>
+        <p>
+         Gets a list of volumes.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-WBVssBackupOption.html">
+         Get-WBVss
+         <wbr/>
+         Backup
+         <wbr/>
+         Option
+        </a>
+       </td>
+       <td>
+        <p>
+         Gets a VSS setting from the backup policy.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="New-WBBackupTarget.html">
+         New-WBBackup
+         <wbr/>
+         Target
+        </a>
+       </td>
+       <td>
+        <p>
+         Creates a backup target object.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="New-WBFileSpec.html">
+         New-WBFile
+         <wbr/>
+         Spec
+        </a>
+       </td>
+       <td>
+        <p>
+         Creates a backup file specification.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="New-WBPolicy.html">
+         New-WBPolicy
+        </a>
+       </td>
+       <td>
+        <p>
+         Creates a backup policy object.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Remove-WBBackupSet.html">
+         Remove-WBBackup
+         <wbr/>
+         Set
+        </a>
+       </td>
+       <td>
+        <p>
+         Removes backups from a target catalog, a system catalog, or both.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Remove-WBBackupTarget.html">
+         Remove-WBBackup
+         <wbr/>
+         Target
+        </a>
+       </td>
+       <td>
+        <p>
+         Removes backup storage locations from a backup policy.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Remove-WBBareMetalRecovery.html">
+         Remove-WBBare
+         <wbr/>
+         Metal
+         <wbr/>
+         Recovery
+        </a>
+       </td>
+       <td>
+        <p>
+         Removes a request to include items that implement bare metal recovery from the current backup policy.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Remove-WBCatalog.html">
+         Remove-WBCatalog
+        </a>
+       </td>
+       <td>
+        <p>
+         Removes the backup catalog from the local computer.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Remove-WBFileSpec.html">
+         Remove-WBFile
+         <wbr/>
+         Spec
+        </a>
+       </td>
+       <td>
+        <p>
+         Removes a backup file specification from a backup policy.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Remove-WBPolicy.html">
+         Remove-WBPolicy
+        </a>
+       </td>
+       <td>
+        <p>
+         Removes the backup policy.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Remove-WBSystemState.html">
+         Remove-WBSystem
+         <wbr/>
+         State
+        </a>
+       </td>
+       <td>
+        <p>
+         Removes the system state components from the backup policy.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Remove-WBVirtualMachine.html">
+         Remove-WBVirtual
+         <wbr/>
+         Machine
+        </a>
+       </td>
+       <td>
+        <p>
+         Removes the list of virtual machines from the backup policy.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Remove-WBVolume.html">
+         Remove-WBVolume
+        </a>
+       </td>
+       <td>
+        <p>
+         Removes the volume from the backup policy.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Restore-WBCatalog.html">
+         Restore-WBCatalog
+        </a>
+       </td>
+       <td>
+        <p>
+         Restores a backup catalog for the local computer from a storage location.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Resume-WBBackup.html">
+         Resume-WBBackup
+        </a>
+       </td>
+       <td>
+        <p>
+         Resumes a backup operation to a removable device after you add media to the device.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Resume-WBVolumeRecovery.html">
+         Resume-WBVolume
+         <wbr/>
+         Recovery
+        </a>
+       </td>
+       <td>
+        <p>
+         Resumes a volume recovery operation from a removable device and specific media.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Set-WBPerformanceConfiguration.html">
+         Set-WBPerformance
+         <wbr/>
+         Configuration
+        </a>
+       </td>
+       <td>
+        <p>
+         Sets the current volume backup performance settings.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Set-WBPolicy.html">
+         Set-WBPolicy
+        </a>
+       </td>
+       <td>
+        <p>
+         Sets the backup policy for scheduled backups.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Set-WBSchedule.html">
+         Set-WBSchedule
+        </a>
+       </td>
+       <td>
+        <p>
+         Sets the current schedule for backups.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Set-WBVssBackupOption.html">
+         Set-WBVss
+         <wbr/>
+         Backup
+         <wbr/>
+         Option
+        </a>
+       </td>
+       <td>
+        <p>
+         Sets a value that determines the VSS setting in the backup policy.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Start-WBApplicationRecovery.html">
+         Start-WBApplication
+         <wbr/>
+         Recovery
+        </a>
+       </td>
+       <td>
+        <p>
+         Starts an application recovery operation.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Start-WBBackup.html">
+         Start-WBBackup
+        </a>
+       </td>
+       <td>
+        <p>
+         Starts a one-time backup operation.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Start-WBFileRecovery.html">
+         Start-WBFile
+         <wbr/>
+         Recovery
+        </a>
+       </td>
+       <td>
+        <p>
+         Starts a file recovery operation.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Start-WBHyperVRecovery.html">
+         Start-WBHyper
+         <wbr/>
+         VRecovery
+        </a>
+       </td>
+       <td>
+        <p>
+         Starts recovery of a Hyper-V Server 2016 virtual machine.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Start-WBSystemStateRecovery.html">
+         Start-WBSystem
+         <wbr/>
+         State
+         <wbr/>
+         Recovery
+        </a>
+       </td>
+       <td>
+        <p>
+         Starts a system state recovery operation.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Start-WBVolumeRecovery.html">
+         Start-WBVolume
+         <wbr/>
+         Recovery
+        </a>
+       </td>
+       <td>
+        <p>
+         Starts a volume recovery operation.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Stop-WBJob.html">
+         Stop-WBJob
+        </a>
+       </td>
+       <td>
+        <p>
+         Stops the current backup or recovery job.
+        </p>
+       </td>
+      </tr>
+     </table>
+     <!-- </content> -->
+    </main>
+    <section class="feedback-section" data-bi-name="feedback-section">
+     <h2 id="feedback">
+      Feedback
+     </h2>
+     <div class="alert choose-feedback-type">
+      <p>
+       We'd love to hear your thoughts. Choose the type you'd like to provide:
+      </p>
+      <div class="choose-feedback-buttons">
+       <a class="button-border feedback-type-product" data-bi-name="product-feedback" href="https://windowsserver.uservoice.com/forums/301869-powershell">
+        Product feedback
+        <span aria-hidden="true" class="docon docon-navigate-external">
+        </span>
+       </a>
+       <div class="button-group">
+        <button class="button-border feedback-sign-in-button" data-bi-name="feedback-sign-in">
+         <span aria-hidden="true" class="docon docon-brand-github">
+         </span>
+         Sign in to give documentation feedback
+        </button>
+        <button aria-controls="feedback-form" aria-expanded="false" class="button-border feedback-form-toggle" data-bi-name="documentation-feedback" hidden="">
+         Content feedback
+        </button>
+        <div auto-align="" class="dropdown has-caret">
+         <button aria-controls="fbm0" aria-expanded="false" aria-haspopup="true" aria-label="Expand documentation feedback menu" class="button-border dropdown-trigger" data-bi-name="documentation-feedback-menu">
+          <span aria-hidden="true" class="docon docon-chevron-down-light">
+          </span>
+         </button>
+         <div class="dropdown-menu documentation-feedback-menu" id="fbm0" role="menu">
+          You may also leave feedback
+          <a data-bi-name="create-issue-on-github" href="{0}">
+           directly on GitHub
+           <span aria-hidden="true" class="docon docon-navigate-external">
+           </span>
+          </a>
+          .
+         </div>
+        </div>
+       </div>
+      </div>
+      <p>
+       <small>
+        Our new feedback system is built on GitHub Issues. Read about this change in
+        <a href="https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs">
+         our blog post
+        </a>
+        .
+       </small>
+      </p>
+     </div>
+     <form accept-charset="UTF-8" action="javascript:" autocomplete="off" class="feedback-form" hidden="" id="feedback-form">
+      <h3 class="feedback-form-heading current-user">
+       <img alt="Avatar" aria-hidden="true" class="avatar" height="36" width="36"/>
+       <span aria-hidden="true" class="username">
+       </span>
+       <span class="visually-hidden">
+        Liquid error: Can't find the localized string giveDocumentationFeedback for template Conceptual.
+       </span>
+      </h3>
+      <label>
+       <span class="visually-hidden">
+        Title
+       </span>
+       <input name="title" pattern=".*\w.*" placeholder="Title" required="" type="text"/>
+      </label>
+      <label>
+       <span class="visually-hidden">
+        Leave a comment
+       </span>
+       <textarea name="body" placeholder="Leave a comment" required=""></textarea>
+      </label>
+      <div class="action-container">
+       <button class="primary-action" name="submit" type="submit">
+        Submit feedback
+       </button>
+      </div>
+     </form>
+     <div class="feedback-status alert busy" role="alert">
+      <p>
+       Loading feedback...
+      </p>
+     </div>
+     <div class="feedback-tab-group tabGroup" data-tab-group-independent="" hidden="">
+      <ul role="tablist">
+       <li role="presentation">
+        <a aria-controls="tabpanel-issues-open" aria-label="Open Issues" data-tab="issues-open" href="#tabpanel-issues-open" role="tab">
+        </a>
+       </li>
+       <li role="presentation">
+        <a aria-controls="tabpanel-issues-closed" aria-label="Closed Issues" data-tab="issues-closed" href="#tabpanel-issues-closed" role="tab">
+        </a>
+       </li>
+      </ul>
+      <section data-tab="issues-open" id="tabpanel-issues-open" role="tabpanel">
+       <div class="no-issues-placeholder">
+        There are no open issues
+       </div>
+       <ul aria-label="Open Issues" class="github-issues-list">
+       </ul>
+      </section>
+      <section data-tab="issues-closed" id="tabpanel-issues-closed" role="tabpanel">
+       <div class="no-issues-placeholder">
+        There are no closed issues
+       </div>
+       <ul aria-label="Closed Issues" class="github-issues-list">
+       </ul>
+      </section>
+     </div>
+     <div class="action-container">
+      <a class="view-on-github" data-bi-name="view-on-github" hidden="" href="https://github.com/MicrosoftDocs/windows-powershell-docs/issues">
+       <span aria-hidden="true" class="docon docon-brand-github">
+       </span>
+       <span>
+        View on GitHub
+       </span>
+       <span aria-hidden="true" class="docon docon-navigate-external">
+       </span>
+      </a>
+     </div>
+    </section>
+   </div>
+  </div>
+  <div class="openfeedback-container" id="openFeedbackContainer">
+  </div>
+  <div class="action-panel">
+  </div>
+ </body>
+</html>

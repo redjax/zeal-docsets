@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+<html class="no-js hasSidebar hasPageActions hasBreadcrumb conceptual" data-authenticated="false" data-render="docs" dir="ltr" lang="en-us">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Stop-Job (Microsoft.PowerShell.Core)" property="og:title"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" property="og:image"/>
+  <meta content="summary" name="twitter:card"/>
+  <meta content="@docsmsft" name="twitter:site"/>
+  <meta content="Stop-Job (Microsoft.PowerShell.Core)" name="twitter:title"/>
+  <meta content="The Stop-Job cmdlet stops Windows PowerShell background jobs that are in progress. You can use this cmdlet to stop all jobs or stop selected jobs based on their name, ID, instance ID, or state, or byâ¦" name="twitter:description"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" name="twitter:image"/>
+  <meta content="Microsoft Logo" name="twitter:image:alt"/>
+  <meta content="The Stop-Job cmdlet stops Windows PowerShell background jobs that are in progress. You can use this cmdlet to stop all jobs or stop selected jobs based on their name, ID, instance ID, or state, or byâ¦" name="description"/>
+  <meta content="Docs" name="search.ms_sitename"/>
+  <meta content="PowerShell_PowerShell-docs_reference" name="search.ms_docsetname"/>
+  <meta content="0" name="version"/>
+  <meta content="en-us" name="locale"/>
+  <meta content="Docs" name="site_name"/>
+  <meta content="PowerShell" name="search.ms_product"/>
+  <meta content="PowerShell.PowerShell_PowerShell-docs_reference" name="depot_name"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/666c3f64d0eef63804d647e4696478faecb03e9e/reference/6/Microsoft.PowerShell.Core/Stop-Job.md" name="ref_skeleton_gitcommit"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/live/reference/6/Microsoft.PowerShell.Core/Stop-Job.md" name="original_ref_skeleton_git_url"/>
+  <meta content="2018-03-30 03:35 PM" name="updated_at"/>
+  <meta content="f052d947-4d04-341b-d81e-e175cf653f63" name="document_id"/>
+  <meta content="fd715c07-665e-5486-b97f-14762f3849c6" name="document_version_independent_id"/>
+  <meta content="powershell" name="page_type"/>
+  <meta content="command" name="page_kind"/>
+  <meta content="06/09/2017" name="ms.date"/>
+  <meta content="2.0.0" name="schema"/>
+  <meta content="powershell,cmdlet" name="keywords"/>
+  <meta content="http://go.microsoft.com/fwlink/?LinkId=821519" name="online_version"/>
+  <meta content="System.Management.Automation.dll-Help.xml" name="external_help_file"/>
+  <meta content="powershell" name="ms.devlang"/>
+  <meta content="INDEX, FOLLOW" name="ROBOTS"/>
+  <meta content="sdwheeler" name="author"/>
+  <meta content="sewhee" name="ms.author"/>
+  <meta content="carmonm" name="manager"/>
+  <meta content="/powershell/bread-pscore/toc.yml?view=powershell-6" name="breadcrumb_path"/>
+  <meta content="powershell" name="apiPlatform"/>
+  <meta content="reference" name="ms.topic"/>
+  <meta content="windows, macos, linux" name="ms.tgt_pltfr"/>
+  <meta content="powershell-scripting" name="ms.technology"/>
+  <meta content="powershell" name="ms.prod"/>
+  <meta content="MSDocsHeader-Powershell" name="uhfHeaderId"/>
+  <meta content="../psdocs/toc.json?view=powershell-6" name="toc_rel"/>
+  <link href="https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/stop-job" rel="canonical"/>
+  <title>
+   Stop-Job
+  </title>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/60aac04b.site.css" rel="stylesheet"/>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/fdb8a38a.conceptual.css" rel="stylesheet"/>
+ </head>
+ <body dir="ltr" lang="en-us">
+  <div class="header-holder">
+   <div data-bi-name="header" id="headerAreaHolder">
+    <div id="uhf-placeholder">
+    </div>
+   </div>
+   <div class="disclaimer-holder" id="disclaimer-holder">
+   </div>
+  </div>
+  <div class="container mainContainer" data-bi-name="body">
+   <div class="content-header" data-bi-name="content-header">
+    <div class="content-header-controls">
+     <button class="contents-button button-border" data-bi-name="contents-expand" type="button">
+      <span class="docon docon-menu">
+      </span>
+      Contents
+     </button>
+    </div>
+    <div class="content-header-controls">
+     <button class="ap-collapse-behavior ap-expanded button-border" data-bi-name="ap-collapse" type="button">
+      <span class="docon docon-exit-mode">
+      </span>
+      Exit focus mode
+     </button>
+    </div>
+   </div>
+   <div class="primary-holder">
+    <main class="content" data-bi-name="content" dir="ltr" id="main" lang="en-us" role="main">
+     <!-- <content> -->
+     <h1>
+      Stop-Job
+     </h1>
+     <div class="metadata">
+      <dl class="attributeList">
+       <dt>
+        Module:
+       </dt>
+       <dd>
+        <a data-linktype="relative-path" href="./Microsoft.PowerShell.Core.html">
+         Microsoft.PowerShell.Core
+        </a>
+       </dd>
+      </dl>
+     </div>
+     <div class="summaryHolder">
+      <div class="summary">
+       Stops a Windows PowerShell background job.
+      </div>
+     </div>
+     <h2 class="hiddenAnchor" id="syntax">
+      Syntax
+     </h2>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Stop-Job
+    [-PassThru]
+    [-Id] &lt;Int32[]&gt;
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Stop-Job
+    [-Job] &lt;Job[]&gt;
+    [-PassThru]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Stop-Job
+    [-PassThru]
+    [-Name] &lt;String[]&gt;
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Stop-Job
+    [-PassThru]
+    [-InstanceId] &lt;Guid[]&gt;
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Stop-Job
+    [-PassThru]
+    [-State] &lt;JobState&gt;
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Stop-Job
+    [-PassThru]
+    [-Filter] &lt;Hashtable&gt;
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]</code></pre>
+     <h2 id="description">
+      Description
+     </h2>
+     <p>
+      The
+      <strong>
+       Stop-Job
+      </strong>
+      cmdlet stops Windows PowerShell background jobs that are in progress.
+You can use this cmdlet to stop all jobs or stop selected jobs based on their name, ID, instance ID, or state, or by passing a job object to
+      <strong>
+       Stop-Job
+      </strong>
+      .
+     </p>
+     <p>
+      You can use
+      <strong>
+       Stop-Job
+      </strong>
+      to stop background jobs, such as those that were started by using the Start-Job cmdlet or the
+      <em>
+       AsJob
+      </em>
+      parameter of any cmdlet.
+When you stop a background job, Windows PowerShell completes all tasks that are pending in that job queue and then ends the job.
+No new tasks are added to the queue after this command is submitted.
+     </p>
+     <p>
+      This cmdlet does not delete background jobs.
+To delete a job, use the Remove-Job cmdlet.
+     </p>
+     <p>
+      Starting in Windows PowerShell 3.0,
+      <strong>
+       Stop-Job
+      </strong>
+      also stops custom job types, such as workflow jobs and instances of scheduled jobs.
+To enable
+      <strong>
+       Stop-Job
+      </strong>
+      to stop a job with custom job type, import the module that supports the custom job type into the session before you run a
+      <strong>
+       Stop-Job
+      </strong>
+      command, either by using the Import-Module cmdlet or by using or getting a cmdlet in the module.
+For information about a particular custom job type, see the documentation of the custom job type feature.
+     </p>
+     <h2 id="examples">
+      Examples
+     </h2>
+     <p>
+      <strong>
+       Example 1: Stop a job on a remote computer by using Invoke-Command
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; $s = New-PSSession -ComputerName Server01 -Credential Domain01\Admin02
+
+PS C:\&gt; $j = Invoke-Command -Session $s -ScriptBlock {Start-Job -ScriptBlock {Get-EventLog System}}
+
+PS C:\&gt; Invoke-Command -Session $s -ScriptBlock { Stop-job -Job $Using:j }</code></pre>
+     <p>
+      This example shows how to use the
+      <strong>
+       Stop-Job
+      </strong>
+      cmdlet to stop a job that is running on a remote computer.
+     </p>
+     <p>
+      Because the job was started by using the Invoke-Command cmdlet to run a
+      <strong>
+       Start-Job
+      </strong>
+      command remotely, the job object is stored on the remote computer.
+You must use another
+      <strong>
+       Invoke-Command
+      </strong>
+      command to run a
+      <strong>
+       Stop-Job
+      </strong>
+      command remotely.
+For more information about remote background jobs, see about_Remote_Jobs.
+     </p>
+     <p>
+      The first command creates a Windows PowerShell session (
+      <strong>
+       PSSession
+      </strong>
+      ) on the Server01 computer, and then stores the session object in the $s variable.
+The command uses the credentials of a domain administrator.
+     </p>
+     <p>
+      The second command uses the
+      <strong>
+       Invoke-Command
+      </strong>
+      cmdlet to run a
+      <strong>
+       Start-Job
+      </strong>
+      command in the session.
+The command in the job gets all of the events in the System event log.
+The resulting job object is stored in the $j variable.
+     </p>
+     <p>
+      The third command stops the job.
+It uses the
+      <strong>
+       Invoke-Command
+      </strong>
+      cmdlet to run a
+      <strong>
+       Stop-Job
+      </strong>
+      command in the
+      <strong>
+       PSSession
+      </strong>
+      on Server01.
+Because the job objects are stored in $j, which is a variable on the local computer, the command uses the Using scope modifier to identify $j as a local variable.
+For more information about the Using scope modifier, see about_Remote_Variables (
+      <a data-linktype="external" href="http://go.microsoft.com/fwlink/?LinkID=252653">
+       http://go.microsoft.com/fwlink/?LinkID=252653
+      </a>
+      ).
+     </p>
+     <p>
+      When the command finishes, the job is stopped and the
+      <strong>
+       PSSession
+      </strong>
+      in $s is available for use.
+     </p>
+     <p>
+      <strong>
+       Example 2: Stop a background job
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Stop-Job -Name "Job1"</code></pre>
+     <p>
+      This command stops the Job1 background job.
+     </p>
+     <p>
+      <strong>
+       Example 3: Stop several background jobs
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Stop-Job -Id 1, 3, 4</code></pre>
+     <p>
+      This command stops three jobs.
+It identifies them by their IDs.
+     </p>
+     <p>
+      <strong>
+       Example 4: Stop all background jobs
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-Job | Stop-Job</code></pre>
+     <p>
+      This command stops all of the background jobs in the current session.
+     </p>
+     <p>
+      <strong>
+       Example 5: Stop all blocked background jobs
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Stop-Job -State Blocked</code></pre>
+     <p>
+      This command stops all the jobs that are blocked.
+     </p>
+     <p>
+      <strong>
+       Example 6: Stop a job by using an instance ID
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-Job | Format-Table ID, Name, Command, @{Label="State";Expression={$_.JobStateInfo.State}},
+
+InstanceID -Auto
+
+
+
+Id Name Command                 State  InstanceId
+
+-- ---- -------                 -----  ----------
+
+1 Job1 start-service schedule Running 05abb67a-2932-4bd5-b331-c0254b8d9146
+
+3 Job3 start-service schedule Running c03cbd45-19f3-4558-ba94-ebe41b68ad03
+
+5 Job5 get-service s*         Blocked e3bbfed1-9c53-401a-a2c3-a8db34336adf
+
+
+
+PS C:\&gt; Stop-Job -InstanceId e3bbfed1-9c53-401a-a2c3-a8db34336adf</code></pre>
+     <p>
+      These commands show how to stop a job based on its instance ID.
+     </p>
+     <p>
+      The first command uses the Get-Job cmdlet to get the jobs in the current session.
+The command uses a pipeline operator (|) to send the jobs to a Format-Table command, which displays a table of the specified properties of each job.
+The table includes the Instance ID of each job.
+It uses a calculated property to display the job state.
+     </p>
+     <p>
+      The second command uses a
+      <strong>
+       Stop-Job
+      </strong>
+      command that has the
+      <em>
+       InstanceID
+      </em>
+      parameter to stop a selected job.
+     </p>
+     <p>
+      <strong>
+       Example 7: Stop a job on a remote computer
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; $j = Invoke-Command -ComputerName Server01 -ScriptBlock {Get-EventLog System} -AsJob
+
+PS C:\&gt; $j | Stop-Job -PassThru
+
+Id    Name    State      HasMoreData     Location         Command
+
+
+
+--    ----    ----       -----------     --------         -------
+
+
+
+5     Job5    Stopped    True            user01-tablet    get-eventlog system</code></pre>
+     <p>
+      This example shows how to use the
+      <strong>
+       Stop-Job
+      </strong>
+      cmdlet to stop a job that is running on a remote computer.
+     </p>
+     <p>
+      Because the job was started by using the
+      <em>
+       AsJob
+      </em>
+      parameter of the
+      <strong>
+       Invoke-Command
+      </strong>
+      cmdlet, the job object is located on the local computer, even though the job runs on the remote computer.
+Therefore, you can use a local
+      <strong>
+       Stop-Job
+      </strong>
+      command to stop the job.
+     </p>
+     <p>
+      The first command uses the
+      <strong>
+       Invoke-Command
+      </strong>
+      cmdlet to start a background job on the Server01 computer.
+The command uses the
+      <em>
+       AsJob
+      </em>
+      parameter to run the remote command as a background job.
+     </p>
+     <p>
+      This command returns a job object, which is the same job object that the
+      <strong>
+       Start-Job
+      </strong>
+      cmdlet returns.
+The command saves the job object in the $j variable.
+     </p>
+     <p>
+      The second command uses a pipeline operator to send the job in the $j variable to Stop-Job.
+The command uses the
+      <em>
+       PassThru
+      </em>
+      parameter to direct
+      <strong>
+       Stop-Job
+      </strong>
+      to return a job object.
+The job object display confirms that the state of the job is Stopped.
+     </p>
+     <p>
+      For more information about remote background jobs, see about_Remote_Jobs.
+     </p>
+     <h2 id="required-parameters">
+      Required Parameters
+     </h2>
+     <div class="parameterName stack">
+      -Filter
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a hash table of conditions.
+This cmdlet stops jobs that satisfy all of the conditions.
+Enter a hash table where the keys are job properties and the values are job property values.
+      </p>
+      <p>
+       This parameter works only on custom job types, such as workflow jobs and scheduled jobs.
+It does not work on standard background jobs, such as those created by using the
+       <strong>
+        Start-Job
+       </strong>
+       cmdlet.
+For information about support for this parameter, see the help topic for the job type.
+      </p>
+      <p>
+       This parameter was introduced in Windows PowerShell 3.0.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Hashtable
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         0
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Id
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the IDs of jobs that this cmdlet stops.
+The default is all jobs in the current session.
+      </p>
+      <p>
+       The ID is an integer that uniquely identifies the job in the current session.
+It is easier to remember and type than the instance ID, but it is unique only in the current session.
+You can type one or more IDs, separated by commas.
+To find the ID of a job, type
+       <code>
+        Get-Job
+       </code>
+       .
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Int32[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         0
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -InstanceId
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the instance IDs of jobs that this cmdlet stops.
+The default is all jobs.
+      </p>
+      <p>
+       An instance ID is a GUID that uniquely identifies the job on the computer.
+To find the instance ID of a job, use Get-Job.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Guid[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         0
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Job
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the jobs that this cmdlet stops.
+Enter a variable that contains the jobs or a command that gets the jobs.
+You can also use a pipeline operator to submit jobs to the
+       <strong>
+        Stop-Job
+       </strong>
+       cmdlet.
+By default,
+       <strong>
+        Stop-Job
+       </strong>
+       deletes all jobs that were started in the current session.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Job[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         0
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName, ByValue)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Name
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies friendly names of jobs that this cmdlet stops.
+Enter the job names in a comma-separated list or use wildcard characters (
+       <em>
+        ) to enter a job name pattern.
+By default, **Stop-Job
+       </em>
+       * stops all jobs created in the current session.
+      </p>
+      <p>
+       Because the friendly name is not guaranteed to be unique, use the
+       <em>
+        WhatIf
+       </em>
+       and
+       <em>
+        Confirm
+       </em>
+       parameters when stopping jobs by name.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         0
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -State
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a job state.
+This cmdlet stops only jobs in the specified state.
+The acceptable values for this parameter are:
+      </p>
+      <ul>
+       <li>
+        NotStarted
+       </li>
+       <li>
+        Running
+       </li>
+       <li>
+        Completed
+       </li>
+       <li>
+        Failed
+       </li>
+       <li>
+        Stopped
+       </li>
+       <li>
+        Blocked
+       </li>
+       <li>
+        Suspended
+       </li>
+       <li>
+        Disconnected
+       </li>
+       <li>
+        Suspending
+       </li>
+       <li>
+        Stopping
+       </li>
+      </ul>
+      <p>
+       For more information about job states, see
+       <a data-linktype="external" href="https://msdn.microsoft.com/library/system.management.automation.jobstate">
+        JobState Enumeration
+       </a>
+       in the MSDN library.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          JobState
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Parameter Sets:
+        </td>
+        <td>
+         NotStarted, Running, Completed, Failed, Stopped, Blocked, Suspended, Disconnected, Suspending, Stopping, AtBreakpoint
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         0
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="optional-parameters">
+      Optional Parameters
+     </h2>
+     <div class="parameterName stack">
+      -Confirm
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Prompts you for confirmation before running the cmdlet.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         cf
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -PassThru
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Returns an object representing the item with which you are working.
+By default, this cmdlet does not generate any output.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -WhatIf
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         wi
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="inputs">
+      Inputs
+     </h2>
+     <p>
+      <strong>
+       System.Management.Automation.RemotingJob
+      </strong>
+     </p>
+     <p>
+      You can pipe a job object to this cmdlet.
+     </p>
+     <h2 id="outputs">
+      Outputs
+     </h2>
+     <p>
+      <strong>
+       None, System.Management.Automation.PSRemotingJob
+      </strong>
+     </p>
+     <p>
+      This cmdlet returns a job object, if you specify the
+      <em>
+       PassThru
+      </em>
+      parameter.
+Otherwise, this cmdlet does not generate any output.
+     </p>
+     <h2 id="related-links">
+      Related Links
+     </h2>
+     <ul>
+      <li>
+       <a data-linktype="relative-path" href="get-job.html">
+        Get-Job
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="invoke-command.html">
+        Invoke-Command
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="receive-job.html">
+        Receive-Job
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="remove-job.html">
+        Remove-Job
+       </a>
+      </li>
+      <li>
+       <a data-linktype="external" href="https://msdn.microsoft.com/en-us/powershell/reference/5.1/Microsoft.PowerShell.Core/Resume-Job">
+        Resume-Job
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="start-job.html">
+        Start-Job
+       </a>
+      </li>
+      <li>
+       <a data-linktype="external" href="https://msdn.microsoft.com/en-us/powershell/reference/5.1/Microsoft.PowerShell.Core/Suspend-Job">
+        Suspend-Job
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="wait-job.html">
+        Wait-Job
+       </a>
+      </li>
+     </ul>
+     <!-- </content> -->
+    </main>
+    <div class="note alert feedback-system-change-alert">
+     <p>
+      Note
+     </p>
+     <p>
+      The feedback system for this content will be changing soon. Old comments will not be carried over. If content within a comment thread is important to you, please save a copy. For more information on the upcoming change,
+      <a href="https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs">
+       we invite you to read our blog post
+      </a>
+      .
+     </p>
+    </div>
+    <div data-bi-name="comments" id="comments-container" role="form">
+    </div>
+   </div>
+  </div>
+  <div class="openfeedback-container" id="openFeedbackContainer">
+  </div>
+  <div class="action-panel">
+  </div>
+ </body>
+</html>

@@ -1,0 +1,1625 @@
+<!DOCTYPE html>
+<html class="no-js hasSidebar hasPageActions hasBreadcrumb conceptual" data-authenticated="false" data-render="docs" dir="ltr" lang="en-us">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Set-SRPartnership (storagereplica)" property="og:title"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" property="og:image"/>
+  <meta content="summary" name="twitter:card"/>
+  <meta content="@docsmsft" name="twitter:site"/>
+  <meta content="Set-SRPartnership (storagereplica)" name="twitter:title"/>
+  <meta content="Use this topic to help manage Windows and Windows Server technologies with Windows PowerShell." name="twitter:description"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" name="twitter:image"/>
+  <meta content="Microsoft Logo" name="twitter:image:alt"/>
+  <meta content="Use this topic to help manage Windows and Windows Server technologies with Windows PowerShell." name="description"/>
+  <meta content="Docs" name="search.ms_sitename"/>
+  <meta content="powershell-windows" name="search.ms_docsetname"/>
+  <meta content="0" name="version"/>
+  <meta content="en-us" name="locale"/>
+  <meta content="Docs" name="site_name"/>
+  <meta content="MSDN" name="search.ms_product"/>
+  <meta content="MSDN.powershell-windows" name="depot_name"/>
+  <meta content="https://cpubwin.visualstudio.com/DefaultCollection/powershell/_git/powershell/commit/ced7757924addcaea0b7a244ae4d240e4d28d93a?path=%2fdocset%2fwindows%2fstoragereplica%2fset-srpartnership.md&amp;_a=contents" name="ref_skeleton_gitcommit"/>
+  <meta content="https://cpubwin.visualstudio.com/DefaultCollection/powershell/_git/powershell?path=%2fdocset%2fwindows%2fstoragereplica%2fset-srpartnership.md&amp;version=GBlive&amp;_a=contents" name="original_ref_skeleton_git_url"/>
+  <meta content="2017-09-15 03:44 AM" name="updated_at"/>
+  <meta content="85c053c0-d2d4-aa43-3ad6-37e9f46020f9" name="document_id"/>
+  <meta content="93c07770-ad81-b74b-49ec-6bed3f6c9e03" name="document_version_independent_id"/>
+  <meta content="powershell" name="page_type"/>
+  <meta content="command" name="page_kind"/>
+  <meta content="manage" name="ms.mktglfcycl"/>
+  <meta content="library" name="ms.sitesec"/>
+  <meta content="brianlic" name="ms.author"/>
+  <meta content="brianlic-msft" name="author"/>
+  <meta content="MSFT_WvrAdminTasks.cdxml-help.xml" name="external_help_file"/>
+  <meta content="powershell, cmdlet" name="keywords"/>
+  <meta content="alanth" name="manager"/>
+  <meta content="12/20/2016" name="ms.date"/>
+  <meta content="w10" name="ms.prod"/>
+  <meta content="powershell-windows" name="ms.technology"/>
+  <meta content="reference" name="ms.topic"/>
+  <meta content="" name="online_version"/>
+  <meta content="2.0.0" name="schema"/>
+  <meta content="B1B24BC7-E773-4F68-A6FF-097ABE77F3BE" name="ms.assetid"/>
+  <meta content="powershell" name="ms.devlang"/>
+  <meta content="INDEX, FOLLOW" name="ROBOTS"/>
+  <meta content="/powershell/windows/bread/toc.json?view=win10-ps" name="breadcrumb_path"/>
+  <meta content="powershell" name="apiPlatform"/>
+  <meta content="MSDocsHeader-WindowsIT" name="uhfHeaderId"/>
+  <meta content="../win10-ps/toc.json?view=win10-ps" name="toc_rel"/>
+  <link href="https://docs.microsoft.com/en-us/powershell/module/storagereplica/set-srpartnership" rel="canonical"/>
+  <title>
+   Set-SRPartnership
+  </title>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/e4a1f3a3.site.css" rel="stylesheet"/>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/31353636.conceptual.css" rel="stylesheet"/>
+ </head>
+ <body dir="ltr" lang="en-us">
+  <div class="header-holder">
+   <div data-bi-name="header" id="headerAreaHolder">
+    <div id="uhf-placeholder">
+    </div>
+   </div>
+   <div class="disclaimer-holder" id="disclaimer-holder">
+   </div>
+  </div>
+  <div class="container mainContainer" data-bi-name="body">
+   <div class="content-header" data-bi-name="content-header">
+    <div class="content-header-controls">
+     <button class="contents-button button-border" data-bi-name="contents-expand" type="button">
+      <span class="docon docon-menu">
+      </span>
+      Contents
+     </button>
+    </div>
+    <div class="content-header-controls">
+     <button class="ap-collapse-behavior ap-expanded button-border" data-bi-name="ap-collapse" type="button">
+      <span class="docon docon-exit-mode">
+      </span>
+      Exit focus mode
+     </button>
+    </div>
+   </div>
+   <div class="primary-holder">
+    <main class="content" data-bi-name="content" dir="ltr" id="main" lang="en-us" role="main">
+     <!-- <content> -->
+     <h1>
+      Set-SRPartnership
+     </h1>
+     <div class="metadata">
+      <dl class="attributeList">
+       <dt>
+        Module:
+       </dt>
+       <dd>
+        <a data-linktype="relative-path" href="./.html">
+         storagereplica
+        </a>
+       </dd>
+      </dl>
+     </div>
+     <div class="summaryHolder">
+      <div class="summary">
+       Modifies a replication partnership between two replication groups.
+      </div>
+     </div>
+     <h2 class="hiddenAnchor" id="syntax">
+      Syntax
+     </h2>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Set-SRPartnership
+   [[-SourceComputerName] &lt;String&gt;]
+   [-SourceRGName] &lt;String&gt;
+   [-SourceAddVolumePartnership] &lt;String[]&gt;
+   [-DestinationComputerName] &lt;String&gt;
+   [-DestinationRGName] &lt;String&gt;
+   [-DestinationAddVolumePartnership] &lt;String[]&gt;
+   [-Seeded]
+   [-Force]
+   [-CimSession &lt;CimSession[]&gt;]
+   [-ThrottleLimit &lt;Int32&gt;]
+   [-AsJob]
+   [-WhatIf]
+   [-Confirm]
+   [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Set-SRPartnership
+   [[-SourceComputerName] &lt;String&gt;]
+   [-SourceRGName] &lt;String&gt;
+   [-DestinationComputerName] &lt;String&gt;
+   [-DestinationRGName] &lt;String&gt;
+   [[-ReplicationMode] &lt;ReplicationMode&gt;]
+   [[-LogSizeInBytes] &lt;UInt64&gt;]
+   [[-AsyncRPO] &lt;UInt32&gt;]
+   [[-Encryption] &lt;Boolean&gt;]
+   [-CimSession &lt;CimSession[]&gt;]
+   [-ThrottleLimit &lt;Int32&gt;]
+   [-AsJob]
+   [-WhatIf]
+   [-Confirm]
+   [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Set-SRPartnership
+   [-SourceRGName] &lt;String&gt;
+   [-DestinationComputerName] &lt;String&gt;
+   [-DestinationRGName] &lt;String&gt;
+   [-Force]
+   [[-NewSourceComputerName] &lt;String&gt;]
+   [-CimSession &lt;CimSession[]&gt;]
+   [-ThrottleLimit &lt;Int32&gt;]
+   [-AsJob]
+   [-WhatIf]
+   [-Confirm]
+   [&lt;CommonParameters&gt;]</code></pre>
+     <h2 id="description">
+      Description
+     </h2>
+     <p>
+      The
+      <strong>
+       Set-SRPartnership
+      </strong>
+      cmdlet modifies a replication partnership between two existing replication groups.
+You can use this cmdlet to add replicated volumes.
+You can also change the direction of replication which makes a source volume into a destination volume.
+     </p>
+     <h2 id="examples">
+      Examples
+     </h2>
+     <p>
+      <strong>
+       Example 1: Reverse replication direction
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt;Set-SRPartnership -NewSourceComputerName "SR-SRV06" -SourceRGName "ReplicationGroup" -DestinationComputerName "SR-SRV05" -DestinationRGName "ReplicationGroup01"
+Confirm
+Are you sure you want to perform this action? 
+Performing operation "Set Source Replication Group" to replication group ReplicationGroup02. This may
+result in data loss. Are you sure you want to continue? 
+[Y] Yes  [A] Yes to All  [N] No  [L] No to All  [S] Suspend  [?] Help (default is "Y"):</code></pre>
+     <p>
+      This command changes the replication direction by an administrator after a disaster has occurred.
+The previous source replication group named ReplicationGroup01 on previous source server SR-SRV05 becomes the new destination for ReplicationGroup02 on SR-SRV06.
+Replication is now reversed.
+You must direct any applications or users attempting to read or write against SR-SRV05 to SR-SRV06.
+     </p>
+     <p>
+      <strong>
+       Example 2: Change size of log
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt;Set-SRPartnership -SourceComputerName "SR-SRV05" -SourceRGName "ReplicationGroup01" -DestinationComputerName "SR-SRV06" -DestinationRGName "ReplicationGroup02" -LogSizeInBytes 32GB
+PS C:\&gt; Get-SRPartnership | Get-SRGroup
+AllowVolumeResize  : False
+AsyncRPO           : 30
+ComputerName       : SR-SRV05
+Description        : 
+Id                 : 74f2254c-a910-4780-98b4-ea4ea049e69b
+IsAutoFailover     : 
+IsCluster          : False
+IsEncrypted        : False
+IsInPartnership    : True
+IsPrimary          : True
+IsSuspended        : False
+IsWriteConsistency : False
+LastInSyncTime     : 
+LogSizeInBytes     : 34359738368
+LogVolume          : e:\ 
+Name               : ReplicationGroup01
+NumOfReplicas      : 1
+Partitions         : {bc49f059-4f78-464d-b88a-3a092108816e}
+Replicas           : {MSFT_WvrReplica (PartitionId =
+                     "bc49f059-4f78-464d-b88a-3a092108816e")}
+ReplicationMode    : Asynchronous
+ReplicationStatus  : ContinuouslyReplicating_InRPO
+PSComputerName     : 
+
+AllowVolumeResize  : False
+AsyncRPO           : 30
+ComputerName       : SR-SRV06
+Description        : 
+Id                 : 291cb733-b753-469d-8092-5b54d4a6752d
+IsAutoFailover     : 
+IsCluster          : False
+IsEncrypted        : False
+IsInPartnership    : True
+IsPrimary          : False
+IsSuspended        : False
+IsWriteConsistency : False
+LastInSyncTime     : 10/11/2016 1:48:04 PM
+LogSizeInBytes     : 34359738368
+LogVolume          : e:\ 
+Name               : ReplicationGroup02
+NumOfReplicas      : 1
+Partitions         : {92306c9f-655c-48e2-a28f-f08010514161}
+Replicas           : {MSFT_WvrReplica (PartitionId =
+                     "92306c9f-655c-48e2-a28f-f08010514161")}
+ReplicationMode    : Asynchronous
+ReplicationStatus  : ContinuouslyReplicating
+PSComputerName     :</code></pre>
+     <p>
+      This command changes the log from its default size of 8GB to 32GB, on the partnership between SR-SRV05 and SR-SRV06.
+     </p>
+     <p>
+      <strong>
+       Example 3: Change to asynchronous mode
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt;Set-SRPartnership -SourceComputerName "SR-SRV05" -SourceRGName "ReplicationGroup01" -ReplicationMode Asynchronous -DestinationComputerName "SR-SRV06" -DestinationRGName "ReplicationGroup02"
+WARNING: The replication group ReplicationGroup01 is the source. Modifying replication mode on source
+replication group will not affect the current replication partnership.</code></pre>
+     <p>
+      This command changes the replication mode from synchronous to asynchronous.
+The warning is generated by the setting being applied to both replication groups.
+     </p>
+     <p>
+      <strong>
+       Example 4: Display replicas after a change
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt;Set-SRPartnership -SourceComputerName "SR-SRV05" -SourceRGName "ReplicationGroup01" -SourceAddVolumePartnership "F:","G:" -DestinationComputerName "SR-SRV06" -DestinationRGName "ReplicationGroup02" -DestinationAddVolumePartnership "F:","G:"
+PS C:\&gt; (Get-SRGroup).replicas 
+CurrentLsn          : 1
+DataVolume          : D:\ 
+LastInSyncTime      : 
+LastKnownPrimaryLsn : 1
+LastOutOfSyncTime   : 
+NumOfBytesRecovered : 0
+NumOfBytesRemaining : 0
+PartitionId         : bc49f059-4f78-464d-b88a-3a092108816e
+PartitionSize       : 34730934272
+ReplicationMode     : Synchronous
+ReplicationStatus   : ContinuouslyReplicating
+PSComputerName      : 
+
+CurrentLsn          : 1
+DataVolume          : F:\ 
+LastInSyncTime      : 
+LastKnownPrimaryLsn : 1
+LastOutOfSyncTime   : 
+NumOfBytesRecovered : 0
+NumOfBytesRemaining : 0
+PartitionId         : 51c97fb1-b280-452c-96b7-442f400889da
+PartitionSize       : 13759414272
+ReplicationMode     : Synchronous
+ReplicationStatus   : InitialBlockCopy
+PSComputerName      : 
+
+CurrentLsn          : 1
+DataVolume          : G:\ 
+LastInSyncTime      : 
+LastKnownPrimaryLsn : 1
+LastOutOfSyncTime   : 
+NumOfBytesRecovered : 0
+NumOfBytesRemaining : 0
+PartitionId         : 97a3d483-8766-49a9-be54-5f1e52aaba51
+PartitionSize       : 20091764736
+ReplicationMode     : Synchronous
+ReplicationStatus   : InitialBlockCopy
+PSComputerName      :</code></pre>
+     <p>
+      The first command changes the partnership for the servers named SR-SRV05 and SR-SRV06.
+     </p>
+     <p>
+      The second command gets all replication groups for the current computer by using the Get-SRGroup cmdlet.
+The command displays all the replicas by using standard Windows PowerShell syntax.
+     </p>
+     <h2 id="required-parameters">
+      Required Parameters
+     </h2>
+     <div class="parameterName stack">
+      -DestinationAddVolumePartnership
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies an array of drive letters or mount point paths of partitions to add to the existing replication group.
+You cannot specify paths already added to the replication group.
+      </p>
+      <p>
+       This list is ordered.
+The order of volumes determines the order of replication.
+For more information, see the
+       <em>
+        DestinationVolumeName
+       </em>
+       parameter of the New-SRPartnership cmdlet.
+      </p>
+      <p>
+       We do not recommend replicating different drive letters or mount point paths.
+The practice can cause application failures because of stored settings after a failover occurs.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         DAV
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         6
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -DestinationComputerName
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a single replica host computer NetBIOS name or fully qualified domain name (FQDN) of the destination computer.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         DCN
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         3
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -DestinationRGName
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the name of the destination replication group.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         DGN
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         5
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -SourceAddVolumePartnership
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies an array of drive letters or mount point paths of partitions to add to the existing replication group.
+You cannot specify paths already added to the replication group.
+      </p>
+      <p>
+       This is an ordered list.
+The order of volumes determines the order of replication.
+For more information, see the
+       <em>
+        DestinationVolumeName
+       </em>
+       parameter of the New-SRPartnership cmdlet.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         SAV
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         2
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -SourceRGName
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the name of the source replication group.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         SGN
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         1
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="optional-parameters">
+      Optional Parameters
+     </h2>
+     <div class="parameterName stack">
+      -AsJob
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Runs the cmdlet as a background job. Use this parameter to run commands that take a long time to complete.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -AsyncRPO
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the maximum difference in time that data for an asynchronous partnership can be different between source and destination.
+This is a Recovery Point Objective.
+The default value is 30 seconds.
+      </p>
+      <p>
+       After this time is exceeded, the source server alerts the Health Service on clusters.
+It logs event 1239 in the Storage Replica Admin event log channel.
+If the RPO time is lower than the configured time, event 1240 is logged.
+Changing this value modifies monitoring and logging.
+It does not affect replication or Input/Output.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          UInt32
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         RPO
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         51
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -CimSession
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Runs the cmdlet in a remote session or on a remote computer.
+Enter a computer name or a session object, such as the output of a
+       <a data-linktype="external" href="http://go.microsoft.com/fwlink/p/?LinkId=227967">
+        New-CimSession
+       </a>
+       or
+       <a data-linktype="external" href="http://go.microsoft.com/fwlink/p/?LinkId=227966">
+        Get-CimSession
+       </a>
+       cmdlet.
+The default is the current session on the local computer.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          CimSession[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         Session
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Confirm
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Prompts you for confirmation before running the cmdlet.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         cf
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Encryption
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that the connections on this partnership should be encrypted by using SMB AES-128-GCM.
+Enabling encryption can protect Storage Replica block transfers from man-in-the-middle interception or reading.
+Enabling encryption can decrease replication and write Input/Output performance.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Boolean
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         ENC
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         52
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Force
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Forces the command to run without asking for user confirmation.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         F
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         100
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -LogSizeInBytes
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the aggregate size of log files on each server in the replication group for the volumes that are associated with this replication group.
+The minimum size 512MB.
+You can specify a value by using the Windows PowerShell byte conversion capability, such as 4GB or 3200MB.
+A value that is too small may cause decreased replication performance or increased recovery time after an interruption between computers.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          UInt64
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         LS
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         50
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -NewSourceComputerName
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the new source of replication.
+This parameter changes the direction of replication for the source computer and the source replication group.
+When changed, replication stops originating on the current source and moves to the new source.
+      </p>
+      <p>
+       This operation is very likely to disrupt access to data.
+There is a time when neither volumes are writable and when clients and applications might still access the previously writable source volume.
+You may also have to reconfigure applications and repoint users to this new location, using technologies such as DFS Namespaces.
+When switching asynchronously-replicated volumes, to avoid data loss, you must first make sure that user and application data is quiescent.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         NSCN
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         0
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -ReplicationMode
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the desired mode of replication for this source and destination pair.
+The acceptable values for this parameter are:
+      </p>
+      <ul>
+       <li>
+        Synchronous or 1.
+The synchronous mode requires all writes to commit on the destination server and commit on the source server, which guarantees data integrity between computers.
+       </li>
+       <li>
+        Asynchronous or 2. 
+The asynchronous mode writes to the source server without waiting for the server, which allows for replication over high latency, geographic networks.
+       </li>
+      </ul>
+      <p>
+       The default value is synchronous. 
+The default asynchronous recovery point alert time is 30 seconds.
+You can modify it by using this cmdlet.
+The alert time has no effect on replication behavior, only on reporting.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          ReplicationMode
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         RM
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Parameter Sets:
+        </td>
+        <td>
+         Synchronous, Asynchronous
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         8
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Seeded
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that the destination server contains a seeded copy of the data from the source server.
+Seeded data is defined as a copy of data from the source server that has a high similarity, such as mostly empty blocks, restoring a recent backup, or shipping cloned copies of disks to the destination server.
+      </p>
+      <p>
+       Seeding is most effective when using a previous copy of the storage, such as a split mirror or previously replicated drives, or when the storage is mostly empty and was always empty, such as a recently initialized drive with a newly formatted volume.
+Seeding is somewhat effective with data that came from a backup restore or a complete tree copy of data or from copies of very large files.
+      </p>
+      <p>
+       Seeding is least effective when copying many small files from some random locations to some other random locations.
+Storage Replica automatically uses seeding when it restarts replication after a long outage that wrapped the logs.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         S
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         9
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -SourceComputerName
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a single replica host computer NetBIOS name or FQDN of the source computer.
+The default value is the local computer.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         SCN
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         0
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByValue)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -ThrottleLimit
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the maximum number of concurrent operations that can be established to run the cmdlet.
+If this parameter is omitted or a value of
+       <code>
+        0
+       </code>
+       is entered, then Windows PowerShellÂ® calculates an optimum throttle limit for the cmdlet based on the number of CIM cmdlets that are running on the computer.
+The throttle limit applies only to the current cmdlet, not to the session or to the computer.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Int32
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -WhatIf
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         wi
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="related-links">
+      Related Links
+     </h2>
+     <ul>
+      <li>
+       <a data-linktype="relative-path" href="./get-srgroup.html">
+        Get-SRGroup
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="./get-srpartnership.html">
+        Get-SRPartnership
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="./new-srpartnership.html">
+        New-SRPartnership
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="./remove-srpartnership.html">
+        Remove-SRPartnership
+       </a>
+      </li>
+     </ul>
+     <!-- </content> -->
+    </main>
+    <section class="feedback-section" data-bi-name="feedback-section">
+     <h2 id="feedback">
+      Feedback
+     </h2>
+     <div class="alert choose-feedback-type">
+      <p>
+       We'd love to hear your thoughts. Choose the type you'd like to provide:
+      </p>
+      <div class="choose-feedback-buttons">
+       <a class="button-border feedback-type-product" data-bi-name="product-feedback" href="https://windowsserver.uservoice.com/forums/301869-powershell">
+        Product feedback
+        <span aria-hidden="true" class="docon docon-navigate-external">
+        </span>
+       </a>
+       <div class="button-group">
+        <button class="button-border feedback-sign-in-button" data-bi-name="feedback-sign-in">
+         <span aria-hidden="true" class="docon docon-brand-github">
+         </span>
+         Sign in to give documentation feedback
+        </button>
+        <button aria-controls="feedback-form" aria-expanded="false" class="button-border feedback-form-toggle" data-bi-name="documentation-feedback" hidden="">
+         Content feedback
+        </button>
+        <div auto-align="" class="dropdown has-caret">
+         <button aria-controls="fbm0" aria-expanded="false" aria-haspopup="true" aria-label="Expand documentation feedback menu" class="button-border dropdown-trigger" data-bi-name="documentation-feedback-menu">
+          <span aria-hidden="true" class="docon docon-chevron-down-light">
+          </span>
+         </button>
+         <div class="dropdown-menu documentation-feedback-menu" id="fbm0" role="menu">
+          You may also leave feedback
+          <a data-bi-name="create-issue-on-github" href="{0}">
+           directly on GitHub
+           <span aria-hidden="true" class="docon docon-navigate-external">
+           </span>
+          </a>
+          .
+         </div>
+        </div>
+       </div>
+      </div>
+      <p>
+       <small>
+        Our new feedback system is built on GitHub Issues. Read about this change in
+        <a href="https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs">
+         our blog post
+        </a>
+        .
+       </small>
+      </p>
+     </div>
+     <form accept-charset="UTF-8" action="javascript:" autocomplete="off" class="feedback-form" hidden="" id="feedback-form">
+      <h3 class="feedback-form-heading current-user">
+       <img alt="Avatar" aria-hidden="true" class="avatar" height="36" width="36"/>
+       <span aria-hidden="true" class="username">
+       </span>
+       <span class="visually-hidden">
+        Liquid error: Can't find the localized string giveDocumentationFeedback for template Conceptual.
+       </span>
+      </h3>
+      <label>
+       <span class="visually-hidden">
+        Title
+       </span>
+       <input name="title" pattern=".*\w.*" placeholder="Title" required="" type="text"/>
+      </label>
+      <label>
+       <span class="visually-hidden">
+        Leave a comment
+       </span>
+       <textarea name="body" placeholder="Leave a comment" required=""></textarea>
+      </label>
+      <div class="action-container">
+       <button class="primary-action" name="submit" type="submit">
+        Submit feedback
+       </button>
+      </div>
+     </form>
+     <div class="feedback-status alert busy" role="alert">
+      <p>
+       Loading feedback...
+      </p>
+     </div>
+     <div class="feedback-tab-group tabGroup" data-tab-group-independent="" hidden="">
+      <ul role="tablist">
+       <li role="presentation">
+        <a aria-controls="tabpanel-issues-open" aria-label="Open Issues" data-tab="issues-open" href="#tabpanel-issues-open" role="tab">
+        </a>
+       </li>
+       <li role="presentation">
+        <a aria-controls="tabpanel-issues-closed" aria-label="Closed Issues" data-tab="issues-closed" href="#tabpanel-issues-closed" role="tab">
+        </a>
+       </li>
+      </ul>
+      <section data-tab="issues-open" id="tabpanel-issues-open" role="tabpanel">
+       <div class="no-issues-placeholder">
+        There are no open issues
+       </div>
+       <ul aria-label="Open Issues" class="github-issues-list">
+       </ul>
+      </section>
+      <section data-tab="issues-closed" id="tabpanel-issues-closed" role="tabpanel">
+       <div class="no-issues-placeholder">
+        There are no closed issues
+       </div>
+       <ul aria-label="Closed Issues" class="github-issues-list">
+       </ul>
+      </section>
+     </div>
+     <div class="action-container">
+      <a class="view-on-github" data-bi-name="view-on-github" hidden="" href="https://github.com/MicrosoftDocs/windows-powershell-docs/issues">
+       <span aria-hidden="true" class="docon docon-brand-github">
+       </span>
+       <span>
+        View on GitHub
+       </span>
+       <span aria-hidden="true" class="docon docon-navigate-external">
+       </span>
+      </a>
+     </div>
+    </section>
+   </div>
+  </div>
+  <div class="openfeedback-container" id="openFeedbackContainer">
+  </div>
+  <div class="action-panel">
+  </div>
+ </body>
+</html>

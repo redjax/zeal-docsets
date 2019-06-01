@@ -1,0 +1,1682 @@
+<!DOCTYPE html>
+<html class="no-js hasSidebar hasPageActions hasBreadcrumb conceptual" data-authenticated="false" data-render="docs" dir="ltr" lang="en-us">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Get-ADDomainController (addsadministration)" property="og:title"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" property="og:image"/>
+  <meta content="summary" name="twitter:card"/>
+  <meta content="@docsmsft" name="twitter:site"/>
+  <meta content="Get-ADDomainController (addsadministration)" name="twitter:title"/>
+  <meta content="Use this topic to help manage Windows and Windows Server technologies with Windows PowerShell." name="twitter:description"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" name="twitter:image"/>
+  <meta content="Microsoft Logo" name="twitter:image:alt"/>
+  <meta content="Use this topic to help manage Windows and Windows Server technologies with Windows PowerShell." name="description"/>
+  <meta content="Docs" name="search.ms_sitename"/>
+  <meta content="powershell-windows" name="search.ms_docsetname"/>
+  <meta content="0" name="version"/>
+  <meta content="en-us" name="locale"/>
+  <meta content="Docs" name="site_name"/>
+  <meta content="MSDN" name="search.ms_product"/>
+  <meta content="MSDN.powershell-windows" name="depot_name"/>
+  <meta content="https://cpubwin.visualstudio.com/DefaultCollection/powershell/_git/powershell/commit/ced7757924addcaea0b7a244ae4d240e4d28d93a?path=%2fdocset%2fwindows%2faddsadministration%2fget-addomaincontroller.md&amp;_a=contents" name="ref_skeleton_gitcommit"/>
+  <meta content="https://cpubwin.visualstudio.com/DefaultCollection/powershell/_git/powershell?path=%2fdocset%2fwindows%2faddsadministration%2fget-addomaincontroller.md&amp;version=GBlive&amp;_a=contents" name="original_ref_skeleton_git_url"/>
+  <meta content="2017-09-15 03:44 AM" name="updated_at"/>
+  <meta content="50f54d51-f7bb-0ab2-a437-0ae9bfc0e144" name="document_id"/>
+  <meta content="fbb5e828-c8f3-2748-4984-e0950f379c43" name="document_version_independent_id"/>
+  <meta content="powershell" name="page_type"/>
+  <meta content="command" name="page_kind"/>
+  <meta content="manage" name="ms.mktglfcycl"/>
+  <meta content="library" name="ms.sitesec"/>
+  <meta content="brianlic" name="ms.author"/>
+  <meta content="brianlic-msft" name="author"/>
+  <meta content="Microsoft.ActiveDirectory.Management.dll-Help.xml" name="external_help_file"/>
+  <meta content="powershell, cmdlet" name="keywords"/>
+  <meta content="alanth" name="manager"/>
+  <meta content="12/27/2016" name="ms.date"/>
+  <meta content="w10" name="ms.prod"/>
+  <meta content="powershell-windows" name="ms.technology"/>
+  <meta content="reference" name="ms.topic"/>
+  <meta content="" name="online_version"/>
+  <meta content="2.0.0" name="schema"/>
+  <meta content="A5D81755-6799-41FE-8AAF-FB42F9A697F5" name="ms.assetid"/>
+  <meta content="powershell" name="ms.devlang"/>
+  <meta content="INDEX, FOLLOW" name="ROBOTS"/>
+  <meta content="/powershell/windows/bread/toc.json?view=win10-ps" name="breadcrumb_path"/>
+  <meta content="powershell" name="apiPlatform"/>
+  <meta content="MSDocsHeader-WindowsIT" name="uhfHeaderId"/>
+  <meta content="../win10-ps/toc.json?view=win10-ps" name="toc_rel"/>
+  <link href="https://docs.microsoft.com/en-us/powershell/module/addsadministration/get-addomaincontroller" rel="canonical"/>
+  <title>
+   Get-ADDomainController
+  </title>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/e4a1f3a3.site.css" rel="stylesheet"/>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/31353636.conceptual.css" rel="stylesheet"/>
+ </head>
+ <body dir="ltr" lang="en-us">
+  <div class="header-holder">
+   <div data-bi-name="header" id="headerAreaHolder">
+    <div id="uhf-placeholder">
+    </div>
+   </div>
+   <div class="disclaimer-holder" id="disclaimer-holder">
+   </div>
+  </div>
+  <div class="container mainContainer" data-bi-name="body">
+   <div class="content-header" data-bi-name="content-header">
+    <div class="content-header-controls">
+     <button class="contents-button button-border" data-bi-name="contents-expand" type="button">
+      <span class="docon docon-menu">
+      </span>
+      Contents
+     </button>
+    </div>
+    <div class="content-header-controls">
+     <button class="ap-collapse-behavior ap-expanded button-border" data-bi-name="ap-collapse" type="button">
+      <span class="docon docon-exit-mode">
+      </span>
+      Exit focus mode
+     </button>
+    </div>
+   </div>
+   <div class="primary-holder">
+    <main class="content" data-bi-name="content" dir="ltr" id="main" lang="en-us" role="main">
+     <!-- <content> -->
+     <h1>
+      Get-ADDomain
+      <wbr/>
+      Controller
+     </h1>
+     <div class="metadata">
+      <dl class="attributeList">
+       <dt>
+        Module:
+       </dt>
+       <dd>
+        <a data-linktype="relative-path" href="./.html">
+         addsadministration
+        </a>
+       </dd>
+      </dl>
+     </div>
+     <div class="summaryHolder">
+      <div class="summary">
+       Gets one or more Active Directory domain controllers based on discoverable services criteria, search parameters or by providing a domain controller identifier, such as the NetBIOS name.
+      </div>
+     </div>
+     <h2 class="hiddenAnchor" id="syntax">
+      Syntax
+     </h2>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Get-ADDomainController
+   [-AuthType &lt;ADAuthType&gt;]
+   [-Credential &lt;PSCredential&gt;]
+   [[-Identity] &lt;ADDomainController&gt;]
+   [-Server &lt;String&gt;]
+   [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Get-ADDomainController
+   [-AuthType &lt;ADAuthType&gt;]
+   [-AvoidSelf]
+   [-Discover]
+   [-DomainName &lt;String&gt;]
+   [-ForceDiscover]
+   [-MinimumDirectoryServiceVersion &lt;ADMinimumDirectoryServiceVersion&gt;]
+   [-NextClosestSite]
+   [-Service &lt;ADDiscoverableService[]&gt;]
+   [-SiteName &lt;String&gt;]
+   [-Writable]
+   [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Get-ADDomainController
+   [-AuthType &lt;ADAuthType&gt;]
+   [-Credential &lt;PSCredential&gt;]
+   -Filter &lt;String&gt;
+   [-Server &lt;String&gt;]
+   [&lt;CommonParameters&gt;]</code></pre>
+     <h2 id="description">
+      Description
+     </h2>
+     <p>
+      The
+      <strong>
+       Get-ADDomainController
+      </strong>
+      cmdlet gets the domain controllers specified by the parameters.
+You can get domain controllers by setting the
+      <em>
+       Identity
+      </em>
+      ,
+      <em>
+       Filter
+      </em>
+      or
+      <em>
+       Discover
+      </em>
+      parameters.
+     </p>
+     <p>
+      The
+      <em>
+       Identity
+      </em>
+      parameter specifies the domain controller to get.
+You can identify a domain controller by its GUID, IPV4Address, global IPV6Address, or DNS host name.
+You can also identify a domain controller by the name of the server object that represents the domain controller, the distinguished name of the NTDS settings object or the server object, the GUID of the NTDS settings object or the server object under the configuration partition, or the distinguished name of the computer object that represents the domain controller. 
+You can also set the
+      <em>
+       Identity
+      </em>
+      parameter to a domain controller object variable, such as
+      <code>
+       $&lt;localDomainControllerobject&gt;
+      </code>
+      , or pass a domain controller object through the pipeline to the
+      <em>
+       Identity
+      </em>
+      parameter.
+     </p>
+     <p>
+      To search for and retrieve more than one domain controller, use the
+      <em>
+       Filter
+      </em>
+      parameter.
+The
+      <em>
+       Filter
+      </em>
+      parameter uses the Windows PowerShell Expression Language to write query strings for Active Directory.
+Windows PowerShell Expression Language syntax provides rich type conversion support for value types received by the
+      <em>
+       Filter
+      </em>
+      parameter.
+For more information about the
+      <em>
+       Filter
+      </em>
+      parameter syntax, type
+      <code>
+       Get-Help about_ActiveDirectory_Filter
+      </code>
+      .
+You cannot use a Lightweight Directory Access Protocol (LDAP) query string with this cmdlet.
+     </p>
+     <p>
+      To get a domain controller by using the discovery mechanism of DCLocator, use the
+      <em>
+       Discover
+      </em>
+      parameter.
+You can provide search criteria by setting parameters such as
+      <em>
+       Service
+      </em>
+      ,
+      <em>
+       SiteName
+      </em>
+      ,
+      <em>
+       DomainName
+      </em>
+      ,
+      <em>
+       NextClosestSite
+      </em>
+      ,
+      <em>
+       AvoidSelf
+      </em>
+      , and
+      <em>
+       ForceDiscover
+      </em>
+      .
+     </p>
+     <h2 id="examples">
+      Examples
+     </h2>
+     <p>
+      <strong>
+       Example 1: Get a domain controller in a specified site
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-ADDomainController -Discover -Site "Default-First-Site-Name"</code></pre>
+     <p>
+      This command gets one available domain controller in the site specified by the
+      <em>
+       Site
+      </em>
+      parameter.
+The command uses Discovery.
+     </p>
+     <p>
+      <strong>
+       Example 2: Get an available domain controller using force discovery in a specified site
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-ADDomainController -Discover -Site "Default-First-Site-Name" -ForceDiscover</code></pre>
+     <p>
+      This command force discovers or finds one available domain controller in the site specified by the
+      <em>
+       Site
+      </em>
+      parameter.
+     </p>
+     <p>
+      <strong>
+       Example 3: Get a global catalog in the current forest using discovery
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-ADDomainController -Discover -Service "GlobalCatalog"</code></pre>
+     <p>
+      This command gets a global catalog in the current forest using Discovery.
+     </p>
+     <p>
+      <strong>
+       Example 4: Get an available domain controller in the current domain using discovery
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-ADDomainController -Discover</code></pre>
+     <p>
+      This command gets one available domain controller in the current domain using Discovery.
+     </p>
+     <p>
+      <strong>
+       Example 5: Get an available domain controller in a given domain using discovery
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-ADDomainController -Discover -Domain "user01.com"</code></pre>
+     <p>
+      This command gets one available domain controller in a given domain using Discovery.
+     </p>
+     <p>
+      <strong>
+       Example 6: Get the primary domain controller using discovery and set it up as time server
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-ADDomainController -Discover -Domain "corp.contoso.com" -Service "PrimaryDC","TimeService"</code></pre>
+     <p>
+      This command gets the primary domain controller using Discovery and make sure that is advertising as a time server.
+     </p>
+     <p>
+      <strong>
+       Example 7: Get a domain controller using its NetBIOS name
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-ADDomainController -Identity "PDC-01"</code></pre>
+     <p>
+      This command gets a domain controller using its NetBIOS name.
+     </p>
+     <p>
+      <strong>
+       Example 8: Get a domain controller using its DNS host name in a specified site using administrator credentials
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-ADDomainController -Identity "TK5-CORP-DC-10.user01.com" -Server "user01.com" -Credential "corp\administrator"</code></pre>
+     <p>
+      This command gets a domain controller using its DNS host name, in the domain specified by the
+      <em>
+       Site
+      </em>
+      parameter, specified in
+      <em>
+       Server
+      </em>
+      parameter, and specifying administrator credentials.
+     </p>
+     <h2 id="required-parameters">
+      Required Parameters
+     </h2>
+     <div class="parameterName stack">
+      -Discover
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies to return a discoverable domain controller that meets the conditions specified by the cmdlet parameters.
+      </p>
+      <p>
+       To get a domain controller by using the discovery mechanism of DCLocator, use the
+       <em>
+        Discover
+       </em>
+       parameter.
+Along with this parameter, you can provide search criteria by setting parameters such as
+       <em>
+        Service
+       </em>
+       ,
+       <em>
+        SiteName
+       </em>
+       ,
+       <em>
+        DomainName
+       </em>
+       ,
+       <em>
+        NextClosestSite
+       </em>
+       ,
+       <em>
+        AvoidSelf
+       </em>
+       , and
+       <em>
+        ForceDiscover
+       </em>
+       .
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Filter
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a query string that retrieves Active Directory objects.
+This string uses the Windows PowerShell Expression Language syntax.
+The Windows PowerShell Expression Language syntax provides rich type-conversion support for value types received by the
+       <em>
+        Filter
+       </em>
+       parameter.
+The syntax uses an in-order representation, which means that the operator is placed between the operand and the value.
+For more information about the
+       <em>
+        Filter
+       </em>
+       parameter, type
+       <code>
+        Get-Help about_ActiveDirectory_Filter
+       </code>
+       .
+      </p>
+      <p>
+       Syntax:
+      </p>
+      <p>
+       The following syntax uses Backus-Naur form to show how to use the Windows PowerShell Expression Language for this parameter.
+      </p>
+      <p>
+       &lt;filter&gt;  ::= "{" &lt;FilterComponentList&gt; "}"
+      </p>
+      <p>
+       &lt;FilterComponentList&gt; ::= &lt;FilterComponent&gt; | &lt;FilterComponent&gt; &lt;JoinOperator&gt; &lt;FilterComponent&gt; | &lt;NotOperator&gt;  &lt;FilterComponent&gt;
+      </p>
+      <p>
+       &lt;FilterComponent&gt; ::= &lt;attr&gt; &lt;FilterOperator&gt; &lt;value&gt; | "(" &lt;FilterComponent&gt; ")"
+      </p>
+      <p>
+       &lt;FilterOperator&gt; ::= "-eq" | "-le" | "-ge" | "-ne" | "-lt" | "-gt"| "-approx" | "-bor" | "-band" | "-recursivematch" | "-like" | "-notlike"
+      </p>
+      <p>
+       &lt;JoinOperator&gt; ::= "-and" | "-or"
+      </p>
+      <p>
+       &lt;NotOperator&gt; ::= "-not"
+      </p>
+      <p>
+       &lt;attr&gt; ::= &lt;PropertyName&gt; | &lt;LDAPDisplayName of the attribute&gt;
+      </p>
+      <p>
+       &lt;value&gt;::= &lt;compare this value with an &lt;attr&gt; by using the specified &lt;FilterOperator&gt;&gt;
+      </p>
+      <p>
+       For a list of supported types for &lt;value&gt;, type
+       <code>
+        Get-Help about_ActiveDirectory_ObjectModel
+       </code>
+       .
+      </p>
+      <p>
+       Note: PowerShell wildcards other than
+       <em>
+        , such as ?, are not supported by the *Filter
+       </em>
+       syntax.
+      </p>
+      <p>
+       Note: To query using LDAP query strings, use the
+       <em>
+        LDAPFilter
+       </em>
+       parameter.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="optional-parameters">
+      Optional Parameters
+     </h2>
+     <div class="parameterName stack">
+      -AuthType
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the authentication method to use.
+The acceptable values for this parameter are:
+      </p>
+      <ul>
+       <li>
+        Negotiate or 0
+       </li>
+       <li>
+        Basic or 1
+       </li>
+      </ul>
+      <p>
+       The default authentication method is Negotiate.
+      </p>
+      <p>
+       A Secure Sockets Layer (SSL) connection is required for the Basic authentication method.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          ADAuthType
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Parameter Sets:
+        </td>
+        <td>
+         Negotiate, Basic
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -AvoidSelf
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies to not return the current computer as a domain controller.
+If the current computer is not a domain controller, this parameter is ignored.
+You can specify this parameter when you want to get the name of another domain controller in the domain.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Credential
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the user account credentials to use to perform this task.
+The default credentials are the credentials of the currently logged on user unless the cmdlet is run from an Active Directory module for Windows PowerShell provider drive.
+If the cmdlet is run from such a provider drive, the account associated with the drive is the default.
+      </p>
+      <p>
+       To specify this parameter, you can type a user name, such as User1 or Domain01\User01 or you can specify a
+       <strong>
+        PSCredential
+       </strong>
+       object.
+If you specify a user name for this parameter, the cmdlet prompts for a password.
+      </p>
+      <p>
+       You can also create a
+       <strong>
+        PSCredential
+       </strong>
+       object by using a script or by using the
+       <strong>
+        Get-Credential
+       </strong>
+       cmdlet.
+You can then set the
+       <em>
+        Credential
+       </em>
+       parameter to the
+       <strong>
+        PSCredential
+       </strong>
+       object.
+      </p>
+      <p>
+       If the acting credentials do not have directory-level permission to perform the task, Active Directory module for Windows PowerShell returns a terminating error.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          PSCredential
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -DomainName
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the domain to search.
+The cmdlet locates a discoverable domain controller in this domain.
+Specify the domain by using the NetBIOS name or Fully Qualified Domain Name (FQDN) of the domain.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -ForceDiscover
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that the cmdlet to clears any cached domain controller information and perform a new discovery.
+If this parameter is not specified the cmdlet may return cached domain controller information.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Identity
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies an Active Directory domain controller object by providing one of the following values.
+The identifier in parentheses is the LDAP display name for the attribute.
+Unless specified otherwise, these values are for the server object that represents the domain controller.
+The acceptable values for this parameter are:
+      </p>
+      <ul>
+       <li>
+        A GUID (objectGUID)
+       </li>
+       <li>
+        An IPV4Address
+       </li>
+       <li>
+        A Global IPV6Address
+       </li>
+       <li>
+        A DNS Host Name (dNSHostName)
+       </li>
+       <li>
+        The name of the server object
+       </li>
+       <li>
+        The distinguished name of the NTDS Settings object
+       </li>
+       <li>
+        The distinguished name of the server object that represents the domain controller
+       </li>
+       <li>
+        The GUID of NTDS settings object under the configuration partition
+       </li>
+       <li>
+        The GUID of server object under the configuration partition
+       </li>
+       <li>
+        The distinguished name of the computer object that represents the domain controller
+       </li>
+      </ul>
+      <p>
+       The cmdlet searches the default naming context or partition to find the object.
+If two or more objects are found, the cmdlet returns a non-terminating error.
+      </p>
+      <p>
+       This parameter can also get this object through the pipeline or you can set this parameter to an object instance.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          ADDomainController
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         0
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByValue)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -MinimumDirectoryServiceVersion
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Species the earliest operating system that the domain controller can have so that it is returned by the cmdlet when getting a domain controller using
+       <em>
+        Discover
+       </em>
+       parameter.
+The acceptable values for this parameter are:
+      </p>
+      <ul>
+       <li>
+        Windows2000 or 1
+       </li>
+       <li>
+        Windows2008 or 2
+       </li>
+      </ul>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          ADMinimumDirectoryServiceVersion
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Parameter Sets:
+        </td>
+        <td>
+         Windows2000, Windows2008, Windows2012, Windows2012R2
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -NextClosestSite
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies to return a domain controller in the next closest site when a domain controller is not found in the site that contains the client.
+The next closest site is the site with the lowest site link cost with respect to the current site.
+Costs between sites are based on factors such as bandwidth, as well as physical proximity.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Server
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the Active Directory Domain Services instance to connect to, by providing one of the following values for a corresponding domain name or directory server.
+The service may be any of the following:  Active Directory Lightweight Domain Services, Active Directory Domain Services or Active Directory snapshot instance.
+      </p>
+      <p>
+       Specify the Active Directory Domain Services instance in one of the following ways:
+      </p>
+      <p>
+       Domain name values:
+      </p>
+      <ul>
+       <li>
+        Fully qualified domain name
+       </li>
+       <li>
+        NetBIOS name
+       </li>
+      </ul>
+      <p>
+       Directory server values:
+      </p>
+      <ul>
+       <li>
+        Fully qualified directory server name
+       </li>
+       <li>
+        NetBIOS name
+       </li>
+       <li>
+        Fully qualified directory server name and port
+       </li>
+      </ul>
+      <p>
+       The default value for this parameter is determined by one of the following methods in the order that they are listed:
+      </p>
+      <ul>
+       <li>
+        By using the
+        <em>
+         Server
+        </em>
+        value from objects passed through the pipeline
+       </li>
+       <li>
+        By using the server information associated with the Active Directory Domain Services Windows PowerShell provider drive, when the cmdlet runs in that drive
+       </li>
+       <li>
+        By using the domain of the computer running Windows PowerShell
+       </li>
+      </ul>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Service
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Species the types of domain controllers to get.
+You can specify more than one type by using a comma-separated list.
+The acceptable values for this parameter are:
+      </p>
+      <ul>
+       <li>
+        PrimaryDC or 1
+       </li>
+       <li>
+        GlobalCatalog or 2
+       </li>
+       <li>
+        KDC or 3
+       </li>
+       <li>
+        TimeService or 4
+       </li>
+       <li>
+        ReliableTimeService or 5
+       </li>
+       <li>
+        ADWS or 6
+       </li>
+      </ul>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          ADDiscoverableService[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Parameter Sets:
+        </td>
+        <td>
+         PrimaryDC, GlobalCatalog, KDC, TimeService, ReliableTimeService, ADWS
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -SiteName
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the name of a site to search in to find the domain controller.
+If this parameter is not set, the cmdlet searches for domain controllers in the same site as the client.
+The name of the site is defined by the
+       <strong>
+        Name
+       </strong>
+       property of the site object.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Writable
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies whether this is a writable domain controller.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="inputs">
+      Inputs
+     </h2>
+     <p>
+      <strong>
+       Microsoft.ActiveDirectory.Management.ADDomainController
+      </strong>
+     </p>
+     <p>
+      A domain controller object is received by the
+      <em>
+       Identity
+      </em>
+      parameter.
+     </p>
+     <h2 id="outputs">
+      Outputs
+     </h2>
+     <p>
+      <strong>
+       Microsoft.ActiveDirectory.Management.ADDomainController
+      </strong>
+     </p>
+     <p>
+      This cmdlet returns one or more domain controller objects.
+     </p>
+     <p>
+      When you use the
+      <em>
+       Discover
+      </em>
+      parameter to get a domain controller, the cmdlet returns a default set of property values for each domain controller.
+     </p>
+     <p>
+      When you use the
+      <em>
+       Identity
+      </em>
+      or
+      <em>
+       Filter
+      </em>
+      parameters to get a domain controller, this cmdlet returns all of the properties of the domain controller.
+     </p>
+     <p>
+      To view all of the properties for an
+      <strong>
+       ADDomainController
+      </strong>
+      object, use the following command and replace &lt;domaincontroller&gt; with a domain controller identifier such as a DNS host name.
+     </p>
+     <p>
+      <code>
+       Get-ADDomainController
+      </code>
+      &lt;domaincontroller&gt;
+      <code>
+       | Get-Member
+      </code>
+     </p>
+     <h2 id="notes">
+      Notes
+     </h2>
+     <ul>
+      <li>
+       <p>
+        The
+        <strong>
+         Name
+        </strong>
+        and
+        <strong>
+         HostName
+        </strong>
+        properties of the
+        <strong>
+         ADDomainController
+        </strong>
+        objects returned by the cmdlet are set according to the following rules:
+       </p>
+       <ul>
+        <li>
+         <p>
+          If the
+          <em>
+           Discover
+          </em>
+          parameter is used, HostName is the Fully Qualified Domain Name of the Domain Controller, and the Name is the NetBIOS name of the Domain Controller.
+With the
+          <em>
+           Discover
+          </em>
+          parameter, the cmdlet will perform a second DCLocator call, to populate the
+          <strong>
+           Name
+          </strong>
+          property.
+This property will not be set, to the NetBIOS name of the Domain Controller, if the WINS service is unavailable.
+         </p>
+        </li>
+        <li>
+         <p>
+          If the
+          <em>
+           Identity
+          </em>
+          or the
+          <em>
+           Filter
+          </em>
+          parameter is used,
+          <strong>
+           HostName
+          </strong>
+          is the
+          <strong>
+           DNSHostName
+          </strong>
+          attribute of the Domain Controller object, and the
+          <strong>
+           Name
+          </strong>
+          is the
+          <strong>
+           Name
+          </strong>
+          (RDN) attribute of the Domain Controller object.
+With the
+          <em>
+           Identity
+          </em>
+          or the
+          <em>
+           Filter
+          </em>
+          parameter, the
+          <strong>
+           HostName
+          </strong>
+          property will not be set, if the
+          <strong>
+           DNSHostName
+          </strong>
+          attribute of the Domain Controller object is null.
+         </p>
+        </li>
+       </ul>
+      </li>
+      <li>
+       <p>
+        This cmdlet does not work with Active Directory Lightweight Directory Services (AD LDS).
+       </p>
+      </li>
+      <li>
+       This cmdlet does not work when targeting a snapshot using the
+       <em>
+        Server
+       </em>
+       parameter.
+      </li>
+     </ul>
+     <h2 id="related-links">
+      Related Links
+     </h2>
+     <ul>
+      <li>
+       <a data-linktype="relative-path" href="./add-addomaincontrollerpasswordreplicationpolicy.html">
+        Add-ADDomainControllerPasswordReplicationPolicy
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="./get-addomaincontrollerpasswordreplicationpolicy.html">
+        Get-ADDomainControllerPasswordReplicationPolicy
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="./remove-addomaincontrollerpasswordreplicationpolicy.html">
+        Remove-ADDomainControllerPasswordReplicationPolicy
+       </a>
+      </li>
+     </ul>
+     <!-- </content> -->
+    </main>
+    <section class="feedback-section" data-bi-name="feedback-section">
+     <h2 id="feedback">
+      Feedback
+     </h2>
+     <div class="alert choose-feedback-type">
+      <p>
+       We'd love to hear your thoughts. Choose the type you'd like to provide:
+      </p>
+      <div class="choose-feedback-buttons">
+       <a class="button-border feedback-type-product" data-bi-name="product-feedback" href="https://windowsserver.uservoice.com/forums/301869-powershell">
+        Product feedback
+        <span aria-hidden="true" class="docon docon-navigate-external">
+        </span>
+       </a>
+       <div class="button-group">
+        <button class="button-border feedback-sign-in-button" data-bi-name="feedback-sign-in">
+         <span aria-hidden="true" class="docon docon-brand-github">
+         </span>
+         Sign in to give documentation feedback
+        </button>
+        <button aria-controls="feedback-form" aria-expanded="false" class="button-border feedback-form-toggle" data-bi-name="documentation-feedback" hidden="">
+         Content feedback
+        </button>
+        <div auto-align="" class="dropdown has-caret">
+         <button aria-controls="fbm0" aria-expanded="false" aria-haspopup="true" aria-label="Expand documentation feedback menu" class="button-border dropdown-trigger" data-bi-name="documentation-feedback-menu">
+          <span aria-hidden="true" class="docon docon-chevron-down-light">
+          </span>
+         </button>
+         <div class="dropdown-menu documentation-feedback-menu" id="fbm0" role="menu">
+          You may also leave feedback
+          <a data-bi-name="create-issue-on-github" href="{0}">
+           directly on GitHub
+           <span aria-hidden="true" class="docon docon-navigate-external">
+           </span>
+          </a>
+          .
+         </div>
+        </div>
+       </div>
+      </div>
+      <p>
+       <small>
+        Our new feedback system is built on GitHub Issues. Read about this change in
+        <a href="https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs">
+         our blog post
+        </a>
+        .
+       </small>
+      </p>
+     </div>
+     <form accept-charset="UTF-8" action="javascript:" autocomplete="off" class="feedback-form" hidden="" id="feedback-form">
+      <h3 class="feedback-form-heading current-user">
+       <img alt="Avatar" aria-hidden="true" class="avatar" height="36" width="36"/>
+       <span aria-hidden="true" class="username">
+       </span>
+       <span class="visually-hidden">
+        Liquid error: Can't find the localized string giveDocumentationFeedback for template Conceptual.
+       </span>
+      </h3>
+      <label>
+       <span class="visually-hidden">
+        Title
+       </span>
+       <input name="title" pattern=".*\w.*" placeholder="Title" required="" type="text"/>
+      </label>
+      <label>
+       <span class="visually-hidden">
+        Leave a comment
+       </span>
+       <textarea name="body" placeholder="Leave a comment" required=""></textarea>
+      </label>
+      <div class="action-container">
+       <button class="primary-action" name="submit" type="submit">
+        Submit feedback
+       </button>
+      </div>
+     </form>
+     <div class="feedback-status alert busy" role="alert">
+      <p>
+       Loading feedback...
+      </p>
+     </div>
+     <div class="feedback-tab-group tabGroup" data-tab-group-independent="" hidden="">
+      <ul role="tablist">
+       <li role="presentation">
+        <a aria-controls="tabpanel-issues-open" aria-label="Open Issues" data-tab="issues-open" href="#tabpanel-issues-open" role="tab">
+        </a>
+       </li>
+       <li role="presentation">
+        <a aria-controls="tabpanel-issues-closed" aria-label="Closed Issues" data-tab="issues-closed" href="#tabpanel-issues-closed" role="tab">
+        </a>
+       </li>
+      </ul>
+      <section data-tab="issues-open" id="tabpanel-issues-open" role="tabpanel">
+       <div class="no-issues-placeholder">
+        There are no open issues
+       </div>
+       <ul aria-label="Open Issues" class="github-issues-list">
+       </ul>
+      </section>
+      <section data-tab="issues-closed" id="tabpanel-issues-closed" role="tabpanel">
+       <div class="no-issues-placeholder">
+        There are no closed issues
+       </div>
+       <ul aria-label="Closed Issues" class="github-issues-list">
+       </ul>
+      </section>
+     </div>
+     <div class="action-container">
+      <a class="view-on-github" data-bi-name="view-on-github" hidden="" href="https://github.com/MicrosoftDocs/windows-powershell-docs/issues">
+       <span aria-hidden="true" class="docon docon-brand-github">
+       </span>
+       <span>
+        View on GitHub
+       </span>
+       <span aria-hidden="true" class="docon docon-navigate-external">
+       </span>
+      </a>
+     </div>
+    </section>
+   </div>
+  </div>
+  <div class="openfeedback-container" id="openFeedbackContainer">
+  </div>
+  <div class="action-panel">
+  </div>
+ </body>
+</html>

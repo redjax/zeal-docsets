@@ -1,0 +1,1238 @@
+<!DOCTYPE html>
+<html class="no-js hasSidebar hasPageActions hasBreadcrumb conceptual" data-authenticated="false" data-render="docs" dir="ltr" lang="en-us">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Set-DfsrServiceConfiguration (dfsr)" property="og:title"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" property="og:image"/>
+  <meta content="summary" name="twitter:card"/>
+  <meta content="@docsmsft" name="twitter:site"/>
+  <meta content="Set-DfsrServiceConfiguration (dfsr)" name="twitter:title"/>
+  <meta content="Use this topic to help manage Windows and Windows Server technologies with Windows PowerShell." name="twitter:description"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" name="twitter:image"/>
+  <meta content="Microsoft Logo" name="twitter:image:alt"/>
+  <meta content="Use this topic to help manage Windows and Windows Server technologies with Windows PowerShell." name="description"/>
+  <meta content="Docs" name="search.ms_sitename"/>
+  <meta content="powershell-windows" name="search.ms_docsetname"/>
+  <meta content="0" name="version"/>
+  <meta content="en-us" name="locale"/>
+  <meta content="Docs" name="site_name"/>
+  <meta content="MSDN" name="search.ms_product"/>
+  <meta content="MSDN.powershell-windows" name="depot_name"/>
+  <meta content="https://cpubwin.visualstudio.com/DefaultCollection/powershell/_git/powershell/commit/ced7757924addcaea0b7a244ae4d240e4d28d93a?path=%2fdocset%2fwindows%2fdfsr%2fset-dfsrserviceconfiguration.md&amp;_a=contents" name="ref_skeleton_gitcommit"/>
+  <meta content="https://cpubwin.visualstudio.com/DefaultCollection/powershell/_git/powershell?path=%2fdocset%2fwindows%2fdfsr%2fset-dfsrserviceconfiguration.md&amp;version=GBlive&amp;_a=contents" name="original_ref_skeleton_git_url"/>
+  <meta content="2017-09-15 03:44 AM" name="updated_at"/>
+  <meta content="2140885e-947c-1ab5-7e80-caebfd9ea3a9" name="document_id"/>
+  <meta content="730243e5-bb03-8143-c671-7c0ee85e8ba8" name="document_version_independent_id"/>
+  <meta content="powershell" name="page_type"/>
+  <meta content="command" name="page_kind"/>
+  <meta content="manage" name="ms.mktglfcycl"/>
+  <meta content="library" name="ms.sitesec"/>
+  <meta content="brianlic" name="ms.author"/>
+  <meta content="brianlic-msft" name="author"/>
+  <meta content="DfsrPowerShell.dll-Help.xml" name="external_help_file"/>
+  <meta content="powershell, cmdlet" name="keywords"/>
+  <meta content="alanth" name="manager"/>
+  <meta content="12/20/2016" name="ms.date"/>
+  <meta content="w10" name="ms.prod"/>
+  <meta content="powershell-windows" name="ms.technology"/>
+  <meta content="reference" name="ms.topic"/>
+  <meta content="" name="online_version"/>
+  <meta content="2.0.0" name="schema"/>
+  <meta content="A2A4D28D-3775-46C9-A7B9-2F95DCC0B5C4" name="ms.assetid"/>
+  <meta content="powershell" name="ms.devlang"/>
+  <meta content="INDEX, FOLLOW" name="ROBOTS"/>
+  <meta content="/powershell/windows/bread/toc.json?view=win10-ps" name="breadcrumb_path"/>
+  <meta content="powershell" name="apiPlatform"/>
+  <meta content="MSDocsHeader-WindowsIT" name="uhfHeaderId"/>
+  <meta content="../win10-ps/toc.json?view=win10-ps" name="toc_rel"/>
+  <link href="https://docs.microsoft.com/en-us/powershell/module/dfsr/set-dfsrserviceconfiguration" rel="canonical"/>
+  <title>
+   Set-DfsrServiceConfiguration
+  </title>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/e4a1f3a3.site.css" rel="stylesheet"/>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/31353636.conceptual.css" rel="stylesheet"/>
+ </head>
+ <body dir="ltr" lang="en-us">
+  <div class="header-holder">
+   <div data-bi-name="header" id="headerAreaHolder">
+    <div id="uhf-placeholder">
+    </div>
+   </div>
+   <div class="disclaimer-holder" id="disclaimer-holder">
+   </div>
+  </div>
+  <div class="container mainContainer" data-bi-name="body">
+   <div class="content-header" data-bi-name="content-header">
+    <div class="content-header-controls">
+     <button class="contents-button button-border" data-bi-name="contents-expand" type="button">
+      <span class="docon docon-menu">
+      </span>
+      Contents
+     </button>
+    </div>
+    <div class="content-header-controls">
+     <button class="ap-collapse-behavior ap-expanded button-border" data-bi-name="ap-collapse" type="button">
+      <span class="docon docon-exit-mode">
+      </span>
+      Exit focus mode
+     </button>
+    </div>
+   </div>
+   <div class="primary-holder">
+    <main class="content" data-bi-name="content" dir="ltr" id="main" lang="en-us" role="main">
+     <!-- <content> -->
+     <h1>
+      Set-Dfsr
+      <wbr/>
+      Service
+      <wbr/>
+      Configuration
+     </h1>
+     <div class="metadata">
+      <dl class="attributeList">
+       <dt>
+        Module:
+       </dt>
+       <dd>
+        <a data-linktype="relative-path" href="./.html">
+         dfsr
+        </a>
+       </dd>
+      </dl>
+     </div>
+     <div class="summaryHolder">
+      <div class="summary">
+       Modifies settings for the DFS Replication service.
+      </div>
+     </div>
+     <h2 class="hiddenAnchor" id="syntax">
+      Syntax
+     </h2>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Set-DfsrServiceConfiguration
+   [[-ComputerName] &lt;String[]&gt;]
+   [[-RPCPort] &lt;UInt32&gt;]
+   [[-DisableDebugLog] &lt;Boolean&gt;]
+   [[-MaximumDebugLogFiles] &lt;UInt32&gt;]
+   [[-DebugLogPath] &lt;String&gt;]
+   [[-DebugLogSeverity] &lt;UInt32&gt;]
+   [[-MaximumDebugLogMessages] &lt;UInt32&gt;]
+   [[-UnexpectedAutoRecovery] &lt;Boolean&gt;]
+   [[-CleanupStagingFolderAtPercent] &lt;UInt32&gt;]
+   [[-CleanupStagingFolderUntilPercent] &lt;UInt32&gt;]
+   [[-CleanupConflictFolderAtPercent] &lt;UInt32&gt;]
+   [[-CleanupConflictFolderUntilPercent] &lt;UInt32&gt;]
+   [-WhatIf]
+   [-Confirm]
+   [&lt;CommonParameters&gt;]</code></pre>
+     <h2 id="description">
+      Description
+     </h2>
+     <p>
+      The
+      <strong>
+       Set-DfsrServiceConfiguration
+      </strong>
+      cmdlet modifies settings for the Distributed File System (DFS) Replication service on replication group members.
+Members of a replication group host replicated folders.
+Use this cmdlet to configure cleanup settings, debug logging settings, and automatic recovery for unexpected shut down.
+     </p>
+     <p>
+      DFS Replication stores files in a folder named ConflictsAndDeleted until it deletes them for space.
+DFS Replication can stage files in a staging folder.
+In both cases, you can set a maximum folder size, called a quota, by using the
+      <strong>
+       Set-DfsrMembership
+      </strong>
+      cmdlet.
+Use the current cmdlet to set the percent of the quota used to start and stop deletion of older files.
+     </p>
+     <p>
+      By default, DFS Replication enables debug logging.
+You can disable logging.
+You can also change the number of lines written to each log file, the severity of messages written to log files, the number of log files to keep, and the location to store log files.
+     </p>
+     <h2 id="examples">
+      Examples
+     </h2>
+     <p>
+      <strong>
+       Example 1: Configure a computer to use a dynamic RPC port
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Set-DfsrServiceConfiguration -RPCPort 0
+ComputerName                      : SRV01
+RPCPort                           :
+DynamicRPCPort                    : True
+DisableDebugLog                   : False
+MaximumDebugLogFiles              : 1000
+DebugLogPath                      : C:\Windows\debug
+DebugLogSeverity                  : 4
+MaximumDebugLogMessages           : 200000
+UnexpectedAutoRecovery            : False
+CleanupStagingFolderAtPercent     : 90
+CleanupStagingFolderUntilPercent  : 60
+CleanupConflictFolderAtPercent    : 90
+CleanupConflictFolderUntilPercent : 60</code></pre>
+     <p>
+      This command configures the local computer to use a dynamic RPC port for DFS Replication.
+A value of zero (0) or $Null for the
+      <em>
+       RPCPort
+      </em>
+      parameter configures the computer to use a dynamic port.
+     </p>
+     <p>
+      <strong>
+       Example 2: Configure all members to log messages with specific severity
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-DfsrMember | Set-DfsrServiceConfiguration -DebugLogSeverity 5
+ComputerName                      : SRV01
+RPCPort                           :
+DynamicRPCPort                    : True
+DisableDebugLog                   : False
+MaximumDebugLogFiles              : 1000
+DebugLogPath                      : C:\Windows\debug
+DebugLogSeverity                  : 5
+MaximumDebugLogMessages           : 200000
+UnexpectedAutoRecovery            : False
+CleanupStagingFolderAtPercent     : 90
+CleanupStagingFolderUntilPercent  : 60
+CleanupConflictFolderAtPercent    : 90
+CleanupConflictFolderUntilPercent : 60
+
+ComputerName                      : SRV02
+RPCPort                           :
+DynamicRPCPort                    : True
+DisableDebugLog                   : True
+MaximumDebugLogFiles              : 1000
+DebugLogPath                      : C:\Windows\debug
+DebugLogSeverity                  : 5
+MaximumDebugLogMessages           : 200000
+UnexpectedAutoRecovery            : False
+CleanupStagingFolderAtPercent     : 90
+CleanupStagingFolderUntilPercent  : 60
+CleanupConflictFolderAtPercent    : 90
+CleanupConflictFolderUntilPercent : 60</code></pre>
+     <p>
+      This command configures all members of all replication groups to log messages with a severity of five (5).
+The command gets all members of all replication groups by using the
+      <strong>
+       Get-DfsrMember
+      </strong>
+      cmdlet.
+The command passes these members to the
+      <strong>
+       Set-DfsrServiceConfiguration
+      </strong>
+      cmdlet by using the pipeline operator.
+That cmdlet changes the severity level for debug logging to five.
+The command modifies two member computers.
+The console displays the two members found, including the new setting for severity.
+     </p>
+     <h2 id="optional-parameters">
+      Optional Parameters
+     </h2>
+     <div class="parameterName stack">
+      -CleanupConflictFolderAtPercent
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a percent value from 80 to 100.
+The default value is 90.
+      </p>
+      <p>
+       When the ConflictsAndDeleted folder size reaches this percent of the ConflictsAndDeleted quota, the DFS Replication service deletes the oldest files until the folder size falls below a set percent of the quota.
+You can specify that percent value by using the
+       <em>
+        CleanupConflictFolderUntilPercent
+       </em>
+       parameter.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          UInt32
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         10
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -CleanupConflictFolderUntilPercent
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a percent value from 10 to 100.
+The default value is 60.
+      </p>
+      <p>
+       After the DFS Replication service starts cleanup of the ConflictsAndDeleted folder, it continues to delete the oldest files until the folder size reaches this percent of the ConflictsAndDeleted quota.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          UInt32
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         11
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -CleanupStagingFolderAtPercent
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a percent value from 80 to 100.
+The default value is 90.
+      </p>
+      <p>
+       When the staging folder size reaches this percent of the staging folder quota, the DFS Replication service deletes the oldest files until the folder size falls below a set percent of the quota.
+You can specify that percent value by using the
+       <em>
+        CleanupStagingFolderUntilPercent
+       </em>
+       parameter.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          UInt32
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         8
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -CleanupStagingFolderUntilPercent
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a percent value from 10 to 80.
+The default value is 60.
+      </p>
+      <p>
+       After the DFS Replication service starts cleanup of the staging folder, it continues to delete the oldest files until the folder size reaches this percentage of the staging folder quota.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          UInt32
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         9
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -ComputerName
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies an array of names of replication member computers.
+The cmdlet modifies membership settings for these member computers.
+You can use a comma separated list and the wildcard character (*).
+If you do not specify this parameter, the cmdlet modifies settings for the current computer.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         MemberList, MemList
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         0
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName, ByValue)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Confirm
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Prompts you for confirmation before running the cmdlet.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         cf
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -DebugLogPath
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a folder path for DFS Replication debug logs.
+The default location for the logs is %SystemRoot%\Debug.
+If you specify a custom location for logs by using this parameter, select a drive that DFS Replication does not use for replication.
+Selecting a drive that DFS Replication does not use for replication minimizes the impact of logging on replication performance.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         4
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -DebugLogSeverity
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a severity level for debug log entries.
+The acceptable values for this parameter are:
+      </p>
+      <ul>
+       <li>
+        1 - Write log header information only.
+       </li>
+       <li>
+        2 - Write errors and header information.
+       </li>
+       <li>
+        3 - Write warning, error, and header information.
+       </li>
+       <li>
+        4 - Write informational, warning, error, and header information.
+       </li>
+       <li>
+        5 - Write trace, informational, warning, error, and header information.
+       </li>
+      </ul>
+      <p>
+       The default value on a DFS Replication computer is 4.
+If you increase the severity, performance can suffer.
+Use a higher severity level only for troubleshooting.
+If you decrease the severity, performance increases slightly but you might lose information necessary to troubleshoot issues and lose root cause information.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          UInt32
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         5
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -DisableDebugLog
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates whether to disable debug logging.
+If you disable debug logging, performance increases slightly but you might lose information necessary to troubleshoot issues and lose root cause information.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Boolean
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         2
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -MaximumDebugLogFiles
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the number of debug log files to keep.
+The acceptable values for this parameter are: integers from zero (0) to 100,000.
+By default, DFS Replication stores 1000 log files.
+A larger value can degrade performance.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          UInt32
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         3
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -MaximumDebugLogMessages
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the number of messages to write in each debug log file.
+The acceptable values for this parameter are: integers from 1000 to 4294967295.
+The default value is 200,000.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          UInt32
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         6
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -RPCPort
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a static TCP port for the DFS Replication service to listen on for the Remote Procedure Call (RPC) protocol.
+The acceptable values for this parameter are: integers from 1024 to 65535.
+By default, DFS Replication listens on a dynamic port.
+Specify a value of zero (0) or $Null for DFS Replication to listen on a dynamic port.
+      </p>
+      <p>
+       Microsoft recommends a dynamic port.
+You might need to specify a static port to accommodate a firewall.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          UInt32
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         1
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -UnexpectedAutoRecovery
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates whether to set the value for the registry key named
+       <strong>
+        StopReplicationAutoRecovery
+       </strong>
+       to zero (0) or one (1).
+A value of zero allows the server to automatically recover after it shuts down incorrectly or hardware fails.
+Specify a value of $False to set this registry value to one (1).
+The default value is zero.
+      </p>
+      <p>
+       When a server shuts down incorrectly and recovers automatically, the database must be validated.
+Setting the value to one allows you to perform other recovery, backup, or troubleshooting options before resuming replication.
+      </p>
+      <p>
+       The recommended value for this parameter is $True.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Boolean
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         7
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -WhatIf
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         wi
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="inputs">
+      Inputs
+     </h2>
+     <p>
+      <strong>
+       String
+      </strong>
+     </p>
+     <h2 id="outputs">
+      Outputs
+     </h2>
+     <p>
+      <strong>
+       DfsrServiceConfiguration
+      </strong>
+     </p>
+     <h2 id="related-links">
+      Related Links
+     </h2>
+     <ul>
+      <li>
+       <a data-linktype="relative-path" href="./get-dfsrserviceconfiguration.html">
+        Get-DfsrServiceConfiguration
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="./get-dfsrmember.html">
+        Get-DfsrMember
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="./set-dfsrmembership.html">
+        Set-DfsrMembership
+       </a>
+      </li>
+     </ul>
+     <!-- </content> -->
+    </main>
+    <section class="feedback-section" data-bi-name="feedback-section">
+     <h2 id="feedback">
+      Feedback
+     </h2>
+     <div class="alert choose-feedback-type">
+      <p>
+       We'd love to hear your thoughts. Choose the type you'd like to provide:
+      </p>
+      <div class="choose-feedback-buttons">
+       <a class="button-border feedback-type-product" data-bi-name="product-feedback" href="https://windowsserver.uservoice.com/forums/301869-powershell">
+        Product feedback
+        <span aria-hidden="true" class="docon docon-navigate-external">
+        </span>
+       </a>
+       <div class="button-group">
+        <button class="button-border feedback-sign-in-button" data-bi-name="feedback-sign-in">
+         <span aria-hidden="true" class="docon docon-brand-github">
+         </span>
+         Sign in to give documentation feedback
+        </button>
+        <button aria-controls="feedback-form" aria-expanded="false" class="button-border feedback-form-toggle" data-bi-name="documentation-feedback" hidden="">
+         Content feedback
+        </button>
+        <div auto-align="" class="dropdown has-caret">
+         <button aria-controls="fbm0" aria-expanded="false" aria-haspopup="true" aria-label="Expand documentation feedback menu" class="button-border dropdown-trigger" data-bi-name="documentation-feedback-menu">
+          <span aria-hidden="true" class="docon docon-chevron-down-light">
+          </span>
+         </button>
+         <div class="dropdown-menu documentation-feedback-menu" id="fbm0" role="menu">
+          You may also leave feedback
+          <a data-bi-name="create-issue-on-github" href="{0}">
+           directly on GitHub
+           <span aria-hidden="true" class="docon docon-navigate-external">
+           </span>
+          </a>
+          .
+         </div>
+        </div>
+       </div>
+      </div>
+      <p>
+       <small>
+        Our new feedback system is built on GitHub Issues. Read about this change in
+        <a href="https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs">
+         our blog post
+        </a>
+        .
+       </small>
+      </p>
+     </div>
+     <form accept-charset="UTF-8" action="javascript:" autocomplete="off" class="feedback-form" hidden="" id="feedback-form">
+      <h3 class="feedback-form-heading current-user">
+       <img alt="Avatar" aria-hidden="true" class="avatar" height="36" width="36"/>
+       <span aria-hidden="true" class="username">
+       </span>
+       <span class="visually-hidden">
+        Liquid error: Can't find the localized string giveDocumentationFeedback for template Conceptual.
+       </span>
+      </h3>
+      <label>
+       <span class="visually-hidden">
+        Title
+       </span>
+       <input name="title" pattern=".*\w.*" placeholder="Title" required="" type="text"/>
+      </label>
+      <label>
+       <span class="visually-hidden">
+        Leave a comment
+       </span>
+       <textarea name="body" placeholder="Leave a comment" required=""></textarea>
+      </label>
+      <div class="action-container">
+       <button class="primary-action" name="submit" type="submit">
+        Submit feedback
+       </button>
+      </div>
+     </form>
+     <div class="feedback-status alert busy" role="alert">
+      <p>
+       Loading feedback...
+      </p>
+     </div>
+     <div class="feedback-tab-group tabGroup" data-tab-group-independent="" hidden="">
+      <ul role="tablist">
+       <li role="presentation">
+        <a aria-controls="tabpanel-issues-open" aria-label="Open Issues" data-tab="issues-open" href="#tabpanel-issues-open" role="tab">
+        </a>
+       </li>
+       <li role="presentation">
+        <a aria-controls="tabpanel-issues-closed" aria-label="Closed Issues" data-tab="issues-closed" href="#tabpanel-issues-closed" role="tab">
+        </a>
+       </li>
+      </ul>
+      <section data-tab="issues-open" id="tabpanel-issues-open" role="tabpanel">
+       <div class="no-issues-placeholder">
+        There are no open issues
+       </div>
+       <ul aria-label="Open Issues" class="github-issues-list">
+       </ul>
+      </section>
+      <section data-tab="issues-closed" id="tabpanel-issues-closed" role="tabpanel">
+       <div class="no-issues-placeholder">
+        There are no closed issues
+       </div>
+       <ul aria-label="Closed Issues" class="github-issues-list">
+       </ul>
+      </section>
+     </div>
+     <div class="action-container">
+      <a class="view-on-github" data-bi-name="view-on-github" hidden="" href="https://github.com/MicrosoftDocs/windows-powershell-docs/issues">
+       <span aria-hidden="true" class="docon docon-brand-github">
+       </span>
+       <span>
+        View on GitHub
+       </span>
+       <span aria-hidden="true" class="docon docon-navigate-external">
+       </span>
+      </a>
+     </div>
+    </section>
+   </div>
+  </div>
+  <div class="openfeedback-container" id="openFeedbackContainer">
+  </div>
+  <div class="action-panel">
+  </div>
+ </body>
+</html>

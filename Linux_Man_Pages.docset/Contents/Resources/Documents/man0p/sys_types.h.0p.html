@@ -1,0 +1,342 @@
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML><HEAD><TITLE>Man page of sys_types.h</TITLE>
+</HEAD><BODY>
+<H1>sys_types.h</H1>
+Section: POSIX Programmer's Manual (0P)<BR>Updated: 2013<BR><A HREF="#index">Index</A>
+<A HREF="../index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>PROLOG</H2>
+
+This manual page is part of the POSIX Programmer's Manual.
+The Linux implementation of this interface may differ (consult
+the corresponding Linux manual page for details of Linux behavior),
+or the interface may not be implemented on Linux.
+<P>
+<A NAME="lbAC">&nbsp;</A>
+<H2>NAME</H2>
+
+sys/types.h
+--- data types
+<A NAME="lbAD">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<P>
+
+<PRE>
+#include &lt;<A HREF="file:///usr/include/sys/types.h">sys/types.h</A>&gt;
+</PRE>
+
+<A NAME="lbAE">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+The
+<I>&lt;<A HREF="file:///usr/include/sys/types.h">sys/types.h</A>&gt;</I>
+
+header shall define at least the following types:
+<DL COMPACT>
+<DT><B>blkcnt_t</B><DD>
+Used for file block counts.
+<DT><B>blksize_t</B><DD>
+Used for block sizes.
+<DT><B>clock_t</B><DD>
+Used for system times in clock ticks or CLOCKS_PER_SEC; see
+<I>&lt;<A HREF="file:///usr/include/time.h">time.h</A>&gt;</I>.
+
+<DT><B>clockid_t</B><DD>
+Used for clock ID type in the clock and timer functions.
+<DT><B>dev_t</B><DD>
+Used for device IDs.
+<DT><B>fsblkcnt_t</B><DD>
+Used for file system block counts.
+<DT><B>fsfilcnt_t</B><DD>
+Used for file system file counts.
+<DT><B>gid_t</B><DD>
+Used for group IDs.
+<DT><B>id_t</B><DD>
+Used as a general identifier; can be used to contain at least a
+<B>pid_t</B>,
+
+<B>uid_t</B>,
+
+or
+<B>gid_t</B>.
+
+<DT><B>ino_t</B><DD>
+Used for file serial numbers.
+<DT><B>key_t</B><DD>
+Used for XSI interprocess communication.
+<DT><B>mode_t</B><DD>
+Used for some file attributes.
+<DT><B>nlink_t</B><DD>
+Used for link counts.
+<DT><B>off_t</B><DD>
+Used for file sizes.
+<DT><B>pid_t</B><DD>
+Used for process IDs and process group IDs.
+<DT><B>pthread_attr_t</B><DD>
+Used to identify a thread attribute object.
+<DT><B>pthread_barrier_t</B><DD>
+Used to identify a barrier.
+<DT><B>pthread_barrierattr_t</B><DD>
+Used to define a barrier attributes object.
+<DT><B>pthread_cond_t</B><DD>
+Used for condition variables.
+<DT><B>pthread_condattr_t</B><DD>
+Used to identify a condition attribute object.
+<DT><B>pthread_key_t</B><DD>
+Used for thread-specific data keys.
+<DT><B>pthread_mutex_t</B><DD>
+Used for mutexes.
+<DT><B>pthread_mutexattr_t</B><DD>
+Used to identify a mutex attribute object.
+<DT><B>pthread_once_t</B><DD>
+Used for dynamic package initialization.
+<DT><B>pthread_rwlock_t</B><DD>
+Used for read-write locks.
+<DT><B>pthread_rwlockattr_t</B><DD>
+Used for read-write lock attributes.
+<DT><B>pthread_spinlock_t</B><DD>
+Used to identify a spin lock.
+<DT><B>pthread_t</B><DD>
+Used to identify a thread.
+<DT><B>size_t</B><DD>
+Used for sizes of objects.
+<DT><B>ssize_t</B><DD>
+Used for a count of bytes or an error indication.
+<DT><B>suseconds_t</B><DD>
+Used for time in microseconds.
+<DT><B>time_t</B><DD>
+Used for time in seconds.
+<DT><B>timer_t</B><DD>
+Used for timer ID returned by
+<I>timer_create</I>().
+<DT><B>trace_attr_t</B><DD>
+Used to identify a trace stream attributes object
+<DT><B>trace_event_id_t</B><DD>
+Used to identify a trace event type.
+<DT><B>trace_event_set_t</B><DD>
+Used to identify a trace event type set.
+<DT><B>trace_id_t</B><DD>
+Used to identify a trace stream.
+<DT><B>uid_t</B><DD>
+Used for user IDs.
+</DL>
+<P>
+
+All of the types shall be defined as arithmetic types of an appropriate
+length, with the following exceptions:
+<P>
+
+<PRE>
+<B>pthread_attr_t</B>
+<B>pthread_barrier_t</B>
+<B>pthread_barrierattr_t</B>
+<B>pthread_cond_t</B>
+<B>pthread_condattr_t</B>
+<B>pthread_key_t</B>
+<B>pthread_mutex_t</B>
+<B>pthread_mutexattr_t</B>
+<B>pthread_once_t</B>
+<B>pthread_rwlock_t</B>
+<B>pthread_rwlockattr_t</B>
+<B>pthread_spinlock_t</B>
+<B>pthread_t</B>
+<B>trace_attr_t</B>
+<B>trace_event_id_t</B>
+<B>trace_event_set_t</B>
+<B>trace_id_t</B>
+</PRE>
+
+<P>
+
+Additionally:
+<DL COMPACT>
+<DT> *<DD>
+<B>mode_t</B>
+
+shall be an integer type.
+<DT> *<DD>
+<B>dev_t</B>
+
+shall be an integer type.
+<DT> *<DD>
+<B>nlink_t</B>,
+
+<B>uid_t</B>,
+
+<B>gid_t</B>,
+
+and
+<B>id_t</B>
+
+shall be integer types.
+<DT> *<DD>
+<B>blkcnt_t</B>
+
+and
+<B>off_t</B>
+
+shall be signed integer types.
+<DT> *<DD>
+<B>fsblkcnt_t</B>,
+
+<B>fsfilcnt_t</B>,
+
+and
+<B>ino_t</B>
+
+shall be defined as unsigned integer types.
+<DT> *<DD>
+<B>size_t</B>
+
+shall be an unsigned integer type.
+<DT> *<DD>
+<B>blksize_t</B>,
+
+<B>pid_t</B>,
+
+and
+<B>ssize_t</B>
+
+shall be signed integer types.
+<DT> *<DD>
+<B>clock_t</B>
+
+shall be an integer or real-floating type.
+<B>time_t</B>
+
+shall be an integer type.
+</DL>
+<P>
+
+The type
+<B>ssize_t</B>
+
+shall be capable of storing values at least in the range
+[-1,&nbsp;{SSIZE_MAX}].
+<P>
+
+The type
+<B>suseconds_t</B>
+
+shall be a signed integer type capable of storing values at least in
+the range [-1,&nbsp;1000000].
+<P>
+
+The implementation shall support one or more programming environments
+in which the widths of
+<B>blksize_t</B>,
+
+<B>pid_t</B>,
+
+<B>size_t</B>,
+
+<B>ssize_t</B>,
+
+and
+<B>suseconds_t</B>
+
+are no greater than the width of type
+<B>long</B>.
+
+The names of these programming environments can be obtained using the
+<I>confstr</I>()
+function or the
+<I>getconf</I>
+
+utility.
+<P>
+
+There are no defined comparison or assignment operators for the
+following types:
+<P>
+
+<PRE>
+<B>pthread_attr_t</B>
+<B>pthread_barrier_t</B>
+<B>pthread_barrierattr_t</B>
+<B>pthread_cond_t</B>
+<B>pthread_condattr_t</B>
+<B>pthread_mutex_t</B>
+<B>pthread_mutexattr_t</B>
+<B>pthread_rwlock_t</B>
+<B>pthread_rwlockattr_t</B>
+<B>pthread_spinlock_t</B>
+<B>trace_attr_t</B>
+</PRE>
+
+<P>
+
+<I>The following sections are informative.</I>
+
+<A NAME="lbAF">&nbsp;</A>
+<H2>APPLICATION USAGE</H2>
+
+None.
+<A NAME="lbAG">&nbsp;</A>
+<H2>RATIONALE</H2>
+
+None.
+<A NAME="lbAH">&nbsp;</A>
+<H2>FUTURE DIRECTIONS</H2>
+
+None.
+<A NAME="lbAI">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+<I></I><B>&lt;<A HREF="file:///usr/include/time.h">time.h</A>&gt;</B>
+
+<P>
+
+The System Interfaces volume of POSIX.1-2008,
+<I>confstr</I>()
+
+<P>
+
+The Shell and Utilities volume of POSIX.1-2008,
+<I>getconf</I>
+
+<A NAME="lbAJ">&nbsp;</A>
+<H2>COPYRIGHT</H2>
+
+Portions of this text are reprinted and reproduced in electronic form
+from IEEE Std 1003.1, 2013 Edition, Standard for Information Technology
+-- Portable Operating System Interface (POSIX), The Open Group Base
+Specifications Issue 7, Copyright (C) 2013 by the Institute of
+Electrical and Electronics Engineers, Inc and The Open Group.
+(This is POSIX.1-2008 with the 2013 Technical Corrigendum 1 applied.) In the
+event of any discrepancy between this version and the original IEEE and
+The Open Group Standard, the original IEEE and The Open Group Standard
+is the referee document. The original Standard can be obtained online at
+<A HREF="http://www.unix.org/online.html">http://www.unix.org/online.html</A> .
+<P>
+Any typographical or formatting errors that appear
+in this page are most likely
+to have been introduced during the conversion of the source files to
+man page format. To report such errors, see
+<A HREF="https://www.kernel.org/doc/man-pages/reporting_bugs.html">https://www.kernel.org/doc/man-pages/reporting_bugs.html</A> .
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">PROLOG</A><DD>
+<DT><A HREF="#lbAC">NAME</A><DD>
+<DT><A HREF="#lbAD">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAE">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAF">APPLICATION USAGE</A><DD>
+<DT><A HREF="#lbAG">RATIONALE</A><DD>
+<DT><A HREF="#lbAH">FUTURE DIRECTIONS</A><DD>
+<DT><A HREF="#lbAI">SEE ALSO</A><DD>
+<DT><A HREF="#lbAJ">COPYRIGHT</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 14:28:43 GMT, February 25, 2017
+</BODY>
+</HTML>

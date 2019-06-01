@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html class="no-js hasSidebar hasPageActions hasBreadcrumb conceptual" data-authenticated="false" data-render="docs" dir="ltr" lang="en-us">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Debug-Runspace (Microsoft.PowerShell.Utility)" property="og:title"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" property="og:image"/>
+  <meta content="summary" name="twitter:card"/>
+  <meta content="@docsmsft" name="twitter:site"/>
+  <meta content="Debug-Runspace (Microsoft.PowerShell.Utility)" name="twitter:title"/>
+  <meta content="The Debug-Runspace cmdlet starts an interactive debugging session with a local or remote active runspace. You can find a runspace that you want to debug by first running Get-Process to find processesâ¦" name="twitter:description"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" name="twitter:image"/>
+  <meta content="Microsoft Logo" name="twitter:image:alt"/>
+  <meta content="The Debug-Runspace cmdlet starts an interactive debugging session with a local or remote active runspace. You can find a runspace that you want to debug by first running Get-Process to find processesâ¦" name="description"/>
+  <meta content="Docs" name="search.ms_sitename"/>
+  <meta content="PowerShell_PowerShell-docs_reference" name="search.ms_docsetname"/>
+  <meta content="0" name="version"/>
+  <meta content="en-us" name="locale"/>
+  <meta content="Docs" name="site_name"/>
+  <meta content="PowerShell" name="search.ms_product"/>
+  <meta content="PowerShell.PowerShell_PowerShell-docs_reference" name="depot_name"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/617301cc0a194afdca440ba75f5cec2a540ce619/reference/6/Microsoft.PowerShell.Utility/Debug-Runspace.md" name="ref_skeleton_gitcommit"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/live/reference/6/Microsoft.PowerShell.Utility/Debug-Runspace.md" name="original_ref_skeleton_git_url"/>
+  <meta content="2018-03-30 03:35 PM" name="updated_at"/>
+  <meta content="cb1f79f5-2e60-d5f9-3d57-1653b80de0e3" name="document_id"/>
+  <meta content="ed7b32a3-072e-1694-4820-057c762ff26a" name="document_version_independent_id"/>
+  <meta content="powershell" name="page_type"/>
+  <meta content="command" name="page_kind"/>
+  <meta content="06/09/2017" name="ms.date"/>
+  <meta content="2.0.0" name="schema"/>
+  <meta content="powershell,cmdlet" name="keywords"/>
+  <meta content="http://go.microsoft.com/fwlink/?LinkId=821761" name="online_version"/>
+  <meta content="Microsoft.PowerShell.Commands.Utility.dll-Help.xml" name="external_help_file"/>
+  <meta content="powershell" name="ms.devlang"/>
+  <meta content="INDEX, FOLLOW" name="ROBOTS"/>
+  <meta content="sdwheeler" name="author"/>
+  <meta content="sewhee" name="ms.author"/>
+  <meta content="carmonm" name="manager"/>
+  <meta content="/powershell/bread-pscore/toc.yml?view=powershell-6" name="breadcrumb_path"/>
+  <meta content="powershell" name="apiPlatform"/>
+  <meta content="reference" name="ms.topic"/>
+  <meta content="windows, macos, linux" name="ms.tgt_pltfr"/>
+  <meta content="powershell-scripting" name="ms.technology"/>
+  <meta content="powershell" name="ms.prod"/>
+  <meta content="MSDocsHeader-Powershell" name="uhfHeaderId"/>
+  <meta content="../psdocs/toc.json?view=powershell-6" name="toc_rel"/>
+  <link href="https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/debug-runspace" rel="canonical"/>
+  <title>
+   Debug-Runspace
+  </title>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/60aac04b.site.css" rel="stylesheet"/>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/fdb8a38a.conceptual.css" rel="stylesheet"/>
+ </head>
+ <body dir="ltr" lang="en-us">
+  <div class="header-holder">
+   <div data-bi-name="header" id="headerAreaHolder">
+    <div id="uhf-placeholder">
+    </div>
+   </div>
+   <div class="disclaimer-holder" id="disclaimer-holder">
+   </div>
+  </div>
+  <div class="container mainContainer" data-bi-name="body">
+   <div class="content-header" data-bi-name="content-header">
+    <div class="content-header-controls">
+     <button class="contents-button button-border" data-bi-name="contents-expand" type="button">
+      <span class="docon docon-menu">
+      </span>
+      Contents
+     </button>
+    </div>
+    <div class="content-header-controls">
+     <button class="ap-collapse-behavior ap-expanded button-border" data-bi-name="ap-collapse" type="button">
+      <span class="docon docon-exit-mode">
+      </span>
+      Exit focus mode
+     </button>
+    </div>
+   </div>
+   <div class="primary-holder">
+    <main class="content" data-bi-name="content" dir="ltr" id="main" lang="en-us" role="main">
+     <!-- <content> -->
+     <h1>
+      Debug-Runspace
+     </h1>
+     <div class="metadata">
+      <dl class="attributeList">
+       <dt>
+        Module:
+       </dt>
+       <dd>
+        <a data-linktype="relative-path" href="./Microsoft.PowerShell.Utility.html">
+         Microsoft.PowerShell.Utility
+        </a>
+       </dd>
+      </dl>
+     </div>
+     <div class="summaryHolder">
+      <div class="summary">
+       Starts an interactive debugging session with a runspace.
+      </div>
+     </div>
+     <h2 class="hiddenAnchor" id="syntax">
+      Syntax
+     </h2>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Debug-Runspace
+     [-Runspace] &lt;Runspace&gt;
+     [-WhatIf]
+     [-Confirm]
+     [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Debug-Runspace
+     [-Name] &lt;String&gt;
+     [-WhatIf]
+     [-Confirm]
+     [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Debug-Runspace
+     [-Id] &lt;Int32&gt;
+     [-WhatIf]
+     [-Confirm]
+     [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Debug-Runspace
+     [-InstanceId] &lt;Guid&gt;
+     [-WhatIf]
+     [-Confirm]
+     [&lt;CommonParameters&gt;]</code></pre>
+     <h2 id="description">
+      Description
+     </h2>
+     <p>
+      The
+      <strong>
+       Debug-Runspace
+      </strong>
+      cmdlet starts an interactive debugging session with a local or remote active runspace.
+You can find a runspace that you want to debug by first running Get-Process to find processes associated with Windows PowerShell, then Enter-PSHostProcess with the process ID specified in the
+      <em>
+       Id
+      </em>
+      parameter to attach to the process, and then Get-Runspace to list runspaces within the Windows PowerShell host process.
+     </p>
+     <p>
+      After you have selected a runspace to debug, if the runspace is currently running a command or script, or if the script has stopped at a breakpoint, Windows PowerShell opens a remote debugger session for the runspace.
+You can debug the runspace script in the same way remote session scripts are debugged.
+     </p>
+     <p>
+      You can only attach to a Windows PowerShell host process if you are an administrator on the computer that is running the process, or you are running the script that you want to debug.
+Also, you cannot enter the host process that is running the current Windows PowerShell session; you can only enter a host process that is running a different Windows PowerShell session.
+For example, if you are working in a PowerShell.exe session, you can't enter the host process for that session, but you can enter the host process of a running Windows PowerShell ISE session.
+     </p>
+     <h2 id="examples">
+      Examples
+     </h2>
+     <p>
+      <strong>
+       Example 1: Debug a remote runspace
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-Process -ComputerName "WS10TestServer" -Name "*powershell*"
+
+Handles      WS(K)   VM(M)      CPU(s)    Id  ProcessName
+
+-------      -----   -----      ------    --  -----------
+
+    377      69912     63     2.09      2420  powershell
+
+    399     123396    829     4.48      1152  powershell_ise PS C:\&gt; Enter-PSSession -ComputerName "WS10TestServer"
+
+[WS10TestServer]:PS C:\&gt; Enter-PSHostProcess -Id 1152
+
+[WS10TestServer:][Process:1152]: PS C:\Users\Test\Documents&gt; Get-Runspace
+
+Id Name            ComputerName    Type          State         Availability
+
+-- ----            ------------    ----          -----         ------------
+
+ 1 Runspace1       WS10TestServer  Remote        Opened        Available
+
+ 2 RemoteHost      WS10TestServer  Remote        Opened        Busy PS C:\&gt; [WS10TestServer][Process:1152]: PS C:\Users\Test\Documents&gt; Debug-Runspace -Id 2
+
+Hit Line breakpoint on 'C:\TestWFVar1.ps1:83'
+
+At C:\TestWFVar1.ps1:83 char:1
+
++ $scriptVar = "Script Variable"
+
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+[Process:1152]: [RSDBG: 2]: PS C:\&gt; &gt;</code></pre>
+     <p>
+      In this example, you debug a runspace that is open on a remote computer, WS10TestServer.
+In the first line of the command, you run Get-Process on the remote computer, and filter for Windows PowerShell host processes.
+In this example, you want to debug process ID 1152, the Windows PowerShell ISE host process.
+     </p>
+     <p>
+      In the second command, you run Enter-PSSession to open a remote session on WS10TestServer.
+In the third command, you attach to the Windows PowerShell ISE host process running on the remote server by running Enter-PSHostProcess, and specifying the ID of the host process that you obtained in the first command, 1152.
+     </p>
+     <p>
+      In the fourth command, you list available runspaces for process ID 1152 by running Get-Runspace.
+You note the ID number of the Busy runspace; it is running a script that you want to debug.
+     </p>
+     <p>
+      In the last command, you start debugging an opened runspace that is running a script, TestWFVar1.ps1, by running
+      <strong>
+       Debug-Runspace
+      </strong>
+      , and identifying the runspace by its ID, 2, by adding the
+      <em>
+       Id
+      </em>
+      parameter.
+Because there's a breakpoint in the script, the debugger opens.
+     </p>
+     <h2 id="required-parameters">
+      Required Parameters
+     </h2>
+     <div class="parameterName stack">
+      -Id
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the ID number of a runspace.
+You can run Get-Runspace to show runspace IDs.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Int32
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         1
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -InstanceId
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a runspace by its instance ID, a GUID that you can show by running
+       <strong>
+        Get-Runspace
+       </strong>
+       .
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Guid
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         1
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Name
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a runspace by its name.
+You can run
+       <strong>
+        Get-Runspace
+       </strong>
+       to show the names of runspaces.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         1
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Runspace
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a runspace object.
+The simplest way to provide a value for this parameter is to specify a variable that contains the results of a filtered
+       <strong>
+        Get-Runspace
+       </strong>
+       command.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Runspace
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         1
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName, ByValue)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="optional-parameters">
+      Optional Parameters
+     </h2>
+     <div class="parameterName stack">
+      -Confirm
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Prompts you for confirmation before running the cmdlet.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         cf
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -WhatIf
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         wi
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="inputs">
+      Inputs
+     </h2>
+     <p>
+      <strong>
+       System.Management.Automation.Runspaces.Runspace
+      </strong>
+     </p>
+     <p>
+      You can pipe the results of a
+      <strong>
+       Get-Runspace
+      </strong>
+      command to
+      <strong>
+       Debug-Runspace.
+      </strong>
+     </p>
+     <h2 id="notes">
+      Notes
+     </h2>
+     <ul>
+      <li>
+       <p>
+        <strong>
+         Debug-Runspace
+        </strong>
+        works on runspaces that are in the Opened state. If a runspace state changes from Opened to another state, that runspace is automatically removed from the running list. A runspace is added to the running list only if it meets the following criteria.
+       </p>
+       <ul>
+        <li>
+         <p>
+          If it is coming from Invoke-Command; that is, it has an
+          <strong>
+           Invoke-Command
+          </strong>
+          GUID ID.
+         </p>
+        </li>
+        <li>
+         <p>
+          If it is coming from
+          <strong>
+           Debug-Runspace
+          </strong>
+          ; that is, it has a
+          <strong>
+           Debug-Runspace
+          </strong>
+          GUID ID.
+         </p>
+        </li>
+        <li>
+         <p>
+          If it is coming from a Windows PowerShell workflow, and its workflow job ID is the same as the current active debugger workflow job ID.
+         </p>
+        </li>
+       </ul>
+      </li>
+     </ul>
+     <h2 id="related-links">
+      Related Links
+     </h2>
+     <ul>
+      <li>
+       <a data-linktype="relative-path" href="../microsoft.powershell.core/about/about_debuggers.html">
+        about_Debuggers
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="get-runspace.html">
+        Get-Runspace
+       </a>
+      </li>
+     </ul>
+     <!-- </content> -->
+    </main>
+    <div class="note alert feedback-system-change-alert">
+     <p>
+      Note
+     </p>
+     <p>
+      The feedback system for this content will be changing soon. Old comments will not be carried over. If content within a comment thread is important to you, please save a copy. For more information on the upcoming change,
+      <a href="https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs">
+       we invite you to read our blog post
+      </a>
+      .
+     </p>
+    </div>
+    <div data-bi-name="comments" id="comments-container" role="form">
+    </div>
+   </div>
+  </div>
+  <div class="openfeedback-container" id="openFeedbackContainer">
+  </div>
+  <div class="action-panel">
+  </div>
+ </body>
+</html>

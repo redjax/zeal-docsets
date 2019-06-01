@@ -1,0 +1,3698 @@
+<!DOCTYPE html>
+<html class="no-js hasSidebar hasPageActions hasBreadcrumb conceptual" data-authenticated="false" data-render="docs" dir="ltr" lang="en-us">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Set-ADComputer (addsadministration)" property="og:title"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" property="og:image"/>
+  <meta content="summary" name="twitter:card"/>
+  <meta content="@docsmsft" name="twitter:site"/>
+  <meta content="Set-ADComputer (addsadministration)" name="twitter:title"/>
+  <meta content="Use this topic to help manage Windows and Windows Server technologies with Windows PowerShell." name="twitter:description"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" name="twitter:image"/>
+  <meta content="Microsoft Logo" name="twitter:image:alt"/>
+  <meta content="Use this topic to help manage Windows and Windows Server technologies with Windows PowerShell." name="description"/>
+  <meta content="Docs" name="search.ms_sitename"/>
+  <meta content="powershell-windows" name="search.ms_docsetname"/>
+  <meta content="0" name="version"/>
+  <meta content="en-us" name="locale"/>
+  <meta content="Docs" name="site_name"/>
+  <meta content="MSDN" name="search.ms_product"/>
+  <meta content="MSDN.powershell-windows" name="depot_name"/>
+  <meta content="https://cpubwin.visualstudio.com/DefaultCollection/powershell/_git/powershell/commit/ced7757924addcaea0b7a244ae4d240e4d28d93a?path=%2fdocset%2fwindows%2faddsadministration%2fset-adcomputer.md&amp;_a=contents" name="ref_skeleton_gitcommit"/>
+  <meta content="https://cpubwin.visualstudio.com/DefaultCollection/powershell/_git/powershell?path=%2fdocset%2fwindows%2faddsadministration%2fset-adcomputer.md&amp;version=GBlive&amp;_a=contents" name="original_ref_skeleton_git_url"/>
+  <meta content="2017-09-15 03:44 AM" name="updated_at"/>
+  <meta content="cd58820d-4c65-ef14-5a9c-6e1bccd9f660" name="document_id"/>
+  <meta content="82496095-f9a6-aa7e-10b2-9b7de50f39eb" name="document_version_independent_id"/>
+  <meta content="powershell" name="page_type"/>
+  <meta content="command" name="page_kind"/>
+  <meta content="manage" name="ms.mktglfcycl"/>
+  <meta content="library" name="ms.sitesec"/>
+  <meta content="brianlic" name="ms.author"/>
+  <meta content="brianlic-msft" name="author"/>
+  <meta content="Microsoft.ActiveDirectory.Management.dll-Help.xml" name="external_help_file"/>
+  <meta content="powershell, cmdlet" name="keywords"/>
+  <meta content="alanth" name="manager"/>
+  <meta content="12/27/2016" name="ms.date"/>
+  <meta content="w10" name="ms.prod"/>
+  <meta content="powershell-windows" name="ms.technology"/>
+  <meta content="reference" name="ms.topic"/>
+  <meta content="" name="online_version"/>
+  <meta content="2.0.0" name="schema"/>
+  <meta content="7A1A175E-C05F-4931-ABB2-2CAB46F8CC32" name="ms.assetid"/>
+  <meta content="powershell" name="ms.devlang"/>
+  <meta content="INDEX, FOLLOW" name="ROBOTS"/>
+  <meta content="/powershell/windows/bread/toc.json?view=win10-ps" name="breadcrumb_path"/>
+  <meta content="powershell" name="apiPlatform"/>
+  <meta content="MSDocsHeader-WindowsIT" name="uhfHeaderId"/>
+  <meta content="../win10-ps/toc.json?view=win10-ps" name="toc_rel"/>
+  <link href="https://docs.microsoft.com/en-us/powershell/module/addsadministration/set-adcomputer" rel="canonical"/>
+  <title>
+   Set-ADComputer
+  </title>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/e4a1f3a3.site.css" rel="stylesheet"/>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/31353636.conceptual.css" rel="stylesheet"/>
+ </head>
+ <body dir="ltr" lang="en-us">
+  <div class="header-holder">
+   <div data-bi-name="header" id="headerAreaHolder">
+    <div id="uhf-placeholder">
+    </div>
+   </div>
+   <div class="disclaimer-holder" id="disclaimer-holder">
+   </div>
+  </div>
+  <div class="container mainContainer" data-bi-name="body">
+   <div class="content-header" data-bi-name="content-header">
+    <div class="content-header-controls">
+     <button class="contents-button button-border" data-bi-name="contents-expand" type="button">
+      <span class="docon docon-menu">
+      </span>
+      Contents
+     </button>
+    </div>
+    <div class="content-header-controls">
+     <button class="ap-collapse-behavior ap-expanded button-border" data-bi-name="ap-collapse" type="button">
+      <span class="docon docon-exit-mode">
+      </span>
+      Exit focus mode
+     </button>
+    </div>
+   </div>
+   <div class="primary-holder">
+    <main class="content" data-bi-name="content" dir="ltr" id="main" lang="en-us" role="main">
+     <!-- <content> -->
+     <h1>
+      Set-ADComputer
+     </h1>
+     <div class="metadata">
+      <dl class="attributeList">
+       <dt>
+        Module:
+       </dt>
+       <dd>
+        <a data-linktype="relative-path" href="./.html">
+         addsadministration
+        </a>
+       </dd>
+      </dl>
+     </div>
+     <div class="summaryHolder">
+      <div class="summary">
+       Modifies an Active Directory computer object.
+      </div>
+     </div>
+     <h2 class="hiddenAnchor" id="syntax">
+      Syntax
+     </h2>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Set-ADComputer
+   [-WhatIf]
+   [-Confirm]
+   [-AccountExpirationDate &lt;DateTime&gt;]
+   [-AccountNotDelegated &lt;Boolean&gt;]
+   [-Add &lt;Hashtable&gt;]
+   [-AllowReversiblePasswordEncryption &lt;Boolean&gt;]
+   [-AuthenticationPolicy &lt;ADAuthenticationPolicy&gt;]
+   [-AuthenticationPolicySilo &lt;ADAuthenticationPolicySilo&gt;]
+   [-AuthType &lt;ADAuthType&gt;]
+   [-CannotChangePassword &lt;Boolean&gt;]
+   [-Certificates &lt;Hashtable&gt;]
+   [-ChangePasswordAtLogon &lt;Boolean&gt;]
+   [-Clear &lt;String[]&gt;]
+   [-CompoundIdentitySupported &lt;Boolean&gt;]
+   [-Credential &lt;PSCredential&gt;]
+   [-Description &lt;String&gt;]
+   [-DisplayName &lt;String&gt;]
+   [-DNSHostName &lt;String&gt;]
+   [-Enabled &lt;Boolean&gt;]
+   [-HomePage &lt;String&gt;]
+   [-Identity] &lt;ADComputer&gt;
+   [-KerberosEncryptionType &lt;ADKerberosEncryptionType&gt;]
+   [-Location &lt;String&gt;]
+   [-ManagedBy &lt;ADPrincipal&gt;]
+   [-OperatingSystem &lt;String&gt;]
+   [-OperatingSystemHotfix &lt;String&gt;]
+   [-OperatingSystemServicePack &lt;String&gt;]
+   [-OperatingSystemVersion &lt;String&gt;]
+   [-Partition &lt;String&gt;]
+   [-PassThru]
+   [-PasswordNeverExpires &lt;Boolean&gt;]
+   [-PasswordNotRequired &lt;Boolean&gt;]
+   [-PrincipalsAllowedToDelegateToAccount &lt;ADPrincipal[]&gt;]
+   [-Remove &lt;Hashtable&gt;]
+   [-Replace &lt;Hashtable&gt;]
+   [-SAMAccountName &lt;String&gt;]
+   [-Server &lt;String&gt;]
+   [-ServicePrincipalNames &lt;Hashtable&gt;]
+   [-TrustedForDelegation &lt;Boolean&gt;]
+   [-UserPrincipalName &lt;String&gt;]
+   [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Set-ADComputer
+   [-WhatIf]
+   [-Confirm]
+   [-AuthType &lt;ADAuthType&gt;]
+   [-Credential &lt;PSCredential&gt;]
+   -Instance &lt;ADComputer&gt;
+   [-PassThru]
+   [-Server &lt;String&gt;]
+   [&lt;CommonParameters&gt;]</code></pre>
+     <h2 id="description">
+      Description
+     </h2>
+     <p>
+      The
+      <strong>
+       Set-ADComputer
+      </strong>
+      cmdlet modifies the properties of an Active Directory computer object.
+You can modify commonly used property values by using the cmdlet parameters.
+Property values that are not associated with cmdlet parameters can be modified by using the
+      <em>
+       Add
+      </em>
+      ,
+      <em>
+       Replace
+      </em>
+      ,
+      <em>
+       Clear
+      </em>
+      , and
+      <em>
+       Remove
+      </em>
+      parameters.
+     </p>
+     <p>
+      The
+      <em>
+       Identity
+      </em>
+      parameter specifies the Active Directory computer to modify.
+You can identify a computer by its distinguished name, GUID, security identifier (SID) or Security Accounts Manager (SAM) account name.
+You can also set the
+      <em>
+       Identity
+      </em>
+      parameter to an object variable such as
+      <code>
+       $&lt;localComputerobject&gt;
+      </code>
+      , or you can pass an object through the pipeline to the
+      <em>
+       Identity
+      </em>
+      parameter.
+For example, you can use the
+      <strong>
+       Get-ADComputer
+      </strong>
+      cmdlet to retrieve a computer object and then pass the object through the pipeline to Set-ADComputer.
+     </p>
+     <p>
+      The
+      <em>
+       Instance
+      </em>
+      parameter provides a way to update a computer by applying the changes made to a copy of the computer object.
+When you set the
+      <em>
+       Instance
+      </em>
+      parameter to a copy of an Active Directory computer object that has been modified, the
+      <strong>
+       Set-ADComputer
+      </strong>
+      cmdlet makes the same changes to the original computer object.
+To get a copy of the object to modify, use the Get-ADComputer object.
+When you specify the
+      <em>
+       Instance
+      </em>
+      parameter you should not pass the
+      <em>
+       Identity
+      </em>
+      parameter.
+For more information about the
+      <em>
+       Instance
+      </em>
+      parameter, see the
+      <em>
+       Instance
+      </em>
+      parameter description.
+     </p>
+     <h2 id="examples">
+      Examples
+     </h2>
+     <p>
+      <strong>
+       Example 1: Modify the SPN value for a specified Active Directory computer
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Set-ADComputer -Identity "USER01-SRV1" -ServicePrincipalName @{Replace="MSSQLSVC/USER01-SRV1.USER01.COM:1456","MSOLAPSVC.3/USER01-SRV1.USER01.COM:analyze"}</code></pre>
+     <p>
+      This command modifies the service principal name (SPN) value for the computer specified by the
+      <em>
+       Identity
+      </em>
+      parameter.
+     </p>
+     <p>
+      <strong>
+       Example 2: Set the location for a specified Active Directory computer
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Set-ADComputer -Identity "USER02-SRV1" -Location "NA/HQ/Building A"</code></pre>
+     <p>
+      This command sets the location for the computer specified by the
+      <em>
+       Identity
+      </em>
+      parameter.
+     </p>
+     <p>
+      <strong>
+       Example 3: Set an attribute for a specified Active Directory computer using a SAM account name
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Set-ADComputer -Identity "USER03-SRV1" -ManagedBy "CN=SQL Administrator 01,OU=UserAccounts,OU=Managed,DC=USER03,DC=COM"</code></pre>
+     <p>
+      This command sets the
+      <strong>
+       ManagedBy
+      </strong>
+      attribute value for the computer specified by the
+      <em>
+       Identity
+      </em>
+      parameter using the SAM account name of the user.
+     </p>
+     <p>
+      <strong>
+       Example 4: Set multiple attributes of an Active Directory computer
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; $Comp = Get-ADComputer -Identity "USER04-SRV1" 
+PS C:\&gt; $Comp.Location = "NA/HQ/Building A" 
+PS C:\&gt; $Comp.ManagedBy = "CN=SQL Administrator 01,OU=UserAccounts,OU=Managed,DC=USER04,DC=COM" 
+PS C:\&gt; Set-ADComputer -Instance $Comp</code></pre>
+     <p>
+      This command sets the
+      <strong>
+       Location
+      </strong>
+      and
+      <strong>
+       ManagedBy
+      </strong>
+      attributes of a computer.
+     </p>
+     <h2 id="required-parameters">
+      Required Parameters
+     </h2>
+     <div class="parameterName stack">
+      -Identity
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies an Active Directory computer object by providing one of the following property values.
+The identifier in parentheses is the LDAP display name for the attribute.
+The acceptable values for this parameter are:
+      </p>
+      <ul>
+       <li>
+        A Distinguished Name
+       </li>
+       <li>
+        A GUID (objectGUID)
+       </li>
+       <li>
+        A Security Identifier (objectSid)
+       </li>
+       <li>
+        A Security Accounts Manager Account Name (sAMAccountName)
+       </li>
+      </ul>
+      <p>
+       The cmdlet searches the default naming context or partition to find the object.
+If the identifier given is a distinguished name, the partition to search is computed from that distinguished name.
+If two or more objects are found, the cmdlet returns a non-terminating error.
+      </p>
+      <p>
+       This parameter can also get this object through the pipeline or you can set this parameter to a computer object instance.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          ADComputer
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         0
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByValue)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Instance
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a modified copy of a computer object to use to update the actual Active Directory computer object.
+When this parameter is used, any modifications made to the modified copy of the object are also made to the corresponding Active Directory object.
+The cmdlet only updates the object properties that have changed.
+      </p>
+      <p>
+       The
+       <em>
+        Instance
+       </em>
+       parameter can only update computer objects that have been retrieved by using the
+       <strong>
+        Get-ADComputer
+       </strong>
+       cmdlet.
+When you specify the
+       <em>
+        Instance
+       </em>
+       parameter, you cannot specify other parameters that set properties on the object.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          ADComputer
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="optional-parameters">
+      Optional Parameters
+     </h2>
+     <div class="parameterName stack">
+      -AccountExpirationDate
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the expiration date for an account.
+When you set this parameter to 0, the account never expires.
+This parameter sets the
+       <strong>
+        AccountExpirationDate
+       </strong>
+       property of an account object.
+The Active Directory Lightweight Directory Services (LDAP) display name (
+       <strong>
+        ldapDisplayName
+       </strong>
+       ) for this property is accountExpires.
+      </p>
+      <p>
+       Use the
+       <strong>
+        DateTime
+       </strong>
+       syntax when you specify this parameter.
+Time is assumed to be local time unless otherwise specified.
+When a time value is not specified, the time is assumed to 12:00:00 AM local time.
+When a date is not specified, the date is assumed to be the current date.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          DateTime
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -AccountNotDelegated
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies whether the security context of the user is delegated to a service.
+When this parameter is set to true, the security context of the account is not delegated to a service even when the service account is set as trusted for Kerberos delegation.
+This parameter sets the
+       <strong>
+        AccountNotDelegated
+       </strong>
+       property for an Active Directory account.
+This parameter also sets the
+       <strong>
+        ADS_UF_NOT_DELEGATED
+       </strong>
+       flag of the Active Directory User Account Control (UAC) attribute.
+The acceptable values for this parameter are:
+      </p>
+      <ul>
+       <li>
+        $False or 0
+       </li>
+       <li>
+        $True or 1
+       </li>
+      </ul>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Boolean
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Add
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies values to add to an object property.
+Use this parameter to add one or more values to a property that cannot be modified using a cmdlet parameter.
+To modify an object property, you must use the LDAP display name.
+You can specify multiple values to a property by specifying a comma-separated list of values and more than one property by separating them using a semicolon..
+The format for this parameter is:
+      </p>
+      <p>
+       <code>
+        -Add @{Attribute1LDAPDisplayName=value1, value2, ...;   Attribute2LDAPDisplayName=value1, value2, ...; AttributeNLDAPDisplayName=value1, value2, ...}
+       </code>
+      </p>
+      <p>
+       When you use the
+       <em>
+        Add
+       </em>
+       ,
+       <em>
+        Replace
+       </em>
+       ,
+       <em>
+        Clear
+       </em>
+       , and
+       <em>
+        Remove
+       </em>
+       parameters together, the operations are performed in the following order:
+      </p>
+      <ul>
+       <li>
+        <strong>
+         Remove
+        </strong>
+       </li>
+       <li>
+        <strong>
+         Add
+        </strong>
+       </li>
+       <li>
+        <strong>
+         Replace
+        </strong>
+       </li>
+       <li>
+        <strong>
+         Clear
+        </strong>
+       </li>
+      </ul>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Hashtable
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -AllowReversiblePasswordEncryption
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies whether reversible password encryption is allowed for the account.
+This parameter sets the
+       <strong>
+        AllowReversiblePasswordEncryption
+       </strong>
+       property of the account.
+This parameter also sets the
+       <strong>
+        ADS_UF_ENCRYPTED_TEXT_PASSWORD_ALLOWED
+       </strong>
+       flag of the Active Directory User Account Control (UAC) attribute.
+The acceptable values for this parameter are:
+      </p>
+      <ul>
+       <li>
+        $False or 0
+       </li>
+       <li>
+        $True or 1
+       </li>
+      </ul>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Boolean
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -AuthType
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the authentication method to use.
+The acceptable values for this parameter are:
+      </p>
+      <ul>
+       <li>
+        Negotiate or 0
+       </li>
+       <li>
+        Basic or 1
+       </li>
+      </ul>
+      <p>
+       The default authentication method is Negotiate.
+      </p>
+      <p>
+       A Secure Sockets Layer (SSL) connection is required for the Basic authentication method.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          ADAuthType
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Parameter Sets:
+        </td>
+        <td>
+         Negotiate, Basic
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -AuthenticationPolicy
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies an Active Directory Domain Services authentication policy object.
+Specify the authentication policy object in one of the following formats:
+      </p>
+      <ul>
+       <li>
+        distinguished name
+       </li>
+       <li>
+        GUID
+       </li>
+       <li>
+        Name
+       </li>
+      </ul>
+      <p>
+       This parameter can also get this object through the pipeline or you can set this parameter to an object instance.
+      </p>
+      <p>
+       The cmdlet searches the default naming context or partition to find the object.
+If the cmdlet finds two or more objects, the cmdlet returns a non-terminating error.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          ADAuthenticationPolicy
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -AuthenticationPolicySilo
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies an Active Directory Domain Services authentication policy silo object.
+Specify the authentication policy silo object in one of the following formats:
+      </p>
+      <ul>
+       <li>
+        Distinguished Name
+       </li>
+       <li>
+        GUID
+       </li>
+       <li>
+        Name
+       </li>
+      </ul>
+      <p>
+       This parameter can also get this object through the pipeline or you can set this parameter to an object instance.
+      </p>
+      <p>
+       The cmdlet searches the default naming context or partition to find the object.
+If the cmdlet finds two or more objects, the cmdlet returns a non-terminating error.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          ADAuthenticationPolicySilo
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -CannotChangePassword
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies whether the account password can be changed.
+This parameter sets the
+       <strong>
+        CannotChangePassword
+       </strong>
+       property of an account.
+The acceptable values for this parameter are:
+      </p>
+      <ul>
+       <li>
+        $False or 0
+       </li>
+       <li>
+        $True or 1
+       </li>
+      </ul>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Boolean
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Certificates
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Modifies the DER-encoded X.509v3 certificates of the account.
+These certificates include the public key certificates issued to this account by the Microsoft Certificate Service.
+This parameter sets the
+       <strong>
+        Certificates
+       </strong>
+       property of the account object.
+The LDAP Display Name (
+       <strong>
+        ldapDisplayName
+       </strong>
+       ) for this property is userCertificate.
+      </p>
+      <p>
+       Syntax:
+      </p>
+      <p>
+       To add values:
+      </p>
+      <p>
+       <code>
+        -Certificates @{Add=value1,value2,...}
+       </code>
+      </p>
+      <p>
+       To remove values:
+      </p>
+      <p>
+       <code>
+        -Certificates @{Remove=value3,value4,...}
+       </code>
+      </p>
+      <p>
+       To replace values:
+      </p>
+      <p>
+       <code>
+        -Certificates @{Replace=value1,value2,...}
+       </code>
+      </p>
+      <p>
+       To clear all values:
+      </p>
+      <p>
+       <code>
+        -Certificates $null
+       </code>
+      </p>
+      <p>
+       You can specify more than one operation by using a list separated by semicolons.
+For example, use the following syntax to add and remove Certificate values
+      </p>
+      <p>
+       <code>
+        -Certificates @{Add=value1,value2,...};@{Remove=value3,value4,...}
+       </code>
+      </p>
+      <p>
+       The operators are applied in the following sequence:
+      </p>
+      <p>
+       ..Remove
+      </p>
+      <p>
+       ..Add
+      </p>
+      <p>
+       ..Replace
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Hashtable
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -ChangePasswordAtLogon
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies whether a password must be changed during the next logon attempt.
+The acceptable values for this parameter are:
+      </p>
+      <ul>
+       <li>
+        $False or 0
+       </li>
+       <li>
+        $True or 1
+       </li>
+      </ul>
+      <p>
+       This parameter cannot be set to $True or 1 for an account that also has the
+       <strong>
+        PasswordNeverExpires
+       </strong>
+       property set to $True.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Boolean
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Clear
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies an array of object properties that are cleared in the directory.
+Use this parameter to clear one or more values of a property that cannot be modified using a cmdlet parameter.
+To modify an object property, you must use the LDAP display name.
+You can modify more than one property by specifying a comma-separated list.
+The format for this parameter is:
+      </p>
+      <p>
+       -Clear Attribute1LDAPDisplayName, Attribute2LDAPDisplayName
+      </p>
+      <p>
+       When you use the
+       <em>
+        Add
+       </em>
+       ,
+       <em>
+        Replace
+       </em>
+       ,
+       <em>
+        Clear
+       </em>
+       , and
+       <em>
+        Remove
+       </em>
+       parameters together, the operations are performed in the following order:
+      </p>
+      <ul>
+       <li>
+        <strong>
+         Remove
+        </strong>
+       </li>
+       <li>
+        <strong>
+         Add
+        </strong>
+       </li>
+       <li>
+        <strong>
+         Replace
+        </strong>
+       </li>
+       <li>
+        <strong>
+         Clear
+        </strong>
+       </li>
+      </ul>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -CompoundIdentitySupported
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies whether an account supports Kerberos service tickets which includes the authorization data for the user's device. 
+This value sets the compound identity supported flag of the Active Directory
+       <strong>
+        msDS-SupportedEncryptionTypes
+       </strong>
+       attribute.
+The acceptable values for this parameter are:
+      </p>
+      <ul>
+       <li>
+        $False or 0
+       </li>
+       <li>
+        $True or 1
+       </li>
+      </ul>
+      <p>
+       Warning: Domain-joined Windows systems and services such as clustering manage their own
+       <strong>
+        msDS-SupportedEncryptionTypes
+       </strong>
+       attribute.
+Therefore any changes to the flag on the
+       <strong>
+        msDS-SupportedEncryptionTypes
+       </strong>
+       attribute is overwritten by the service or system which manages the setting.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Boolean
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Confirm
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Prompts you for confirmation before running the cmdlet.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         cf
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Credential
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the user account credentials to use to perform this task.
+The default credentials are the credentials of the currently logged on user unless the cmdlet is run from an Active Directory module for Windows PowerShell provider drive.
+If the cmdlet is run from such a provider drive, the account associated with the drive is the default.
+      </p>
+      <p>
+       To specify this parameter, you can type a user name, such as User1 or Domain01\User01 or you can specify a
+       <strong>
+        PSCredential
+       </strong>
+       object.
+If you specify a user name for this parameter, the cmdlet prompts for a password.
+      </p>
+      <p>
+       You can also create a
+       <strong>
+        PSCredential
+       </strong>
+       object by using a script or by using the
+       <strong>
+        Get-Credential
+       </strong>
+       cmdlet.
+You can then set the
+       <em>
+        Credential
+       </em>
+       parameter to the
+       <strong>
+        PSCredential
+       </strong>
+       object.
+      </p>
+      <p>
+       If the acting credentials do not have directory-level permission to perform the task, Active Directory module for Windows PowerShell returns a terminating error.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          PSCredential
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -DNSHostName
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the fully qualified domain name (FQDN) of the computer.
+This parameter sets the
+       <strong>
+        DNSHostName
+       </strong>
+       property for a computer object.
+The LDAP display name for this property is dNSHostName.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Description
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a description of the object.
+This parameter sets the value of the
+       <strong>
+        Description
+       </strong>
+       property for the object.
+The LDAP display name (
+       <strong>
+        ldapDisplayName
+       </strong>
+       ) for this property is description.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -DisplayName
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the display name of the object.
+This parameter sets the
+       <strong>
+        DisplayName
+       </strong>
+       property of the object.
+The LDAP display name (
+       <strong>
+        ldapDisplayName
+       </strong>
+       ) for this property is displayName.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Enabled
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies if an account is enabled.
+An enabled account requires a password.
+This parameter sets the
+       <strong>
+        Enabled
+       </strong>
+       property for an account object.
+This parameter also sets the
+       <strong>
+        ADS_UF_ACCOUNTDISABLE
+       </strong>
+       flag of the Active Directory User Account Control (UAC) attribute.
+The acceptable values for this parameter are:
+      </p>
+      <ul>
+       <li>
+        $False or 0
+       </li>
+       <li>
+        $True or 1
+       </li>
+      </ul>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Boolean
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -HomePage
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the URL of the home page of the object.
+This parameter sets the
+       <strong>
+        homePage
+       </strong>
+       property of an Active Directory object.
+The LDAP display name (
+       <strong>
+        ldapDisplayName
+       </strong>
+       ) for this property is wWWHomePage.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -KerberosEncryptionType
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies whether an account supports Kerberos encryption types which are used during creation of service tickets.
+This value sets the encryption types supported flags of the Active Directory
+       <strong>
+        msDS-SupportedEncryptionTypes
+       </strong>
+       attribute.
+The acceptable values for this parameter are:
+      </p>
+      <ul>
+       <li>
+        None
+       </li>
+       <li>
+        DES
+       </li>
+       <li>
+        RC4
+       </li>
+       <li>
+        AES128
+       </li>
+       <li>
+        AES256
+       </li>
+      </ul>
+      <p>
+       None will remove all encryption types from the account which may result in the Key Distribution Center (KDC) being unable to issue service tickets for services using the account.
+      </p>
+      <p>
+       Data Encyption Standard (DES) is a weak encryption type which is not supported by default since Windows 7 and Windows Server 2008 R2.
+      </p>
+      <p>
+       Warning: Domain-joined Windows systems and services such as clustering manage their own
+       <strong>
+        msDS-SupportedEncryptionTypes
+       </strong>
+       attribute.
+Therefore any changes to the flag on the
+       <strong>
+        msDS-SupportedEncryptionTypes
+       </strong>
+       attribute is overwritten by the service or system which manages the setting.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          ADKerberosEncryptionType
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Parameter Sets:
+        </td>
+        <td>
+         None, DES, RC4, AES128, AES256
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Location
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the location of the computer, such as an office number.
+This parameter sets the
+       <strong>
+        Location
+       </strong>
+       property of a computer.
+The LDAP display name (
+       <strong>
+        ldapDisplayName
+       </strong>
+       ) of this property is location.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -ManagedBy
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the user or group that manages the object by providing one of the following property values.
+Note: The identifier in parentheses is the LDAP display name for the property.
+The acceptable values for this parameter are:
+      </p>
+      <ul>
+       <li>
+        A Distinguished Name
+       </li>
+       <li>
+        A GUID (objectGUID)
+       </li>
+       <li>
+        A Security Identifier (objectSid)
+       </li>
+       <li>
+        A SAM Account Name (sAMAccountName)
+       </li>
+      </ul>
+      <p>
+       This parameter sets the Active Directory attribute with an LDAP display name of managedBy.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          ADPrincipal
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -OperatingSystem
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies an operating system name.
+This parameter sets the
+       <strong>
+        OperatingSystem
+       </strong>
+       property of the computer object.
+The LDAP display name (
+       <strong>
+        ldapDisplayName
+       </strong>
+       ) for this property is operatingSystem.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -OperatingSystemHotfix
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies an operating system hotfix name.
+This parameter sets the
+       <strong>
+        operatingSystemHotfix
+       </strong>
+       property of the computer object.
+The LDAP display name for this property is operatingSystemHotfix.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -OperatingSystemServicePack
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the name of an operating system service pack.
+This parameter sets the
+       <strong>
+        OperatingSystemServicePack
+       </strong>
+       property of the computer object.
+The LDAP display name (
+       <strong>
+        ldapDisplayName
+       </strong>
+       ) for this property is operatingSystemServicePack.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -OperatingSystemVersion
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies an operating system version.
+This parameter sets the
+       <strong>
+        OperatingSystemVersion
+       </strong>
+       property of the computer object.
+The LDAP display name (
+       <strong>
+        ldapDisplayName
+       </strong>
+       ) for this property is operatingSystemVersion.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Partition
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the distinguished name of an Active Directory partition.
+The distinguished name must be one of the naming contexts on the current directory server.
+The cmdlet searches this partition to find the object defined by the
+       <em>
+        Identity
+       </em>
+       parameter.
+      </p>
+      <p>
+       In many cases, a default value is used for the
+       <em>
+        Partition
+       </em>
+       parameter if no value is specified. 
+The rules for determining the default value are given below. 
+Note that rules listed first are evaluated first and once a default value can be determined, no further rules are evaluated.
+      </p>
+      <p>
+       In Active Directory Domain Services environments, a default value for
+       <em>
+        Partition
+       </em>
+       is set in the following cases:
+      </p>
+      <ul>
+       <li>
+        If the
+        <em>
+         Identity
+        </em>
+        parameter is set to a distinguished name, the default value of
+        <em>
+         Partition
+        </em>
+        is automatically generated from this distinguished name.
+       </li>
+       <li>
+        If running cmdlets from an Active Directory provider drive, the default value of
+        <em>
+         Partition
+        </em>
+        is automatically generated from the current path in the drive.
+       </li>
+       <li>
+        If none of the previous cases apply, the default value of
+        <em>
+         Partition
+        </em>
+        is set to the default partition or naming context of the target domain.
+       </li>
+      </ul>
+      <p>
+       In Active Directory Lightweight Directory Services (AD LDS) environments, a default value for
+       <em>
+        Partition
+       </em>
+       is set in the following cases:
+      </p>
+      <ul>
+       <li>
+        If the
+        <em>
+         Identity
+        </em>
+        parameter is set to a distinguished name, the default value of
+        <em>
+         Partition
+        </em>
+        is automatically generated from this distinguished name.
+       </li>
+       <li>
+        If running cmdlets from an Active Directory provider drive, the default value of
+        <em>
+         Partition
+        </em>
+        is automatically generated from the current path in the drive.
+       </li>
+       <li>
+        If the target AD LDS instance has a default naming context, the default value of
+        <em>
+         Partition
+        </em>
+        is set to the default naming context. 
+To specify a default naming context for an AD LDS environment, set the
+        <strong>
+         msDS-defaultNamingContext
+        </strong>
+        property of the Active Directory directory service agent (DSA) object (
+        <strong>
+         nTDSDSA
+        </strong>
+        ) for the AD LDS instance.
+       </li>
+       <li>
+        If none of the previous cases apply, the
+        <em>
+         Partition
+        </em>
+        parameter will not take any default value.
+       </li>
+      </ul>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -PassThru
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Returns an object representing the item with which you are working.
+By default, this cmdlet does not generate any output.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -PasswordNeverExpires
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies whether the password of an account can expire.
+This parameter sets the
+       <strong>
+        PasswordNeverExpires
+       </strong>
+       property of an account object.
+This parameter also sets the
+       <strong>
+        ADS_UF_DONT_EXPIRE_PASSWD
+       </strong>
+       flag of the Active Directory User Account Control attribute.
+The acceptable values for this parameter are:
+      </p>
+      <ul>
+       <li>
+        $False or 0
+       </li>
+       <li>
+        $True or 1
+       </li>
+      </ul>
+      <p>
+       Note: This parameter cannot be set to $True or 1 for an account that also has the
+       <strong>
+        ChangePasswordAtLogon
+       </strong>
+       property set to &amp;True.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Boolean
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -PasswordNotRequired
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies whether the account requires a password.
+This parameter sets the
+       <strong>
+        PasswordNotRequired
+       </strong>
+       property of an account, such as a user or computer account.
+This parameter also sets the
+       <strong>
+        ADS_UF_PASSWD_NOTREQD
+       </strong>
+       flag of the Active Directory User Account Control attribute.
+The acceptable values for this parameter are:
+      </p>
+      <ul>
+       <li>
+        $False or 0
+       </li>
+       <li>
+        $True or 1
+       </li>
+      </ul>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Boolean
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -PrincipalsAllowedToDelegateToAccount
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the accounts which can act on the behalf of users to services running as this computer account.
+This parameter sets the
+       <strong>
+        msDS-AllowedToActOnBehalfOfOtherIdentity
+       </strong>
+       attribute of a computer account object.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          ADPrincipal[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Remove
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies that the cmdlet remove values of an object property.
+Use this parameter to remove one or more values of a property that cannot be modified using a cmdlet parameter.
+To remove an object property, you must use the LDAP display name.
+You can remove more than one property by specifying a semicolon-separated list.
+The format for this parameter is:
+      </p>
+      <p>
+       <code>
+        -Remove @{Attribute1LDAPDisplayName=value[];   Attribute2LDAPDisplayName=value[]}
+       </code>
+      </p>
+      <p>
+       When you use the
+       <em>
+        Add
+       </em>
+       ,
+       <em>
+        Replace
+       </em>
+       ,
+       <em>
+        Clear
+       </em>
+       , and
+       <em>
+        Remove
+       </em>
+       parameters together, the parameters are applied in the following sequence:
+      </p>
+      <ul>
+       <li>
+        <strong>
+         Remove
+        </strong>
+       </li>
+       <li>
+        <strong>
+         Add
+        </strong>
+       </li>
+       <li>
+        <strong>
+         Replace
+        </strong>
+       </li>
+       <li>
+        <strong>
+         Clear
+        </strong>
+       </li>
+      </ul>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Hashtable
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Replace
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies values for an object property that will replace the current values.
+Use this parameter to replace one or more values of a property that cannot be modified using a cmdlet parameter.
+To modify an object property, you must use the LDAP display name.
+You can modify more than one property by specifying a comma-separated list.
+The format for this parameter is:
+      </p>
+      <p>
+       <code>
+        -Replace @{Attribute1LDAPDisplayName=value[],   Attribute2LDAPDisplayName=value[]}
+       </code>
+      </p>
+      <p>
+       When you use the
+       <em>
+        Add
+       </em>
+       ,
+       <em>
+        Replace
+       </em>
+       ,
+       <em>
+        Clear
+       </em>
+       , and
+       <em>
+        Remove
+       </em>
+       parameters together, the operations are performed in the following order:
+      </p>
+      <ul>
+       <li>
+        <strong>
+         Remove
+        </strong>
+       </li>
+       <li>
+        <strong>
+         Add
+        </strong>
+       </li>
+       <li>
+        <strong>
+         Replace
+        </strong>
+       </li>
+       <li>
+        <strong>
+         Clear
+        </strong>
+       </li>
+      </ul>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Hashtable
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -SAMAccountName
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the Security Account Manager (SAM) account name of the user, group, computer, or service account.
+The maximum length of the description is 256 characters.
+To be compatible with older operating systems, create a SAM account name that is 20 characters or less.
+This parameter sets the
+       <strong>
+        SAMAccountName
+       </strong>
+       for an account object.
+The LDAP display name (
+       <strong>
+        ldapDisplayName
+       </strong>
+       ) for this property is sAMAccountName.
+      </p>
+      <p>
+       Note: If the string value provided is not terminated with a $ character, the system adds one if needed.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Server
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the Active Directory Domain Services instance to connect to, by providing one of the following values for a corresponding domain name or directory server.
+The service may be any of the following: Active Directory Lightweight Domain Services, Active Directory Domain Services, or Active Directory snapshot instance.
+      </p>
+      <p>
+       Specify the Active Directory Domain Services instance in one of the following ways:
+      </p>
+      <p>
+       Domain name values:
+      </p>
+      <ul>
+       <li>
+        Fully qualified domain name
+       </li>
+       <li>
+        NetBIOS name
+       </li>
+      </ul>
+      <p>
+       Directory server values:
+      </p>
+      <ul>
+       <li>
+        Fully qualified directory server name
+       </li>
+       <li>
+        NetBIOS name
+       </li>
+       <li>
+        Fully qualified directory server name and port
+       </li>
+      </ul>
+      <p>
+       The default value for this parameter is determined by one of the following methods in the order that they are listed:
+      </p>
+      <ul>
+       <li>
+        By using the
+        <em>
+         Server
+        </em>
+        value from objects passed through the pipeline
+       </li>
+       <li>
+        By using the server information associated with the Active Directory Domain Services Windows PowerShell provider drive, when the cmdlet runs in that drive
+       </li>
+       <li>
+        By using the domain of the computer running Windows PowerShell
+       </li>
+      </ul>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -ServicePrincipalNames
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the service principal names for the account.
+This parameter sets the
+       <strong>
+        ServicePrincipalNames
+       </strong>
+       property of the account.
+The LDAP display name (
+       <strong>
+        ldapDisplayName
+       </strong>
+       ) for this property is servicePrincipalName.
+This parameter uses the following syntax to add remove, replace or clear service principal name values:
+      </p>
+      <p>
+       Syntax:
+      </p>
+      <p>
+       To add values:
+      </p>
+      <p>
+       <code>
+        -ServicePrincipalNames @{Add=value1,value2,...}
+       </code>
+      </p>
+      <p>
+       To remove values:
+      </p>
+      <p>
+       <code>
+        -ServicePrincipalNames @{Remove=value3,value4,...}
+       </code>
+      </p>
+      <p>
+       To replace values:
+      </p>
+      <p>
+       <code>
+        -ServicePrincipalNames @{Replace=value1,value2,...}
+       </code>
+      </p>
+      <p>
+       To clear all values:
+      </p>
+      <p>
+       <code>
+        -ServicePrincipalNames $null
+       </code>
+      </p>
+      <p>
+       You can specify more than one change by using a list separated by semicolons.
+For example, use the following syntax to add and remove service principal names.
+      </p>
+      <p>
+       <code>
+        @{Add=value1,value2,...};@{Remove=value3,value4,...}
+       </code>
+      </p>
+      <p>
+       The operators are applied in the following sequence:
+      </p>
+      <p>
+       ..Remove
+      </p>
+      <p>
+       ..Add
+      </p>
+      <p>
+       ..Replace
+      </p>
+      <p>
+       The following example shows how to add and remove service principal names.
+      </p>
+      <p>
+       <code>
+        -ServicePrincipalNames-@{Add="SQLservice\accounting.corp.contoso.com:1456"};{Remove="SQLservice\finance.corp.contoso.com:1456"}
+       </code>
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Hashtable
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -TrustedForDelegation
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies whether an account is trusted for Kerberos delegation.
+A service that runs under an account that is trusted for Kerberos delegation can assume the identity of a client requesting the service.
+This parameter sets the
+       <strong>
+        TrustedForDelegation
+       </strong>
+       property of an account object.
+This value also sets the
+       <strong>
+        ADS_UF_TRUSTED_FOR_DELEGATION
+       </strong>
+       flag of the Active Directory User Account Control attribute.
+The acceptable values for this parameter are:
+      </p>
+      <ul>
+       <li>
+        $False or 0
+       </li>
+       <li>
+        $True or 1
+       </li>
+      </ul>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Boolean
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -UserPrincipalName
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a user principal name (UPN) in the format
+       <code>
+        &lt;user&gt;@&lt;DNS-domain-name&gt;
+       </code>
+       .
+A user principal name (UPN) is a friendly name assigned by an administrator that is shorter than the LDAP distinguished name used by the system and easier to remember.
+The UPN is independent of the user object's distinguished name, so a user object can be moved or renamed without affecting the user logon name.
+When logging on using a UPN, users no longer have to choose a domain from a list on the logon dialog box.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -WhatIf
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         wi
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="inputs">
+      Inputs
+     </h2>
+     <p>
+      <strong>
+       Microsoft.ActiveDirectory.Management.ADComputer
+      </strong>
+     </p>
+     <p>
+      A computer object is received by the
+      <em>
+       Identity
+      </em>
+      parameter.
+     </p>
+     <p>
+      A computer object that was retrieved by using the
+      <strong>
+       Get-ADComputer
+      </strong>
+      cmdlet and then modified is received by the
+      <em>
+       Instance
+      </em>
+      parameter.
+     </p>
+     <h2 id="outputs">
+      Outputs
+     </h2>
+     <p>
+      <strong>
+       None or Microsoft.ActiveDirectory.Management.ADComputer
+      </strong>
+     </p>
+     <p>
+      Returns the modified computer object when the
+      <em>
+       PassThru
+      </em>
+      parameter is specified.
+By default, this cmdlet does not generate any output.
+     </p>
+     <h2 id="notes">
+      Notes
+     </h2>
+     <ul>
+      <li>
+       This cmdlet does not work with AD LDS.
+      </li>
+      <li>
+       This cmdlet does not work with an Active Directory snapshot.
+      </li>
+      <li>
+       This cmdlet does not work with a read-only domain controller.
+      </li>
+      <li>
+       This cmdlet does not work when connected to Global Catalog port.
+      </li>
+     </ul>
+     <h2 id="related-links">
+      Related Links
+     </h2>
+     <ul>
+      <li>
+       <a data-linktype="relative-path" href="./add-adcomputerserviceaccount.html">
+        Add-ADComputerServiceAccount
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="./get-adcomputer.html">
+        Get-ADComputer
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="./get-adcomputerserviceaccount.html">
+        Get-ADComputerServiceAccount
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="./new-adcomputer.html">
+        New-ADComputer
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="./remove-adcomputer.html">
+        Remove-ADComputer
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="./remove-adcomputerserviceaccount.html">
+        Remove-ADComputerServiceAccount
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="./activedirectory.html">
+        AD DS Administration Cmdlets in Windows PowerShell
+       </a>
+      </li>
+     </ul>
+     <!-- </content> -->
+    </main>
+    <section class="feedback-section" data-bi-name="feedback-section">
+     <h2 id="feedback">
+      Feedback
+     </h2>
+     <div class="alert choose-feedback-type">
+      <p>
+       We'd love to hear your thoughts. Choose the type you'd like to provide:
+      </p>
+      <div class="choose-feedback-buttons">
+       <a class="button-border feedback-type-product" data-bi-name="product-feedback" href="https://windowsserver.uservoice.com/forums/301869-powershell">
+        Product feedback
+        <span aria-hidden="true" class="docon docon-navigate-external">
+        </span>
+       </a>
+       <div class="button-group">
+        <button class="button-border feedback-sign-in-button" data-bi-name="feedback-sign-in">
+         <span aria-hidden="true" class="docon docon-brand-github">
+         </span>
+         Sign in to give documentation feedback
+        </button>
+        <button aria-controls="feedback-form" aria-expanded="false" class="button-border feedback-form-toggle" data-bi-name="documentation-feedback" hidden="">
+         Content feedback
+        </button>
+        <div auto-align="" class="dropdown has-caret">
+         <button aria-controls="fbm0" aria-expanded="false" aria-haspopup="true" aria-label="Expand documentation feedback menu" class="button-border dropdown-trigger" data-bi-name="documentation-feedback-menu">
+          <span aria-hidden="true" class="docon docon-chevron-down-light">
+          </span>
+         </button>
+         <div class="dropdown-menu documentation-feedback-menu" id="fbm0" role="menu">
+          You may also leave feedback
+          <a data-bi-name="create-issue-on-github" href="{0}">
+           directly on GitHub
+           <span aria-hidden="true" class="docon docon-navigate-external">
+           </span>
+          </a>
+          .
+         </div>
+        </div>
+       </div>
+      </div>
+      <p>
+       <small>
+        Our new feedback system is built on GitHub Issues. Read about this change in
+        <a href="https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs">
+         our blog post
+        </a>
+        .
+       </small>
+      </p>
+     </div>
+     <form accept-charset="UTF-8" action="javascript:" autocomplete="off" class="feedback-form" hidden="" id="feedback-form">
+      <h3 class="feedback-form-heading current-user">
+       <img alt="Avatar" aria-hidden="true" class="avatar" height="36" width="36"/>
+       <span aria-hidden="true" class="username">
+       </span>
+       <span class="visually-hidden">
+        Liquid error: Can't find the localized string giveDocumentationFeedback for template Conceptual.
+       </span>
+      </h3>
+      <label>
+       <span class="visually-hidden">
+        Title
+       </span>
+       <input name="title" pattern=".*\w.*" placeholder="Title" required="" type="text"/>
+      </label>
+      <label>
+       <span class="visually-hidden">
+        Leave a comment
+       </span>
+       <textarea name="body" placeholder="Leave a comment" required=""></textarea>
+      </label>
+      <div class="action-container">
+       <button class="primary-action" name="submit" type="submit">
+        Submit feedback
+       </button>
+      </div>
+     </form>
+     <div class="feedback-status alert busy" role="alert">
+      <p>
+       Loading feedback...
+      </p>
+     </div>
+     <div class="feedback-tab-group tabGroup" data-tab-group-independent="" hidden="">
+      <ul role="tablist">
+       <li role="presentation">
+        <a aria-controls="tabpanel-issues-open" aria-label="Open Issues" data-tab="issues-open" href="#tabpanel-issues-open" role="tab">
+        </a>
+       </li>
+       <li role="presentation">
+        <a aria-controls="tabpanel-issues-closed" aria-label="Closed Issues" data-tab="issues-closed" href="#tabpanel-issues-closed" role="tab">
+        </a>
+       </li>
+      </ul>
+      <section data-tab="issues-open" id="tabpanel-issues-open" role="tabpanel">
+       <div class="no-issues-placeholder">
+        There are no open issues
+       </div>
+       <ul aria-label="Open Issues" class="github-issues-list">
+       </ul>
+      </section>
+      <section data-tab="issues-closed" id="tabpanel-issues-closed" role="tabpanel">
+       <div class="no-issues-placeholder">
+        There are no closed issues
+       </div>
+       <ul aria-label="Closed Issues" class="github-issues-list">
+       </ul>
+      </section>
+     </div>
+     <div class="action-container">
+      <a class="view-on-github" data-bi-name="view-on-github" hidden="" href="https://github.com/MicrosoftDocs/windows-powershell-docs/issues">
+       <span aria-hidden="true" class="docon docon-brand-github">
+       </span>
+       <span>
+        View on GitHub
+       </span>
+       <span aria-hidden="true" class="docon docon-navigate-external">
+       </span>
+      </a>
+     </div>
+    </section>
+   </div>
+  </div>
+  <div class="openfeedback-container" id="openFeedbackContainer">
+  </div>
+  <div class="action-panel">
+  </div>
+ </body>
+</html>

@@ -1,0 +1,1653 @@
+<!DOCTYPE html>
+<html class="no-js hasSidebar hasPageActions hasBreadcrumb conceptual" data-authenticated="false" data-render="docs" dir="ltr" lang="en-us">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Export-Csv (Microsoft.PowerShell.Utility)" property="og:title"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" property="og:image"/>
+  <meta content="summary" name="twitter:card"/>
+  <meta content="@docsmsft" name="twitter:site"/>
+  <meta content="Export-Csv (Microsoft.PowerShell.Utility)" name="twitter:title"/>
+  <meta content="The Export-CSV cmdlet creates a CSV file of the objects that you submit. Each object is represented as a line or row of the CSV. The row consists of a comma-separated list of the values of object proâ¦" name="twitter:description"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" name="twitter:image"/>
+  <meta content="Microsoft Logo" name="twitter:image:alt"/>
+  <meta content="The Export-CSV cmdlet creates a CSV file of the objects that you submit. Each object is represented as a line or row of the CSV. The row consists of a comma-separated list of the values of object proâ¦" name="description"/>
+  <meta content="Docs" name="search.ms_sitename"/>
+  <meta content="PowerShell_PowerShell-docs_reference" name="search.ms_docsetname"/>
+  <meta content="0" name="version"/>
+  <meta content="en-us" name="locale"/>
+  <meta content="Docs" name="site_name"/>
+  <meta content="PowerShell" name="search.ms_product"/>
+  <meta content="PowerShell.PowerShell_PowerShell-docs_reference" name="depot_name"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/32e0e7148a3371b8212d889c42b323db72524f39/reference/6/Microsoft.PowerShell.Utility/Export-Csv.md" name="ref_skeleton_gitcommit"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/live/reference/6/Microsoft.PowerShell.Utility/Export-Csv.md" name="original_ref_skeleton_git_url"/>
+  <meta content="2018-05-04 01:53 PM" name="updated_at"/>
+  <meta content="375446da-a5e3-d77b-54bc-dcf85612a26a" name="document_id"/>
+  <meta content="e9ed8d14-c120-3e61-68f5-cce542d30be3" name="document_version_independent_id"/>
+  <meta content="powershell" name="page_type"/>
+  <meta content="command" name="page_kind"/>
+  <meta content="12/04/2017" name="ms.date"/>
+  <meta content="2.0.0" name="schema"/>
+  <meta content="powershell,cmdlet" name="keywords"/>
+  <meta content="http://go.microsoft.com/fwlink/?LinkId=821769" name="online_version"/>
+  <meta content="Microsoft.PowerShell.Commands.Utility.dll-Help.xml" name="external_help_file"/>
+  <meta content="powershell" name="ms.devlang"/>
+  <meta content="INDEX, FOLLOW" name="ROBOTS"/>
+  <meta content="sdwheeler" name="author"/>
+  <meta content="sewhee" name="ms.author"/>
+  <meta content="carmonm" name="manager"/>
+  <meta content="/powershell/bread-pscore/toc.yml?view=powershell-6" name="breadcrumb_path"/>
+  <meta content="powershell" name="apiPlatform"/>
+  <meta content="reference" name="ms.topic"/>
+  <meta content="windows, macos, linux" name="ms.tgt_pltfr"/>
+  <meta content="powershell-scripting" name="ms.technology"/>
+  <meta content="powershell" name="ms.prod"/>
+  <meta content="MSDocsHeader-Powershell" name="uhfHeaderId"/>
+  <meta content="../psdocs/toc.json?view=powershell-6" name="toc_rel"/>
+  <link href="https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/export-csv" rel="canonical"/>
+  <title>
+   Export-Csv
+  </title>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/60aac04b.site.css" rel="stylesheet"/>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/fdb8a38a.conceptual.css" rel="stylesheet"/>
+ </head>
+ <body dir="ltr" lang="en-us">
+  <div class="header-holder">
+   <div data-bi-name="header" id="headerAreaHolder">
+    <div id="uhf-placeholder">
+    </div>
+   </div>
+   <div class="disclaimer-holder" id="disclaimer-holder">
+   </div>
+  </div>
+  <div class="container mainContainer" data-bi-name="body">
+   <div class="content-header" data-bi-name="content-header">
+    <div class="content-header-controls">
+     <button class="contents-button button-border" data-bi-name="contents-expand" type="button">
+      <span class="docon docon-menu">
+      </span>
+      Contents
+     </button>
+    </div>
+    <div class="content-header-controls">
+     <button class="ap-collapse-behavior ap-expanded button-border" data-bi-name="ap-collapse" type="button">
+      <span class="docon docon-exit-mode">
+      </span>
+      Exit focus mode
+     </button>
+    </div>
+   </div>
+   <div class="primary-holder">
+    <main class="content" data-bi-name="content" dir="ltr" id="main" lang="en-us" role="main">
+     <!-- <content> -->
+     <h1>
+      Export-Csv
+     </h1>
+     <div class="metadata">
+      <dl class="attributeList">
+       <dt>
+        Module:
+       </dt>
+       <dd>
+        <a data-linktype="relative-path" href="./Microsoft.PowerShell.Utility.html">
+         Microsoft.PowerShell.Utility
+        </a>
+       </dd>
+      </dl>
+     </div>
+     <div class="summaryHolder">
+      <div class="summary">
+       Converts objects into a series of comma-separated (CSV) strings and saves the strings in a CSV file.
+      </div>
+     </div>
+     <h2 class="hiddenAnchor" id="syntax">
+      Syntax
+     </h2>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Export-Csv
+      -InputObject &lt;PSObject&gt;
+      [[-Path] &lt;String&gt;]
+      [-LiteralPath &lt;String&gt;]
+      [-Force]
+      [-NoClobber]
+      [-Encoding &lt;String&gt;]
+      [-Append]
+      [[-Delimiter] &lt;Char&gt;]
+      [-IncludeTypeInformation]
+      [-NoTypeInformation]
+      [-WhatIf]
+      [-Confirm]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Export-Csv
+      -InputObject &lt;PSObject&gt;
+      [[-Path] &lt;String&gt;]
+      [-LiteralPath &lt;String&gt;]
+      [-Force]
+      [-NoClobber]
+      [-Encoding &lt;String&gt;]
+      [-Append]
+      [-UseCulture]
+      [-IncludeTypeInformation]
+      [-NoTypeInformation]
+      [-WhatIf]
+      [-Confirm]</code></pre>
+     <h2 id="description">
+      Description
+     </h2>
+     <p>
+      The
+      <code>
+       Export-CSV
+      </code>
+      cmdlet creates a CSV file of the objects that you submit.
+Each object is represented as a line or row of the CSV.
+The row consists of a comma-separated list of the values of object properties.
+You can use this cmdlet to create spreadsheets and share data with programs that take CSV files as input.
+     </p>
+     <p>
+      Do not format objects before sending them to the
+      <code>
+       Export-CSV
+      </code>
+      cmdlet.
+If you do, the format properties are represented in the CSV file, instead of the properties of the original objects.
+To export only selected properties of an object, use the
+      <code>
+       Select-Object
+      </code>
+      cmdlet.
+     </p>
+     <h2 id="examples">
+      Examples
+     </h2>
+     <p>
+      <strong>
+       Example 1: Export process properties
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">Get-Process wmiprvse | Select-Object basePriority,ID,SessionID,WorkingSet | Export-Csv -Path "data.csv"</code></pre>
+     <p>
+      This command selects a few properties of the WmiPrvse process and exports them to a CSV file named
+      <code>
+       data.csv
+      </code>
+      .
+     </p>
+     <p>
+      <strong>
+       Example 2: Export processes to a comma-delimited file
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">Get-Process | Export-Csv -Path "processes.csv"
+
+Get-Content -Path "processes.csv"
+
+
+
+__NounName,Name,Handles,VM,WS,PM,NPM,Path,Company,CPU,FileVersion,...
+
+Process,powershell,626,201666560,76058624,61943808,11960,C:\WINDOWS...
+
+Process,powershell,257,151920640,38322176,37052416,7836,C:\WINDOWS\...</code></pre>
+     <p>
+      This command exports objects representing the processes on the computer to the
+      <code>
+       processes.csv
+      </code>
+      file in the current directory.
+Because it does not specify a delimiter, a comma (
+      <code>
+       ,
+      </code>
+      ) is used to separate the fields in the file.
+     </p>
+     <p>
+      <strong>
+       Example 3: Export processes to a semicolon-delimited file
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">Get-Process | Export-Csv -Path "processes.csv" -Delimiter ";"
+
+Get-Content -Path "processes.csv"
+
+
+
+__NounName;Name;Handles;VM;WS;PM;NPM;Path;Company;CPU;FileVersion;...
+
+Process;powershell;626;201666560;76058624;61943808;11960;C:\WINDOWS...
+
+Process;powershell;257;151920640;38322176;37052416;7836;C:\WINDOWS\...</code></pre>
+     <p>
+      This command exports objects representing the processes on the computer to the
+      <code>
+       processes.csv
+      </code>
+      file in the current directory.
+It uses the
+      <strong>
+       -Delimiter
+      </strong>
+      parameter to specify the semicolon (
+      <code>
+       ;
+      </code>
+      ).
+As a result, the fields in the file are separated by semicolons.
+     </p>
+     <p>
+      <strong>
+       Example 4: Export using the list separator of the current culture
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">Get-Process | Export-Csv -Path "processes.csv" -UseCulture</code></pre>
+     <p>
+      This command exports objects representing the processes on the computer to the
+      <code>
+       processes.csv
+      </code>
+      file in the current directory.
+It uses the
+      <strong>
+       -UseCulture
+      </strong>
+      parameter to direct
+      <code>
+       Export-CSV
+      </code>
+      to use the delimiter specified by the
+      <strong>
+       ListSeparator
+      </strong>
+      property of the current culture.
+     </p>
+     <p>
+      <strong>
+       Example 5: Export processes with type information
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">Get-Process | Export-Csv -Path "processes.csv" -IncludeTypeInformation
+
+Get-Content -Path "processes.csv"
+
+
+
+#TYPE System.Diagnostics.Process
+
+__NounName,Name,Handles,VM,WS,PM,NPM,Path,Company,CPU,FileVersion,...
+
+Process,powershell,626,201666560,76058624,61943808,11960,C:\WINDOWS...
+
+Process,powershell,257,151920640,38322176,37052416,7836,C:\WINDOWS\...</code></pre>
+     <p>
+      This command exports objects representing the processes on the computer to the
+      <code>
+       processes.csv
+      </code>
+      file in the current directory.
+It uses the
+      <strong>
+       -NoTypeInformation
+      </strong>
+      parameter to suppress the type information in the file.
+     </p>
+     <p>
+      <strong>
+       Example 6: Export and append script properties
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">$ScriptFiles = Get-ChildItem D:\* -Include *.ps1 -Recurse | Where-Object {$_.creationtime -gt "01/01/2011"}
+
+$ScriptFiles = $ScriptFiles | Select-Object -Property Name, CreationTime, LastWriteTime, IsReadOnly
+
+$ScriptFiles | Export-Csv -Append -Path "\\Archive01\Scripts\Scripts.csv"</code></pre>
+     <p>
+      The first command uses the
+      <code>
+       Get-ChildItem
+      </code>
+      cmdlet to do a recursive search in the
+      <code>
+       D:
+      </code>
+      drive for files with the
+      <code>
+       .ps1
+      </code>
+      file name extension.
+It uses a pipeline operator to sends the results to the
+      <code>
+       Where-Object
+      </code>
+      cmdlet, which gets only files that were created after January 1, 2011, and then saves them in the
+      <strong>
+       $ScriptFiles
+      </strong>
+      variable.
+     </p>
+     <p>
+      The second command uses the
+      <code>
+       Select-Object
+      </code>
+      cmdlet to select the relevant properties of the script files. It saves the revised results in the
+      <code>
+       $ScriptFiles
+      </code>
+      variable.
+     </p>
+     <p>
+      The third command uses a pipeline operator (
+      <code>
+       |
+      </code>
+      ) to send the script file information in the
+      <strong>
+       $ScriptFiles
+      </strong>
+      variable to the
+      <code>
+       Export-CSV
+      </code>
+      cmdlet. The command uses the
+      <strong>
+       -Path
+      </strong>
+      parameter to specify the output file and the
+      <strong>
+       -Append
+      </strong>
+      parameter to add the new script data to the end of the output file, instead of replacing the existing file contents.
+     </p>
+     <p>
+      These commands add information about new PowerShell scripts to a script inventory file.
+     </p>
+     <p>
+      <strong>
+       Example 7: Select properties to export
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">Get-Date | Select-Object -Property DateTime, Day, DayOfWeek, DayOfYear | Export-Csv -Path Date.csv -NoTypeInformation
+
+Get-Content -Path "Date.csv"
+
+
+
+"DateTime","Day","DayOfWeek","DayOfYear"
+
+"Tuesday, October 05, 2010 2:45:13 PM","5","Tuesday","278"
+
+
+
+Get-Date | Format-Table -Property DateTime, Day, DayOfWeek, DayOfYear | Export-Csv -Path Date.csv -NoTypeInformation
+
+Get-Content -Path "Date.csv"
+
+
+
+"ClassId2e4f51ef21dd47e99d3c952918aff9cd","pageHeaderEntry","pageFooterEntry","autosizeInfo","shapeInfo","groupingEntry"
+
+"033ecb2bc07a4d43b5ef94ed5a35d280",,,,"Microsoft.PowerShell.Commands.Internal.Format.TableHeaderInfo",
+
+"9e210fe47d09416682b841769c78b8a3",,,,,
+
+"27c87ef9bbda4f709f6b4002fa4af63c",,,,,
+
+"4ec4f0187cb04f4cb6973460dfe252df",,,,,
+
+"cf522b78d86c486691226b40aa69e95c",,,,,</code></pre>
+     <p>
+      The first command shows how to select properties of an object and export them to a CSV file. This command uses the
+      <code>
+       Get-Date
+      </code>
+      cmdlet to get the current date and time. It uses the
+      <code>
+       Select-Object
+      </code>
+      cmdlet to select the desired properties, and the
+      <code>
+       Export-CSV
+      </code>
+      cmdlet to export the object and its properties to the
+      <code>
+       Date.csv
+      </code>
+      file. The output shows the expected content in the
+      <code>
+       Date.csv
+      </code>
+      file.
+     </p>
+     <p>
+      The second command shows that when you use the
+      <code>
+       Format-Table
+      </code>
+      cmdlet to format your data before exporting it, the output is not useful.
+     </p>
+     <p>
+      This example demonstrates one of most common problems that users encounter when using the
+      <code>
+       Export-CSV
+      </code>
+      cmdlet.
+It explains how to recognize and avoid this error.
+     </p>
+     <p>
+      Because a CSV file has a table format, it might seem natural to use the Format-Table cmdlet to format the data in a table to prepare it for export as a CSV file.
+Also, the
+      <code>
+       Format-Table
+      </code>
+      cmdlet allows you to select object properties easily.
+     </p>
+     <p>
+      However, when you format the data in a table and then export it, you are exporting a table object, not your original data object.
+The resulting CSV file is not useful.
+     </p>
+     <p>
+      <strong>
+       Example 8: Using -Force parameter to overwrite read only files
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">Get-Process | Export-Csv -Path ReadOnly.csv
+
+
+
+Export-Csv : Access to the path 'C:\ReadOnly.csv' is denied.
+
+At line:1 char:15
+
++ Get-Process | Export-Csv -Path ReadOnly.csv
+
++               ~~~~~~~~~~~~~~~~~~~~~~~~
+
++ CategoryInfo          : OpenError: (:) [Export-Csv], UnauthorizedAccessException
+
++ FullyQualifiedErrorId : FileOpenFailure,Microsoft.PowerShell.Commands.ExportCsvCommand
+
+
+
+Get-Process | Export-Csv -Path ReadOnly.csv -Force</code></pre>
+     <p>
+      The first command tries to export process objects to a file with
+      <strong>
+       Read Only
+      </strong>
+      attribute set.
+It doesn't use
+      <strong>
+       -Force
+      </strong>
+      parameter so error is returned.
+     </p>
+     <p>
+      The second command uses
+      <strong>
+       -Force
+      </strong>
+      parameter and export succeeds.
+     </p>
+     <p>
+      <strong>
+       Example 9: Using -Force parameter with -Append
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">$Content = [PSCustomObject]@{Name = 'PowerShell Core'; Version = '6.0'}
+
+$Content | Export-Csv -Path file.csv
+
+
+
+$AdditionalContent = [PSCustomObject]@{Name = 'Windows PowerShell'; Edition = 'Desktop'}
+
+$AdditionalContent | Export-Csv -Path file.csv -Append
+
+
+
+Export-Csv : Cannot append CSV content to the following file: file.csv. The appended object does not have a property that corresponds to the following column: Version. To continue with mismatched properties, add the -Force parameter, and then retry the command.
+
+At line:1 char:22
+
++ $AdditionalContent | Export-Csv -Path file.csv -Append
+
++                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
++ CategoryInfo          : InvalidData: (Version:String) [Export-Csv], InvalidOperationException
+
++ FullyQualifiedErrorId : CannotAppendCsvWithMismatchedPropertyNames,Microsoft.PowerShell.Commands.ExportCsvCommand
+
+
+
+$AdditionalContent | Export-Csv -Path file.csv -Append -Force
+
+
+
+Import-Csv -Path file.csv
+
+
+
+Name               Version
+
+----               -------
+
+PowerShell Core    6.0
+
+Windows PowerShell</code></pre>
+     <p>
+      The first command creates
+      <strong>
+       PSCustomObject
+      </strong>
+      with
+      <strong>
+       Name
+      </strong>
+      and
+      <strong>
+       Version
+      </strong>
+      properties.
+     </p>
+     <p>
+      The second command export the object to csv file.
+     </p>
+     <p>
+      The third command creates
+      <strong>
+       PSCustomObject
+      </strong>
+      with
+      <strong>
+       Name
+      </strong>
+      and
+      <strong>
+       Edition
+      </strong>
+      properties.
+The object doesn't have the
+      <strong>
+       Version
+      </strong>
+      property.
+     </p>
+     <p>
+      The fourth command tries to export new object to csv file without
+      <strong>
+       -Force
+      </strong>
+      parameter and returns error.
+     </p>
+     <p>
+      The fifth command uses
+      <strong>
+       -Force
+      </strong>
+      parameter, so export succeeds.
+     </p>
+     <p>
+      The sixth command shows the content of the csv file.
+It doesn't have the
+      <strong>
+       Edition
+      </strong>
+      property and
+      <strong>
+       Version
+      </strong>
+      property of the second object is empty.
+     </p>
+     <h2 id="required-parameters">
+      Required Parameters
+     </h2>
+     <div class="parameterName stack">
+      -InputObject
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the objects to export as CSV strings.
+Enter a variable that contains the objects or type a command or expression that gets the objects.
+You can also pipe objects to
+       <code>
+        Export-CSV
+       </code>
+       .
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          PSObject
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName, ByValue)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="optional-parameters">
+      Optional Parameters
+     </h2>
+     <div class="parameterName stack">
+      -Append
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that this cmdlet adds the CSV output to the end of the specified file.
+Without this parameter,
+       <code>
+        Export-CSV
+       </code>
+       replaces the file contents without warning.
+      </p>
+      <p>
+       This parameter was introduced in Windows PowerShell 3.0.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Confirm
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Prompts you for confirmation before running the cmdlet.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         cf
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Delimiter
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a delimiter to separate the property values.
+The default is a comma (
+       <code>
+        ,
+       </code>
+       ).
+Enter a character, such as a colon (
+       <code>
+        :
+       </code>
+       ).
+To specify a semicolon (
+       <code>
+        ;
+       </code>
+       ), enclose it in quotation marks.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Char
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         1
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Encoding
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the encoding for the exported CSV file.
+The acceptable values for this parameter are:
+      </p>
+      <ul>
+       <li>
+        Unicode
+       </li>
+       <li>
+        UTF7
+       </li>
+       <li>
+        UTF8
+       </li>
+       <li>
+        ASCII
+       </li>
+       <li>
+        UTF32
+       </li>
+       <li>
+        BigEndianUnicode
+       </li>
+       <li>
+        Default
+       </li>
+       <li>
+        OEM
+       </li>
+      </ul>
+      <p>
+       The default value is ASCII.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Parameter Sets:
+        </td>
+        <td>
+         Unicode, UTF7, UTF8, ASCII, UTF32, BigEndianUnicode, Default, OEM
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Force
+     </div>
+     <div class="parameterInfo">
+      <p>
+       When specified, it allows to overwrite files with
+       <strong>
+        Read Only
+       </strong>
+       attribute set.
+      </p>
+      <p>
+       Also, when used with
+       <strong>
+        -Append
+       </strong>
+       parameter, it allows to add objects with lacking properties, compared to existing columns in csv file.
+In this case, only existent properties added and absent ones assigned the empty value.
+Extra properties are always skipped.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -IncludeTypeInformation
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that this cmdlet includes the type information in the CSV file.
+When supplied, the first line of the CSV file contains
+       <code>
+        #TYPE
+       </code>
+       followed by the fully-qualified name of the type of the object.
+      </p>
+      <p>
+       This parameter was introduced in PowerShell 6.0.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         ITI
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -LiteralPath
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the path to the CSV output file.
+Unlike
+       <strong>
+        -Path
+       </strong>
+       , the value of the
+       <strong>
+        -LiteralPath
+       </strong>
+       parameter is used exactly as it is typed.
+No characters are interpreted as wildcards.
+If the path includes escape characters, enclose it in single quotation marks.
+Single quotation marks tell PowerShell not to interpret any characters as escape sequences.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         PSPath
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -NoClobber
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that this cmdlet does not overwrite of an existing file.
+By default, if a file exists in the specified path,
+       <code>
+        Export-CSV
+       </code>
+       overwrites the file without warning.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         NoOverwrite
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -NoTypeInformation
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that this cmdlet omits the type information from the CSV file.
+This is the default behavior beginning with PowerShell 6.0.
+This parameter is included for backwards compatibility.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         NTI
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Path
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the path to the CSV output file.
+This parameter is required.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         0
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -UseCulture
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that this cmdlet uses the list separator for the current culture as the item delimiter.
+The default is a comma (
+       <code>
+        ,
+       </code>
+       ).
+      </p>
+      <p>
+       This parameter is very useful in scripts that are being distributed to users worldwide.
+To find the list separator for a culture, use the following command:
+       <code>
+        (Get-Culture).TextInfo.ListSeparator
+       </code>
+       .
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -WhatIf
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         wi
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="inputs">
+      Inputs
+     </h2>
+     <p>
+      <strong>
+       System.Management.Automation.PSObject
+      </strong>
+     </p>
+     <p>
+      You can pipe any object with an Extended Type System (ETS) adapter to
+      <code>
+       Export-CSV
+      </code>
+      .
+     </p>
+     <h2 id="outputs">
+      Outputs
+     </h2>
+     <p>
+      <strong>
+       System.String
+      </strong>
+     </p>
+     <p>
+      The CSV list is sent to the file designated in the Path parameter.
+     </p>
+     <h2 id="notes">
+      Notes
+     </h2>
+     <ul>
+      <li>
+       <p>
+        The
+        <code>
+         Export-CSV
+        </code>
+        cmdlet converts the objects that you submit into a series of CSV variable-length strings and saves them in the specified text file.
+You can use
+        <code>
+         Export-CSV -IncludeTypeInformation
+        </code>
+        to save objects in a CSV file and then use the
+        <code>
+         Import-Csv
+        </code>
+        cmdlet to create objects from the text in the CSV file.
+       </p>
+       <p>
+        In the CSV file, each object is represented by a comma-separated list of the property values of the object.
+The property values are converted to strings (by using the
+        <code>
+         ToString()
+        </code>
+        method of the object), so they are generally represented by the name of the property value.
+        <code>
+         Export-CSV -IncludeTypeInformation
+        </code>
+        does not export the methods of the object.
+       </p>
+       <p>
+        The format of an exported file is as follows:
+       </p>
+       <ul>
+        <li>
+         <p>
+          The first line of the CSV file contains the string #TYPE followed by the fully qualified name of the object, such as
+          <code>
+           #TYPE System.Diagnostics.Process
+          </code>
+          .
+This line will not be included by default. You must specify
+          <code>
+           -IncludeTypeInformation
+          </code>
+          to include type information.
+         </p>
+        </li>
+        <li>
+         <p>
+          The next line of the CSV file represents the column headers.
+It contains a comma-separated list of the names of all the properties of the first object.
+         </p>
+        </li>
+        <li>
+         <p>
+          Additional lines of the file consist of comma-separated lists of the property values of each object.
+         </p>
+        </li>
+       </ul>
+      </li>
+      <li>
+       <p>
+        When you submit multiple objects to
+        <code>
+         Export-CSV
+        </code>
+        ,
+        <code>
+         Export-CSV
+        </code>
+        organizes the file based on the properties of the first object that you submit. If the remaining objects do not have one of the specified properties, the property value of that object is null, as represented by two consecutive commas. If the remaining objects have additional properties, those property values are not included in the file.
+       </p>
+      </li>
+      <li>
+       You can use the
+       <code>
+        Import-Csv
+       </code>
+       cmdlet to re-create objects from the CSV strings in the files. The resulting objects are CSV versions of the original objects that consist of string representations of the property values and no methods.
+      </li>
+      <li>
+       The
+       <code>
+        ConvertTo-Csv
+       </code>
+       and
+       <code>
+        ConvertFrom-Csv
+       </code>
+       cmdlets to convert objects to CSV strings (and back).
+       <code>
+        Export-CSV
+       </code>
+       is the same as
+       <code>
+        ConvertTo-CSV
+       </code>
+       , except that it saves the CSV strings in a file.
+      </li>
+      <li>
+       Beginning with PowerShell 6.0 the default behavior of
+       <code>
+        Export-CSV
+       </code>
+       is to no longer include type information in the CSV and
+       <code>
+        -NoTypeInformation
+       </code>
+       is implied.
+       <code>
+        -IncludeTypeInformation
+       </code>
+       can be used to include the Type Information and emulate the default behavior of
+       <code>
+        Export-CSV
+       </code>
+       prior to PowerShell 6.0.
+      </li>
+     </ul>
+     <h2 id="related-links">
+      Related Links
+     </h2>
+     <ul>
+      <li>
+       <a data-linktype="relative-path" href="convertfrom-csv.html">
+        ConvertFrom-Csv
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="convertto-csv.html">
+        ConvertTo-Csv
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="format-table.html">
+        Format-Table
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="import-csv.html">
+        Import-Csv
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="select-object.html">
+        Select-Object
+       </a>
+      </li>
+     </ul>
+     <!-- </content> -->
+    </main>
+    <div class="note alert feedback-system-change-alert">
+     <p>
+      Note
+     </p>
+     <p>
+      The feedback system for this content will be changing soon. Old comments will not be carried over. If content within a comment thread is important to you, please save a copy. For more information on the upcoming change,
+      <a href="https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs">
+       we invite you to read our blog post
+      </a>
+      .
+     </p>
+    </div>
+    <div data-bi-name="comments" id="comments-container" role="form">
+    </div>
+   </div>
+  </div>
+  <div class="openfeedback-container" id="openFeedbackContainer">
+  </div>
+  <div class="action-panel">
+  </div>
+ </body>
+</html>

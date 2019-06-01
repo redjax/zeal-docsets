@@ -1,0 +1,1451 @@
+<!DOCTYPE html>
+<html class="no-js hasSidebar hasPageActions hasBreadcrumb conceptual" data-authenticated="false" data-render="docs" dir="ltr" lang="en-us">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Get-IpamAddress (ipamserver)" property="og:title"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" property="og:image"/>
+  <meta content="summary" name="twitter:card"/>
+  <meta content="@docsmsft" name="twitter:site"/>
+  <meta content="Get-IpamAddress (ipamserver)" name="twitter:title"/>
+  <meta content="Use this topic to help manage Windows and Windows Server technologies with Windows PowerShell." name="twitter:description"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" name="twitter:image"/>
+  <meta content="Microsoft Logo" name="twitter:image:alt"/>
+  <meta content="Use this topic to help manage Windows and Windows Server technologies with Windows PowerShell." name="description"/>
+  <meta content="Docs" name="search.ms_sitename"/>
+  <meta content="powershell-windows" name="search.ms_docsetname"/>
+  <meta content="0" name="version"/>
+  <meta content="en-us" name="locale"/>
+  <meta content="Docs" name="site_name"/>
+  <meta content="MSDN" name="search.ms_product"/>
+  <meta content="MSDN.powershell-windows" name="depot_name"/>
+  <meta content="https://cpubwin.visualstudio.com/DefaultCollection/powershell/_git/powershell/commit/ced7757924addcaea0b7a244ae4d240e4d28d93a?path=%2fdocset%2fwindows%2fipamserver%2fget-ipamaddress.md&amp;_a=contents" name="ref_skeleton_gitcommit"/>
+  <meta content="https://cpubwin.visualstudio.com/DefaultCollection/powershell/_git/powershell?path=%2fdocset%2fwindows%2fipamserver%2fget-ipamaddress.md&amp;version=GBlive&amp;_a=contents" name="original_ref_skeleton_git_url"/>
+  <meta content="2017-09-15 03:44 AM" name="updated_at"/>
+  <meta content="f42ba0c6-2b39-d43c-d89d-561d31a0020f" name="document_id"/>
+  <meta content="e42f89a0-9b26-a0c4-7741-74c26622592e" name="document_version_independent_id"/>
+  <meta content="powershell" name="page_type"/>
+  <meta content="command" name="page_kind"/>
+  <meta content="manage" name="ms.mktglfcycl"/>
+  <meta content="library" name="ms.sitesec"/>
+  <meta content="brianlic" name="ms.author"/>
+  <meta content="brianlic-msft" name="author"/>
+  <meta content="IpamAddress.cdxml-help.xml" name="external_help_file"/>
+  <meta content="powershell, cmdlet" name="keywords"/>
+  <meta content="alanth" name="manager"/>
+  <meta content="12/20/2016" name="ms.date"/>
+  <meta content="w10" name="ms.prod"/>
+  <meta content="powershell-windows" name="ms.technology"/>
+  <meta content="reference" name="ms.topic"/>
+  <meta content="" name="online_version"/>
+  <meta content="2.0.0" name="schema"/>
+  <meta content="3B0D99D7-44E0-46D2-A30B-F1B5DBF8BE14" name="ms.assetid"/>
+  <meta content="powershell" name="ms.devlang"/>
+  <meta content="INDEX, FOLLOW" name="ROBOTS"/>
+  <meta content="/powershell/windows/bread/toc.json?view=win10-ps" name="breadcrumb_path"/>
+  <meta content="powershell" name="apiPlatform"/>
+  <meta content="MSDocsHeader-WindowsIT" name="uhfHeaderId"/>
+  <meta content="../win10-ps/toc.json?view=win10-ps" name="toc_rel"/>
+  <link href="https://docs.microsoft.com/en-us/powershell/module/ipamserver/get-ipamaddress" rel="canonical"/>
+  <title>
+   Get-IpamAddress
+  </title>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/e4a1f3a3.site.css" rel="stylesheet"/>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/31353636.conceptual.css" rel="stylesheet"/>
+ </head>
+ <body dir="ltr" lang="en-us">
+  <div class="header-holder">
+   <div data-bi-name="header" id="headerAreaHolder">
+    <div id="uhf-placeholder">
+    </div>
+   </div>
+   <div class="disclaimer-holder" id="disclaimer-holder">
+   </div>
+  </div>
+  <div class="container mainContainer" data-bi-name="body">
+   <div class="content-header" data-bi-name="content-header">
+    <div class="content-header-controls">
+     <button class="contents-button button-border" data-bi-name="contents-expand" type="button">
+      <span class="docon docon-menu">
+      </span>
+      Contents
+     </button>
+    </div>
+    <div class="content-header-controls">
+     <button class="ap-collapse-behavior ap-expanded button-border" data-bi-name="ap-collapse" type="button">
+      <span class="docon docon-exit-mode">
+      </span>
+      Exit focus mode
+     </button>
+    </div>
+   </div>
+   <div class="primary-holder">
+    <main class="content" data-bi-name="content" dir="ltr" id="main" lang="en-us" role="main">
+     <!-- <content> -->
+     <h1>
+      Get-Ipam
+      <wbr/>
+      Address
+     </h1>
+     <div class="metadata">
+      <dl class="attributeList">
+       <dt>
+        Module:
+       </dt>
+       <dd>
+        <a data-linktype="relative-path" href="./.html">
+         ipamserver
+        </a>
+       </dd>
+      </dl>
+     </div>
+     <div class="summaryHolder">
+      <div class="summary">
+       Gets IP addresses from IPAM.
+      </div>
+     </div>
+     <h2 class="hiddenAnchor" id="syntax">
+      Syntax
+     </h2>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Get-IpamAddress
+   [-IpAddress] &lt;IPAddress[]&gt;
+   [-ManagedByService &lt;String[]&gt;]
+   [-ServiceInstance &lt;String[]&gt;]
+   [-NetworkType &lt;VirtualizationType[]&gt;]
+   [-AddressSpace &lt;String[]&gt;]
+   [-CimSession &lt;CimSession[]&gt;]
+   [-ThrottleLimit &lt;Int32&gt;]
+   [-AsJob]
+   [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Get-IpamAddress
+   -AddressFamily &lt;AddressFamily[]&gt;
+   [-AddressCategory &lt;AddressCategory[]&gt;]
+   [-ManagedByService &lt;String[]&gt;]
+   [-ServiceInstance &lt;String[]&gt;]
+   [-NetworkType &lt;VirtualizationType[]&gt;]
+   [-AddressSpace &lt;String[]&gt;]
+   [-Unmapped]
+   [-CimSession &lt;CimSession[]&gt;]
+   [-ThrottleLimit &lt;Int32&gt;]
+   [-AsJob]
+   [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Get-IpamAddress
+   -MappingToBlock &lt;CimInstance&gt;
+   [-CimSession &lt;CimSession[]&gt;]
+   [-ThrottleLimit &lt;Int32&gt;]
+   [-AsJob]
+   [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Get-IpamAddress
+   -MappingToSubnet &lt;CimInstance&gt;
+   [-CimSession &lt;CimSession[]&gt;]
+   [-ThrottleLimit &lt;Int32&gt;]
+   [-AsJob]
+   [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Get-IpamAddress
+   -MappingToRange &lt;CimInstance&gt;
+   [-CimSession &lt;CimSession[]&gt;]
+   [-ThrottleLimit &lt;Int32&gt;]
+   [-AsJob]
+   [&lt;CommonParameters&gt;]</code></pre>
+     <h2 id="description">
+      Description
+     </h2>
+     <p>
+      The
+      <strong>
+       Get-IpamAddress
+      </strong>
+      cmdlet gets IP addresses from IP Address Management (IPAM).
+Specify the
+      <em>
+       IpAddress
+      </em>
+      parameter to retrieve an IP address.
+Specify the
+      <em>
+       AddressFamily
+      </em>
+      parameter to retrieve a set of IP addresses for address families.
+You can also get addresses that belong to a range, a subnet, or an address block.
+     </p>
+     <h2 id="examples">
+      Examples
+     </h2>
+     <p>
+      <strong>
+       Example 1: Get all private physical IPv4 addresses
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-IpamAddress -AddressFamily IPv4 -AddressCategory Private -AddressSpace "Default"</code></pre>
+     <p>
+      This command gets all private physical IPv4 addresses in IPAM.
+Because the command specifies the Default address space, the command gets provider or non-virtualized IP addresses from all address spaces in IPAM.
+     </p>
+     <p>
+      <strong>
+       Example 2: Get private IPv4 addresses for provider networks
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-IpamAddress -AddressFamily IPv4 -AddressCategory Private -NetworkType Provider</code></pre>
+     <p>
+      This command gets all private IPv4 addresses for provider networks.
+Because the command does not specify the
+      <em>
+       AddressSpace
+      </em>
+      parameter, the command gets addresses that belong to all address spaces in IPAM.
+     </p>
+     <p>
+      <strong>
+       Example 3: Get private IPv4 addresses from the default address space
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-IpamAddress -AddressFamily IPv4 -AddressCategory Private -NetworkType Provider -AddressSpace "Default"</code></pre>
+     <p>
+      This command gets all private IPv4 addresses for provider networks.
+Because the command specifies the Default address space, the command gets IP addresses from all address spaces configured in IPAM.
+     </p>
+     <p>
+      <strong>
+       Example 4: Get private IPv4 addresses for customer networks
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-IpamAddress -AddressFamily IPv4 -AddressCategory Private -NetworkType Customer</code></pre>
+     <p>
+      This command gets all private IPv4 addresses for customer networks.
+Because the command does not specify the
+      <em>
+       AddressSpace
+      </em>
+      parameter, the command gets addresses that belong to all address spaces configured in IPAM.
+     </p>
+     <p>
+      <strong>
+       Example 5: Get private IPv4 addresses for customer networks from an address space
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-IpamAddress -AddressFamily IPv4 -AddressCategory Private -NetworkType Customer -AddressSpace "ContosoAddSpace01"</code></pre>
+     <p>
+      This command gets all private IPv4 addresses for customer networks that belong to the address space named ContosoAddSpace01.
+     </p>
+     <p>
+      <strong>
+       Example 6: Get physical IP addresses from all address spaces
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-IpamAddress -IpAddress 10.12.1.1, 10.12.3.1</code></pre>
+     <p>
+      This command gets the physical IP addresses 10.12.1.1 and 10.12.3.1.
+Because the command does not specify the
+      <em>
+       AddressSpace
+      </em>
+      parameter, the command gets IP addresses from all address spaces which match the IP address 10.12.1.1 and 10.12.3.1.
+     </p>
+     <p>
+      <strong>
+       Example 7: Get duplicate addresses in an address space
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; Get-IpamAddress -AddressFamily IPv4 -AddressSpace Default | Where-Object {$_.duplicate -eq $true} | Format-List IPAddress, NetworkType, ManagedByService, ServiceInstance, ProviderAddressSpace
+IpAddress            : 172.16.10.16
+
+NetworkType          : Provider
+
+ManagedByService     : VMM
+
+ServiceInstance      : vmm1.contoso.com
+
+ProviderAddressSpace : Default
+IpAddress            : 172.16.10.16
+
+NetworkType          : Provider
+
+Duplicate            : True
+
+ManagedByService     : IPAM
+
+ServiceInstance      : Localhost
+
+ProviderAddressSpace : Default</code></pre>
+     <p>
+      This command gets all duplicate IPv4 addresses in the default provider address space.
+The Default address space is the address space to which the IPAM entity belongs.
+The command returns two addresses that have the IP address 172.16.10.16.
+One address is managed by IPAM and the other address is managed by vmmblue_1.
+The IPAM server marks both these addresses as duplicate.
+The command uses the
+      <strong>
+       Format-List
+      </strong>
+      cmdlet to display the output in the form of a table.
+For more information, type
+      <code>
+       Get-Help Format-Table
+      </code>
+      .
+     </p>
+     <p>
+      <strong>
+       Example 8: Get IP addresses that map to a subnet
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; $ContosoPhysicalSubnet = Get-IpamSubnet -NetworkId "10.12.0.0/16"
+PS C:\&gt; Get-IpamAddress -MappingToSubnet $ContosoPhysicalSubnet</code></pre>
+     <p>
+      This example gets all IP addresses that map to a subnet.
+Because the network type of the subnet is non-virtualized, the result contains only physical addresses and the fabric addresses from the default address space which belong to the subnet.
+     </p>
+     <p>
+      The first command uses the
+      <strong>
+       Get-IpamSubnet
+      </strong>
+      cmdlet to get the
+      <strong>
+       IpamSubnet
+      </strong>
+      object that contain subnets configured in IPAM for the network that has the ID 10.12.0.0/16.
+The command stores the object in the
+      <strong>
+       $ContosoPhysicalSubnet
+      </strong>
+      variable.
+     </p>
+     <p>
+      The second command gets all the IP addresses that belong to the IP subnet stored in the
+      <strong>
+       $ContosoPhysicalSubnet
+      </strong>
+      variable.
+     </p>
+     <p>
+      <strong>
+       Example 9: Get all IP address that map to a an IP range
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; $Range = Get-IpamRange -StartIPAddress 10.12.1.1 -EndIPAddress 10.12.1.254
+PS C:\&gt; Get-IpamAddress -MappingToRange $Range</code></pre>
+     <p>
+      This example gets all IP addresses that belong to a range of IP addresses.
+     </p>
+     <p>
+      The first command uses the
+      <strong>
+       Get-IpamRange
+      </strong>
+      cmdlet to get an
+      <strong>
+       IpamRange
+      </strong>
+      object that contains an IP range configured in IPAM.
+The command stores the object in the $Range variable.
+     </p>
+     <p>
+      The second command gets all the IP addresses that belong to the range stored in the $Range variable.
+     </p>
+     <h2 id="required-parameters">
+      Required Parameters
+     </h2>
+     <div class="parameterName stack">
+      -AddressFamily
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies an array of address families of IP addresses.
+      </p>
+      <p>
+       The acceptable values for this parameter are:
+      </p>
+      <ul>
+       <li>
+        IPv4
+       </li>
+       <li>
+        IPv6
+       </li>
+      </ul>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          AddressFamily[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Parameter Sets:
+        </td>
+        <td>
+         IPv4, IPv6
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -IpAddress
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies an array of IP addresses.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          IPAddress[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         1
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -MappingToBlock
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies an IP block.
+The cmdlet gets the addresses that belong to the IP block.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          CimInstance
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByValue)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -MappingToRange
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies an IP address range.
+The cmdlet gets the addresses that belong to the IP range.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          CimInstance
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByValue)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -MappingToSubnet
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies an IP subnet.
+The cmdlet gets the addresses that belong to the IP subnet.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          CimInstance
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByValue)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="optional-parameters">
+      Optional Parameters
+     </h2>
+     <div class="parameterName stack">
+      -AddressCategory
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies an array of IP address categories.
+If you specify this parameter, you must specify the
+       <em>
+        AddressFamily
+       </em>
+       parameter.
+      </p>
+      <p>
+       The acceptable values for this parameter are:
+      </p>
+      <ul>
+       <li>
+        Public
+       </li>
+       <li>
+        Private
+       </li>
+      </ul>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          AddressCategory[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Parameter Sets:
+        </td>
+        <td>
+         Public, Private, Global
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -AddressSpace
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies an array of names of address spaces.
+If you do not specify this parameter, the cmdlet gets the addresses for all address spaces in IPAM.
+If you specify this parameter, you must specify the
+       <em>
+        AddressFamily
+       </em>
+       parameter.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -AsJob
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Runs the cmdlet as a background job. Use this parameter to run commands that take a long time to complete.
+      </p>
+      <p>
+       The cmdlet immediately returns an object that represents the job and then displays the command prompt. 
+You can continue to work in the session while the job completes. 
+To manage the job, use the
+       <code>
+        *-Job
+       </code>
+       cmdlets. 
+To get the job results, use the
+       <a data-linktype="external" href="http://go.microsoft.com/fwlink/?LinkID=113372">
+        Receive-Job
+       </a>
+       cmdlet.
+      </p>
+      <p>
+       For more information about Windows PowerShell background jobs, see
+       <a data-linktype="external" href="http://go.microsoft.com/fwlink/?LinkID=113251">
+        about_Jobs
+       </a>
+       .
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -CimSession
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Runs the cmdlet in a remote session or on a remote computer.
+Enter a computer name or a session object, such as the output of a
+       <a data-linktype="external" href="http://go.microsoft.com/fwlink/p/?LinkId=227967">
+        New-CimSession
+       </a>
+       or
+       <a data-linktype="external" href="http://go.microsoft.com/fwlink/p/?LinkId=227966">
+        Get-CimSession
+       </a>
+       cmdlet.
+The default is the current session on the local computer.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          CimSession[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         Session
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -ManagedByService
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies an array of names of the services that manage the IP addresses.
+The values that you specify for this parameter must exist in the set of values that you defined for the
+       <strong>
+        ManagedByService
+       </strong>
+       custom field in IPAM.
+      </p>
+      <p>
+       You can use the Add-IpamCustomValue to add a value to the
+       <strong>
+        ManagedByService
+       </strong>
+       custom field in IPAM.
+You can use the Remove-IpamCustomValue to remove a value from the
+       <strong>
+        ManagedByService
+       </strong>
+       custom field in IPAM.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         MB
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -NetworkType
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the network type of the address.
+The acceptable values for this parameter are:
+      </p>
+      <ul>
+       <li>
+        Provider
+       </li>
+       <li>
+        Customer
+       </li>
+       <li>
+        NonVirtualized
+       </li>
+      </ul>
+      <p>
+       The default value is NonVirtualized.
+      </p>
+      <p>
+       If you specify Default for the
+       <em>
+        AddressSpace
+       </em>
+       parameter, the valid values for this parameter are Provider and NonVirtualized.
+If you specify a provider type of address space for the
+       <em>
+        AddressSpace
+       </em>
+       parameter, you must specify Provider for this parameter.
+If you specify a customer type of address space for the
+       <em>
+        AddressSpace
+       </em>
+       parameter, you must specify Customer for this parameter.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          VirtualizationType[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Parameter Sets:
+        </td>
+        <td>
+         NonVirtualized, Provider, Customer
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -ServiceInstance
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies an array of instances of the services that manage the IP addresses.
+Specify the instances of the service that you specified for the
+       <em>
+        ManagedByService
+       </em>
+       parameter.
+The value that you specify for this parameter must exist in the set of values that you defined for the
+       <strong>
+        ServiceInstance
+       </strong>
+       custom field in IPAM.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         SI
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -ThrottleLimit
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the maximum number of concurrent operations that can be established to run the cmdlet.
+If this parameter is omitted or a value of
+       <code>
+        0
+       </code>
+       is entered, then Windows PowerShellÂ® calculates an optimum throttle limit for the cmdlet based on the number of CIM cmdlets that are running on the computer.
+The throttle limit applies only to the current cmdlet, not to the session or to the computer.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Int32
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Unmapped
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that the cmdlet gets addresses that do not belong to any address families of IP addresses in IPAM.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="outputs">
+      Outputs
+     </h2>
+     <p>
+      <strong>
+       IpamAddress[]
+      </strong>
+     </p>
+     <p>
+      This cmdlet returns an object that represents a set of IP addresses on the IPAM server.
+     </p>
+     <h2 id="related-links">
+      Related Links
+     </h2>
+     <ul>
+      <li>
+       <a data-linktype="relative-path" href="./set-ipamaddress.html">
+        Set-IpamAddress
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="./add-ipamaddress.html">
+        Add-IpamAddress
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="./remove-ipamaddress.html">
+        Remove-IpamAddress
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="./import-ipamaddress.html">
+        Import-IpamAddress
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="./export-ipamaddress.html">
+        Export-IpamAddress
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="./add-ipamcustomvalue.html">
+        Add-IpamCustomValue
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="./remove-ipamcustomvalue.html">
+        Remove-IpamCustomValue
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="./get-ipamsubnet.html">
+        Get-IpamSubnet
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="./get-ipamrange.html">
+        Get-IpamRange
+       </a>
+      </li>
+     </ul>
+     <!-- </content> -->
+    </main>
+    <section class="feedback-section" data-bi-name="feedback-section">
+     <h2 id="feedback">
+      Feedback
+     </h2>
+     <div class="alert choose-feedback-type">
+      <p>
+       We'd love to hear your thoughts. Choose the type you'd like to provide:
+      </p>
+      <div class="choose-feedback-buttons">
+       <a class="button-border feedback-type-product" data-bi-name="product-feedback" href="https://windowsserver.uservoice.com/forums/301869-powershell">
+        Product feedback
+        <span aria-hidden="true" class="docon docon-navigate-external">
+        </span>
+       </a>
+       <div class="button-group">
+        <button class="button-border feedback-sign-in-button" data-bi-name="feedback-sign-in">
+         <span aria-hidden="true" class="docon docon-brand-github">
+         </span>
+         Sign in to give documentation feedback
+        </button>
+        <button aria-controls="feedback-form" aria-expanded="false" class="button-border feedback-form-toggle" data-bi-name="documentation-feedback" hidden="">
+         Content feedback
+        </button>
+        <div auto-align="" class="dropdown has-caret">
+         <button aria-controls="fbm0" aria-expanded="false" aria-haspopup="true" aria-label="Expand documentation feedback menu" class="button-border dropdown-trigger" data-bi-name="documentation-feedback-menu">
+          <span aria-hidden="true" class="docon docon-chevron-down-light">
+          </span>
+         </button>
+         <div class="dropdown-menu documentation-feedback-menu" id="fbm0" role="menu">
+          You may also leave feedback
+          <a data-bi-name="create-issue-on-github" href="{0}">
+           directly on GitHub
+           <span aria-hidden="true" class="docon docon-navigate-external">
+           </span>
+          </a>
+          .
+         </div>
+        </div>
+       </div>
+      </div>
+      <p>
+       <small>
+        Our new feedback system is built on GitHub Issues. Read about this change in
+        <a href="https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs">
+         our blog post
+        </a>
+        .
+       </small>
+      </p>
+     </div>
+     <form accept-charset="UTF-8" action="javascript:" autocomplete="off" class="feedback-form" hidden="" id="feedback-form">
+      <h3 class="feedback-form-heading current-user">
+       <img alt="Avatar" aria-hidden="true" class="avatar" height="36" width="36"/>
+       <span aria-hidden="true" class="username">
+       </span>
+       <span class="visually-hidden">
+        Liquid error: Can't find the localized string giveDocumentationFeedback for template Conceptual.
+       </span>
+      </h3>
+      <label>
+       <span class="visually-hidden">
+        Title
+       </span>
+       <input name="title" pattern=".*\w.*" placeholder="Title" required="" type="text"/>
+      </label>
+      <label>
+       <span class="visually-hidden">
+        Leave a comment
+       </span>
+       <textarea name="body" placeholder="Leave a comment" required=""></textarea>
+      </label>
+      <div class="action-container">
+       <button class="primary-action" name="submit" type="submit">
+        Submit feedback
+       </button>
+      </div>
+     </form>
+     <div class="feedback-status alert busy" role="alert">
+      <p>
+       Loading feedback...
+      </p>
+     </div>
+     <div class="feedback-tab-group tabGroup" data-tab-group-independent="" hidden="">
+      <ul role="tablist">
+       <li role="presentation">
+        <a aria-controls="tabpanel-issues-open" aria-label="Open Issues" data-tab="issues-open" href="#tabpanel-issues-open" role="tab">
+        </a>
+       </li>
+       <li role="presentation">
+        <a aria-controls="tabpanel-issues-closed" aria-label="Closed Issues" data-tab="issues-closed" href="#tabpanel-issues-closed" role="tab">
+        </a>
+       </li>
+      </ul>
+      <section data-tab="issues-open" id="tabpanel-issues-open" role="tabpanel">
+       <div class="no-issues-placeholder">
+        There are no open issues
+       </div>
+       <ul aria-label="Open Issues" class="github-issues-list">
+       </ul>
+      </section>
+      <section data-tab="issues-closed" id="tabpanel-issues-closed" role="tabpanel">
+       <div class="no-issues-placeholder">
+        There are no closed issues
+       </div>
+       <ul aria-label="Closed Issues" class="github-issues-list">
+       </ul>
+      </section>
+     </div>
+     <div class="action-container">
+      <a class="view-on-github" data-bi-name="view-on-github" hidden="" href="https://github.com/MicrosoftDocs/windows-powershell-docs/issues">
+       <span aria-hidden="true" class="docon docon-brand-github">
+       </span>
+       <span>
+        View on GitHub
+       </span>
+       <span aria-hidden="true" class="docon docon-navigate-external">
+       </span>
+      </a>
+     </div>
+    </section>
+   </div>
+  </div>
+  <div class="openfeedback-container" id="openFeedbackContainer">
+  </div>
+  <div class="action-panel">
+  </div>
+ </body>
+</html>

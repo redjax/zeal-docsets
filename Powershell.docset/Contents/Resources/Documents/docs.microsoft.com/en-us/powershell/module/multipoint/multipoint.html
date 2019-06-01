@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html class="no-js hasSidebar hasPageActions hasBreadcrumb conceptual" data-authenticated="false" data-render="docs" dir="ltr" lang="en-us">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="MultiPoint" property="og:title"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" property="og:image"/>
+  <meta content="summary" name="twitter:card"/>
+  <meta content="@docsmsft" name="twitter:site"/>
+  <meta content="MultiPoint" name="twitter:title"/>
+  <meta content="Use this topic to help manage Windows and Windows Server technologies with Windows PowerShell." name="twitter:description"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" name="twitter:image"/>
+  <meta content="Microsoft Logo" name="twitter:image:alt"/>
+  <meta content="Docs" name="search.ms_sitename"/>
+  <meta content="powershell-windows" name="search.ms_docsetname"/>
+  <meta content="0" name="version"/>
+  <meta content="en-us" name="locale"/>
+  <meta content="Docs" name="site_name"/>
+  <meta content="MSDN" name="search.ms_product"/>
+  <meta content="MSDN.powershell-windows" name="depot_name"/>
+  <meta content="https://cpubwin.visualstudio.com/DefaultCollection/powershell/_git/powershell/commit/ced7757924addcaea0b7a244ae4d240e4d28d93a?path=%2fdocset%2fwindows%2fmultipoint%2fmultipoint.md&amp;_a=contents" name="ref_skeleton_gitcommit"/>
+  <meta content="https://cpubwin.visualstudio.com/DefaultCollection/powershell/_git/powershell?path=%2fdocset%2fwindows%2fmultipoint%2fmultipoint.md&amp;version=GBlive&amp;_a=contents" name="original_ref_skeleton_git_url"/>
+  <meta content="2017-09-15 03:44 AM" name="updated_at"/>
+  <meta content="16d64803-5df8-e663-7eff-30c2a6263d18" name="document_id"/>
+  <meta content="8859c1b4-17a6-81c2-038d-8a8adb5be14d" name="document_version_independent_id"/>
+  <meta content="powershell" name="page_type"/>
+  <meta content="module" name="page_kind"/>
+  <meta content="../win10-ps/toc.json?view=win10-ps" name="toc_rel"/>
+  <meta content="manage" name="ms.mktglfcycl"/>
+  <meta content="library" name="ms.sitesec"/>
+  <meta content="brianlic" name="ms.author"/>
+  <meta content="MultiPoint" name="Module_Name"/>
+  <meta content="EF349263-9FC1-4B71-8DA7-F74E0E18A151" name="Module_Guid"/>
+  <meta content="http://go.microsoft.com/fwlink/?linkid=216322" name="Download_Help_Link"/>
+  <meta content="5.0.0.1" name="Help_Version"/>
+  <meta content="en-US" name="Locale"/>
+  <meta content="Use this topic to help manage Windows and Windows Server technologies with Windows PowerShell." name="description"/>
+  <meta content="powershell, cmdlet" name="keywords"/>
+  <meta content="brianlic-msft" name="author"/>
+  <meta content="alanth" name="manager"/>
+  <meta content="12/20/2016" name="ms.date"/>
+  <meta content="reference" name="ms.topic"/>
+  <meta content="w10" name="ms.prod"/>
+  <meta content="powershell-windows" name="ms.technology"/>
+  <meta content="D33BD27F-8640-4BC3-85AA-C34123FD506B" name="ms.assetid"/>
+  <meta content="multipoint" name="Add-WmsSystem"/>
+  <meta content="multipoint" name="Clear-WmsStation"/>
+  <meta content="multipoint" name="Close-WmsApp"/>
+  <meta content="multipoint" name="Close-WmsSession"/>
+  <meta content="multipoint" name="Disable-WmsDiskProtection"/>
+  <meta content="multipoint" name="Disable-WmsScheduledUpdate"/>
+  <meta content="multipoint" name="Disable-WmsWebLimiting"/>
+  <meta content="multipoint" name="Disconnect-WmsSession"/>
+  <meta content="multipoint" name="Enable-WmsDiskProtection"/>
+  <meta content="multipoint" name="Enable-WmsScheduledUpdate"/>
+  <meta content="multipoint" name="Enable-WmsWebLimiting"/>
+  <meta content="multipoint" name="Get-WmsAlert"/>
+  <meta content="multipoint" name="Get-WmsApp"/>
+  <meta content="multipoint" name="Get-WmsDiskProtection"/>
+  <meta content="multipoint" name="Get-WmsScheduledUpdate"/>
+  <meta content="multipoint" name="Get-WmsSession"/>
+  <meta content="multipoint" name="Get-WmsStation"/>
+  <meta content="multipoint" name="Get-WmsSystem"/>
+  <meta content="multipoint" name="Get-WmsUser"/>
+  <meta content="multipoint" name="Get-WmsVersion"/>
+  <meta content="multipoint" name="Get-WmsWebLimiting"/>
+  <meta content="multipoint" name="Hide-WmsIdentifier"/>
+  <meta content="multipoint" name="Join-WmsStation"/>
+  <meta content="multipoint" name="Lock-WmsSession"/>
+  <meta content="multipoint" name="Lock-WmsUsbStorage"/>
+  <meta content="multipoint" name="New-WmsUser"/>
+  <meta content="multipoint" name="Open-WmsApp"/>
+  <meta content="multipoint" name="Publish-WmsDesktop"/>
+  <meta content="multipoint" name="Remove-WmsSystem"/>
+  <meta content="multipoint" name="Remove-WmsUser"/>
+  <meta content="multipoint" name="Restart-WmsSystem"/>
+  <meta content="multipoint" name="Resume-WmsDiskProtection"/>
+  <meta content="multipoint" name="Search-WmsSystem"/>
+  <meta content="multipoint" name="Set-WmsScheduledUpdate"/>
+  <meta content="multipoint" name="Set-WmsStation"/>
+  <meta content="multipoint" name="Set-WmsSystem"/>
+  <meta content="multipoint" name="Set-WmsUser"/>
+  <meta content="multipoint" name="Set-WmsWebLimiting"/>
+  <meta content="multipoint" name="Show-WmsDesktop"/>
+  <meta content="multipoint" name="Show-WmsIdentifier"/>
+  <meta content="multipoint" name="Split-WmsStation"/>
+  <meta content="multipoint" name="Stop-WmsSystem"/>
+  <meta content="multipoint" name="Suspend-WmsDiskProtection"/>
+  <meta content="multipoint" name="Unlock-WmsSession"/>
+  <meta content="multipoint" name="Unlock-WmsUsbStorage"/>
+  <meta content="multipoint" name="Unpublish-WmsDesktop"/>
+  <meta content="multipoint" name="Update-WmsStation"/>
+  <meta content="powershell" name="ms.devlang"/>
+  <meta content="INDEX, FOLLOW" name="ROBOTS"/>
+  <meta content="/powershell/windows/bread/toc.json?view=win10-ps" name="breadcrumb_path"/>
+  <meta content="powershell" name="apiPlatform"/>
+  <meta content="MSDocsHeader-WindowsIT" name="uhfHeaderId"/>
+  <link href="https://docs.microsoft.com/en-us/powershell/module/multipoint/" rel="canonical"/>
+  <title>
+   MultiPoint
+  </title>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/e4a1f3a3.site.css" rel="stylesheet"/>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/31353636.conceptual.css" rel="stylesheet"/>
+ </head>
+ <body dir="ltr" lang="en-us">
+  <div class="header-holder">
+   <div data-bi-name="header" id="headerAreaHolder">
+    <div id="uhf-placeholder">
+    </div>
+   </div>
+   <div class="disclaimer-holder" id="disclaimer-holder">
+   </div>
+  </div>
+  <div class="container mainContainer" data-bi-name="body">
+   <div class="content-header" data-bi-name="content-header">
+    <div class="content-header-controls">
+     <button class="contents-button button-border" data-bi-name="contents-expand" type="button">
+      <span class="docon docon-menu">
+      </span>
+      Contents
+     </button>
+    </div>
+    <div class="content-header-controls">
+     <button class="ap-collapse-behavior ap-expanded button-border" data-bi-name="ap-collapse" type="button">
+      <span class="docon docon-exit-mode">
+      </span>
+      Exit focus mode
+     </button>
+    </div>
+   </div>
+   <div class="primary-holder">
+    <main class="content" data-bi-name="content" dir="ltr" id="main" lang="en-us" role="main">
+     <!-- <content> -->
+     <h1>
+      Multi
+      <wbr/>
+      Point
+     </h1>
+     <div class="summaryHolder">
+      <div class="summary">
+       <p>
+        The MultiPoint cmdlets in this module are used to manage Windows MultiPoint Server sessions and users.
+       </p>
+      </div>
+     </div>
+     <h2 id="multipoint">
+      multipoint
+     </h2>
+     <table class="nameValue">
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Add-WmsSystem.html">
+         Add-Wms
+         <wbr/>
+         System
+        </a>
+       </td>
+       <td>
+        <p>
+         Adds a computer that can be remotely managed.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Clear-WmsStation.html">
+         Clear-Wms
+         <wbr/>
+         Station
+        </a>
+       </td>
+       <td>
+        <p>
+         Clears station mapping information for all stations.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Close-WmsApp.html">
+         Close-Wms
+         <wbr/>
+         App
+        </a>
+       </td>
+       <td>
+        <p>
+         Closes an application.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Close-WmsSession.html">
+         Close-Wms
+         <wbr/>
+         Session
+        </a>
+       </td>
+       <td>
+        <p>
+         Logs the user off of the specified session.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Disable-WmsDiskProtection.html">
+         Disable-Wms
+         <wbr/>
+         Disk
+         <wbr/>
+         Protection
+        </a>
+       </td>
+       <td>
+        <p>
+         Removes the disk protection driver from the filter stack.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Disable-WmsScheduledUpdate.html">
+         Disable-Wms
+         <wbr/>
+         Scheduled
+         <wbr/>
+         Update
+        </a>
+       </td>
+       <td>
+        <p>
+         Disables scheduled updates while disk protection is enabled and in discard mode.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Disable-WmsWebLimiting.html">
+         Disable-Wms
+         <wbr/>
+         Web
+         <wbr/>
+         Limiting
+        </a>
+       </td>
+       <td>
+        <p>
+         Disables web limiting for a session.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Disconnect-WmsSession.html">
+         Disconnect-Wms
+         <wbr/>
+         Session
+        </a>
+       </td>
+       <td>
+        <p>
+         Disconnects a session.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Enable-WmsDiskProtection.html">
+         Enable-Wms
+         <wbr/>
+         Disk
+         <wbr/>
+         Protection
+        </a>
+       </td>
+       <td>
+        <p>
+         Enables disk protection.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Enable-WmsScheduledUpdate.html">
+         Enable-Wms
+         <wbr/>
+         Scheduled
+         <wbr/>
+         Update
+        </a>
+       </td>
+       <td>
+        <p>
+         Enables scheduled updates while disk protection is enabled and in discard mode.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Enable-WmsWebLimiting.html">
+         Enable-Wms
+         <wbr/>
+         Web
+         <wbr/>
+         Limiting
+        </a>
+       </td>
+       <td>
+        <p>
+         Enables web limiting for a session.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-WmsAlert.html">
+         Get-Wms
+         <wbr/>
+         Alert
+        </a>
+       </td>
+       <td>
+        <p>
+         Gets alert information.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-WmsApp.html">
+         Get-Wms
+         <wbr/>
+         App
+        </a>
+       </td>
+       <td>
+        <p>
+         Gets a collection of currently running applications in a session.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-WmsDiskProtection.html">
+         Get-Wms
+         <wbr/>
+         Disk
+         <wbr/>
+         Protection
+        </a>
+       </td>
+       <td>
+        <p>
+         Gets the current state and configuration of the disk protection feature.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-WmsScheduledUpdate.html">
+         Get-Wms
+         <wbr/>
+         Scheduled
+         <wbr/>
+         Update
+        </a>
+       </td>
+       <td>
+        <p>
+         Gets the scheduled update configuration.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-WmsSession.html">
+         Get-Wms
+         <wbr/>
+         Session
+        </a>
+       </td>
+       <td>
+        <p>
+         Gets session information.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-WmsStation.html">
+         Get-Wms
+         <wbr/>
+         Station
+        </a>
+       </td>
+       <td>
+        <p>
+         Gets station information.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-WmsSystem.html">
+         Get-Wms
+         <wbr/>
+         System
+        </a>
+       </td>
+       <td>
+        <p>
+         Gets MultiPoint Server system information.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-WmsUser.html">
+         Get-Wms
+         <wbr/>
+         User
+        </a>
+       </td>
+       <td>
+        <p>
+         Gets local user account information.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-WmsVersion.html">
+         Get-Wms
+         <wbr/>
+         Version
+        </a>
+       </td>
+       <td>
+        <p>
+         Gets the server version, the Connector version, and the SKU.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-WmsWebLimiting.html">
+         Get-Wms
+         <wbr/>
+         Web
+         <wbr/>
+         Limiting
+        </a>
+       </td>
+       <td>
+        <p>
+         Gets the web limiting configuration.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Hide-WmsIdentifier.html">
+         Hide-Wms
+         <wbr/>
+         Identifier
+        </a>
+       </td>
+       <td>
+        <p>
+         Hides the identification window for a station or session.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Join-WmsStation.html">
+         Join-Wms
+         <wbr/>
+         Station
+        </a>
+       </td>
+       <td>
+        <p>
+         Unsplits a station.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Lock-WmsSession.html">
+         Lock-Wms
+         <wbr/>
+         Session
+        </a>
+       </td>
+       <td>
+        <p>
+         Locks a session for a user.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Lock-WmsUsbStorage.html">
+         Lock-Wms
+         <wbr/>
+         Usb
+         <wbr/>
+         Storage
+        </a>
+       </td>
+       <td>
+        <p>
+         Prevents USB storage devices from being used.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="New-WmsUser.html">
+         New-Wms
+         <wbr/>
+         User
+        </a>
+       </td>
+       <td>
+        <p>
+         Modifies a Windows MultiPoint Server user account.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Open-WmsApp.html">
+         Open-Wms
+         <wbr/>
+         App
+        </a>
+       </td>
+       <td>
+        <p>
+         Launches an application in a session.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Publish-WmsDesktop.html">
+         Publish-Wms
+         <wbr/>
+         Desktop
+        </a>
+       </td>
+       <td>
+        <p>
+         Shares a desktop and optionally allows remote control of the desktop.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Remove-WmsSystem.html">
+         Remove-Wms
+         <wbr/>
+         System
+        </a>
+       </td>
+       <td>
+        <p>
+         Removes a computer from the list of managed systems.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Remove-WmsUser.html">
+         Remove-Wms
+         <wbr/>
+         User
+        </a>
+       </td>
+       <td>
+        <p>
+         Removes a local user from the current MultiPoint Server system.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Restart-WmsSystem.html">
+         Restart-Wms
+         <wbr/>
+         System
+        </a>
+       </td>
+       <td>
+        <p>
+         Restarts a computer that is running MultiPoint Server.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Resume-WmsDiskProtection.html">
+         Resume-Wms
+         <wbr/>
+         Disk
+         <wbr/>
+         Protection
+        </a>
+       </td>
+       <td>
+        <p>
+         Switches disk protection to discard mode.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Search-WmsSystem.html">
+         Search-Wms
+         <wbr/>
+         System
+        </a>
+       </td>
+       <td>
+        <p>
+         Gets MultiPoint servers or personal computers running MultiPoint Connector in the same network.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Set-WmsScheduledUpdate.html">
+         Set-Wms
+         <wbr/>
+         Scheduled
+         <wbr/>
+         Update
+        </a>
+       </td>
+       <td>
+        <p>
+         Sets the schedule for Windows updates and custom maintenance scripts.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Set-WmsStation.html">
+         Set-Wms
+         <wbr/>
+         Station
+        </a>
+       </td>
+       <td>
+        <p>
+         Modifies station information.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Set-WmsSystem.html">
+         Set-Wms
+         <wbr/>
+         System
+        </a>
+       </td>
+       <td>
+        <p>
+         Modifies system properties.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Set-WmsUser.html">
+         Set-Wms
+         <wbr/>
+         User
+        </a>
+       </td>
+       <td>
+        <p>
+         Modifies a Windows MultiPoint Server user account.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Set-WmsWebLimiting.html">
+         Set-Wms
+         <wbr/>
+         Web
+         <wbr/>
+         Limiting
+        </a>
+       </td>
+       <td>
+        <p>
+         Configures web limiting for standard user sessions.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Show-WmsDesktop.html">
+         Show-Wms
+         <wbr/>
+         Desktop
+        </a>
+       </td>
+       <td>
+        <p>
+         Displays the currently shared desktop to the specified sessions.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Show-WmsIdentifier.html">
+         Show-Wms
+         <wbr/>
+         Identifier
+        </a>
+       </td>
+       <td>
+        <p>
+         Displays the identification screen for a station.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Split-WmsStation.html">
+         Split-Wms
+         <wbr/>
+         Station
+        </a>
+       </td>
+       <td>
+        <p>
+         Splits a station.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Stop-WmsSystem.html">
+         Stop-Wms
+         <wbr/>
+         System
+        </a>
+       </td>
+       <td>
+        <p>
+         Shuts down a computer that is running Windows MultiPoint Server.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Suspend-WmsDiskProtection.html">
+         Suspend-Wms
+         <wbr/>
+         Disk
+         <wbr/>
+         Protection
+        </a>
+       </td>
+       <td>
+        <p>
+         Suspends disk protection.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Unlock-WmsSession.html">
+         Unlock-Wms
+         <wbr/>
+         Session
+        </a>
+       </td>
+       <td>
+        <p>
+         Unblocks a user for desktop use.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Unlock-WmsUsbStorage.html">
+         Unlock-Wms
+         <wbr/>
+         Usb
+         <wbr/>
+         Storage
+        </a>
+       </td>
+       <td>
+        <p>
+         Unlocks USB storage.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Unpublish-WmsDesktop.html">
+         Unpublish-Wms
+         <wbr/>
+         Desktop
+        </a>
+       </td>
+       <td>
+        <p>
+         Stops the sharing of the specified session desktop.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Update-WmsStation.html">
+         Update-Wms
+         <wbr/>
+         Station
+        </a>
+       </td>
+       <td>
+        <p>
+         Forces a station to reload its configuration settings.
+        </p>
+       </td>
+      </tr>
+     </table>
+     <!-- </content> -->
+    </main>
+    <section class="feedback-section" data-bi-name="feedback-section">
+     <h2 id="feedback">
+      Feedback
+     </h2>
+     <div class="alert choose-feedback-type">
+      <p>
+       We'd love to hear your thoughts. Choose the type you'd like to provide:
+      </p>
+      <div class="choose-feedback-buttons">
+       <a class="button-border feedback-type-product" data-bi-name="product-feedback" href="https://windowsserver.uservoice.com/forums/301869-powershell">
+        Product feedback
+        <span aria-hidden="true" class="docon docon-navigate-external">
+        </span>
+       </a>
+       <div class="button-group">
+        <button class="button-border feedback-sign-in-button" data-bi-name="feedback-sign-in">
+         <span aria-hidden="true" class="docon docon-brand-github">
+         </span>
+         Sign in to give documentation feedback
+        </button>
+        <button aria-controls="feedback-form" aria-expanded="false" class="button-border feedback-form-toggle" data-bi-name="documentation-feedback" hidden="">
+         Content feedback
+        </button>
+        <div auto-align="" class="dropdown has-caret">
+         <button aria-controls="fbm0" aria-expanded="false" aria-haspopup="true" aria-label="Expand documentation feedback menu" class="button-border dropdown-trigger" data-bi-name="documentation-feedback-menu">
+          <span aria-hidden="true" class="docon docon-chevron-down-light">
+          </span>
+         </button>
+         <div class="dropdown-menu documentation-feedback-menu" id="fbm0" role="menu">
+          You may also leave feedback
+          <a data-bi-name="create-issue-on-github" href="{0}">
+           directly on GitHub
+           <span aria-hidden="true" class="docon docon-navigate-external">
+           </span>
+          </a>
+          .
+         </div>
+        </div>
+       </div>
+      </div>
+      <p>
+       <small>
+        Our new feedback system is built on GitHub Issues. Read about this change in
+        <a href="https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs">
+         our blog post
+        </a>
+        .
+       </small>
+      </p>
+     </div>
+     <form accept-charset="UTF-8" action="javascript:" autocomplete="off" class="feedback-form" hidden="" id="feedback-form">
+      <h3 class="feedback-form-heading current-user">
+       <img alt="Avatar" aria-hidden="true" class="avatar" height="36" width="36"/>
+       <span aria-hidden="true" class="username">
+       </span>
+       <span class="visually-hidden">
+        Liquid error: Can't find the localized string giveDocumentationFeedback for template Conceptual.
+       </span>
+      </h3>
+      <label>
+       <span class="visually-hidden">
+        Title
+       </span>
+       <input name="title" pattern=".*\w.*" placeholder="Title" required="" type="text"/>
+      </label>
+      <label>
+       <span class="visually-hidden">
+        Leave a comment
+       </span>
+       <textarea name="body" placeholder="Leave a comment" required=""></textarea>
+      </label>
+      <div class="action-container">
+       <button class="primary-action" name="submit" type="submit">
+        Submit feedback
+       </button>
+      </div>
+     </form>
+     <div class="feedback-status alert busy" role="alert">
+      <p>
+       Loading feedback...
+      </p>
+     </div>
+     <div class="feedback-tab-group tabGroup" data-tab-group-independent="" hidden="">
+      <ul role="tablist">
+       <li role="presentation">
+        <a aria-controls="tabpanel-issues-open" aria-label="Open Issues" data-tab="issues-open" href="#tabpanel-issues-open" role="tab">
+        </a>
+       </li>
+       <li role="presentation">
+        <a aria-controls="tabpanel-issues-closed" aria-label="Closed Issues" data-tab="issues-closed" href="#tabpanel-issues-closed" role="tab">
+        </a>
+       </li>
+      </ul>
+      <section data-tab="issues-open" id="tabpanel-issues-open" role="tabpanel">
+       <div class="no-issues-placeholder">
+        There are no open issues
+       </div>
+       <ul aria-label="Open Issues" class="github-issues-list">
+       </ul>
+      </section>
+      <section data-tab="issues-closed" id="tabpanel-issues-closed" role="tabpanel">
+       <div class="no-issues-placeholder">
+        There are no closed issues
+       </div>
+       <ul aria-label="Closed Issues" class="github-issues-list">
+       </ul>
+      </section>
+     </div>
+     <div class="action-container">
+      <a class="view-on-github" data-bi-name="view-on-github" hidden="" href="https://github.com/MicrosoftDocs/windows-powershell-docs/issues">
+       <span aria-hidden="true" class="docon docon-brand-github">
+       </span>
+       <span>
+        View on GitHub
+       </span>
+       <span aria-hidden="true" class="docon docon-navigate-external">
+       </span>
+      </a>
+     </div>
+    </section>
+   </div>
+  </div>
+  <div class="openfeedback-container" id="openFeedbackContainer">
+  </div>
+  <div class="action-panel">
+  </div>
+ </body>
+</html>

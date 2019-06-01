@@ -1,0 +1,217 @@
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML><HEAD><TITLE>Man page of PTHREAD_MUTEXATTR_GETPSHARED</TITLE>
+</HEAD><BODY>
+<H1>PTHREAD_MUTEXATTR_GETPSHARED</H1>
+Section: POSIX Programmer's Manual (3P)<BR>Updated: 2013<BR><A HREF="#index">Index</A>
+<A HREF="../index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>PROLOG</H2>
+
+This manual page is part of the POSIX Programmer's Manual.
+The Linux implementation of this interface may differ (consult
+the corresponding Linux manual page for details of Linux behavior),
+or the interface may not be implemented on Linux.
+<P>
+<A NAME="lbAC">&nbsp;</A>
+<H2>NAME</H2>
+
+pthread_mutexattr_getpshared,
+pthread_mutexattr_setpshared
+--- get and set the process-shared attribute
+<A NAME="lbAD">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<P>
+
+<PRE>
+#include &lt;<A HREF="file:///usr/include/pthread.h">pthread.h</A>&gt;
+
+int pthread_mutexattr_getpshared(const pthread_mutexattr_t
+    *restrict <I>attr</I>, int *restrict <I>pshared</I>);
+int pthread_mutexattr_setpshared(pthread_mutexattr_t *<I>attr</I>,
+    int <I>pshared</I>);
+</PRE>
+
+<A NAME="lbAE">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+The
+<I>pthread_mutexattr_getpshared</I>()
+function shall obtain the value of the
+<I>process-shared</I>
+
+attribute from the attributes object referenced by
+<I>attr</I>.
+
+<P>
+
+The
+<I>pthread_mutexattr_setpshared</I>()
+function shall set the
+<I>process-shared</I>
+
+attribute in an initialized attributes object referenced by
+<I>attr</I>.
+
+<P>
+
+The
+<I>process-shared</I>
+
+attribute is set to PTHREAD_PROCESS_SHARED to permit a mutex
+to be operated upon by any thread that has access to the memory where
+the mutex is allocated, even if the mutex is allocated in memory that
+is shared by multiple processes. If the
+<I>process-shared</I>
+
+attribute is PTHREAD_PROCESS_PRIVATE, the mutex shall only be operated
+upon by threads created within the same process as the thread that
+initialized the mutex; if threads of differing processes attempt to
+operate on such a mutex, the behavior is undefined. The default value
+of the attribute shall be PTHREAD_PROCESS_PRIVATE.
+<P>
+
+The behavior is undefined if the value specified by the
+<I>attr</I>
+
+argument to
+<I>pthread_mutexattr_getpshared</I>()
+or
+<I>pthread_mutexattr_setpshared</I>()
+does not refer to an initialized mutex attributes object.
+<A NAME="lbAF">&nbsp;</A>
+<H2>RETURN VALUE</H2>
+
+Upon successful completion,
+<I>pthread_mutexattr_setpshared</I>()
+shall return zero; otherwise, an error number shall be returned to
+indicate the error.
+<P>
+
+Upon successful completion,
+<I>pthread_mutexattr_getpshared</I>()
+shall return zero and store the value of the
+<I>process-shared</I>
+
+attribute of
+<I>attr</I>
+
+into the object referenced by the
+<I>pshared</I>
+
+parameter. Otherwise, an error number shall be returned to indicate
+the error.
+<A NAME="lbAG">&nbsp;</A>
+<H2>ERRORS</H2>
+
+The
+<I>pthread_mutexattr_setpshared</I>()
+function may fail if:
+<DL COMPACT>
+<DT><B>EINVAL</B>
+
+<DD>
+The new value specified for the attribute is outside the range of legal
+values for that attribute.
+</DL>
+<P>
+
+These functions shall not return an error code of
+<B>[EINTR]</B>.
+
+<P>
+
+<I>The following sections are informative.</I>
+
+<A NAME="lbAH">&nbsp;</A>
+<H2>EXAMPLES</H2>
+
+None.
+<A NAME="lbAI">&nbsp;</A>
+<H2>APPLICATION USAGE</H2>
+
+None.
+<A NAME="lbAJ">&nbsp;</A>
+<H2>RATIONALE</H2>
+
+If an implementation detects that the value specified by the
+<I>attr</I>
+
+argument to
+<I>pthread_mutexattr_getpshared</I>()
+or
+<I>pthread_mutexattr_setpshared</I>()
+does not refer to an initialized mutex attributes object, it is
+recommended that the function should fail and report an
+<B>[EINVAL]</B>
+
+error.
+<A NAME="lbAK">&nbsp;</A>
+<H2>FUTURE DIRECTIONS</H2>
+
+None.
+<A NAME="lbAL">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+
+<I>pthread_cond_destroy</I>(),
+
+<I>pthread_create</I>(),
+
+<I>pthread_mutex_destroy</I>(),
+
+<I>pthread_mutexattr_destroy</I>()
+
+
+<P>
+
+The Base Definitions volume of POSIX.1-2008,
+<I></I><B>&lt;<A HREF="file:///usr/include/pthread.h">pthread.h</A>&gt;</B>
+
+<A NAME="lbAM">&nbsp;</A>
+<H2>COPYRIGHT</H2>
+
+Portions of this text are reprinted and reproduced in electronic form
+from IEEE Std 1003.1, 2013 Edition, Standard for Information Technology
+-- Portable Operating System Interface (POSIX), The Open Group Base
+Specifications Issue 7, Copyright (C) 2013 by the Institute of
+Electrical and Electronics Engineers, Inc and The Open Group.
+(This is POSIX.1-2008 with the 2013 Technical Corrigendum 1 applied.) In the
+event of any discrepancy between this version and the original IEEE and
+The Open Group Standard, the original IEEE and The Open Group Standard
+is the referee document. The original Standard can be obtained online at
+<A HREF="http://www.unix.org/online.html">http://www.unix.org/online.html</A> .
+<P>
+Any typographical or formatting errors that appear
+in this page are most likely
+to have been introduced during the conversion of the source files to
+man page format. To report such errors, see
+<A HREF="https://www.kernel.org/doc/man-pages/reporting_bugs.html">https://www.kernel.org/doc/man-pages/reporting_bugs.html</A> .
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">PROLOG</A><DD>
+<DT><A HREF="#lbAC">NAME</A><DD>
+<DT><A HREF="#lbAD">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAE">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAF">RETURN VALUE</A><DD>
+<DT><A HREF="#lbAG">ERRORS</A><DD>
+<DT><A HREF="#lbAH">EXAMPLES</A><DD>
+<DT><A HREF="#lbAI">APPLICATION USAGE</A><DD>
+<DT><A HREF="#lbAJ">RATIONALE</A><DD>
+<DT><A HREF="#lbAK">FUTURE DIRECTIONS</A><DD>
+<DT><A HREF="#lbAL">SEE ALSO</A><DD>
+<DT><A HREF="#lbAM">COPYRIGHT</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 14:28:55 GMT, February 25, 2017
+</BODY>
+</HTML>

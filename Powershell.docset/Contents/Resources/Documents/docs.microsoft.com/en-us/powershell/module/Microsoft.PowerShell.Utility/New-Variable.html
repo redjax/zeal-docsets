@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html class="no-js hasSidebar hasPageActions hasBreadcrumb conceptual" data-authenticated="false" data-render="docs" dir="ltr" lang="en-us">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="New-Variable (Microsoft.PowerShell.Utility)" property="og:title"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" property="og:image"/>
+  <meta content="summary" name="twitter:card"/>
+  <meta content="@docsmsft" name="twitter:site"/>
+  <meta content="New-Variable (Microsoft.PowerShell.Utility)" name="twitter:title"/>
+  <meta content="The New-Variable cmdlet creates a new variable in Windows PowerShell. You can assign a value to the variable while creating it or assign or change the value after it is created. You can use the paramâ¦" name="twitter:description"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" name="twitter:image"/>
+  <meta content="Microsoft Logo" name="twitter:image:alt"/>
+  <meta content="The New-Variable cmdlet creates a new variable in Windows PowerShell. You can assign a value to the variable while creating it or assign or change the value after it is created. You can use the paramâ¦" name="description"/>
+  <meta content="Docs" name="search.ms_sitename"/>
+  <meta content="PowerShell_PowerShell-docs_reference" name="search.ms_docsetname"/>
+  <meta content="0" name="version"/>
+  <meta content="en-us" name="locale"/>
+  <meta content="Docs" name="site_name"/>
+  <meta content="PowerShell" name="search.ms_product"/>
+  <meta content="PowerShell.PowerShell_PowerShell-docs_reference" name="depot_name"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/57cd861e6079bc530a60692b1bbf35cfef1d3f35/reference/6/Microsoft.PowerShell.Utility/New-Variable.md" name="ref_skeleton_gitcommit"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/live/reference/6/Microsoft.PowerShell.Utility/New-Variable.md" name="original_ref_skeleton_git_url"/>
+  <meta content="2018-03-30 03:35 PM" name="updated_at"/>
+  <meta content="1893ff0a-2381-5cb6-b0ab-18e6424adc19" name="document_id"/>
+  <meta content="2ac0d6e6-85d2-4a10-0a1f-9296983b1dc8" name="document_version_independent_id"/>
+  <meta content="powershell" name="page_type"/>
+  <meta content="command" name="page_kind"/>
+  <meta content="06/09/2017" name="ms.date"/>
+  <meta content="2.0.0" name="schema"/>
+  <meta content="powershell,cmdlet" name="keywords"/>
+  <meta content="http://go.microsoft.com/fwlink/?LinkId=821838" name="online_version"/>
+  <meta content="Microsoft.PowerShell.Commands.Utility.dll-Help.xml" name="external_help_file"/>
+  <meta content="powershell" name="ms.devlang"/>
+  <meta content="INDEX, FOLLOW" name="ROBOTS"/>
+  <meta content="sdwheeler" name="author"/>
+  <meta content="sewhee" name="ms.author"/>
+  <meta content="carmonm" name="manager"/>
+  <meta content="/powershell/bread-pscore/toc.yml?view=powershell-6" name="breadcrumb_path"/>
+  <meta content="powershell" name="apiPlatform"/>
+  <meta content="reference" name="ms.topic"/>
+  <meta content="windows, macos, linux" name="ms.tgt_pltfr"/>
+  <meta content="powershell-scripting" name="ms.technology"/>
+  <meta content="powershell" name="ms.prod"/>
+  <meta content="MSDocsHeader-Powershell" name="uhfHeaderId"/>
+  <meta content="../psdocs/toc.json?view=powershell-6" name="toc_rel"/>
+  <link href="https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/new-variable" rel="canonical"/>
+  <title>
+   New-Variable
+  </title>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/60aac04b.site.css" rel="stylesheet"/>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/fdb8a38a.conceptual.css" rel="stylesheet"/>
+ </head>
+ <body dir="ltr" lang="en-us">
+  <div class="header-holder">
+   <div data-bi-name="header" id="headerAreaHolder">
+    <div id="uhf-placeholder">
+    </div>
+   </div>
+   <div class="disclaimer-holder" id="disclaimer-holder">
+   </div>
+  </div>
+  <div class="container mainContainer" data-bi-name="body">
+   <div class="content-header" data-bi-name="content-header">
+    <div class="content-header-controls">
+     <button class="contents-button button-border" data-bi-name="contents-expand" type="button">
+      <span class="docon docon-menu">
+      </span>
+      Contents
+     </button>
+    </div>
+    <div class="content-header-controls">
+     <button class="ap-collapse-behavior ap-expanded button-border" data-bi-name="ap-collapse" type="button">
+      <span class="docon docon-exit-mode">
+      </span>
+      Exit focus mode
+     </button>
+    </div>
+   </div>
+   <div class="primary-holder">
+    <main class="content" data-bi-name="content" dir="ltr" id="main" lang="en-us" role="main">
+     <!-- <content> -->
+     <h1>
+      New-Variable
+     </h1>
+     <div class="metadata">
+      <dl class="attributeList">
+       <dt>
+        Module:
+       </dt>
+       <dd>
+        <a data-linktype="relative-path" href="./Microsoft.PowerShell.Utility.html">
+         Microsoft.PowerShell.Utility
+        </a>
+       </dd>
+      </dl>
+     </div>
+     <div class="summaryHolder">
+      <div class="summary">
+       Creates a new variable.
+      </div>
+     </div>
+     <h2 class="hiddenAnchor" id="syntax">
+      Syntax
+     </h2>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">New-Variable
+   [-Name] &lt;String&gt;
+   [[-Value] &lt;Object&gt;]
+   [-Description &lt;String&gt;]
+   [-Option &lt;ScopedItemOptions&gt;]
+   [-Visibility &lt;SessionStateEntryVisibility&gt;]
+   [-Force]
+   [-PassThru]
+   [-Scope &lt;String&gt;]
+   [-WhatIf]
+   [-Confirm]
+   [&lt;CommonParameters&gt;]</code></pre>
+     <h2 id="description">
+      Description
+     </h2>
+     <p>
+      The
+      <strong>
+       New-Variable
+      </strong>
+      cmdlet creates a new variable in Windows PowerShell.
+You can assign a value to the variable while creating it or assign or change the value after it is created.
+     </p>
+     <p>
+      You can use the parameters of
+      <strong>
+       New-Variable
+      </strong>
+      to set the properties of the variable, set the scope of a variable, and determine whether variables are public or private.
+     </p>
+     <p>
+      Typically, you create a new variable by typing the variable name and its value, such as
+      <code>
+       $Var = 3
+      </code>
+      , but you can use the
+      <strong>
+       New-Variable
+      </strong>
+      cmdlet to use its parameters.
+     </p>
+     <h2 id="examples">
+      Examples
+     </h2>
+     <p>
+      <strong>
+       Example 1: Create a variable
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; New-Variable days</code></pre>
+     <p>
+      This command creates a new variable named days.
+You are not required to type the
+      <em>
+       Name
+      </em>
+      parameter.
+     </p>
+     <p>
+      <strong>
+       Example 2: Create a variable and assign it a value
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; New-Variable -Name "zipcode" -Value 98033</code></pre>
+     <p>
+      This command creates a variable named zipcode and assigns it the value 98033.
+     </p>
+     <p>
+      <strong>
+       Example 3: Create a variable with the ReadOnly option
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; New-Variable -Name Max -Value 256 -Option ReadOnly
+
+PS C:\&gt; New-Variable -Name max -Value 1024
+
+
+
+New-Variable : A variable with name 'max' already exists.
+
+At line:1 char:13
+
++ new-variable &lt;&lt;&lt;&lt;  -name max -value 1024
+
+
+
+PS C:\&gt; New-Variable -Name max -Value 1024 -Force</code></pre>
+     <p>
+      This example shows how to use the ReadOnly option of
+      <strong>
+       New-Variable
+      </strong>
+      to protect a variable from being overwritten.
+     </p>
+     <p>
+      The first command creates a new variable named Max and sets its value to 256.
+It uses the
+      <em>
+       Option
+      </em>
+      parameter with a value of ReadOnly.
+     </p>
+     <p>
+      The second command tries to create a second variable with the same name.
+This command returns an error, because the read-only option is set on the variable.
+     </p>
+     <p>
+      The third command uses the
+      <em>
+       Force
+      </em>
+      parameter to override the read-only protection on the variable.
+In this case, the command to create a new variable with the same name succeeds.
+     </p>
+     <p>
+      <strong>
+       Example 4: Create a private variable
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; New-Variable -Name counter -Visibility private
+
+
+
+#Effect of private variable in a module.
+
+
+
+PS C:\&gt; Get-Variable c*
+
+
+
+
+
+
+
+Name                           Value
+
+----                           -----
+
+Culture                        en-US
+
+ConsoleFileName
+
+ConfirmPreference              High
+
+CommandLineParameters          {} PS C:\&gt; $counter
+
+"Cannot access the variable '$counter' because it is a private variable" PS C:\&gt; Get-Counter
+
+Name         Value
+
+----         -----
+
+Counter1     3.1415
+
+...</code></pre>
+     <p>
+      This command demonstrates the behavior of a private variable in a module.
+The module contains the Get-Counter cmdlet, which has a private variable named Counter.
+The command uses the
+      <em>
+       Visibility
+      </em>
+      parameter with a value of Private to create the variable.
+     </p>
+     <p>
+      The sample output shows the behavior of a private variable.
+The user who has loaded the module cannot view or change the value of the Counter variable, but the Counter variable can be read and changed by the commands in the module.
+     </p>
+     <h2 id="required-parameters">
+      Required Parameters
+     </h2>
+     <div class="parameterName stack">
+      -Name
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a name for the new variable.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         1
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="optional-parameters">
+      Optional Parameters
+     </h2>
+     <div class="parameterName stack">
+      -Confirm
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Prompts you for confirmation before running the cmdlet.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         cf
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Description
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a description of the variable.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Force
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that the cmdlet creates a variable with the same name as an existing read-only variable.
+      </p>
+      <p>
+       By default, you can overwrite a variable unless the variable has an option value of ReadOnly or Constant.
+For more information, see the
+       <em>
+        Option
+       </em>
+       parameter.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Option
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the value of the
+       <strong>
+        Options
+       </strong>
+       property of the variable.The acceptable values for this parameter are:
+      </p>
+      <ul>
+       <li>
+        None.
+Sets no options.
+(None is the default.)
+       </li>
+       <li>
+        ReadOnly.
+Can be deleted.
+Cannot be not changed, except by using the
+        <em>
+         Force
+        </em>
+        parameter.
+       </li>
+       <li>
+        Private.
+The variable is available only in the current scope.
+       </li>
+       <li>
+        AllScope.
+The variable is copied to any new scopes that are created.
+       </li>
+       <li>
+        Constant.
+Cannot be deleted or changed.
+Constant is valid only when you are creating a variable.
+You cannot change the options of an existing variable to Constant.
+       </li>
+      </ul>
+      <p>
+       To see the
+       <strong>
+        Options
+       </strong>
+       property of all variables in the session, type
+       <code>
+        Get-Variable | Format-Table -Property name, options -autosize
+       </code>
+       .
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          ScopedItemOptions
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Parameter Sets:
+        </td>
+        <td>
+         None, ReadOnly, Constant, Private, AllScope, Unspecified
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -PassThru
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Returns an object representing the item with which you are working.
+By default, this cmdlet does not generate any output.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Scope
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the scope of the new variable.
+The acceptable values for this parameter are:
+      </p>
+      <ul>
+       <li>
+        Global
+       </li>
+       <li>
+        Local
+       </li>
+       <li>
+        Script
+       </li>
+       <li>
+        A number relative to the current scope (0 through the number of scopes, where 0 is the current scope and 1 is its parent).
+Local is the default.
+       </li>
+      </ul>
+      <p>
+       For more information, see about_Scopes.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Value
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the initial value of the variable.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Object
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         2
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName, ByValue)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Visibility
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Determines whether the variable is visible outside of the session in which it was created.
+This parameter is designed for  use in scripts and commands that will be delivered to other users.
+The acceptable values for this parameter are:
+      </p>
+      <ul>
+       <li>
+        Public.
+The variable is visible.
+(Public is the default.)
+       </li>
+       <li>
+        Private.
+The variable is not visible.
+       </li>
+      </ul>
+      <p>
+       When a variable is private, it does not appear in lists of variables, such as those returned by Get-Variable, or in displays of the Variable: drive.
+Commands to read or change the value of a private variable return an error.
+However, the user can run commands that use a private variable if the commands were written in the session in which the variable was defined.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SessionStateEntryVisibility
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Parameter Sets:
+        </td>
+        <td>
+         Public, Private
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -WhatIf
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         wi
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="inputs">
+      Inputs
+     </h2>
+     <p>
+      <strong>
+       System.Object
+      </strong>
+     </p>
+     <p>
+      You can pipe a value to
+      <strong>
+       New-Variable
+      </strong>
+      .
+     </p>
+     <h2 id="outputs">
+      Outputs
+     </h2>
+     <p>
+      <strong>
+       None or System.Management.Automation.PSVariable
+      </strong>
+     </p>
+     <p>
+      When you use the
+      <em>
+       PassThru
+      </em>
+      parameter,
+      <strong>
+       New-Variable
+      </strong>
+      generates a
+      <strong>
+       System.Management.Automation.PSVariable
+      </strong>
+      object representing the new variable.
+Otherwise, this cmdlet does not generate any output.
+     </p>
+     <h2 id="related-links">
+      Related Links
+     </h2>
+     <ul>
+      <li>
+       <a data-linktype="relative-path" href="clear-variable.html">
+        Clear-Variable
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="get-variable.html">
+        Get-Variable
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="remove-variable.html">
+        Remove-Variable
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="set-variable.html">
+        Set-Variable
+       </a>
+      </li>
+     </ul>
+     <!-- </content> -->
+    </main>
+    <div class="note alert feedback-system-change-alert">
+     <p>
+      Note
+     </p>
+     <p>
+      The feedback system for this content will be changing soon. Old comments will not be carried over. If content within a comment thread is important to you, please save a copy. For more information on the upcoming change,
+      <a href="https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs">
+       we invite you to read our blog post
+      </a>
+      .
+     </p>
+    </div>
+    <div data-bi-name="comments" id="comments-container" role="form">
+    </div>
+   </div>
+  </div>
+  <div class="openfeedback-container" id="openFeedbackContainer">
+  </div>
+  <div class="action-panel">
+  </div>
+ </body>
+</html>

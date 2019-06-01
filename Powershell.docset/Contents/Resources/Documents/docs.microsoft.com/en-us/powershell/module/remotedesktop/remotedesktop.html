@@ -1,0 +1,1564 @@
+<!DOCTYPE html>
+<html class="no-js hasSidebar hasPageActions hasBreadcrumb conceptual" data-authenticated="false" data-render="docs" dir="ltr" lang="en-us">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="RemoteDesktop" property="og:title"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" property="og:image"/>
+  <meta content="summary" name="twitter:card"/>
+  <meta content="@docsmsft" name="twitter:site"/>
+  <meta content="RemoteDesktop" name="twitter:title"/>
+  <meta content="Use this topic to help manage Windows and Windows Server technologies with Windows PowerShell." name="twitter:description"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" name="twitter:image"/>
+  <meta content="Microsoft Logo" name="twitter:image:alt"/>
+  <meta content="Docs" name="search.ms_sitename"/>
+  <meta content="powershell-windows" name="search.ms_docsetname"/>
+  <meta content="0" name="version"/>
+  <meta content="en-us" name="locale"/>
+  <meta content="Docs" name="site_name"/>
+  <meta content="MSDN" name="search.ms_product"/>
+  <meta content="MSDN.powershell-windows" name="depot_name"/>
+  <meta content="https://cpubwin.visualstudio.com/DefaultCollection/powershell/_git/powershell/commit/ced7757924addcaea0b7a244ae4d240e4d28d93a?path=%2fdocset%2fwindows%2fremotedesktop%2fremotedesktop.md&amp;_a=contents" name="ref_skeleton_gitcommit"/>
+  <meta content="https://cpubwin.visualstudio.com/DefaultCollection/powershell/_git/powershell?path=%2fdocset%2fwindows%2fremotedesktop%2fremotedesktop.md&amp;version=GBlive&amp;_a=contents" name="original_ref_skeleton_git_url"/>
+  <meta content="2017-09-15 03:44 AM" name="updated_at"/>
+  <meta content="7c635e87-3c04-845a-674e-4a0ea4c9604d" name="document_id"/>
+  <meta content="aac8835d-984f-d25f-2e2a-45a606e69f7b" name="document_version_independent_id"/>
+  <meta content="powershell" name="page_type"/>
+  <meta content="module" name="page_kind"/>
+  <meta content="../win10-ps/toc.json?view=win10-ps" name="toc_rel"/>
+  <meta content="manage" name="ms.mktglfcycl"/>
+  <meta content="library" name="ms.sitesec"/>
+  <meta content="brianlic" name="ms.author"/>
+  <meta content="RemoteDesktop" name="Module_Name"/>
+  <meta content="CMDLETS" name="Module_Guid"/>
+  <meta content="http://go.microsoft.com/fwlink/?linkid=390820" name="Download_Help_Link"/>
+  <meta content="5.0.2.0" name="Help_Version"/>
+  <meta content="en-US" name="Locale"/>
+  <meta content="Use this topic to help manage Windows and Windows Server technologies with Windows PowerShell." name="description"/>
+  <meta content="powershell, cmdlet" name="keywords"/>
+  <meta content="brianlic-msft" name="author"/>
+  <meta content="alanth" name="manager"/>
+  <meta content="12/20/2016" name="ms.date"/>
+  <meta content="reference" name="ms.topic"/>
+  <meta content="w10" name="ms.prod"/>
+  <meta content="powershell-windows" name="ms.technology"/>
+  <meta content="2DCC3D8E-4155-44FC-AF0E-DC6608D33D8D" name="ms.assetid"/>
+  <meta content="remotedesktop" name="Add-RDServer"/>
+  <meta content="remotedesktop" name="Add-RDSessionHost"/>
+  <meta content="remotedesktop" name="Add-RDVirtualDesktopToCollection"/>
+  <meta content="remotedesktop" name="Disable-RDVirtualDesktopADMachineAccountReuse"/>
+  <meta content="remotedesktop" name="Disconnect-RDUser"/>
+  <meta content="remotedesktop" name="Enable-RDVirtualDesktopADMachineAccountReuse"/>
+  <meta content="remotedesktop" name="Export-RDPersonalSessionDesktopAssignment"/>
+  <meta content="remotedesktop" name="Export-RDPersonalVirtualDesktopAssignment"/>
+  <meta content="remotedesktop" name="Get-RDAvailableApp"/>
+  <meta content="remotedesktop" name="Get-RDCertificate"/>
+  <meta content="remotedesktop" name="Get-RDConnectionBrokerHighAvailability"/>
+  <meta content="remotedesktop" name="Get-RDDeploymentGatewayConfiguration"/>
+  <meta content="remotedesktop" name="Get-RDFileTypeAssociation"/>
+  <meta content="remotedesktop" name="Get-RDLicenseConfiguration"/>
+  <meta content="remotedesktop" name="Get-RDPersonalSessionDesktopAssignment"/>
+  <meta content="remotedesktop" name="Get-RDPersonalVirtualDesktopAssignment"/>
+  <meta content="remotedesktop" name="Get-RDPersonalVirtualDesktopPatchSchedule"/>
+  <meta content="remotedesktop" name="Get-RDRemoteApp"/>
+  <meta content="remotedesktop" name="Get-RDRemoteDesktop"/>
+  <meta content="remotedesktop" name="Get-RDServer"/>
+  <meta content="remotedesktop" name="Get-RDSessionCollection"/>
+  <meta content="remotedesktop" name="Get-RDSessionCollectionConfiguration"/>
+  <meta content="remotedesktop" name="Get-RDSessionHost"/>
+  <meta content="remotedesktop" name="Get-RDUserSession"/>
+  <meta content="remotedesktop" name="Get-RDVirtualDesktop"/>
+  <meta content="remotedesktop" name="Get-RDVirtualDesktopCollection"/>
+  <meta content="remotedesktop" name="Get-RDVirtualDesktopCollectionConfiguration"/>
+  <meta content="remotedesktop" name="Get-RDVirtualDesktopCollectionJobStatus"/>
+  <meta content="remotedesktop" name="Get-RDVirtualDesktopConcurrency"/>
+  <meta content="remotedesktop" name="Get-RDVirtualDesktopIdleCount"/>
+  <meta content="remotedesktop" name="Get-RDVirtualDesktopTemplateExportPath"/>
+  <meta content="remotedesktop" name="Get-RDWorkspace"/>
+  <meta content="remotedesktop" name="Grant-RDOUAccess"/>
+  <meta content="remotedesktop" name="Import-RDPersonalSessionDesktopAssignment"/>
+  <meta content="remotedesktop" name="Import-RDPersonalVirtualDesktopAssignment"/>
+  <meta content="remotedesktop" name="Invoke-RDUserLogoff"/>
+  <meta content="remotedesktop" name="Move-RDVirtualDesktop"/>
+  <meta content="remotedesktop" name="New-RDCertificate"/>
+  <meta content="remotedesktop" name="New-RDPersonalVirtualDesktopPatchSchedule"/>
+  <meta content="remotedesktop" name="New-RDRemoteApp"/>
+  <meta content="remotedesktop" name="New-RDSessionCollection"/>
+  <meta content="remotedesktop" name="New-RDSessionDeployment"/>
+  <meta content="remotedesktop" name="New-RDVirtualDesktopCollection"/>
+  <meta content="remotedesktop" name="New-RDVirtualDesktopDeployment"/>
+  <meta content="remotedesktop" name="Remove-RDDatabaseConnectionString"/>
+  <meta content="remotedesktop" name="Remove-RDPersonalSessionDesktopAssignment"/>
+  <meta content="remotedesktop" name="Remove-RDPersonalVirtualDesktopAssignment"/>
+  <meta content="remotedesktop" name="Remove-RDPersonalVirtualDesktopPatchSchedule"/>
+  <meta content="remotedesktop" name="Remove-RDRemoteApp"/>
+  <meta content="remotedesktop" name="Remove-RDServer"/>
+  <meta content="remotedesktop" name="Remove-RDSessionCollection"/>
+  <meta content="remotedesktop" name="Remove-RDSessionHost"/>
+  <meta content="remotedesktop" name="Remove-RDVirtualDesktopCollection"/>
+  <meta content="remotedesktop" name="Remove-RDVirtualDesktopFromCollection"/>
+  <meta content="remotedesktop" name="Send-RDUserMessage"/>
+  <meta content="remotedesktop" name="Set-RDActiveManagementServer"/>
+  <meta content="remotedesktop" name="Set-RDCertificate"/>
+  <meta content="remotedesktop" name="Set-RDClientAccessName"/>
+  <meta content="remotedesktop" name="Set-RDConnectionBrokerHighAvailability"/>
+  <meta content="remotedesktop" name="Set-RDDatabaseConnectionString"/>
+  <meta content="remotedesktop" name="Set-RDDeploymentGatewayConfiguration"/>
+  <meta content="remotedesktop" name="Set-RDFileTypeAssociation"/>
+  <meta content="remotedesktop" name="Set-RDLicenseConfiguration"/>
+  <meta content="remotedesktop" name="Set-RDPersonalSessionDesktopAssignment"/>
+  <meta content="remotedesktop" name="Set-RDPersonalVirtualDesktopAssignment"/>
+  <meta content="remotedesktop" name="Set-RDPersonalVirtualDesktopPatchSchedule"/>
+  <meta content="remotedesktop" name="Set-RDRemoteApp"/>
+  <meta content="remotedesktop" name="Set-RDRemoteDesktop"/>
+  <meta content="remotedesktop" name="Set-RDSessionCollectionConfiguration"/>
+  <meta content="remotedesktop" name="Set-RDSessionHost"/>
+  <meta content="remotedesktop" name="Set-RDVirtualDesktopCollectionConfiguration"/>
+  <meta content="remotedesktop" name="Set-RDVirtualDesktopConcurrency"/>
+  <meta content="remotedesktop" name="Set-RDVirtualDesktopIdleCount"/>
+  <meta content="remotedesktop" name="Set-RDVirtualDesktopTemplateExportPath"/>
+  <meta content="remotedesktop" name="Set-RDWorkspace"/>
+  <meta content="remotedesktop" name="Stop-RDVirtualDesktopCollectionJob"/>
+  <meta content="remotedesktop" name="Test-RDOUAccess"/>
+  <meta content="remotedesktop" name="Test-RDVirtualDesktopADMachineAccountReuse"/>
+  <meta content="remotedesktop" name="Update-RDVirtualDesktopCollection"/>
+  <meta content="powershell" name="ms.devlang"/>
+  <meta content="INDEX, FOLLOW" name="ROBOTS"/>
+  <meta content="/powershell/windows/bread/toc.json?view=win10-ps" name="breadcrumb_path"/>
+  <meta content="powershell" name="apiPlatform"/>
+  <meta content="MSDocsHeader-WindowsIT" name="uhfHeaderId"/>
+  <link href="https://docs.microsoft.com/en-us/powershell/module/remotedesktop/" rel="canonical"/>
+  <title>
+   RemoteDesktop
+  </title>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/e4a1f3a3.site.css" rel="stylesheet"/>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/31353636.conceptual.css" rel="stylesheet"/>
+ </head>
+ <body dir="ltr" lang="en-us">
+  <div class="header-holder">
+   <div data-bi-name="header" id="headerAreaHolder">
+    <div id="uhf-placeholder">
+    </div>
+   </div>
+   <div class="disclaimer-holder" id="disclaimer-holder">
+   </div>
+  </div>
+  <div class="container mainContainer" data-bi-name="body">
+   <div class="content-header" data-bi-name="content-header">
+    <div class="content-header-controls">
+     <button class="contents-button button-border" data-bi-name="contents-expand" type="button">
+      <span class="docon docon-menu">
+      </span>
+      Contents
+     </button>
+    </div>
+    <div class="content-header-controls">
+     <button class="ap-collapse-behavior ap-expanded button-border" data-bi-name="ap-collapse" type="button">
+      <span class="docon docon-exit-mode">
+      </span>
+      Exit focus mode
+     </button>
+    </div>
+   </div>
+   <div class="primary-holder">
+    <main class="content" data-bi-name="content" dir="ltr" id="main" lang="en-us" role="main">
+     <!-- <content> -->
+     <h1>
+      Remote
+      <wbr/>
+      Desktop
+     </h1>
+     <div class="summaryHolder">
+      <div class="summary">
+       <p>
+        This reference provides cmdlet descriptions and syntax for all Remote Desktop Service-specific cmdlets. It lists the cmdlets in alphabetical order based on the verb at the beginning of the cmdlet.
+       </p>
+      </div>
+     </div>
+     <h2 id="remotedesktop">
+      remotedesktop
+     </h2>
+     <table class="nameValue">
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Add-RDServer.html">
+         Add-RDServer
+        </a>
+       </td>
+       <td>
+        <p>
+         Adds an RDS server to a Remote Desktop deployment.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Add-RDSessionHost.html">
+         Add-RDSession
+         <wbr/>
+         Host
+        </a>
+       </td>
+       <td>
+        <p>
+         Adds one or more RD Session Host servers to a session collection.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Add-RDVirtualDesktopToCollection.html">
+         Add-RDVirtual
+         <wbr/>
+         Desktop
+         <wbr/>
+         ToCollection
+        </a>
+       </td>
+       <td>
+        <p>
+         Adds virtual desktops to a virtual desktop collection.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Disable-RDVirtualDesktopADMachineAccountReuse.html">
+         Disable-RDVirtual
+         <wbr/>
+         Desktop
+         <wbr/>
+         ADMachine
+         <wbr/>
+         Account
+         <wbr/>
+         Reuse
+        </a>
+       </td>
+       <td>
+        <p>
+         Prevents the RD Connection Broker server from reusing existing Active Directory (AD) computer accounts.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Disconnect-RDUser.html">
+         Disconnect-RDUser
+        </a>
+       </td>
+       <td>
+        <p>
+         Disconnects a user from a session that runs on a remote server.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Enable-RDVirtualDesktopADMachineAccountReuse.html">
+         Enable-RDVirtual
+         <wbr/>
+         Desktop
+         <wbr/>
+         ADMachine
+         <wbr/>
+         Account
+         <wbr/>
+         Reuse
+        </a>
+       </td>
+       <td>
+        <p>
+         Configures the RD Connection Broker server to reuse existing AD DS computer accounts.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Export-RDPersonalSessionDesktopAssignment.html">
+         Export-RDPersonal
+         <wbr/>
+         Session
+         <wbr/>
+         Desktop
+         <wbr/>
+         Assignment
+        </a>
+       </td>
+       <td>
+        <p>
+         Exports the current map of personal session desktops to users.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Export-RDPersonalVirtualDesktopAssignment.html">
+         Export-RDPersonal
+         <wbr/>
+         Virtual
+         <wbr/>
+         Desktop
+         <wbr/>
+         Assignment
+        </a>
+       </td>
+       <td>
+        <p>
+         Exports the current associations between users and personal virtual desktops to a file.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-RDAvailableApp.html">
+         Get-RDAvailable
+         <wbr/>
+         App
+        </a>
+       </td>
+       <td>
+        <p>
+         Gets a list of publishable applications from a collection.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-RDCertificate.html">
+         Get-RDCertificate
+        </a>
+       </td>
+       <td>
+        <p>
+         Gets certificates associated with RDS roles.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-RDConnectionBrokerHighAvailability.html">
+         Get-RDConnection
+         <wbr/>
+         Broker
+         <wbr/>
+         High
+         <wbr/>
+         Availability
+        </a>
+       </td>
+       <td>
+        <p>
+         Gets high availability settings for the RD Connection Broker server in a Remote Desktop deployment.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-RDDeploymentGatewayConfiguration.html">
+         Get-RDDeployment
+         <wbr/>
+         Gateway
+         <wbr/>
+         Configuration
+        </a>
+       </td>
+       <td>
+        <p>
+         Gets configuration settings for the RD Gateway for a Remote Desktop deployment.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-RDFileTypeAssociation.html">
+         Get-RDFile
+         <wbr/>
+         Type
+         <wbr/>
+         Association
+        </a>
+       </td>
+       <td>
+        <p>
+         Displays the file extensions associated with a RemoteApp program.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-RDLicenseConfiguration.html">
+         Get-RDLicense
+         <wbr/>
+         Configuration
+        </a>
+       </td>
+       <td>
+        <p>
+         Retrieves the current settings for the RD Licensing server and the licensing mode of the Remote Desktop deployment.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-RDPersonalSessionDesktopAssignment.html">
+         Get-RDPersonal
+         <wbr/>
+         Session
+         <wbr/>
+         Desktop
+         <wbr/>
+         Assignment
+        </a>
+       </td>
+       <td>
+        <p>
+         Gets personal session desktop assignments.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-RDPersonalVirtualDesktopAssignment.html">
+         Get-RDPersonal
+         <wbr/>
+         Virtual
+         <wbr/>
+         Desktop
+         <wbr/>
+         Assignment
+        </a>
+       </td>
+       <td>
+        <p>
+         Retrieves a list of personal virtual desktops and associated user accounts.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-RDPersonalVirtualDesktopPatchSchedule.html">
+         Get-RDPersonal
+         <wbr/>
+         Virtual
+         <wbr/>
+         Desktop
+         <wbr/>
+         Patch
+         <wbr/>
+         Schedule
+        </a>
+       </td>
+       <td>
+        <p>
+         Gets a patch schedule for a virtual desktop.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-RDRemoteApp.html">
+         Get-RDRemote
+         <wbr/>
+         App
+        </a>
+       </td>
+       <td>
+        <p>
+         Gets RemoteApp programs in a Remote Desktop deployment.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-RDRemoteDesktop.html">
+         Get-RDRemote
+         <wbr/>
+         Desktop
+        </a>
+       </td>
+       <td>
+        <p>
+         Gets published Remote Desktop connections.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-RDServer.html">
+         Get-RDServer
+        </a>
+       </td>
+       <td>
+        <p>
+         Gets RDS servers in a Remote Desktop deployment.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-RDSessionCollection.html">
+         Get-RDSession
+         <wbr/>
+         Collection
+        </a>
+       </td>
+       <td>
+        <p>
+         Gets session collections in a Remote Desktop deployment.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-RDSessionCollectionConfiguration.html">
+         Get-RDSession
+         <wbr/>
+         Collection
+         <wbr/>
+         Configuration
+        </a>
+       </td>
+       <td>
+        <p>
+         Gets configuration information for a session collection.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-RDSessionHost.html">
+         Get-RDSession
+         <wbr/>
+         Host
+        </a>
+       </td>
+       <td>
+        <p>
+         Gets a list of RD Session Host servers in a session collection.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-RDUserSession.html">
+         Get-RDUser
+         <wbr/>
+         Session
+        </a>
+       </td>
+       <td>
+        <p>
+         Gets a list of all user sessions in a collection or in a Remote Desktop deployment.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-RDVirtualDesktop.html">
+         Get-RDVirtual
+         <wbr/>
+         Desktop
+        </a>
+       </td>
+       <td>
+        <p>
+         Gets a list of virtual desktops in the remote desktop deployment.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-RDVirtualDesktopCollection.html">
+         Get-RDVirtual
+         <wbr/>
+         Desktop
+         <wbr/>
+         Collection
+        </a>
+       </td>
+       <td>
+        <p>
+         Gets a list of virtual desktop collections in a remote desktop deployment.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-RDVirtualDesktopCollectionConfiguration.html">
+         Get-RDVirtual
+         <wbr/>
+         Desktop
+         <wbr/>
+         Collection
+         <wbr/>
+         Configuration
+        </a>
+       </td>
+       <td>
+        <p>
+         Gets configuration details of a virtual desktop collection.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-RDVirtualDesktopCollectionJobStatus.html">
+         Get-RDVirtual
+         <wbr/>
+         Desktop
+         <wbr/>
+         Collection
+         <wbr/>
+         Job
+         <wbr/>
+         Status
+        </a>
+       </td>
+       <td>
+        <p>
+         Gets the status of a job on a virtual desktop collection.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-RDVirtualDesktopConcurrency.html">
+         Get-RDVirtual
+         <wbr/>
+         Desktop
+         <wbr/>
+         Concurrency
+        </a>
+       </td>
+       <td>
+        <p>
+         Gets the number of virtual desktops that RDS can create in parallel.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-RDVirtualDesktopIdleCount.html">
+         Get-RDVirtual
+         <wbr/>
+         Desktop
+         <wbr/>
+         Idle
+         <wbr/>
+         Count
+        </a>
+       </td>
+       <td>
+        <p>
+         Gets the number of idle virtual desktops on hosts.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-RDVirtualDesktopTemplateExportPath.html">
+         Get-RDVirtual
+         <wbr/>
+         Desktop
+         <wbr/>
+         Template
+         <wbr/>
+         Export
+         <wbr/>
+         Path
+        </a>
+       </td>
+       <td>
+        <p>
+         Gets the export path setting of the virtual desktop template.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Get-RDWorkspace.html">
+         Get-RDWorkspace
+        </a>
+       </td>
+       <td>
+        <p>
+         Gets the workspace name for a Remote Desktop deployment.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Grant-RDOUAccess.html">
+         Grant-RDOUAccess
+        </a>
+       </td>
+       <td>
+        <p>
+         Grants the Remote Desktop Connection Broker server access to one or more organizational units in a given domain of Active Directory Domain Services.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Import-RDPersonalSessionDesktopAssignment.html">
+         Import-RDPersonal
+         <wbr/>
+         Session
+         <wbr/>
+         Desktop
+         <wbr/>
+         Assignment
+        </a>
+       </td>
+       <td>
+        <p>
+         Imports a map of personal session desktops to users.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Import-RDPersonalVirtualDesktopAssignment.html">
+         Import-RDPersonal
+         <wbr/>
+         Virtual
+         <wbr/>
+         Desktop
+         <wbr/>
+         Assignment
+        </a>
+       </td>
+       <td>
+        <p>
+         Imports associations between user accounts and personal virtual desktops from a text file.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Invoke-RDUserLogoff.html">
+         Invoke-RDUser
+         <wbr/>
+         Logoff
+        </a>
+       </td>
+       <td>
+        <p>
+         Ends a user session and closes all running applications.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Move-RDVirtualDesktop.html">
+         Move-RDVirtual
+         <wbr/>
+         Desktop
+        </a>
+       </td>
+       <td>
+        <p>
+         Moves a virtual desktop to a new Remote Desktop Virtualization Host (RD Virtualization Host) server.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="New-RDCertificate.html">
+         New-RDCertificate
+        </a>
+       </td>
+       <td>
+        <p>
+         Creates a certificate for an RDS role.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="New-RDPersonalVirtualDesktopPatchSchedule.html">
+         New-RDPersonal
+         <wbr/>
+         Virtual
+         <wbr/>
+         Desktop
+         <wbr/>
+         Patch
+         <wbr/>
+         Schedule
+        </a>
+       </td>
+       <td>
+        <p>
+         Creates a patch schedule for a personal virtual desktop.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="New-RDRemoteApp.html">
+         New-RDRemote
+         <wbr/>
+         App
+        </a>
+       </td>
+       <td>
+        <p>
+         Publishes a RemoteApp program to a Remote Desktop deployment.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="New-RDSessionCollection.html">
+         New-RDSession
+         <wbr/>
+         Collection
+        </a>
+       </td>
+       <td>
+        <p>
+         Creates a session collection of RD Session Host servers.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="New-RDSessionDeployment.html">
+         New-RDSession
+         <wbr/>
+         Deployment
+        </a>
+       </td>
+       <td>
+        <p>
+         Installs the required role services for session-based desktop deployment.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="New-RDVirtualDesktopCollection.html">
+         New-RDVirtual
+         <wbr/>
+         Desktop
+         <wbr/>
+         Collection
+        </a>
+       </td>
+       <td>
+        <p>
+         Creates a virtual desktop collection.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="New-RDVirtualDesktopDeployment.html">
+         New-RDVirtual
+         <wbr/>
+         Desktop
+         <wbr/>
+         Deployment
+        </a>
+       </td>
+       <td>
+        <p>
+         Installs role services for Virtual Desktop Infrastructure.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Remove-RDDatabaseConnectionString.html">
+         Remove-RDDatabase
+         <wbr/>
+         Connection
+         <wbr/>
+         String
+        </a>
+       </td>
+       <td>
+        <p>
+         Removes the secondary database connection string for the shared database server in a high availability environment configuration.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Remove-RDPersonalSessionDesktopAssignment.html">
+         Remove-RDPersonal
+         <wbr/>
+         Session
+         <wbr/>
+         Desktop
+         <wbr/>
+         Assignment
+        </a>
+       </td>
+       <td>
+        <p>
+         Removes the association between a personal session desktop assignment and a user.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Remove-RDPersonalVirtualDesktopAssignment.html">
+         Remove-RDPersonal
+         <wbr/>
+         Virtual
+         <wbr/>
+         Desktop
+         <wbr/>
+         Assignment
+        </a>
+       </td>
+       <td>
+        <p>
+         Removes the association between a personal virtual desktop and a user.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Remove-RDPersonalVirtualDesktopPatchSchedule.html">
+         Remove-RDPersonal
+         <wbr/>
+         Virtual
+         <wbr/>
+         Desktop
+         <wbr/>
+         Patch
+         <wbr/>
+         Schedule
+        </a>
+       </td>
+       <td>
+        <p>
+         Removes a patch schedule from a personal virtual desktop.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Remove-RDRemoteApp.html">
+         Remove-RDRemote
+         <wbr/>
+         App
+        </a>
+       </td>
+       <td>
+        <p>
+         Removes a RemoteApp program.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Remove-RDServer.html">
+         Remove-RDServer
+        </a>
+       </td>
+       <td>
+        <p>
+         Removes a server from a Remote Desktop deployment.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Remove-RDSessionCollection.html">
+         Remove-RDSession
+         <wbr/>
+         Collection
+        </a>
+       </td>
+       <td>
+        <p>
+         Removes a session collection from a Remote Desktop deployment.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Remove-RDSessionHost.html">
+         Remove-RDSession
+         <wbr/>
+         Host
+        </a>
+       </td>
+       <td>
+        <p>
+         Removes one or more RD Session Host servers from a session collection.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Remove-RDVirtualDesktopCollection.html">
+         Remove-RDVirtual
+         <wbr/>
+         Desktop
+         <wbr/>
+         Collection
+        </a>
+       </td>
+       <td>
+        <p>
+         Removes a virtual desktop collection.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Remove-RDVirtualDesktopFromCollection.html">
+         Remove-RDVirtual
+         <wbr/>
+         Desktop
+         <wbr/>
+         From
+         <wbr/>
+         Collection
+        </a>
+       </td>
+       <td>
+        <p>
+         Removes virtual desktops from a virtual desktop collection.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Send-RDUserMessage.html">
+         Send-RDUser
+         <wbr/>
+         Message
+        </a>
+       </td>
+       <td>
+        <p>
+         Sends a system message to a specified user session.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Set-RDActiveManagementServer.html">
+         Set-RDActive
+         <wbr/>
+         Management
+         <wbr/>
+         Server
+        </a>
+       </td>
+       <td>
+        <p>
+         Sets the active Remote Desktop Connection Broker  server, or management server, in a remote desktop deployment.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Set-RDCertificate.html">
+         Set-RDCertificate
+        </a>
+       </td>
+       <td>
+        <p>
+         Imports and secures a certificate to use with an RDS role.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Set-RDClientAccessName.html">
+         Set-RDClient
+         <wbr/>
+         Access
+         <wbr/>
+         Name
+        </a>
+       </td>
+       <td>
+        <p>
+         Sets a DNS name that clients use to connect to a Remote Desktop deployment.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Set-RDConnectionBrokerHighAvailability.html">
+         Set-RDConnection
+         <wbr/>
+         Broker
+         <wbr/>
+         High
+         <wbr/>
+         Availability
+        </a>
+       </td>
+       <td>
+        <p>
+         Sets high availability settings for RD Connection Broker servers for a Remote Desktop deployment.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Set-RDDatabaseConnectionString.html">
+         Set-RDDatabase
+         <wbr/>
+         Connection
+         <wbr/>
+         String
+        </a>
+       </td>
+       <td>
+        <p>
+         Configures the database connection string for the database server used in a high availability environment.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Set-RDDeploymentGatewayConfiguration.html">
+         Set-RDDeployment
+         <wbr/>
+         Gateway
+         <wbr/>
+         Configuration
+        </a>
+       </td>
+       <td>
+        <p>
+         Specifies settings for the RD Gateway server for a Remote Desktop deployment.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Set-RDFileTypeAssociation.html">
+         Set-RDFile
+         <wbr/>
+         Type
+         <wbr/>
+         Association
+        </a>
+       </td>
+       <td>
+        <p>
+         Changes the file type association of a RemoteApp program in a Remote Desktop deployment.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Set-RDLicenseConfiguration.html">
+         Set-RDLicense
+         <wbr/>
+         Configuration
+        </a>
+       </td>
+       <td>
+        <p>
+         Defines settings for the RD Licensing server and the licensing mode of the Remote Desktop deployment.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Set-RDPersonalSessionDesktopAssignment.html">
+         Set-RDPersonal
+         <wbr/>
+         Session
+         <wbr/>
+         Desktop
+         <wbr/>
+         Assignment
+        </a>
+       </td>
+       <td>
+        <p>
+         Associates a personal session desktop assignment with a user.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Set-RDPersonalVirtualDesktopAssignment.html">
+         Set-RDPersonal
+         <wbr/>
+         Virtual
+         <wbr/>
+         Desktop
+         <wbr/>
+         Assignment
+        </a>
+       </td>
+       <td>
+        <p>
+         Creates an association between a personal virtual desktop and a user account.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Set-RDPersonalVirtualDesktopPatchSchedule.html">
+         Set-RDPersonal
+         <wbr/>
+         Virtual
+         <wbr/>
+         Desktop
+         <wbr/>
+         Patch
+         <wbr/>
+         Schedule
+        </a>
+       </td>
+       <td>
+        <p>
+         Changes patch schedule settings for a personal virtual desktop.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Set-RDRemoteApp.html">
+         Set-RDRemote
+         <wbr/>
+         App
+        </a>
+       </td>
+       <td>
+        <p>
+         Modifies configuration settings for a RemoteApp program.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Set-RDRemoteDesktop.html">
+         Set-RDRemote
+         <wbr/>
+         Desktop
+        </a>
+       </td>
+       <td>
+        <p>
+         Changes whether to publish a Remote Desktop to a collection.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Set-RDSessionCollectionConfiguration.html">
+         Set-RDSession
+         <wbr/>
+         Collection
+         <wbr/>
+         Configuration
+        </a>
+       </td>
+       <td>
+        <p>
+         Modifies configuration options for an existing session collection.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Set-RDSessionHost.html">
+         Set-RDSession
+         <wbr/>
+         Host
+        </a>
+       </td>
+       <td>
+        <p>
+         Configures one or more RD Session Host servers in a session collection.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Set-RDVirtualDesktopCollectionConfiguration.html">
+         Set-RDVirtual
+         <wbr/>
+         Desktop
+         <wbr/>
+         Collection
+         <wbr/>
+         Configuration
+        </a>
+       </td>
+       <td>
+        <p>
+         Changes configuration settings for a virtual desktop collection.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Set-RDVirtualDesktopConcurrency.html">
+         Set-RDVirtual
+         <wbr/>
+         Desktop
+         <wbr/>
+         Concurrency
+        </a>
+       </td>
+       <td>
+        <p>
+         Sets the number of virtual desktops that RDS can create in parallel.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Set-RDVirtualDesktopIdleCount.html">
+         Set-RDVirtual
+         <wbr/>
+         Desktop
+         <wbr/>
+         Idle
+         <wbr/>
+         Count
+        </a>
+       </td>
+       <td>
+        <p>
+         Sets the maximum number of idle virtual desktops on host servers.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Set-RDVirtualDesktopTemplateExportPath.html">
+         Set-RDVirtual
+         <wbr/>
+         Desktop
+         <wbr/>
+         Template
+         <wbr/>
+         Export
+         <wbr/>
+         Path
+        </a>
+       </td>
+       <td>
+        <p>
+         Sets the export path for virtual desktop templates.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Set-RDWorkspace.html">
+         Set-RDWorkspace
+        </a>
+       </td>
+       <td>
+        <p>
+         Assigns a workspace name for a Remote Desktop deployment.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Stop-RDVirtualDesktopCollectionJob.html">
+         Stop-RDVirtual
+         <wbr/>
+         Desktop
+         <wbr/>
+         Collection
+         <wbr/>
+         Job
+        </a>
+       </td>
+       <td>
+        <p>
+         Stops a job on a virtual desktop collection.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Test-RDOUAccess.html">
+         Test-RDOUAccess
+        </a>
+       </td>
+       <td>
+        <p>
+         Verifies that the Remote Desktop Connection Broker  server can access an Active Directory Domain Services  organizational unit.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Test-RDVirtualDesktopADMachineAccountReuse.html">
+         Test-RDVirtual
+         <wbr/>
+         Desktop
+         <wbr/>
+         ADMachine
+         <wbr/>
+         Account
+         <wbr/>
+         Reuse
+        </a>
+       </td>
+       <td>
+        <p>
+         Detects whether the RD Connection Broker server is configured to reuse existing AD DS computer accounts.
+        </p>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <a data-linktype="relative-path" href="Update-RDVirtualDesktopCollection.html">
+         Update-RDVirtual
+         <wbr/>
+         Desktop
+         <wbr/>
+         Collection
+        </a>
+       </td>
+       <td>
+        <p>
+         Associates a virtual desktop collection with a new virtual desktop template.
+        </p>
+       </td>
+      </tr>
+     </table>
+     <!-- </content> -->
+    </main>
+    <section class="feedback-section" data-bi-name="feedback-section">
+     <h2 id="feedback">
+      Feedback
+     </h2>
+     <div class="alert choose-feedback-type">
+      <p>
+       We'd love to hear your thoughts. Choose the type you'd like to provide:
+      </p>
+      <div class="choose-feedback-buttons">
+       <a class="button-border feedback-type-product" data-bi-name="product-feedback" href="https://windowsserver.uservoice.com/forums/301869-powershell">
+        Product feedback
+        <span aria-hidden="true" class="docon docon-navigate-external">
+        </span>
+       </a>
+       <div class="button-group">
+        <button class="button-border feedback-sign-in-button" data-bi-name="feedback-sign-in">
+         <span aria-hidden="true" class="docon docon-brand-github">
+         </span>
+         Sign in to give documentation feedback
+        </button>
+        <button aria-controls="feedback-form" aria-expanded="false" class="button-border feedback-form-toggle" data-bi-name="documentation-feedback" hidden="">
+         Content feedback
+        </button>
+        <div auto-align="" class="dropdown has-caret">
+         <button aria-controls="fbm0" aria-expanded="false" aria-haspopup="true" aria-label="Expand documentation feedback menu" class="button-border dropdown-trigger" data-bi-name="documentation-feedback-menu">
+          <span aria-hidden="true" class="docon docon-chevron-down-light">
+          </span>
+         </button>
+         <div class="dropdown-menu documentation-feedback-menu" id="fbm0" role="menu">
+          You may also leave feedback
+          <a data-bi-name="create-issue-on-github" href="{0}">
+           directly on GitHub
+           <span aria-hidden="true" class="docon docon-navigate-external">
+           </span>
+          </a>
+          .
+         </div>
+        </div>
+       </div>
+      </div>
+      <p>
+       <small>
+        Our new feedback system is built on GitHub Issues. Read about this change in
+        <a href="https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs">
+         our blog post
+        </a>
+        .
+       </small>
+      </p>
+     </div>
+     <form accept-charset="UTF-8" action="javascript:" autocomplete="off" class="feedback-form" hidden="" id="feedback-form">
+      <h3 class="feedback-form-heading current-user">
+       <img alt="Avatar" aria-hidden="true" class="avatar" height="36" width="36"/>
+       <span aria-hidden="true" class="username">
+       </span>
+       <span class="visually-hidden">
+        Liquid error: Can't find the localized string giveDocumentationFeedback for template Conceptual.
+       </span>
+      </h3>
+      <label>
+       <span class="visually-hidden">
+        Title
+       </span>
+       <input name="title" pattern=".*\w.*" placeholder="Title" required="" type="text"/>
+      </label>
+      <label>
+       <span class="visually-hidden">
+        Leave a comment
+       </span>
+       <textarea name="body" placeholder="Leave a comment" required=""></textarea>
+      </label>
+      <div class="action-container">
+       <button class="primary-action" name="submit" type="submit">
+        Submit feedback
+       </button>
+      </div>
+     </form>
+     <div class="feedback-status alert busy" role="alert">
+      <p>
+       Loading feedback...
+      </p>
+     </div>
+     <div class="feedback-tab-group tabGroup" data-tab-group-independent="" hidden="">
+      <ul role="tablist">
+       <li role="presentation">
+        <a aria-controls="tabpanel-issues-open" aria-label="Open Issues" data-tab="issues-open" href="#tabpanel-issues-open" role="tab">
+        </a>
+       </li>
+       <li role="presentation">
+        <a aria-controls="tabpanel-issues-closed" aria-label="Closed Issues" data-tab="issues-closed" href="#tabpanel-issues-closed" role="tab">
+        </a>
+       </li>
+      </ul>
+      <section data-tab="issues-open" id="tabpanel-issues-open" role="tabpanel">
+       <div class="no-issues-placeholder">
+        There are no open issues
+       </div>
+       <ul aria-label="Open Issues" class="github-issues-list">
+       </ul>
+      </section>
+      <section data-tab="issues-closed" id="tabpanel-issues-closed" role="tabpanel">
+       <div class="no-issues-placeholder">
+        There are no closed issues
+       </div>
+       <ul aria-label="Closed Issues" class="github-issues-list">
+       </ul>
+      </section>
+     </div>
+     <div class="action-container">
+      <a class="view-on-github" data-bi-name="view-on-github" hidden="" href="https://github.com/MicrosoftDocs/windows-powershell-docs/issues">
+       <span aria-hidden="true" class="docon docon-brand-github">
+       </span>
+       <span>
+        View on GitHub
+       </span>
+       <span aria-hidden="true" class="docon docon-navigate-external">
+       </span>
+      </a>
+     </div>
+    </section>
+   </div>
+  </div>
+  <div class="openfeedback-container" id="openFeedbackContainer">
+  </div>
+  <div class="action-panel">
+  </div>
+ </body>
+</html>

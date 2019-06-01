@@ -1,0 +1,466 @@
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML><HEAD><TITLE>Man page of pthread.h</TITLE>
+</HEAD><BODY>
+<H1>pthread.h</H1>
+Section: POSIX Programmer's Manual (0P)<BR>Updated: 2013<BR><A HREF="#index">Index</A>
+<A HREF="../index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>PROLOG</H2>
+
+This manual page is part of the POSIX Programmer's Manual.
+The Linux implementation of this interface may differ (consult
+the corresponding Linux manual page for details of Linux behavior),
+or the interface may not be implemented on Linux.
+<P>
+<A NAME="lbAC">&nbsp;</A>
+<H2>NAME</H2>
+
+pthread.h
+--- threads
+<A NAME="lbAD">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<P>
+
+<PRE>
+#include &lt;<A HREF="file:///usr/include/pthread.h">pthread.h</A>&gt;
+</PRE>
+
+<A NAME="lbAE">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+The
+<I>&lt;<A HREF="file:///usr/include/pthread.h">pthread.h</A>&gt;</I>
+
+header shall define the following symbolic constants:
+<P>
+
+<PRE>
+PTHREAD_BARRIER_SERIAL_THREAD
+PTHREAD_CANCEL_ASYNCHRONOUS
+PTHREAD_CANCEL_ENABLE
+PTHREAD_CANCEL_DEFERRED
+PTHREAD_CANCEL_DISABLE
+PTHREAD_CANCELED
+PTHREAD_CREATE_DETACHED
+PTHREAD_CREATE_JOINABLE
+PTHREAD_EXPLICIT_SCHED
+PTHREAD_INHERIT_SCHED
+PTHREAD_MUTEX_DEFAULT
+PTHREAD_MUTEX_ERRORCHECK
+PTHREAD_MUTEX_NORMAL
+PTHREAD_MUTEX_RECURSIVE
+PTHREAD_MUTEX_ROBUST
+PTHREAD_MUTEX_STALLED
+PTHREAD_ONCE_INIT
+PTHREAD_PRIO_INHERIT
+PTHREAD_PRIO_NONE
+PTHREAD_PRIO_PROTECT
+PTHREAD_PROCESS_SHARED
+PTHREAD_PROCESS_PRIVATE
+PTHREAD_SCOPE_PROCESS
+PTHREAD_SCOPE_SYSTEM
+</PRE>
+
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/pthread.h">pthread.h</A>&gt;</I>
+
+header shall define the following compile-time constant
+expressions valid as initializers for the following types:
+<CENTER><TABLE BORDER><TR><TD><TABLE>
+<TR VALIGN=top><TD ALIGN=center><B>Name</B></TD><TD ALIGN=center><B>Initializer for Type</B><BR></TD></TR>
+<TR VALIGN=top><TD COLSPAN=2><HR></TD></TR>
+<TR VALIGN=top><TD>PTHREAD_COND_INITIALIZER</TD><TD><B>pthread_cond_t</B><BR></TD></TR>
+<TR VALIGN=top><TD>PTHREAD_MUTEX_INITIALIZER</TD><TD><B>pthread_mutex_t</B><BR></TD></TR>
+<TR VALIGN=top><TD>PTHREAD_RWLOCK_INITIALIZER</TD><TD><B>pthread_rwlock_t</B><BR></TD></TR>
+</TABLE></TABLE></CENTER>
+
+<P>
+
+The
+<I>&lt;<A HREF="file:///usr/include/pthread.h">pthread.h</A>&gt;</I>
+
+header shall define the
+<B>pthread_attr_t</B>,
+
+<B>pthread_barrier_t</B>,
+
+<B>pthread_barrierattr_t</B>,
+
+<B>pthread_cond_t</B>,
+
+<B>pthread_condattr_t</B>,
+
+<B>pthread_key_t</B>,
+
+<B>pthread_mutex_t</B>,
+
+<B>pthread_mutexattr_t</B>,
+
+<B>pthread_once_t</B>,
+
+<B>pthread_rwlock_t</B>,
+
+<B>pthread_rwlockattr_t</B>,
+
+<B>pthread_spinlock_t</B>,
+
+and
+<B>pthread_t</B>
+
+types as described in
+<I>&lt;<A HREF="file:///usr/include/sys/types.h">sys/types.h</A>&gt;</I>.
+
+<P>
+
+The following shall be declared as functions and may also be defined
+as macros. Function prototypes shall be provided.
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>
+int   pthread_atfork(void (*)(void), void (*)(void),
+          void(*)(void));
+int   pthread_attr_destroy(pthread_attr_t *);
+int   pthread_attr_getdetachstate(const pthread_attr_t *, int *);
+int   pthread_attr_getguardsize(const pthread_attr_t *restrict,
+          size_t *restrict);
+int   pthread_attr_getinheritsched(const pthread_attr_t *restrict,
+          int *restrict);
+int   pthread_attr_getschedparam(const pthread_attr_t *restrict,
+          struct sched_param *restrict);
+int   pthread_attr_getschedpolicy(const pthread_attr_t *restrict,
+          int *restrict);
+int   pthread_attr_getscope(const pthread_attr_t *restrict,
+          int *restrict);
+int   pthread_attr_getstack(const pthread_attr_t *restrict,
+          void **restrict, size_t *restrict);
+int   pthread_attr_getstacksize(const pthread_attr_t *restrict,
+          size_t *restrict);
+int   pthread_attr_init(pthread_attr_t *);
+int   pthread_attr_setdetachstate(pthread_attr_t *, int);
+int   pthread_attr_setguardsize(pthread_attr_t *, size_t);
+int   pthread_attr_setinheritsched(pthread_attr_t *, int);
+int   pthread_attr_setschedparam(pthread_attr_t *restrict,
+          const struct sched_param *restrict);
+int   pthread_attr_setschedpolicy(pthread_attr_t *, int);
+int   pthread_attr_setscope(pthread_attr_t *, int);
+int   pthread_attr_setstack(pthread_attr_t *, void *, size_t);
+int   pthread_attr_setstacksize(pthread_attr_t *, size_t);
+int   pthread_barrier_destroy(pthread_barrier_t *);
+int   pthread_barrier_init(pthread_barrier_t *restrict,
+          const pthread_barrierattr_t *restrict, unsigned);
+int   pthread_barrier_wait(pthread_barrier_t *);
+int   pthread_barrierattr_destroy(pthread_barrierattr_t *);
+int   pthread_barrierattr_getpshared(
+          const pthread_barrierattr_t *restrict, int *restrict);
+int   pthread_barrierattr_init(pthread_barrierattr_t *);
+int   pthread_barrierattr_setpshared(pthread_barrierattr_t *, int);
+int   pthread_cancel(pthread_t);
+void  pthread_cleanup_pop(int);
+void  pthread_cleanup_push(void (*)(void*), void *);
+int   pthread_cond_broadcast(pthread_cond_t *);
+int   pthread_cond_destroy(pthread_cond_t *);
+int   pthread_cond_init(pthread_cond_t *restrict,
+          const pthread_condattr_t *restrict);
+int   pthread_cond_signal(pthread_cond_t *);
+int   pthread_cond_timedwait(pthread_cond_t *restrict,
+          pthread_mutex_t *restrict, const struct timespec *restrict);
+int   pthread_cond_wait(pthread_cond_t *restrict,
+          pthread_mutex_t *restrict);
+int   pthread_condattr_destroy(pthread_condattr_t *);
+int   pthread_condattr_getclock(const pthread_condattr_t *restrict,
+          clockid_t *restrict);
+int   pthread_condattr_getpshared(const pthread_condattr_t *restrict,
+          int *restrict);
+int   pthread_condattr_init(pthread_condattr_t *);
+int   pthread_condattr_setclock(pthread_condattr_t *, clockid_t);
+int   pthread_condattr_setpshared(pthread_condattr_t *, int);
+int   pthread_create(pthread_t *restrict, const pthread_attr_t *restrict,
+          void *(*)(void*), void *restrict);
+int   pthread_detach(pthread_t);
+int   pthread_equal(pthread_t, pthread_t);
+void  pthread_exit(void *);
+int   pthread_getconcurrency(void);
+int   pthread_getcpuclockid(pthread_t, clockid_t *);
+int   pthread_getschedparam(pthread_t, int *restrict,
+          struct sched_param *restrict);
+void *pthread_getspecific(pthread_key_t);
+int   pthread_join(pthread_t, void **);
+int   pthread_key_create(pthread_key_t *, void (*)(void*));
+int   pthread_key_delete(pthread_key_t);
+int   pthread_mutex_consistent(pthread_mutex_t *);
+int   pthread_mutex_destroy(pthread_mutex_t *);
+int   pthread_mutex_getprioceiling(const pthread_mutex_t *restrict,
+          int *restrict);
+int   pthread_mutex_init(pthread_mutex_t *restrict,
+          const pthread_mutexattr_t *restrict);
+int   pthread_mutex_lock(pthread_mutex_t *);
+int   pthread_mutex_setprioceiling(pthread_mutex_t *restrict, int,
+          int *restrict);
+int   pthread_mutex_timedlock(pthread_mutex_t *restrict,
+          const struct timespec *restrict);
+int   pthread_mutex_trylock(pthread_mutex_t *);
+int   pthread_mutex_unlock(pthread_mutex_t *);
+int   pthread_mutexattr_destroy(pthread_mutexattr_t *);
+int   pthread_mutexattr_getprioceiling(
+          const pthread_mutexattr_t *restrict, int *restrict);
+int   pthread_mutexattr_getprotocol(const pthread_mutexattr_t *restrict,
+          int *restrict);
+int   pthread_mutexattr_getpshared(const pthread_mutexattr_t *restrict,
+          int *restrict);
+int   pthread_mutexattr_getrobust(const pthread_mutexattr_t *restrict,
+          int *restrict);
+int   pthread_mutexattr_gettype(const pthread_mutexattr_t *restrict,
+          int *restrict);
+int   pthread_mutexattr_init(pthread_mutexattr_t *);
+int   pthread_mutexattr_setprioceiling(pthread_mutexattr_t *, int);
+int   pthread_mutexattr_setprotocol(pthread_mutexattr_t *, int);
+int   pthread_mutexattr_setpshared(pthread_mutexattr_t *, int);
+int   pthread_mutexattr_setrobust(pthread_mutexattr_t *, int);
+int   pthread_mutexattr_settype(pthread_mutexattr_t *, int);
+int   pthread_once(pthread_once_t *, void (*)(void));
+int   pthread_rwlock_destroy(pthread_rwlock_t *);
+int   pthread_rwlock_init(pthread_rwlock_t *restrict,
+          const pthread_rwlockattr_t *restrict);
+int   pthread_rwlock_rdlock(pthread_rwlock_t *);
+int   pthread_rwlock_timedrdlock(pthread_rwlock_t *restrict,
+          const struct timespec *restrict);
+int   pthread_rwlock_timedwrlock(pthread_rwlock_t *restrict,
+          const struct timespec *restrict);
+int   pthread_rwlock_tryrdlock(pthread_rwlock_t *);
+int   pthread_rwlock_trywrlock(pthread_rwlock_t *);
+int   pthread_rwlock_unlock(pthread_rwlock_t *);
+int   pthread_rwlock_wrlock(pthread_rwlock_t *);
+int   pthread_rwlockattr_destroy(pthread_rwlockattr_t *);
+int   pthread_rwlockattr_getpshared(
+          const pthread_rwlockattr_t *restrict, int *restrict);
+int   pthread_rwlockattr_init(pthread_rwlockattr_t *);
+int   pthread_rwlockattr_setpshared(pthread_rwlockattr_t *, int);
+pthread_t
+      pthread_self(void);
+int   pthread_setcancelstate(int, int *);
+int   pthread_setcanceltype(int, int *);
+int   pthread_setconcurrency(int);
+int   pthread_setschedparam(pthread_t, int,
+          const struct sched_param *);
+int   pthread_setschedprio(pthread_t, int);
+int   pthread_setspecific(pthread_key_t, const void *);
+int   pthread_spin_destroy(pthread_spinlock_t *);
+int   pthread_spin_init(pthread_spinlock_t *, int);
+int   pthread_spin_lock(pthread_spinlock_t *);
+int   pthread_spin_trylock(pthread_spinlock_t *);
+int   pthread_spin_unlock(pthread_spinlock_t *);
+void  pthread_testcancel(void);
+</B></PRE>
+
+<P>
+
+</DL>
+
+<P>
+
+Inclusion of the
+<I>&lt;<A HREF="file:///usr/include/pthread.h">pthread.h</A>&gt;</I>
+
+header shall make symbols defined in the headers
+<I>&lt;<A HREF="file:///usr/include/sched.h">sched.h</A>&gt;</I>
+
+and
+<I>&lt;<A HREF="file:///usr/include/time.h">time.h</A>&gt;</I>
+
+visible.
+<P>
+
+<I>The following sections are informative.</I>
+
+<A NAME="lbAF">&nbsp;</A>
+<H2>APPLICATION USAGE</H2>
+
+None.
+<A NAME="lbAG">&nbsp;</A>
+<H2>RATIONALE</H2>
+
+None.
+<A NAME="lbAH">&nbsp;</A>
+<H2>FUTURE DIRECTIONS</H2>
+
+None.
+<A NAME="lbAI">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+<I></I><B>&lt;<A HREF="file:///usr/include/sched.h">sched.h</A>&gt;</B>,
+
+<I></I><B>&lt;<A HREF="file:///usr/include/sys_types.h">sys_types.h</A>&gt;</B>,
+
+<I></I><B>&lt;<A HREF="file:///usr/include/time.h">time.h</A>&gt;</B>
+
+<P>
+
+
+The System Interfaces volume of POSIX.1-2008,
+<I>pthread_atfork</I>(),
+
+<I>pthread_attr_destroy</I>(),
+
+<I>pthread_attr_getdetachstate</I>(),
+
+<I>pthread_attr_getguardsize</I>(),
+
+<I>pthread_attr_getinheritsched</I>(),
+
+<I>pthread_attr_getschedparam</I>(),
+
+<I>pthread_attr_getschedpolicy</I>(),
+
+<I>pthread_attr_getscope</I>(),
+
+<I>pthread_attr_getstack</I>(),
+
+<I>pthread_attr_getstacksize</I>(),
+
+<I>pthread_barrier_destroy</I>(),
+
+<I>pthread_barrier_wait</I>(),
+
+<I>pthread_barrierattr_destroy</I>(),
+
+<I>pthread_barrierattr_getpshared</I>(),
+
+<I>pthread_cancel</I>(),
+
+<I>pthread_cleanup_pop</I>(),
+
+<I>pthread_cond_broadcast</I>(),
+
+<I>pthread_cond_destroy</I>(),
+
+<I>pthread_cond_timedwait</I>(),
+
+<I>pthread_condattr_destroy</I>(),
+
+<I>pthread_condattr_getclock</I>(),
+
+<I>pthread_condattr_getpshared</I>(),
+
+<I>pthread_create</I>(),
+
+<I>pthread_detach</I>(),
+
+<I>pthread_equal</I>(),
+
+<I>pthread_exit</I>(),
+
+<I>pthread_getconcurrency</I>(),
+
+<I>pthread_getcpuclockid</I>(),
+
+<I>pthread_getschedparam</I>(),
+
+<I>pthread_getspecific</I>(),
+
+<I>pthread_join</I>(),
+
+<I>pthread_key_create</I>(),
+
+<I>pthread_key_delete</I>(),
+
+<I>pthread_mutex_consistent</I>(),
+
+<I>pthread_mutex_destroy</I>(),
+
+<I>pthread_mutex_getprioceiling</I>(),
+
+<I>pthread_mutex_lock</I>(),
+
+<I>pthread_mutex_timedlock</I>(),
+
+<I>pthread_mutexattr_destroy</I>(),
+
+<I>pthread_mutexattr_getprioceiling</I>(),
+
+<I>pthread_mutexattr_getprotocol</I>(),
+
+<I>pthread_mutexattr_getpshared</I>(),
+
+<I>pthread_mutexattr_getrobust</I>(),
+
+<I>pthread_mutexattr_gettype</I>(),
+
+<I>pthread_once</I>(),
+
+<I>pthread_rwlock_destroy</I>(),
+
+<I>pthread_rwlock_rdlock</I>(),
+
+<I>pthread_rwlock_timedrdlock</I>(),
+
+<I>pthread_rwlock_timedwrlock</I>(),
+
+<I>pthread_rwlock_trywrlock</I>(),
+
+<I>pthread_rwlock_unlock</I>(),
+
+<I>pthread_rwlockattr_destroy</I>(),
+
+<I>pthread_rwlockattr_getpshared</I>(),
+
+<I>pthread_self</I>(),
+
+<I>pthread_setcancelstate</I>(),
+
+<I>pthread_setschedprio</I>(),
+
+<I>pthread_spin_destroy</I>(),
+
+<I>pthread_spin_lock</I>(),
+
+<I>pthread_spin_unlock</I>()
+
+
+<A NAME="lbAJ">&nbsp;</A>
+<H2>COPYRIGHT</H2>
+
+Portions of this text are reprinted and reproduced in electronic form
+from IEEE Std 1003.1, 2013 Edition, Standard for Information Technology
+-- Portable Operating System Interface (POSIX), The Open Group Base
+Specifications Issue 7, Copyright (C) 2013 by the Institute of
+Electrical and Electronics Engineers, Inc and The Open Group.
+(This is POSIX.1-2008 with the 2013 Technical Corrigendum 1 applied.) In the
+event of any discrepancy between this version and the original IEEE and
+The Open Group Standard, the original IEEE and The Open Group Standard
+is the referee document. The original Standard can be obtained online at
+<A HREF="http://www.unix.org/online.html">http://www.unix.org/online.html</A> .
+<P>
+Any typographical or formatting errors that appear
+in this page are most likely
+to have been introduced during the conversion of the source files to
+man page format. To report such errors, see
+<A HREF="https://www.kernel.org/doc/man-pages/reporting_bugs.html">https://www.kernel.org/doc/man-pages/reporting_bugs.html</A> .
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">PROLOG</A><DD>
+<DT><A HREF="#lbAC">NAME</A><DD>
+<DT><A HREF="#lbAD">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAE">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAF">APPLICATION USAGE</A><DD>
+<DT><A HREF="#lbAG">RATIONALE</A><DD>
+<DT><A HREF="#lbAH">FUTURE DIRECTIONS</A><DD>
+<DT><A HREF="#lbAI">SEE ALSO</A><DD>
+<DT><A HREF="#lbAJ">COPYRIGHT</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 14:28:43 GMT, February 25, 2017
+</BODY>
+</HTML>

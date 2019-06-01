@@ -1,0 +1,1072 @@
+<html><!-- Mirrored from developer.mozilla.org/en-US/docs/Web/API/Screen_Capture_API/Using_Screen_Capture by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 01 May 2019 23:19:12 GMT --><!-- Added by HTTrack --><head><meta http-equiv="content-type" content="text/html;charset=utf-8"><!-- /Added by HTTrack -->
+
+  <meta charset="utf-8">
+
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <script async="" src="../../../../../../www.google-analytics.com/analytics.js"></script><script>(function(d) { d.className = d.className.replace(/\bno-js/, ''); })(document.documentElement);</script>
+  <title>Using the Screen Capture API</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index, follow">
+
+  
+<link rel="preload" href="../../../../../static/fonts/locales/ZillaSlab-Regular.subset.bbc33fb47cf6.woff2" as="font" type="font/woff2" crossorigin="">
+    <link rel="home" href="https://developer.mozilla.org/en-US/">
+    <link rel="license" href="#license">
+  
+
+  
+    
+    
+
+    <link href="../../../../../static/build/styles/mdn.8634e046f072.css" rel="stylesheet" type="text/css">
+
+    
+  
+    <link href="../../../../../static/build/styles/wiki.d451415ae2dd.css" rel="stylesheet" type="text/css">
+
+
+    
+
+  <link href="../../../../../static/build/styles/locale-en-US.520ecdcaef8c.css" rel="stylesheet" type="text/css">
+
+  
+    
+  
+
+  
+    <script>
+    // util for setting performance marks and mesaures
+    var mdn=window.mdn||{};mdn.perf={getDuration:function(e){"use strict";if(void 0!==performance.getEntriesByName)return performance.getEntriesByName(e)[0].duration;console.error("performance.getEntriesByName is not supported by your user-agent")},setMark:function(e){"use strict";if(void 0!==performance.mark)try{performance.mark(e)}catch(e){console.error("Error while setting performance mark: ",e)}else console.error("performance.mark is not supported by your user-agent")},setMeasure:function(e){"use strict";void 0!==performance.measure?performance.measure(e.measureName,e.startMark,e.endMark):console.error("performance.measure is not supported by your user-agent")}};
+    /* util specifically for postMessages sent from the
+       `head` of the interactive examples iframe */
+    function handlePerfMarks(e){e.measureName?(window.mdn.perf.setMark(e.markName),window.mdn.perf.setMeasure({measureName:e.measureName,startMark:e.startMark,endMark:e.endMark}),ga&&ga.create&&ga("send",{hitType:"timing",timingCategory:"RUM - Interactive Examples",timingVar:e.measureName,timingValue:window.mdn.perf.getDuration(e.measureName)||0})):window.mdn.perf.setMark(e.markName)}function perfMsgHandler(e){"use strict";var a=window.mdn.interactiveEditor.editorUrl||"https://interactive-examples.mdn.mozilla.net",r=e.data;if(e.origin!==a)return!1;r.markName&&-1<r.markName.indexOf("interactive-editor-")&&handlePerfMarks(r)}window.addEventListener("message",perfMsgHandler,!1);
+</script>
+
+    <!-- common social tags -->
+    
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://developer.mozilla.org/static/img/opengraph-logo.72382e605ce3.png">
+    <meta property="og:site_name" content="MDN Web Docs">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:image" content="https://developer.mozilla.org/static/img/opengraph-logo.72382e605ce3.png">
+    <meta name="twitter:site" content="@MozDevNet">
+    <meta name="twitter:creator" content="@MozDevNet">
+    <link rel="search" type="application/opensearchdescription+xml" href="https://developer.mozilla.org/en-US/search/xml" title="MDN Web Docs">
+    
+  
+  <!-- third-generation iPad with high-resolution Retina display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../../../../static/img/favicon144.e7e21ca263ca.png">
+  <!-- iPhone with high-resolution Retina display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../../../../static/img/favicon114.d526f38b09c5.png">
+  <!-- first- and second-generation iPad: -->
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../../../../static/img/favicon72.cc65d1d762a0.png">
+  <!-- non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+  <link rel="apple-touch-icon-precomposed" href="../../../../../static/img/favicon57.de33179910ae.png">
+  <!-- basic favicon -->
+  <link rel="shortcut icon" href="../../../../../static/img/favicon32.7f3da72dcea1.png">
+  <!--[if IE]>
+  <meta http-equiv="imagetoolbar" content="no">
+  <script async="" type="text/javascript" src=".html5shiv.ae1ac46eaf58.js" charset="utf-8"></script>
+  <![endif]-->
+
+  
+  <link rel="dns-prefetch" href="../../../../../../interactive-examples.mdn.mozilla.net/index.html" pr="0.75">
+  <link rel="preconnect" href="../../../../../../interactive-examples.mdn.mozilla.net/index.html" pr="0.75">
+
+  <link rel="alternate" type="application/json" href="https://developer.mozilla.org/en-US/docs/Web/API/Screen_Capture_API/Using_Screen_Capture$json">
+  <link rel="canonical" href="Using_Screen_Capture.html">
+
+  
+  <link rel="alternate" hreflang="en" href="Using_Screen_Capture.html" title="Using the Screen Capture API">
+  
+
+  <!-- document-specific social tags -->
+  <meta property="og:title" content="Using the Screen Capture API">
+  <meta property="og:url" content="https://developer.mozilla.org/en-US/docs/Web/API/Screen_Capture_API/Using_Screen_Capture">
+  <meta name="twitter:url" content="https://developer.mozilla.org/en-US/docs/Web/API/Screen_Capture_API/Using_Screen_Capture">
+  <meta name="twitter:title" content="Using the Screen Capture API">
+  
+  <meta property="og:description" content="In this article, we will examine how to use the Screen Capture API and its getDisplayMedia() method to capture part or all of a screen for streaming, recording, or sharing during a WebRTC conference session.">
+  <meta name="description" content="In this article, we will examine how to use the Screen Capture API and its getDisplayMedia() method to capture part or all of a screen for streaming, recording, or sharing during a WebRTC conference session.">
+  <meta name="twitter:description" content="In this article, we will examine how to use the Screen Capture API and its getDisplayMedia() method to capture part or all of a screen for streaming, recording, or sharing during a WebRTC conference session.">
+  
+
+</head>
+<body data-slug="Web/API/Screen_Capture_API/Using_Screen_Capture" contextmenu="edit-history-menu" data-search-url="" class="document">
+
+  <script>
+    // make sure global mdn object exists
+    var mdn = window.mdn || {};
+
+    (function(win) {
+        'use strict';
+
+        (function(){
+  var FLAGS = {
+    'kumaediting': false,'page_move': false,'section_edit': false,'spam_checks_enabled': true,'spam_submissions_enabled': false,'spam_admin_override': false,'spam_spammer_override': false,'spam_testing_mode': false,'sg_task_completion': false,'contrib_beta': false,'recurring_payment_beta': false
+    },
+    SWITCHES = {
+    'welcome_email': true,'application_ACAO': true,'store_revision_ips': true,'foundation_callout': false,'helpful-survey-2': true,'wiki_spam_training': true,'registration_disabled': false
+    },
+    SAMPLES = {
+    
+    };
+  window.waffle = {
+    "flag_is_active": function waffle_flag(flag_name) {
+      
+      return !!FLAGS[flag_name];
+    },
+    "switch_is_active": function waffle_switch(switch_name) {
+      
+      return !!SWITCHES[switch_name];
+    },
+    "sample_is_active": function waffle_sample(sample_name) {
+      
+      return !!SAMPLES[sample_name];
+    },
+    "FLAGS": FLAGS,
+    "SWITCHES": SWITCHES,
+    "SAMPLES": SAMPLES
+  };
+})();
+
+        // This needs to be set before ckeditor.js loads
+        window.CKEDITOR_BASEPATH = 'https://developer.mozilla.org/static/js/libs/ckeditor4/build/ckeditor/';
+
+        // Site configuration
+        win.mdn.ckeditor = {};
+        win.mdn.features = {};
+        win.mdn.siteUrl = 'https://developer.mozilla.org/';
+        win.mdn.wikiSiteUrl = 'https://wiki.developer.mozilla.org/';
+        win.mdn.staticPath = 'https://developer.mozilla.org/static/';
+        win.mdn.wiki = {
+            autosuggestTitleUrl: '/en-US/docs/get-documents'
+        };
+        win.mdn.assets_disabled = {
+            css: {
+                'editor-content': ['https://developer.mozilla.org/static/build/styles/editor-content.c9f73a799d9a.css','../../../../../static/build/styles/editor-locale-en-US.520ecdcaef8c.css',
+                ],
+
+                'wiki-compat-tables': ['https://developer.mozilla.org/static/build/styles/wiki-compat-tables.eef64bf9b6fe.css',]
+            },
+            js: {
+                'syntax-prism': ['https://developer.mozilla.org/static/build/js/syntax-prism.f016806edde4.js',],
+                'wiki-compat-tables': ['https://developer.mozilla.org/static/build/js/syntax-prism.js" charset="utf-8"></script><script type="text/javascript" src=".html5shiv.ae1ac46eaf58.js" charset="utf-8"></script>
+  <!--[endif]---->
+
+  
+  <link rel="dns-prefetch" href="../../../../../../interactive-examples.mdn.mozilla.net/index.html" pr="0.75">
+  <link rel="preconnect" href="../../../../../../interactive-examples.mdn.mozilla.net/index.html" pr="0.75">
+
+  <link rel="alternate" type="application/json" href="https://developer.mozilla.org/en-US/docs/Web/API/Screen_Capture_API/Using_Screen_Capture$json">
+  <link rel="canonical" href="Using_Screen_Capture.html">
+
+  
+  <link rel="alternate" hreflang="en" href="Using_Screen_Capture.html" title="Using the Screen Capture API">
+  
+
+  <!-- document-specific social tags -->
+  <meta property="og:title" content="Using the Screen Capture API">
+  <meta property="og:url" content="https://developer.mozilla.org/en-US/docs/Web/API/Screen_Capture_API/Using_Screen_Capture">
+  <meta name="twitter:url" content="https://developer.mozilla.org/en-US/docs/Web/API/Screen_Capture_API/Using_Screen_Capture">
+  <meta name="twitter:title" content="Using the Screen Capture API">
+  
+  <meta property="og:description" content="In this article, we will examine how to use the Screen Capture API and its getDisplayMedia() method to capture part or all of a screen for streaming, recording, or sharing during a WebRTC conference session.">
+  <meta name="description" content="In this article, we will examine how to use the Screen Capture API and its getDisplayMedia() method to capture part or all of a screen for streaming, recording, or sharing during a WebRTC conference session.">
+  <meta name="twitter:description" content="In this article, we will examine how to use the Screen Capture API and its getDisplayMedia() method to capture part or all of a screen for streaming, recording, or sharing during a WebRTC conference session.">
+  
+
+
+
+
+  <script>
+    // make sure global mdn object exists
+    var mdn = window.mdn || {};
+
+    (function(win) {
+        'use strict';
+
+        (function(){
+  var FLAGS = {
+    'kumaediting': false,'page_move': false,'section_edit': false,'spam_checks_enabled': true,'spam_submissions_enabled': false,'spam_admin_override': false,'spam_spammer_override': false,'spam_testing_mode': false,'sg_task_completion': false,'contrib_beta': false,'recurring_payment_beta': false
+    },
+    SWITCHES = {
+    'welcome_email': true,'application_ACAO': true,'store_revision_ips': true,'foundation_callout': false,'helpful-survey-2': true,'wiki_spam_training': true,'registration_disabled': false
+    },
+    SAMPLES = {
+    
+    };
+  window.waffle = {
+    "flag_is_active": function waffle_flag(flag_name) {
+      
+      return !!FLAGS[flag_name];
+    },
+    "switch_is_active": function waffle_switch(switch_name) {
+      
+      return !!SWITCHES[switch_name];
+    },
+    "sample_is_active": function waffle_sample(sample_name) {
+      
+      return !!SAMPLES[sample_name];
+    },
+    "FLAGS": FLAGS,
+    "SWITCHES": SWITCHES,
+    "SAMPLES": SAMPLES
+  };
+})();
+
+        // This needs to be set before ckeditor.js loads
+        window.CKEDITOR_BASEPATH = 'https://developer.mozilla.org/static/js/libs/ckeditor4/build/ckeditor/';
+
+        // Site configuration
+        win.mdn.ckeditor = {};
+        win.mdn.features = {};
+        win.mdn.siteUrl = 'https://developer.mozilla.org/';
+        win.mdn.wikiSiteUrl = 'https://wiki.developer.mozilla.org/';
+        win.mdn.staticPath = 'https://developer.mozilla.org/static/';
+        win.mdn.wiki = {
+            autosuggestTitleUrl: '/en-US/docs/get-documents'
+        };
+        win.mdn.assets_disabled = {
+            css: {
+                'editor-content': ['https://developer.mozilla.org/static/build/styles/editor-content.c9f73a799d9a.css','../../../../../static/build/styles/editor-locale-en-US.520ecdcaef8c.css',
+                ],
+
+                'wiki-compat-tables': ['https://developer.mozilla.org/static/build/styles/wiki-compat-tables.eef64bf9b6fe.css',]
+            },
+            js: {
+                'syntax-prism': ['https://developer.mozilla.org/static/build/js/syntax-prism.f016806edde4.js',],
+                'wiki-compat-tables': ['https://developer.mozilla.org/static/build/js/wiki-compat-tables.3a4ab2cc8ca1.js',]
+            }
+        };
+
+        win.mdn.notifications = [];
+        win.mdn.contributions = {
+            enabled: true,
+            popup: false
+        };
+
+        
+
+        // interactive editor config
+        win.mdn.interactiveEditor = {
+            siteUrl: "https://developer.mozilla.org",
+            editorUrl: "https://interactive-examples.mdn.mozilla.net"
+        };
+        win.mdn.langCookieName = "django_language";
+
+    })(this);
+</script>
+    
+    <ul id="nav-access">
+  <li><a href="#content" id="skip-main">Skip to main content</a></li>
+  <li><a id="skip-language" href="#language">Select language</a></li>
+  <li><a href="#q" id="skip-search">Skip to search</a></li>
+</ul>
+
+    <!-- Header -->
+    <header id="main-header" class="header-main">
+      <a href="https://developer.mozilla.org/en-US/" class="logo">MDN Web Docs</a>
+      <div class="nav-toolbox-wrapper">
+        <nav id="main-nav" class="nav-main" role="navigation">
+    <ul>
+        <li class="nav-main-item">
+            <a href="https://developer.mozilla.org/en-US/docs/Web">Technologies
+                <svg class="icon icon-caret-down" xmlns="http://www.w3.org/2000/svg" width="16" height="28" viewBox="0 0 16 28"><path d="M16 11a.99.99 0 0 1-.297.703l-7 7C8.516 18.89 8.265 19 8 19s-.516-.109-.703-.297l-7-7A.996.996 0 0 1 0 11c0-.547.453-1 1-1h14c.547 0 1 .453 1 1z"></path></svg>
+            </a>
+            <div class="submenu js-submenu" id="nav-tech-submenu">
+                <div class="submenu-column">
+                  <ul>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML">HTML</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS">CSS</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">JavaScript</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/Graphics">Graphics</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP">HTTP</a></li>
+                    <li><a href="../../API.html">APIs / DOM</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions">Browser Extensions</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/MathML">MathML</a></li>
+                  </ul>
+                </div>
+            </div>
+        </li>
+        <li class="nav-main-item">
+            <a href="https://developer.mozilla.org/en-US/docs/Learn">References &amp; Guides
+                <svg class="icon icon-caret-down" xmlns="http://www.w3.org/2000/svg" width="16" height="28" viewBox="0 0 16 28"><path d="M16 11a.99.99 0 0 1-.297.703l-7 7C8.516 18.89 8.265 19 8 19s-.516-.109-.703-.297l-7-7A.996.996 0 0 1 0 11c0-.547.453-1 1-1h14c.547 0 1 .453 1 1z"></path></svg>
+            </a>
+            <div class="submenu js-submenu" id="nav-learn-submenu">
+                <div class="submenu-column">
+                  <ul>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Learn">Learn web development</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/Tutorials">Tutorials</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/Reference">References</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide">Developer Guides</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility">Accessibility</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Games">Game development</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web">...more docs</a></li>
+                  </ul>
+                </div>
+            </div>
+        </li>
+        <li class="nav-main-item">
+            <a href="https://developer.mozilla.org/en-US/docs/MDN/Feedback">Feedback
+                <svg class="icon icon-caret-down" xmlns="http://www.w3.org/2000/svg" width="16" height="28" viewBox="0 0 16 28"><path d="M16 11a.99.99 0 0 1-.297.703l-7 7C8.516 18.89 8.265 19 8 19s-.516-.109-.703-.297l-7-7A.996.996 0 0 1 0 11c0-.547.453-1 1-1h14c.547 0 1 .453 1 1z"></path></svg>
+            </a>
+            <div class="submenu js-submenu" id="nav-contact-submenu">
+              <div class="submenu-column">
+                <ul>
+                  <li>
+                      <a href="https://support.mozilla.org/">Get Firefox help
+                          <svg class="icon icon-external-link" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" aria-hidden="true"><path d="M22 14.5v5c0 2.484-2.016 4.5-4.5 4.5h-13A4.502 4.502 0 0 1 0 19.5v-13C0 4.016 2.016 2 4.5 2h11c.281 0 .5.219.5.5v1c0 .281-.219.5-.5.5h-11A2.507 2.507 0 0 0 2 6.5v13C2 20.875 3.125 22 4.5 22h13c1.375 0 2.5-1.125 2.5-2.5v-5c0-.281.219-.5.5-.5h1c.281 0 .5.219.5.5zM28 1v8c0 .547-.453 1-1 1a.99.99 0 0 1-.703-.297l-2.75-2.75L13.36 17.14c-.094.094-.234.156-.359.156s-.266-.063-.359-.156l-1.781-1.781c-.094-.094-.156-.234-.156-.359s.063-.266.156-.359L21.048 4.454l-2.75-2.75a.996.996 0 0 1-.297-.703c0-.547.453-1 1-1h8c.547 0 1 .453 1 1z"></path></svg>
+                      </a>
+                  </li>
+                  <li>
+                      <a href="https://stackoverflow.com/">Get web development help
+                          <svg class="icon icon-external-link" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" aria-hidden="true"><path d="M22 14.5v5c0 2.484-2.016 4.5-4.5 4.5h-13A4.502 4.502 0 0 1 0 19.5v-13C0 4.016 2.016 2 4.5 2h11c.281 0 .5.219.5.5v1c0 .281-.219.5-.5.5h-11A2.507 2.507 0 0 0 2 6.5v13C2 20.875 3.125 22 4.5 22h13c1.375 0 2.5-1.125 2.5-2.5v-5c0-.281.219-.5.5-.5h1c.281 0 .5.219.5.5zM28 1v8c0 .547-.453 1-1 1a.99.99 0 0 1-.703-.297l-2.75-2.75L13.36 17.14c-.094.094-.234.156-.359.156s-.266-.063-.359-.156l-1.781-1.781c-.094-.094-.156-.234-.156-.359s.063-.266.156-.359L21.048 4.454l-2.75-2.75a.996.996 0 0 1-.297-.703c0-.547.453-1 1-1h8c.547 0 1 .453 1 1z"></path></svg>
+                      </a>
+                  </li>
+                </ul>
+                <ul>
+                  <li>
+                      <a href="https://developer.mozilla.org/en-US/docs/MDN/Community">Join the MDN community</a>
+                  </li>
+                  <li>
+                      <a target="_blank" rel="noopener" href="https://github.com/mdn/sprints/issues/new?template=issue-template.md&amp;projects=mdn/sprints/2&amp;labels=user-report&amp;title=https%3A//developer.mozilla.org/en-US/docs/Web/API/Screen_Capture_API/Using_Screen_Capture">Report a content problem
+                          <svg class="icon icon-external-link" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" aria-hidden="true"><path d="M22 14.5v5c0 2.484-2.016 4.5-4.5 4.5h-13A4.502 4.502 0 0 1 0 19.5v-13C0 4.016 2.016 2 4.5 2h11c.281 0 .5.219.5.5v1c0 .281-.219.5-.5.5h-11A2.507 2.507 0 0 0 2 6.5v13C2 20.875 3.125 22 4.5 22h13c1.375 0 2.5-1.125 2.5-2.5v-5c0-.281.219-.5.5-.5h1c.281 0 .5.219.5.5zM28 1v8c0 .547-.453 1-1 1a.99.99 0 0 1-.703-.297l-2.75-2.75L13.36 17.14c-.094.094-.234.156-.359.156s-.266-.063-.359-.156l-1.781-1.781c-.094-.094-.156-.234-.156-.359s.063-.266.156-.359L21.048 4.454l-2.75-2.75a.996.996 0 0 1-.297-.703c0-.547.453-1 1-1h8c.547 0 1 .453 1 1z"></path></svg>
+                      </a>
+                  </li>
+                  <li>
+                      <a target="_blank" rel="noopener" href="https://bugzilla.mozilla.org/form.mdn">Report a bug
+                          <svg class="icon icon-external-link" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" aria-hidden="true"><path d="M22 14.5v5c0 2.484-2.016 4.5-4.5 4.5h-13A4.502 4.502 0 0 1 0 19.5v-13C0 4.016 2.016 2 4.5 2h11c.281 0 .5.219.5.5v1c0 .281-.219.5-.5.5h-11A2.507 2.507 0 0 0 2 6.5v13C2 20.875 3.125 22 4.5 22h13c1.375 0 2.5-1.125 2.5-2.5v-5c0-.281.219-.5.5-.5h1c.281 0 .5.219.5.5zM28 1v8c0 .547-.453 1-1 1a.99.99 0 0 1-.703-.297l-2.75-2.75L13.36 17.14c-.094.094-.234.156-.359.156s-.266-.063-.359-.156l-1.781-1.781c-.094-.094-.156-.234-.156-.359s.063-.266.156-.359L21.048 4.454l-2.75-2.75a.996.996 0 0 1-.297-.703c0-.547.453-1 1-1h8c.547 0 1 .453 1 1z"></path></svg>
+                      </a>
+                  </li>
+                </ul>
+              </div>
+          </div>
+      </li>
+  </ul>
+</nav>
+        <div id="toolbox" class="toolbox">
+  <ul>
+    
+    <li class="nav-login"><div class="login">
+    
+        
+        <a href="https://developer.mozilla.org/users/github/login/?next=%2Fen-US%2Fdocs%2FWeb%2FAPI%2FScreen_Capture_API%2FUsing_Screen_Capture" class="login-link js-login-link" data-service="GitHub" rel="nofollow">
+            Sign in<svg class="icon icon-github" xmlns="http://www.w3.org/2000/svg" width="24" height="28" viewBox="0 0 24 28" aria-label="GitHub" role="img" focusable="false">
+    <title>Github</title>
+    <path d="M12 2c6.625 0 12 5.375 12 12 0 5.297-3.437 9.797-8.203 11.391-.609.109-.828-.266-.828-.578 0-.391.016-1.687.016-3.297 0-1.125-.375-1.844-.812-2.219 2.672-.297 5.484-1.313 5.484-5.922 0-1.313-.469-2.375-1.234-3.219.125-.313.531-1.531-.125-3.187-1-.313-3.297 1.234-3.297 1.234a11.28 11.28 0 0 0-6 0S6.704 6.656 5.704 6.969c-.656 1.656-.25 2.875-.125 3.187-.766.844-1.234 1.906-1.234 3.219 0 4.594 2.797 5.625 5.469 5.922-.344.313-.656.844-.766 1.609-.688.313-2.438.844-3.484-1-.656-1.141-1.844-1.234-1.844-1.234-1.172-.016-.078.734-.078.734.781.359 1.328 1.75 1.328 1.75.703 2.141 4.047 1.422 4.047 1.422 0 1 .016 1.937.016 2.234 0 .313-.219.688-.828.578C3.439 23.796.002 19.296.002 13.999c0-6.625 5.375-12 12-12zM4.547 19.234c.031-.063-.016-.141-.109-.187-.094-.031-.172-.016-.203.031-.031.063.016.141.109.187.078.047.172.031.203-.031zm.484.532c.063-.047.047-.156-.031-.25-.078-.078-.187-.109-.25-.047-.063.047-.047.156.031.25.078.078.187.109.25.047zm.469.703c.078-.063.078-.187 0-.297-.063-.109-.187-.156-.266-.094-.078.047-.078.172 0 .281s.203.156.266.109zm.656.656c.063-.063.031-.203-.063-.297-.109-.109-.25-.125-.313-.047-.078.063-.047.203.063.297.109.109.25.125.313.047zm.891.391c.031-.094-.063-.203-.203-.25-.125-.031-.266.016-.297.109s.063.203.203.234c.125.047.266 0 .297-.094zm.984.078c0-.109-.125-.187-.266-.172-.141 0-.25.078-.25.172 0 .109.109.187.266.172.141 0 .25-.078.25-.172zm.906-.156c-.016-.094-.141-.156-.281-.141-.141.031-.234.125-.219.234.016.094.141.156.281.125s.234-.125.219-.219z"></path>
+</svg>
+        </a>
+    
+</div></li>
+  </ul>
+</div>
+      </div>
+      <form id="nav-main-search" action="https://developer.mozilla.org/en-US/search" method="get" role="search" class="nav-main-search">
+  <div class="search-wrap">
+    <label for="main-q" class="offscreen">Search</label>
+    <input type="search" id="main-q" name="q" placeholder="Search" data-value="" value="" aria-hidden="true">
+    <span class="search-trigger">
+        <svg class="icon icon-search" xmlns="http://www.w3.org/2000/svg" width="26" height="28" viewBox="0 0 26 28" aria-hidden="true">
+    <path d="M18 13c0-3.859-3.141-7-7-7s-7 3.141-7 7 3.141 7 7 7 7-3.141 7-7zm8 13c0 1.094-.906 2-2 2a1.96 1.96 0 0 1-1.406-.594l-5.359-5.344a10.971 10.971 0 0 1-6.234 1.937c-6.078 0-11-4.922-11-11s4.922-11 11-11 11 4.922 11 11c0 2.219-.672 4.406-1.937 6.234l5.359 5.359c.359.359.578.875.578 1.406z"></path>
+</svg>
+    </span>
+    <button type="submit" class="offscreen">Search</button>
+    <button type="button" id="close-header-search" class="close-header-search transparent">
+        <span class="offscreen">Close search</span>
+        <svg class="icon icon-close" xmlns="http://www.w3.org/2000/svg" width="22" height="28" viewBox="0 0 22 28" aria-hidden="true" role="img"><title></title><path d="M20.281 20.656c0 .391-.156.781-.438 1.062l-2.125 2.125c-.281.281-.672.438-1.062.438s-.781-.156-1.062-.438L11 19.249l-4.594 4.594c-.281.281-.672.438-1.062.438s-.781-.156-1.062-.438l-2.125-2.125c-.281-.281-.438-.672-.438-1.062s.156-.781.438-1.062L6.751 15l-4.594-4.594c-.281-.281-.438-.672-.438-1.062s.156-.781.438-1.062l2.125-2.125c.281-.281.672-.438 1.062-.438s.781.156 1.062.438L11 10.751l4.594-4.594c.281-.281.672-.438 1.062-.438s.781.156 1.062.438l2.125 2.125c.281.281.438.672.438 1.062s-.156.781-.438 1.062L15.249 15l4.594 4.594c.281.281.438.672.438 1.062z"></path></svg>
+    </button>
+  </div>
+</form>
+    </header>  
+
+  <!-- Content will go here -->
+  <main id="content">
+      
+  <!-- heading -->
+  <div id="wiki-document-head" class="document-head">
+    <div class="center">
+      <div class="document-title">
+        <h1>Using the Screen Capture API</h1>
+      </div>
+
+      <!-- action buttons -->
+      <div class="document-actions">
+        
+
+  
+    
+  
+
+  
+    
+    
+        
+    
+  
+
+  
+
+  <ul class="page-buttons">
+      <li>
+          <button id="languages-menu" class="transparent" aria-haspopup="true" aria-owns="languages-menu-submenu" aria-expanded="false">
+              <svg class="icon icon-language" xmlns="http://www.w3.org/2000/svg" width="24" height="28" viewBox="0 0 24 28" aria-hidden="true">
+    <path d="M10.219 16.844c-.031.109-.797-.25-1-.328-.203-.094-1.125-.609-1.359-.766s-1.125-.891-1.234-.938a28.275 28.275 0 0 1-2.094 2.828c-.281.328-1.125 1.391-1.641 1.719-.078.047-.531.094-.594.063.25-.187.969-1.078 1.281-1.437.391-.453 2.25-3.047 2.562-3.641.328-.594 1.312-2.562 1.359-2.75-.156-.016-1.391.406-1.719.516-.313.094-1.172.297-1.234.344-.063.063-.016.25-.047.313s-.313.203-.484.234a1.647 1.647 0 0 1-.734 0c-.203-.047-.391-.25-.438-.328 0 0-.063-.094-.078-.359.187-.063.5-.078.844-.172s1.188-.344 1.641-.5 1.328-.484 1.594-.547c.281-.047.984-.516 1.359-.641s.641-.281.656-.203 0 .422-.016.516c-.016.078-.766 1.547-.875 1.781-.063.125-.5.953-1.203 2.047.25.109.781.328 1 .438.266.125 2.125.906 2.219.938s.266.75.234.875zM7.016 9.25c.047.266-.031.375-.063.438-.156.297-.547.5-.781.594s-.625.187-.938.187c-.141-.016-.422-.063-.766-.406-.187-.203-.328-.75-.266-.688s.516.125.719.078.688-.187.906-.25c.234-.078.703-.203.859-.219.156 0 .281.063.328.266zm10.906 2.016l.984 3.547-2.172-.656zM.609 23.766l10.844-3.625V4.016L.609 7.657v16.109zM20 18.813l1.594.484-2.828-10.266-1.563-.484-3.375 8.375 1.594.484.703-1.719 3.297 1.016zM12.141 3.781l8.953 2.875V.718zM17 24.453l2.469.203-.844 2.5L18 26.125c-1.266.812-2.828 1.437-4.312 1.687-.453.094-.969.187-1.422.187h-1.313c-1.656 0-4.672-.984-5.984-1.937-.094-.078-.125-.141-.125-.25 0-.172.125-.297.281-.297.141 0 .875.453 1.078.547 1.406.703 3.375 1.344 4.953 1.344 1.953 0 3.281-.25 5.063-1.016.516-.234.969-.531 1.453-.797zm7-16.859v16.859c-12.078-3.844-12.094-3.844-12.094-3.844C11.656 20.718.453 24.5.297 24.5a.3.3 0 0 1-.281-.203c0-.016-.016-.031-.016-.047V7.406c.016-.047.031-.125.063-.156.094-.109.219-.141.313-.172.047-.016 1-.328 2.328-.781v-6l8.719 3.094C11.532 3.36 21.251 0 21.392 0c.172 0 .313.125.313.328v6.531z"></path>
+</svg>
+              <span>Languages</span>
+          </button>
+
+        <div class="submenu js-submenu" id="languages-menu-submenu">
+          <div class="submenu-column">
+            <ul id="translations">
+              
+                <li class="smaller">No translations exist for this article.</li>
+              
+
+              
+                <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Screen_Capture_API/Using_Screen_Capture$locales" rel="nofollow" id="translations-add">Add a translation</a></li>
+              
+            </ul>
+          </div>
+        </div>
+      </li>
+      
+      <li class="page-buttons-edit">
+          <a href="https://developer.mozilla.org/en-US/users/signin?next=/en-US/docs/Web/API/Screen_Capture_API/Using_Screen_Capture%24edit" class="button neutral" id="edit-button" rel="nofollow">
+              <svg class="icon icon-pencil" xmlns="http://www.w3.org/2000/svg" width="24" height="28" viewBox="0 0 24 28" aria-hidden="true">
+    <path d="M5.672 24l1.422-1.422-3.672-3.672L2 20.328V22h2v2h1.672zm8.172-14.5a.329.329 0 0 0-.344-.344.368.368 0 0 0-.266.109l-8.469 8.469a.366.366 0 0 0-.109.266c0 .203.141.344.344.344a.368.368 0 0 0 .266-.109l8.469-8.469a.366.366 0 0 0 .109-.266zM13 6.5l6.5 6.5-13 13H0v-6.5zM23.672 8c0 .531-.219 1.047-.578 1.406L20.5 12 14 5.5l2.594-2.578c.359-.375.875-.594 1.406-.594s1.047.219 1.422.594l3.672 3.656c.359.375.578.891.578 1.422z"></path>
+</svg>
+              Edit
+          </a>
+      </li>
+      
+
+        
+
+        <li class="page-buttons-advanced">
+            <button id="advanced-menu" class="only-icon" aria-haspopup="true" aria-owns="advanced-menu-submenu" aria-expanded="false">
+                <svg class="icon icon-gear" xmlns="http://www.w3.org/2000/svg" width="24" height="28" viewBox="0 0 24 28" aria-hidden="true">
+    <path d="M16 14c0-2.203-1.797-4-4-4s-4 1.797-4 4 1.797 4 4 4 4-1.797 4-4zm8-1.703v3.469c0 .234-.187.516-.438.562l-2.891.438a8.86 8.86 0 0 1-.609 1.422c.531.766 1.094 1.453 1.672 2.156.094.109.156.25.156.391s-.047.25-.141.359c-.375.5-2.484 2.797-3.016 2.797a.795.795 0 0 1-.406-.141l-2.156-1.687a9.449 9.449 0 0 1-1.422.594c-.109.953-.203 1.969-.453 2.906a.573.573 0 0 1-.562.438h-3.469c-.281 0-.531-.203-.562-.469l-.438-2.875a9.194 9.194 0 0 1-1.406-.578l-2.203 1.672c-.109.094-.25.141-.391.141s-.281-.063-.391-.172c-.828-.75-1.922-1.719-2.578-2.625a.607.607 0 0 1 .016-.718c.531-.719 1.109-1.406 1.641-2.141a8.324 8.324 0 0 1-.641-1.547l-2.859-.422A.57.57 0 0 1 0 15.705v-3.469c0-.234.187-.516.422-.562l2.906-.438c.156-.5.359-.969.609-1.437a37.64 37.64 0 0 0-1.672-2.156c-.094-.109-.156-.234-.156-.375s.063-.25.141-.359c.375-.516 2.484-2.797 3.016-2.797.141 0 .281.063.406.156L7.828 5.94a9.449 9.449 0 0 1 1.422-.594c.109-.953.203-1.969.453-2.906a.573.573 0 0 1 .562-.438h3.469c.281 0 .531.203.562.469l.438 2.875c.484.156.953.344 1.406.578l2.219-1.672c.094-.094.234-.141.375-.141s.281.063.391.156c.828.766 1.922 1.734 2.578 2.656a.534.534 0 0 1 .109.344c0 .141-.047.25-.125.359-.531.719-1.109 1.406-1.641 2.141.266.5.484 1.016.641 1.531l2.859.438a.57.57 0 0 1 .453.562z"></path>
+</svg>
+                <span>Advanced</span>
+            </button>
+            <div class="submenu js-submenu" id="advanced-menu-submenu">
+                <!-- this page -->
+                <div class="submenu-column">
+                    <div class="title">Advanced</div>
+                    <ul>
+                        <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Screen_Capture_API/Using_Screen_Capture$history" rel="nofollow">History</a></li>
+                        
+                        
+                        
+
+
+                
+
+                <li class="page-print"><a href="#" onclick="return window.print();">Print this article</a></li>
+            </ul>
+          </div>
+        </div>
+  </li></ul>
+      </div>
+    <nav class="crumbs" role="navigation">
+      <ol typeof="BreadcrumbList" vocab="https://schema.org/" aria-label="breadcrumbs">
+        
+          <li property="itemListElement" typeof="ListItem" class="crumb">
+            <a href="https://developer.mozilla.org/en-US/docs/Web" property="item" typeof="WebPage">
+              <span property="name">Web technology for developers</span>
+            </a>
+            <meta property="position" content="1">
+          </li>
+        
+          <li property="itemListElement" typeof="ListItem" class="crumb">
+            <a href="../../API.html" property="item" typeof="WebPage">
+              <span property="name">Web APIs</span>
+            </a>
+            <meta property="position" content="2">
+          </li>
+        
+          <li property="itemListElement" typeof="ListItem" class="crumb">
+            <a href="../Screen_Capture_API.html" property="item" typeof="WebPage">
+              <span property="name">Screen Capture API</span>
+            </a>
+            <meta property="position" content="3">
+          </li>
+        
+        <li property="itemListElement" typeof="ListItem" class="crumb">
+          <span property="name" aria-current="page">Using the Screen Capture API</span>
+        </li>
+      </ol>
+    </nav></div>
+  </div>
+  
+  <div id="toc" class="toc">
+    <div class="center">
+      <div class="toc-head">Jump to:</div>
+        <ol class="toc-links">
+          <li><a rel="internal" href="#Capturing_screen_contents">Capturing screen contents</a></li><li><a rel="internal" href="#Using_the_captured_stream">Using the captured stream</a></li><li><a rel="internal" href="#Security">Security</a></li><li><a rel="internal" href="#Examples">Examples</a></li><li><a rel="internal" href="#See_also">See also</a>
+        </li></ol>
+    </div>
+  </div>
+  
+
+      <div class="center clear">
+      
+
+    <div class="wiki-main-content" id="document-main"><div class="center">
+      <!-- start the main content container -->
+        <div id="wiki-column-container" class="wiki-left-present">
+
+          <!-- content row with three strips -->
+          <div class="column-container column-container-reverse">
+
+            <!-- center: main article content -->
+            <div id="wiki-content" class="column-main wiki-column text-content">
+
+              
+
+              
+              
+
+              
+
+              
+              
+
+              <!-- just the article content -->
+              <article id="wikiArticle">
+                
+                  
+                    <p></p><p></p>
+
+<p><span class="seoSummary">In this article, we will examine how to use the Screen Capture API and its <a href="../MediaDevices/getDisplayMedia.html" title="The MediaDevices interface's getDisplayMedia() method prompts the user to select and grant permission to capture the contents of a display or portion thereof (such as a window) as a MediaStream."><code>getDisplayMedia()</code></a> method to capture part or all of a screen for streaming, recording, or sharing during a <a href="../WebRTC_API.html">WebRTC</a> conference session.</span></p>
+
+<div class="blockIndicator note">
+<p><strong>Note:</strong> It may be useful to note that recent versions of the <a rel="noopener" href="https://github.com/webrtcHacks/adapter" class="external">WebRTC adapter.js shim</a> include implementations of <code>getDisplayMedia()</code> to enable screen sharing on browsers that support it but do not implement the current standard API. This works with at least Chrome, Edge, and Firefox.</p>
+</div>
+
+<a class="dashAnchor" name="//apple_ref/Section/Capturing%20screen%20contents"></a><h2 id="Capturing_screen_contents">Capturing screen contents</h2>
+
+<p>Capturing screen contents as a live <a href="../MediaStream.html" title="The MediaStream interface represents a stream of media content. A stream consists of several tracks such as&nbsp;video or audio tracks. Each track is specified as an instance of MediaStreamTrack."><code>MediaStream</code></a> is initiated by calling <a href="../MediaDevices/getUserMedia.html" title="The MediaDevices getUserMedia() method prompts the user for permission to use a media input which produces a MediaStream with tracks containing the requested types of media."><code>navigator.mediaDevices.getUserMedia()</code></a>, which returns a promise that resolves to a stream containing the live screen contents.</p>
+
+<figure>
+<figcaption><strong><em>Starting screen capture: <code>async</code>/<code>await</code> style</em></strong></figcaption>
+
+<pre class="brush: js">async function startCapture() {
+  try {
+    captureStream = await navigator.mediaDevices.getDisplayMedia(displayMediaOptions);
+  } catch(err) {
+    console.error("Error: " + err);
+  }
+}</pre>
+
+<p>You can write thie code either using an asynchronous function and the <code><a href="../../JavaScript/Reference/Operators/await.html">await</a></code> operator, as shown above, or using the <a href="../../JavaScript/Reference/Global_Objects/Promise.html" title="The Promise object represents the eventual completion (or failure) of an asynchronous operation, and its resulting value."><code>Promise</code></a> directly, as seen below.</p>
+
+<figure>
+<figcaption><strong><em>Starting screen capture: <code>Promise</code> style</em></strong>
+
+<pre class="brush: js">function startCapture() {
+  navigator.mediaDevices.getDisplayMedia(displayMediaOptions)
+    .then(stream =&gt; captureStream = stream)
+    .catch(err =&gt; console.error("Error: " + err));
+}</pre>
+
+<p>Either way, the <a href="https://developer.mozilla.org/en-US/docs/Glossary/user_agent" class="glossaryLink" title="user agent: A user agent is a computer program representing a person, for example, a browser in a Web context.">user agent</a> responds by presenting a user interface that prompts the user to choose the screen area to share. See <a href="#Options_and_constraints">Options and constraints</a>, below, for more on both how to specify the type of surface you want as well as other ways to adjust the resulting stream.</p>
+
+<figure>
+<figcaption><strong><em>Example of a window allowing the user to select a display surface to capture</em></strong></figcaption>
+
+<p><a rel="noopener" href="../../../../../../mdn.mozillademos.org/files/16365/Chrome-Screen-Capture-Window.png" class="external"><img src="../../../../../../mdn.mozillademos.org/files/16365/Chrome-Screen-Capture-Window.png" alt="Screenshot of Chrome's window for picking a source surface" style="height: 520px; width: 619px;"></a></p>
+</figure>
+
+<p>You can then use the captured stream, <code>captureStream</code>, for anything that accepts a stream as input. The <a href="#Examples">examples</a> below show a few ways to make use of the stream.</p>
+
+<h3 id="Visible_vs_logical_display_surfaces">Visible vs logical display surfaces</h3>
+
+<p>For the purposes of the Screen Capture API, a <strong>display surface</strong> is any content object that can be selected by the API for sharing purposes. Sharing surfaces include the contents of a browser tab, a complete window, all of the applications of a window combined into a single surface, and a monitor (or group of monitors combined together into one surface).</p>
+
+<p>There are two types of display surface. A <strong>visible display surface</strong> is a surface which is entirely visible on the screen, such as the frontmost window or tab, or the entire screen.</p>
+
+<p>A <strong>logical display surface</strong> is one which is in part or completely obscured, either by being overlapped by another object to some extent, or by being entirely hidden or offscreen. How these are handled by the Screen Capture API varies. Generally, the browser will provide an image which obscures the hidden portion of the logical display surface in some way, such as by blurring or replacing with a color or pattern. This is done for security reasons, as the content that cannot be seen by the user may contain data which they do not want to share.</p>
+
+<p>A user agent might allow the capture of the entire content of an obscured window after gaining permission from the user to do so. In this case, the user agent may include the obscured content, either by getting the current contents of the hidden portion of the window or by presenting the most-recently-visible contents if the current contents are not available.</p>
+
+<h3 id="Options_and_constraints">Options and constraints</h3>
+
+<p>The constraints object passed into <a href="../MediaDevices/getDisplayMedia.html" title="The MediaDevices interface's getDisplayMedia() method prompts the user to select and grant permission to capture the contents of a display or portion thereof (such as a window) as a MediaStream."><code>getDisplayMedia()</code></a> is a <a href="../DisplayMediaStreamConstraints.html" title="The DisplayMediaStreamConstraints dictionary is used to specify whether or not to include video and/or audio tracks in the MediaStream to be returned by getDisplayMedia(), as well as what type of processing must be applied to the tracks."><code>DisplayMediaStreamConstraints</code></a> object which is used both to filter what the user is allowed to choose to share but also to configuring the resulting stream.</p>
+
+<p>There are three new constraints added to <code>MediaTrackConstraints</code> (as well as to <a href="../MediaTrackSupportedConstraints.html" title="The MediaTrackSupportedConstraints dictionary establishes the list of constrainable properties recognized by the user agent or browser in its implementation of the MediaStreamTrack object. An object conforming to MediaTrackSupportedConstraints is returned by MediaDevices.getSupportedConstraints()."><code>MediaTrackSupportedConstraints</code></a> and <a href="../MediaTrackSettings.html" title="The MediaTrackSettings dictionary is used to return the current values configured for each of a MediaStreamTrack's settings. These values will adhere as closely as possible to any constraints previously described using a MediaTrackConstraints object and set using applyConstraints(), and will adhere to the default constraints for any properties whose constraints haven't been changed, or whose customized constraints couldn't be matched."><code>MediaTrackSettings</code></a>) for configuring a screen capture stream:</p>
+
+<dl>
+ <dt><a href="../MediaTrackConstraints/cursor.html" title="The MediaTrackConstraints dictionary's cursor property is a ConstrainDOMString describing the requested or mandatory constraints placed upon the value of the cursor constrainable property, which is used to specify whether or not the cursor should be included in the captured video."><code>cursor</code></a></dt>
+ <dd>
+ <p>Indicates whether or not to capture the mouse cursor, and if so, whether to do so all the time or only while the mouse is in motion. The possible values are:</p>
+
+ <dl>
+  <dt><code>always</code></dt>
+  <dd>The mouse cursor should always be captured in the generated stream.</dd>
+  <dt><code>motion</code></dt>
+  <dd>The cursor should only be visible while moving, and, at the discretion of the <a href="https://developer.mozilla.org/en-US/docs/Glossary/user_agent" class="glossaryLink" title="user agent: A user agent is a computer program representing a person, for example, a browser in a Web context.">user agent</a>, for a brief time before after moving. Then the cursor is removed from the stream.</dd>
+  <dt><code>never</code></dt>
+  <dd>The cursor should never be visible in the generated stream.</dd>
+ </dl>
+ </dd>
+ <dt><a href="../MediaTrackConstraints/displaySurface.html" title="The MediaTrackConstraints dictionary's displaySurface property is a ConstrainDOMString describing the requested or mandatory constraints placed upon the value of the displaySurface constrainable property."><code>displaySurface</code></a></dt>
+ <dd>
+ <p>A string (or array of strings) indicating what type or types of screen surface to allow the user to select when <a href="../MediaDevices/getDisplayMedia.html" title="The MediaDevices interface's getDisplayMedia() method prompts the user to select and grant permission to capture the contents of a display or portion thereof (such as a window) as a MediaStream."><code>getDisplayMedia()</code></a> is called. If this constraint is absent or is an empty list, then all surface types are permitted. Possible values:</p>
+
+ <dl>
+  <dt><code>application</code></dt>
+  <dd>Allow the user to select one running application. Upon doing so, the generated stream contains all of that application's windows accumulated into the output stream. Each frame of video contains all of the application windows. The layout and style of the frames are up to the user agent.</dd>
+  <dt><code>browser</code></dt>
+  <dd>The user is allowed to select one browser tab to share. The contents of its document are shared as a stream.</dd>
+  <dt><code>monitor</code></dt>
+  <dd>The user's entire screen is shared, or, if they have mutliple screens, they are able to select a screen to share. User agents are also permitted to offer to combine the contents of all of the user's screens into a single track in the stream and share them all at once.</dd>
+  <dt><code>window</code></dt>
+  <dd>Allow the user to choose one application window on their computer to be captured.</dd>
+ </dl>
+ </dd>
+ <dt><a href="../MediaTrackConstraints/logicalSurface.html" title="The MediaTrackConstraints dictionary's logicalSurface property is a ConstrainDOMString describing the requested or mandatory constraints placed upon the value of the logicalSurface constrainable property."><code>logicalSurface</code></a></dt>
+ <dd>A Boolean which if <code>true</code> indicates that the capture should include offscreen areas of the source, if there are any.</dd>
+</dl>
+
+<p>With the exception of <code>displaySurface</code>, none of the constraints are applied in any way until after the content to capture has been selected. <code>displaySurface</code> filters the available choices, while the other contraints actually alter what you see in the resulting stream.</p>
+
+<p>For example, if you specify a <a href="../MediaTrackConstraints/width.html" title="The MediaTrackConstraints dictionary's width property is a ConstrainLong describing the requested or mandatory constraints placed upon the value of the width constrainable property."><code>width</code></a> constraint for the video, it's applied by scaling the video after the user selects the area to share. It doesn't establish a restriction on the size of the source itself.</p>
+
+<div class="blockIndicator note">
+<p><strong>Note:</strong> Constraints <em>never</em> cause changes to the list of sources available for capture by the Screen Sharing API. This ensures that web applications can't force the user to share specific content by restricting the source list until only one item is left.</p>
+</div>
+
+<p>While display capture is in effect, the machine which is sharing screen contents will display some form of indicator so the user is aware that sharing is taking place.</p>
+
+<div class="blockIndicator note">
+<p><strong>Note:</strong> For privacy and security reasons, screen sharing sources are not enumerable using <a href="../MediaDevices/enumerateDevices.html" title="The MediaDevices method enumerateDevices() requests a list of the available media input and output devices, such as microphones, cameras, headsets, and so forth."><code>enumerateDevices()</code></a>. Related to this, the <code><a href="../MediaDevices/devicechange_event.html" title="/en-US/docs/Web/Events/devicechange">devicechange</a></code> event is never sent when there are changes to the sources available for <code>getDisplayMedia()</code>.</p>
+</div>
+
+<h3 id="Capturing_shared_audio">Capturing shared audio</h3>
+
+<p><a rel="nofollow" href="../MediaDevicces/getDisplayMedia.html" class="new" title="The documentation about this has not yet been written; please consider contributing!"><code>getDisplayMedia()</code></a> is most commonly used to capture video of a user's screen (or parts thereof). However, <a href="https://developer.mozilla.org/en-US/docs/Glossary/user_agent" class="glossaryLink" title="user agents: A user agent is a computer program representing a person, for example, a browser in a Web context.">user agents</a> may allow the capture of audio along with the video content. The source of this audio might be the selected window, the entire computer's audio system, or the user's microphone (or a combination of all of the above).</p>
+
+<p>Before starting a project that will require sharing of audio, be sure to check the <a href="../MediaDevices/getDisplayMedia.html#Browser_compatibility" title="The MediaDevices interface's getDisplayMedia() method prompts the user to select and grant permission to capture the contents of a display or portion thereof (such as a window) as a MediaStream.">Browser compatibility</a> in <a href="../MediaDevices/getDisplayMedia.html" title="The MediaDevices interface's getDisplayMedia() method prompts the user to select and grant permission to capture the contents of a display or portion thereof (such as a window) as a MediaStream.">MediaDevices.getDisplayMedia()</a> to see if the browsers you wish compaibility with have support for audio in captured screen streams.</p>
+
+<p>To request that the screen be shared with included audio, the options passed into <code>getDisplayMedia()</code> might look like this:</p>
+
+<pre class="brush: js">const gdmOptions = {
+  video: true,
+  audio: true
+}
+</pre>
+
+<p>This allows the user total freedom to select whatever they want, within the limits of what the user agent supports. This could be refined further by specifying additional information for each of <code>audio</code> and <code>video</code>:</p>
+
+<pre class="brush: js">const gdmOptions = {
+  video: {
+    cursor: "always",
+    displaySurface: "monitor"
+  },
+  audio: {
+    echoCancellation: true,
+    noiseSuppression: true,
+    sampleRate: 44100
+  }
+}
+</pre>
+
+<p>In this example, the contents of a monitor are desired, and the audio track should ideally have noise suppression and echo cancellation features enabled, as well as an ideal audio sample rate of 44.1kHz.</p>
+
+<p>Capturing audio is always optional, and even when web content requests a stream with both audio and video, the returned <a href="../MediaStream.html" title="The MediaStream interface represents a stream of media content. A stream consists of several tracks such as&nbsp;video or audio tracks. Each track is specified as an instance of MediaStreamTrack."><code>MediaStream</code></a> may still have only one video track, with no audio.</p>
+
+<a class="dashAnchor" name="//apple_ref/Section/Using%20the%20captured%20stream"></a><h2 id="Using_the_captured_stream">Using the captured stream</h2>
+
+<p>The <a href="../../JavaScript/Reference/Global_Objects/promise-2.html" title="The Promise object represents the eventual completion (or failure) of an asynchronous operation, and its resulting value."><code>promise</code></a> returned by <a href="../MediaDevices/getDisplayMedia.html" title="The MediaDevices interface's getDisplayMedia() method prompts the user to select and grant permission to capture the contents of a display or portion thereof (such as a window) as a MediaStream."><code>getDisplayMedia()</code></a> resolves to a <a href="../MediaStream.html" title="The MediaStream interface represents a stream of media content. A stream consists of several tracks such as&nbsp;video or audio tracks. Each track is specified as an instance of MediaStreamTrack."><code>MediaStream</code></a> that contains at least one video stream that contains the screen or screen area, and which is adjusted or filtered based upon he constraints specifed when <code>getDisplayMedia()</code> was called.</p>
+
+<a class="dashAnchor" name="//apple_ref/Section/Security"></a><h2 id="Security">Security</h2>
+
+<p>As is always the case when sharing content over a network, it's important to consider the privacy and safety implications of screen sharing.</p>
+
+<h3 id="Potential_risks">Potential risks</h3>
+
+<p>Privacy and security issues surrounding screen sharing are usually not overly serious, but they do exist. The largest potential issue is users inadvertently sharing content they did not wish to share.</p>
+
+<p>For example, privacy and/or security violations can easily occur if the user is sharing their screen and a visible background window happens to contain personal information, or if their password manager is visible in the shared stream. This effect can be amplified when capturing logical display surfaces, which may contain content that the user doesn't know about at all, let alone see.</p>
+
+<p>User agents which take privacy seriously should obfuscate content that is not actually visible onscreen, unless authorization has been given to share that content specifically.</p>
+
+<h3 id="Authorizing_capture_of_display_contents">Authorizing capture of display contents</h3>
+
+<p>Before streaming of captured screen contents can begin, the <a href="https://developer.mozilla.org/en-US/docs/Glossary/user_agent" class="glossaryLink" title="user agent: A user agent is a computer program representing a person, for example, a browser in a Web context.">user agent</a> will ask the user to confirm the sharing request, and to select the content to share.</p>
+</figcaption>
+</figure>
+
+<a class="dashAnchor" name="//apple_ref/Section/Examples"></a><h2 id="Examples">Examples</h2>
+
+<h3 id="Simple_screen_capture">Simple screen capture</h3>
+
+<p>In this example, the contents of the captured screen area are simply streamed into a <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video" title="The HTML Video element (<video>) embeds a media player which supports video playback into the document."><code>&lt;video&gt;</code></a> element on the same page.</p>
+
+<h4 id="JavaScript">JavaScript</h4>
+
+<p>There isn't all that much code needed in order to make this work, and if you're familiar with using <a href="../MediaDevices/getUserMedia.html" title="The MediaDevices getUserMedia() method prompts the user for permission to use a media input which produces a MediaStream with tracks containing the requested types of media."><code>getUserMedia()</code></a> to capture video from a camera, you'll find <a href="../MediaDevices/getDisplayMedia.html" title="The MediaDevices interface's getDisplayMedia() method prompts the user to select and grant permission to capture the contents of a display or portion thereof (such as a window) as a MediaStream."><code>getDisplayMedia()</code></a> to be very familiar.</p>
+
+<h5 id="Setup">Setup</h5>
+
+<p>First, some constants are set up to reference the elements on the page to which we'll need access: the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video" title="The HTML Video element (<video>) embeds a media player which supports video playback into the document."><code>&lt;video&gt;</code></a> into which the captured screen contents will be streamed, a box into which logged output will be drawn, and the start and stop buttons that will turn on and off capture of screen imagery.</p>
+
+<p>The object <code>displayMediaOptions</code> contains the <a href="../MediaStreamConstraints.html" title="The MediaStreamConstraints dictionary is used when calling getUserMedia() to specify what kinds of tracks should be included in the returned MediaStream, and, optionally, to establish constraints for those tracks' settings."><code>MediaStreamConstraints</code></a> to pass into <code>getDisplayMedia()</code>; here, the <a rel="nofollow" href="../MediaStreamConstants/cursor.html" class="new" title="The documentation about this has not yet been written; please consider contributing!"><code>cursor</code></a> property is set to <code>always</code>, indicating that the mouse cursor should always be included in the captured media.</p>
+
+<p>Finally, event listeners are established to detect user clicks on the start and stop buttons.</p>
+
+<pre class="brush: js">const videoElem = document.getElementById("video");
+const logElem = document.getElementById("log");
+const startElem = document.getElementById("start");
+const stopElem = document.getElementById("stop");
+
+// Options for getDisplayMedia()
+
+var displayMediaOptions = {
+  video: {
+    cursor: "never"
+  },
+  audio: false
+};
+
+// Set event listeners for the start and stop buttons
+startElem.addEventListener("click", function(evt) {
+  startCapture();
+}, false);
+
+stopElem.addEventListener("click", function(evt) {
+  stopCapture();
+}, false);</pre>
+
+<h5 id="Logging_content">Logging content</h5>
+
+<p>To make logging of errors and other issues easy, this example overrides certain <a href="../Console.html" title="The Console object provides access to the browser's debugging console (e.g.&nbsp;the Web Console in Firefox). The specifics of how it works varies&nbsp;from browser to browser, but there is a de facto set of features that are typically provided."><code>Console</code></a> methods to output their messages to the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/pre" title="The HTML <pre> element represents preformatted text which is to be presented exactly as written in the HTML file."><code>&lt;pre&gt;</code></a> block whose ID is <code>log</code>.</p>
+
+<pre class="brush: js">console.log = msg =&gt; logElem.innerHTML += `${msg}&lt;br&gt;`;
+console.error = msg =&gt; logElem.innerHTML += `&lt;span class="error"&gt;${msg}&lt;/span&gt;&lt;br&gt;`;
+console.warn = msg =&gt; logElem.innerHTML += `&lt;span class="warn"&gt;${msg}&lt;span&gt;&lt;br&gt;`;
+console.info = msg =&gt; logElem.innerHTML += `&lt;span class="info"&gt;${msg}&lt;/span&gt;&lt;br&gt;`;</pre>
+
+<p>This allows us to use the familiar <a href="../Console/log.html" title="Outputs a message to the Web Console."><code>console.log()</code></a>, <a href="../Console/error.html" title="Outputs an error message to the Web Console."><code>console.error()</code></a>, and so on to log information to the log box in the document.</p>
+
+<h5 id="Starting_display_capture">Starting display capture</h5>
+
+<p>The <code>startCapture()</code> method, below, starts the capture of a <a href="../MediaStream.html" title="The MediaStream interface represents a stream of media content. A stream consists of several tracks such as&nbsp;video or audio tracks. Each track is specified as an instance of MediaStreamTrack."><code>MediaStream</code></a> whose contents are taken from a user-selected area of the screen. <code>startCapture()</code> is called when the "Start Capture" button is clicked.</p>
+
+<pre class="brush: js">async function startCapture() {
+  logElem.innerHTML = "";
+
+  try {
+    videoElem.srcObject = await navigator.mediaDevices.getDisplayMedia(displayMediaOptions);
+    dumpOptionsInfo();
+  } catch(err) {
+    console.error("Error: " + err);
+  }
+}</pre>
+
+<p>After clearing the contents of the log in order to get rid of any leftover text from the previous attempt to connect, <code>startCapture()</code> calls <a href="../MediaDevices/getDisplayMedia.html" title="The MediaDevices interface's getDisplayMedia() method prompts the user to select and grant permission to capture the contents of a display or portion thereof (such as a window) as a MediaStream."><code>getDisplayMedia()</code></a>, passing into it the constraints object defined by <code>displayMediaOptions</code>. Using <a rel="nofollow" href="../../JavaScript/Reference/await.html" class="new" title="The documentation about this has not yet been written; please consider contributing!"><code>await</code></a>, the following line of code does not get executed until after the <a href="../../JavaScript/Reference/Global_Objects/promise-2.html" title="The Promise object represents the eventual completion (or failure) of an asynchronous operation, and its resulting value."><code>promise</code></a> returned by <code>getDisplayMedia()</code> resolves. Upon resolution, the promise returns a <a href="../MediaStream.html" title="The MediaStream interface represents a stream of media content. A stream consists of several tracks such as&nbsp;video or audio tracks. Each track is specified as an instance of MediaStreamTrack."><code>MediaStream</code></a>, which will stream the contents of the screen, window, or other region selected by the user.</p>
+
+<p>The stream is connected to the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video" title="The HTML Video element (<video>) embeds a media player which supports video playback into the document."><code>&lt;video&gt;</code></a> element by storing the returned <code>MediaStream</code> into the element's <a href="../HTMLMediaElement/srcObject.html" title="The srcObject&nbsp;property of the HTMLMediaElement interface sets or returns the object which serves as the source of the media associated with the HTMLMediaElement."><code>srcObject</code></a>.</p>
+
+<p>The <code>dumpOptionsInfo()</code> function—which we will look at in a moment—dumps information about the stream to the log box for educational purposes.</p>
+
+<p>If any of that fails, the <code><a href="../../JavaScript/Reference/Statements/try...html">catch()</a></code> clause outputs an error message to the log box.</p>
+
+<h5 id="Stopping_display_capture">Stopping display capture</h5>
+
+<p>The <code>stopCapture()</code> method is called when the "Stop Capture" button is clicked. It stops the stream by getting its track list using <a href="../MediaStream/getTracks.html" title="The&nbsp;getTracks()&nbsp;method of the MediaStream interface returns a sequence that represents&nbsp;all the MediaStreamTrack&nbsp;objects in this stream's&nbsp;track set, regardless of&nbsp;MediaStreamTrack.kind."><code>MediaStream.getTracks()</code></a>, then calling each track's {domxref("MediaStreamTrack.stop, "stop()")}} method. Once that's done, <code>srcObject</code> is set to <code>null</code> to make sure it's understood by anyone interested that there's no stream connected.</p>
+
+<pre class="brush: js">function stopCapture(evt) {
+  let tracks = videoElem.srcObject.getTracks();
+
+  tracks.forEach(track =&gt; track.stop());
+  videoElem.srcObject = null;
+}</pre>
+
+<h5 id="Dumping_configuration_information">Dumping configuration information</h5>
+
+<p>For informational purposes, the <code>startCapture()</code> method shown above calls a method named <code>dumpOptions()</code>, which outputs the current track settings as well as the consrtaints that were placed upon the stream when it was created.</p>
+
+<pre class="brush: js">function dumpOptionsInfo() {
+  const videoTrack = videoElem.srcObject.getVideoTracks()[0];
+ 
+  console.info("Track settings:");
+  console.info(JSON.stringify(videoTrack.getSettings(), null, 2));
+  console.info("Track constraints:");
+  console.info(JSON.stringify(videoTrack.getConstraints(), null, 2));
+}</pre>
+
+<p>The track list is obtained by calling <a href="../MediaStream/getVideoTracks.html" title="The getVideoTracks() method of the MediaStream interface returns a sequence of MediaStreamTrack objects representing the video tracks in this stream."><code>getVideoTracks()</code></a> on the capture'd screen's <a href="../MediaStream.html" title="The MediaStream interface represents a stream of media content. A stream consists of several tracks such as&nbsp;video or audio tracks. Each track is specified as an instance of MediaStreamTrack."><code>MediaStream</code></a>. The settings currentoly in effect are obtained using <a href="../MediaStreamTrack/getSettings.html" title="The getSettings() method of the MediaStreamTrack interface returns&nbsp;a MediaTrackSettings object containing&nbsp;the current values of each of the constrainable properties for the current MediaStreamTrack."><code>getSettings()</code></a> and the established constraints are gotten with <a href="../MediaStreamTrack/getConstraints.html" title="The getConstraints() method of the MediaStreamTrack interface returns&nbsp;a MediaTrackConstraints&nbsp;object containing the set of constraints most recently established for the track using a prior call to applyConstraints(). These constraints indicate values and ranges of values that the Web site or application has specified are required or acceptable for the included constrainable properties."><code>getConstraints()</code></a></p>
+
+<h4 id="HTML">HTML</h4>
+
+<p>The HTML starts with a simple introductory paragraph, then gets into the meat of things.</p>
+
+<ol>
+</ol>
+
+<pre class="brush: html">&lt;p&gt;This example shows you the contents of the selected part of your display.
+Click the Start Capture button to begin.&lt;/p&gt;
+
+&lt;p&gt;&lt;button id="start"&gt;Start Capture&lt;/button&gt;&amp;nbsp;&lt;button id="stop"&gt;Stop Capture&lt;/button&gt;&lt;/p&gt;
+
+&lt;video id="video" autoplay&gt;&lt;/video&gt;
+&lt;br&gt;
+
+&lt;strong&gt;Log:&lt;/strong&gt;
+&lt;br&gt;
+&lt;pre id="log"&gt;&lt;/pre&gt;</pre>
+
+<p>The key parts of the HTML are:</p>
+
+<ol>
+ <li>A <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button" title="The HTML <button> element represents a clickable button, which can be used in forms or anywhere in a document that needs simple, standard button functionality."><code>&lt;button&gt;</code></a> labeled "Start Capture" which, when clicked, calls the <code>startCapture()</code> function to request access to, and begin capturing, screen contents.</li>
+ <li>A second button, "Stop Capture", which upon being clicked calls <code>stopCapture()</code> to terminate capture of screen contents.</li>
+ <li>A <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video" title="The HTML Video element (<video>) embeds a media player which supports video playback into the document."><code>&lt;video&gt;</code></a> into which the captured screen contents are streamed.</li>
+ <li>A <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/pre" title="The HTML <pre> element represents preformatted text which is to be presented exactly as written in the HTML file."><code>&lt;pre&gt;</code></a> block into which logged text is placed by the intercepted <a href="../Console.html" title="The Console object provides access to the browser's debugging console (e.g.&nbsp;the Web Console in Firefox). The specifics of how it works varies&nbsp;from browser to browser, but there is a de facto set of features that are typically provided."><code>Console</code></a>method.</li>
+</ol>
+
+<h4 id="CSS">CSS</h4>
+
+<p>The CSS is entirely cosmetic in this example. The video is given a border, and its width is set to occupy nearly the entire available horizontal space (<code>width: 98%</code>). <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/max-width" title="The max-width CSS property sets the maximum width of an element. It prevents the used value of the width property from becoming larger than the value specified by max-width."><code>max-width</code></a> is set to <code>860px</code> to set an absolute upper limit on the video's size,</p>
+
+<p>The <code>error</code>, <code>warn</code>, and <code>info</code> classes are used to style the corresponding console output types.</p>
+
+<pre class="brush: css">#video {
+  border: 1px solid #999;
+  width: 98%;
+  max-width: 860px;
+}
+
+.error {
+  color: red;
+}
+
+.warn {
+  color: orange;
+}
+
+.info {
+  color: darkgreen;
+}</pre>
+
+<h4 id="Result">Result</h4>
+
+<p>The final product looks like this. If your browser supports Screen Capture API, clicking "Start Capture" will present the <a href="https://developer.mozilla.org/en-US/docs/Glossary/user_agent" class="glossaryLink" title="user agent's: A user agent is a computer program representing a person, for example, a browser in a Web context.">user agent's</a> interface for selecting a screen, window, or tab to share.</p>
+
+<p><iframe src="../../../../../../mdn.mozillademos.org/en-US/docs/Web/API/Screen_Capture_API/Using_Screen_Capture%24samples/Simple_screen_capture4c37.html?revision=1444681" class="live-sample-frame sample-code-frame" height="680" width="640" id="frame_Simple_screen_capture" frameborder="0"></iframe></p>
+
+<a class="dashAnchor" name="//apple_ref/Section/See%20also"></a><h2 id="See_also">See also</h2>
+
+<ul>
+ <li><a href="../Screen_Capture_API.html">Screen Capture API</a></li>
+ <li><a href="../Media_Streams_API.html">Media Capture and Streams API</a></li>
+ <li><a href="../WebRTC_API/Taking_still_photos.html">Taking still photos with WebRTC</a></li>
+ <li><a href="../HTMLCanvasElement/captureStream.html" title="The HTMLCanvasElement captureStream() method returns a MediaStream which includes a CanvasCaptureMediaStreamTrack containing a real-time video capture of the canvas's contents."><code>HTMLCanvasElement.captureStream()</code></a> to obtain a <a href="../MediaStream.html" title="The MediaStream interface represents a stream of media content. A stream consists of several tracks such as&nbsp;video or audio tracks. Each track is specified as an instance of MediaStreamTrack."><code>MediaStream</code></a> with the live contents of a <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/canvas" title="Use the HTML <canvas> element with either the canvas scripting API or the WebGL API to draw graphics and animations."><code>&lt;canvas&gt;</code></a></li>
+</ul>
+</figure>
+                  
+                
+              </article>
+
+              <!-- contributors -->
+              <div class="wiki-block contributors">
+                <h2 class="offscreen">Document Tags and Contributors</h2>
+                
+                
+  <div class="tag-attach-list contributors-sub">
+    <svg class="icon icon-tags" xmlns="http://www.w3.org/2000/svg" width="30" height="28" viewBox="0 0 30 28" aria-hidden="true">
+    <path d="M7 7c0-1.109-.891-2-2-2s-2 .891-2 2 .891 2 2 2 2-.891 2-2zm16.672 9c0 .531-.219 1.047-.578 1.406l-7.672 7.688c-.375.359-.891.578-1.422.578s-1.047-.219-1.406-.578L1.422 13.906C.625 13.125 0 11.609 0 10.5V4c0-1.094.906-2 2-2h6.5c1.109 0 2.625.625 3.422 1.422l11.172 11.156c.359.375.578.891.578 1.422zm6 0c0 .531-.219 1.047-.578 1.406l-7.672 7.688a2.08 2.08 0 0 1-1.422.578c-.812 0-1.219-.375-1.75-.922l7.344-7.344c.359-.359.578-.875.578-1.406s-.219-1.047-.578-1.422L14.422 3.422C13.625 2.625 12.11 2 11 2h3.5c1.109 0 2.625.625 3.422 1.422l11.172 11.156c.359.375.578.891.578 1.422z"></path>
+</svg>
+    <strong>Tags:</strong>&nbsp;
+    <ul class="tags tags-small">
+      
+        <li><a href="../../../tag/API.html" rel="nofollow">API</a></li>
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/Capture" rel="nofollow">Capture</a></li>
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/Conference" rel="nofollow">Conference</a></li>
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/display" rel="nofollow">display</a></li>
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/getDisplayMedia" rel="nofollow">getDisplayMedia</a></li>
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/Guide" rel="nofollow">Guide</a></li>
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/Media" rel="nofollow">Media</a></li>
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/screen" rel="nofollow">screen</a></li>
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/Screen Capture" rel="nofollow">Screen Capture</a></li>
+      
+        <li><a href="../../../tag/Screen%20Capture%20API.html" rel="nofollow">Screen Capture API</a></li>
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/Sharing" rel="nofollow">Sharing</a></li>
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/Video" rel="nofollow">Video</a></li>
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/WebRTC" rel="nofollow">WebRTC</a></li>
+      
+    </ul>
+  </div>
+
+
+                
+                  <div class="contributors-sub">
+                    <svg class="icon icon-group" xmlns="http://www.w3.org/2000/svg" width="30" height="28" viewBox="0 0 30 28" aria-hidden="true">
+    <path d="M9.266 14a5.532 5.532 0 0 0-4.141 2H3.031C1.468 16 0 15.25 0 13.516 0 12.25-.047 8 1.937 8c.328 0 1.953 1.328 4.062 1.328.719 0 1.406-.125 2.078-.359A7.624 7.624 0 0 0 7.999 10c0 1.422.453 2.828 1.266 4zM26 23.953C26 26.484 24.328 28 21.828 28H8.172C5.672 28 4 26.484 4 23.953 4 20.422 4.828 15 9.406 15c.531 0 2.469 2.172 5.594 2.172S20.063 15 20.594 15C25.172 15 26 20.422 26 23.953zM10 4c0 2.203-1.797 4-4 4S2 6.203 2 4s1.797-4 4-4 4 1.797 4 4zm11 6c0 3.313-2.688 6-6 6s-6-2.688-6-6 2.688-6 6-6 6 2.688 6 6zm9 3.516C30 15.25 28.531 16 26.969 16h-2.094a5.532 5.532 0 0 0-4.141-2A7.066 7.066 0 0 0 22 10a7.6 7.6 0 0 0-.078-1.031A6.258 6.258 0 0 0 24 9.328C26.109 9.328 27.734 8 28.062 8c1.984 0 1.937 4.25 1.937 5.516zM28 4c0 2.203-1.797 4-4 4s-4-1.797-4-4 1.797-4 4-4 4 1.797 4 4z"></path>
+</svg>
+                    <strong>Contributors to this page:</strong>
+                    
+        <a href="https://developer.mozilla.org/en-US/profiles/mdnwebdocs-bot" rel="nofollow">mdnwebdocs-bot</a>, 
+    
+        <a href="https://developer.mozilla.org/en-US/profiles/Sheppy" rel="nofollow">Sheppy</a>
+    
+                  </div>
+                
+
+                
+                  <div class="contributors-sub">
+                    <svg class="icon icon-clock" xmlns="http://www.w3.org/2000/svg" width="24" height="28" viewBox="0 0 24 28" aria-hidden="true">
+    <path d="M14 8.5v7c0 .281-.219.5-.5.5h-5a.494.494 0 0 1-.5-.5v-1c0-.281.219-.5.5-.5H12V8.5c0-.281.219-.5.5-.5h1c.281 0 .5.219.5.5zm6.5 5.5c0-4.688-3.813-8.5-8.5-8.5S3.5 9.313 3.5 14s3.813 8.5 8.5 8.5 8.5-3.813 8.5-8.5zm3.5 0c0 6.625-5.375 12-12 12S0 20.625 0 14 5.375 2 12 2s12 5.375 12 12z"></path>
+</svg>
+                    <strong>Last updated by:</strong>
+                    <a href="https://developer.mozilla.org/en-US/profiles/mdnwebdocs-bot" rel="nofollow">mdnwebdocs-bot</a>,
+                    <time datetime="2019-03-18T17:21:01.236679-07:00">Mar 18, 2019, 5:21:01 PM</time>
+                  </div>
+                
+              </div>
+            </div>
+
+            
+              <!-- quick links and approvals strip -->
+              <div id="wiki-left" class="column-strip wiki-column">
+
+                <!-- crumbs -->
+                
+  
+    
+  
+
+                
+                  <!-- quick links -->
+                  
+  <div class="quick-links" id="quick-links">
+    <div class="quick-links-head">Related Topics</div>
+    <ol><li class="toggle"><details open=""><summary>Properties</summary><ol><li><a href="../MediaTrackConstraints/cursor.html"><code>MediaTrackConstraints.cursor</code></a></li><li><a href="../MediaTrackConstraints/displaySurface.html"><code>MediaTrackConstraints.displaySurface</code></a></li><li><a href="../MediaTrackConstraints/logicalSurface.html"><code>MediaTrackConstraints.logicalSurface</code></a></li><li><a href="../MediaTrackSettings/cursor.html"><code>MediaTrackSettings.cursor</code></a></li><li><a href="../MediaTrackSettings/displaySurface.html"><code>MediaTrackSettings.displaySurface</code></a></li><li><a href="../MediaTrackSettings/logicalSurface.html"><code>MediaTrackSettings.logicalSurface</code></a></li><li><a href="../MediaTrackSupportedConstraints/cursor.html"><code>MediaTrackSupportedConstraints.cursor</code></a></li><li><a href="../MediaTrackSupportedConstraints/displaySurface.html"><code>MediaTrackSupportedConstraints.displaySurface</code></a></li><li><a href="../MediaTrackSupportedConstraints/logicalSurface.html"><code>MediaTrackSupportedConstraints.logicalSurface</code></a></li></ol></details></li><li class="toggle"><details open=""><summary>Methods</summary><ol><li><a href="../MediaDevices/getDisplayMedia.html"><code>MediaDevices.getDisplayMedia()</code></a></li></ol></details></li></ol>
+  </div>
+                
+
+                <!-- approvals -->
+                
+
+              </div>
+            
+          </div>
+        </div>
+      </div>
+    </div> <!-- ends "main-content" -->
+
+    
+      <div class="newsletter-box">
+        <div class="newsletter">
+    <form id="newsletterForm" class="newsletter-form nodisable" name="newsletter-form" action="https://www.mozilla.org/en-US/newsletter/" method="post">
+        <div class="newsletter-head">
+            <h2 class="newsletter-teaser">Learn the best of web development</h2>
+            <p class="newsletter-description">Get the latest and greatest from MDN delivered straight to your inbox.</p>
+            
+        </div>
+
+        <div class="newsletter-fields">
+            <input type="hidden" id="fmt" name="fmt" value="H">
+            <input type="hidden" id="newsletterNewslettersInput" name="newsletters" value="app-dev">
+            <div id="newsletterErrors" class="newsletter-errors"></div>
+
+            <div id="newsletterEmail" class="form-group newsletter-group-email">
+                <label for="newsletterEmailInput" class="form-label offscreen">E-mail</label>
+                <input type="email" id="newsletterEmailInput" name="email" class="form-input newsletter-input-email" required="" placeholder="you@example.com" size="30">
+            </div>
+
+            <div id="newsletterPrivacy" class="form-group form-group-agree newsletter-group-privacy hidden">
+                <input type="checkbox" id="newsletterPrivacyInput" name="privacy" required="">
+                <label for="newsletterPrivacyInput">
+                I'm okay with Mozilla handling my info as explained in this <a href="https://www.mozilla.org/privacy/">Privacy Policy</a>.
+                </label>
+            </div>
+            <div id="newsletterSubmit" class="newsletter-group-submit">
+                <button id="newsletter-submit" type="submit" class="button neutral newsletter-submit">
+                    Sign up now<svg class="icon icon-arrow" xmlns="http://www.w3.org/2000/svg" width="23" height="28" viewBox="0 0 23 28" aria-hidden="true">
+    <path d="M23 15a2.01 2.01 0 0 1-.578 1.422L12.25 26.594c-.375.359-.891.578-1.422.578s-1.031-.219-1.406-.578L8.25 25.422c-.375-.375-.594-.891-.594-1.422s.219-1.047.594-1.422L12.828 18h-11C.703 18 0 17.062 0 16v-2c0-1.062.703-2 1.828-2h11L8.25 7.406a1.96 1.96 0 0 1 0-2.812l1.172-1.172c.375-.375.875-.594 1.406-.594s1.047.219 1.422.594l10.172 10.172c.375.359.578.875.578 1.406z"></path>
+</svg>
+                </button>
+            </div>
+        </div>
+    </form>
+    <div id="newsletterThanks" class="newsletter-thanks hidden">
+        <h2>Thanks! Please check your inbox to confirm your subscription.</h2>
+        <p>If you haven’t previously confirmed a subscription to a Mozilla-related newsletter you may have to do so. Please check your inbox or your spam filter for an email from us.
+        </p>
+    </div>
+    <button id="newsletterHide" type="button" class="only-icon newsletter-hide hidden">
+        <span>Hide Newsletter Sign-up</span>
+        <svg class="icon icon-close" xmlns="http://www.w3.org/2000/svg" width="22" height="28" viewBox="0 0 22 28" aria-hidden="true" role="img"><title></title><path d="M20.281 20.656c0 .391-.156.781-.438 1.062l-2.125 2.125c-.281.281-.672.438-1.062.438s-.781-.156-1.062-.438L11 19.249l-4.594 4.594c-.281.281-.672.438-1.062.438s-.781-.156-1.062-.438l-2.125-2.125c-.281-.281-.438-.672-.438-1.062s.156-.781.438-1.062L6.751 15l-4.594-4.594c-.281-.281-.438-.672-.438-1.062s.156-.781.438-1.062l2.125-2.125c.281-.281.672-.438 1.062-.438s.781.156 1.062.438L11 10.751l4.594-4.594c.281-.281.672-.438 1.062-.438s.781.156 1.062.438l2.125 2.125c.281.281.438.672.438 1.062s-.156.781-.438 1.062L15.249 15l4.594 4.594c.281.281.438.672.438 1.062z"></path></svg>
+    </button>
+</div>
+      </div>
+    
+
+  <menu type="context" id="edit-history-menu">
+    <menuitem data-action="/en-US/users/signin?next=/en-US/docs/Web/API/Screen_Capture_API/Using_Screen_Capture%24edit" label="Edit page"></menuitem>
+    <menuitem data-action="/en-US/docs/Web/API/Screen_Capture_API/Using_Screen_Capture$history" label="View page history"></menuitem>
+  </menu>
+
+      </div>
+  </main>
+
+  <!-- Footer -->
+    <footer id="nav-footer" class="nav-footer"><div class="center"><a href="http://developer.mozilla.org/en-US/docs/Web/API/Screen_Capture_API/Using_Screen_Capture">Using the Screen Capture API</a> by <a href="http://developer.mozilla.org/en-US/docs/Web/API/Screen_Capture_API/Using_Screen_Capture$history">Mozilla Contributors</a> is licensed under <a href="http://creativecommons.org/licenses/by-sa/2.5/" class="external external-icon">CC-BY-SA 2.5</a>.</div></footer> 
+
+  <!-- site js -->
+  
+    
+    <!--[if lte IE 8]><script async="" type="text/javascript" src=".selectivizr.8bb9e662e963.js" charset="utf-8"></script><![endif]-->
+
+    
+    <script src="../../../../../static/jsi18n/en-US/javascript.414b87adc480.js"></script>
+    <script type="text/javascript" src="../../../../../static/build/js/main.07c77248863e.js" charset="utf-8"></script>
+    <script>
+    if (window.mdn && mdn.analytics) mdn.analytics.trackOutboundLinks();
+  </script>
+    
+  
+    <script async="" type="text/javascript" src="../../../../../static/build/js/syntax-prism.js" charset="utf-8"></script><script type="text/javascript" src=".selectivizr.8bb9e662e963.js" charset="utf-8"></script><!--[endif]---->
+
+    
+    <script src="../../../../../static/jsi18n/en-US/javascript.414b87adc480.js"></script>
+    <script type="text/javascript" src="../../../../../static/build/js/main.07c77248863e.js" charset="utf-8"></script>
+    <script>
+    if (window.mdn && mdn.analytics) mdn.analytics.trackOutboundLinks();
+  </script>
+    
+  
+    <script async="" type="text/javascript" src="../../../../../static/build/js/wiki.c63623e4caba.js" charset="utf-8" id="wikiscript"></script>
+
+
+  
+
+  
+
+  
+
+  
+    <script async="" type="text/javascript" src="../../../../../static/build/js/newsletter.a85c5c2892e5.js" charset="utf-8"></script>
+  
+
+
+
+
+<!-- Mirrored from developer.mozilla.org/en-US/docs/Web/API/Screen_Capture_API/Using_Screen_Capture by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 01 May 2019 23:19:13 GMT -->
+</body></html>

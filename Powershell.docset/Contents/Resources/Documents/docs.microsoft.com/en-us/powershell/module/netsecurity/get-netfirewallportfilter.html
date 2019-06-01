@@ -1,0 +1,1261 @@
+<!DOCTYPE html>
+<html class="no-js hasSidebar hasPageActions hasBreadcrumb conceptual" data-authenticated="false" data-render="docs" dir="ltr" lang="en-us">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Get-NetFirewallPortFilter (netsecurity)" property="og:title"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" property="og:image"/>
+  <meta content="summary" name="twitter:card"/>
+  <meta content="@docsmsft" name="twitter:site"/>
+  <meta content="Get-NetFirewallPortFilter (netsecurity)" name="twitter:title"/>
+  <meta content="Use this topic to help manage Windows and Windows Server technologies with Windows PowerShell." name="twitter:description"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" name="twitter:image"/>
+  <meta content="Microsoft Logo" name="twitter:image:alt"/>
+  <meta content="Use this topic to help manage Windows and Windows Server technologies with Windows PowerShell." name="description"/>
+  <meta content="Docs" name="search.ms_sitename"/>
+  <meta content="powershell-windows" name="search.ms_docsetname"/>
+  <meta content="0" name="version"/>
+  <meta content="en-us" name="locale"/>
+  <meta content="Docs" name="site_name"/>
+  <meta content="MSDN" name="search.ms_product"/>
+  <meta content="MSDN.powershell-windows" name="depot_name"/>
+  <meta content="https://cpubwin.visualstudio.com/DefaultCollection/powershell/_git/powershell/commit/ced7757924addcaea0b7a244ae4d240e4d28d93a?path=%2fdocset%2fwindows%2fnetsecurity%2fget-netfirewallportfilter.md&amp;_a=contents" name="ref_skeleton_gitcommit"/>
+  <meta content="https://cpubwin.visualstudio.com/DefaultCollection/powershell/_git/powershell?path=%2fdocset%2fwindows%2fnetsecurity%2fget-netfirewallportfilter.md&amp;version=GBlive&amp;_a=contents" name="original_ref_skeleton_git_url"/>
+  <meta content="2017-09-15 03:44 AM" name="updated_at"/>
+  <meta content="f2631010-2924-0a0b-6ce2-7d489311f047" name="document_id"/>
+  <meta content="2c7f3269-445e-b9dd-a382-5f64f44ab770" name="document_version_independent_id"/>
+  <meta content="powershell" name="page_type"/>
+  <meta content="command" name="page_kind"/>
+  <meta content="manage" name="ms.mktglfcycl"/>
+  <meta content="library" name="ms.sitesec"/>
+  <meta content="brianlic" name="ms.author"/>
+  <meta content="brianlic-msft" name="author"/>
+  <meta content="NetFirewallPortFilter.cmdletDefinition.cdxml-help.xml" name="external_help_file"/>
+  <meta content="powershell, cmdlet" name="keywords"/>
+  <meta content="alanth" name="manager"/>
+  <meta content="12/27/2016" name="ms.date"/>
+  <meta content="w10" name="ms.prod"/>
+  <meta content="powershell-windows" name="ms.technology"/>
+  <meta content="reference" name="ms.topic"/>
+  <meta content="" name="online_version"/>
+  <meta content="2.0.0" name="schema"/>
+  <meta content="CF33FD25-A3D5-4503-AF42-63C69DD048AD" name="ms.assetid"/>
+  <meta content="powershell" name="ms.devlang"/>
+  <meta content="INDEX, FOLLOW" name="ROBOTS"/>
+  <meta content="/powershell/windows/bread/toc.json?view=win10-ps" name="breadcrumb_path"/>
+  <meta content="powershell" name="apiPlatform"/>
+  <meta content="MSDocsHeader-WindowsIT" name="uhfHeaderId"/>
+  <meta content="../win10-ps/toc.json?view=win10-ps" name="toc_rel"/>
+  <link href="https://docs.microsoft.com/en-us/powershell/module/netsecurity/get-netfirewallportfilter" rel="canonical"/>
+  <title>
+   Get-NetFirewallPortFilter
+  </title>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/e4a1f3a3.site.css" rel="stylesheet"/>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/31353636.conceptual.css" rel="stylesheet"/>
+ </head>
+ <body dir="ltr" lang="en-us">
+  <div class="header-holder">
+   <div data-bi-name="header" id="headerAreaHolder">
+    <div id="uhf-placeholder">
+    </div>
+   </div>
+   <div class="disclaimer-holder" id="disclaimer-holder">
+   </div>
+  </div>
+  <div class="container mainContainer" data-bi-name="body">
+   <div class="content-header" data-bi-name="content-header">
+    <div class="content-header-controls">
+     <button class="contents-button button-border" data-bi-name="contents-expand" type="button">
+      <span class="docon docon-menu">
+      </span>
+      Contents
+     </button>
+    </div>
+    <div class="content-header-controls">
+     <button class="ap-collapse-behavior ap-expanded button-border" data-bi-name="ap-collapse" type="button">
+      <span class="docon docon-exit-mode">
+      </span>
+      Exit focus mode
+     </button>
+    </div>
+   </div>
+   <div class="primary-holder">
+    <main class="content" data-bi-name="content" dir="ltr" id="main" lang="en-us" role="main">
+     <!-- <content> -->
+     <h1>
+      Get-Net
+      <wbr/>
+      Firewall
+      <wbr/>
+      Port
+      <wbr/>
+      Filter
+     </h1>
+     <div class="metadata">
+      <dl class="attributeList">
+       <dt>
+        Module:
+       </dt>
+       <dd>
+        <a data-linktype="relative-path" href="./.html">
+         netsecurity
+        </a>
+       </dd>
+      </dl>
+     </div>
+     <div class="summaryHolder">
+      <div class="summary">
+       Retrieves port filter objects from the target computer.
+      </div>
+     </div>
+     <h2 class="hiddenAnchor" id="syntax">
+      Syntax
+     </h2>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Get-NetFirewallPortFilter
+   [-All]
+   [-PolicyStore &lt;String&gt;]
+   [-GPOSession &lt;String&gt;]
+   [-CimSession &lt;CimSession[]&gt;]
+   [-ThrottleLimit &lt;Int32&gt;]
+   [-AsJob]
+   [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Get-NetFirewallPortFilter
+   [-Protocol &lt;String[]&gt;]
+   [-DynamicTarget &lt;DynamicTransport[]&gt;]
+   [-PolicyStore &lt;String&gt;]
+   [-GPOSession &lt;String&gt;]
+   [-CimSession &lt;CimSession[]&gt;]
+   [-ThrottleLimit &lt;Int32&gt;]
+   [-AsJob]
+   [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Get-NetFirewallPortFilter
+   -AssociatedNetFirewallRule &lt;CimInstance&gt;
+   [-PolicyStore &lt;String&gt;]
+   [-GPOSession &lt;String&gt;]
+   [-CimSession &lt;CimSession[]&gt;]
+   [-ThrottleLimit &lt;Int32&gt;]
+   [-AsJob]
+   [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Get-NetFirewallPortFilter
+   -AssociatedNetIPsecRule &lt;CimInstance&gt;
+   [-PolicyStore &lt;String&gt;]
+   [-GPOSession &lt;String&gt;]
+   [-CimSession &lt;CimSession[]&gt;]
+   [-ThrottleLimit &lt;Int32&gt;]
+   [-AsJob]
+   [&lt;CommonParameters&gt;]</code></pre>
+     <h2 id="description">
+      Description
+     </h2>
+     <p>
+      The
+      <strong>
+       Get-NetFirewallPortFilter
+      </strong>
+      cmdlet returns the port filter objects associated with the input rules.
+     </p>
+     <p>
+      Port filter objects represent the port and protocol conditions associated with the firewall and IPsec rules.
+The Protocol,
+      <em>
+       LocalPort
+      </em>
+      ,
+      <em>
+       RemotePort
+      </em>
+      ,
+      <em>
+       IcmpType
+      </em>
+      and
+      <em>
+       DynamicTransport
+      </em>
+      parameters of a single rule are represented in a single rule are represented in a separate
+      <strong>
+       NetFirewallPortFilter
+      </strong>
+      object.
+The filter to rule relationship is always one-to-one and is managed automatically.
+Rule parameters associated with filters can only be queried using filter objects.
+     </p>
+     <p>
+      This cmdlet displays the ports and protocols associated with firewall and IPsec rules.
+This allows for rule querying based on the
+      <em>
+       Protocol
+      </em>
+      ,
+      <em>
+       LocalPort
+      </em>
+      ,
+      <em>
+       RemotePort
+      </em>
+      ,
+      <em>
+       IcmpType
+      </em>
+      and
+      <em>
+       DynamicTransport
+      </em>
+      parameters; this cmdlet returns filter objects that may be further queried with the
+      <a data-linktype="external" href="http://go.microsoft.com/fwlink/?LinkID=113423">
+       Where-Object
+      </a>
+      cmdlet.
+The cmdlet also allows the interface type filters to be obtained by
+      <em>
+       Protocol
+      </em>
+      ,
+      <em>
+       LocalPort
+      </em>
+      ,
+      <em>
+       RemotePort
+      </em>
+      ,
+      <em>
+       IcmpType
+      </em>
+      and
+      <em>
+       DynamicTransport
+      </em>
+      parameter query.
+The resultant filters are passed into the Get-NetFirewallRule or Get-NetIPsecRule cmdlet to return the rules queried by port or protocol.
+     </p>
+     <p>
+      To modify the port and protocol conditions, two methods can be used starting with the port filters returned by this cmdlet and optional additional querying.
+     </p>
+     <p>
+      The array of NetFirewallPortFilter objects can be piped into the Get-NetFirewallRule or Get-NetIPsecRule cmdlet, which returns the rules associated with the filters.
+These rules are then piped to the Set-NetFirewallRule or Set-NetIPsecRule cmdlet where the interface properties can be configured.
+     </p>
+     <p>
+      Alternatively, piping the array of
+      <strong>
+       NetFirewallPortFilter
+      </strong>
+      objects directly into the Set-NetFirewallInterfaceTypeFilter cmdlet allows the
+      <em>
+       Protocol
+      </em>
+      ,
+      <em>
+       LocalPort
+      </em>
+      ,
+      <em>
+       RemotePort
+      </em>
+      ,
+      <em>
+       IcmpType
+      </em>
+      and
+      <em>
+       DynamicTransport
+      </em>
+      parameters of the rules to be modified.
+     </p>
+     <h2 id="examples">
+      Examples
+     </h2>
+     <p>
+      <strong>
+       Example 1
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt;Get-NetFirewallPortFilter -PolicyStore ActiveStore
+
+
+This cmdlet displays the same information in a dynamically sized formatted table.
+PS C:\&gt;Get-NetFirewallPortFilter -PolicyStore ActiveStore | Format-Table -Property *</code></pre>
+     <p>
+      This example retrieves the port conditions associated with all the rules in the active store.
+Running this cmdlet without specifying the policy store retrieves the persistent store.
+     </p>
+     <p>
+      <strong>
+       Example 2
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt;Get-NetFirewallRule -DisplayName "Contoso Messenger" | Get-NetFirewallPortFilter</code></pre>
+     <p>
+      This example gets the port properties of a particular firewall rule.
+     </p>
+     <p>
+      <strong>
+       Example 3
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt;Get-FirewallRule -DisplayName "Play To streaming server" | Get-NetFirewallPortFilter | Set-NetFirewallPortFilter -LocalPort 10246
+
+
+This task can alternatively be done with this cmdlet.
+PS C:\&gt;Set-NetFirewallRule -DisplayName "Play To streaming server" -LocalPort 10246</code></pre>
+     <p>
+      This example modifies the local port field of a particular firewall rule.
+     </p>
+     <p>
+      <strong>
+       Example 4
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt;Get-NetFirewallPortFilter | Where-Object -Property { $_.LocalPort -Eq "10246" } | Set-NetFirewallPortFilter -LocalPort Any</code></pre>
+     <p>
+      This example modifies all of the rules associated with a specific port.
+     </p>
+     <p>
+      <strong>
+       Example 5
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt;Get-NetFirewallRule -DisplayGroup "File and Printer Sharing" | Get-NetFirewallPortFilter | Where-Object -Property { $_.RemotePort -Eq "137" } | Set-NetFirewallPortFilter -LocalPort Any</code></pre>
+     <p>
+      This example modifies the interface type associated with all of the firewall rules in a specified group.
+     </p>
+     <p>
+      <strong>
+       Example 6
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt;Get-NetFirewallPortFilter -DynamicTransport ProximitySharing | Get-NetFirewallRule | Set-NetFirewall -Action Block</code></pre>
+     <p>
+      This example shows how to locate the built-in network isolation rule permitting ProximitySharing and blocks it so that the proximity pairing is disallowed.
+     </p>
+     <h2 id="required-parameters">
+      Required Parameters
+     </h2>
+     <div class="parameterName stack">
+      -AssociatedNetFirewallRule
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Gets the port filter object associated with the specified firewall rule to be retrieved. 
+This parameter represents a firewall rule, which defines how traffic is filtered by the firewall.
+See the New-NetFirewallRule cmdlet for more information.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          CimInstance
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByValue)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -AssociatedNetIPsecRule
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Gets the phase 1 authentication sets that are associated, via the pipeline, with the input IPsec rule to be retrieved. 
+A
+       <strong>
+        NetIPsecRule
+       </strong>
+       object represents an IPsec rule, which determines IPsec behavior.
+An IPsec rule can be associated with Phase1AuthSet, Phase2AuthSet, and NetIPsecQuickMode cryptographic sets.
+See the New-NetIPsecMainModeRule cmdlet for more information.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          CimInstance
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByValue)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="optional-parameters">
+      Optional Parameters
+     </h2>
+     <div class="parameterName stack">
+      -All
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that all of the port filters within the specified policy store are retrieved.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -AsJob
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Runs the cmdlet as a background job. Use this parameter to run commands that take a long time to complete.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -CimSession
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Runs the cmdlet in a remote session or on a remote computer.
+Enter a computer name or a session object, such as the output of a
+       <a data-linktype="external" href="http://go.microsoft.com/fwlink/p/?LinkId=227967">
+        New-CimSession
+       </a>
+       or
+       <a data-linktype="external" href="http://go.microsoft.com/fwlink/p/?LinkId=227966">
+        Get-CimSession
+       </a>
+       cmdlet.
+The default is the current session on the local computer.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          CimSession[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         Session
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -DynamicTarget
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies an array of dynamic transports.
+The cmdlet returns port filter objects associated with the input rules that have the dynamic transports that you specify.
+The acceptable values for this parameter are:
+      </p>
+      <ul>
+       <li>
+        Any
+       </li>
+       <li>
+        ProximityApps
+       </li>
+       <li>
+        ProximitySharing
+       </li>
+       <li>
+        WifiDirectPrinting
+       </li>
+       <li>
+        WifiDirectDisplay
+       </li>
+       <li>
+        WifiDirectDevices
+       </li>
+      </ul>
+      <p>
+       Some types of dynamic transports, such as proximity sharing, abstract the network layer details, and you cannot use standard network layer conditions, such as protocols and ports, to identify the dynamic transports.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          DynamicTransport[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         DynamicTransport
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Parameter Sets:
+        </td>
+        <td>
+         Any, ProximityApps, ProximitySharing, WifiDirectPrinting, WifiDirectDisplay, WifiDirectDevices
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -GPOSession
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the network GPO from which to retrieve the rules to be retrieved. 
+This parameter is used in the same way as the
+       <em>
+        PolicyStore
+       </em>
+       parameter.
+When modifying GPOs in Windows PowerShellÂ®, each change to a GPO requires the entire GPO to be loaded, modified, and saved back.
+On a busy Domain Controller (DC), this can be a slow and resource-heavy operation.
+A GPO Session loads a domain GPO onto the local computer and makes all changes in a batch, before saving it back.
+This reduces the load on the DC and speeds up the Windows PowerShell cmdlets.
+To load a GPO Session, use the Open-NetGPO cmdlet.
+To save a GPO Session, use the Save-NetGPO cmdlet.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -PolicyStore
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the policy store from which to retrieve the rules to be retrieved. 
+A policy store is a container for firewall and IPsec policy. 
+The acceptable values for this parameter are:
+      </p>
+      <ul>
+       <li>
+        PersistentStore: Sometimes called static rules, this store contains the persistent policy for the local computer.
+This policy is not from GPOs, and has been created manually or programmatically (during application installation) on the computer.
+Rules created in this store are attached to the ActiveStore and activated on the computer immediately.
+       </li>
+       <li>
+        ActiveStore: This store contains the currently active policy, which is the sum of all policy stores that apply to the computer.
+This is the resultant set of policy (RSOP) for the local computer (the sum of all GPOs that apply to the computer), and the local stores (the PersistentStore, the static Windows service hardening (WSH), and the configurable WSH). 
+---- GPOs are also policy stores.
+Computer GPOs can be specified as follows. 
+------
+        <code>
+         -PolicyStore hostname
+        </code>
+        . 
+---- Active Directory GPOs can be specified as follows. 
+------
+        <code>
+         -PolicyStore domain.fqdn.com\GPO_Friendly_Namedomain.fqdn.comGPO_Friendly_Name
+        </code>
+        . 
+------ Such as the following. 
+--------
+        <code>
+         -PolicyStore localhost
+        </code>
+        --------
+        <code>
+         -PolicyStore corp.contoso.com\FirewallPolicy
+        </code>
+        ---- Active Directory GPOs can be created using the
+        <strong>
+         New-GPO
+        </strong>
+        cmdlet or the Group Policy Management Console.
+       </li>
+       <li>
+        RSOP: This read-only store contains the sum of all GPOs applied to the local computer.
+       </li>
+       <li>
+        SystemDefaults: This read-only store contains the default state of firewall rules that ship with Windows ServerÂ® 2012.
+       </li>
+       <li>
+        StaticServiceStore: This read-only store contains all the service restrictions that ship with Windows Server 2012.
+Optional and product-dependent features are considered part of Windows Server 2012 for the purposes of WFAS.
+       </li>
+       <li>
+        ConfigurableServiceStore: This read-write store contains all the service restrictions that are added for third-party services.
+In addition, network isolation rules that are created for Windows Store application containers will appear in this policy store. 
+The default value is PersistentStore. 
+The Set-NetFirewallRule cmdlet cannot be used to add an object to a policy store.
+An object can only be added to a policy store at creation time with the Copy-NetFirewallRule cmdlet or with the New-NetFirewallRule cmdlet.
+       </li>
+      </ul>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Protocol
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies that network packets with matching IP addresses match this rule.
+This parameter specifies the protocol for an IPsec rule. 
+The acceptable values for this parameter are:
+      </p>
+      <ul>
+       <li>
+        Protocols by number:  0 through 255.
+       </li>
+       <li>
+        Protocols by name: TCP, UDP, ICMPv4, or ICMPv6. 
+If a port number is identified by using port1 or port2, then this parameter must be set to TCP or UDP. 
+The values ICMPv4 and ICMPv6 create a rule that exempts ICMP network traffic from the IPsec requirements of another rule.
+       </li>
+      </ul>
+      <p>
+       The default value is Any. 
+Querying for rules with this parameter can only be performed using filter objects.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -ThrottleLimit
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the maximum number of concurrent operations that can be established to run the cmdlet.
+If this parameter is omitted or a value of
+       <code>
+        0
+       </code>
+       is entered, then Windows PowerShellÂ® calculates an optimum throttle limit for the cmdlet based on the number of CIM cmdlets that are running on the computer.
+The throttle limit applies only to the current cmdlet, not to the session or to the computer.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Int32
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="inputs">
+      Inputs
+     </h2>
+     <p>
+      <strong>
+       Microsoft.Management.Infrastructure.CimInstance#root\StandardCimv2\MSFT_NetConSecRule[]
+      </strong>
+     </p>
+     <p>
+      The
+      <code>
+       Microsoft.Management.Infrastructure.CimInstance
+      </code>
+      object is a wrapper class that displays Windows Management Instrumentation (WMI) objects.
+The path after the pound sign (
+      <code>
+       #
+      </code>
+      ) provides the namespace and class name for the underlying WMI object.
+     </p>
+     <h2 id="inputs">
+      Inputs
+     </h2>
+     <p>
+      <strong>
+       Microsoft.Management.Infrastructure.CimInstance#root\StandardCimv2\MSFT_NetFirewallRule
+      </strong>
+     </p>
+     <p>
+      The
+      <code>
+       Microsoft.Management.Infrastructure.CimInstance
+      </code>
+      object is a wrapper class that displays Windows Management Instrumentation (WMI) objects.
+The path after the pound sign (
+      <code>
+       #
+      </code>
+      ) provides the namespace and class name for the underlying WMI object.
+     </p>
+     <h2 id="outputs">
+      Outputs
+     </h2>
+     <p>
+      <strong>
+       Microsoft.Management.Infrastructure.CimInstance#root\StandardCimv2\MSFT_NetProtocolPortFilter[]
+      </strong>
+     </p>
+     <p>
+      The
+      <code>
+       Microsoft.Management.Infrastructure.CimInstance
+      </code>
+      object is a wrapper class that displays Windows Management Instrumentation (WMI) objects.
+The path after the pound sign (
+      <code>
+       #
+      </code>
+      ) provides the namespace and class name for the underlying WMI object.
+     </p>
+     <h2 id="related-links">
+      Related Links
+     </h2>
+     <ul>
+      <li>
+       <a data-linktype="external" href="http://go.microsoft.com/fwlink/p/?LinkId=113303">
+        Format-Table
+       </a>
+      </li>
+      <li>
+       <a data-linktype="external" href="http://go.microsoft.com/fwlink/p/?LinkId=113423">
+        Where-Object
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="./get-netfirewallrule.html">
+        Get-NetFirewallRule
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="./get-netipsecrule.html">
+        Get-NetIPsecRule
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="./new-netfirewallrule.html">
+        New-NetFirewallRule
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="./new-netipsecrule.html">
+        New-NetIPsecRule
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="./set-netfirewallinterfacefilter.html">
+        Set-NetFirewallInterfaceFilter
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="./set-netfirewallportfilter.html">
+        Set-NetFirewallPortFilter
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="./set-netfirewallrule.html">
+        Set-NetFirewallRule
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="./set-netipsecrule.html">
+        Set-NetIPsecRule
+       </a>
+      </li>
+     </ul>
+     <!-- </content> -->
+    </main>
+    <section class="feedback-section" data-bi-name="feedback-section">
+     <h2 id="feedback">
+      Feedback
+     </h2>
+     <div class="alert choose-feedback-type">
+      <p>
+       We'd love to hear your thoughts. Choose the type you'd like to provide:
+      </p>
+      <div class="choose-feedback-buttons">
+       <a class="button-border feedback-type-product" data-bi-name="product-feedback" href="https://windowsserver.uservoice.com/forums/301869-powershell">
+        Product feedback
+        <span aria-hidden="true" class="docon docon-navigate-external">
+        </span>
+       </a>
+       <div class="button-group">
+        <button class="button-border feedback-sign-in-button" data-bi-name="feedback-sign-in">
+         <span aria-hidden="true" class="docon docon-brand-github">
+         </span>
+         Sign in to give documentation feedback
+        </button>
+        <button aria-controls="feedback-form" aria-expanded="false" class="button-border feedback-form-toggle" data-bi-name="documentation-feedback" hidden="">
+         Content feedback
+        </button>
+        <div auto-align="" class="dropdown has-caret">
+         <button aria-controls="fbm0" aria-expanded="false" aria-haspopup="true" aria-label="Expand documentation feedback menu" class="button-border dropdown-trigger" data-bi-name="documentation-feedback-menu">
+          <span aria-hidden="true" class="docon docon-chevron-down-light">
+          </span>
+         </button>
+         <div class="dropdown-menu documentation-feedback-menu" id="fbm0" role="menu">
+          You may also leave feedback
+          <a data-bi-name="create-issue-on-github" href="{0}">
+           directly on GitHub
+           <span aria-hidden="true" class="docon docon-navigate-external">
+           </span>
+          </a>
+          .
+         </div>
+        </div>
+       </div>
+      </div>
+      <p>
+       <small>
+        Our new feedback system is built on GitHub Issues. Read about this change in
+        <a href="https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs">
+         our blog post
+        </a>
+        .
+       </small>
+      </p>
+     </div>
+     <form accept-charset="UTF-8" action="javascript:" autocomplete="off" class="feedback-form" hidden="" id="feedback-form">
+      <h3 class="feedback-form-heading current-user">
+       <img alt="Avatar" aria-hidden="true" class="avatar" height="36" width="36"/>
+       <span aria-hidden="true" class="username">
+       </span>
+       <span class="visually-hidden">
+        Liquid error: Can't find the localized string giveDocumentationFeedback for template Conceptual.
+       </span>
+      </h3>
+      <label>
+       <span class="visually-hidden">
+        Title
+       </span>
+       <input name="title" pattern=".*\w.*" placeholder="Title" required="" type="text"/>
+      </label>
+      <label>
+       <span class="visually-hidden">
+        Leave a comment
+       </span>
+       <textarea name="body" placeholder="Leave a comment" required=""></textarea>
+      </label>
+      <div class="action-container">
+       <button class="primary-action" name="submit" type="submit">
+        Submit feedback
+       </button>
+      </div>
+     </form>
+     <div class="feedback-status alert busy" role="alert">
+      <p>
+       Loading feedback...
+      </p>
+     </div>
+     <div class="feedback-tab-group tabGroup" data-tab-group-independent="" hidden="">
+      <ul role="tablist">
+       <li role="presentation">
+        <a aria-controls="tabpanel-issues-open" aria-label="Open Issues" data-tab="issues-open" href="#tabpanel-issues-open" role="tab">
+        </a>
+       </li>
+       <li role="presentation">
+        <a aria-controls="tabpanel-issues-closed" aria-label="Closed Issues" data-tab="issues-closed" href="#tabpanel-issues-closed" role="tab">
+        </a>
+       </li>
+      </ul>
+      <section data-tab="issues-open" id="tabpanel-issues-open" role="tabpanel">
+       <div class="no-issues-placeholder">
+        There are no open issues
+       </div>
+       <ul aria-label="Open Issues" class="github-issues-list">
+       </ul>
+      </section>
+      <section data-tab="issues-closed" id="tabpanel-issues-closed" role="tabpanel">
+       <div class="no-issues-placeholder">
+        There are no closed issues
+       </div>
+       <ul aria-label="Closed Issues" class="github-issues-list">
+       </ul>
+      </section>
+     </div>
+     <div class="action-container">
+      <a class="view-on-github" data-bi-name="view-on-github" hidden="" href="https://github.com/MicrosoftDocs/windows-powershell-docs/issues">
+       <span aria-hidden="true" class="docon docon-brand-github">
+       </span>
+       <span>
+        View on GitHub
+       </span>
+       <span aria-hidden="true" class="docon docon-navigate-external">
+       </span>
+      </a>
+     </div>
+    </section>
+   </div>
+  </div>
+  <div class="openfeedback-container" id="openFeedbackContainer">
+  </div>
+  <div class="action-panel">
+  </div>
+ </body>
+</html>

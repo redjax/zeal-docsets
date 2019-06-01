@@ -1,0 +1,202 @@
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML><HEAD><TITLE>Man page of PTHREAD_MUTEX_CONSISTENT</TITLE>
+</HEAD><BODY>
+<H1>PTHREAD_MUTEX_CONSISTENT</H1>
+Section: POSIX Programmer's Manual (3P)<BR>Updated: 2013<BR><A HREF="#index">Index</A>
+<A HREF="../index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>PROLOG</H2>
+
+This manual page is part of the POSIX Programmer's Manual.
+The Linux implementation of this interface may differ (consult
+the corresponding Linux manual page for details of Linux behavior),
+or the interface may not be implemented on Linux.
+<P>
+<A NAME="lbAC">&nbsp;</A>
+<H2>NAME</H2>
+
+pthread_mutex_consistent ---
+mark state protected by robust mutex as consistent
+<A NAME="lbAD">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<P>
+
+<PRE>
+#include &lt;<A HREF="file:///usr/include/pthread.h">pthread.h</A>&gt;
+
+int pthread_mutex_consistent(pthread_mutex_t *<I>mutex</I>);
+</PRE>
+
+<A NAME="lbAE">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+If
+<I>mutex</I>
+
+is a robust mutex in an inconsistent state, the
+<I>pthread_mutex_consistent</I>()
+function can be used to mark the state protected by the mutex
+referenced by
+<I>mutex</I>
+
+as consistent again.
+<P>
+
+If an owner of a robust mutex terminates while holding the mutex, the
+mutex becomes inconsistent and the next thread that acquires the mutex
+lock shall be notified of the state by the return value
+<B>[EOWNERDEAD]</B>.
+
+In this case, the mutex does not become normally usable again until the
+state is marked consistent.
+<P>
+
+If the thread which acquired the mutex lock with the return value
+<B>[EOWNERDEAD]</B>
+
+terminates before calling either
+<I>pthread_mutex_consistent</I>()
+or
+<I>pthread_mutex_unlock</I>(),
+the next thread that acquires the mutex lock shall be notified about
+the state of the mutex by the return value
+<B>[EOWNERDEAD]</B>.
+
+<P>
+
+The behavior is undefined if the value specified by the
+<I>mutex</I>
+
+argument to
+<I>pthread_mutex_consistent</I>()
+does not refer to an initialized mutex.
+<A NAME="lbAF">&nbsp;</A>
+<H2>RETURN VALUE</H2>
+
+Upon successful completion, the
+<I>pthread_mutex_consistent</I>()
+function shall return zero. Otherwise, an error value shall be returned
+to indicate the error.
+<A NAME="lbAG">&nbsp;</A>
+<H2>ERRORS</H2>
+
+The
+<I>pthread_mutex_consistent</I>()
+function shall fail if:
+<DL COMPACT>
+<DT><B>EINVAL</B>
+
+<DD>
+The mutex object referenced by
+<I>mutex</I>
+
+is not robust or does not protect an inconsistent state.
+</DL>
+<P>
+
+These functions shall not return an error code of
+<B>[EINTR]</B>.
+
+<P>
+
+<I>The following sections are informative.</I>
+
+<A NAME="lbAH">&nbsp;</A>
+<H2>EXAMPLES</H2>
+
+None.
+<A NAME="lbAI">&nbsp;</A>
+<H2>APPLICATION USAGE</H2>
+
+The
+<I>pthread_mutex_consistent</I>()
+function is only responsible for notifying the implementation that the
+state protected by the mutex has been recovered and that normal
+operations with the mutex can be resumed. It is the responsibility of
+the application to recover the state so it can be reused. If the
+application is not able to perform the recovery, it can notify the
+implementation that the situation is unrecoverable by a call to
+<I>pthread_mutex_unlock</I>()
+without a prior call to
+<I>pthread_mutex_consistent</I>(),
+in which case subsequent threads that attempt to lock the mutex will
+fail to acquire the lock and be returned
+<B>[ENOTRECOVERABLE]</B>.
+
+<A NAME="lbAJ">&nbsp;</A>
+<H2>RATIONALE</H2>
+
+If an implementation detects that the value specified by the
+<I>mutex</I>
+
+argument to
+<I>pthread_mutex_consistent</I>()
+does not refer to an initialized mutex, it is recommended that the
+function should fail and report an
+<B>[EINVAL]</B>
+
+error.
+<A NAME="lbAK">&nbsp;</A>
+<H2>FUTURE DIRECTIONS</H2>
+
+None.
+<A NAME="lbAL">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+<I>pthread_mutex_lock</I>(),
+
+<I>pthread_mutexattr_getrobust</I>()
+
+<P>
+
+The Base Definitions volume of POSIX.1-2008,
+<I></I><B>&lt;<A HREF="file:///usr/include/pthread.h">pthread.h</A>&gt;</B>
+
+<A NAME="lbAM">&nbsp;</A>
+<H2>COPYRIGHT</H2>
+
+Portions of this text are reprinted and reproduced in electronic form
+from IEEE Std 1003.1, 2013 Edition, Standard for Information Technology
+-- Portable Operating System Interface (POSIX), The Open Group Base
+Specifications Issue 7, Copyright (C) 2013 by the Institute of
+Electrical and Electronics Engineers, Inc and The Open Group.
+(This is POSIX.1-2008 with the 2013 Technical Corrigendum 1 applied.) In the
+event of any discrepancy between this version and the original IEEE and
+The Open Group Standard, the original IEEE and The Open Group Standard
+is the referee document. The original Standard can be obtained online at
+<A HREF="http://www.unix.org/online.html">http://www.unix.org/online.html</A> .
+<P>
+Any typographical or formatting errors that appear
+in this page are most likely
+to have been introduced during the conversion of the source files to
+man page format. To report such errors, see
+<A HREF="https://www.kernel.org/doc/man-pages/reporting_bugs.html">https://www.kernel.org/doc/man-pages/reporting_bugs.html</A> .
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">PROLOG</A><DD>
+<DT><A HREF="#lbAC">NAME</A><DD>
+<DT><A HREF="#lbAD">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAE">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAF">RETURN VALUE</A><DD>
+<DT><A HREF="#lbAG">ERRORS</A><DD>
+<DT><A HREF="#lbAH">EXAMPLES</A><DD>
+<DT><A HREF="#lbAI">APPLICATION USAGE</A><DD>
+<DT><A HREF="#lbAJ">RATIONALE</A><DD>
+<DT><A HREF="#lbAK">FUTURE DIRECTIONS</A><DD>
+<DT><A HREF="#lbAL">SEE ALSO</A><DD>
+<DT><A HREF="#lbAM">COPYRIGHT</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 14:28:55 GMT, February 25, 2017
+</BODY>
+</HTML>

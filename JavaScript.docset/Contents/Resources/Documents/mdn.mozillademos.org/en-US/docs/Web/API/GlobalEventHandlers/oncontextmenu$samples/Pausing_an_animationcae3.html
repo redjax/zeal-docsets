@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    
+<!-- Mirrored from mdn.mozillademos.org/en-US/docs/Web/API/GlobalEventHandlers/oncontextmenu$samples/Pausing_an_animation?revision=1546672 by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 02 May 2019 00:05:15 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+        <meta charset="utf-8">
+        <link href="../../../../../../../developer.mozilla.org/static/build/styles/samples.37902ba3b7fe.css" rel="stylesheet" type="text/css" />
+        
+        <style type="text/css">
+            @keyframes spin {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+.shape {
+  width: 8em;
+  height: 8em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: spin 18s linear infinite;
+  background: lightsalmon;
+  border-radius: 42%;
+  margin: 1em;
+}
+
+.paused {
+  background-color: #ddd;
+}
+
+.paused .shape {
+  animation-play-state: paused;
+}
+        </style>
+        
+        <title>GlobalEventHandlers.oncontextmenu</title>
+    </head>
+    <body>
+        
+            <div class="shape">Spinning</div>
+<p class="note" hidden>Click to unpause.</p>
+        
+        
+            <script>
+                function pause(e) {
+  body.classList.add('paused');
+  note.removeAttribute('hidden');
+}
+
+function play(e) {
+  body.classList.remove('paused');
+  note.setAttribute('hidden', '');
+}
+
+const body = document.querySelector('body');
+const note = document.querySelector('.note');
+
+window.oncontextmenu = pause;
+window.onpointerdown = play;
+            </script>
+        
+    </body>
+
+<!-- Mirrored from mdn.mozillademos.org/en-US/docs/Web/API/GlobalEventHandlers/oncontextmenu$samples/Pausing_an_animation?revision=1546672 by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 02 May 2019 00:05:15 GMT -->
+</html>

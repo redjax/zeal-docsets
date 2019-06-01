@@ -1,0 +1,977 @@
+<html><!-- Mirrored from developer.mozilla.org/en-US/docs/Mozilla/JavaScript_code_modules/DeferredTask.jsm by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 02 May 2019 03:50:54 GMT --><!-- Added by HTTrack --><head><meta http-equiv="content-type" content="text/html;charset=utf-8"><!-- /Added by HTTrack -->
+
+  <meta charset="utf-8">
+
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <script async="" src="../../../../../www.google-analytics.com/analytics.js"></script><script>(function(d) { d.className = d.className.replace(/\bno-js/, ''); })(document.documentElement);</script>
+  <title>DeferredTask.jsm</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index, follow">
+
+  
+<link rel="preload" href="../../../../static/fonts/locales/ZillaSlab-Regular.subset.bbc33fb47cf6.woff2" as="font" type="font/woff2" crossorigin="">
+    <link rel="home" href="https://developer.mozilla.org/en-US/">
+    <link rel="license" href="#license">
+  
+
+  
+    
+    
+
+    <link href="../../../../static/build/styles/mdn.8634e046f072.css" rel="stylesheet" type="text/css">
+
+    
+  
+    <link href="../../../../static/build/styles/wiki.d451415ae2dd.css" rel="stylesheet" type="text/css">
+
+
+    
+
+  <link href="../../../../static/build/styles/locale-en-US.520ecdcaef8c.css" rel="stylesheet" type="text/css">
+
+  
+    
+  
+
+  
+    <script>
+    // util for setting performance marks and mesaures
+    var mdn=window.mdn||{};mdn.perf={getDuration:function(e){"use strict";if(void 0!==performance.getEntriesByName)return performance.getEntriesByName(e)[0].duration;console.error("performance.getEntriesByName is not supported by your user-agent")},setMark:function(e){"use strict";if(void 0!==performance.mark)try{performance.mark(e)}catch(e){console.error("Error while setting performance mark: ",e)}else console.error("performance.mark is not supported by your user-agent")},setMeasure:function(e){"use strict";void 0!==performance.measure?performance.measure(e.measureName,e.startMark,e.endMark):console.error("performance.measure is not supported by your user-agent")}};
+    /* util specifically for postMessages sent from the
+       `head` of the interactive examples iframe */
+    function handlePerfMarks(e){e.measureName?(window.mdn.perf.setMark(e.markName),window.mdn.perf.setMeasure({measureName:e.measureName,startMark:e.startMark,endMark:e.endMark}),ga&&ga.create&&ga("send",{hitType:"timing",timingCategory:"RUM - Interactive Examples",timingVar:e.measureName,timingValue:window.mdn.perf.getDuration(e.measureName)||0})):window.mdn.perf.setMark(e.markName)}function perfMsgHandler(e){"use strict";var a=window.mdn.interactiveEditor.editorUrl||"https://interactive-examples.mdn.mozilla.net",r=e.data;if(e.origin!==a)return!1;r.markName&&-1<r.markName.indexOf("interactive-editor-")&&handlePerfMarks(r)}window.addEventListener("message",perfMsgHandler,!1);
+</script>
+
+    <!-- common social tags -->
+    
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://developer.mozilla.org/static/img/opengraph-logo.72382e605ce3.png">
+    <meta property="og:site_name" content="MDN Web Docs">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:image" content="https://developer.mozilla.org/static/img/opengraph-logo.72382e605ce3.png">
+    <meta name="twitter:site" content="@MozDevNet">
+    <meta name="twitter:creator" content="@MozDevNet">
+    <link rel="search" type="application/opensearchdescription+xml" href="https://developer.mozilla.org/en-US/search/xml" title="MDN Web Docs">
+    
+  
+  <!-- third-generation iPad with high-resolution Retina display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../../../static/img/favicon144.e7e21ca263ca.png">
+  <!-- iPhone with high-resolution Retina display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../../../static/img/favicon114.d526f38b09c5.png">
+  <!-- first- and second-generation iPad: -->
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../../../static/img/favicon72.cc65d1d762a0.png">
+  <!-- non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+  <link rel="apple-touch-icon-precomposed" href="../../../../static/img/favicon57.de33179910ae.png">
+  <!-- basic favicon -->
+  <link rel="shortcut icon" href="../../../../static/img/favicon32.7f3da72dcea1.png">
+  <!--[if IE]>
+  <meta http-equiv="imagetoolbar" content="no">
+  <script async="" type="text/javascript" src=".html5shiv.ae1ac46eaf58.js" charset="utf-8"></script>
+  <![endif]-->
+
+  
+  <link rel="dns-prefetch" href="../../../../../interactive-examples.mdn.mozilla.net/index.html" pr="0.75">
+  <link rel="preconnect" href="../../../../../interactive-examples.mdn.mozilla.net/index.html" pr="0.75">
+
+  <link rel="alternate" type="application/json" href="https://developer.mozilla.org/en-US/docs/Mozilla/JavaScript_code_modules/DeferredTask.jsm$json">
+  <link rel="canonical" href="DeferredTask.html">
+
+  
+  <link rel="alternate" hreflang="en" href="DeferredTask.html" title="DeferredTask.jsm">
+  
+    
+      <link rel="alternate" hreflang="ja" href="https://developer.mozilla.org/ja/docs/Mozilla/JavaScript_code_modules/DeferredTask.jsm" title="DeferredTask.jsm">
+    
+  
+
+  <!-- document-specific social tags -->
+  <meta property="og:title" content="DeferredTask.jsm">
+  <meta property="og:url" content="https://developer.mozilla.org/en-US/docs/Mozilla/JavaScript_code_modules/DeferredTask.jsm">
+  <meta name="twitter:url" content="https://developer.mozilla.org/en-US/docs/Mozilla/JavaScript_code_modules/DeferredTask.jsm">
+  <meta name="twitter:title" content="DeferredTask.jsm">
+  
+  <meta property="og:description" content="The DeferredTask.jsm JavaScript code module offers utility routines for a task that will run after a delay. Multiple attempts to run the same task before the delay will be coalesced. To use it, you first need to import the code module into your JavaScript scope:">
+  <meta name="description" content="The DeferredTask.jsm JavaScript code module offers utility routines for a task that will run after a delay. Multiple attempts to run the same task before the delay will be coalesced. To use it, you first need to import the code module into your JavaScript scope:">
+  <meta name="twitter:description" content="The DeferredTask.jsm JavaScript code module offers utility routines for a task that will run after a delay. Multiple attempts to run the same task before the delay will be coalesced. To use it, you first need to import the code module into your JavaScript scope:">
+  
+
+</head>
+<body data-slug="Mozilla/JavaScript_code_modules/DeferredTask.jsm" contextmenu="edit-history-menu" data-search-url="" class="document">
+
+  <script>
+    // make sure global mdn object exists
+    var mdn = window.mdn || {};
+
+    (function(win) {
+        'use strict';
+
+        (function(){
+  var FLAGS = {
+    'kumaediting': false,'page_move': false,'section_edit': false,'spam_checks_enabled': true,'spam_submissions_enabled': false,'spam_admin_override': false,'spam_spammer_override': false,'spam_testing_mode': false,'sg_task_completion': false,'contrib_beta': false,'recurring_payment_beta': false
+    },
+    SWITCHES = {
+    'welcome_email': true,'application_ACAO': true,'store_revision_ips': true,'foundation_callout': false,'helpful-survey-2': true,'wiki_spam_training': true,'registration_disabled': false
+    },
+    SAMPLES = {
+    
+    };
+  window.waffle = {
+    "flag_is_active": function waffle_flag(flag_name) {
+      
+      return !!FLAGS[flag_name];
+    },
+    "switch_is_active": function waffle_switch(switch_name) {
+      
+      return !!SWITCHES[switch_name];
+    },
+    "sample_is_active": function waffle_sample(sample_name) {
+      
+      return !!SAMPLES[sample_name];
+    },
+    "FLAGS": FLAGS,
+    "SWITCHES": SWITCHES,
+    "SAMPLES": SAMPLES
+  };
+})();
+
+        // This needs to be set before ckeditor.js loads
+        window.CKEDITOR_BASEPATH = 'https://developer.mozilla.org/static/js/libs/ckeditor4/build/ckeditor/';
+
+        // Site configuration
+        win.mdn.ckeditor = {};
+        win.mdn.features = {};
+        win.mdn.siteUrl = 'https://developer.mozilla.org/';
+        win.mdn.wikiSiteUrl = 'https://wiki.developer.mozilla.org/';
+        win.mdn.staticPath = 'https://developer.mozilla.org/static/';
+        win.mdn.wiki = {
+            autosuggestTitleUrl: '/en-US/docs/get-documents'
+        };
+        win.mdn.assets_disabled = {
+            css: {
+                'editor-content': ['https://developer.mozilla.org/static/build/styles/editor-content.c9f73a799d9a.css','../../../../static/build/styles/editor-locale-en-US.520ecdcaef8c.css',
+                ],
+
+                'wiki-compat-tables': ['https://developer.mozilla.org/static/build/styles/wiki-compat-tables.eef64bf9b6fe.css',]
+            },
+            js: {
+                'syntax-prism': ['https://developer.mozilla.org/static/build/js/syntax-prism.f016806edde4.js',],
+                'wiki-compat-tables': ['https://developer.mozilla.org/static/build/js/syntax-prism.js" charset="utf-8"></script><script type="text/javascript" src=".html5shiv.ae1ac46eaf58.js" charset="utf-8"></script>
+  <!--[endif]---->
+
+  
+  <link rel="dns-prefetch" href="../../../../../interactive-examples.mdn.mozilla.net/index.html" pr="0.75">
+  <link rel="preconnect" href="../../../../../interactive-examples.mdn.mozilla.net/index.html" pr="0.75">
+
+  <link rel="alternate" type="application/json" href="https://developer.mozilla.org/en-US/docs/Mozilla/JavaScript_code_modules/DeferredTask.jsm$json">
+  <link rel="canonical" href="DeferredTask.html">
+
+  
+  <link rel="alternate" hreflang="en" href="DeferredTask.html" title="DeferredTask.jsm">
+  
+    
+      <link rel="alternate" hreflang="ja" href="https://developer.mozilla.org/ja/docs/Mozilla/JavaScript_code_modules/DeferredTask.jsm" title="DeferredTask.jsm">
+    
+  
+
+  <!-- document-specific social tags -->
+  <meta property="og:title" content="DeferredTask.jsm">
+  <meta property="og:url" content="https://developer.mozilla.org/en-US/docs/Mozilla/JavaScript_code_modules/DeferredTask.jsm">
+  <meta name="twitter:url" content="https://developer.mozilla.org/en-US/docs/Mozilla/JavaScript_code_modules/DeferredTask.jsm">
+  <meta name="twitter:title" content="DeferredTask.jsm">
+  
+  <meta property="og:description" content="The DeferredTask.jsm JavaScript code module offers utility routines for a task that will run after a delay. Multiple attempts to run the same task before the delay will be coalesced. To use it, you first need to import the code module into your JavaScript scope:">
+  <meta name="description" content="The DeferredTask.jsm JavaScript code module offers utility routines for a task that will run after a delay. Multiple attempts to run the same task before the delay will be coalesced. To use it, you first need to import the code module into your JavaScript scope:">
+  <meta name="twitter:description" content="The DeferredTask.jsm JavaScript code module offers utility routines for a task that will run after a delay. Multiple attempts to run the same task before the delay will be coalesced. To use it, you first need to import the code module into your JavaScript scope:">
+  
+
+
+
+
+  <script>
+    // make sure global mdn object exists
+    var mdn = window.mdn || {};
+
+    (function(win) {
+        'use strict';
+
+        (function(){
+  var FLAGS = {
+    'kumaediting': false,'page_move': false,'section_edit': false,'spam_checks_enabled': true,'spam_submissions_enabled': false,'spam_admin_override': false,'spam_spammer_override': false,'spam_testing_mode': false,'sg_task_completion': false,'contrib_beta': false,'recurring_payment_beta': false
+    },
+    SWITCHES = {
+    'welcome_email': true,'application_ACAO': true,'store_revision_ips': true,'foundation_callout': false,'helpful-survey-2': true,'wiki_spam_training': true,'registration_disabled': false
+    },
+    SAMPLES = {
+    
+    };
+  window.waffle = {
+    "flag_is_active": function waffle_flag(flag_name) {
+      
+      return !!FLAGS[flag_name];
+    },
+    "switch_is_active": function waffle_switch(switch_name) {
+      
+      return !!SWITCHES[switch_name];
+    },
+    "sample_is_active": function waffle_sample(sample_name) {
+      
+      return !!SAMPLES[sample_name];
+    },
+    "FLAGS": FLAGS,
+    "SWITCHES": SWITCHES,
+    "SAMPLES": SAMPLES
+  };
+})();
+
+        // This needs to be set before ckeditor.js loads
+        window.CKEDITOR_BASEPATH = 'https://developer.mozilla.org/static/js/libs/ckeditor4/build/ckeditor/';
+
+        // Site configuration
+        win.mdn.ckeditor = {};
+        win.mdn.features = {};
+        win.mdn.siteUrl = 'https://developer.mozilla.org/';
+        win.mdn.wikiSiteUrl = 'https://wiki.developer.mozilla.org/';
+        win.mdn.staticPath = 'https://developer.mozilla.org/static/';
+        win.mdn.wiki = {
+            autosuggestTitleUrl: '/en-US/docs/get-documents'
+        };
+        win.mdn.assets_disabled = {
+            css: {
+                'editor-content': ['https://developer.mozilla.org/static/build/styles/editor-content.c9f73a799d9a.css','../../../../static/build/styles/editor-locale-en-US.520ecdcaef8c.css',
+                ],
+
+                'wiki-compat-tables': ['https://developer.mozilla.org/static/build/styles/wiki-compat-tables.eef64bf9b6fe.css',]
+            },
+            js: {
+                'syntax-prism': ['https://developer.mozilla.org/static/build/js/syntax-prism.f016806edde4.js',],
+                'wiki-compat-tables': ['https://developer.mozilla.org/static/build/js/wiki-compat-tables.3a4ab2cc8ca1.js',]
+            }
+        };
+
+        win.mdn.notifications = [];
+        win.mdn.contributions = {
+            enabled: true,
+            popup: false
+        };
+
+        
+
+        // interactive editor config
+        win.mdn.interactiveEditor = {
+            siteUrl: "https://developer.mozilla.org",
+            editorUrl: "https://interactive-examples.mdn.mozilla.net"
+        };
+        win.mdn.langCookieName = "django_language";
+
+    })(this);
+</script>
+    
+    <ul id="nav-access">
+  <li><a href="#content" id="skip-main">Skip to main content</a></li>
+  <li><a id="skip-language" href="#language">Select language</a></li>
+  <li><a href="#q" id="skip-search">Skip to search</a></li>
+</ul>
+
+    <!-- Header -->
+    <header id="main-header" class="header-main">
+      <a href="https://developer.mozilla.org/en-US/" class="logo">MDN Web Docs</a>
+      <div class="nav-toolbox-wrapper">
+        <nav id="main-nav" class="nav-main" role="navigation">
+    <ul>
+        <li class="nav-main-item">
+            <a href="https://developer.mozilla.org/en-US/docs/Web">Technologies
+                <svg class="icon icon-caret-down" xmlns="http://www.w3.org/2000/svg" width="16" height="28" viewBox="0 0 16 28"><path d="M16 11a.99.99 0 0 1-.297.703l-7 7C8.516 18.89 8.265 19 8 19s-.516-.109-.703-.297l-7-7A.996.996 0 0 1 0 11c0-.547.453-1 1-1h14c.547 0 1 .453 1 1z"></path></svg>
+            </a>
+            <div class="submenu js-submenu" id="nav-tech-submenu">
+                <div class="submenu-column">
+                  <ul>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML">HTML</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS">CSS</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">JavaScript</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/Graphics">Graphics</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP">HTTP</a></li>
+                    <li><a href="../../Web/API.html">APIs / DOM</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions">Browser Extensions</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/MathML">MathML</a></li>
+                  </ul>
+                </div>
+            </div>
+        </li>
+        <li class="nav-main-item">
+            <a href="https://developer.mozilla.org/en-US/docs/Learn">References &amp; Guides
+                <svg class="icon icon-caret-down" xmlns="http://www.w3.org/2000/svg" width="16" height="28" viewBox="0 0 16 28"><path d="M16 11a.99.99 0 0 1-.297.703l-7 7C8.516 18.89 8.265 19 8 19s-.516-.109-.703-.297l-7-7A.996.996 0 0 1 0 11c0-.547.453-1 1-1h14c.547 0 1 .453 1 1z"></path></svg>
+            </a>
+            <div class="submenu js-submenu" id="nav-learn-submenu">
+                <div class="submenu-column">
+                  <ul>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Learn">Learn web development</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/Tutorials">Tutorials</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/Reference">References</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide">Developer Guides</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility">Accessibility</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Games">Game development</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web">...more docs</a></li>
+                  </ul>
+                </div>
+            </div>
+        </li>
+        <li class="nav-main-item">
+            <a href="https://developer.mozilla.org/en-US/docs/MDN/Feedback">Feedback
+                <svg class="icon icon-caret-down" xmlns="http://www.w3.org/2000/svg" width="16" height="28" viewBox="0 0 16 28"><path d="M16 11a.99.99 0 0 1-.297.703l-7 7C8.516 18.89 8.265 19 8 19s-.516-.109-.703-.297l-7-7A.996.996 0 0 1 0 11c0-.547.453-1 1-1h14c.547 0 1 .453 1 1z"></path></svg>
+            </a>
+            <div class="submenu js-submenu" id="nav-contact-submenu">
+              <div class="submenu-column">
+                <ul>
+                  <li>
+                      <a href="https://support.mozilla.org/">Get Firefox help
+                          <svg class="icon icon-external-link" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" aria-hidden="true"><path d="M22 14.5v5c0 2.484-2.016 4.5-4.5 4.5h-13A4.502 4.502 0 0 1 0 19.5v-13C0 4.016 2.016 2 4.5 2h11c.281 0 .5.219.5.5v1c0 .281-.219.5-.5.5h-11A2.507 2.507 0 0 0 2 6.5v13C2 20.875 3.125 22 4.5 22h13c1.375 0 2.5-1.125 2.5-2.5v-5c0-.281.219-.5.5-.5h1c.281 0 .5.219.5.5zM28 1v8c0 .547-.453 1-1 1a.99.99 0 0 1-.703-.297l-2.75-2.75L13.36 17.14c-.094.094-.234.156-.359.156s-.266-.063-.359-.156l-1.781-1.781c-.094-.094-.156-.234-.156-.359s.063-.266.156-.359L21.048 4.454l-2.75-2.75a.996.996 0 0 1-.297-.703c0-.547.453-1 1-1h8c.547 0 1 .453 1 1z"></path></svg>
+                      </a>
+                  </li>
+                  <li>
+                      <a href="https://stackoverflow.com/">Get web development help
+                          <svg class="icon icon-external-link" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" aria-hidden="true"><path d="M22 14.5v5c0 2.484-2.016 4.5-4.5 4.5h-13A4.502 4.502 0 0 1 0 19.5v-13C0 4.016 2.016 2 4.5 2h11c.281 0 .5.219.5.5v1c0 .281-.219.5-.5.5h-11A2.507 2.507 0 0 0 2 6.5v13C2 20.875 3.125 22 4.5 22h13c1.375 0 2.5-1.125 2.5-2.5v-5c0-.281.219-.5.5-.5h1c.281 0 .5.219.5.5zM28 1v8c0 .547-.453 1-1 1a.99.99 0 0 1-.703-.297l-2.75-2.75L13.36 17.14c-.094.094-.234.156-.359.156s-.266-.063-.359-.156l-1.781-1.781c-.094-.094-.156-.234-.156-.359s.063-.266.156-.359L21.048 4.454l-2.75-2.75a.996.996 0 0 1-.297-.703c0-.547.453-1 1-1h8c.547 0 1 .453 1 1z"></path></svg>
+                      </a>
+                  </li>
+                </ul>
+                <ul>
+                  <li>
+                      <a href="https://developer.mozilla.org/en-US/docs/MDN/Community">Join the MDN community</a>
+                  </li>
+                  <li>
+                      <a target="_blank" rel="noopener" href="https://github.com/mdn/sprints/issues/new?template=issue-template.md&amp;projects=mdn/sprints/2&amp;labels=user-report&amp;title=https%3A//developer.mozilla.org/en-US/docs/Mozilla/JavaScript_code_modules/DeferredTask.jsm">Report a content problem
+                          <svg class="icon icon-external-link" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" aria-hidden="true"><path d="M22 14.5v5c0 2.484-2.016 4.5-4.5 4.5h-13A4.502 4.502 0 0 1 0 19.5v-13C0 4.016 2.016 2 4.5 2h11c.281 0 .5.219.5.5v1c0 .281-.219.5-.5.5h-11A2.507 2.507 0 0 0 2 6.5v13C2 20.875 3.125 22 4.5 22h13c1.375 0 2.5-1.125 2.5-2.5v-5c0-.281.219-.5.5-.5h1c.281 0 .5.219.5.5zM28 1v8c0 .547-.453 1-1 1a.99.99 0 0 1-.703-.297l-2.75-2.75L13.36 17.14c-.094.094-.234.156-.359.156s-.266-.063-.359-.156l-1.781-1.781c-.094-.094-.156-.234-.156-.359s.063-.266.156-.359L21.048 4.454l-2.75-2.75a.996.996 0 0 1-.297-.703c0-.547.453-1 1-1h8c.547 0 1 .453 1 1z"></path></svg>
+                      </a>
+                  </li>
+                  <li>
+                      <a target="_blank" rel="noopener" href="https://bugzilla.mozilla.org/form.mdn">Report a bug
+                          <svg class="icon icon-external-link" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" aria-hidden="true"><path d="M22 14.5v5c0 2.484-2.016 4.5-4.5 4.5h-13A4.502 4.502 0 0 1 0 19.5v-13C0 4.016 2.016 2 4.5 2h11c.281 0 .5.219.5.5v1c0 .281-.219.5-.5.5h-11A2.507 2.507 0 0 0 2 6.5v13C2 20.875 3.125 22 4.5 22h13c1.375 0 2.5-1.125 2.5-2.5v-5c0-.281.219-.5.5-.5h1c.281 0 .5.219.5.5zM28 1v8c0 .547-.453 1-1 1a.99.99 0 0 1-.703-.297l-2.75-2.75L13.36 17.14c-.094.094-.234.156-.359.156s-.266-.063-.359-.156l-1.781-1.781c-.094-.094-.156-.234-.156-.359s.063-.266.156-.359L21.048 4.454l-2.75-2.75a.996.996 0 0 1-.297-.703c0-.547.453-1 1-1h8c.547 0 1 .453 1 1z"></path></svg>
+                      </a>
+                  </li>
+                </ul>
+              </div>
+          </div>
+      </li>
+  </ul>
+</nav>
+        <div id="toolbox" class="toolbox">
+  <ul>
+    
+    <li class="nav-login"><div class="login">
+    
+        
+        <a href="https://developer.mozilla.org/users/github/login/?next=%2Fen-US%2Fdocs%2FMozilla%2FJavaScript_code_modules%2FDeferredTask.jsm" class="login-link js-login-link" data-service="GitHub" rel="nofollow">
+            Sign in<svg class="icon icon-github" xmlns="http://www.w3.org/2000/svg" width="24" height="28" viewBox="0 0 24 28" aria-label="GitHub" role="img" focusable="false">
+    <title>Github</title>
+    <path d="M12 2c6.625 0 12 5.375 12 12 0 5.297-3.437 9.797-8.203 11.391-.609.109-.828-.266-.828-.578 0-.391.016-1.687.016-3.297 0-1.125-.375-1.844-.812-2.219 2.672-.297 5.484-1.313 5.484-5.922 0-1.313-.469-2.375-1.234-3.219.125-.313.531-1.531-.125-3.187-1-.313-3.297 1.234-3.297 1.234a11.28 11.28 0 0 0-6 0S6.704 6.656 5.704 6.969c-.656 1.656-.25 2.875-.125 3.187-.766.844-1.234 1.906-1.234 3.219 0 4.594 2.797 5.625 5.469 5.922-.344.313-.656.844-.766 1.609-.688.313-2.438.844-3.484-1-.656-1.141-1.844-1.234-1.844-1.234-1.172-.016-.078.734-.078.734.781.359 1.328 1.75 1.328 1.75.703 2.141 4.047 1.422 4.047 1.422 0 1 .016 1.937.016 2.234 0 .313-.219.688-.828.578C3.439 23.796.002 19.296.002 13.999c0-6.625 5.375-12 12-12zM4.547 19.234c.031-.063-.016-.141-.109-.187-.094-.031-.172-.016-.203.031-.031.063.016.141.109.187.078.047.172.031.203-.031zm.484.532c.063-.047.047-.156-.031-.25-.078-.078-.187-.109-.25-.047-.063.047-.047.156.031.25.078.078.187.109.25.047zm.469.703c.078-.063.078-.187 0-.297-.063-.109-.187-.156-.266-.094-.078.047-.078.172 0 .281s.203.156.266.109zm.656.656c.063-.063.031-.203-.063-.297-.109-.109-.25-.125-.313-.047-.078.063-.047.203.063.297.109.109.25.125.313.047zm.891.391c.031-.094-.063-.203-.203-.25-.125-.031-.266.016-.297.109s.063.203.203.234c.125.047.266 0 .297-.094zm.984.078c0-.109-.125-.187-.266-.172-.141 0-.25.078-.25.172 0 .109.109.187.266.172.141 0 .25-.078.25-.172zm.906-.156c-.016-.094-.141-.156-.281-.141-.141.031-.234.125-.219.234.016.094.141.156.281.125s.234-.125.219-.219z"></path>
+</svg>
+        </a>
+    
+</div></li>
+  </ul>
+</div>
+      </div>
+      <form id="nav-main-search" action="https://developer.mozilla.org/en-US/search" method="get" role="search" class="nav-main-search">
+  <div class="search-wrap">
+    <label for="main-q" class="offscreen">Search</label>
+    <input type="search" id="main-q" name="q" placeholder="Search" data-value="" value="" aria-hidden="true">
+    <span class="search-trigger">
+        <svg class="icon icon-search" xmlns="http://www.w3.org/2000/svg" width="26" height="28" viewBox="0 0 26 28" aria-hidden="true">
+    <path d="M18 13c0-3.859-3.141-7-7-7s-7 3.141-7 7 3.141 7 7 7 7-3.141 7-7zm8 13c0 1.094-.906 2-2 2a1.96 1.96 0 0 1-1.406-.594l-5.359-5.344a10.971 10.971 0 0 1-6.234 1.937c-6.078 0-11-4.922-11-11s4.922-11 11-11 11 4.922 11 11c0 2.219-.672 4.406-1.937 6.234l5.359 5.359c.359.359.578.875.578 1.406z"></path>
+</svg>
+    </span>
+    <button type="submit" class="offscreen">Search</button>
+    <button type="button" id="close-header-search" class="close-header-search transparent">
+        <span class="offscreen">Close search</span>
+        <svg class="icon icon-close" xmlns="http://www.w3.org/2000/svg" width="22" height="28" viewBox="0 0 22 28" aria-hidden="true" role="img"><title></title><path d="M20.281 20.656c0 .391-.156.781-.438 1.062l-2.125 2.125c-.281.281-.672.438-1.062.438s-.781-.156-1.062-.438L11 19.249l-4.594 4.594c-.281.281-.672.438-1.062.438s-.781-.156-1.062-.438l-2.125-2.125c-.281-.281-.438-.672-.438-1.062s.156-.781.438-1.062L6.751 15l-4.594-4.594c-.281-.281-.438-.672-.438-1.062s.156-.781.438-1.062l2.125-2.125c.281-.281.672-.438 1.062-.438s.781.156 1.062.438L11 10.751l4.594-4.594c.281-.281.672-.438 1.062-.438s.781.156 1.062.438l2.125 2.125c.281.281.438.672.438 1.062s-.156.781-.438 1.062L15.249 15l4.594 4.594c.281.281.438.672.438 1.062z"></path></svg>
+    </button>
+  </div>
+</form>
+    </header>  
+
+  <!-- Content will go here -->
+  <main id="content">
+      
+  <!-- heading -->
+  <div id="wiki-document-head" class="document-head">
+    <div class="center">
+      <div class="document-title">
+        <h1>DeferredTask.jsm</h1>
+      </div>
+
+      <!-- action buttons -->
+      <div class="document-actions">
+        
+
+  
+    
+  
+
+  
+    
+    
+        
+    
+  
+
+  
+
+  <ul class="page-buttons">
+      <li>
+          <button id="languages-menu" class="transparent" aria-haspopup="true" aria-owns="languages-menu-submenu" aria-expanded="false">
+              <svg class="icon icon-language" xmlns="http://www.w3.org/2000/svg" width="24" height="28" viewBox="0 0 24 28" aria-hidden="true">
+    <path d="M10.219 16.844c-.031.109-.797-.25-1-.328-.203-.094-1.125-.609-1.359-.766s-1.125-.891-1.234-.938a28.275 28.275 0 0 1-2.094 2.828c-.281.328-1.125 1.391-1.641 1.719-.078.047-.531.094-.594.063.25-.187.969-1.078 1.281-1.437.391-.453 2.25-3.047 2.562-3.641.328-.594 1.312-2.562 1.359-2.75-.156-.016-1.391.406-1.719.516-.313.094-1.172.297-1.234.344-.063.063-.016.25-.047.313s-.313.203-.484.234a1.647 1.647 0 0 1-.734 0c-.203-.047-.391-.25-.438-.328 0 0-.063-.094-.078-.359.187-.063.5-.078.844-.172s1.188-.344 1.641-.5 1.328-.484 1.594-.547c.281-.047.984-.516 1.359-.641s.641-.281.656-.203 0 .422-.016.516c-.016.078-.766 1.547-.875 1.781-.063.125-.5.953-1.203 2.047.25.109.781.328 1 .438.266.125 2.125.906 2.219.938s.266.75.234.875zM7.016 9.25c.047.266-.031.375-.063.438-.156.297-.547.5-.781.594s-.625.187-.938.187c-.141-.016-.422-.063-.766-.406-.187-.203-.328-.75-.266-.688s.516.125.719.078.688-.187.906-.25c.234-.078.703-.203.859-.219.156 0 .281.063.328.266zm10.906 2.016l.984 3.547-2.172-.656zM.609 23.766l10.844-3.625V4.016L.609 7.657v16.109zM20 18.813l1.594.484-2.828-10.266-1.563-.484-3.375 8.375 1.594.484.703-1.719 3.297 1.016zM12.141 3.781l8.953 2.875V.718zM17 24.453l2.469.203-.844 2.5L18 26.125c-1.266.812-2.828 1.437-4.312 1.687-.453.094-.969.187-1.422.187h-1.313c-1.656 0-4.672-.984-5.984-1.937-.094-.078-.125-.141-.125-.25 0-.172.125-.297.281-.297.141 0 .875.453 1.078.547 1.406.703 3.375 1.344 4.953 1.344 1.953 0 3.281-.25 5.063-1.016.516-.234.969-.531 1.453-.797zm7-16.859v16.859c-12.078-3.844-12.094-3.844-12.094-3.844C11.656 20.718.453 24.5.297 24.5a.3.3 0 0 1-.281-.203c0-.016-.016-.031-.016-.047V7.406c.016-.047.031-.125.063-.156.094-.109.219-.141.313-.172.047-.016 1-.328 2.328-.781v-6l8.719 3.094C11.532 3.36 21.251 0 21.392 0c.172 0 .313.125.313.328v6.531z"></path>
+</svg>
+              <span>Languages</span>
+          </button>
+
+        <div class="submenu js-submenu" id="languages-menu-submenu">
+          <div class="submenu-column">
+            <ul id="translations">
+              
+                
+                
+                
+                  <li lang="ja"><bdi><a rel="internal" href="https://developer.mozilla.org/ja/docs/Mozilla/JavaScript_code_modules/DeferredTask.jsm" data-locale="ja" title="Japanese">日本語 (ja)</a></bdi></li>
+                
+              
+
+              
+                <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/JavaScript_code_modules/DeferredTask.jsm$locales" rel="nofollow" id="translations-add">Add a translation</a></li>
+              
+            </ul>
+          </div>
+        </div>
+      </li>
+      
+      <li class="page-buttons-edit">
+          <a href="https://developer.mozilla.org/en-US/users/signin?next=/en-US/docs/Mozilla/JavaScript_code_modules/DeferredTask.jsm%24edit" class="button neutral" id="edit-button" rel="nofollow">
+              <svg class="icon icon-pencil" xmlns="http://www.w3.org/2000/svg" width="24" height="28" viewBox="0 0 24 28" aria-hidden="true">
+    <path d="M5.672 24l1.422-1.422-3.672-3.672L2 20.328V22h2v2h1.672zm8.172-14.5a.329.329 0 0 0-.344-.344.368.368 0 0 0-.266.109l-8.469 8.469a.366.366 0 0 0-.109.266c0 .203.141.344.344.344a.368.368 0 0 0 .266-.109l8.469-8.469a.366.366 0 0 0 .109-.266zM13 6.5l6.5 6.5-13 13H0v-6.5zM23.672 8c0 .531-.219 1.047-.578 1.406L20.5 12 14 5.5l2.594-2.578c.359-.375.875-.594 1.406-.594s1.047.219 1.422.594l3.672 3.656c.359.375.578.891.578 1.422z"></path>
+</svg>
+              Edit
+          </a>
+      </li>
+      
+
+        
+
+        <li class="page-buttons-advanced">
+            <button id="advanced-menu" class="only-icon" aria-haspopup="true" aria-owns="advanced-menu-submenu" aria-expanded="false">
+                <svg class="icon icon-gear" xmlns="http://www.w3.org/2000/svg" width="24" height="28" viewBox="0 0 24 28" aria-hidden="true">
+    <path d="M16 14c0-2.203-1.797-4-4-4s-4 1.797-4 4 1.797 4 4 4 4-1.797 4-4zm8-1.703v3.469c0 .234-.187.516-.438.562l-2.891.438a8.86 8.86 0 0 1-.609 1.422c.531.766 1.094 1.453 1.672 2.156.094.109.156.25.156.391s-.047.25-.141.359c-.375.5-2.484 2.797-3.016 2.797a.795.795 0 0 1-.406-.141l-2.156-1.687a9.449 9.449 0 0 1-1.422.594c-.109.953-.203 1.969-.453 2.906a.573.573 0 0 1-.562.438h-3.469c-.281 0-.531-.203-.562-.469l-.438-2.875a9.194 9.194 0 0 1-1.406-.578l-2.203 1.672c-.109.094-.25.141-.391.141s-.281-.063-.391-.172c-.828-.75-1.922-1.719-2.578-2.625a.607.607 0 0 1 .016-.718c.531-.719 1.109-1.406 1.641-2.141a8.324 8.324 0 0 1-.641-1.547l-2.859-.422A.57.57 0 0 1 0 15.705v-3.469c0-.234.187-.516.422-.562l2.906-.438c.156-.5.359-.969.609-1.437a37.64 37.64 0 0 0-1.672-2.156c-.094-.109-.156-.234-.156-.375s.063-.25.141-.359c.375-.516 2.484-2.797 3.016-2.797.141 0 .281.063.406.156L7.828 5.94a9.449 9.449 0 0 1 1.422-.594c.109-.953.203-1.969.453-2.906a.573.573 0 0 1 .562-.438h3.469c.281 0 .531.203.562.469l.438 2.875c.484.156.953.344 1.406.578l2.219-1.672c.094-.094.234-.141.375-.141s.281.063.391.156c.828.766 1.922 1.734 2.578 2.656a.534.534 0 0 1 .109.344c0 .141-.047.25-.125.359-.531.719-1.109 1.406-1.641 2.141.266.5.484 1.016.641 1.531l2.859.438a.57.57 0 0 1 .453.562z"></path>
+</svg>
+                <span>Advanced</span>
+            </button>
+            <div class="submenu js-submenu" id="advanced-menu-submenu">
+                <!-- this page -->
+                <div class="submenu-column">
+                    <div class="title">Advanced</div>
+                    <ul>
+                        <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/JavaScript_code_modules/DeferredTask.jsm$history" rel="nofollow">History</a></li>
+                        
+                        
+                        
+
+
+                
+
+                <li class="page-print"><a href="#" onclick="return window.print();">Print this article</a></li>
+            </ul>
+          </div>
+        </div>
+  </li></ul>
+      </div>
+    <nav class="crumbs" role="navigation">
+      <ol typeof="BreadcrumbList" vocab="https://schema.org/" aria-label="breadcrumbs">
+        
+          <li property="itemListElement" typeof="ListItem" class="crumb">
+            <a href="https://developer.mozilla.org/en-US/docs/Mozilla" property="item" typeof="WebPage">
+              <span property="name">Mozilla</span>
+            </a>
+            <meta property="position" content="1">
+          </li>
+        
+          <li property="itemListElement" typeof="ListItem" class="crumb">
+            <a href="https://developer.mozilla.org/en-US/docs/Mozilla/JavaScript_code_modules" property="item" typeof="WebPage">
+              <span property="name">JavaScript code modules</span>
+            </a>
+            <meta property="position" content="2">
+          </li>
+        
+        <li property="itemListElement" typeof="ListItem" class="crumb">
+          <span property="name" aria-current="page">DeferredTask.jsm</span>
+        </li>
+      </ol>
+    </nav></div>
+  </div>
+  
+  <div id="toc" class="toc">
+    <div class="center">
+      <div class="toc-head">Jump to:</div>
+        <ol class="toc-links">
+          <li><a rel="internal" href="#Method_overview">Method overview</a></li><li><a rel="internal" href="#Attributes">Attributes</a></li><li><a rel="internal" href="#Methods">Methods</a></li><li><a rel="internal" href="#Example">Example</a></li><li><a rel="internal" href="#Subnav">Subnav</a>
+        </li></ol>
+    </div>
+  </div>
+  
+
+      <div class="center clear">
+      
+
+    <div class="wiki-main-content" id="document-main"><div class="center">
+      <!-- start the main content container -->
+        <div id="wiki-column-container" class="wiki-left-present">
+
+          <!-- content row with three strips -->
+          <div class="column-container column-container-reverse">
+
+            <!-- center: main article content -->
+            <div id="wiki-content" class="column-main wiki-column text-content">
+
+              
+
+              
+              
+
+              
+
+              
+              
+
+              <!-- just the article content -->
+              <article id="wikiArticle">
+                
+                  
+                    <p></p><div class="blockIndicator standardNote">
+    <p><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Firefox/Releases/28">Firefox 28 note</a></p>
+    <p style="font-weight: 400;">Interface was changed in Firefox 28, and old methods were removed.</p>
+</div><p></p>
+
+<p>The <code><a rel="custom noopener" href="https://dxr.mozilla.org/mozilla-central/source/toolkit/modules/DeferredTask.jsm" class="external">DeferredTask.jsm</a></code> JavaScript code module offers utility routines for a task that will run after a delay. Multiple attempts to run the same task before the delay will be coalesced. To use it, you first need to import the code module into your JavaScript scope:</p>
+
+<pre class="brush: js;">Components.utils.import("resource://gre/modules/DeferredTask.jsm");
+</pre>
+
+<p>Use this, for instance, if you write data to a file and you expect that you may have to rewrite data very soon afterwards. With <code>DeferredTask</code>, the task is delayed by a few milliseconds and, should a new change to the data occur during this period,</p>
+
+<ul>
+ <li>only the final version of the data is actually written;</li>
+ <li>a further grace delay is added to take into account other changes.</li>
+</ul>
+
+<p></p><div class="headingWithIndicator">
+    <h1 id="The_DeferredTask_constructor">The DeferredTask constructor</h1>
+    <span class="indicatorInHeadline minVer geckoMinVerMethod">Requires Gecko 18.0(Firefox 18.0 / Thunderbird 18.0 / SeaMonkey 2.15)</span>
+</div><p></p>
+
+<p>If you have a function call you want to defer for two seconds, you can do so using the <code>DeferredTask</code> constructor, like this:</p>
+
+<pre class="brush: js;">var task = new DeferredTask(myFunction, 2000);
+</pre>
+
+<p> You can also pass a generator function as the first argument of constructor.</p>
+
+<a class="dashAnchor" name="//apple_ref/Section/Method%20overview"></a><h2 id="Method_overview" name="Method_overview">Method overview</h2>
+
+<table class="standard-table">
+ <tbody>
+  <tr>
+   <td><code>bool <a href="#isPending()">isPending</a>();</code><span class="inlineIndicator obsolete obsoleteInline" title="(Firefox 28 / Thunderbird 28 / SeaMonkey 2.25 / Firefox OS 1.3)">Obsolete since Gecko 28</span></td>
+  </tr>
+  <tr>
+   <td><code>void <a href="#start()">start</a>();</code><span class="inlineIndicator obsolete obsoleteInline" title="(Firefox 28 / Thunderbird 28 / SeaMonkey 2.25 / Firefox OS 1.3)">Obsolete since Gecko 28</span></td>
+  </tr>
+  <tr>
+   <td><code>void <a href="#flush()">flush</a>();</code><span class="inlineIndicator obsolete obsoleteInline" title="(Firefox 28 / Thunderbird 28 / SeaMonkey 2.25 / Firefox OS 1.3)">Obsolete since Gecko 28</span></td>
+  </tr>
+  <tr>
+   <td><code>void <a href="#cancel()">cancel</a>();</code><span class="inlineIndicator obsolete obsoleteInline" title="(Firefox 28 / Thunderbird 28 / SeaMonkey 2.25 / Firefox OS 1.3)">Obsolete since Gecko 28</span></td>
+  </tr>
+  <tr>
+   <td><code>void <a href="#arm()">arm</a>();</code></td>
+  </tr>
+  <tr>
+   <td><code>void <a href="#disarm()">disarm</a>();</code></td>
+  </tr>
+  <tr>
+   <td><code>Promise <a href="#finalize()">finalize</a>();</code></td>
+  </tr>
+ </tbody>
+</table>
+
+<a class="dashAnchor" name="//apple_ref/Section/Attributes"></a><h2 id="Attributes" name="Attributes">Attributes</h2>
+
+<table class="standard-table">
+ <tbody>
+  <tr>
+   <td><code>isArmed</code></td>
+   <td><code><a href="https://developer.mozilla.org/en/boolean" title="en/boolean">boolean</a></code></td>
+   <td>Indicates whether the task is currently requested to start again later, regardless of whether it is currently running.</td>
+  </tr>
+  <tr>
+   <td><code>isRunning</code></td>
+   <td><code><a href="https://developer.mozilla.org/en/boolean" title="en/boolean">boolean</a></code></td>
+   <td>Indicates whether the task is currently running. This is always true when read from code inside the task function, but can also be true when read from external code, in case the task is an asynchronous generator function.</td>
+  </tr>
+ </tbody>
+</table>
+
+<a class="dashAnchor" name="//apple_ref/Section/Methods"></a><h2 id="Methods" name="Methods">Methods</h2>
+
+<h3 id="isPending()" name="isPending()">isPending</h3>
+
+<p><span class="inlineIndicator obsolete obsoleteInline" title="(Firefox 28 / Thunderbird 28 / SeaMonkey 2.25 / Firefox OS 1.3)">Obsolete since Gecko 28</span></p>
+
+<p>Check the current task state.</p>
+
+<pre class="brush: cpp;">bool isPending();
+</pre>
+
+<h6 id="Return_value" name="Return_value">Return value</h6>
+
+<p>Returns true if pending, false otherwise.</p>
+
+<h3 id="start()" name="start()">start</h3>
+
+<p><span class="inlineIndicator obsolete obsoleteInline" title="(Firefox 28 / Thunderbird 28 / SeaMonkey 2.25 / Firefox OS 1.3)">Obsolete since Gecko 28</span></p>
+
+<p>Start (or postpone) task.</p>
+
+<pre class="brush: cpp;">void start();
+</pre>
+
+<h3 id="flush()" name="flush()">flush</h3>
+
+<p><span class="inlineIndicator obsolete obsoleteInline" title="(Firefox 28 / Thunderbird 28 / SeaMonkey 2.25 / Firefox OS 1.3)">Obsolete since Gecko 28</span></p>
+
+<p>Perform any postponed task immediately.</p>
+
+<pre class="brush: cpp;">void flush();
+</pre>
+
+<h3 id="cancel()" name="cancel()">cancel</h3>
+
+<p><span class="inlineIndicator obsolete obsoleteInline" title="(Firefox 28 / Thunderbird 28 / SeaMonkey 2.25 / Firefox OS 1.3)">Obsolete since Gecko 28</span></p>
+
+<p>Cancel any pending task.</p>
+
+<pre class="brush: cpp;">void cancel();
+</pre>
+
+<h3 id="arm()" name="arm()">arm</h3>
+
+<p></p>
+
+<p>Request the execution of the task after the delay specified on construction. Multiple calls don't introduce further delays. If the task is running, the delay will start when the current execution finishes.</p>
+
+<p>The task will always be executed on a different tick of the event loop, even if the delay specified on construction is zero. Multiple "arm" calls within the same tick of the event loop are guaranteed to result in a single execution of the task.</p>
+
+<p>By design, this method doesn't provide a way for the caller to detect when the next execution terminates, or collect a result. In fact, doing that would often result in duplicate processing or logging. If a special operation or error logging is needed on completion, it can be better handled from within the task itself, for example using a try/catch/finally clause in the task. The "finalize" method can be used in the common case of waiting for completion on shutdown.</p>
+
+<pre class="brush: cpp;">void arm();
+</pre>
+
+<h3 id="disarm()" name="disarm()">disarm</h3>
+
+<p></p>
+
+<p>Cancel any request for a delayed execution of the task, though the task itself cannot be canceled in case it is already running.</p>
+
+<p>This method stops any currently running timer, thus the delay will restart from its original value in case the "arm" method is called again.</p>
+
+<pre class="brush: cpp;">void disarm();
+</pre>
+
+<h3 id="finalize()" name="finalize()">finalize</h3>
+
+<p></p>
+
+<p>Ensure that any pending task is executed from start to finish, while preventing any attempt to arm the timer again.</p>
+
+<ul>
+ <li>If the task is running and the timer is armed, then one last execution from start to finish will happen again, immediately after the current execution terminates; then the returned promise will be resolved.</li>
+ <li>If the task is running and the timer is not armed, the returned promise will be resolved when the current execution terminates.</li>
+ <li>If the task is not running and the timer is armed, then the task is started immediately, and the returned promise resolves when the new execution terminates.</li>
+ <li>If the task is not running and the timer is not armed, the method returns a resolved promise.</li>
+</ul>
+
+<pre class="brush: cpp;">Promise finalize();
+</pre>
+
+<a class="dashAnchor" name="//apple_ref/Section/Example"></a><h2 id="Example" name="Example">Example</h2>
+
+<p></p><div class="blockIndicator standardNote">
+    <p><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Firefox/Releases/28">Firefox 28 note</a></p>
+    <p style="font-weight: 400;">This section describes about DeferredTask.jsm in Firefox 28.0 or higher.</p>
+</div><p></p>
+
+<p>Set up a function or an asynchronous task whose execution can be triggered after a defined delay. Multiple attempts to run the task before the delay has passed are coalesced. The task cannot be re-entered while running, but can be executed again after a previous run finished.</p>
+
+<p>A common use case occurs when a data structure should be saved into a file every time the data changes, using asynchronous calls, and multiple changes to the data may happen within a short time:</p>
+
+<pre class="brush: js;">let saveDeferredTask = new DeferredTask(function* () {
+  yield OS.File.writeAtomic(...);
+  // Any uncaught exception will be reported.
+}, 2000);
+
+// The task is ready, but will not be executed until requested.
+</pre>
+
+<p>The "arm" method can be used to start the internal timer that will result in the eventual execution of the task. Multiple attempts to arm the timer don't introduce further delays:</p>
+
+<pre class="brush: js;">saveDeferredTask.arm();
+
+// The task will be executed in 2 seconds from now.
+
+yield waitOneSecond();
+saveDeferredTask.arm();
+
+// The task will be executed in 1 second from now.
+</pre>
+
+<p>The timer can be disarmed to reset the delay, or just to cancel execution:</p>
+
+<pre class="brush: js;">saveDeferredTask.disarm();
+saveDeferredTask.arm();
+
+// The task will be executed in 2 seconds from now.
+</pre>
+
+<p>When the internal timer fires and the execution of the task starts, the task cannot be canceled anymore. It is, however, possible to arm the timer again during the execution of the task, in which case the task will need to finish before the timer is started again, thus guaranteeing a time of inactivity between executions that is at least equal to the provided delay.</p>
+
+<p>The "finalize" method can be used to ensure that the task terminates properly. The promise it returns is resolved only after the last execution of the task is finished. To guarantee that the task is executed for the last time, the method prevents any attempt to arm the timer again.</p>
+
+<p>If the timer is already armed when the "finalize" method is called, then the task is executed immediately. If the task was already running at this point, then one last execution from start to finish will happen again, immediately after the current execution terminates. If the timer is not armed, the "finalize" method only ensures that any running task terminates.</p>
+
+<p>For example, during shutdown, you may want to ensure that any pending write is processed, using the latest version of the data if the timer is armed:</p>
+
+<pre class="brush: js;">AsyncShutdown.profileBeforeChange.addBlocker(
+  "Example service: shutting down",
+  () =&gt; saveDeferredTask.finalize()
+);
+</pre>
+
+<p>Instead, if you are going to delete the saved data from disk anyways, you might as well prevent any pending write from starting, while still ensuring that any write that is currently in progress terminates, so that the file is not in use any more:</p>
+
+<pre class="brush: js;">saveDeferredTask.disarm();
+saveDeferredTask.finalize().then(() =&gt; OS.File.remove(...))
+                           .then(null, Components.utils.reportError);
+</pre>
+
+
+                  
+                
+              </article>
+
+              <!-- contributors -->
+              <div class="wiki-block contributors">
+                <h2 class="offscreen">Document Tags and Contributors</h2>
+                
+                
+  <div class="tag-attach-list contributors-sub">
+    <svg class="icon icon-tags" xmlns="http://www.w3.org/2000/svg" width="30" height="28" viewBox="0 0 30 28" aria-hidden="true">
+    <path d="M7 7c0-1.109-.891-2-2-2s-2 .891-2 2 .891 2 2 2 2-.891 2-2zm16.672 9c0 .531-.219 1.047-.578 1.406l-7.672 7.688c-.375.359-.891.578-1.422.578s-1.047-.219-1.406-.578L1.422 13.906C.625 13.125 0 11.609 0 10.5V4c0-1.094.906-2 2-2h6.5c1.109 0 2.625.625 3.422 1.422l11.172 11.156c.359.375.578.891.578 1.422zm6 0c0 .531-.219 1.047-.578 1.406l-7.672 7.688a2.08 2.08 0 0 1-1.422.578c-.812 0-1.219-.375-1.75-.922l7.344-7.344c.359-.359.578-.875.578-1.406s-.219-1.047-.578-1.422L14.422 3.422C13.625 2.625 12.11 2 11 2h3.5c1.109 0 2.625.625 3.422 1.422l11.172 11.156c.359.375.578.891.578 1.422z"></path>
+</svg>
+    <strong>Tags:</strong>&nbsp;
+    <ul class="tags tags-small">
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/DeferredTask.jsm" rel="nofollow">DeferredTask.jsm</a></li>
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/JavaScript" rel="nofollow">JavaScript</a></li>
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/Modules" rel="nofollow">Modules</a></li>
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/Mozilla" rel="nofollow">Mozilla</a></li>
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/Non-standard" rel="nofollow">Non-standard</a></li>
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/Reference" rel="nofollow">Reference</a></li>
+      
+    </ul>
+  </div>
+
+
+                
+                  <div class="contributors-sub">
+                    <svg class="icon icon-group" xmlns="http://www.w3.org/2000/svg" width="30" height="28" viewBox="0 0 30 28" aria-hidden="true">
+    <path d="M9.266 14a5.532 5.532 0 0 0-4.141 2H3.031C1.468 16 0 15.25 0 13.516 0 12.25-.047 8 1.937 8c.328 0 1.953 1.328 4.062 1.328.719 0 1.406-.125 2.078-.359A7.624 7.624 0 0 0 7.999 10c0 1.422.453 2.828 1.266 4zM26 23.953C26 26.484 24.328 28 21.828 28H8.172C5.672 28 4 26.484 4 23.953 4 20.422 4.828 15 9.406 15c.531 0 2.469 2.172 5.594 2.172S20.063 15 20.594 15C25.172 15 26 20.422 26 23.953zM10 4c0 2.203-1.797 4-4 4S2 6.203 2 4s1.797-4 4-4 4 1.797 4 4zm11 6c0 3.313-2.688 6-6 6s-6-2.688-6-6 2.688-6 6-6 6 2.688 6 6zm9 3.516C30 15.25 28.531 16 26.969 16h-2.094a5.532 5.532 0 0 0-4.141-2A7.066 7.066 0 0 0 22 10a7.6 7.6 0 0 0-.078-1.031A6.258 6.258 0 0 0 24 9.328C26.109 9.328 27.734 8 28.062 8c1.984 0 1.937 4.25 1.937 5.516zM28 4c0 2.203-1.797 4-4 4s-4-1.797-4-4 1.797-4 4-4 4 1.797 4 4z"></path>
+</svg>
+                    <strong>Contributors to this page:</strong>
+                    
+        <a href="https://developer.mozilla.org/en-US/profiles/mdnwebdocs-bot" rel="nofollow">mdnwebdocs-bot</a>, 
+    
+        <a href="https://developer.mozilla.org/en-US/profiles/ExE-Boss" rel="nofollow">ExE-Boss</a>, 
+    
+        <a href="https://developer.mozilla.org/en-US/profiles/kscarfone" rel="nofollow">kscarfone</a>, 
+    
+        <a href="https://developer.mozilla.org/en-US/profiles/arai" rel="nofollow">arai</a>, 
+    
+        <a href="https://developer.mozilla.org/en-US/profiles/jimdigriz" rel="nofollow">jimdigriz</a>, 
+    
+        <a href="https://developer.mozilla.org/en-US/profiles/mnoorenberghe" rel="nofollow">mnoorenberghe</a>
+    
+                  </div>
+                
+
+                
+                  <div class="contributors-sub">
+                    <svg class="icon icon-clock" xmlns="http://www.w3.org/2000/svg" width="24" height="28" viewBox="0 0 24 28" aria-hidden="true">
+    <path d="M14 8.5v7c0 .281-.219.5-.5.5h-5a.494.494 0 0 1-.5-.5v-1c0-.281.219-.5.5-.5H12V8.5c0-.281.219-.5.5-.5h1c.281 0 .5.219.5.5zm6.5 5.5c0-4.688-3.813-8.5-8.5-8.5S3.5 9.313 3.5 14s3.813 8.5 8.5 8.5 8.5-3.813 8.5-8.5zm3.5 0c0 6.625-5.375 12-12 12S0 20.625 0 14 5.375 2 12 2s12 5.375 12 12z"></path>
+</svg>
+                    <strong>Last updated by:</strong>
+                    <a href="https://developer.mozilla.org/en-US/profiles/mdnwebdocs-bot" rel="nofollow">mdnwebdocs-bot</a>,
+                    <time datetime="2019-03-23T19:34:46.354810-07:00">Mar 23, 2019, 7:34:46 PM</time>
+                  </div>
+                
+              </div>
+            </div>
+
+            
+              <!-- quick links and approvals strip -->
+              <div id="wiki-left" class="column-strip wiki-column">
+
+                <!-- crumbs -->
+                
+  
+    
+  
+
+                
+                  <!-- quick links -->
+                  
+  <div class="quick-links" id="quick-links">
+    <div class="quick-links-head">Related Topics</div>
+    
+<ol>
+ <li><strong><a href="https://developer.mozilla.org/en-US/docs/Mozilla">Mozilla</a></strong></li>
+ <li><strong><a href="https://developer.mozilla.org/en-US/docs/Mozilla/JavaScript_code_modules">JavaScript code modules</a></strong></li>
+ <li class="toggle">
+  <details open=""><summary>General topics</summary>
+  <ol>
+   <li><a href="Using.html">Using JavaScript code modules</a></li>
+   <li><code><a href="https://developer.mozilla.org/en-US/docs/Components.utils.import">Components.utils.import</a></code></li>
+   <li><code><a href="https://developer.mozilla.org/en-US/docs/Components.utils.unload">Components.utils.unload</a></code></li>
+   <li><a href="https://developer.mozilla.org/en-US/docs/Code_snippets/Modules">Code snippets: Modules</a></li>
+   <li><a rel="noopener" href="https://wiki.mozilla.org/Labs/JS_Modules" class="external">Mozilla Labs JS Modules</a></li>
+  </ol>
+  </details>
+ </li>
+ <li class="toggle">
+  <details><summary>Reference</summary><ol><li><a href="Add-on_Manager.html" title="">Add-on Manager</a></li><li><a href="Add-on_Repository.html" title="">Add-on Repository</a></li><li><a href="Assert.html" title="The Assert.jsm JavaScript code module implements the CommonJS Unit Testing specification version 1.1, which provides a basic, standardized interface for performing in-code logical assertions with optional, customizable error reporting. To use it, you first need to import the code module into your JavaScript scope:">Assert.jsm</a></li><li><a href="AsyncShutdown.html" title="Firefox shutdown is composed of phases that take place sequentially. Typically, each shutdown phase removes some capabilities from the application. For instance, at the end of phase profileBeforeChange, no service is permitted to write to the profile directory (with the exception of Telemetry). Consequently, if any service has requested I/O to the profile directory before or during phase profileBeforeChange, the system must be informed that these requests need to be completed before the end of phase profileBeforeChange. Failing to inform the system of this requirement can (and has been known to) cause data loss.">AsyncShutdown.jsm</a></li><li><a href="CustomizableUI.html" title="The CustomizableUI.jsm JavaScript code module allows you to interact with customizable buttons and items in Firefox's main window UI.">CustomizableUI.jsm</a></li><li><span class="sidebar-icon"><span class="icon-only-inline" title="This API has not been standardized."><i class="icon-warning-sign"> </i></span></span><a href="DeferredTask.html" title="The DeferredTask.jsm JavaScript code module offers utility routines for a task that will run after a delay. Multiple attempts to run the same task before the delay will be coalesced. To use it, you first need to import the code module into your JavaScript scope:">DeferredTask.jsm</a></li><li><span class="sidebar-icon"><span title="This deprecated API should no longer be used, but will probably still work."><i class="icon-thumbs-down-alt"> </i></span></span><a href="Dict.html" title="The Dict.jsm JavaScript code module offers routines for managing dictionaries of key/value pairs. To use it, you first need to import the code module into your JavaScript scope:">Dict.jsm</a></li><li><a href="DownloadLastDir.html" title="The DownloadLastDir.jsm JavaScript code module lets you retrieve the path of the last directory into which a download occurred.">DownloadLastDir.jsm</a></li><li><a href="Downloads.html" title="The Downloads.jsm JavaScript code module provides a single entry point to interact with the downloading capabilities of the platform, including starting new downloads, controlling ongoing downloads, and retrieving download-related configuration. To use it, you first need to import the code module into your JavaScript scope:">Downloads.jsm</a></li><li><a href="FileUtils.html" title="The FileUtils.jsm JavaScript code module offers utility routines dealing with files. To use it, you first need to import the code module into your JavaScript scope:">FileUtils.jsm</a></li><li><a href="FxAccountsOAuthClient.html" title="The FxAccountsOAuthClient.jsm JavaScript module provides a way for browser services to authenticate with the Firefox Accounts OAuth server.">FxAccountsOAuthClient.jsm</a></li><li><a href="FxAccountsProfileClient.html" title="The FxAccountsProfileClient.jsm JavaScript module provides a way to fetch Firefox Accounts profile information. The modules uses the Firefox Profiler Server API.">FxAccountsProfileClient.jsm</a></li><li><a href="Geometry.html" title="The Geometry.jsm JavaScript code module provides routines for performing common geometry operations on points and rectangles. It exports two classes:&nbsp;Point and Rect.">Geometry.jsm</a></li><li><a href="Http.html" title="Http.jsm provides httpRequest - a wrapper for XMLHttpRequest that provides convenient and simplified API for dealing with HTTP requests.">Http.jsm</a></li><li><a href="ISO8601DateUtils.html" title="The ISO8601DateUtils.jsm JavaScript code module provides methods that make it easy to convert JavaScript Date objects into ISO&nbsp;8601 format date strings and back.">ISO8601DateUtils.jsm</a></li><li><a href="Interfacing_with_the_Add-on_Repository.html" title="The Add-on Repository JavaScript code module makes it easy for your extension to interface with the AMO&nbsp;repository. You an use the code module to get lists of add-ons and even install new add-ons. This article provides some sample code that queries the recommended add-ons list on AMO and lets the user click a button to install an add-on from the list.">Interfacing with the Add-on Repository</a></li><li><a href="JNI.html" title="The JNI.jsm JavaScript code module abstracts all of the js-ctypes required for writing JNI code. To use it, you first need to import the code module into your JavaScript scope:">JNI.jsm</a></li><li><a href="JavaScript_OS.html" title="The JavaScript OS module contains tools that allow chrome content (i.e. platform and add-ons) to interact with the host operating system.">JavaScript OS</a></li><li><a href="JavaScript_OS-2.html" title="JavaScript module OS.Constants contains Operating System-specific constants. This module is largely a companion to js-ctypes.">JavaScript OS.Constants</a></li><li><a href="Log.html" title="The Log.jsm JavaScript code module (formerly named log4moz.js) provides a log4j style API for logging log messages to various endpoints, such as the Browser Console or a file on disk. To use it, you first need to import the code module into your JavaScript scope:">Log.jsm</a></li><li><a href="NetUtil.html" title="The NetUtil.jsm JavaScript code module provides easy-to-use APIs for performing common network related tasks.">NetUtil.jsm</a></li><li><a href="OSFile.html" title="JavaScript module OS.File contains primitives for manipulating files out of the main thread.">OSFile.jsm</a></li><li><a href="PerfMeasurement.html" title="The PerfMeasurement.jsm JavaScript code module lets you take detailed performance measurements of your code.">PerfMeasurement.jsm</a></li><li><a href="PopupNotifications.html" title="The PopupNotifications.jsm JavaScript code module provides a popup notification box service. This service is used, for example, to display Geolocation related notifications.">PopupNotifications.jsm</a></li><li><a href="Promise.html" title="The Promise.jsm JavaScript code module implements the Promises/A+ proposal as known in April 2013.">Promise.jsm</a></li><li><a href="PromiseUtils.html" title="The PromiseUtils.jsm JavaScript code module offers some useful functions related to DOM Promise. To use it, you first need to import the code module into your JavaScript scope:">PromiseUtils.jsm</a></li><li><a href="PromiseWorker.html" title="A PromiseWorker is a ChromeWorker except instead of calling postMessage() to send a message, you call post(), which returns a Promise. JavaScript files imported into the worker scope and main thread scope which allows posting to the worker and receiving in the form of a promise. Like&nbsp;ChromeWorker objects, PromiseWorker is mostly used for js-ctypes but it is not limited to that. There is no XPCOM access, similar to ChromeWorker. This answers the question &quot;When should I use a PromiseWorker?&quot;, and the answer is, whenever you would normally use a ChromeWorker, but want postMessage to return promises.">PromiseWorker.jsm</a></li><li><a href="Services.html" title="The Services.jsm JavaScript code module offers a wide assortment of lazy getters that simplify the process of obtaining references to commonly used services.">Services.jsm</a></li><li><a href="SourceMap.html" title="Get a reference to the module:">SourceMap.jsm</a></li><li><a href="Sqlite.html" title="The Sqlite.jsm JavaScript code module is a promise-based wrapper around the Storage/SQLite interface. Sqlite.jsm offers some compelling advantages over the low-level Storage XPCOM interfaces:">Sqlite.jsm</a></li><li><a href="Task.html" title="The Task.jsm JavaScript code module implements a subset of Task.js to make sequential, asynchronous operations simple, using the power of JavaScript's yield operator. To use it, you first need to import the code module into your JavaScript scope:">Task.jsm</a></li><li><a href="Timer.html" title="The Timer.jsm JavaScript code module contains pure-JavaScript implementations of setTimeout, clearTimeout, setInterval, and clearInterval that are compatible with the DOM window functions, but that can be used by code that does not have access to a DOM window (for example, JavaScript code modules or content frame scripts).">Timer.jsm</a></li><li><a href="Using.html" title="JavaScript code modules are a concept introduced in Gecko&nbsp;1.9 and can be used for sharing code between different privileged scopes. Modules can also be used to create global JavaScript singletons that previously required using JavaScript XPCOM objects. A JavaScript code module is simply some JavaScript code located in a registered location. The module is loaded into a specific JavaScript scope, such as XUL script or JavaScript XPCOM script, using Components.utils.import() or Components.utils[&quot;import&quot;]().">Using JavaScript code modules</a></li><li><a href="Using_the_Source_Editor_API.html" title="Obviously a work in progress.">Using the Source Editor API</a></li><li><a href="Using_workers_in_JavaScript_code_modules.html" title="You can do so by using ChromeWorker instead of the standard Worker object. It works exactly like a standard Worker, except that it has access to js-ctypes via a global ctypes object available in the global scope of the worker">Using workers in JavaScript code modules</a></li><li><a href="WebChannel.html" title="The WebChannel.jsm JavaScript code module provides&nbsp;an abstraction that uses the Message Manager and Custom Events&nbsp;APIs to create a two-way communication channel between chrome and content code for specific origins (using a specific origin passed to the constructor or a lookup with nsIPermissionManager while also ensuring the scheme is HTTPS).">WebChannel.jsm</a></li><li><a href="WebRequest.html" title="The WebRequest module provides an API to add event listeners for the various stages of making an HTTP request">WebRequest.jsm</a></li><li><a href="Webapps.html" title="The Webapps.jsm modules exposes the DOMApplicationRegistry, which is responsible for managing all of the Open Web Apps.">Webapps.jsm</a></li><li><a href="XPCOMUtils.html" title="The XPCOMUtils.jsm JavaScript code module offers utility routines for JavaScript components loaded by the JavaScript component loader.">XPCOMUtils.jsm</a></li><li><a href="openLocationLastURL.html" title="The openLocationLastURL.jsm JavaScript code module lets you set and retrieve the URL&nbsp;most recently opened using the &quot;Open Location&quot; option in the File menu.">openLocationLastURL.jsm</a></li><li><a href="source-editor.html" title="The source-editor.jsm JavaScript code module implements an editor specifically tailored for editing source code; its primary purpose is to provide support for web developer tools to display and edit web site code. The editor provided is Eclipse Orion.">source-editor.jsm</a></li></ol></details>
+ </li>
+</ol>
+
+  </div>
+                
+
+                <!-- approvals -->
+                
+
+              </div>
+            
+          </div>
+        </div>
+      </div>
+    </div> <!-- ends "main-content" -->
+
+    
+      <div class="newsletter-box">
+        <div class="newsletter">
+    <form id="newsletterForm" class="newsletter-form nodisable" name="newsletter-form" action="https://www.mozilla.org/en-US/newsletter/" method="post">
+        <div class="newsletter-head">
+            <h2 class="newsletter-teaser">Learn the best of web development</h2>
+            <p class="newsletter-description">Get the latest and greatest from MDN delivered straight to your inbox.</p>
+            
+        </div>
+
+        <div class="newsletter-fields">
+            <input type="hidden" id="fmt" name="fmt" value="H">
+            <input type="hidden" id="newsletterNewslettersInput" name="newsletters" value="app-dev">
+            <div id="newsletterErrors" class="newsletter-errors"></div>
+
+            <div id="newsletterEmail" class="form-group newsletter-group-email">
+                <label for="newsletterEmailInput" class="form-label offscreen">E-mail</label>
+                <input type="email" id="newsletterEmailInput" name="email" class="form-input newsletter-input-email" required="" placeholder="you@example.com" size="30">
+            </div>
+
+            <div id="newsletterPrivacy" class="form-group form-group-agree newsletter-group-privacy hidden">
+                <input type="checkbox" id="newsletterPrivacyInput" name="privacy" required="">
+                <label for="newsletterPrivacyInput">
+                I'm okay with Mozilla handling my info as explained in this <a href="https://www.mozilla.org/privacy/">Privacy Policy</a>.
+                </label>
+            </div>
+            <div id="newsletterSubmit" class="newsletter-group-submit">
+                <button id="newsletter-submit" type="submit" class="button neutral newsletter-submit">
+                    Sign up now<svg class="icon icon-arrow" xmlns="http://www.w3.org/2000/svg" width="23" height="28" viewBox="0 0 23 28" aria-hidden="true">
+    <path d="M23 15a2.01 2.01 0 0 1-.578 1.422L12.25 26.594c-.375.359-.891.578-1.422.578s-1.031-.219-1.406-.578L8.25 25.422c-.375-.375-.594-.891-.594-1.422s.219-1.047.594-1.422L12.828 18h-11C.703 18 0 17.062 0 16v-2c0-1.062.703-2 1.828-2h11L8.25 7.406a1.96 1.96 0 0 1 0-2.812l1.172-1.172c.375-.375.875-.594 1.406-.594s1.047.219 1.422.594l10.172 10.172c.375.359.578.875.578 1.406z"></path>
+</svg>
+                </button>
+            </div>
+        </div>
+    </form>
+    <div id="newsletterThanks" class="newsletter-thanks hidden">
+        <h2>Thanks! Please check your inbox to confirm your subscription.</h2>
+        <p>If you haven’t previously confirmed a subscription to a Mozilla-related newsletter you may have to do so. Please check your inbox or your spam filter for an email from us.
+        </p>
+    </div>
+    <button id="newsletterHide" type="button" class="only-icon newsletter-hide hidden">
+        <span>Hide Newsletter Sign-up</span>
+        <svg class="icon icon-close" xmlns="http://www.w3.org/2000/svg" width="22" height="28" viewBox="0 0 22 28" aria-hidden="true" role="img"><title></title><path d="M20.281 20.656c0 .391-.156.781-.438 1.062l-2.125 2.125c-.281.281-.672.438-1.062.438s-.781-.156-1.062-.438L11 19.249l-4.594 4.594c-.281.281-.672.438-1.062.438s-.781-.156-1.062-.438l-2.125-2.125c-.281-.281-.438-.672-.438-1.062s.156-.781.438-1.062L6.751 15l-4.594-4.594c-.281-.281-.438-.672-.438-1.062s.156-.781.438-1.062l2.125-2.125c.281-.281.672-.438 1.062-.438s.781.156 1.062.438L11 10.751l4.594-4.594c.281-.281.672-.438 1.062-.438s.781.156 1.062.438l2.125 2.125c.281.281.438.672.438 1.062s-.156.781-.438 1.062L15.249 15l4.594 4.594c.281.281.438.672.438 1.062z"></path></svg>
+    </button>
+</div>
+      </div>
+    
+
+  <menu type="context" id="edit-history-menu">
+    <menuitem data-action="/en-US/users/signin?next=/en-US/docs/Mozilla/JavaScript_code_modules/DeferredTask.jsm%24edit" label="Edit page"></menuitem>
+    <menuitem data-action="/en-US/docs/Mozilla/JavaScript_code_modules/DeferredTask.jsm$history" label="View page history"></menuitem>
+  </menu>
+
+      </div>
+  </main>
+
+  <!-- Footer -->
+    <footer id="nav-footer" class="nav-footer"><div class="center"><a href="http://developer.mozilla.org/en-US/docs/Mozilla/JavaScript_code_modules/DeferredTask.jsm">DeferredTask.jsm</a> by <a href="http://developer.mozilla.org/en-US/docs/Mozilla/JavaScript_code_modules/DeferredTask.jsm$history">Mozilla Contributors</a> is licensed under <a href="http://creativecommons.org/licenses/by-sa/2.5/" class="external external-icon">CC-BY-SA 2.5</a>.</div></footer> 
+
+  <!-- site js -->
+  
+    
+    <!--[if lte IE 8]><script async="" type="text/javascript" src=".selectivizr.8bb9e662e963.js" charset="utf-8"></script><![endif]-->
+
+    
+    <script src="../../../../static/jsi18n/en-US/javascript.414b87adc480.js"></script>
+    <script type="text/javascript" src="../../../../static/build/js/main.07c77248863e.js" charset="utf-8"></script>
+    <script>
+    if (window.mdn && mdn.analytics) mdn.analytics.trackOutboundLinks();
+  </script>
+    
+  
+    <script async="" type="text/javascript" src="../../../../static/build/js/syntax-prism.js" charset="utf-8"></script><script type="text/javascript" src=".selectivizr.8bb9e662e963.js" charset="utf-8"></script><!--[endif]---->
+
+    
+    <script src="../../../../static/jsi18n/en-US/javascript.414b87adc480.js"></script>
+    <script type="text/javascript" src="../../../../static/build/js/main.07c77248863e.js" charset="utf-8"></script>
+    <script>
+    if (window.mdn && mdn.analytics) mdn.analytics.trackOutboundLinks();
+  </script>
+    
+  
+    <script async="" type="text/javascript" src="../../../../static/build/js/wiki.c63623e4caba.js" charset="utf-8" id="wikiscript"></script>
+
+
+  
+
+  
+
+  
+
+  
+    <script async="" type="text/javascript" src="../../../../static/build/js/newsletter.a85c5c2892e5.js" charset="utf-8"></script>
+  
+
+
+
+
+<!-- Mirrored from developer.mozilla.org/en-US/docs/Mozilla/JavaScript_code_modules/DeferredTask.jsm by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 02 May 2019 03:50:54 GMT -->
+</body></html>

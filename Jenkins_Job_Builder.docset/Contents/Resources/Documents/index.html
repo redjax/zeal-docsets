@@ -1,0 +1,316 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Jenkins Job Builder &#8212; Jenkins Job Builder 2.0.0.0b3.dev264 documentation</title>
+    
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '2.0.0.0b3.dev264',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="Jenkins Job Builder 2.0.0.0b3.dev264 documentation" href="#" />
+    <link rel="next" title="Quick Start Guide" href="quick-start.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="quick-start.html" title="Quick Start Guide"
+             accesskey="N">next</a> |</li>
+        <li class="nav-item nav-item-0"><a href="#">Jenkins Job Builder 2.0.0.0b3.dev264 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="jenkins-job-builder">
+<h1>Jenkins Job Builder<a class="headerlink" href="#jenkins-job-builder" title="Permalink to this headline">¶</a></h1>
+</div>
+<div class="section" id="readme">
+<h1>README<a class="headerlink" href="#readme" title="Permalink to this headline">¶</a></h1>
+<p>Jenkins Job Builder takes simple descriptions of <a class="reference external" href="https://jenkins.io/">Jenkins</a> jobs in <a class="reference external" href="http://www.yaml.org/">YAML</a> or <a class="reference external" href="http://json.org/">JSON</a>
+format and uses them to configure Jenkins. You can keep your job descriptions in
+human readable text format in a version control system to make changes and
+auditing easier. It also has a flexible template system, so creating many
+similarly configured jobs is easy.</p>
+<p>To install:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ pip install --user jenkins-job-builder
+</pre></div>
+</div>
+<p>Online documentation:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://docs.openstack.org/infra/jenkins-job-builder/">http://docs.openstack.org/infra/jenkins-job-builder/</a></li>
+</ul>
+<div class="section" id="developers">
+<h2>Developers<a class="headerlink" href="#developers" title="Permalink to this headline">¶</a></h2>
+<p>Bug report:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://storyboard.openstack.org/#!/project/723">https://storyboard.openstack.org/#!/project/723</a></li>
+</ul>
+<p>Repository:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://git.openstack.org/cgit/openstack-infra/jenkins-job-builder">https://git.openstack.org/cgit/openstack-infra/jenkins-job-builder</a></li>
+</ul>
+<p>Cloning:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">git</span><span class="o">.</span><span class="n">openstack</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">openstack</span><span class="o">-</span><span class="n">infra</span><span class="o">/</span><span class="n">jenkins</span><span class="o">-</span><span class="n">job</span><span class="o">-</span><span class="n">builder</span>
+</pre></div>
+</div>
+<p>A virtual environment is recommended for development.  For example, Jenkins
+Job Builder may be installed from the top level directory:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ virtualenv .venv
+$ source .venv/bin/activate
+$ pip install -r test-requirements.txt -e .
+</pre></div>
+</div>
+<p>Patches are submitted via Gerrit at:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://review.openstack.org/">https://review.openstack.org/</a></li>
+</ul>
+<p>Please do not submit GitHub pull requests, they will be automatically closed.</p>
+<p>More details on how you can contribute is available on our wiki at:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://docs.openstack.org/infra/manual/developers.html">http://docs.openstack.org/infra/manual/developers.html</a></li>
+</ul>
+</div>
+<div class="section" id="writing-a-patch">
+<h2>Writing a patch<a class="headerlink" href="#writing-a-patch" title="Permalink to this headline">¶</a></h2>
+<p>We ask that all code submissions be <a class="reference external" href="https://pypi.python.org/pypi/pep8">pep8</a> and <a class="reference external" href="https://pypi.python.org/pypi/pyflakes">pyflakes</a> clean.  The
+easiest way to do that is to run <a class="reference external" href="https://testrun.org/tox">tox</a> before submitting code for
+review in Gerrit.  It will run <code class="docutils literal"><span class="pre">pep8</span></code> and <code class="docutils literal"><span class="pre">pyflakes</span></code> in the same
+manner as the automated test suite that will run on proposed
+patchsets.</p>
+<p>When creating new YAML components, please observe the following style
+conventions:</p>
+<ul class="simple">
+<li>All YAML identifiers (including component names and arguments)
+should be lower-case and multiple word identifiers should use
+hyphens.  E.g., &#8220;build-trigger&#8221;.</li>
+<li>The Python functions that implement components should have the same
+name as the YAML keyword, but should use underscores instead of
+hyphens. E.g., &#8220;build_trigger&#8221;.</li>
+</ul>
+<p>This consistency will help users avoid simple mistakes when writing
+YAML, as well as developers when matching YAML components to Python
+implementation.</p>
+</div>
+<div class="section" id="unit-tests">
+<h2>Unit Tests<a class="headerlink" href="#unit-tests" title="Permalink to this headline">¶</a></h2>
+<p>Unit tests have been included and are in the <code class="docutils literal"><span class="pre">tests</span></code> folder. Many unit
+tests samples are included as examples in our documentation to ensure that
+examples are kept current with existing behaviour. To run the unit tests,
+execute the command:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">tox</span> <span class="o">-</span><span class="n">e</span> <span class="n">py34</span><span class="p">,</span><span class="n">py27</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>Note: View <code class="docutils literal"><span class="pre">tox.ini</span></code> to run tests on other versions of Python,
+generating the documentation and additionally for any special notes
+on running the test to validate documentation external URLs from behind
+proxies.</li>
+</ul>
+</div>
+<div class="section" id="installing-without-setup-py">
+<h2>Installing without setup.py<a class="headerlink" href="#installing-without-setup-py" title="Permalink to this headline">¶</a></h2>
+<p>For YAML support, you will need <a class="reference external" href="http://pyyaml.org/wiki/LibYAML">libyaml</a> installed.</p>
+<p>Mac OS X:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ brew install libyaml
+</pre></div>
+</div>
+<p>Then install the required python packages using <a class="reference external" href="https://pypi.python.org/pypi/pip">pip</a>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo pip install PyYAML python-jenkins
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="contents">
+<h1>Contents<a class="headerlink" href="#contents" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="quick-start.html">Quick Start Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="quick-start.html#use-case-1-test-a-job-definition">Use Case 1: Test a job definition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quick-start.html#use-case-2-updating-jenkins-jobs">Use Case 2: Updating Jenkins Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quick-start.html#use-case-3-working-with-json-job-definitions">Use Case 3: Working with JSON job definitions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quick-start.html#use-case-4-deleting-a-job">Use Case 4: Deleting a job</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#documentation">Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#unit-tests">Unit Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#test-coverage">Test Coverage</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="execution.html">Configuration File</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="execution.html#job-builder-section">job_builder section</a></li>
+<li class="toctree-l2"><a class="reference internal" href="execution.html#jenkins-section">jenkins section</a></li>
+<li class="toctree-l2"><a class="reference internal" href="execution.html#hipchat-section">hipchat section</a></li>
+<li class="toctree-l2"><a class="reference internal" href="execution.html#stash-section">stash section</a></li>
+<li class="toctree-l2"><a class="reference internal" href="execution.html#future-section">__future__ section</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="execution.html#running">Running</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="execution.html#test-mode">Test Mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="execution.html#updating-jobs">Updating Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="execution.html#passing-multiple-paths">Passing Multiple Paths</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="execution.html#recursive-searching-of-paths">Recursive Searching of Paths</a></li>
+<li class="toctree-l1"><a class="reference internal" href="execution.html#excluding-paths">Excluding Paths</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="execution.html#deleting-jobs-views">Deleting Jobs/Views</a></li>
+<li class="toctree-l2"><a class="reference internal" href="execution.html#globbed-parameters">Globbed Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="execution.html#command-reference">Command Reference</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="definition.html">Job Definitions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="definition.html#definitions">Definitions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="definition.html#job">Job</a></li>
+<li class="toctree-l3"><a class="reference internal" href="definition.html#job-template">Job Template</a></li>
+<li class="toctree-l3"><a class="reference internal" href="definition.html#project">Project</a></li>
+<li class="toctree-l3"><a class="reference internal" href="definition.html#job-group">Job Group</a></li>
+<li class="toctree-l3"><a class="reference internal" href="definition.html#views">Views</a></li>
+<li class="toctree-l3"><a class="reference internal" href="definition.html#macro">Macro</a></li>
+<li class="toctree-l3"><a class="reference internal" href="definition.html#item-id-s">Item ID&#8217;s</a></li>
+<li class="toctree-l3"><a class="reference internal" href="definition.html#raw-config">Raw config</a></li>
+<li class="toctree-l3"><a class="reference internal" href="definition.html#defaults">Defaults</a></li>
+<li class="toctree-l3"><a class="reference internal" href="definition.html#variable-references">Variable References</a></li>
+<li class="toctree-l3"><a class="reference internal" href="definition.html#yaml-anchors-aliases">Yaml Anchors &amp; Aliases</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="definition.html#module-jenkins_jobs.local_yaml">Custom Yaml Tags</a></li>
+<li class="toctree-l2"><a class="reference internal" href="definition.html#modules">Modules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="project_externaljob.html">ExternalJob Project</a></li>
+<li class="toctree-l3"><a class="reference internal" href="project_flow.html">Flow Project</a></li>
+<li class="toctree-l3"><a class="reference internal" href="project_freestyle.html">Freestyle Project</a></li>
+<li class="toctree-l3"><a class="reference internal" href="project_matrix.html">Matrix Project</a></li>
+<li class="toctree-l3"><a class="reference internal" href="project_maven.html">Maven Project</a></li>
+<li class="toctree-l3"><a class="reference internal" href="project_multijob.html">MultiJob Project</a></li>
+<li class="toctree-l3"><a class="reference internal" href="project_pipeline.html">Pipeline Project</a></li>
+<li class="toctree-l3"><a class="reference internal" href="project_workflow.html">Workflow Project</a></li>
+<li class="toctree-l3"><a class="reference internal" href="builders.html">Builders</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hipchat.html">Hipchat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="metadata.html">Metadata</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notifications.html">Notifications</a></li>
+<li class="toctree-l3"><a class="reference internal" href="parameters.html">Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="properties.html">Properties</a></li>
+<li class="toctree-l3"><a class="reference internal" href="publishers.html">Publishers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reporters.html">Reporters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="scm.html">SCM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="triggers.html">Triggers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wrappers.html">Wrappers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="zuul.html">Zuul</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="definition.html#module-execution">Module Execution</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="extending.html">Extending</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="extending.html#the-builder">The Builder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="extending.html#xml-processing">XML Processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="extending.html#modules">Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="extending.html#components">Components</a></li>
+<li class="toctree-l2"><a class="reference internal" href="extending.html#module-registry">Module Registry</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
+<li><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></li>
+<li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
+</ul>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="#">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Jenkins Job Builder</a></li>
+<li><a class="reference internal" href="#readme">README</a><ul>
+<li><a class="reference internal" href="#developers">Developers</a></li>
+<li><a class="reference internal" href="#writing-a-patch">Writing a patch</a></li>
+<li><a class="reference internal" href="#unit-tests">Unit Tests</a></li>
+<li><a class="reference internal" href="#installing-without-setup-py">Installing without setup.py</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#contents">Contents</a></li>
+<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
+</ul>
+
+  <h4>Next topic</h4>
+  <p class="topless"><a href="quick-start.html"
+                        title="next chapter">Quick Start Guide</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/index.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="quick-start.html" title="Quick Start Guide"
+             >next</a> |</li>
+        <li class="nav-item nav-item-0"><a href="#">Jenkins Job Builder 2.0.0.0b3.dev264 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2012, Jenkins Job Builder Maintainers.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.9.
+    </div>
+  </body>
+</html>

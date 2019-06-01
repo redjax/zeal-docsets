@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    
+<!-- Mirrored from mdn.mozillademos.org/en-US/docs/Web/API/Event/defaultPrevented$samples/Example?revision=1529437 by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 01 May 2019 23:51:06 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+        <meta charset="utf-8">
+        <link href="../../../../../../../developer.mozilla.org/static/build/styles/samples.37902ba3b7fe.css" rel="stylesheet" type="text/css" />
+        
+        <title>Event.defaultPrevented</title>
+    </head>
+    <body>
+        
+            <p><a id="link1" href="#link1">Visit link 1</a></p>
+<p><a id="link2" href="#link2">Try to visit link 2</a> (you can't)</p>
+<p id="log"></p>
+        
+        
+            <script>
+                function stopLink(event) {
+  event.preventDefault();
+}
+
+function logClick(event) {
+  const log = document.getElementById('log');
+ 
+  if (event.target.tagName === 'A') {
+    if (event.defaultPrevented) {
+      log.innerText = 'Sorry, but you cannot visit this link!\n' + log.innerText;
+    }
+    else {
+      log.innerText = 'Visiting link...\n' + log.innerText;
+    }
+  }
+}
+
+const a = document.getElementById('link2');
+a.addEventListener('click', stopLink);
+document.addEventListener('click', logClick);
+            </script>
+        
+    </body>
+
+<!-- Mirrored from mdn.mozillademos.org/en-US/docs/Web/API/Event/defaultPrevented$samples/Example?revision=1529437 by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 01 May 2019 23:51:06 GMT -->
+</html>

@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html class="no-js hasSidebar hasPageActions hasBreadcrumb conceptual" data-authenticated="false" data-render="docs" dir="ltr" lang="en-us">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Select-Xml (Microsoft.PowerShell.Utility)" property="og:title"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" property="og:image"/>
+  <meta content="summary" name="twitter:card"/>
+  <meta content="@docsmsft" name="twitter:site"/>
+  <meta content="Select-Xml (Microsoft.PowerShell.Utility)" name="twitter:title"/>
+  <meta content="The Select-Xml cmdlet lets you use XPath queries to search for text in XML strings and documents. Enter an XPath query, and use the Content, Path, or Xml parameter to specify the XML to be searched. " name="twitter:description"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" name="twitter:image"/>
+  <meta content="Microsoft Logo" name="twitter:image:alt"/>
+  <meta content="The Select-Xml cmdlet lets you use XPath queries to search for text in XML strings and documents. Enter an XPath query, and use the Content, Path, or Xml parameter to specify the XML to be searched. " name="description"/>
+  <meta content="Docs" name="search.ms_sitename"/>
+  <meta content="PowerShell_PowerShell-docs_reference" name="search.ms_docsetname"/>
+  <meta content="0" name="version"/>
+  <meta content="en-us" name="locale"/>
+  <meta content="Docs" name="site_name"/>
+  <meta content="PowerShell" name="search.ms_product"/>
+  <meta content="PowerShell.PowerShell_PowerShell-docs_reference" name="depot_name"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/45404d4ca212afa615798d3d5cbfea5dc5cc1efb/reference/6/Microsoft.PowerShell.Utility/Select-Xml.md" name="ref_skeleton_gitcommit"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/live/reference/6/Microsoft.PowerShell.Utility/Select-Xml.md" name="original_ref_skeleton_git_url"/>
+  <meta content="2018-03-30 03:35 PM" name="updated_at"/>
+  <meta content="b3cb555c-45bb-ed0b-8fd1-6914671e4b5e" name="document_id"/>
+  <meta content="9273a5ce-8d52-2d50-de41-6da3281e2901" name="document_version_independent_id"/>
+  <meta content="powershell" name="page_type"/>
+  <meta content="command" name="page_kind"/>
+  <meta content="06/09/2017" name="ms.date"/>
+  <meta content="2.0.0" name="schema"/>
+  <meta content="powershell,cmdlet" name="keywords"/>
+  <meta content="http://go.microsoft.com/fwlink/?LinkId=821855" name="online_version"/>
+  <meta content="Microsoft.PowerShell.Commands.Utility.dll-Help.xml" name="external_help_file"/>
+  <meta content="powershell" name="ms.devlang"/>
+  <meta content="INDEX, FOLLOW" name="ROBOTS"/>
+  <meta content="sdwheeler" name="author"/>
+  <meta content="sewhee" name="ms.author"/>
+  <meta content="carmonm" name="manager"/>
+  <meta content="/powershell/bread-pscore/toc.yml?view=powershell-6" name="breadcrumb_path"/>
+  <meta content="powershell" name="apiPlatform"/>
+  <meta content="reference" name="ms.topic"/>
+  <meta content="windows, macos, linux" name="ms.tgt_pltfr"/>
+  <meta content="powershell-scripting" name="ms.technology"/>
+  <meta content="powershell" name="ms.prod"/>
+  <meta content="MSDocsHeader-Powershell" name="uhfHeaderId"/>
+  <meta content="../psdocs/toc.json?view=powershell-6" name="toc_rel"/>
+  <link href="https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/select-xml" rel="canonical"/>
+  <title>
+   Select-Xml
+  </title>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/60aac04b.site.css" rel="stylesheet"/>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/fdb8a38a.conceptual.css" rel="stylesheet"/>
+ </head>
+ <body dir="ltr" lang="en-us">
+  <div class="header-holder">
+   <div data-bi-name="header" id="headerAreaHolder">
+    <div id="uhf-placeholder">
+    </div>
+   </div>
+   <div class="disclaimer-holder" id="disclaimer-holder">
+   </div>
+  </div>
+  <div class="container mainContainer" data-bi-name="body">
+   <div class="content-header" data-bi-name="content-header">
+    <div class="content-header-controls">
+     <button class="contents-button button-border" data-bi-name="contents-expand" type="button">
+      <span class="docon docon-menu">
+      </span>
+      Contents
+     </button>
+    </div>
+    <div class="content-header-controls">
+     <button class="ap-collapse-behavior ap-expanded button-border" data-bi-name="ap-collapse" type="button">
+      <span class="docon docon-exit-mode">
+      </span>
+      Exit focus mode
+     </button>
+    </div>
+   </div>
+   <div class="primary-holder">
+    <main class="content" data-bi-name="content" dir="ltr" id="main" lang="en-us" role="main">
+     <!-- <content> -->
+     <h1>
+      Select-Xml
+     </h1>
+     <div class="metadata">
+      <dl class="attributeList">
+       <dt>
+        Module:
+       </dt>
+       <dd>
+        <a data-linktype="relative-path" href="./Microsoft.PowerShell.Utility.html">
+         Microsoft.PowerShell.Utility
+        </a>
+       </dd>
+      </dl>
+     </div>
+     <div class="summaryHolder">
+      <div class="summary">
+       Finds text in an XML string or document.
+      </div>
+     </div>
+     <h2 class="hiddenAnchor" id="syntax">
+      Syntax
+     </h2>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Select-Xml
+      [-XPath] &lt;String&gt;
+      [-Xml] &lt;XmlNode[]&gt;
+      [-Namespace &lt;Hashtable&gt;]
+      [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Select-Xml
+      [-XPath] &lt;String&gt;
+      [-Path] &lt;String[]&gt;
+      [-Namespace &lt;Hashtable&gt;]
+      [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Select-Xml
+      [-XPath] &lt;String&gt;
+      -LiteralPath &lt;String[]&gt;
+      [-Namespace &lt;Hashtable&gt;]
+      [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Select-Xml
+      [-XPath] &lt;String&gt;
+      -Content &lt;String[]&gt;
+      [-Namespace &lt;Hashtable&gt;]
+      [&lt;CommonParameters&gt;]</code></pre>
+     <h2 id="description">
+      Description
+     </h2>
+     <p>
+      The
+      <strong>
+       Select-Xml
+      </strong>
+      cmdlet lets you use XPath queries to search for text in XML strings and documents.
+Enter an XPath query, and use the
+      <em>
+       Content
+      </em>
+      ,
+      <em>
+       Path
+      </em>
+      , or
+      <em>
+       Xml
+      </em>
+      parameter to specify the XML to be searched.
+     </p>
+     <h2 id="examples">
+      Examples
+     </h2>
+     <p>
+      <strong>
+       Example 1: Select AliasProperty nodes
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; $Path = "$Pshome\Types.ps1xml"
+
+PS C:\&gt; $XPath = "/Types/Type/Members/AliasProperty"
+
+PS C:\&gt; Select-Xml -Path $Path -XPath $Xpath | Select-Object -ExpandProperty Node
+
+Name                 ReferencedMemberName
+
+----                 --------------------
+
+Count                Length
+
+Name                 Key
+
+Name                 ServiceName
+
+RequiredServices     ServicesDependedOn
+
+ProcessName          Name
+
+Handles              Handlecount
+
+VM                   VirtualSize
+
+WS                   WorkingSetSize
+
+Name                 ProcessName
+
+Handles              Handlecount
+
+VM                   VirtualMemorySize
+
+WS                   WorkingSet
+
+PM                   PagedMemorySize
+
+NPM                  NonpagedSystemMemorySize
+
+Name                 __Class
+
+Namespace            ModuleName</code></pre>
+     <p>
+      This example gets the alias properties in the Types.ps1xml.
+(For information about this file, see about_Types.ps1xml.)
+     </p>
+     <p>
+      The first command saves the path to the Types.ps1xml file in the $Path variable.
+     </p>
+     <p>
+      The second command saves the XML path to the AliasProperty node in the $XPath variable.
+     </p>
+     <p>
+      The third command uses the
+      <strong>
+       Select-Xml
+      </strong>
+      cmdlet to get the AliasProperty nodes that are identified by the XPath statement from the Types.ps1xml file.
+The command uses a pipeline operator to send the AliasProperty nodes to the Select-Object cmdlet.
+The
+      <em>
+       ExpandProperty
+      </em>
+      parameter expands the
+      <strong>
+       Node
+      </strong>
+      object and returns its Name and ReferencedMemberName properties.
+     </p>
+     <p>
+      The result shows the Name and ReferencedMemberName of each alias property in the Types.ps1xml file.
+For example, there is a
+      <strong>
+       Count
+      </strong>
+      property that is an alias of the
+      <strong>
+       Length
+      </strong>
+      property.
+     </p>
+     <p>
+      <strong>
+       Example 2: Input an XML document
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; [xml]$Types = Get-Content $Pshome\Types.ps1xml
+
+PS C:\&gt; Select-Xml -Xml $Types -XPath "//MethodName"</code></pre>
+     <p>
+      This example shows how to use the
+      <em>
+       XML
+      </em>
+      parameter to provide an XML document to the
+      <strong>
+       Select-Xml
+      </strong>
+      cmdlet.
+     </p>
+     <p>
+      The first command uses the Get-Content cmdlet to get the content of the Types.ps1xml file and save it in the $Types variable.
+The [xml] casts the variable as an XML object.
+     </p>
+     <p>
+      The second command uses the
+      <strong>
+       Select-Xml
+      </strong>
+      cmdlet to get the MethodName nodes in the Types.ps1xml file.
+The command uses the
+      <em>
+       Xml
+      </em>
+      parameter to specify the XML content in the $Types variable and the
+      <em>
+       XPath
+      </em>
+      parameter to specify the path to the MethodName node.
+     </p>
+     <p>
+      <strong>
+       Example 3: Search PowerShell Help files
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; $Namespace = @{command = "http://schemas.microsoft.com/maml/dev/command/2004/10"; maml = "http://schemas.microsoft.com/maml/2004/10"; dev = "http://schemas.microsoft.com/maml/dev/2004/10"}
+
+
+
+The second command saves the path to the help files in the $Path variable.If there are no help files in this path on your computer, use the Update-Help cmdlet to download the help files. For more information about Updatable Help, see about_Updatable_Help (http://go.microsoft.com/fwlink/?LinkId=235801).
+
+PS C:\&gt; $Path = "$Pshome\en-us\*dll-Help.xml"
+
+
+
+The third command uses the **Select-Xml** cmdlet to search the XML for cmdlet names by finding Command:Name element anywhere in the files. It saves the results in the $Xml variable.**Select-Xml** returns a **SelectXmlInfo** object that has a Node property, which is a **System.Xml.XmlElement** object. The Node property has an InnerXML property, which contains the actual XML that is retrieved.
+
+PS C:\&gt; $Xml = Select-Xml -Path $Path -Namespace $Namespace -XPath "//command:name"
+
+
+
+The fourth command sends the XML in the $Xml variable to the Format-Table cmdlet. The **Format-Table** command uses a calculated property to get the Node.InnerXML property of each object in the $Xml variable, trim the white space before and after the text, and display it in the table, along with the path to the source file.
+
+PS C:\&gt; $Xml | Format-Table @{Label="Name"; Expression= {($_.node.innerxml).trim()}}, Path -AutoSize
+
+
+
+Name                    Path
+
+----                    ----
+
+Export-Counter          C:\Windows\system32\WindowsPowerShell\v1.0\en-us\Microsoft.PowerShell.Commands.Diagnostics.dll-Help.xml
+
+Get-Counter             C:\Windows\system32\WindowsPowerShell\v1.0\en-us\Microsoft.PowerShell.Commands.Diagnostics.dll-Help.xml
+
+Get-WinEvent            C:\Windows\system32\WindowsPowerShell\v1.0\en-us\Microsoft.PowerShell.Commands.Diagnostics.dll-Help.xml
+
+Import-Counter          C:\Windows\system32\WindowsPowerShell\v1.0\en-us\Microsoft.PowerShell.Commands.Diagnostics.dll-Help.xml
+
+Add-Computer            C:\Windows\system32\WindowsPowerShell\v1.0\en-us\Microsoft.PowerShell.Commands.Management.dll-Help.xml
+
+Add-Content             C:\Windows\system32\WindowsPowerShell\v1.0\en-us\Microsoft.PowerShell.Commands.Management.dll-Help.xml
+
+Checkpoint-Computer     C:\Windows\system32\WindowsPowerShell\v1.0\en-us\Microsoft.PowerShell.Commands.Management.dll-Help.xml
+
+...</code></pre>
+     <p>
+      This example shows how to use the
+      <strong>
+       Select-Xml
+      </strong>
+      cmdlet to search the Windows PowerShell XML-based cmdlet help files.
+In this example, we'll search for the cmdlet name that serves as a title for each help file and the path to the help file.
+     </p>
+     <p>
+      The first command creates a hash table that represents the XML namespace that is used for the help files and saves it in the $Namespace variable.
+     </p>
+     <p>
+      <strong>
+       Example 4: Different ways to input XML
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; $Xml = @"
+
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+
+&lt;Book&gt;
+
+  &lt;projects&gt;
+
+    &lt;project name="Book1" date="2009-01-20"&gt;
+
+      &lt;editions&gt;
+
+        &lt;edition language="English"&gt;En.Book1.com&lt;/edition&gt;
+
+        &lt;edition language="German"&gt;Ge.Book1.Com&lt;/edition&gt;
+
+        &lt;edition language="French"&gt;Fr.Book1.com&lt;/edition&gt;
+
+        &lt;edition language="Polish"&gt;Pl.Book1.com&lt;/edition&gt;
+
+      &lt;/editions&gt;
+
+    &lt;/project&gt;
+
+  &lt;/projects&gt;
+
+&lt;/Book&gt;
+
+"@
+
+
+
+The second command uses the *Content* parameter of **Select-Xml** to specify the XML in the $Xml variable.
+
+PS C:\&gt; Select-Xml -Content $Xml -XPath "//edition" | foreach {$_.node.InnerXML}
+
+
+
+En.Book1.com
+
+Ge.Book1.Com
+
+Fr.Book1.com
+
+Pl.Book1.com
+
+
+
+The third command is equivalent to the second. It uses a pipeline operator (|) to send the XML in the $Xml variable to the **Select-Xml** cmdlet.
+
+PS C:\&gt; $Xml | Select-Xml -XPath "//edition" | foreach {$_.node.InnerXML}
+
+
+
+En.Book1.com
+
+Ge.Book1.Com
+
+Fr.Book1.com
+
+Pl.Book1.com</code></pre>
+     <p>
+      This example shows two different ways to send XML to the
+      <strong>
+       Select-Xml
+      </strong>
+      cmdlet.
+     </p>
+     <p>
+      The first command saves a here-string that contains XML in the $Xml variable.
+(For more information about here-strings, see about_Quoting_Rules.)
+     </p>
+     <p>
+      <strong>
+       Example 5: Use the default xmlns namespace
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt; $SnippetNamespace = @{snip = "http://schemas.microsoft.com/PowerShell/Snippets"}
+
+
+
+The second command uses the **Select-Xml** cmdlet to get the content of the Title element of each snippet. It uses the *Path* parameter to specify the Snippets directory and the *Namespace* parameter to specify the namespace in the $SnippetNamespace variable. The value of the *XPath* parameter is the "snip" namespace key, a colon (:), and the name of the Title element.The command uses a pipeline operator (|) to send each **Node** property that **Select-Xml** returns to the ForEach-Object cmdlet, which gets the title in the value of the **InnerXml** property of the node.
+
+PS C:\&gt; Select-Xml -Path $Home\Documents\WindowsPowerShell\Snippets -Namespace $SnippetNamespace -XPath "//snip:Title" | foreach {$_.Node.Innerxml}</code></pre>
+     <p>
+      This example shows how to use the
+      <strong>
+       Select-Xml
+      </strong>
+      cmdlet with XML documents that use the default xmlns namespace.
+The example gets the titles of Windows PowerShell ISE user-created snippet files.
+For information about snippets, see New-IseSnippet.
+     </p>
+     <p>
+      The first command creates a hash table for the default namespace that snippet XML files use and assigns it to the $SnippetNamespace variable.
+The hash table value is the XMLNS schema URI in the snippet XML.
+The hash table key name, snip, is arbitrary.
+You can use any name that is not reserved, but you cannot use xmlns.
+     </p>
+     <h2 id="required-parameters">
+      Required Parameters
+     </h2>
+     <div class="parameterName stack">
+      -Content
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a string that contains the XML to search.
+You can also pipe strings to
+       <strong>
+        Select-Xml
+       </strong>
+       .
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByValue)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -LiteralPath
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the paths and file names of the XML files to search.
+Unlike
+       <em>
+        Path
+       </em>
+       , the value of the
+       <em>
+        LiteralPath
+       </em>
+       parameter is used exactly as it is typed.
+No characters are interpreted as wildcards.
+If the path includes escape characters, enclose it in single quotation marks.
+Single quotation marks tell Windows PowerShell not to interpret any characters as escape sequences.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         PSPath
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Path
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the path and file names of the XML files to search.
+Wildcard characters are permitted.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         1
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -XPath
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies an XPath search query.
+The query language is case-sensitive.
+This parameter is required.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         0
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Xml
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies one or more XML nodes.
+      </p>
+      <p>
+       An XML document will be processed as a collection of XML nodes.
+If you pipe an XML document to
+       <strong>
+        Select-Xml
+       </strong>
+       , each document node will be searched separately as it comes through the pipeline.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          XmlNode[]
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         Node
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         1
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         True (ByPropertyName, ByValue)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="optional-parameters">
+      Optional Parameters
+     </h2>
+     <div class="parameterName stack">
+      -Namespace
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a hash table of the namespaces used in the XML.
+Use the format @{&lt;namespaceName&gt; = &lt;namespaceValue&gt;}.
+      </p>
+      <p>
+       When the XML uses the default namespace, which begins with xmlns, use an arbitrary key for the namespace name.
+You cannot use xmlns.
+In the XPath statement, prefix each node name with the namespace name and a colon, such as //namespaceName:Node.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Hashtable
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="inputs">
+      Inputs
+     </h2>
+     <p>
+      <strong>
+       System.String or System.Xml.XmlNode
+      </strong>
+     </p>
+     <p>
+      You can pipe a path or XML node to this cmdlet.
+     </p>
+     <h2 id="outputs">
+      Outputs
+     </h2>
+     <p>
+      <strong>
+       Microsoft.PowerShell.Commands.SelectXmlInfo
+      </strong>
+     </p>
+     <h2 id="notes">
+      Notes
+     </h2>
+     <ul>
+      <li>
+       XPath is a standard language that is designed to identify parts of an XML document. For more information about the XPath language, see
+       <a data-linktype="external" href="https://msdn.microsoft.com/library/ms256115">
+        XPath Reference
+       </a>
+       and the Selection Filters section of the
+       <a data-linktype="external" href="https://msdn.microsoft.com/library/aa385231">
+        Event Selection
+       </a>
+       in the MSDN library.
+      </li>
+     </ul>
+     <h2 id="related-links">
+      Related Links
+     </h2>
+     <ul>
+      <li>
+       <a data-linktype="relative-path" href="convertto-xml.html">
+        ConvertTo-Xml
+       </a>
+      </li>
+     </ul>
+     <!-- </content> -->
+    </main>
+    <div class="note alert feedback-system-change-alert">
+     <p>
+      Note
+     </p>
+     <p>
+      The feedback system for this content will be changing soon. Old comments will not be carried over. If content within a comment thread is important to you, please save a copy. For more information on the upcoming change,
+      <a href="https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs">
+       we invite you to read our blog post
+      </a>
+      .
+     </p>
+    </div>
+    <div data-bi-name="comments" id="comments-container" role="form">
+    </div>
+   </div>
+  </div>
+  <div class="openfeedback-container" id="openFeedbackContainer">
+  </div>
+  <div class="action-panel">
+  </div>
+ </body>
+</html>

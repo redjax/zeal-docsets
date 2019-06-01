@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    
+<!-- Mirrored from mdn.mozillademos.org/en-US/docs/Web/API/Document/wheel_event$samples/Scaling_an_element_via_the_wheel?revision=1546047 by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 02 May 2019 00:25:25 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+        <meta charset="utf-8">
+        <link href="../../../../../../../developer.mozilla.org/static/build/styles/samples.37902ba3b7fe.css" rel="stylesheet" type="text/css" />
+        
+        <style type="text/css">
+            body {
+  min-height: 100vh;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+div {
+  width: 105px;
+  height: 105px;
+  background: #cdf;
+  padding: 5px;
+}
+        </style>
+        
+        <title>Document: wheel event</title>
+    </head>
+    <body>
+        
+            <div>Scale me with your mouse wheel.</div>
+        
+        
+            <script>
+                function zoom(event) {
+  event.preventDefault();
+
+  if (event.deltaY < 0) {
+    // Zoom in
+    scale *= event.deltaY * -2;
+  }
+  else {
+    // Zoom out
+    scale /= event.deltaY * 2;
+  }
+
+  // Restrict scale
+  scale = Math.min(Math.max(.125, scale), 4);
+
+  // Apply scale transform
+  el.style.transform = `scale(${scale})`;
+}
+
+let scale = 1;
+const el = document.querySelector('div');
+document.onwheel = zoom;
+            </script>
+        
+    </body>
+
+<!-- Mirrored from mdn.mozillademos.org/en-US/docs/Web/API/Document/wheel_event$samples/Scaling_an_element_via_the_wheel?revision=1546047 by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 02 May 2019 00:25:25 GMT -->
+</html>

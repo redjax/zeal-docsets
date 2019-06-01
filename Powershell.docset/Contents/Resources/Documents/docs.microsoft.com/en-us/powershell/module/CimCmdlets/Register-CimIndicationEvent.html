@@ -1,0 +1,1092 @@
+<!DOCTYPE html>
+<html class="no-js hasSidebar hasPageActions hasBreadcrumb conceptual" data-authenticated="false" data-render="docs" dir="ltr" lang="en-us">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Register-CimIndicationEvent (CimCmdlets)" property="og:title"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" property="og:image"/>
+  <meta content="summary" name="twitter:card"/>
+  <meta content="@docsmsft" name="twitter:site"/>
+  <meta content="Register-CimIndicationEvent (CimCmdlets)" name="twitter:title"/>
+  <meta content="The Register-CimIndicationEvent cmdlet subscribes to indications using an indication class name or a query expression. Use the SourceIdentifier parameter give a name to the subscription. This cmdletâ¦" name="twitter:description"/>
+  <meta content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png" name="twitter:image"/>
+  <meta content="Microsoft Logo" name="twitter:image:alt"/>
+  <meta content="The Register-CimIndicationEvent cmdlet subscribes to indications using an indication class name or a query expression. Use the SourceIdentifier parameter give a name to the subscription. This cmdletâ¦" name="description"/>
+  <meta content="Docs" name="search.ms_sitename"/>
+  <meta content="PowerShell_PowerShell-docs_reference" name="search.ms_docsetname"/>
+  <meta content="0" name="version"/>
+  <meta content="en-us" name="locale"/>
+  <meta content="Docs" name="site_name"/>
+  <meta content="PowerShell" name="search.ms_product"/>
+  <meta content="PowerShell.PowerShell_PowerShell-docs_reference" name="depot_name"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/57336f45d3bea4e66469ebf37e9162b32464a8d3/reference/6/CimCmdlets/Register-CimIndicationEvent.md" name="ref_skeleton_gitcommit"/>
+  <meta content="https://github.com/PowerShell/PowerShell-Docs/blob/live/reference/6/CimCmdlets/Register-CimIndicationEvent.md" name="original_ref_skeleton_git_url"/>
+  <meta content="2018-05-10 07:01 PM" name="updated_at"/>
+  <meta content="fd81e656-7aaf-54a6-f8db-71b1d6407c18" name="document_id"/>
+  <meta content="d742e40f-5350-3f58-73b2-396e0e3f198e" name="document_version_independent_id"/>
+  <meta content="powershell" name="page_type"/>
+  <meta content="command" name="page_kind"/>
+  <meta content="06/09/2017" name="ms.date"/>
+  <meta content="2.0.0" name="schema"/>
+  <meta content="powershell,cmdlet" name="keywords"/>
+  <meta content="Microsoft.Management.Infrastructure.CimCmdlets.dll-Help.xml" name="external_help_file"/>
+  <meta content="powershell" name="ms.devlang"/>
+  <meta content="INDEX, FOLLOW" name="ROBOTS"/>
+  <meta content="sdwheeler" name="author"/>
+  <meta content="sewhee" name="ms.author"/>
+  <meta content="carmonm" name="manager"/>
+  <meta content="/powershell/bread-pscore/toc.yml?view=powershell-6" name="breadcrumb_path"/>
+  <meta content="powershell" name="apiPlatform"/>
+  <meta content="reference" name="ms.topic"/>
+  <meta content="windows, macos, linux" name="ms.tgt_pltfr"/>
+  <meta content="powershell-scripting" name="ms.technology"/>
+  <meta content="powershell" name="ms.prod"/>
+  <meta content="MSDocsHeader-Powershell" name="uhfHeaderId"/>
+  <meta content="../psdocs/toc.json?view=powershell-6" name="toc_rel"/>
+  <link href="https://docs.microsoft.com/en-us/powershell/module/cimcmdlets/register-cimindicationevent" rel="canonical"/>
+  <title>
+   Register-CimIndicationEvent (CimCmdlets) | Microsoft Docs
+  </title>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/60aac04b.site.css" rel="stylesheet"/>
+  <link href="../../../../_themes/docs.theme/master/en-us/_themes/css/fdb8a38a.conceptual.css" rel="stylesheet"/>
+ </head>
+ <body dir="ltr" lang="en-us">
+  <div class="header-holder">
+   <div data-bi-name="header" id="headerAreaHolder">
+    <div id="uhf-placeholder">
+    </div>
+   </div>
+   <div class="disclaimer-holder" id="disclaimer-holder">
+   </div>
+  </div>
+  <div class="container mainContainer" data-bi-name="body">
+   <div class="content-header" data-bi-name="content-header">
+    <div class="content-header-controls">
+     <button class="contents-button button-border" data-bi-name="contents-expand" type="button">
+      <span class="docon docon-menu">
+      </span>
+      Contents
+     </button>
+    </div>
+    <div class="content-header-controls">
+     <button class="ap-collapse-behavior ap-expanded button-border" data-bi-name="ap-collapse" type="button">
+      <span class="docon docon-exit-mode">
+      </span>
+      Exit focus mode
+     </button>
+    </div>
+   </div>
+   <div class="primary-holder">
+    <main class="content" data-bi-name="content" dir="ltr" id="main" lang="en-us" role="main">
+     <!-- <content> -->
+     <h1>
+      Register-Cim
+      <wbr/>
+      Indication
+      <wbr/>
+      Event
+     </h1>
+     <div class="metadata">
+      <dl class="attributeList">
+       <dt>
+        Module:
+       </dt>
+       <dd>
+        <a data-linktype="relative-path" href="./CimCmdlets.html">
+         CimCmdlets
+        </a>
+       </dd>
+      </dl>
+     </div>
+     <div class="summaryHolder">
+      <div class="summary">
+       Subscribes to indications using a filter expression or a query expression.
+      </div>
+     </div>
+     <h2 class="hiddenAnchor" id="syntax">
+      Syntax
+     </h2>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Register-CimIndicationEvent
+        [-Namespace &lt;String&gt;]
+        [-ClassName] &lt;String&gt;
+        [-OperationTimeoutSec &lt;UInt32&gt;]
+        [-ComputerName &lt;String&gt;]
+        [[-SourceIdentifier] &lt;String&gt;]
+        [[-Action] &lt;ScriptBlock&gt;]
+        [-MessageData &lt;PSObject&gt;]
+        [-SupportEvent]
+        [-Forward]
+        [-MaxTriggerCount &lt;Int32&gt;]
+        [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Register-CimIndicationEvent
+        [-Namespace &lt;String&gt;]
+        [-ClassName] &lt;String&gt;
+        [-OperationTimeoutSec &lt;UInt32&gt;]
+        -CimSession &lt;CimSession&gt;
+        [[-SourceIdentifier] &lt;String&gt;]
+        [[-Action] &lt;ScriptBlock&gt;]
+        [-MessageData &lt;PSObject&gt;]
+        [-SupportEvent]
+        [-Forward]
+        [-MaxTriggerCount &lt;Int32&gt;]
+        [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Register-CimIndicationEvent
+        [-Namespace &lt;String&gt;]
+        [-Query] &lt;String&gt;
+        [-QueryDialect &lt;String&gt;]
+        [-OperationTimeoutSec &lt;UInt32&gt;]
+        -CimSession &lt;CimSession&gt;
+        [[-SourceIdentifier] &lt;String&gt;]
+        [[-Action] &lt;ScriptBlock&gt;]
+        [-MessageData &lt;PSObject&gt;]
+        [-SupportEvent]
+        [-Forward]
+        [-MaxTriggerCount &lt;Int32&gt;]
+        [&lt;CommonParameters&gt;]</code></pre>
+     <pre class="wrap"><code class="lang-powershell" dir="ltr">Register-CimIndicationEvent
+        [-Namespace &lt;String&gt;]
+        [-Query] &lt;String&gt;
+        [-QueryDialect &lt;String&gt;]
+        [-OperationTimeoutSec &lt;UInt32&gt;]
+        [-ComputerName &lt;String&gt;]
+        [[-SourceIdentifier] &lt;String&gt;]
+        [[-Action] &lt;ScriptBlock&gt;]
+        [-MessageData &lt;PSObject&gt;]
+        [-SupportEvent]
+        [-Forward]
+        [-MaxTriggerCount &lt;Int32&gt;]
+        [&lt;CommonParameters&gt;]</code></pre>
+     <h2 id="description">
+      Description
+     </h2>
+     <p>
+      The Register-CimIndicationEvent cmdlet subscribes to indications using an indication class name or a query expression.
+     </p>
+     <p>
+      Use the SourceIdentifier parameter give a name to the subscription.
+     </p>
+     <p>
+      This cmdlet returns a PS EventSubscription object.
+You can use this object to cancel the subscription.
+     </p>
+     <h2 id="examples">
+      Examples
+     </h2>
+     <p>
+      <strong>
+       Example 1: Register the events generated by a class
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">@{navigationLink=System.Management.Automation.PSObject[]; #text=System.Management.Automation.PSObject[]}</code></pre>
+     <p>
+      This set of commands subscribes to the events generated by the class named Win32_ProcessStartTrace which raises an event whenever a process starts, and gets the events with ProcessStarted subscription using the Get-Event cmdlet.
+For more information about Get-Event, see
+      <a data-linktype="external" href="http://technet.microsoft.com/library/hh849909.aspx">
+       http://technet.microsoft.com/library/hh849909.aspx
+      </a>
+      .
+     </p>
+     <p>
+      Note: for this example, you must run PowerShell as an Administrator.
+     </p>
+     <p>
+      <strong>
+       Example 2: Register the events using a query
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt;$query = "SELECT * FROM CIM_InstModification WHERE TargetInstance ISA 'Win32_LocalTime'"
+
+
+
+
+
+
+
+PS C:\&gt;Register-CimIndicationEvent -Query $query -SourceIdentifier "Timer"</code></pre>
+     <p>
+      This set of commands uses a query to subscribe to an event generated whenever there is a change in the instance of a class named Win32_LocalTime.
+     </p>
+     <p>
+      <strong>
+       Example 3: Run a script when the event arrives
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt;$action = {$name = $event.SourceEventArgs.NewEvent.ProcessName; $id = $event.SourceEventArgs.NewEvent.ProcessId; Write-Host -Object "New Process Started : Name = $name; ID = $id"}
+
+
+
+
+
+
+
+PS C:\&gt;Register-CimIndicationEvent -ClassName 'Win32_ProcessStartTrace' -SourceIdentifier "ProcessStarted" -Action $action</code></pre>
+     <p>
+      This set of commands shows how to use an action in response to an event.
+The variable $action holds the script block for Action, which uses the $event variable to access the event received from CIM.
+Using $action, the Register-CimIndicationEvent cmdlet subscribes to the event generated by the class named Win32_ProcessStartTrace.
+     </p>
+     <p>
+      For more information about Win32_ProcessStartTrace, see
+      <a data-linktype="external" href="http://msdn.microsoft.com/library/windows/desktop/aa394374(v=vs.85).aspx">
+       http://msdn.microsoft.com/library/windows/desktop/aa394374(v=vs.85).aspx
+      </a>
+     </p>
+     <p>
+      <strong>
+       Example 4: Register the events on a remote computer
+      </strong>
+     </p>
+     <pre><code class="lang-powershell">PS C:\&gt;Register-CimIndicationEvent -ClassName 'Win32_ProcessStartTrace' -SourceIdentifier "ProcessStarted" -ComputerName Server01
+
+
+
+
+
+
+
+PS C:\&gt;Get-Event -SourceIdentifier "ProcessStarted"</code></pre>
+     <p>
+      This set of commands subscribes to events on a remote computer named Server01 using the Register-CimIndicationEvent cmdlet.
+Events received from the CIM server are stored in the event queue in the current PowerShell session and then runs a local Get-Event to retrieve the events.
+     </p>
+     <h2 id="required-parameters">
+      Required Parameters
+     </h2>
+     <div class="parameterName stack">
+      -CimSession
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Runs the command using the specified CIM session.
+Enter a variable that contains the CIM session, or a command that creates or gets the CIM session, such as the New-CimSession or Get-CimSession cmdlets.
+For more information, see about_CimSessions.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          CimSession
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -ClassName
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the indication class to which you are subscribing. 
+NOTE: You can use tab completion to browse the list of classes, because PowerShell gets a list of classes from the local WMI server to provide a list of class names.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         1
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Query
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a query to run on the CIM server.
+      </p>
+      <p>
+       You can specify the query dialect using the QueryDialect parameter.
+      </p>
+      <p>
+       If the value specified contains double quotes ("), single quotes ('), or a backslash (\), you must escape those characters by prefixing them with the backslash (\) character.
+If the value specified uses the WQL LIKE operator, then you must escape the following characters by enclosing them in square brackets ([]): percent (%), underscore (_), or opening square bracket ([).
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         1
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="optional-parameters">
+      Optional Parameters
+     </h2>
+     <div class="parameterName stack">
+      -Action
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the commands that handle the events.
+      </p>
+      <p>
+       The commands specified by this parameter run when an event is raised, instead of sending the event to the event queue.
+Enclose the commands in braces ( { } ) to create a script block.
+      </p>
+      <p>
+       The script block specified with Action can include the $Event, $EventSubscriber, $Sender, $SourceEventArgs, and $SourceArgs automatic variables, which provide information about the event to the Action script block.
+For more information about automatic variables, see
+       <a data-linktype="external" href="http://technet.microsoft.com/library/hh847768.aspx">
+        http://technet.microsoft.com/library/hh847768.aspx
+       </a>
+       .
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          ScriptBlock
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         102
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -ComputerName
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the name of the computer on which you want to run the CIM operation.
+You can specify a fully qualified domain name (FQDN), a NetBIOS name, or an IP address.
+      </p>
+      <p>
+       If you specify this parameter, the cmdlet creates a temporary session to the specified computer using the WsMan protocol.
+      </p>
+      <p>
+       If you do not specify this parameter, the cmdlet performs operation on the local system using Component Object Model (COM).
+      </p>
+      <p>
+       If multiple operations are being performed on the same computer, connecting using a CIM session gives better performance.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         CN, ServerName
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Forward
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that events for the subscription are forwarded to the session on the local computer.
+      </p>
+      <p>
+       Use this parameter when you are registering for events on a remote computer or in a remote session.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -MaxTriggerCount
+     </div>
+     <div class="parameterInfo">
+      <p>
+       {{Fill MaxTriggerCount Description}}
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          Int32
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -MessageData
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies any additional data to be associated with this event subscription.
+      </p>
+      <p>
+       The value of this parameter appears in the MessageData property of all the events associated with this subscription.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          PSObject
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -Namespace
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the namespace for the CIM operation.
+      </p>
+      <p>
+       The default namespace is root/cimv2. 
+NOTE: You can use tab completion to browse the list of namespaces, because PowerShell gets a list of namespaces from the local WMI server to provide the list of namespaces.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -OperationTimeoutSec
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the amount of time that the cmdlet waits for a response from the computer.
+      </p>
+      <p>
+       By default, the value of this parameter is 0, which means that the cmdlet uses the default timeout value for the server.
+      </p>
+      <p>
+       If the OperationTimeoutSec parameter is set to a value less than the robust connection retry timeout of 3 minutes, network failures that last more than the value of the OperationTimeoutSec parameter are not recoverable, because the operation on the server times out before the client can reconnect.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          UInt32
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Aliases:
+        </td>
+        <td>
+         OT
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -QueryDialect
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies the query language used for the Query parameter.
+The acceptable values for this parameter are: WQL or CQL.
+      </p>
+      <p>
+       The default value is WQL.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -SourceIdentifier
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Specifies a name for the subscription.
+The name that you specify must be unique in the current session.
+      </p>
+      <p>
+       The default value is a GUID that PowerShell assigns.
+      </p>
+      <p>
+       The value of this parameter appears in the value of the SourceIdentifier property of the subscriber object and of all event objects associated with this subscription.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          String
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         101
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="parameterName stack">
+      -SupportEvent
+     </div>
+     <div class="parameterInfo">
+      <p>
+       Indicates that the event subscription is hidden.
+      </p>
+      <p>
+       Use this parameter when the current subscription is part of a more complex event registration mechanism and it should not be discovered independently.
+      </p>
+      <table class="nameValue stack">
+       <tr>
+        <td>
+         Type:
+        </td>
+        <td>
+         <span class="xref">
+          SwitchParameter
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Position:
+        </td>
+        <td>
+         Named
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Default value:
+        </td>
+        <td>
+         None
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept pipeline input:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Accept wildcard characters:
+        </td>
+        <td>
+         False
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="inputs">
+      Inputs
+     </h2>
+     <p>
+      <strong>
+       None
+      </strong>
+     </p>
+     <p>
+      This cmdlet accepts no input objects.
+     </p>
+     <h2 id="outputs">
+      Outputs
+     </h2>
+     <p>
+      <strong>
+       System.Object
+      </strong>
+     </p>
+     <p>
+      This cmdlet outputs a PS EventSubscription object.
+     </p>
+     <h2 id="related-links">
+      Related Links
+     </h2>
+     <ul>
+      <li>
+       <a data-linktype="relative-path" href="../microsoft.powershell.utility/get-event.html">
+        Get-Event
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="../microsoft.powershell.utility/remove-event.html">
+        Remove-Event
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="../microsoft.powershell.utility/unregister-event.html">
+        Unregister-Event
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="../microsoft.powershell.utility/write-host.html">
+        Write-Host
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="get-cimsession.html">
+        Get-CimSession
+       </a>
+      </li>
+      <li>
+       <a data-linktype="relative-path" href="new-cimsession.html">
+        New-CimSession
+       </a>
+      </li>
+     </ul>
+     <!-- </content> -->
+    </main>
+    <div class="note alert feedback-system-change-alert">
+     <p>
+      Note
+     </p>
+     <p>
+      The feedback system for this content will be changing soon. Old comments will not be carried over. If content within a comment thread is important to you, please save a copy. For more information on the upcoming change,
+      <a href="https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs">
+       we invite you to read our blog post
+      </a>
+      .
+     </p>
+    </div>
+    <div data-bi-name="comments" id="comments-container" role="form">
+    </div>
+   </div>
+  </div>
+  <div class="openfeedback-container" id="openFeedbackContainer">
+  </div>
+  <div class="action-panel">
+  </div>
+ </body>
+</html>
